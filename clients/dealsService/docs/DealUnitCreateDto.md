@@ -1,0 +1,51 @@
+# DealUnitCreateDto
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**id** | **UUID** |  | [optional] [readonly] 
+**timestamp** | **Date** |  | [optional] [readonly] 
+**closed** | **Bool** |  | [optional] 
+**title** | **String** |  | [optional] 
+**userId** | **String** |  | [optional] 
+**tenantId** | **String** |  | [optional] 
+**priceListId** | **String** |  | [optional] 
+**description** | **String** |  | [optional] 
+**enrollmentId** | **String** |  | [optional] 
+**individualId** | **String** |  | [optional] 
+**paymentTermId** | **String** |  | [optional] 
+**organizationId** | **String** |  | [optional] 
+**receiverTenantId** | **String** |  | [optional] 
+**currencyId** | **String** |  | [optional] 
+**forexRate** | **Double** |  | [optional] 
+**firstName** | **String** |  | [optional] 
+**lastName** | **String** |  | [optional] 
+**companyName** | **String** |  | [optional] 
+**billingEmail** | **String** |  | [optional] 
+**addressLine1** | **String** |  | [optional] 
+**addressLine2** | **String** |  | [optional] 
+**postalCode** | **String** |  | [optional] 
+**countryId** | **String** |  | [optional] 
+**stateId** | **String** |  | [optional] 
+**cityId** | **String** |  | [optional] 
+**dealUnitFlowId** | **String** |  | [optional] 
+**dealUnitFlowStageId** | **String** |  | [optional] 
+**partnerCreated** | **Bool** |  | [optional] 
+**partnerCollaboration** | **Bool** |  | [optional] 
+**proposedSolution** | **String** |  | [optional] 
+**currentSituation** | **String** |  | [optional] 
+**customerNeed** | **String** |  | [optional] 
+**wonDate** | **Date** |  | [optional] 
+**lostDate** | **Date** |  | [optional] 
+**expiryDate** | **Date** |  | [optional] 
+**deliveredDate** | **Date** |  | [optional] 
+**closedTimestamp** | **Date** |  | [optional] 
+**expectedCloseDate** | **Date** |  | [optional] 
+**dealUnitStatus** | **Int** |  | [optional] 
+**dealUnitPurchaseProcess** | **Int** |  | [optional] 
+**dealUnitForecastCategory** | **Int** |  | [optional] 
+**dealUnitAmountsCalculation** | **Int** |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
