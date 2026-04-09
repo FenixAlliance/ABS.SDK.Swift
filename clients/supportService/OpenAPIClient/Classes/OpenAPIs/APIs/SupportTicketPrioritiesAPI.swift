@@ -13,16 +13,18 @@ import AnyCodable
 open class SupportTicketPrioritiesAPI {
 
     /**
-
-     - parameter tenantId: (query)  (optional)
+     Create a new support ticket priority
+     
+     - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter supportTicketPriorityCreateDto: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2SupportServiceSupportTicketPrioritiesCountGet(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2SupportServiceSupportTicketPrioritiesCountGetWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func createSupportTicketPriorityAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, supportTicketPriorityCreateDto: SupportTicketPriorityCreateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return createSupportTicketPriorityAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, supportTicketPriorityCreateDto: supportTicketPriorityCreateDto).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -33,23 +35,81 @@ open class SupportTicketPrioritiesAPI {
     }
 
     /**
-     - GET /api/v2/SupportService/SupportTicketPriorities/Count
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter tenantId: (query)  (optional)
+     Create a new support ticket priority
+     - POST /api/v2/SupportService/SupportTicketPriorities
+     - Creates a new support ticket priority for the specified tenant.
+     - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - returns: RequestBuilder<Int32Envelope> 
+     - parameter supportTicketPriorityCreateDto: (body)  (optional)
+     - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func apiV2SupportServiceSupportTicketPrioritiesCountGetWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
-        let localVariablePath = "/api/v2/SupportService/SupportTicketPriorities/Count"
+    open class func createSupportTicketPriorityAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, supportTicketPriorityCreateDto: SupportTicketPriorityCreateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
+        let localVariablePath = "/api/v2/SupportService/SupportTicketPriorities"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: supportTicketPriorityCreateDto)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Delete a support ticket priority
+     
+     - parameter tenantId: (query)  
+     - parameter supportTicketPriorityId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func deleteSupportTicketPriorityAsync(tenantId: UUID, supportTicketPriorityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return deleteSupportTicketPriorityAsyncWithRequestBuilder(tenantId: tenantId, supportTicketPriorityId: supportTicketPriorityId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Delete a support ticket priority
+     - DELETE /api/v2/SupportService/SupportTicketPriorities/{supportTicketPriorityId}
+     - Deletes a support ticket priority by its unique identifier.
+     - parameter tenantId: (query)  
+     - parameter supportTicketPriorityId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func deleteSupportTicketPriorityAsyncWithRequestBuilder(tenantId: UUID, supportTicketPriorityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/SupportService/SupportTicketPriorities/{supportTicketPriorityId}"
+        let supportTicketPriorityIdPreEscape = "\(APIHelper.mapValueToPathItem(supportTicketPriorityId))"
+        let supportTicketPriorityIdPostEscape = supportTicketPriorityIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{supportTicketPriorityId}", with: supportTicketPriorityIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 
@@ -59,22 +119,23 @@ open class SupportTicketPrioritiesAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
-     - parameter tenantId: (query)  (optional)
+     Retrieve a list of support ticket priorities
+     
+     - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2SupportServiceSupportTicketPrioritiesGet(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SupportTicketPriorityDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2SupportServiceSupportTicketPrioritiesGetWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getSupportTicketPrioritiesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SupportTicketPriorityDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getSupportTicketPrioritiesAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -85,23 +146,22 @@ open class SupportTicketPrioritiesAPI {
     }
 
     /**
+     Retrieve a list of support ticket priorities
      - GET /api/v2/SupportService/SupportTicketPriorities
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter tenantId: (query)  (optional)
+     - Retrieves a list of support ticket priorities for the specified tenant with OData query support.
+     - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<SupportTicketPriorityDtoListEnvelope> 
      */
-    open class func apiV2SupportServiceSupportTicketPrioritiesGetWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SupportTicketPriorityDtoListEnvelope> {
+    open class func getSupportTicketPrioritiesAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SupportTicketPriorityDtoListEnvelope> {
         let localVariablePath = "/api/v2/SupportService/SupportTicketPriorities"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 
@@ -113,21 +173,21 @@ open class SupportTicketPrioritiesAPI {
 
         let localVariableRequestBuilder: RequestBuilder<SupportTicketPriorityDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
-     - parameter supportTicketPriorityCreateDto: (body)  
-     - parameter tenantId: (query)  (optional)
+     Get the count of support ticket priorities
+     
+     - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2SupportServiceSupportTicketPrioritiesPost(supportTicketPriorityCreateDto: SupportTicketPriorityCreateDto, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2SupportServiceSupportTicketPrioritiesPostWithRequestBuilder(supportTicketPriorityCreateDto: supportTicketPriorityCreateDto, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getSupportTicketPrioritiesCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getSupportTicketPrioritiesCountAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -138,82 +198,22 @@ open class SupportTicketPrioritiesAPI {
     }
 
     /**
-     - POST /api/v2/SupportService/SupportTicketPriorities
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter supportTicketPriorityCreateDto: (body)  
-     - parameter tenantId: (query)  (optional)
+     Get the count of support ticket priorities
+     - GET /api/v2/SupportService/SupportTicketPriorities/Count
+     - Returns the total count of support ticket priorities for the specified tenant with OData query support.
+     - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - returns: RequestBuilder<EmptyEnvelope> 
+     - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func apiV2SupportServiceSupportTicketPrioritiesPostWithRequestBuilder(supportTicketPriorityCreateDto: SupportTicketPriorityCreateDto, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
-        let localVariablePath = "/api/v2/SupportService/SupportTicketPriorities"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: supportTicketPriorityCreateDto)
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
-            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            "Content-Type": "application/json",
-            "x-api-version": xApiVersion?.encodeToJSON(),
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
-     - parameter supportTicketPriorityId: (path)  
-     - parameter tenantId: (query)  (optional)
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2SupportServiceSupportTicketPrioritiesSupportTicketPriorityIdDelete(supportTicketPriorityId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2SupportServiceSupportTicketPrioritiesSupportTicketPriorityIdDeleteWithRequestBuilder(supportTicketPriorityId: supportTicketPriorityId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - DELETE /api/v2/SupportService/SupportTicketPriorities/{supportTicketPriorityId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter supportTicketPriorityId: (path)  
-     - parameter tenantId: (query)  (optional)
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - returns: RequestBuilder<EmptyEnvelope> 
-     */
-    open class func apiV2SupportServiceSupportTicketPrioritiesSupportTicketPriorityIdDeleteWithRequestBuilder(supportTicketPriorityId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
-        var localVariablePath = "/api/v2/SupportService/SupportTicketPriorities/{supportTicketPriorityId}"
-        let supportTicketPriorityIdPreEscape = "\(APIHelper.mapValueToPathItem(supportTicketPriorityId))"
-        let supportTicketPriorityIdPostEscape = supportTicketPriorityIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{supportTicketPriorityId}", with: supportTicketPriorityIdPostEscape, options: .literal, range: nil)
+    open class func getSupportTicketPrioritiesCountAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+        let localVariablePath = "/api/v2/SupportService/SupportTicketPriorities/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 
@@ -223,13 +223,15 @@ open class SupportTicketPrioritiesAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Retrieve a support ticket priority by ID
+     
+     - parameter tenantId: (query)  
      - parameter supportTicketPriorityId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -237,8 +239,8 @@ open class SupportTicketPrioritiesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2SupportServiceSupportTicketPrioritiesSupportTicketPriorityIdGet(supportTicketPriorityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SupportTicketPriorityDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2SupportServiceSupportTicketPrioritiesSupportTicketPriorityIdGetWithRequestBuilder(supportTicketPriorityId: supportTicketPriorityId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getSupportTicketPriorityAsync(tenantId: UUID, supportTicketPriorityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SupportTicketPriorityDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getSupportTicketPriorityAsyncWithRequestBuilder(tenantId: tenantId, supportTicketPriorityId: supportTicketPriorityId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -249,16 +251,16 @@ open class SupportTicketPrioritiesAPI {
     }
 
     /**
+     Retrieve a support ticket priority by ID
      - GET /api/v2/SupportService/SupportTicketPriorities/{supportTicketPriorityId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Retrieves a single support ticket priority by its unique identifier.
+     - parameter tenantId: (query)  
      - parameter supportTicketPriorityId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<SupportTicketPriorityDtoEnvelope> 
      */
-    open class func apiV2SupportServiceSupportTicketPrioritiesSupportTicketPriorityIdGetWithRequestBuilder(supportTicketPriorityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SupportTicketPriorityDtoEnvelope> {
+    open class func getSupportTicketPriorityAsyncWithRequestBuilder(tenantId: UUID, supportTicketPriorityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SupportTicketPriorityDtoEnvelope> {
         var localVariablePath = "/api/v2/SupportService/SupportTicketPriorities/{supportTicketPriorityId}"
         let supportTicketPriorityIdPreEscape = "\(APIHelper.mapValueToPathItem(supportTicketPriorityId))"
         let supportTicketPriorityIdPostEscape = supportTicketPriorityIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -268,6 +270,7 @@ open class SupportTicketPrioritiesAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 
@@ -279,22 +282,23 @@ open class SupportTicketPrioritiesAPI {
 
         let localVariableRequestBuilder: RequestBuilder<SupportTicketPriorityDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Update a support ticket priority
+     
+     - parameter tenantId: (query)  
      - parameter supportTicketPriorityId: (path)  
-     - parameter supportTicketPriorityUpdateDto: (body)  
-     - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter supportTicketPriorityUpdateDto: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2SupportServiceSupportTicketPrioritiesSupportTicketPriorityIdPut(supportTicketPriorityId: UUID, supportTicketPriorityUpdateDto: SupportTicketPriorityUpdateDto, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2SupportServiceSupportTicketPrioritiesSupportTicketPriorityIdPutWithRequestBuilder(supportTicketPriorityId: supportTicketPriorityId, supportTicketPriorityUpdateDto: supportTicketPriorityUpdateDto, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func updateSupportTicketPriorityAsync(tenantId: UUID, supportTicketPriorityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, supportTicketPriorityUpdateDto: SupportTicketPriorityUpdateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return updateSupportTicketPriorityAsyncWithRequestBuilder(tenantId: tenantId, supportTicketPriorityId: supportTicketPriorityId, apiVersion: apiVersion, xApiVersion: xApiVersion, supportTicketPriorityUpdateDto: supportTicketPriorityUpdateDto).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -305,18 +309,17 @@ open class SupportTicketPrioritiesAPI {
     }
 
     /**
+     Update a support ticket priority
      - PUT /api/v2/SupportService/SupportTicketPriorities/{supportTicketPriorityId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Updates an existing support ticket priority by its unique identifier.
+     - parameter tenantId: (query)  
      - parameter supportTicketPriorityId: (path)  
-     - parameter supportTicketPriorityUpdateDto: (body)  
-     - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter supportTicketPriorityUpdateDto: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func apiV2SupportServiceSupportTicketPrioritiesSupportTicketPriorityIdPutWithRequestBuilder(supportTicketPriorityId: UUID, supportTicketPriorityUpdateDto: SupportTicketPriorityUpdateDto, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func updateSupportTicketPriorityAsyncWithRequestBuilder(tenantId: UUID, supportTicketPriorityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, supportTicketPriorityUpdateDto: SupportTicketPriorityUpdateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/SupportService/SupportTicketPriorities/{supportTicketPriorityId}"
         let supportTicketPriorityIdPreEscape = "\(APIHelper.mapValueToPathItem(supportTicketPriorityId))"
         let supportTicketPriorityIdPostEscape = supportTicketPriorityIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -326,7 +329,7 @@ open class SupportTicketPrioritiesAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 
@@ -339,6 +342,6 @@ open class SupportTicketPrioritiesAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 }

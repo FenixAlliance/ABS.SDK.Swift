@@ -13,7 +13,8 @@ import AnyCodable
 open class EmployeesAPI {
 
     /**
-
+     Create an employee
+     
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -34,10 +35,9 @@ open class EmployeesAPI {
     }
 
     /**
+     Create an employee
      - POST /api/v2/HrmsService/Employees
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Creates a new employee for the specified tenant.
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -64,11 +64,12 @@ open class EmployeesAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Delete an employee
+     
      - parameter tenantId: (query)  
      - parameter employeeId: (path)  
      - parameter apiVersion: (query)  (optional)
@@ -89,10 +90,9 @@ open class EmployeesAPI {
     }
 
     /**
+     Delete an employee
      - DELETE /api/v2/HrmsService/Employees/{employeeId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Deletes an employee for the specified tenant.
      - parameter tenantId: (query)  
      - parameter employeeId: (path)  
      - parameter apiVersion: (query)  (optional)
@@ -121,11 +121,12 @@ open class EmployeesAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Get employee by ID
+     
      - parameter tenantId: (query)  
      - parameter employeeId: (path)  
      - parameter apiVersion: (query)  (optional)
@@ -146,10 +147,9 @@ open class EmployeesAPI {
     }
 
     /**
+     Get employee by ID
      - GET /api/v2/HrmsService/Employees/{employeeId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Retrieves a specific employee by its identifier.
      - parameter tenantId: (query)  
      - parameter employeeId: (path)  
      - parameter apiVersion: (query)  (optional)
@@ -178,11 +178,12 @@ open class EmployeesAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmployeeProfileDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Get employees
+     
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -202,10 +203,9 @@ open class EmployeesAPI {
     }
 
     /**
+     Get employees
      - GET /api/v2/HrmsService/Employees
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Retrieves employees for the specified tenant.
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -230,11 +230,12 @@ open class EmployeesAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmployeeProfileDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Count employees
+     
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -254,10 +255,9 @@ open class EmployeesAPI {
     }
 
     /**
+     Count employees
      - GET /api/v2/HrmsService/Employees/Count
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Counts employees for the specified tenant.
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -282,11 +282,12 @@ open class EmployeesAPI {
 
         let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Update an employee
+     
      - parameter tenantId: (query)  
      - parameter employeeId: (path)  
      - parameter apiVersion: (query)  (optional)
@@ -308,10 +309,9 @@ open class EmployeesAPI {
     }
 
     /**
+     Update an employee
      - PUT /api/v2/HrmsService/Employees/{employeeId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Updates an existing employee for the specified tenant.
      - parameter tenantId: (query)  
      - parameter employeeId: (path)  
      - parameter apiVersion: (query)  (optional)
@@ -342,6 +342,6 @@ open class EmployeesAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 }

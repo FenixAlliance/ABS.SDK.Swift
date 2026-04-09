@@ -12,9 +12,9 @@ import AnyCodable
 
 public struct Blob: Codable, JSONEncodable, Hashable {
 
-    public enum Kind: Int, Codable, CaseIterable {
-        case _0 = 0
-        case _1 = 1
+    public enum Kind: String, Codable, CaseIterable {
+        case file = "File"
+        case folder = "Folder"
     }
     public var kind: Kind?
     public var isFolder: Bool?

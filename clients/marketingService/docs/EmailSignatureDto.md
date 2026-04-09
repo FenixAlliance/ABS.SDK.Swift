@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | [optional] 
 **timestamp** | **Date** |  | [optional] 
+**codeType** | **String** |  | [optional] 
 **order** | **Int** |  | [optional] 
 **slug** | **String** |  | [optional] 
 **name** | **String** |  | [optional] 
@@ -14,6 +15,7 @@ Name | Type | Description | Notes
 **description** | **String** |  | [optional] 
 **highlightImage** | **String** |  | [optional] 
 **canonicalUrl** | **String** |  | [optional] 
+**emitResult** | **AnyCodable** |  | [optional] 
 **seoTitle** | **String** |  | [optional] 
 **seoKeyWords** | **String** |  | [optional] 
 **seoKeyPhrases** | **String** |  | [optional] 

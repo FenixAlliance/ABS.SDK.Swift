@@ -19,9 +19,9 @@ public struct SocialMediaPostDto: Codable, JSONEncodable, Hashable {
     public var featuredImageUrl: String?
     public var tenantId: String?
     public var socialPostBucketId: String?
-    public var enrolmentId: String?
+    public var enrollmentId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, content: String? = nil, featuredImageUrl: String? = nil, tenantId: String? = nil, socialPostBucketId: String? = nil, enrolmentId: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, content: String? = nil, featuredImageUrl: String? = nil, tenantId: String? = nil, socialPostBucketId: String? = nil, enrollmentId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
@@ -29,7 +29,7 @@ public struct SocialMediaPostDto: Codable, JSONEncodable, Hashable {
         self.featuredImageUrl = featuredImageUrl
         self.tenantId = tenantId
         self.socialPostBucketId = socialPostBucketId
-        self.enrolmentId = enrolmentId
+        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -40,7 +40,7 @@ public struct SocialMediaPostDto: Codable, JSONEncodable, Hashable {
         case featuredImageUrl
         case tenantId
         case socialPostBucketId
-        case enrolmentId
+        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -54,7 +54,7 @@ public struct SocialMediaPostDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(featuredImageUrl, forKey: .featuredImageUrl)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encodeIfPresent(socialPostBucketId, forKey: .socialPostBucketId)
-        try container.encodeIfPresent(enrolmentId, forKey: .enrolmentId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

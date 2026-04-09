@@ -13,16 +13,18 @@ import AnyCodable
 open class NewslettersAPI {
 
     /**
-
+     Create a newsletter
+     
      - parameter tenantId: (query)  
+     - parameter newsletterCreateDto: (body)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2MarketingServiceNewslettersCountGet(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2MarketingServiceNewslettersCountGetWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func createNewsletterAsync(tenantId: UUID, newsletterCreateDto: NewsletterCreateDto, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return createNewsletterAsyncWithRequestBuilder(tenantId: tenantId, newsletterCreateDto: newsletterCreateDto, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -33,71 +35,19 @@ open class NewslettersAPI {
     }
 
     /**
-     - GET /api/v2/MarketingService/Newsletters/Count
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     Create a newsletter
+     - POST /api/v2/MarketingService/Newsletters
+     - Creates a new newsletter for the specified tenant.
      - parameter tenantId: (query)  
+     - parameter newsletterCreateDto: (body)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - returns: RequestBuilder<Int32Envelope> 
+     - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func apiV2MarketingServiceNewslettersCountGetWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
-        let localVariablePath = "/api/v2/MarketingService/Newsletters/Count"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            "x-api-version": xApiVersion?.encodeToJSON(),
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
-     - parameter tenantId: (query)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2MarketingServiceNewslettersGet(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2MarketingServiceNewslettersGetWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
-            switch result {
-            case .success:
-                completion((), nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - GET /api/v2/MarketingService/Newsletters
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter tenantId: (query)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - returns: RequestBuilder<Void> 
-     */
-    open class func apiV2MarketingServiceNewslettersGetWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Void> {
+    open class func createNewsletterAsyncWithRequestBuilder(tenantId: UUID, newsletterCreateDto: NewsletterCreateDto, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
         let localVariablePath = "/api/v2/MarketingService/Newsletters"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: newsletterCreateDto)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -106,18 +56,20 @@ open class NewslettersAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Delete a newsletter
+     
      - parameter tenantId: (query)  
      - parameter newsletterId: (path)  
      - parameter apiVersion: (query)  (optional)
@@ -126,8 +78,8 @@ open class NewslettersAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2MarketingServiceNewslettersNewsletterIdDelete(tenantId: UUID, newsletterId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2MarketingServiceNewslettersNewsletterIdDeleteWithRequestBuilder(tenantId: tenantId, newsletterId: newsletterId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func deleteNewsletterAsync(tenantId: UUID, newsletterId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return deleteNewsletterAsyncWithRequestBuilder(tenantId: tenantId, newsletterId: newsletterId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -138,17 +90,16 @@ open class NewslettersAPI {
     }
 
     /**
+     Delete a newsletter
      - DELETE /api/v2/MarketingService/Newsletters/{newsletterId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Deletes a newsletter by its ID.
      - parameter tenantId: (query)  
      - parameter newsletterId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func apiV2MarketingServiceNewslettersNewsletterIdDeleteWithRequestBuilder(tenantId: UUID, newsletterId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func deleteNewsletterAsyncWithRequestBuilder(tenantId: UUID, newsletterId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/MarketingService/Newsletters/{newsletterId}"
         let newsletterIdPreEscape = "\(APIHelper.mapValueToPathItem(newsletterId))"
         let newsletterIdPostEscape = newsletterIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -170,11 +121,12 @@ open class NewslettersAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Get newsletter by ID
+     
      - parameter tenantId: (query)  
      - parameter newsletterId: (path)  
      - parameter apiVersion: (query)  (optional)
@@ -183,8 +135,8 @@ open class NewslettersAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2MarketingServiceNewslettersNewsletterIdGet(tenantId: UUID, newsletterId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: NewsletterDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2MarketingServiceNewslettersNewsletterIdGetWithRequestBuilder(tenantId: tenantId, newsletterId: newsletterId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getNewsletterDetailsAsync(tenantId: UUID, newsletterId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: NewsletterDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getNewsletterDetailsAsyncWithRequestBuilder(tenantId: tenantId, newsletterId: newsletterId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -195,17 +147,16 @@ open class NewslettersAPI {
     }
 
     /**
+     Get newsletter by ID
      - GET /api/v2/MarketingService/Newsletters/{newsletterId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Retrieves the details of a specific newsletter by its ID.
      - parameter tenantId: (query)  
      - parameter newsletterId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<NewsletterDtoEnvelope> 
      */
-    open class func apiV2MarketingServiceNewslettersNewsletterIdGetWithRequestBuilder(tenantId: UUID, newsletterId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<NewsletterDtoEnvelope> {
+    open class func getNewsletterDetailsAsyncWithRequestBuilder(tenantId: UUID, newsletterId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<NewsletterDtoEnvelope> {
         var localVariablePath = "/api/v2/MarketingService/Newsletters/{newsletterId}"
         let newsletterIdPreEscape = "\(APIHelper.mapValueToPathItem(newsletterId))"
         let newsletterIdPostEscape = newsletterIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -227,22 +178,73 @@ open class NewslettersAPI {
 
         let localVariableRequestBuilder: RequestBuilder<NewsletterDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Get newsletters
+     
      - parameter tenantId: (query)  
-     - parameter newsletterId: (path)  
-     - parameter newsletterUpdateDto: (body)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2MarketingServiceNewslettersNewsletterIdPut(tenantId: UUID, newsletterId: UUID, newsletterUpdateDto: NewsletterUpdateDto, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2MarketingServiceNewslettersNewsletterIdPutWithRequestBuilder(tenantId: tenantId, newsletterId: newsletterId, newsletterUpdateDto: newsletterUpdateDto, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getNewsletterODataAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return getNewsletterODataAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case .success:
+                completion((), nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get newsletters
+     - GET /api/v2/MarketingService/Newsletters
+     - Retrieves a collection of newsletters for the specified tenant using OData query options.
+     - parameter tenantId: (query)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<Void> 
+     */
+    open class func getNewsletterODataAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Void> {
+        let localVariablePath = "/api/v2/MarketingService/Newsletters"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Get newsletters count
+     
+     - parameter tenantId: (query)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getNewslettersCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getNewslettersCountAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -253,10 +255,63 @@ open class NewslettersAPI {
     }
 
     /**
+     Get newsletters count
+     - GET /api/v2/MarketingService/Newsletters/Count
+     - Returns the count of newsletters for the specified tenant using OData query options.
+     - parameter tenantId: (query)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<Int32Envelope> 
+     */
+    open class func getNewslettersCountAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+        let localVariablePath = "/api/v2/MarketingService/Newsletters/Count"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Update a newsletter
+     
+     - parameter tenantId: (query)  
+     - parameter newsletterId: (path)  
+     - parameter newsletterUpdateDto: (body)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func updateNewsletterAsync(tenantId: UUID, newsletterId: UUID, newsletterUpdateDto: NewsletterUpdateDto, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return updateNewsletterAsyncWithRequestBuilder(tenantId: tenantId, newsletterId: newsletterId, newsletterUpdateDto: newsletterUpdateDto, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Update a newsletter
      - PUT /api/v2/MarketingService/Newsletters/{newsletterId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Updates an existing newsletter by its ID.
      - parameter tenantId: (query)  
      - parameter newsletterId: (path)  
      - parameter newsletterUpdateDto: (body)  
@@ -264,7 +319,7 @@ open class NewslettersAPI {
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func apiV2MarketingServiceNewslettersNewsletterIdPutWithRequestBuilder(tenantId: UUID, newsletterId: UUID, newsletterUpdateDto: NewsletterUpdateDto, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func updateNewsletterAsyncWithRequestBuilder(tenantId: UUID, newsletterId: UUID, newsletterUpdateDto: NewsletterUpdateDto, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/MarketingService/Newsletters/{newsletterId}"
         let newsletterIdPreEscape = "\(APIHelper.mapValueToPathItem(newsletterId))"
         let newsletterIdPostEscape = newsletterIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -287,61 +342,6 @@ open class NewslettersAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
-     - parameter tenantId: (query)  
-     - parameter newsletterCreateDto: (body)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2MarketingServiceNewslettersPost(tenantId: UUID, newsletterCreateDto: NewsletterCreateDto, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2MarketingServiceNewslettersPostWithRequestBuilder(tenantId: tenantId, newsletterCreateDto: newsletterCreateDto, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - POST /api/v2/MarketingService/Newsletters
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter tenantId: (query)  
-     - parameter newsletterCreateDto: (body)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - returns: RequestBuilder<EmptyEnvelope> 
-     */
-    open class func apiV2MarketingServiceNewslettersPostWithRequestBuilder(tenantId: UUID, newsletterCreateDto: NewsletterCreateDto, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
-        let localVariablePath = "/api/v2/MarketingService/Newsletters"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: newsletterCreateDto)
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            "Content-Type": "application/json",
-            "x-api-version": xApiVersion?.encodeToJSON(),
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 }

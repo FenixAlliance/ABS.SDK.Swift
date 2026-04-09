@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **UUID** |  | [optional] [readonly] 
-**timestamp** | **Date** |  | [optional] [readonly] 
+**id** | **UUID** |  | [optional] 
+**timestamp** | **Date** |  | [optional] 
 **invoiceId** | **String** |  | [optional] 
 **tenantId** | **String** |  | [optional] 
 **emisorWalletId** | **String** |  | [optional] 
@@ -23,9 +23,9 @@ Name | Type | Description | Notes
 **referenceCode** | **String** |  | [optional] 
 **correlationCode** | **String** |  | [optional] 
 **lastUpdated** | **Date** |  | [optional] 
-**onBehalfOf** | **Int** |  | [optional] 
-**paymentType** | **Int** |  | [optional] 
-**paymentStatus** | **Int** |  | [optional] 
+**onBehalfOf** | **String** |  | [optional] 
+**paymentType** | **String** |  | [optional] 
+**paymentStatus** | **String** |  | [optional] 
 **baseCost** | **Double** |  | [optional] 
 **signature** | **String** |  | [optional] 
 **signatureMismatch** | **Bool** |  | [optional] 
@@ -58,7 +58,7 @@ Name | Type | Description | Notes
 **accountingEntryId** | **String** |  | [optional] 
 **paymentGatewayId** | **String** |  | [optional] 
 **bankAccountId** | **String** |  | [optional] 
-**enrolmentId** | **String** |  | [optional] 
+**enrollmentId** | **String** |  | [optional] 
 **bankId** | **String** |  | [optional] 
 **paymentTokenId** | **String** |  | [optional] 
 **emisorWalletAccountId** | **String** |  | [optional] 

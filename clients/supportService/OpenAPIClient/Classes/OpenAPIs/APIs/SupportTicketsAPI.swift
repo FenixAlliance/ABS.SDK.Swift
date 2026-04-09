@@ -13,16 +13,18 @@ import AnyCodable
 open class SupportTicketsAPI {
 
     /**
-
-     - parameter tenantId: (query)  (optional)
+     Create a new support ticket
+     
+     - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter supportTicketCreateDto: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2SupportServiceSupportTicketsCountGet(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2SupportServiceSupportTicketsCountGetWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func createSupportTicketAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, supportTicketCreateDto: SupportTicketCreateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return createSupportTicketAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, supportTicketCreateDto: supportTicketCreateDto).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -33,129 +35,23 @@ open class SupportTicketsAPI {
     }
 
     /**
-     - GET /api/v2/SupportService/SupportTickets/Count
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter tenantId: (query)  (optional)
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - returns: RequestBuilder<Int32Envelope> 
-     */
-    open class func apiV2SupportServiceSupportTicketsCountGetWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
-        let localVariablePath = "/api/v2/SupportService/SupportTickets/Count"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
-            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            "x-api-version": xApiVersion?.encodeToJSON(),
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
-     - parameter tenantId: (query)  (optional)
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2SupportServiceSupportTicketsGet(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SupportTicketDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2SupportServiceSupportTicketsGetWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - GET /api/v2/SupportService/SupportTickets
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter tenantId: (query)  (optional)
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - returns: RequestBuilder<SupportTicketDtoListEnvelope> 
-     */
-    open class func apiV2SupportServiceSupportTicketsGetWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SupportTicketDtoListEnvelope> {
-        let localVariablePath = "/api/v2/SupportService/SupportTickets"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
-            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            "x-api-version": xApiVersion?.encodeToJSON(),
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<SupportTicketDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
-     - parameter supportTicketCreateDto: (body)  
-     - parameter tenantId: (query)  (optional)
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2SupportServiceSupportTicketsPost(supportTicketCreateDto: SupportTicketCreateDto, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2SupportServiceSupportTicketsPostWithRequestBuilder(supportTicketCreateDto: supportTicketCreateDto, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
+     Create a new support ticket
      - POST /api/v2/SupportService/SupportTickets
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter supportTicketCreateDto: (body)  
-     - parameter tenantId: (query)  (optional)
+     - Creates a new support ticket for the specified tenant.
+     - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter supportTicketCreateDto: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func apiV2SupportServiceSupportTicketsPostWithRequestBuilder(supportTicketCreateDto: SupportTicketCreateDto, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func createSupportTicketAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, supportTicketCreateDto: SupportTicketCreateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
         let localVariablePath = "/api/v2/SupportService/SupportTickets"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: supportTicketCreateDto)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 
@@ -168,11 +64,13 @@ open class SupportTicketsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Delete a support ticket
+     
+     - parameter tenantId: (query)  
      - parameter supportTicketId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -180,8 +78,8 @@ open class SupportTicketsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2SupportServiceSupportTicketsSupportTicketIdConversationsGet(supportTicketId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SupportTicketConversationDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2SupportServiceSupportTicketsSupportTicketIdConversationsGetWithRequestBuilder(supportTicketId: supportTicketId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func deleteSupportTicketAsync(tenantId: UUID, supportTicketId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return deleteSupportTicketAsyncWithRequestBuilder(tenantId: tenantId, supportTicketId: supportTicketId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -192,17 +90,17 @@ open class SupportTicketsAPI {
     }
 
     /**
-     - GET /api/v2/SupportService/SupportTickets/{supportTicketId}/Conversations
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     Delete a support ticket
+     - DELETE /api/v2/SupportService/SupportTickets/{supportTicketId}
+     - Deletes a support ticket by its unique identifier.
+     - parameter tenantId: (query)  
      - parameter supportTicketId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - returns: RequestBuilder<SupportTicketConversationDtoListEnvelope> 
+     - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func apiV2SupportServiceSupportTicketsSupportTicketIdConversationsGetWithRequestBuilder(supportTicketId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SupportTicketConversationDtoListEnvelope> {
-        var localVariablePath = "/api/v2/SupportService/SupportTickets/{supportTicketId}/Conversations"
+    open class func deleteSupportTicketAsyncWithRequestBuilder(tenantId: UUID, supportTicketId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/SupportService/SupportTickets/{supportTicketId}"
         let supportTicketIdPreEscape = "\(APIHelper.mapValueToPathItem(supportTicketId))"
         let supportTicketIdPostEscape = supportTicketIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{supportTicketId}", with: supportTicketIdPostEscape, options: .literal, range: nil)
@@ -211,70 +109,11 @@ open class SupportTicketsAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            "x-api-version": xApiVersion?.encodeToJSON(),
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<SupportTicketConversationDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
-     - parameter supportTicketId: (path)  
-     - parameter supportTicketConversationCreateDto: (body)  
-     - parameter tenantId: (query)  (optional)
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2SupportServiceSupportTicketsSupportTicketIdConversationsPost(supportTicketId: UUID, supportTicketConversationCreateDto: SupportTicketConversationCreateDto, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2SupportServiceSupportTicketsSupportTicketIdConversationsPostWithRequestBuilder(supportTicketId: supportTicketId, supportTicketConversationCreateDto: supportTicketConversationCreateDto, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - POST /api/v2/SupportService/SupportTickets/{supportTicketId}/Conversations
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter supportTicketId: (path)  
-     - parameter supportTicketConversationCreateDto: (body)  
-     - parameter tenantId: (query)  (optional)
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - returns: RequestBuilder<EmptyEnvelope> 
-     */
-    open class func apiV2SupportServiceSupportTicketsSupportTicketIdConversationsPostWithRequestBuilder(supportTicketId: UUID, supportTicketConversationCreateDto: SupportTicketConversationCreateDto, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
-        var localVariablePath = "/api/v2/SupportService/SupportTickets/{supportTicketId}/Conversations"
-        let supportTicketIdPreEscape = "\(APIHelper.mapValueToPathItem(supportTicketId))"
-        let supportTicketIdPostEscape = supportTicketIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{supportTicketId}", with: supportTicketIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: supportTicketConversationCreateDto)
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
-            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -282,22 +121,23 @@ open class SupportTicketsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Delete a conversation from a support ticket
+     
+     - parameter tenantId: (query)  
      - parameter supportTicketId: (path)  
      - parameter supportTicketConversationId: (path)  
-     - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2SupportServiceSupportTicketsSupportTicketIdConversationsSupportTicketConversationIdDelete(supportTicketId: UUID, supportTicketConversationId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2SupportServiceSupportTicketsSupportTicketIdConversationsSupportTicketConversationIdDeleteWithRequestBuilder(supportTicketId: supportTicketId, supportTicketConversationId: supportTicketConversationId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func deleteSupportTicketConversationAsync(tenantId: UUID, supportTicketId: UUID, supportTicketConversationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return deleteSupportTicketConversationAsyncWithRequestBuilder(tenantId: tenantId, supportTicketId: supportTicketId, supportTicketConversationId: supportTicketConversationId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -308,18 +148,17 @@ open class SupportTicketsAPI {
     }
 
     /**
+     Delete a conversation from a support ticket
      - DELETE /api/v2/SupportService/SupportTickets/{supportTicketId}/Conversations/{supportTicketConversationId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Deletes a specific conversation from a support ticket.
+     - parameter tenantId: (query)  
      - parameter supportTicketId: (path)  
      - parameter supportTicketConversationId: (path)  
-     - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func apiV2SupportServiceSupportTicketsSupportTicketIdConversationsSupportTicketConversationIdDeleteWithRequestBuilder(supportTicketId: UUID, supportTicketConversationId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func deleteSupportTicketConversationAsyncWithRequestBuilder(tenantId: UUID, supportTicketId: UUID, supportTicketConversationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/SupportService/SupportTickets/{supportTicketId}/Conversations/{supportTicketConversationId}"
         let supportTicketIdPreEscape = "\(APIHelper.mapValueToPathItem(supportTicketId))"
         let supportTicketIdPostEscape = supportTicketIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -332,7 +171,7 @@ open class SupportTicketsAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 
@@ -344,21 +183,22 @@ open class SupportTicketsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Retrieve a support ticket by ID
+     
+     - parameter tenantId: (query)  
      - parameter supportTicketId: (path)  
-     - parameter supportTicketConversationId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2SupportServiceSupportTicketsSupportTicketIdConversationsSupportTicketConversationIdGet(supportTicketId: UUID, supportTicketConversationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SupportTicketConversationDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2SupportServiceSupportTicketsSupportTicketIdConversationsSupportTicketConversationIdGetWithRequestBuilder(supportTicketId: supportTicketId, supportTicketConversationId: supportTicketConversationId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getSupportTicketAsync(tenantId: UUID, supportTicketId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SupportTicketDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getSupportTicketAsyncWithRequestBuilder(tenantId: tenantId, supportTicketId: supportTicketId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -369,17 +209,75 @@ open class SupportTicketsAPI {
     }
 
     /**
+     Retrieve a support ticket by ID
+     - GET /api/v2/SupportService/SupportTickets/{supportTicketId}
+     - Retrieves a single support ticket by its unique identifier.
+     - parameter tenantId: (query)  
+     - parameter supportTicketId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<SupportTicketDtoEnvelope> 
+     */
+    open class func getSupportTicketAsyncWithRequestBuilder(tenantId: UUID, supportTicketId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SupportTicketDtoEnvelope> {
+        var localVariablePath = "/api/v2/SupportService/SupportTickets/{supportTicketId}"
+        let supportTicketIdPreEscape = "\(APIHelper.mapValueToPathItem(supportTicketId))"
+        let supportTicketIdPostEscape = supportTicketIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{supportTicketId}", with: supportTicketIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<SupportTicketDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Retrieve a specific conversation for a support ticket
+     
+     - parameter tenantId: (query)  
+     - parameter supportTicketId: (path)  
+     - parameter supportTicketConversationId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getSupportTicketConversationAsync(tenantId: UUID, supportTicketId: UUID, supportTicketConversationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SupportTicketConversationDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getSupportTicketConversationAsyncWithRequestBuilder(tenantId: tenantId, supportTicketId: supportTicketId, supportTicketConversationId: supportTicketConversationId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Retrieve a specific conversation for a support ticket
      - GET /api/v2/SupportService/SupportTickets/{supportTicketId}/Conversations/{supportTicketConversationId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Retrieves a single conversation by its ID for a specific support ticket.
+     - parameter tenantId: (query)  
      - parameter supportTicketId: (path)  
      - parameter supportTicketConversationId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<SupportTicketConversationDtoEnvelope> 
      */
-    open class func apiV2SupportServiceSupportTicketsSupportTicketIdConversationsSupportTicketConversationIdGetWithRequestBuilder(supportTicketId: UUID, supportTicketConversationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SupportTicketConversationDtoEnvelope> {
+    open class func getSupportTicketConversationAsyncWithRequestBuilder(tenantId: UUID, supportTicketId: UUID, supportTicketConversationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SupportTicketConversationDtoEnvelope> {
         var localVariablePath = "/api/v2/SupportService/SupportTickets/{supportTicketId}/Conversations/{supportTicketConversationId}"
         let supportTicketIdPreEscape = "\(APIHelper.mapValueToPathItem(supportTicketId))"
         let supportTicketIdPostEscape = supportTicketIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -392,6 +290,7 @@ open class SupportTicketsAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 
@@ -403,13 +302,15 @@ open class SupportTicketsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<SupportTicketConversationDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
-     - parameter supportTicketConversationId: (path)  
+     Retrieve messages for a support ticket conversation
+     
+     - parameter tenantId: (query)  
      - parameter supportTicketId: (path)  
+     - parameter supportTicketConversationId: (path)  
      - parameter pageNumber: (query)  (optional)
      - parameter pageSize: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
@@ -418,8 +319,8 @@ open class SupportTicketsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2SupportServiceSupportTicketsSupportTicketIdConversationsSupportTicketConversationIdMessagesGet(supportTicketConversationId: UUID, supportTicketId: String, pageNumber: Int? = nil, pageSize: Int? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: PrivateMessageDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2SupportServiceSupportTicketsSupportTicketIdConversationsSupportTicketConversationIdMessagesGetWithRequestBuilder(supportTicketConversationId: supportTicketConversationId, supportTicketId: supportTicketId, pageNumber: pageNumber, pageSize: pageSize, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getSupportTicketConversationMessagesAsync(tenantId: UUID, supportTicketId: UUID, supportTicketConversationId: UUID, pageNumber: Int? = nil, pageSize: Int? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: PrivateMessageDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getSupportTicketConversationMessagesAsyncWithRequestBuilder(tenantId: tenantId, supportTicketId: supportTicketId, supportTicketConversationId: supportTicketConversationId, pageNumber: pageNumber, pageSize: pageSize, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -430,31 +331,32 @@ open class SupportTicketsAPI {
     }
 
     /**
+     Retrieve messages for a support ticket conversation
      - GET /api/v2/SupportService/SupportTickets/{supportTicketId}/Conversations/{supportTicketConversationId}/Messages
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter supportTicketConversationId: (path)  
+     - Retrieves the list of messages within a specific conversation of a support ticket.
+     - parameter tenantId: (query)  
      - parameter supportTicketId: (path)  
+     - parameter supportTicketConversationId: (path)  
      - parameter pageNumber: (query)  (optional)
      - parameter pageSize: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<PrivateMessageDtoListEnvelope> 
      */
-    open class func apiV2SupportServiceSupportTicketsSupportTicketIdConversationsSupportTicketConversationIdMessagesGetWithRequestBuilder(supportTicketConversationId: UUID, supportTicketId: String, pageNumber: Int? = nil, pageSize: Int? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<PrivateMessageDtoListEnvelope> {
+    open class func getSupportTicketConversationMessagesAsyncWithRequestBuilder(tenantId: UUID, supportTicketId: UUID, supportTicketConversationId: UUID, pageNumber: Int? = nil, pageSize: Int? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<PrivateMessageDtoListEnvelope> {
         var localVariablePath = "/api/v2/SupportService/SupportTickets/{supportTicketId}/Conversations/{supportTicketConversationId}/Messages"
-        let supportTicketConversationIdPreEscape = "\(APIHelper.mapValueToPathItem(supportTicketConversationId))"
-        let supportTicketConversationIdPostEscape = supportTicketConversationIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{supportTicketConversationId}", with: supportTicketConversationIdPostEscape, options: .literal, range: nil)
         let supportTicketIdPreEscape = "\(APIHelper.mapValueToPathItem(supportTicketId))"
         let supportTicketIdPostEscape = supportTicketIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{supportTicketId}", with: supportTicketIdPostEscape, options: .literal, range: nil)
+        let supportTicketConversationIdPreEscape = "\(APIHelper.mapValueToPathItem(supportTicketConversationId))"
+        let supportTicketConversationIdPostEscape = supportTicketConversationIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{supportTicketConversationId}", with: supportTicketConversationIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
             "pageNumber": (wrappedValue: pageNumber?.encodeToJSON(), isExplode: true),
             "pageSize": (wrappedValue: pageSize?.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
@@ -468,21 +370,22 @@ open class SupportTicketsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<PrivateMessageDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Retrieve conversations for a support ticket
+     
+     - parameter tenantId: (query)  
      - parameter supportTicketId: (path)  
-     - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2SupportServiceSupportTicketsSupportTicketIdDelete(supportTicketId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2SupportServiceSupportTicketsSupportTicketIdDeleteWithRequestBuilder(supportTicketId: supportTicketId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getSupportTicketConversationsAsync(tenantId: UUID, supportTicketId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SupportTicketConversationDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getSupportTicketConversationsAsyncWithRequestBuilder(tenantId: tenantId, supportTicketId: supportTicketId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -493,18 +396,17 @@ open class SupportTicketsAPI {
     }
 
     /**
-     - DELETE /api/v2/SupportService/SupportTickets/{supportTicketId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     Retrieve conversations for a support ticket
+     - GET /api/v2/SupportService/SupportTickets/{supportTicketId}/Conversations
+     - Retrieves the list of conversations associated with a specific support ticket.
+     - parameter tenantId: (query)  
      - parameter supportTicketId: (path)  
-     - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - returns: RequestBuilder<EmptyEnvelope> 
+     - returns: RequestBuilder<SupportTicketConversationDtoListEnvelope> 
      */
-    open class func apiV2SupportServiceSupportTicketsSupportTicketIdDeleteWithRequestBuilder(supportTicketId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
-        var localVariablePath = "/api/v2/SupportService/SupportTickets/{supportTicketId}"
+    open class func getSupportTicketConversationsAsyncWithRequestBuilder(tenantId: UUID, supportTicketId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SupportTicketConversationDtoListEnvelope> {
+        var localVariablePath = "/api/v2/SupportService/SupportTickets/{supportTicketId}/Conversations"
         let supportTicketIdPreEscape = "\(APIHelper.mapValueToPathItem(supportTicketId))"
         let supportTicketIdPostEscape = supportTicketIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{supportTicketId}", with: supportTicketIdPostEscape, options: .literal, range: nil)
@@ -513,7 +415,7 @@ open class SupportTicketsAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 
@@ -523,22 +425,23 @@ open class SupportTicketsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<SupportTicketConversationDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
-     - parameter supportTicketId: (path)  
+     Retrieve a list of support tickets
+     
+     - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2SupportServiceSupportTicketsSupportTicketIdGet(supportTicketId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SupportTicketDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2SupportServiceSupportTicketsSupportTicketIdGetWithRequestBuilder(supportTicketId: supportTicketId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getSupportTicketsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SupportTicketDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getSupportTicketsAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -549,25 +452,22 @@ open class SupportTicketsAPI {
     }
 
     /**
-     - GET /api/v2/SupportService/SupportTickets/{supportTicketId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter supportTicketId: (path)  
+     Retrieve a list of support tickets
+     - GET /api/v2/SupportService/SupportTickets
+     - Retrieves a list of support tickets for the specified tenant with OData query support.
+     - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - returns: RequestBuilder<SupportTicketDtoEnvelope> 
+     - returns: RequestBuilder<SupportTicketDtoListEnvelope> 
      */
-    open class func apiV2SupportServiceSupportTicketsSupportTicketIdGetWithRequestBuilder(supportTicketId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SupportTicketDtoEnvelope> {
-        var localVariablePath = "/api/v2/SupportService/SupportTickets/{supportTicketId}"
-        let supportTicketIdPreEscape = "\(APIHelper.mapValueToPathItem(supportTicketId))"
-        let supportTicketIdPostEscape = supportTicketIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{supportTicketId}", with: supportTicketIdPostEscape, options: .literal, range: nil)
+    open class func getSupportTicketsAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SupportTicketDtoListEnvelope> {
+        let localVariablePath = "/api/v2/SupportService/SupportTickets"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 
@@ -577,24 +477,23 @@ open class SupportTicketsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<SupportTicketDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<SupportTicketDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
-     - parameter supportTicketId: (path)  
-     - parameter supportTicketUpdateDto: (body)  
-     - parameter tenantId: (query)  (optional)
+     Get the count of support tickets
+     
+     - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2SupportServiceSupportTicketsSupportTicketIdPut(supportTicketId: UUID, supportTicketUpdateDto: SupportTicketUpdateDto, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2SupportServiceSupportTicketsSupportTicketIdPutWithRequestBuilder(supportTicketId: supportTicketId, supportTicketUpdateDto: supportTicketUpdateDto, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getSupportTicketsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getSupportTicketsCountAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -605,28 +504,81 @@ open class SupportTicketsAPI {
     }
 
     /**
-     - PUT /api/v2/SupportService/SupportTickets/{supportTicketId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter supportTicketId: (path)  
-     - parameter supportTicketUpdateDto: (body)  
-     - parameter tenantId: (query)  (optional)
+     Get the count of support tickets
+     - GET /api/v2/SupportService/SupportTickets/Count
+     - Returns the total count of support tickets for the specified tenant with OData query support.
+     - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<Int32Envelope> 
+     */
+    open class func getSupportTicketsCountAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+        let localVariablePath = "/api/v2/SupportService/SupportTickets/Count"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Create a conversation for a support ticket
+     
+     - parameter tenantId: (query)  
+     - parameter supportTicketId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter supportTicketConversationCreateDto: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func relateSupportTicketToConversationAsync(tenantId: UUID, supportTicketId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, supportTicketConversationCreateDto: SupportTicketConversationCreateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return relateSupportTicketToConversationAsyncWithRequestBuilder(tenantId: tenantId, supportTicketId: supportTicketId, apiVersion: apiVersion, xApiVersion: xApiVersion, supportTicketConversationCreateDto: supportTicketConversationCreateDto).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Create a conversation for a support ticket
+     - POST /api/v2/SupportService/SupportTickets/{supportTicketId}/Conversations
+     - Creates a new conversation and associates it with the specified support ticket.
+     - parameter tenantId: (query)  
+     - parameter supportTicketId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter supportTicketConversationCreateDto: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func apiV2SupportServiceSupportTicketsSupportTicketIdPutWithRequestBuilder(supportTicketId: UUID, supportTicketUpdateDto: SupportTicketUpdateDto, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
-        var localVariablePath = "/api/v2/SupportService/SupportTickets/{supportTicketId}"
+    open class func relateSupportTicketToConversationAsyncWithRequestBuilder(tenantId: UUID, supportTicketId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, supportTicketConversationCreateDto: SupportTicketConversationCreateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/SupportService/SupportTickets/{supportTicketId}/Conversations"
         let supportTicketIdPreEscape = "\(APIHelper.mapValueToPathItem(supportTicketId))"
         let supportTicketIdPostEscape = supportTicketIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{supportTicketId}", with: supportTicketIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: supportTicketUpdateDto)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: supportTicketConversationCreateDto)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 
@@ -639,6 +591,66 @@ open class SupportTicketsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Update a support ticket
+     
+     - parameter tenantId: (query)  
+     - parameter supportTicketId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter supportTicketUpdateDto: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func updateSupportTicketAsync(tenantId: UUID, supportTicketId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, supportTicketUpdateDto: SupportTicketUpdateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return updateSupportTicketAsyncWithRequestBuilder(tenantId: tenantId, supportTicketId: supportTicketId, apiVersion: apiVersion, xApiVersion: xApiVersion, supportTicketUpdateDto: supportTicketUpdateDto).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Update a support ticket
+     - PUT /api/v2/SupportService/SupportTickets/{supportTicketId}
+     - Updates an existing support ticket by its unique identifier.
+     - parameter tenantId: (query)  
+     - parameter supportTicketId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter supportTicketUpdateDto: (body)  (optional)
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func updateSupportTicketAsyncWithRequestBuilder(tenantId: UUID, supportTicketId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, supportTicketUpdateDto: SupportTicketUpdateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/SupportService/SupportTickets/{supportTicketId}"
+        let supportTicketIdPreEscape = "\(APIHelper.mapValueToPathItem(supportTicketId))"
+        let supportTicketIdPostEscape = supportTicketIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{supportTicketId}", with: supportTicketIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: supportTicketUpdateDto)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 }

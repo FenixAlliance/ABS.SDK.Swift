@@ -38,9 +38,6 @@ open class WalletsAPI {
      Create Wallet Location
      - POST /api/v2/WalletsService/Wallets/{walletId}/Locations
      - Create a new location for a specific wallet by ID.
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -69,7 +66,7 @@ open class WalletsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -98,9 +95,6 @@ open class WalletsAPI {
      Delete Wallet Location
      - DELETE /api/v2/WalletsService/Wallets/{walletId}/Locations/{locationId}
      - Delete a specific location of a specific wallet by ID.
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter walletId: (path)  
      - parameter locationId: (path)  
      - parameter apiVersion: (query)  (optional)
@@ -131,7 +125,7 @@ open class WalletsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -159,9 +153,6 @@ open class WalletsAPI {
      Get Incoming Payments
      - GET /api/v2/WalletsService/Wallets/{walletId}/Payments/Incoming
      - Get incoming payments of a specific wallet by ID.
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -188,7 +179,7 @@ open class WalletsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<PaymentDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -216,9 +207,6 @@ open class WalletsAPI {
      Get Incoming Payments Count
      - GET /api/v2/WalletsService/Wallets/{walletId}/Payments/Incoming/Count
      - Get incoming payments count of a specific wallet by ID.
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -245,7 +233,7 @@ open class WalletsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -273,9 +261,6 @@ open class WalletsAPI {
      Get Incoming Wallet Invoices
      - GET /api/v2/WalletsService/Wallets/{walletId}/Invoices/Incoming
      - Get incoming invoices of a specific wallet by ID.
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -302,7 +287,7 @@ open class WalletsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<InvoiceDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -330,9 +315,6 @@ open class WalletsAPI {
      Get Incoming Wallet Invoices Count
      - GET /api/v2/WalletsService/Wallets/{walletId}/Invoices/Incoming/Count
      - Get incoming invoices count of a specific wallet by ID.
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -359,7 +341,7 @@ open class WalletsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -387,9 +369,6 @@ open class WalletsAPI {
      Get Outgoing Payments
      - GET /api/v2/WalletsService/Wallets/{walletId}/Payments/Outgoing
      - Get outgoing payments of a specific wallet by ID.
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -416,7 +395,7 @@ open class WalletsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<PaymentDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -444,9 +423,6 @@ open class WalletsAPI {
      Get Outgoing Payments Count
      - GET /api/v2/WalletsService/Wallets/{walletId}/Payments/Outgoing/Count
      - Get outgoing payments count of a specific wallet by ID.
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -473,7 +449,7 @@ open class WalletsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -501,9 +477,6 @@ open class WalletsAPI {
      Get Outgoing Wallet Invoices
      - GET /api/v2/WalletsService/Wallets/{walletId}/Invoices/Outgoing
      - Get outgoing invoices of a specific wallet by ID.
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -530,7 +503,7 @@ open class WalletsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<InvoiceDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -558,9 +531,6 @@ open class WalletsAPI {
      Get Outgoing Wallet Invoices Count
      - GET /api/v2/WalletsService/Wallets/{walletId}/Invoices/Outgoing/Count
      - Get outgoing invoices count of a specific wallet by ID.
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -587,7 +557,7 @@ open class WalletsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -615,9 +585,6 @@ open class WalletsAPI {
      Get Wallet Details
      - GET /api/v2/WalletsService/Wallets/{walletId}
      - Get details of a specific wallet by ID.
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -644,7 +611,7 @@ open class WalletsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<WalletDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -672,9 +639,6 @@ open class WalletsAPI {
      Get Wallet Extended Orders
      - GET /api/v2/WalletsService/Wallets/{walletId}/Orders/Extended
      - Get extended orders of a specific wallet by ID.
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -701,7 +665,7 @@ open class WalletsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<ExtendedOrderDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -729,9 +693,6 @@ open class WalletsAPI {
      Get Wallet Invoices
      - GET /api/v2/WalletsService/Wallets/{walletId}/Invoices
      - Get invoices of a specific wallet by ID.
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -758,7 +719,7 @@ open class WalletsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<InvoiceDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -786,9 +747,6 @@ open class WalletsAPI {
      Get Wallet Invoices Count
      - GET /api/v2/WalletsService/Wallets/{walletId}/Invoices/Count
      - Get invoices count of a specific wallet by ID.
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -815,7 +773,7 @@ open class WalletsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -844,9 +802,6 @@ open class WalletsAPI {
      Get Wallet Location
      - GET /api/v2/WalletsService/Wallets/{walletId}/Locations/{locationId}
      - Get a specific location of a specific wallet by ID.
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter walletId: (path)  
      - parameter locationId: (path)  
      - parameter apiVersion: (query)  (optional)
@@ -877,7 +832,7 @@ open class WalletsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<LocationDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -905,9 +860,6 @@ open class WalletsAPI {
      Get Wallet Locations
      - GET /api/v2/WalletsService/Wallets/{walletId}/Locations
      - Get locations of a specific wallet by ID.
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -934,7 +886,7 @@ open class WalletsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<LocationDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -962,9 +914,6 @@ open class WalletsAPI {
      Get Wallet Locations Count
      - GET /api/v2/WalletsService/Wallets/{walletId}/Locations/Count
      - Get locations count of a specific wallet by ID.
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -991,7 +940,7 @@ open class WalletsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -1019,9 +968,6 @@ open class WalletsAPI {
      Get Wallet Orders
      - GET /api/v2/WalletsService/Wallets/{walletId}/Orders
      - Get orders of a specific wallet by ID.
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -1048,7 +994,7 @@ open class WalletsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<OrderDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -1076,9 +1022,6 @@ open class WalletsAPI {
      Get Wallet Orders Count
      - GET /api/v2/WalletsService/Wallets/{walletId}/Orders/Count
      - Get orders count of a specific wallet by ID.
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -1105,7 +1048,7 @@ open class WalletsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -1133,9 +1076,6 @@ open class WalletsAPI {
      Get Wallet Payments
      - GET /api/v2/WalletsService/Wallets/{walletId}/Payments
      - Get payments of a specific wallet by ID.
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -1162,7 +1102,7 @@ open class WalletsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<PaymentDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -1190,9 +1130,6 @@ open class WalletsAPI {
      Get Wallet Payments Count
      - GET /api/v2/WalletsService/Wallets/{walletId}/Payments/Count
      - Get payments count of a specific wallet by ID.
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -1219,7 +1156,7 @@ open class WalletsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -1249,9 +1186,6 @@ open class WalletsAPI {
      Update Wallet Location
      - PUT /api/v2/WalletsService/Wallets/{walletId}/Locations/{locationId}
      - Update a specific location of a specific wallet by ID.
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter walletId: (path)  
      - parameter locationId: (path)  
      - parameter apiVersion: (query)  (optional)
@@ -1284,6 +1218,6 @@ open class WalletsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 }

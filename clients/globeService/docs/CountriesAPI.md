@@ -4,24 +4,131 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**apiV2GlobeServiceCountriesCountryIdCallingCodesGet**](CountriesAPI.md#apiv2globeservicecountriescountryidcallingcodesget) | **GET** /api/v2/GlobeService/Countries/{countryId}/CallingCodes | 
-[**apiV2GlobeServiceCountriesCountryIdCurrenciesGet**](CountriesAPI.md#apiv2globeservicecountriescountryidcurrenciesget) | **GET** /api/v2/GlobeService/Countries/{countryId}/Currencies | 
-[**apiV2GlobeServiceCountriesCountryIdGet**](CountriesAPI.md#apiv2globeservicecountriescountryidget) | **GET** /api/v2/GlobeService/Countries/{countryId} | 
-[**apiV2GlobeServiceCountriesCountryIdStatesCountryStateIdCitiesGet**](CountriesAPI.md#apiv2globeservicecountriescountryidstatescountrystateidcitiesget) | **GET** /api/v2/GlobeService/Countries/{countryId}/States/{countryStateId}/Cities | 
-[**apiV2GlobeServiceCountriesCountryIdStatesCountryStateIdGet**](CountriesAPI.md#apiv2globeservicecountriescountryidstatescountrystateidget) | **GET** /api/v2/GlobeService/Countries/{countryId}/States/{countryStateId} | 
-[**apiV2GlobeServiceCountriesCountryIdStatesGet**](CountriesAPI.md#apiv2globeservicecountriescountryidstatesget) | **GET** /api/v2/GlobeService/Countries/{countryId}/States | 
-[**apiV2GlobeServiceCountriesCountryIdTimezonesGet**](CountriesAPI.md#apiv2globeservicecountriescountryidtimezonesget) | **GET** /api/v2/GlobeService/Countries/{countryId}/Timezones | 
-[**apiV2GlobeServiceCountriesCountryIdTopLevelDomainsGet**](CountriesAPI.md#apiv2globeservicecountriescountryidtopleveldomainsget) | **GET** /api/v2/GlobeService/Countries/{countryId}/TopLevelDomains | 
-[**apiV2GlobeServiceCountriesGet**](CountriesAPI.md#apiv2globeservicecountriesget) | **GET** /api/v2/GlobeService/Countries | 
-[**apiV2GlobeServiceCountriesSearchGet**](CountriesAPI.md#apiv2globeservicecountriessearchget) | **GET** /api/v2/GlobeService/Countries/Search | 
+[**countCountries**](CountriesAPI.md#countcountries) | **GET** /api/v2/GlobeService/Countries/Count | Count countries
+[**getAllCountries**](CountriesAPI.md#getallcountries) | **GET** /api/v2/GlobeService/Countries | Get all countries
+[**getCallingCodesByCountryIdAsync**](CountriesAPI.md#getcallingcodesbycountryidasync) | **GET** /api/v2/GlobeService/Countries/{countryId}/CallingCodes | Get calling codes for a country
+[**getCitiesByCountryStateIdAsync**](CountriesAPI.md#getcitiesbycountrystateidasync) | **GET** /api/v2/GlobeService/Countries/{countryId}/States/{countryStateId}/Cities | Get cities for a state
+[**getCountryById**](CountriesAPI.md#getcountrybyid) | **GET** /api/v2/GlobeService/Countries/{countryId} | Get country by ID
+[**getCountryStateByIdAsync**](CountriesAPI.md#getcountrystatebyidasync) | **GET** /api/v2/GlobeService/Countries/{countryId}/States/{countryStateId} | Get state by ID
+[**getCountryStatesAsync**](CountriesAPI.md#getcountrystatesasync) | **GET** /api/v2/GlobeService/Countries/{countryId}/States | Get states for a country
+[**getEnabledCurrenciesByCountryIdAsync**](CountriesAPI.md#getenabledcurrenciesbycountryidasync) | **GET** /api/v2/GlobeService/Countries/{countryId}/Currencies | Get currencies for a country
+[**getTimeZonesByCountryIdAsync**](CountriesAPI.md#gettimezonesbycountryidasync) | **GET** /api/v2/GlobeService/Countries/{countryId}/Timezones | Get timezones for a country
+[**getTopLevelDomainsByCountryIdAsync**](CountriesAPI.md#gettopleveldomainsbycountryidasync) | **GET** /api/v2/GlobeService/Countries/{countryId}/TopLevelDomains | Get top-level domains for a country
+[**searchCountriesByNameAsync**](CountriesAPI.md#searchcountriesbynameasync) | **GET** /api/v2/GlobeService/Countries/Search | Search countries by name
 
 
-# **apiV2GlobeServiceCountriesCountryIdCallingCodesGet**
+# **countCountries**
 ```swift
-    open class func apiV2GlobeServiceCountriesCountryIdCallingCodesGet(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: CountryCallingCodeDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func countCountries(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
+Count countries
 
+Returns the total number of countries, with optional OData filtering.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Count countries
+CountriesAPI.countCountries(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**Int32Envelope**](Int32Envelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getAllCountries**
+```swift
+    open class func getAllCountries(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: CountryDtoListEnvelope?, _ error: Error?) -> Void)
+```
+
+Get all countries
+
+Retrieves a list of all countries with optional OData pagination and filtering.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Get all countries
+CountriesAPI.getAllCountries(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**CountryDtoListEnvelope**](CountryDtoListEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getCallingCodesByCountryIdAsync**
+```swift
+    open class func getCallingCodesByCountryIdAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: CountryCallingCodeDtoListEnvelope?, _ error: Error?) -> Void)
+```
+
+Get calling codes for a country
+
+Retrieves the list of international telephone calling codes associated with the specified country.
 
 ### Example
 ```swift
@@ -32,7 +139,8 @@ let countryId = "countryId_example" // String |
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
-CountriesAPI.apiV2GlobeServiceCountriesCountryIdCallingCodesGet(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Get calling codes for a country
+CountriesAPI.getCallingCodesByCountryIdAsync(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -58,123 +166,23 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, application/xml
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **apiV2GlobeServiceCountriesCountryIdCurrenciesGet**
+# **getCitiesByCountryStateIdAsync**
 ```swift
-    open class func apiV2GlobeServiceCountriesCountryIdCurrenciesGet(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: CurrencyDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getCitiesByCountryStateIdAsync(countryStateId: String, countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: CityDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
+Get cities for a state
 
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
-
-let countryId = "countryId_example" // String | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
-
-CountriesAPI.apiV2GlobeServiceCountriesCountryIdCurrenciesGet(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **countryId** | **String** |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
-
-### Return type
-
-[**CurrencyDtoListEnvelope**](CurrencyDtoListEnvelope.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/xml
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **apiV2GlobeServiceCountriesCountryIdGet**
-```swift
-    open class func apiV2GlobeServiceCountriesCountryIdGet(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: CountryDtoEnvelope?, _ error: Error?) -> Void)
-```
-
-
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
-
-let countryId = "countryId_example" // String | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
-
-CountriesAPI.apiV2GlobeServiceCountriesCountryIdGet(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **countryId** | **String** |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
-
-### Return type
-
-[**CountryDtoEnvelope**](CountryDtoEnvelope.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/xml
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **apiV2GlobeServiceCountriesCountryIdStatesCountryStateIdCitiesGet**
-```swift
-    open class func apiV2GlobeServiceCountriesCountryIdStatesCountryStateIdCitiesGet(countryStateId: String, countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: CityDtoListEnvelope?, _ error: Error?) -> Void)
-```
-
-
+Retrieves the list of cities belonging to the specified state or province.
 
 ### Example
 ```swift
@@ -186,7 +194,8 @@ let countryId = "countryId_example" // String |
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
-CountriesAPI.apiV2GlobeServiceCountriesCountryIdStatesCountryStateIdCitiesGet(countryStateId: countryStateId, countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Get cities for a state
+CountriesAPI.getCitiesByCountryStateIdAsync(countryStateId: countryStateId, countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -213,21 +222,77 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, application/xml
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **apiV2GlobeServiceCountriesCountryIdStatesCountryStateIdGet**
+# **getCountryById**
 ```swift
-    open class func apiV2GlobeServiceCountriesCountryIdStatesCountryStateIdGet(countryStateId: String, countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: CountryStateDtoEnvelope?, _ error: Error?) -> Void)
+    open class func getCountryById(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: CountryDtoEnvelope?, _ error: Error?) -> Void)
 ```
 
+Get country by ID
 
+Retrieves a single country by its unique identifier.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let countryId = "countryId_example" // String | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Get country by ID
+CountriesAPI.getCountryById(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **countryId** | **String** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**CountryDtoEnvelope**](CountryDtoEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getCountryStateByIdAsync**
+```swift
+    open class func getCountryStateByIdAsync(countryStateId: String, countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: CountryStateDtoEnvelope?, _ error: Error?) -> Void)
+```
+
+Get state by ID
+
+Retrieves a single state or province by its unique identifier within a country.
 
 ### Example
 ```swift
@@ -239,7 +304,8 @@ let countryId = "countryId_example" // String |
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
-CountriesAPI.apiV2GlobeServiceCountriesCountryIdStatesCountryStateIdGet(countryStateId: countryStateId, countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Get state by ID
+CountriesAPI.getCountryStateByIdAsync(countryStateId: countryStateId, countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -266,21 +332,23 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, application/xml
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **apiV2GlobeServiceCountriesCountryIdStatesGet**
+# **getCountryStatesAsync**
 ```swift
-    open class func apiV2GlobeServiceCountriesCountryIdStatesGet(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: CountryStateDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getCountryStatesAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: CountryStateDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
+Get states for a country
 
+Retrieves the list of states or provinces belonging to the specified country.
 
 ### Example
 ```swift
@@ -291,7 +359,8 @@ let countryId = "countryId_example" // String |
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
-CountriesAPI.apiV2GlobeServiceCountriesCountryIdStatesGet(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Get states for a country
+CountriesAPI.getCountryStatesAsync(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -317,21 +386,23 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, application/xml
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **apiV2GlobeServiceCountriesCountryIdTimezonesGet**
+# **getEnabledCurrenciesByCountryIdAsync**
 ```swift
-    open class func apiV2GlobeServiceCountriesCountryIdTimezonesGet(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: TimezoneDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getEnabledCurrenciesByCountryIdAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: CurrencyDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
+Get currencies for a country
 
+Retrieves the list of enabled currencies for the specified country.
 
 ### Example
 ```swift
@@ -342,7 +413,62 @@ let countryId = "countryId_example" // String |
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
-CountriesAPI.apiV2GlobeServiceCountriesCountryIdTimezonesGet(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Get currencies for a country
+CountriesAPI.getEnabledCurrenciesByCountryIdAsync(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **countryId** | **String** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**CurrencyDtoListEnvelope**](CurrencyDtoListEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getTimeZonesByCountryIdAsync**
+```swift
+    open class func getTimeZonesByCountryIdAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: TimezoneDtoListEnvelope?, _ error: Error?) -> Void)
+```
+
+Get timezones for a country
+
+Retrieves the list of timezones associated with the specified country.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let countryId = "countryId_example" // String | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Get timezones for a country
+CountriesAPI.getTimeZonesByCountryIdAsync(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -368,21 +494,23 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, application/xml
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **apiV2GlobeServiceCountriesCountryIdTopLevelDomainsGet**
+# **getTopLevelDomainsByCountryIdAsync**
 ```swift
-    open class func apiV2GlobeServiceCountriesCountryIdTopLevelDomainsGet(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: CountryTopLevelDomainDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getTopLevelDomainsByCountryIdAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: CountryTopLevelDomainDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
+Get top-level domains for a country
 
+Retrieves the list of internet top-level domains (TLDs) associated with the specified country.
 
 ### Example
 ```swift
@@ -393,7 +521,8 @@ let countryId = "countryId_example" // String |
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
-CountriesAPI.apiV2GlobeServiceCountriesCountryIdTopLevelDomainsGet(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Get top-level domains for a country
+CountriesAPI.getTopLevelDomainsByCountryIdAsync(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -419,70 +548,23 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, application/xml
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **apiV2GlobeServiceCountriesGet**
+# **searchCountriesByNameAsync**
 ```swift
-    open class func apiV2GlobeServiceCountriesGet(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: CountryDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func searchCountriesByNameAsync(countryName: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: CountryDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
+Search countries by name
 
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
-
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
-
-CountriesAPI.apiV2GlobeServiceCountriesGet(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
-
-### Return type
-
-[**CountryDtoListEnvelope**](CountryDtoListEnvelope.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/xml, application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **apiV2GlobeServiceCountriesSearchGet**
-```swift
-    open class func apiV2GlobeServiceCountriesSearchGet(countryName: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: CountryDtoListEnvelope?, _ error: Error?) -> Void)
-```
-
-
+Searches for countries whose name matches the specified search term.
 
 ### Example
 ```swift
@@ -493,7 +575,8 @@ let countryName = "countryName_example" // String |
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
-CountriesAPI.apiV2GlobeServiceCountriesSearchGet(countryName: countryName, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Search countries by name
+CountriesAPI.searchCountriesByNameAsync(countryName: countryName, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -519,12 +602,12 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, application/xml
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

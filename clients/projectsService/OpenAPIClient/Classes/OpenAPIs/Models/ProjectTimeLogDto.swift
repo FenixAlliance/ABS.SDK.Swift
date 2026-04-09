@@ -12,10 +12,10 @@ import AnyCodable
 
 public struct ProjectTimeLogDto: Codable, JSONEncodable, Hashable {
 
-    public enum RecordType: Int, Codable, CaseIterable {
-        case _0 = 0
-        case _1 = 1
-        case _2 = 2
+    public enum RecordType: String, Codable, CaseIterable {
+        case regularHours = "RegularHours"
+        case overtimeToPay = "OvertimeToPay"
+        case overtimeToCompensate = "OvertimeToCompensate"
     }
     public var id: String?
     public var timestamp: Date?
@@ -26,13 +26,12 @@ public struct ProjectTimeLogDto: Codable, JSONEncodable, Hashable {
     public var responsibleContactId: String?
     public var creatorContactId: String?
     public var recordType: RecordType?
-    public var timeStamp: Date?
     public var timeSpan: String?
     public var logDate: Date?
     public var comments: String?
     public var type: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, projectId: String? = nil, projectTaskId: String? = nil, taskCategoryId: String? = nil, projectPeriodId: String? = nil, responsibleContactId: String? = nil, creatorContactId: String? = nil, recordType: RecordType? = nil, timeStamp: Date? = nil, timeSpan: String? = nil, logDate: Date? = nil, comments: String? = nil, type: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, projectId: String? = nil, projectTaskId: String? = nil, taskCategoryId: String? = nil, projectPeriodId: String? = nil, responsibleContactId: String? = nil, creatorContactId: String? = nil, recordType: RecordType? = nil, timeSpan: String? = nil, logDate: Date? = nil, comments: String? = nil, type: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.projectId = projectId
@@ -42,7 +41,6 @@ public struct ProjectTimeLogDto: Codable, JSONEncodable, Hashable {
         self.responsibleContactId = responsibleContactId
         self.creatorContactId = creatorContactId
         self.recordType = recordType
-        self.timeStamp = timeStamp
         self.timeSpan = timeSpan
         self.logDate = logDate
         self.comments = comments
@@ -59,7 +57,6 @@ public struct ProjectTimeLogDto: Codable, JSONEncodable, Hashable {
         case responsibleContactId
         case creatorContactId
         case recordType
-        case timeStamp
         case timeSpan
         case logDate
         case comments
@@ -79,7 +76,6 @@ public struct ProjectTimeLogDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(responsibleContactId, forKey: .responsibleContactId)
         try container.encodeIfPresent(creatorContactId, forKey: .creatorContactId)
         try container.encodeIfPresent(recordType, forKey: .recordType)
-        try container.encodeIfPresent(timeStamp, forKey: .timeStamp)
         try container.encodeIfPresent(timeSpan, forKey: .timeSpan)
         try container.encodeIfPresent(logDate, forKey: .logDate)
         try container.encodeIfPresent(comments, forKey: .comments)

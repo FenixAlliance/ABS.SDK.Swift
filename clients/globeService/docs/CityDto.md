@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 **timestamp** | **Date** |  | [optional] 
 **name** | **String** |  | [optional] 
 **imageUrl** | **String** |  | [optional] 
-**stateID** | **String** |  | [optional] 
-**countryID** | **String** |  | [optional] 
+**stateId** | **String** |  | [optional] 
+**countryId** | **String** |  | [optional] 
 **latitude** | **String** |  | [optional] 
 **longitude** | **String** |  | [optional] 
 

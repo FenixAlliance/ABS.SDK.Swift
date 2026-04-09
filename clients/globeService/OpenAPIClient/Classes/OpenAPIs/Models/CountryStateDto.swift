@@ -12,23 +12,23 @@ import AnyCodable
 
 public struct CountryStateDto: Codable, JSONEncodable, Hashable {
 
-    public var id: String?
     public var timestamp: Date?
+    public var id: String?
     public var name: String?
     public var code: String?
     public var countryID: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, code: String? = nil, countryID: String? = nil) {
-        self.id = id
+    public init(timestamp: Date? = nil, id: String? = nil, name: String? = nil, code: String? = nil, countryID: String? = nil) {
         self.timestamp = timestamp
+        self.id = id
         self.name = name
         self.code = code
         self.countryID = countryID
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case id
         case timestamp
+        case id
         case name
         case code
         case countryID
@@ -38,8 +38,8 @@ public struct CountryStateDto: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
+        try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(code, forKey: .code)
         try container.encodeIfPresent(countryID, forKey: .countryID)

@@ -12,16 +12,13 @@ import AnyCodable
 
 public struct InvoiceAdjustmentCreateDto: Codable, JSONEncodable, Hashable {
 
-    public enum ModelType: Int, Codable, CaseIterable {
-        case _0 = 0
-        case _1 = 1
+    public enum ModelType: String, Codable, CaseIterable {
+        case discount = "Discount"
+        case surcharge = "Surcharge"
     }
     public var id: UUID?
     public var timestamp: Date?
-    public var tenantId: String?
-    public var invoiceId: String?
     public var currencyId: String?
-    public var enrollmentId: String?
     public var description: String?
     public var surchargePercent: Double?
     public var surchargeAmount: Double?
@@ -31,13 +28,10 @@ public struct InvoiceAdjustmentCreateDto: Codable, JSONEncodable, Hashable {
     public var totalDiscount: Double?
     public var type: ModelType?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, tenantId: String? = nil, invoiceId: String? = nil, currencyId: String? = nil, enrollmentId: String? = nil, description: String? = nil, surchargePercent: Double? = nil, surchargeAmount: Double? = nil, discountPercent: Double? = nil, discountAmount: Double? = nil, totalSurcharge: Double? = nil, totalDiscount: Double? = nil, type: ModelType? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, currencyId: String? = nil, description: String? = nil, surchargePercent: Double? = nil, surchargeAmount: Double? = nil, discountPercent: Double? = nil, discountAmount: Double? = nil, totalSurcharge: Double? = nil, totalDiscount: Double? = nil, type: ModelType? = nil) {
         self.id = id
         self.timestamp = timestamp
-        self.tenantId = tenantId
-        self.invoiceId = invoiceId
         self.currencyId = currencyId
-        self.enrollmentId = enrollmentId
         self.description = description
         self.surchargePercent = surchargePercent
         self.surchargeAmount = surchargeAmount
@@ -51,10 +45,7 @@ public struct InvoiceAdjustmentCreateDto: Codable, JSONEncodable, Hashable {
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
-        case tenantId
-        case invoiceId
         case currencyId
-        case enrollmentId
         case description
         case surchargePercent
         case surchargeAmount
@@ -71,10 +62,7 @@ public struct InvoiceAdjustmentCreateDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(invoiceId, forKey: .invoiceId)
         try container.encodeIfPresent(currencyId, forKey: .currencyId)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(surchargePercent, forKey: .surchargePercent)
         try container.encodeIfPresent(surchargeAmount, forKey: .surchargeAmount)

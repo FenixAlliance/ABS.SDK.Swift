@@ -4,20 +4,22 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createJobOfferAsync**](JobOffersAPI.md#createjobofferasync) | **POST** /api/v2/HrmsService/JobOffers | 
-[**deleteJobOfferAsync**](JobOffersAPI.md#deletejobofferasync) | **DELETE** /api/v2/HrmsService/JobOffers/{jobOfferId} | 
-[**getJobOfferByIdAsync**](JobOffersAPI.md#getjobofferbyidasync) | **GET** /api/v2/HrmsService/JobOffers/{jobOfferId} | 
-[**getJobOffersAsync**](JobOffersAPI.md#getjoboffersasync) | **GET** /api/v2/HrmsService/JobOffers | 
-[**getJobOffersCountAsync**](JobOffersAPI.md#getjobofferscountasync) | **GET** /api/v2/HrmsService/JobOffers/Count | 
-[**updateJobOfferAsync**](JobOffersAPI.md#updatejobofferasync) | **PUT** /api/v2/HrmsService/JobOffers/{jobOfferId} | 
+[**createJobOfferAsync**](JobOffersAPI.md#createjobofferasync) | **POST** /api/v2/HrmsService/JobOffers | Create a job offer
+[**deleteJobOfferAsync**](JobOffersAPI.md#deletejobofferasync) | **DELETE** /api/v2/HrmsService/JobOffers/{jobOfferId} | Delete a job offer
+[**getJobOfferByIdAsync**](JobOffersAPI.md#getjobofferbyidasync) | **GET** /api/v2/HrmsService/JobOffers/{jobOfferId} | Get job offer by ID
+[**getJobOffersAsync**](JobOffersAPI.md#getjoboffersasync) | **GET** /api/v2/HrmsService/JobOffers | Get job offers
+[**getJobOffersCountAsync**](JobOffersAPI.md#getjobofferscountasync) | **GET** /api/v2/HrmsService/JobOffers/Count | Count job offers
+[**updateJobOfferAsync**](JobOffersAPI.md#updatejobofferasync) | **PUT** /api/v2/HrmsService/JobOffers/{jobOfferId} | Update a job offer
 
 
 # **createJobOfferAsync**
 ```swift
-    open class func createJobOfferAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, jobOfferCreateDto: JobOfferCreateDto? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func createJobOfferAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, jobOfferCreateDto: JobOfferCreateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
+Create a job offer
 
+Creates a new job offer for the specified tenant.
 
 ### Example
 ```swift
@@ -29,6 +31,7 @@ let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 let jobOfferCreateDto = JobOfferCreateDto(id: 123, timestamp: Date()) // JobOfferCreateDto |  (optional)
 
+// Create a job offer
 JobOffersAPI.createJobOfferAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, jobOfferCreateDto: jobOfferCreateDto) { (response, error) in
     guard error == nil else {
         print(error)
@@ -52,11 +55,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Void (empty response body)
+[**EmptyEnvelope**](EmptyEnvelope.md)
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
@@ -67,10 +70,12 @@ Void (empty response body)
 
 # **deleteJobOfferAsync**
 ```swift
-    open class func deleteJobOfferAsync(tenantId: UUID, jobOfferId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func deleteJobOfferAsync(tenantId: UUID, jobOfferId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
+Delete a job offer
 
+Deletes a job offer for the specified tenant.
 
 ### Example
 ```swift
@@ -82,6 +87,7 @@ let jobOfferId = 987 // UUID |
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
+// Delete a job offer
 JobOffersAPI.deleteJobOfferAsync(tenantId: tenantId, jobOfferId: jobOfferId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
@@ -105,11 +111,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Void (empty response body)
+[**EmptyEnvelope**](EmptyEnvelope.md)
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
@@ -123,7 +129,9 @@ Void (empty response body)
     open class func getJobOfferByIdAsync(tenantId: UUID, jobOfferId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: JobOfferDtoEnvelope?, _ error: Error?) -> Void)
 ```
 
+Get job offer by ID
 
+Retrieves a specific job offer by its identifier.
 
 ### Example
 ```swift
@@ -135,6 +143,7 @@ let jobOfferId = 987 // UUID |
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
+// Get job offer by ID
 JobOffersAPI.getJobOfferByIdAsync(tenantId: tenantId, jobOfferId: jobOfferId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
@@ -162,7 +171,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
@@ -176,7 +185,9 @@ Name | Type | Description  | Notes
     open class func getJobOffersAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: JobOfferDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
+Get job offers
 
+Retrieves job offers for the specified tenant.
 
 ### Example
 ```swift
@@ -187,6 +198,7 @@ let tenantId = 987 // UUID |
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
+// Get job offers
 JobOffersAPI.getJobOffersAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
@@ -213,7 +225,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
@@ -227,7 +239,9 @@ Name | Type | Description  | Notes
     open class func getJobOffersCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
+Count job offers
 
+Counts job offers for the specified tenant.
 
 ### Example
 ```swift
@@ -238,6 +252,7 @@ let tenantId = 987 // UUID |
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
+// Count job offers
 JobOffersAPI.getJobOffersCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
@@ -264,7 +279,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
@@ -275,10 +290,12 @@ Name | Type | Description  | Notes
 
 # **updateJobOfferAsync**
 ```swift
-    open class func updateJobOfferAsync(tenantId: UUID, jobOfferId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, body: AnyCodable? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func updateJobOfferAsync(tenantId: UUID, jobOfferId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, body: AnyCodable? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
+Update a job offer
 
+Updates an existing job offer for the specified tenant.
 
 ### Example
 ```swift
@@ -291,6 +308,7 @@ let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 let body = "TODO" // AnyCodable |  (optional)
 
+// Update a job offer
 JobOffersAPI.updateJobOfferAsync(tenantId: tenantId, jobOfferId: jobOfferId, apiVersion: apiVersion, xApiVersion: xApiVersion, body: body) { (response, error) in
     guard error == nil else {
         print(error)
@@ -315,11 +333,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Void (empty response body)
+[**EmptyEnvelope**](EmptyEnvelope.md)
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 

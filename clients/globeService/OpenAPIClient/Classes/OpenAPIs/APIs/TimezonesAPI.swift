@@ -13,15 +13,16 @@ import AnyCodable
 open class TimezonesAPI {
 
     /**
-
+     Count timezones
+     
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2GlobeServiceTimezonesGet(apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TimezoneDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2GlobeServiceTimezonesGetWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func countTimezonesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return countTimezonesAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -32,16 +33,15 @@ open class TimezonesAPI {
     }
 
     /**
-     - GET /api/v2/GlobeService/Timezones
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     Count timezones
+     - GET /api/v2/GlobeService/Timezones/Count
+     - Returns the total number of supported timezones, with optional OData filtering.
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - returns: RequestBuilder<TimezoneDtoListEnvelope> 
+     - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func apiV2GlobeServiceTimezonesGetWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<TimezoneDtoListEnvelope> {
-        let localVariablePath = "/api/v2/GlobeService/Timezones"
+    open class func countTimezonesAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+        let localVariablePath = "/api/v2/GlobeService/Timezones/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
@@ -56,13 +56,14 @@ open class TimezonesAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<TimezoneDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Get timezone by ID
+     
      - parameter timeZoneId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -70,8 +71,8 @@ open class TimezonesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2GlobeServiceTimezonesTimeZoneIdGet(timeZoneId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TimezoneDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2GlobeServiceTimezonesTimeZoneIdGetWithRequestBuilder(timeZoneId: timeZoneId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getTimeZoneByIdAsync(timeZoneId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TimezoneDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getTimeZoneByIdAsyncWithRequestBuilder(timeZoneId: timeZoneId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -82,16 +83,15 @@ open class TimezonesAPI {
     }
 
     /**
+     Get timezone by ID
      - GET /api/v2/GlobeService/Timezones/{timeZoneId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Retrieves a single timezone by its unique identifier.
      - parameter timeZoneId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<TimezoneDtoEnvelope> 
      */
-    open class func apiV2GlobeServiceTimezonesTimeZoneIdGetWithRequestBuilder(timeZoneId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<TimezoneDtoEnvelope> {
+    open class func getTimeZoneByIdAsyncWithRequestBuilder(timeZoneId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<TimezoneDtoEnvelope> {
         var localVariablePath = "/api/v2/GlobeService/Timezones/{timeZoneId}"
         let timeZoneIdPreEscape = "\(APIHelper.mapValueToPathItem(timeZoneId))"
         let timeZoneIdPostEscape = timeZoneIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -112,6 +112,55 @@ open class TimezonesAPI {
 
         let localVariableRequestBuilder: RequestBuilder<TimezoneDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Get all timezones
+     
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getTimeZonesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TimezoneDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getTimeZonesAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get all timezones
+     - GET /api/v2/GlobeService/Timezones
+     - Retrieves the list of all supported timezones with optional OData pagination and filtering.
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<TimezoneDtoListEnvelope> 
+     */
+    open class func getTimeZonesAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<TimezoneDtoListEnvelope> {
+        let localVariablePath = "/api/v2/GlobeService/Timezones"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<TimezoneDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 }

@@ -4,20 +4,22 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createEmployerAsync**](EmployersAPI.md#createemployerasync) | **POST** /api/v2/HrmsService/Employers | 
-[**deleteEmployerAsync**](EmployersAPI.md#deleteemployerasync) | **DELETE** /api/v2/HrmsService/Employers/{employerId} | 
-[**getEmployerByIdAsync**](EmployersAPI.md#getemployerbyidasync) | **GET** /api/v2/HrmsService/Employers/{employerId} | 
-[**getEmployersAsync**](EmployersAPI.md#getemployersasync) | **GET** /api/v2/HrmsService/Employers | 
-[**getEmployersCountAsync**](EmployersAPI.md#getemployerscountasync) | **GET** /api/v2/HrmsService/Employers/Count | 
-[**updateEmployerAsync**](EmployersAPI.md#updateemployerasync) | **PUT** /api/v2/HrmsService/Employers/{employerId} | 
+[**createEmployerAsync**](EmployersAPI.md#createemployerasync) | **POST** /api/v2/HrmsService/Employers | Create an employer
+[**deleteEmployerAsync**](EmployersAPI.md#deleteemployerasync) | **DELETE** /api/v2/HrmsService/Employers/{employerId} | Delete an employer
+[**getEmployerByIdAsync**](EmployersAPI.md#getemployerbyidasync) | **GET** /api/v2/HrmsService/Employers/{employerId} | Get employer by ID
+[**getEmployersAsync**](EmployersAPI.md#getemployersasync) | **GET** /api/v2/HrmsService/Employers | Get employers
+[**getEmployersCountAsync**](EmployersAPI.md#getemployerscountasync) | **GET** /api/v2/HrmsService/Employers/Count | Count employers
+[**updateEmployerAsync**](EmployersAPI.md#updateemployerasync) | **PUT** /api/v2/HrmsService/Employers/{employerId} | Update an employer
 
 
 # **createEmployerAsync**
 ```swift
-    open class func createEmployerAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, employerProfileCreateDto: EmployerProfileCreateDto? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func createEmployerAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, employerProfileCreateDto: EmployerProfileCreateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
+Create an employer
 
+Creates a new employer for the specified tenant.
 
 ### Example
 ```swift
@@ -29,6 +31,7 @@ let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 let employerProfileCreateDto = EmployerProfileCreateDto(id: 123, timestamp: Date()) // EmployerProfileCreateDto |  (optional)
 
+// Create an employer
 EmployersAPI.createEmployerAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, employerProfileCreateDto: employerProfileCreateDto) { (response, error) in
     guard error == nil else {
         print(error)
@@ -52,11 +55,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Void (empty response body)
+[**EmptyEnvelope**](EmptyEnvelope.md)
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
@@ -67,10 +70,12 @@ Void (empty response body)
 
 # **deleteEmployerAsync**
 ```swift
-    open class func deleteEmployerAsync(tenantId: UUID, employerId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func deleteEmployerAsync(tenantId: UUID, employerId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
+Delete an employer
 
+Deletes an employer for the specified tenant.
 
 ### Example
 ```swift
@@ -82,6 +87,7 @@ let employerId = 987 // UUID |
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
+// Delete an employer
 EmployersAPI.deleteEmployerAsync(tenantId: tenantId, employerId: employerId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
@@ -105,11 +111,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Void (empty response body)
+[**EmptyEnvelope**](EmptyEnvelope.md)
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
@@ -123,7 +129,9 @@ Void (empty response body)
     open class func getEmployerByIdAsync(tenantId: UUID, employerId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmployerProfileDtoEnvelope?, _ error: Error?) -> Void)
 ```
 
+Get employer by ID
 
+Retrieves a specific employer by its identifier.
 
 ### Example
 ```swift
@@ -135,6 +143,7 @@ let employerId = 987 // UUID |
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
+// Get employer by ID
 EmployersAPI.getEmployerByIdAsync(tenantId: tenantId, employerId: employerId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
@@ -162,7 +171,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
@@ -176,7 +185,9 @@ Name | Type | Description  | Notes
     open class func getEmployersAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmployerProfileDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
+Get employers
 
+Retrieves employers for the specified tenant.
 
 ### Example
 ```swift
@@ -187,6 +198,7 @@ let tenantId = 987 // UUID |
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
+// Get employers
 EmployersAPI.getEmployersAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
@@ -213,7 +225,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
@@ -227,7 +239,9 @@ Name | Type | Description  | Notes
     open class func getEmployersCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
+Count employers
 
+Counts employers for the specified tenant.
 
 ### Example
 ```swift
@@ -238,6 +252,7 @@ let tenantId = 987 // UUID |
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
+// Count employers
 EmployersAPI.getEmployersCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
@@ -264,7 +279,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
@@ -275,10 +290,12 @@ Name | Type | Description  | Notes
 
 # **updateEmployerAsync**
 ```swift
-    open class func updateEmployerAsync(tenantId: UUID, employerId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, body: AnyCodable? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func updateEmployerAsync(tenantId: UUID, employerId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, body: AnyCodable? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
+Update an employer
 
+Updates an existing employer for the specified tenant.
 
 ### Example
 ```swift
@@ -291,6 +308,7 @@ let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 let body = "TODO" // AnyCodable |  (optional)
 
+// Update an employer
 EmployersAPI.updateEmployerAsync(tenantId: tenantId, employerId: employerId, apiVersion: apiVersion, xApiVersion: xApiVersion, body: body) { (response, error) in
     guard error == nil else {
         print(error)
@@ -315,11 +333,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Void (empty response body)
+[**EmptyEnvelope**](EmptyEnvelope.md)
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 

@@ -4,20 +4,22 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**apiV2MarketingServiceNewslettersCountGet**](NewslettersAPI.md#apiv2marketingservicenewsletterscountget) | **GET** /api/v2/MarketingService/Newsletters/Count | 
-[**apiV2MarketingServiceNewslettersGet**](NewslettersAPI.md#apiv2marketingservicenewslettersget) | **GET** /api/v2/MarketingService/Newsletters | 
-[**apiV2MarketingServiceNewslettersNewsletterIdDelete**](NewslettersAPI.md#apiv2marketingservicenewslettersnewsletteriddelete) | **DELETE** /api/v2/MarketingService/Newsletters/{newsletterId} | 
-[**apiV2MarketingServiceNewslettersNewsletterIdGet**](NewslettersAPI.md#apiv2marketingservicenewslettersnewsletteridget) | **GET** /api/v2/MarketingService/Newsletters/{newsletterId} | 
-[**apiV2MarketingServiceNewslettersNewsletterIdPut**](NewslettersAPI.md#apiv2marketingservicenewslettersnewsletteridput) | **PUT** /api/v2/MarketingService/Newsletters/{newsletterId} | 
-[**apiV2MarketingServiceNewslettersPost**](NewslettersAPI.md#apiv2marketingservicenewsletterspost) | **POST** /api/v2/MarketingService/Newsletters | 
+[**createNewsletterAsync**](NewslettersAPI.md#createnewsletterasync) | **POST** /api/v2/MarketingService/Newsletters | Create a newsletter
+[**deleteNewsletterAsync**](NewslettersAPI.md#deletenewsletterasync) | **DELETE** /api/v2/MarketingService/Newsletters/{newsletterId} | Delete a newsletter
+[**getNewsletterDetailsAsync**](NewslettersAPI.md#getnewsletterdetailsasync) | **GET** /api/v2/MarketingService/Newsletters/{newsletterId} | Get newsletter by ID
+[**getNewsletterODataAsync**](NewslettersAPI.md#getnewsletterodataasync) | **GET** /api/v2/MarketingService/Newsletters | Get newsletters
+[**getNewslettersCountAsync**](NewslettersAPI.md#getnewsletterscountasync) | **GET** /api/v2/MarketingService/Newsletters/Count | Get newsletters count
+[**updateNewsletterAsync**](NewslettersAPI.md#updatenewsletterasync) | **PUT** /api/v2/MarketingService/Newsletters/{newsletterId} | Update a newsletter
 
 
-# **apiV2MarketingServiceNewslettersCountGet**
+# **createNewsletterAsync**
 ```swift
-    open class func apiV2MarketingServiceNewslettersCountGet(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func createNewsletterAsync(tenantId: UUID, newsletterCreateDto: NewsletterCreateDto, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
+Create a newsletter
 
+Creates a new newsletter for the specified tenant.
 
 ### Example
 ```swift
@@ -25,10 +27,12 @@ Method | HTTP request | Description
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
+let newsletterCreateDto = NewsletterCreateDto(id: 123, timestamp: Date(), name: "name_example", code: "code_example", title: "title_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example") // NewsletterCreateDto | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
-NewslettersAPI.apiV2MarketingServiceNewslettersCountGet(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Create a newsletter
+NewslettersAPI.createNewsletterAsync(tenantId: tenantId, newsletterCreateDto: newsletterCreateDto, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -45,81 +49,33 @@ NewslettersAPI.apiV2MarketingServiceNewslettersCountGet(tenantId: tenantId, apiV
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
+ **newsletterCreateDto** | [**NewsletterCreateDto**](NewsletterCreateDto.md) |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 
 ### Return type
 
-[**Int32Envelope**](Int32Envelope.md)
+[**EmptyEnvelope**](EmptyEnvelope.md)
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **apiV2MarketingServiceNewslettersGet**
+# **deleteNewsletterAsync**
 ```swift
-    open class func apiV2MarketingServiceNewslettersGet(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func deleteNewsletterAsync(tenantId: UUID, newsletterId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
+Delete a newsletter
 
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
-
-let tenantId = 987 // UUID | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
-
-NewslettersAPI.apiV2MarketingServiceNewslettersGet(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **tenantId** | **UUID** |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
-
-### Return type
-
-Void (empty response body)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/xml
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **apiV2MarketingServiceNewslettersNewsletterIdDelete**
-```swift
-    open class func apiV2MarketingServiceNewslettersNewsletterIdDelete(tenantId: UUID, newsletterId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
-```
-
-
+Deletes a newsletter by its ID.
 
 ### Example
 ```swift
@@ -131,7 +87,8 @@ let newsletterId = 987 // UUID |
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
-NewslettersAPI.apiV2MarketingServiceNewslettersNewsletterIdDelete(tenantId: tenantId, newsletterId: newsletterId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Delete a newsletter
+NewslettersAPI.deleteNewsletterAsync(tenantId: tenantId, newsletterId: newsletterId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -158,7 +115,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
@@ -167,12 +124,14 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **apiV2MarketingServiceNewslettersNewsletterIdGet**
+# **getNewsletterDetailsAsync**
 ```swift
-    open class func apiV2MarketingServiceNewslettersNewsletterIdGet(tenantId: UUID, newsletterId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: NewsletterDtoEnvelope?, _ error: Error?) -> Void)
+    open class func getNewsletterDetailsAsync(tenantId: UUID, newsletterId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: NewsletterDtoEnvelope?, _ error: Error?) -> Void)
 ```
 
+Get newsletter by ID
 
+Retrieves the details of a specific newsletter by its ID.
 
 ### Example
 ```swift
@@ -184,7 +143,8 @@ let newsletterId = 987 // UUID |
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
-NewslettersAPI.apiV2MarketingServiceNewslettersNewsletterIdGet(tenantId: tenantId, newsletterId: newsletterId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Get newsletter by ID
+NewslettersAPI.getNewsletterDetailsAsync(tenantId: tenantId, newsletterId: newsletterId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -211,7 +171,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
@@ -220,12 +180,122 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **apiV2MarketingServiceNewslettersNewsletterIdPut**
+# **getNewsletterODataAsync**
 ```swift
-    open class func apiV2MarketingServiceNewslettersNewsletterIdPut(tenantId: UUID, newsletterId: UUID, newsletterUpdateDto: NewsletterUpdateDto, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func getNewsletterODataAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
+Get newsletters
 
+Retrieves a collection of newsletters for the specified tenant using OData query options.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Get newsletters
+NewslettersAPI.getNewsletterODataAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+Void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getNewslettersCountAsync**
+```swift
+    open class func getNewslettersCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+```
+
+Get newsletters count
+
+Returns the count of newsletters for the specified tenant using OData query options.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Get newsletters count
+NewslettersAPI.getNewslettersCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**Int32Envelope**](Int32Envelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **updateNewsletterAsync**
+```swift
+    open class func updateNewsletterAsync(tenantId: UUID, newsletterId: UUID, newsletterUpdateDto: NewsletterUpdateDto, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Update a newsletter
+
+Updates an existing newsletter by its ID.
 
 ### Example
 ```swift
@@ -234,11 +304,12 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let newsletterId = 987 // UUID | 
-let newsletterUpdateDto = NewsletterUpdateDto(code: "code_example", title: "title_example", tenantId: "tenantId_example", enrolmentId: "enrolmentId_example", name: "name_example") // NewsletterUpdateDto | 
+let newsletterUpdateDto = NewsletterUpdateDto(code: "code_example", title: "title_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example", name: "name_example") // NewsletterUpdateDto | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
-NewslettersAPI.apiV2MarketingServiceNewslettersNewsletterIdPut(tenantId: tenantId, newsletterId: newsletterId, newsletterUpdateDto: newsletterUpdateDto, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Update a newsletter
+NewslettersAPI.updateNewsletterAsync(tenantId: tenantId, newsletterId: newsletterId, newsletterUpdateDto: newsletterUpdateDto, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -266,60 +337,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, application/xml
- - **Accept**: application/json, application/xml
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **apiV2MarketingServiceNewslettersPost**
-```swift
-    open class func apiV2MarketingServiceNewslettersPost(tenantId: UUID, newsletterCreateDto: NewsletterCreateDto, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
-```
-
-
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
-
-let tenantId = 987 // UUID | 
-let newsletterCreateDto = NewsletterCreateDto(id: 123, timestamp: Date(), name: "name_example", code: "code_example", title: "title_example", tenantId: "tenantId_example", enrolmentId: "enrolmentId_example") // NewsletterCreateDto | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
-
-NewslettersAPI.apiV2MarketingServiceNewslettersPost(tenantId: tenantId, newsletterCreateDto: newsletterCreateDto, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **tenantId** | **UUID** |  | 
- **newsletterCreateDto** | [**NewsletterCreateDto**](NewsletterCreateDto.md) |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
-
-### Return type
-
-[**EmptyEnvelope**](EmptyEnvelope.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 

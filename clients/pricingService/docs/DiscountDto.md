@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **percent** | **Double** |  | [optional] 
 **itemId** | **String** |  | [optional] 
 **tenantId** | **String** |  | [optional] 
-**enrolmentId** | **String** |  | [optional] 
+**enrollmentId** | **String** |  | [optional] 
 **discountListId** | **String** |  | [optional] 
 **endQuantity** | **Double** |  | [optional] 
 **beginQuantity** | **Double** |  | [optional] 

@@ -15,21 +15,21 @@ public struct SocialMediaPostCreateDto: Codable, JSONEncodable, Hashable {
     static let titleRule = StringRule(minLength: 0, maxLength: 99, pattern: nil)
     static let tenantIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let socialPostBucketIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    static let enrolmentIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
+    static let enrollmentIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     public var title: String?
     public var content: String?
     public var featuredImageUrl: String?
     public var tenantId: String?
     public var socialPostBucketId: String?
-    public var enrolmentId: String?
+    public var enrollmentId: String?
 
-    public init(title: String? = nil, content: String? = nil, featuredImageUrl: String? = nil, tenantId: String? = nil, socialPostBucketId: String? = nil, enrolmentId: String? = nil) {
+    public init(title: String? = nil, content: String? = nil, featuredImageUrl: String? = nil, tenantId: String? = nil, socialPostBucketId: String? = nil, enrollmentId: String? = nil) {
         self.title = title
         self.content = content
         self.featuredImageUrl = featuredImageUrl
         self.tenantId = tenantId
         self.socialPostBucketId = socialPostBucketId
-        self.enrolmentId = enrolmentId
+        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -38,7 +38,7 @@ public struct SocialMediaPostCreateDto: Codable, JSONEncodable, Hashable {
         case featuredImageUrl
         case tenantId
         case socialPostBucketId
-        case enrolmentId
+        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -50,7 +50,7 @@ public struct SocialMediaPostCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(featuredImageUrl, forKey: .featuredImageUrl)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encodeIfPresent(socialPostBucketId, forKey: .socialPostBucketId)
-        try container.encodeIfPresent(enrolmentId, forKey: .enrolmentId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

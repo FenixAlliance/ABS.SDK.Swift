@@ -18,16 +18,16 @@ public struct EmailGroupCreateDto: Codable, JSONEncodable, Hashable {
     public var description: String?
     public var enabled: Bool?
     public var tenantId: String?
-    public var enrolmentId: String?
+    public var enrollmentId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil, description: String? = nil, enabled: Bool? = nil, tenantId: String? = nil, enrolmentId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil, description: String? = nil, enabled: Bool? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
         self.description = description
         self.enabled = enabled
         self.tenantId = tenantId
-        self.enrolmentId = enrolmentId
+        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -37,7 +37,7 @@ public struct EmailGroupCreateDto: Codable, JSONEncodable, Hashable {
         case description
         case enabled
         case tenantId
-        case enrolmentId
+        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -50,7 +50,7 @@ public struct EmailGroupCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(enabled, forKey: .enabled)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(enrolmentId, forKey: .enrolmentId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

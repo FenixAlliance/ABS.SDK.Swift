@@ -13,7 +13,8 @@ import AnyCodable
 open class ExchangeVAPI {
 
     /**
-
+     Exchange currency at historical rates (v3)
+     
      - parameter amount: (query)  
      - parameter sourceCurrencyId: (query)  
      - parameter targetCurrencyId: (query)  
@@ -22,8 +23,8 @@ open class ExchangeVAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV3ForexServiceExchangeHistoryGet(amount: Double, sourceCurrencyId: String, targetCurrencyId: String, date: Date, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ExchangeRateEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV3ForexServiceExchangeHistoryGetWithRequestBuilder(amount: amount, sourceCurrencyId: sourceCurrencyId, targetCurrencyId: targetCurrencyId, date: date).execute(apiResponseQueue) { result in
+    open class func exchangeAmountHistoricalV3Async(amount: Double, sourceCurrencyId: String, targetCurrencyId: String, date: Date, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ExchangeRateEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return exchangeAmountHistoricalV3AsyncWithRequestBuilder(amount: amount, sourceCurrencyId: sourceCurrencyId, targetCurrencyId: targetCurrencyId, date: date).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -34,17 +35,16 @@ open class ExchangeVAPI {
     }
 
     /**
+     Exchange currency at historical rates (v3)
      - GET /api/v3/ForexService/Exchange/History
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Exchange an amount of money from one currency to another using exchange rates from a specific historical date. Returns the full ExchangeRate details.
      - parameter amount: (query)  
      - parameter sourceCurrencyId: (query)  
      - parameter targetCurrencyId: (query)  
      - parameter date: (query)  
      - returns: RequestBuilder<ExchangeRateEnvelope> 
      */
-    open class func apiV3ForexServiceExchangeHistoryGetWithRequestBuilder(amount: Double, sourceCurrencyId: String, targetCurrencyId: String, date: Date) -> RequestBuilder<ExchangeRateEnvelope> {
+    open class func exchangeAmountHistoricalV3AsyncWithRequestBuilder(amount: Double, sourceCurrencyId: String, targetCurrencyId: String, date: Date) -> RequestBuilder<ExchangeRateEnvelope> {
         let localVariablePath = "/api/v3/ForexService/Exchange/History"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -65,11 +65,12 @@ open class ExchangeVAPI {
 
         let localVariableRequestBuilder: RequestBuilder<ExchangeRateEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Exchange currency at latest rates (v3)
+     
      - parameter amount: (query)  
      - parameter sourceCurrencyId: (query)  
      - parameter targetCurrencyId: (query)  
@@ -77,8 +78,8 @@ open class ExchangeVAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV3ForexServiceExchangeLatestGet(amount: Double, sourceCurrencyId: String, targetCurrencyId: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ExchangeRateEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV3ForexServiceExchangeLatestGetWithRequestBuilder(amount: amount, sourceCurrencyId: sourceCurrencyId, targetCurrencyId: targetCurrencyId).execute(apiResponseQueue) { result in
+    open class func exchangeAmountV3Async(amount: Double, sourceCurrencyId: String, targetCurrencyId: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ExchangeRateEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return exchangeAmountV3AsyncWithRequestBuilder(amount: amount, sourceCurrencyId: sourceCurrencyId, targetCurrencyId: targetCurrencyId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -89,16 +90,15 @@ open class ExchangeVAPI {
     }
 
     /**
+     Exchange currency at latest rates (v3)
      - GET /api/v3/ForexService/Exchange/Latest
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Exchange an amount of money from one currency to another using the latest available exchange rates. Returns the full ExchangeRate details.
      - parameter amount: (query)  
      - parameter sourceCurrencyId: (query)  
      - parameter targetCurrencyId: (query)  
      - returns: RequestBuilder<ExchangeRateEnvelope> 
      */
-    open class func apiV3ForexServiceExchangeLatestGetWithRequestBuilder(amount: Double, sourceCurrencyId: String, targetCurrencyId: String) -> RequestBuilder<ExchangeRateEnvelope> {
+    open class func exchangeAmountV3AsyncWithRequestBuilder(amount: Double, sourceCurrencyId: String, targetCurrencyId: String) -> RequestBuilder<ExchangeRateEnvelope> {
         let localVariablePath = "/api/v3/ForexService/Exchange/Latest"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -118,6 +118,6 @@ open class ExchangeVAPI {
 
         let localVariableRequestBuilder: RequestBuilder<ExchangeRateEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 }

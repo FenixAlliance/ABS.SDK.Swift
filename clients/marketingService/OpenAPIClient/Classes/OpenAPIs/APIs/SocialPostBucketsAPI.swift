@@ -13,111 +13,8 @@ import AnyCodable
 open class SocialPostBucketsAPI {
 
     /**
-
-     - parameter tenantId: (query)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2MarketingServiceSocialPostBucketsCountGet(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2MarketingServiceSocialPostBucketsCountGetWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - GET /api/v2/MarketingService/SocialPostBuckets/Count
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter tenantId: (query)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - returns: RequestBuilder<Int32Envelope> 
-     */
-    open class func apiV2MarketingServiceSocialPostBucketsCountGetWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
-        let localVariablePath = "/api/v2/MarketingService/SocialPostBuckets/Count"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            "x-api-version": xApiVersion?.encodeToJSON(),
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
-     - parameter tenantId: (query)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2MarketingServiceSocialPostBucketsGet(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SocialPostBucketDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2MarketingServiceSocialPostBucketsGetWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - GET /api/v2/MarketingService/SocialPostBuckets
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter tenantId: (query)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - returns: RequestBuilder<SocialPostBucketDtoListEnvelope> 
-     */
-    open class func apiV2MarketingServiceSocialPostBucketsGetWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SocialPostBucketDtoListEnvelope> {
-        let localVariablePath = "/api/v2/MarketingService/SocialPostBuckets"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            "x-api-version": xApiVersion?.encodeToJSON(),
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<SocialPostBucketDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
+     Create a social post bucket
+     
      - parameter tenantId: (query)  
      - parameter socialPostBucketCreateDto: (body)  
      - parameter apiVersion: (query)  (optional)
@@ -126,8 +23,8 @@ open class SocialPostBucketsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2MarketingServiceSocialPostBucketsPost(tenantId: UUID, socialPostBucketCreateDto: SocialPostBucketCreateDto, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2MarketingServiceSocialPostBucketsPostWithRequestBuilder(tenantId: tenantId, socialPostBucketCreateDto: socialPostBucketCreateDto, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func createSocialPostBucketAsync(tenantId: UUID, socialPostBucketCreateDto: SocialPostBucketCreateDto, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return createSocialPostBucketAsyncWithRequestBuilder(tenantId: tenantId, socialPostBucketCreateDto: socialPostBucketCreateDto, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -138,17 +35,16 @@ open class SocialPostBucketsAPI {
     }
 
     /**
+     Create a social post bucket
      - POST /api/v2/MarketingService/SocialPostBuckets
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Creates a new social post bucket for the specified tenant.
      - parameter tenantId: (query)  
      - parameter socialPostBucketCreateDto: (body)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func apiV2MarketingServiceSocialPostBucketsPostWithRequestBuilder(tenantId: UUID, socialPostBucketCreateDto: SocialPostBucketCreateDto, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func createSocialPostBucketAsyncWithRequestBuilder(tenantId: UUID, socialPostBucketCreateDto: SocialPostBucketCreateDto, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
         let localVariablePath = "/api/v2/MarketingService/SocialPostBuckets"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: socialPostBucketCreateDto)
@@ -168,11 +64,12 @@ open class SocialPostBucketsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Delete a social post bucket
+     
      - parameter tenantId: (query)  
      - parameter socialpostbucketId: (path)  
      - parameter apiVersion: (query)  (optional)
@@ -181,8 +78,8 @@ open class SocialPostBucketsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2MarketingServiceSocialPostBucketsSocialpostbucketIdDelete(tenantId: UUID, socialpostbucketId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2MarketingServiceSocialPostBucketsSocialpostbucketIdDeleteWithRequestBuilder(tenantId: tenantId, socialpostbucketId: socialpostbucketId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func deleteSocialPostBucketAsync(tenantId: UUID, socialpostbucketId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return deleteSocialPostBucketAsyncWithRequestBuilder(tenantId: tenantId, socialpostbucketId: socialpostbucketId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -193,17 +90,16 @@ open class SocialPostBucketsAPI {
     }
 
     /**
+     Delete a social post bucket
      - DELETE /api/v2/MarketingService/SocialPostBuckets/{socialpostbucketId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Deletes a social post bucket by its ID.
      - parameter tenantId: (query)  
      - parameter socialpostbucketId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func apiV2MarketingServiceSocialPostBucketsSocialpostbucketIdDeleteWithRequestBuilder(tenantId: UUID, socialpostbucketId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func deleteSocialPostBucketAsyncWithRequestBuilder(tenantId: UUID, socialpostbucketId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/MarketingService/SocialPostBuckets/{socialpostbucketId}"
         let socialpostbucketIdPreEscape = "\(APIHelper.mapValueToPathItem(socialpostbucketId))"
         let socialpostbucketIdPostEscape = socialpostbucketIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -225,11 +121,12 @@ open class SocialPostBucketsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Get social post bucket by ID
+     
      - parameter tenantId: (query)  
      - parameter socialpostbucketId: (path)  
      - parameter apiVersion: (query)  (optional)
@@ -238,8 +135,8 @@ open class SocialPostBucketsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2MarketingServiceSocialPostBucketsSocialpostbucketIdGet(tenantId: UUID, socialpostbucketId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SocialPostBucketDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2MarketingServiceSocialPostBucketsSocialpostbucketIdGetWithRequestBuilder(tenantId: tenantId, socialpostbucketId: socialpostbucketId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getSocialPostBucketDetailsAsync(tenantId: UUID, socialpostbucketId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SocialPostBucketDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getSocialPostBucketDetailsAsyncWithRequestBuilder(tenantId: tenantId, socialpostbucketId: socialpostbucketId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -250,17 +147,16 @@ open class SocialPostBucketsAPI {
     }
 
     /**
+     Get social post bucket by ID
      - GET /api/v2/MarketingService/SocialPostBuckets/{socialpostbucketId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Retrieves the details of a specific social post bucket by its ID.
      - parameter tenantId: (query)  
      - parameter socialpostbucketId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<SocialPostBucketDtoEnvelope> 
      */
-    open class func apiV2MarketingServiceSocialPostBucketsSocialpostbucketIdGetWithRequestBuilder(tenantId: UUID, socialpostbucketId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SocialPostBucketDtoEnvelope> {
+    open class func getSocialPostBucketDetailsAsyncWithRequestBuilder(tenantId: UUID, socialpostbucketId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SocialPostBucketDtoEnvelope> {
         var localVariablePath = "/api/v2/MarketingService/SocialPostBuckets/{socialpostbucketId}"
         let socialpostbucketIdPreEscape = "\(APIHelper.mapValueToPathItem(socialpostbucketId))"
         let socialpostbucketIdPostEscape = socialpostbucketIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -282,22 +178,21 @@ open class SocialPostBucketsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<SocialPostBucketDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Get social post buckets count
+     
      - parameter tenantId: (query)  
-     - parameter socialpostbucketId: (path)  
-     - parameter socialPostBucketUpdateDto: (body)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2MarketingServiceSocialPostBucketsSocialpostbucketIdPut(tenantId: UUID, socialpostbucketId: UUID, socialPostBucketUpdateDto: SocialPostBucketUpdateDto, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2MarketingServiceSocialPostBucketsSocialpostbucketIdPutWithRequestBuilder(tenantId: tenantId, socialpostbucketId: socialpostbucketId, socialPostBucketUpdateDto: socialPostBucketUpdateDto, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getSocialPostBucketsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getSocialPostBucketsCountAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -308,10 +203,115 @@ open class SocialPostBucketsAPI {
     }
 
     /**
+     Get social post buckets count
+     - GET /api/v2/MarketingService/SocialPostBuckets/Count
+     - Returns the count of social post buckets for the specified tenant using OData query options.
+     - parameter tenantId: (query)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<Int32Envelope> 
+     */
+    open class func getSocialPostBucketsCountAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+        let localVariablePath = "/api/v2/MarketingService/SocialPostBuckets/Count"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Get social post buckets
+     
+     - parameter tenantId: (query)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getSocialPostBucketsODataAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SocialPostBucketDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getSocialPostBucketsODataAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get social post buckets
+     - GET /api/v2/MarketingService/SocialPostBuckets
+     - Retrieves a collection of social post buckets for the specified tenant using OData query options.
+     - parameter tenantId: (query)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<SocialPostBucketDtoListEnvelope> 
+     */
+    open class func getSocialPostBucketsODataAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SocialPostBucketDtoListEnvelope> {
+        let localVariablePath = "/api/v2/MarketingService/SocialPostBuckets"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<SocialPostBucketDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Update a social post bucket
+     
+     - parameter tenantId: (query)  
+     - parameter socialpostbucketId: (path)  
+     - parameter socialPostBucketUpdateDto: (body)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func updateSocialPostBucketAsync(tenantId: UUID, socialpostbucketId: UUID, socialPostBucketUpdateDto: SocialPostBucketUpdateDto, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return updateSocialPostBucketAsyncWithRequestBuilder(tenantId: tenantId, socialpostbucketId: socialpostbucketId, socialPostBucketUpdateDto: socialPostBucketUpdateDto, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Update a social post bucket
      - PUT /api/v2/MarketingService/SocialPostBuckets/{socialpostbucketId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Updates an existing social post bucket by its ID.
      - parameter tenantId: (query)  
      - parameter socialpostbucketId: (path)  
      - parameter socialPostBucketUpdateDto: (body)  
@@ -319,7 +319,7 @@ open class SocialPostBucketsAPI {
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func apiV2MarketingServiceSocialPostBucketsSocialpostbucketIdPutWithRequestBuilder(tenantId: UUID, socialpostbucketId: UUID, socialPostBucketUpdateDto: SocialPostBucketUpdateDto, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func updateSocialPostBucketAsyncWithRequestBuilder(tenantId: UUID, socialpostbucketId: UUID, socialPostBucketUpdateDto: SocialPostBucketUpdateDto, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/MarketingService/SocialPostBuckets/{socialpostbucketId}"
         let socialpostbucketIdPreEscape = "\(APIHelper.mapValueToPathItem(socialpostbucketId))"
         let socialpostbucketIdPostEscape = socialpostbucketIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -342,6 +342,6 @@ open class SocialPostBucketsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 }

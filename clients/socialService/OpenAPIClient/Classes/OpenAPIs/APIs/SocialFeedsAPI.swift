@@ -13,121 +13,19 @@ import AnyCodable
 open class SocialFeedsAPI {
 
     /**
-
-     - parameter socialProfileId: (query)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2SocialServiceSocialFeedsCountGet(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2SocialServiceSocialFeedsCountGetWithRequestBuilder(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - GET /api/v2/SocialService/SocialFeeds/Count
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter socialProfileId: (query)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - returns: RequestBuilder<Int32Envelope> 
-     */
-    open class func apiV2SocialServiceSocialFeedsCountGetWithRequestBuilder(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
-        let localVariablePath = "/api/v2/SocialService/SocialFeeds/Count"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "socialProfileId": (wrappedValue: socialProfileId.encodeToJSON(), isExplode: true),
-            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            "x-api-version": xApiVersion?.encodeToJSON(),
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
-     - parameter socialProfileId: (query)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2SocialServiceSocialFeedsGet(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SocialFeedDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2SocialServiceSocialFeedsGetWithRequestBuilder(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - GET /api/v2/SocialService/SocialFeeds
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter socialProfileId: (query)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - returns: RequestBuilder<SocialFeedDtoListEnvelope> 
-     */
-    open class func apiV2SocialServiceSocialFeedsGetWithRequestBuilder(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SocialFeedDtoListEnvelope> {
-        let localVariablePath = "/api/v2/SocialService/SocialFeeds"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "socialProfileId": (wrappedValue: socialProfileId.encodeToJSON(), isExplode: true),
-            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            "x-api-version": xApiVersion?.encodeToJSON(),
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<SocialFeedDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
+     Create a social feed post
+     
      - parameter socialProfileId: (query)  
      - parameter socialFeedId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter socialFeedPostCreateDto: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2SocialServiceSocialFeedsSocialFeedIdGet(socialProfileId: UUID, socialFeedId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SocialFeedDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2SocialServiceSocialFeedsSocialFeedIdGetWithRequestBuilder(socialProfileId: socialProfileId, socialFeedId: socialFeedId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func createFeedPostAsync(socialProfileId: UUID, socialFeedId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialFeedPostCreateDto: SocialFeedPostCreateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SocialFeedPostDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return createFeedPostAsyncWithRequestBuilder(socialProfileId: socialProfileId, socialFeedId: socialFeedId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialFeedPostCreateDto: socialFeedPostCreateDto).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -138,23 +36,23 @@ open class SocialFeedsAPI {
     }
 
     /**
-     - GET /api/v2/SocialService/SocialFeeds/{socialFeedId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     Create a social feed post
+     - POST /api/v2/SocialService/SocialFeeds/{socialFeedId}/Posts
+     - Creates a new post in a specific social feed.
      - parameter socialProfileId: (query)  
      - parameter socialFeedId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - returns: RequestBuilder<SocialFeedDtoEnvelope> 
+     - parameter socialFeedPostCreateDto: (body)  (optional)
+     - returns: RequestBuilder<SocialFeedPostDtoEnvelope> 
      */
-    open class func apiV2SocialServiceSocialFeedsSocialFeedIdGetWithRequestBuilder(socialProfileId: UUID, socialFeedId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SocialFeedDtoEnvelope> {
-        var localVariablePath = "/api/v2/SocialService/SocialFeeds/{socialFeedId}"
+    open class func createFeedPostAsyncWithRequestBuilder(socialProfileId: UUID, socialFeedId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialFeedPostCreateDto: SocialFeedPostCreateDto? = nil) -> RequestBuilder<SocialFeedPostDtoEnvelope> {
+        var localVariablePath = "/api/v2/SocialService/SocialFeeds/{socialFeedId}/Posts"
         let socialFeedIdPreEscape = "\(APIHelper.mapValueToPathItem(socialFeedId))"
         let socialFeedIdPostEscape = socialFeedIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{socialFeedId}", with: socialFeedIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: socialFeedPostCreateDto)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -163,75 +61,20 @@ open class SocialFeedsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<SocialFeedDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<SocialFeedPostDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
-     - parameter socialProfileId: (query)  
-     - parameter socialFeedId: (path)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2SocialServiceSocialFeedsSocialFeedIdPostsCountGet(socialProfileId: UUID, socialFeedId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2SocialServiceSocialFeedsSocialFeedIdPostsCountGetWithRequestBuilder(socialProfileId: socialProfileId, socialFeedId: socialFeedId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - GET /api/v2/SocialService/SocialFeeds/{socialFeedId}/Posts/Count
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter socialProfileId: (query)  
-     - parameter socialFeedId: (path)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - returns: RequestBuilder<Int32Envelope> 
-     */
-    open class func apiV2SocialServiceSocialFeedsSocialFeedIdPostsCountGetWithRequestBuilder(socialProfileId: UUID, socialFeedId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
-        var localVariablePath = "/api/v2/SocialService/SocialFeeds/{socialFeedId}/Posts/Count"
-        let socialFeedIdPreEscape = "\(APIHelper.mapValueToPathItem(socialFeedId))"
-        let socialFeedIdPostEscape = socialFeedIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{socialFeedId}", with: socialFeedIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "socialProfileId": (wrappedValue: socialProfileId.encodeToJSON(), isExplode: true),
-            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            "x-api-version": xApiVersion?.encodeToJSON(),
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
+     Delete a social feed post
+     
      - parameter socialProfileId: (query)  
      - parameter socialFeedId: (path)  
      - parameter feedPostId: (path)  
@@ -241,8 +84,8 @@ open class SocialFeedsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2SocialServiceSocialFeedsSocialFeedIdPostsFeedPostIdDelete(socialProfileId: UUID, socialFeedId: UUID, feedPostId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2SocialServiceSocialFeedsSocialFeedIdPostsFeedPostIdDeleteWithRequestBuilder(socialProfileId: socialProfileId, socialFeedId: socialFeedId, feedPostId: feedPostId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func deleteFeedPostAsync(socialProfileId: UUID, socialFeedId: UUID, feedPostId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return deleteFeedPostAsyncWithRequestBuilder(socialProfileId: socialProfileId, socialFeedId: socialFeedId, feedPostId: feedPostId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -253,10 +96,9 @@ open class SocialFeedsAPI {
     }
 
     /**
+     Delete a social feed post
      - DELETE /api/v2/SocialService/SocialFeeds/{socialFeedId}/Posts/{feedPostId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Deletes a post from a specific social feed.
      - parameter socialProfileId: (query)  
      - parameter socialFeedId: (path)  
      - parameter feedPostId: (path)  
@@ -264,7 +106,7 @@ open class SocialFeedsAPI {
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func apiV2SocialServiceSocialFeedsSocialFeedIdPostsFeedPostIdDeleteWithRequestBuilder(socialProfileId: UUID, socialFeedId: UUID, feedPostId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func deleteFeedPostAsyncWithRequestBuilder(socialProfileId: UUID, socialFeedId: UUID, feedPostId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/SocialService/SocialFeeds/{socialFeedId}/Posts/{feedPostId}"
         let socialFeedIdPreEscape = "\(APIHelper.mapValueToPathItem(socialFeedId))"
         let socialFeedIdPostEscape = socialFeedIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -289,23 +131,21 @@ open class SocialFeedsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Get social feeds
+     
      - parameter socialProfileId: (query)  
-     - parameter socialFeedId: (path)  
-     - parameter feedPostId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter socialFeedPostUpdateDto: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2SocialServiceSocialFeedsSocialFeedIdPostsFeedPostIdPut(socialProfileId: UUID, socialFeedId: UUID, feedPostId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialFeedPostUpdateDto: SocialFeedPostUpdateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SocialFeedPostDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2SocialServiceSocialFeedsSocialFeedIdPostsFeedPostIdPutWithRequestBuilder(socialProfileId: socialProfileId, socialFeedId: socialFeedId, feedPostId: feedPostId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialFeedPostUpdateDto: socialFeedPostUpdateDto).execute(apiResponseQueue) { result in
+    open class func getFeedNotifications(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SocialFeedDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getFeedNotificationsWithRequestBuilder(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -316,84 +156,16 @@ open class SocialFeedsAPI {
     }
 
     /**
-     - PUT /api/v2/SocialService/SocialFeeds/{socialFeedId}/Posts/{feedPostId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     Get social feeds
+     - GET /api/v2/SocialService/SocialFeeds
+     - Retrieves a list of social feeds for the specified social profile.
      - parameter socialProfileId: (query)  
-     - parameter socialFeedId: (path)  
-     - parameter feedPostId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter socialFeedPostUpdateDto: (body)  (optional)
-     - returns: RequestBuilder<SocialFeedPostDtoEnvelope> 
+     - returns: RequestBuilder<SocialFeedDtoListEnvelope> 
      */
-    open class func apiV2SocialServiceSocialFeedsSocialFeedIdPostsFeedPostIdPutWithRequestBuilder(socialProfileId: UUID, socialFeedId: UUID, feedPostId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialFeedPostUpdateDto: SocialFeedPostUpdateDto? = nil) -> RequestBuilder<SocialFeedPostDtoEnvelope> {
-        var localVariablePath = "/api/v2/SocialService/SocialFeeds/{socialFeedId}/Posts/{feedPostId}"
-        let socialFeedIdPreEscape = "\(APIHelper.mapValueToPathItem(socialFeedId))"
-        let socialFeedIdPostEscape = socialFeedIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{socialFeedId}", with: socialFeedIdPostEscape, options: .literal, range: nil)
-        let feedPostIdPreEscape = "\(APIHelper.mapValueToPathItem(feedPostId))"
-        let feedPostIdPostEscape = feedPostIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{feedPostId}", with: feedPostIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: socialFeedPostUpdateDto)
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "socialProfileId": (wrappedValue: socialProfileId.encodeToJSON(), isExplode: true),
-            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            "Content-Type": "application/json",
-            "x-api-version": xApiVersion?.encodeToJSON(),
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<SocialFeedPostDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
-     - parameter socialProfileId: (query)  
-     - parameter socialFeedId: (path)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2SocialServiceSocialFeedsSocialFeedIdPostsGet(socialProfileId: UUID, socialFeedId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SocialFeedPostDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2SocialServiceSocialFeedsSocialFeedIdPostsGetWithRequestBuilder(socialProfileId: socialProfileId, socialFeedId: socialFeedId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - GET /api/v2/SocialService/SocialFeeds/{socialFeedId}/Posts
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter socialProfileId: (query)  
-     - parameter socialFeedId: (path)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - returns: RequestBuilder<SocialFeedPostDtoListEnvelope> 
-     */
-    open class func apiV2SocialServiceSocialFeedsSocialFeedIdPostsGetWithRequestBuilder(socialProfileId: UUID, socialFeedId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SocialFeedPostDtoListEnvelope> {
-        var localVariablePath = "/api/v2/SocialService/SocialFeeds/{socialFeedId}/Posts"
-        let socialFeedIdPreEscape = "\(APIHelper.mapValueToPathItem(socialFeedId))"
-        let socialFeedIdPostEscape = socialFeedIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{socialFeedId}", with: socialFeedIdPostEscape, options: .literal, range: nil)
+    open class func getFeedNotificationsWithRequestBuilder(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SocialFeedDtoListEnvelope> {
+        let localVariablePath = "/api/v2/SocialService/SocialFeeds"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
@@ -409,73 +181,14 @@ open class SocialFeedsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<SocialFeedPostDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<SocialFeedDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
-     - parameter socialProfileId: (query)  
-     - parameter socialFeedId: (path)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - parameter socialFeedPostCreateDto: (body)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2SocialServiceSocialFeedsSocialFeedIdPostsPost(socialProfileId: UUID, socialFeedId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialFeedPostCreateDto: SocialFeedPostCreateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SocialFeedPostDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2SocialServiceSocialFeedsSocialFeedIdPostsPostWithRequestBuilder(socialProfileId: socialProfileId, socialFeedId: socialFeedId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialFeedPostCreateDto: socialFeedPostCreateDto).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - POST /api/v2/SocialService/SocialFeeds/{socialFeedId}/Posts
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter socialProfileId: (query)  
-     - parameter socialFeedId: (path)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - parameter socialFeedPostCreateDto: (body)  (optional)
-     - returns: RequestBuilder<SocialFeedPostDtoEnvelope> 
-     */
-    open class func apiV2SocialServiceSocialFeedsSocialFeedIdPostsPostWithRequestBuilder(socialProfileId: UUID, socialFeedId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialFeedPostCreateDto: SocialFeedPostCreateDto? = nil) -> RequestBuilder<SocialFeedPostDtoEnvelope> {
-        var localVariablePath = "/api/v2/SocialService/SocialFeeds/{socialFeedId}/Posts"
-        let socialFeedIdPreEscape = "\(APIHelper.mapValueToPathItem(socialFeedId))"
-        let socialFeedIdPostEscape = socialFeedIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{socialFeedId}", with: socialFeedIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: socialFeedPostCreateDto)
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "socialProfileId": (wrappedValue: socialProfileId.encodeToJSON(), isExplode: true),
-            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            "Content-Type": "application/json",
-            "x-api-version": xApiVersion?.encodeToJSON(),
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<SocialFeedPostDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
+     Get social feed post by ID
+     
      - parameter socialProfileId: (query)  
      - parameter socialFeedId: (path)  
      - parameter feedPostId: (path)  
@@ -497,10 +210,9 @@ open class SocialFeedsAPI {
     }
 
     /**
+     Get social feed post by ID
      - GET /api/v2/SocialService/SocialFeeds/{socialFeedId}/Posts/{feedPostId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Retrieves a specific post from a social feed by its ID.
      - parameter socialProfileId: (query)  
      - parameter socialFeedId: (path)  
      - parameter feedPostId: (path)  
@@ -533,6 +245,294 @@ open class SocialFeedsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<SocialFeedPostDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Get social feed posts
+     
+     - parameter socialProfileId: (query)  
+     - parameter socialFeedId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getFeedPostsAsync(socialProfileId: UUID, socialFeedId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SocialFeedPostDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getFeedPostsAsyncWithRequestBuilder(socialProfileId: socialProfileId, socialFeedId: socialFeedId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get social feed posts
+     - GET /api/v2/SocialService/SocialFeeds/{socialFeedId}/Posts
+     - Retrieves a list of posts for a specific social feed.
+     - parameter socialProfileId: (query)  
+     - parameter socialFeedId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<SocialFeedPostDtoListEnvelope> 
+     */
+    open class func getFeedPostsAsyncWithRequestBuilder(socialProfileId: UUID, socialFeedId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SocialFeedPostDtoListEnvelope> {
+        var localVariablePath = "/api/v2/SocialService/SocialFeeds/{socialFeedId}/Posts"
+        let socialFeedIdPreEscape = "\(APIHelper.mapValueToPathItem(socialFeedId))"
+        let socialFeedIdPostEscape = socialFeedIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{socialFeedId}", with: socialFeedIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "socialProfileId": (wrappedValue: socialProfileId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<SocialFeedPostDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Count social feed posts
+     
+     - parameter socialProfileId: (query)  
+     - parameter socialFeedId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getFeedPostsCountAsync(socialProfileId: UUID, socialFeedId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getFeedPostsCountAsyncWithRequestBuilder(socialProfileId: socialProfileId, socialFeedId: socialFeedId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Count social feed posts
+     - GET /api/v2/SocialService/SocialFeeds/{socialFeedId}/Posts/Count
+     - Returns the count of posts for a specific social feed.
+     - parameter socialProfileId: (query)  
+     - parameter socialFeedId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<Int32Envelope> 
+     */
+    open class func getFeedPostsCountAsyncWithRequestBuilder(socialProfileId: UUID, socialFeedId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+        var localVariablePath = "/api/v2/SocialService/SocialFeeds/{socialFeedId}/Posts/Count"
+        let socialFeedIdPreEscape = "\(APIHelper.mapValueToPathItem(socialFeedId))"
+        let socialFeedIdPostEscape = socialFeedIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{socialFeedId}", with: socialFeedIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "socialProfileId": (wrappedValue: socialProfileId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Get social feed by ID
+     
+     - parameter socialProfileId: (query)  
+     - parameter socialFeedId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getNotificationAsync(socialProfileId: UUID, socialFeedId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SocialFeedDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getNotificationAsyncWithRequestBuilder(socialProfileId: socialProfileId, socialFeedId: socialFeedId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get social feed by ID
+     - GET /api/v2/SocialService/SocialFeeds/{socialFeedId}
+     - Retrieves a specific social feed by its ID.
+     - parameter socialProfileId: (query)  
+     - parameter socialFeedId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<SocialFeedDtoEnvelope> 
+     */
+    open class func getNotificationAsyncWithRequestBuilder(socialProfileId: UUID, socialFeedId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SocialFeedDtoEnvelope> {
+        var localVariablePath = "/api/v2/SocialService/SocialFeeds/{socialFeedId}"
+        let socialFeedIdPreEscape = "\(APIHelper.mapValueToPathItem(socialFeedId))"
+        let socialFeedIdPostEscape = socialFeedIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{socialFeedId}", with: socialFeedIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "socialProfileId": (wrappedValue: socialProfileId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<SocialFeedDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Count social feeds
+     
+     - parameter socialProfileId: (query)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getNotificationsCountAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getNotificationsCountAsyncWithRequestBuilder(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Count social feeds
+     - GET /api/v2/SocialService/SocialFeeds/Count
+     - Returns the count of social feeds for the specified social profile.
+     - parameter socialProfileId: (query)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<Int32Envelope> 
+     */
+    open class func getNotificationsCountAsyncWithRequestBuilder(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+        let localVariablePath = "/api/v2/SocialService/SocialFeeds/Count"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "socialProfileId": (wrappedValue: socialProfileId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Update a social feed post
+     
+     - parameter socialProfileId: (query)  
+     - parameter socialFeedId: (path)  
+     - parameter feedPostId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter socialFeedPostUpdateDto: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func updateFeedPostAsync(socialProfileId: UUID, socialFeedId: UUID, feedPostId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialFeedPostUpdateDto: SocialFeedPostUpdateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SocialFeedPostDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return updateFeedPostAsyncWithRequestBuilder(socialProfileId: socialProfileId, socialFeedId: socialFeedId, feedPostId: feedPostId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialFeedPostUpdateDto: socialFeedPostUpdateDto).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Update a social feed post
+     - PUT /api/v2/SocialService/SocialFeeds/{socialFeedId}/Posts/{feedPostId}
+     - Updates an existing post in a specific social feed.
+     - parameter socialProfileId: (query)  
+     - parameter socialFeedId: (path)  
+     - parameter feedPostId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter socialFeedPostUpdateDto: (body)  (optional)
+     - returns: RequestBuilder<SocialFeedPostDtoEnvelope> 
+     */
+    open class func updateFeedPostAsyncWithRequestBuilder(socialProfileId: UUID, socialFeedId: UUID, feedPostId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialFeedPostUpdateDto: SocialFeedPostUpdateDto? = nil) -> RequestBuilder<SocialFeedPostDtoEnvelope> {
+        var localVariablePath = "/api/v2/SocialService/SocialFeeds/{socialFeedId}/Posts/{feedPostId}"
+        let socialFeedIdPreEscape = "\(APIHelper.mapValueToPathItem(socialFeedId))"
+        let socialFeedIdPostEscape = socialFeedIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{socialFeedId}", with: socialFeedIdPostEscape, options: .literal, range: nil)
+        let feedPostIdPreEscape = "\(APIHelper.mapValueToPathItem(feedPostId))"
+        let feedPostIdPostEscape = feedPostIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{feedPostId}", with: feedPostIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: socialFeedPostUpdateDto)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "socialProfileId": (wrappedValue: socialProfileId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<SocialFeedPostDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 }

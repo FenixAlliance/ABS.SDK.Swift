@@ -13,7 +13,8 @@ import AnyCodable
 open class PricesAPI {
 
     /**
-
+     Gets the final price for an item
+     
      - parameter itemId: (path)  
      - parameter currencyId: (query)  (optional, default to "USD.USA")
      - parameter apiVersion: (query)  (optional)
@@ -22,8 +23,8 @@ open class PricesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2PricingServicePricesItemIdFinalPriceGet(itemId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MoneyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2PricingServicePricesItemIdFinalPriceGetWithRequestBuilder(itemId: itemId, currencyId: currencyId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getFinalPrice(itemId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MoneyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getFinalPriceWithRequestBuilder(itemId: itemId, currencyId: currencyId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -34,17 +35,16 @@ open class PricesAPI {
     }
 
     /**
+     Gets the final price for an item
      - GET /api/v2/PricingService/Prices/{itemId}/FinalPrice
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Gets the final price for an item after all discounts and taxes in the specified currency.
      - parameter itemId: (path)  
      - parameter currencyId: (query)  (optional, default to "USD.USA")
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<MoneyEnvelope> 
      */
-    open class func apiV2PricingServicePricesItemIdFinalPriceGetWithRequestBuilder(itemId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<MoneyEnvelope> {
+    open class func getFinalPriceWithRequestBuilder(itemId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<MoneyEnvelope> {
         var localVariablePath = "/api/v2/PricingService/Prices/{itemId}/FinalPrice"
         let itemIdPreEscape = "\(APIHelper.mapValueToPathItem(itemId))"
         let itemIdPostEscape = itemIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -66,14 +66,16 @@ open class PricesAPI {
 
         let localVariableRequestBuilder: RequestBuilder<MoneyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Gets the calculated price for an item
+     
      - parameter itemId: (path)  
      - parameter priceListId: (query)  (optional)
      - parameter discountsListId: (query)  (optional)
+     - parameter quantity: (query)  (optional, default to 1)
      - parameter currencyId: (query)  (optional, default to "USD.USA")
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -81,8 +83,8 @@ open class PricesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2PricingServicePricesItemIdPriceGet(itemId: UUID, priceListId: UUID? = nil, discountsListId: UUID? = nil, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: PriceCalculationDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2PricingServicePricesItemIdPriceGetWithRequestBuilder(itemId: itemId, priceListId: priceListId, discountsListId: discountsListId, currencyId: currencyId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getPrice(itemId: UUID, priceListId: UUID? = nil, discountsListId: UUID? = nil, quantity: Double? = nil, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemPriceCalculationEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getPriceWithRequestBuilder(itemId: itemId, priceListId: priceListId, discountsListId: discountsListId, quantity: quantity, currencyId: currencyId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -93,19 +95,19 @@ open class PricesAPI {
     }
 
     /**
+     Gets the calculated price for an item
      - GET /api/v2/PricingService/Prices/{itemId}/Price
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Calculates the price for an item considering price list, discount list, quantity, and currency.
      - parameter itemId: (path)  
      - parameter priceListId: (query)  (optional)
      - parameter discountsListId: (query)  (optional)
+     - parameter quantity: (query)  (optional, default to 1)
      - parameter currencyId: (query)  (optional, default to "USD.USA")
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - returns: RequestBuilder<PriceCalculationDtoEnvelope> 
+     - returns: RequestBuilder<ItemPriceCalculationEnvelope> 
      */
-    open class func apiV2PricingServicePricesItemIdPriceGetWithRequestBuilder(itemId: UUID, priceListId: UUID? = nil, discountsListId: UUID? = nil, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<PriceCalculationDtoEnvelope> {
+    open class func getPriceWithRequestBuilder(itemId: UUID, priceListId: UUID? = nil, discountsListId: UUID? = nil, quantity: Double? = nil, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemPriceCalculationEnvelope> {
         var localVariablePath = "/api/v2/PricingService/Prices/{itemId}/Price"
         let itemIdPreEscape = "\(APIHelper.mapValueToPathItem(itemId))"
         let itemIdPostEscape = itemIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -117,6 +119,7 @@ open class PricesAPI {
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "priceListId": (wrappedValue: priceListId?.encodeToJSON(), isExplode: true),
             "discountsListId": (wrappedValue: discountsListId?.encodeToJSON(), isExplode: true),
+            "quantity": (wrappedValue: quantity?.encodeToJSON(), isExplode: true),
             "currencyId": (wrappedValue: currencyId?.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
@@ -127,13 +130,14 @@ open class PricesAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<PriceCalculationDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<ItemPriceCalculationEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Gets total savings for an item
+     
      - parameter itemId: (path)  
      - parameter currencyId: (query)  (optional, default to "USD.USA")
      - parameter apiVersion: (query)  (optional)
@@ -142,8 +146,8 @@ open class PricesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2PricingServicePricesItemIdTotalSavingsGet(itemId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MoneyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2PricingServicePricesItemIdTotalSavingsGetWithRequestBuilder(itemId: itemId, currencyId: currencyId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getTotalSavingsInUsd(itemId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MoneyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getTotalSavingsInUsdWithRequestBuilder(itemId: itemId, currencyId: currencyId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -154,17 +158,16 @@ open class PricesAPI {
     }
 
     /**
+     Gets total savings for an item
      - GET /api/v2/PricingService/Prices/{itemId}/TotalSavings
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Gets the total savings amount for an item in the specified currency.
      - parameter itemId: (path)  
      - parameter currencyId: (query)  (optional, default to "USD.USA")
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<MoneyEnvelope> 
      */
-    open class func apiV2PricingServicePricesItemIdTotalSavingsGetWithRequestBuilder(itemId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<MoneyEnvelope> {
+    open class func getTotalSavingsInUsdWithRequestBuilder(itemId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<MoneyEnvelope> {
         var localVariablePath = "/api/v2/PricingService/Prices/{itemId}/TotalSavings"
         let itemIdPreEscape = "\(APIHelper.mapValueToPathItem(itemId))"
         let itemIdPostEscape = itemIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -186,11 +189,12 @@ open class PricesAPI {
 
         let localVariableRequestBuilder: RequestBuilder<MoneyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Gets total taxes for an item
+     
      - parameter itemId: (path)  
      - parameter currencyId: (query)  (optional, default to "USD.USA")
      - parameter apiVersion: (query)  (optional)
@@ -199,8 +203,8 @@ open class PricesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2PricingServicePricesItemIdTotalTaxesGet(itemId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MoneyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2PricingServicePricesItemIdTotalTaxesGetWithRequestBuilder(itemId: itemId, currencyId: currencyId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getTotalTaxesInUsd(itemId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MoneyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getTotalTaxesInUsdWithRequestBuilder(itemId: itemId, currencyId: currencyId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -211,17 +215,16 @@ open class PricesAPI {
     }
 
     /**
+     Gets total taxes for an item
      - GET /api/v2/PricingService/Prices/{itemId}/TotalTaxes
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Gets the total tax amount for an item in the specified currency.
      - parameter itemId: (path)  
      - parameter currencyId: (query)  (optional, default to "USD.USA")
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<MoneyEnvelope> 
      */
-    open class func apiV2PricingServicePricesItemIdTotalTaxesGetWithRequestBuilder(itemId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<MoneyEnvelope> {
+    open class func getTotalTaxesInUsdWithRequestBuilder(itemId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<MoneyEnvelope> {
         var localVariablePath = "/api/v2/PricingService/Prices/{itemId}/TotalTaxes"
         let itemIdPreEscape = "\(APIHelper.mapValueToPathItem(itemId))"
         let itemIdPostEscape = itemIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -243,6 +246,6 @@ open class PricesAPI {
 
         let localVariableRequestBuilder: RequestBuilder<MoneyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 }

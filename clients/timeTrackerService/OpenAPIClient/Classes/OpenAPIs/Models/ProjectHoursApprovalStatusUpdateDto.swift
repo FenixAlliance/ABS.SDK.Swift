@@ -12,10 +12,10 @@ import AnyCodable
 
 public struct ProjectHoursApprovalStatusUpdateDto: Codable, JSONEncodable, Hashable {
 
-    public enum ApprovalStatus: Int, Codable, CaseIterable {
-        case _0 = 0
-        case _1 = 1
-        case _2 = 2
+    public enum ApprovalStatus: String, Codable, CaseIterable {
+        case pending = "Pending"
+        case approved = "Approved"
+        case rejected = "Rejected"
     }
     public var approvalStatus: ApprovalStatus?
     public var comments: String?

@@ -12,15 +12,15 @@ import AnyCodable
 
 public struct SocialReactionCreateDto: Codable, JSONEncodable, Hashable {
 
-    public enum Reaction: Int, Codable, CaseIterable {
-        case _0 = 0
-        case _1 = 1
-        case _2 = 2
-        case _3 = 3
-        case _4 = 4
-        case _5 = 5
-        case _6 = 6
-        case _7 = 7
+    public enum Reaction: String, Codable, CaseIterable {
+        case like = "Like"
+        case happy = "Happy"
+        case haHa = "HaHa"
+        case love = "Love"
+        case sad = "Sad"
+        case angry = "Angry"
+        case wow = "Wow"
+        case afraid = "Afraid"
     }
     public var id: UUID?
     public var timestamp: Date?

@@ -13,9 +13,9 @@ import AnyCodable
 public struct Money: Codable, JSONEncodable, Hashable {
 
     public var amount: Double?
-    public var currency: Currency?
+    public var currency: CurrencyId?
 
-    public init(amount: Double? = nil, currency: Currency? = nil) {
+    public init(amount: Double? = nil, currency: CurrencyId? = nil) {
         self.amount = amount
         self.currency = currency
     }

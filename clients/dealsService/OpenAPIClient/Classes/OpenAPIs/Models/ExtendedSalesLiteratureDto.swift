@@ -20,12 +20,12 @@ public struct ExtendedSalesLiteratureDto: Codable, JSONEncodable, Hashable {
     public var modifiedDate: Date?
     public var expirationDate: Date?
     public var tenantId: String?
-    public var enrolmentId: String?
+    public var enrollmentId: String?
     public var salesLiteratureTypeId: String?
     public var salesLiteratureType: SalesLiteratureTypeDto?
     public var tenant: TenantDto?
 
-    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, content: String? = nil, description: String? = nil, modifiedDate: Date? = nil, expirationDate: Date? = nil, tenantId: String? = nil, enrolmentId: String? = nil, salesLiteratureTypeId: String? = nil, salesLiteratureType: SalesLiteratureTypeDto? = nil, tenant: TenantDto? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, content: String? = nil, description: String? = nil, modifiedDate: Date? = nil, expirationDate: Date? = nil, tenantId: String? = nil, enrollmentId: String? = nil, salesLiteratureTypeId: String? = nil, salesLiteratureType: SalesLiteratureTypeDto? = nil, tenant: TenantDto? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
@@ -34,7 +34,7 @@ public struct ExtendedSalesLiteratureDto: Codable, JSONEncodable, Hashable {
         self.modifiedDate = modifiedDate
         self.expirationDate = expirationDate
         self.tenantId = tenantId
-        self.enrolmentId = enrolmentId
+        self.enrollmentId = enrollmentId
         self.salesLiteratureTypeId = salesLiteratureTypeId
         self.salesLiteratureType = salesLiteratureType
         self.tenant = tenant
@@ -49,7 +49,7 @@ public struct ExtendedSalesLiteratureDto: Codable, JSONEncodable, Hashable {
         case modifiedDate
         case expirationDate
         case tenantId
-        case enrolmentId
+        case enrollmentId
         case salesLiteratureTypeId
         case salesLiteratureType
         case tenant
@@ -67,7 +67,7 @@ public struct ExtendedSalesLiteratureDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(modifiedDate, forKey: .modifiedDate)
         try container.encodeIfPresent(expirationDate, forKey: .expirationDate)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(enrolmentId, forKey: .enrolmentId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(salesLiteratureTypeId, forKey: .salesLiteratureTypeId)
         try container.encodeIfPresent(salesLiteratureType, forKey: .salesLiteratureType)
         try container.encodeIfPresent(tenant, forKey: .tenant)

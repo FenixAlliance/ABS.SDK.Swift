@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **comments** | **String** |  | [optional] 
 **projectTaskID** | **String** |  | [optional] 
 **projectPeriodID** | **String** |  | [optional] 
-**projectTimeLogRecordType** | **Int** |  | [optional] 
+**projectTimeLogRecordType** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

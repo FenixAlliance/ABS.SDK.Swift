@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **dealUnitFlowId** | **String** |  | [optional] 
 **tenantId** | **String** |  | [optional] 
 **description** | **String** |  | [optional] 
-**enrolmentId** | **String** |  | [optional] 
+**enrollmentId** | **String** |  | [optional] 
 **parentBusinessProcessStageId** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

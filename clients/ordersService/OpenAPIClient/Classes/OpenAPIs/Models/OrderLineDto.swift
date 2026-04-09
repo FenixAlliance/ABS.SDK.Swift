@@ -12,13 +12,13 @@ import AnyCodable
 
 public struct OrderLineDto: Codable, JSONEncodable, Hashable {
 
-    public enum TaxCalculationMethod: Int, Codable, CaseIterable {
-        case _0 = 0
-        case _1 = 1
+    public enum TaxCalculationMethod: String, Codable, CaseIterable {
+        case included = "Included"
+        case excluded = "Excluded"
     }
-    public enum CostCalculationMethod: Int, Codable, CaseIterable {
-        case _0 = 0
-        case _1 = 1
+    public enum CostCalculationMethod: String, Codable, CaseIterable {
+        case automatic = "Automatic"
+        case custom = "Custom"
     }
     public var id: String?
     public var timestamp: Date?
@@ -62,37 +62,25 @@ public struct OrderLineDto: Codable, JSONEncodable, Hashable {
     public var unitGroupId: String?
     public var taxCalculationMethod: TaxCalculationMethod?
     public var costCalculationMethod: CostCalculationMethod?
-    public var forexRatesSnapshot: String?
+    public var forexRates: ForexRates?
     public var forexRate: Double?
-    public var totalBaseAmountInUsd: Double?
+    public var totalDetailInUsd: Double?
     public var totalProfitInUsd: Double?
-    public var totalDetailAmountInUsd: Double?
-    public var totalTaxBaseInUsd: Double?
     public var totalDiscountsInUsd: Double?
+    public var totalSurchargesInUsd: Double?
+    public var totalTaxBaseInUsd: Double?
     public var totalTaxesInUsd: Double?
-    public var totalWithholdingTaxesInUsd: Double?
+    public var totalWithheldTaxesInUsd: Double?
     public var totalShippingCostInUsd: Double?
     public var totalShippingTaxesInUsd: Double?
     public var totalWarrantyCostInUsd: Double?
     public var totalReturnCostInUsd: Double?
     public var totalRefundCostInUsd: Double?
-    public var totalSurchargesInUsd: Double?
-    public var totalAmountInUsd: Double?
+    public var totalInUsd: Double?
     public var totalGlobalDiscountsInUsd: Double?
     public var totalGlobalSurchargesInUsd: Double?
     public var customGlobalSurchargesAmount: Double?
     public var customGlobalDiscountsAmount: Double?
-    public var customBaseAmount: Double?
-    public var customDetailAmount: Double?
-    public var customDiscountsAmount: Double?
-    public var customTaxBase: Double?
-    public var customSurchargesAmount: Double?
-    public var customProfitAmount: Double?
-    public var customShippingCostAmount: Double?
-    public var customShippingTaxAmount: Double?
-    public var customTaxAmount: Double?
-    public var customWithholdingTaxAmount: Double?
-    public var customTotalAmount: Double?
     public var returnPolicyId: String?
     public var refundPolicyId: String?
     public var warrantyPolicyId: String?
@@ -102,9 +90,46 @@ public struct OrderLineDto: Codable, JSONEncodable, Hashable {
     public var quoteItemRecordId: String?
     public var businessProfileRecordId: String?
     public var parentBillingItemRecordId: String?
+    public var currency: CurrencyId?
+    public var totalDetail: Double?
+    public var totalDetailCurrencyId: String?
+    public var totalDetailAmount: Money?
+    public var totalProfit: Double?
+    public var totalProfitCurrencyId: String?
+    public var totalProfitAmount: Money?
+    public var totalDiscounts: Double?
+    public var totalDiscountsCurrencyId: String?
+    public var totalDiscountsAmount: Money?
+    public var totalSurcharges: Double?
+    public var totalSurchargesCurrencyId: String?
+    public var totalSurchargesAmount: Money?
+    public var totalTaxBase: Double?
+    public var totalTaxBaseCurrencyId: String?
+    public var totalTaxBaseAmount: Money?
+    public var totalTaxes: Double?
+    public var totalTaxesCurrencyId: String?
+    public var totalTaxesAmount: Money?
+    public var totalShippingCost: Double?
+    public var totalShippingCostCurrencyId: String?
+    public var totalShippingCostAmount: Money?
+    public var totalShippingTax: Double?
+    public var totalShippingTaxCurrencyId: String?
+    public var totalShippingTaxAmount: Money?
+    public var totalWithheldTax: Double?
+    public var totalWithheldTaxCurrencyId: String?
+    public var totalWithheldTaxAmount: Money?
+    public var totalGlobalDiscounts: Double?
+    public var totalGlobalDiscountsCurrencyId: String?
+    public var totalGlobalDiscountsAmount: Money?
+    public var totalGlobalSurcharges: Double?
+    public var totalGlobalSurchargesCurrencyId: String?
+    public var totalGlobalSurchargesAmount: Money?
+    public var total: Double?
+    public var totalCurrencyId: String?
+    public var totalAmount: Money?
     public var orderId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, closed: Bool? = nil, itemId: String? = nil, itemTitle: String? = nil, itemShortDescription: String? = nil, itemPrimaryImageUrl: String? = nil, shippingPolicyId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil, currencyId: String? = nil, description: String? = nil, quantity: Double? = nil, free: Bool? = nil, freeReason: String? = nil, freeReasonCode: String? = nil, data: String? = nil, dataLabel: String? = nil, data1: String? = nil, data1Label: String? = nil, data2: String? = nil, data2Label: String? = nil, data3: String? = nil, data3Label: String? = nil, data4: String? = nil, data4Label: String? = nil, data5: String? = nil, data5Label: String? = nil, data6: String? = nil, data6Label: String? = nil, data7: String? = nil, data7Label: String? = nil, data8: String? = nil, data8Label: String? = nil, data9: String? = nil, data9Label: String? = nil, itemPriceId: String? = nil, priceListItemId: String? = nil, unitId: String? = nil, unitGroupId: String? = nil, taxCalculationMethod: TaxCalculationMethod? = nil, costCalculationMethod: CostCalculationMethod? = nil, forexRatesSnapshot: String? = nil, forexRate: Double? = nil, totalBaseAmountInUsd: Double? = nil, totalProfitInUsd: Double? = nil, totalDetailAmountInUsd: Double? = nil, totalTaxBaseInUsd: Double? = nil, totalDiscountsInUsd: Double? = nil, totalTaxesInUsd: Double? = nil, totalWithholdingTaxesInUsd: Double? = nil, totalShippingCostInUsd: Double? = nil, totalShippingTaxesInUsd: Double? = nil, totalWarrantyCostInUsd: Double? = nil, totalReturnCostInUsd: Double? = nil, totalRefundCostInUsd: Double? = nil, totalSurchargesInUsd: Double? = nil, totalAmountInUsd: Double? = nil, totalGlobalDiscountsInUsd: Double? = nil, totalGlobalSurchargesInUsd: Double? = nil, customGlobalSurchargesAmount: Double? = nil, customGlobalDiscountsAmount: Double? = nil, customBaseAmount: Double? = nil, customDetailAmount: Double? = nil, customDiscountsAmount: Double? = nil, customTaxBase: Double? = nil, customSurchargesAmount: Double? = nil, customProfitAmount: Double? = nil, customShippingCostAmount: Double? = nil, customShippingTaxAmount: Double? = nil, customTaxAmount: Double? = nil, customWithholdingTaxAmount: Double? = nil, customTotalAmount: Double? = nil, returnPolicyId: String? = nil, refundPolicyId: String? = nil, warrantyPolicyId: String? = nil, shipmentPolicyId: String? = nil, shippingLocationId: String? = nil, locationId: String? = nil, quoteItemRecordId: String? = nil, businessProfileRecordId: String? = nil, parentBillingItemRecordId: String? = nil, orderId: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, closed: Bool? = nil, itemId: String? = nil, itemTitle: String? = nil, itemShortDescription: String? = nil, itemPrimaryImageUrl: String? = nil, shippingPolicyId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil, currencyId: String? = nil, description: String? = nil, quantity: Double? = nil, free: Bool? = nil, freeReason: String? = nil, freeReasonCode: String? = nil, data: String? = nil, dataLabel: String? = nil, data1: String? = nil, data1Label: String? = nil, data2: String? = nil, data2Label: String? = nil, data3: String? = nil, data3Label: String? = nil, data4: String? = nil, data4Label: String? = nil, data5: String? = nil, data5Label: String? = nil, data6: String? = nil, data6Label: String? = nil, data7: String? = nil, data7Label: String? = nil, data8: String? = nil, data8Label: String? = nil, data9: String? = nil, data9Label: String? = nil, itemPriceId: String? = nil, priceListItemId: String? = nil, unitId: String? = nil, unitGroupId: String? = nil, taxCalculationMethod: TaxCalculationMethod? = nil, costCalculationMethod: CostCalculationMethod? = nil, forexRates: ForexRates? = nil, forexRate: Double? = nil, totalDetailInUsd: Double? = nil, totalProfitInUsd: Double? = nil, totalDiscountsInUsd: Double? = nil, totalSurchargesInUsd: Double? = nil, totalTaxBaseInUsd: Double? = nil, totalTaxesInUsd: Double? = nil, totalWithheldTaxesInUsd: Double? = nil, totalShippingCostInUsd: Double? = nil, totalShippingTaxesInUsd: Double? = nil, totalWarrantyCostInUsd: Double? = nil, totalReturnCostInUsd: Double? = nil, totalRefundCostInUsd: Double? = nil, totalInUsd: Double? = nil, totalGlobalDiscountsInUsd: Double? = nil, totalGlobalSurchargesInUsd: Double? = nil, customGlobalSurchargesAmount: Double? = nil, customGlobalDiscountsAmount: Double? = nil, returnPolicyId: String? = nil, refundPolicyId: String? = nil, warrantyPolicyId: String? = nil, shipmentPolicyId: String? = nil, shippingLocationId: String? = nil, locationId: String? = nil, quoteItemRecordId: String? = nil, businessProfileRecordId: String? = nil, parentBillingItemRecordId: String? = nil, currency: CurrencyId? = nil, totalDetail: Double? = nil, totalDetailCurrencyId: String? = nil, totalDetailAmount: Money? = nil, totalProfit: Double? = nil, totalProfitCurrencyId: String? = nil, totalProfitAmount: Money? = nil, totalDiscounts: Double? = nil, totalDiscountsCurrencyId: String? = nil, totalDiscountsAmount: Money? = nil, totalSurcharges: Double? = nil, totalSurchargesCurrencyId: String? = nil, totalSurchargesAmount: Money? = nil, totalTaxBase: Double? = nil, totalTaxBaseCurrencyId: String? = nil, totalTaxBaseAmount: Money? = nil, totalTaxes: Double? = nil, totalTaxesCurrencyId: String? = nil, totalTaxesAmount: Money? = nil, totalShippingCost: Double? = nil, totalShippingCostCurrencyId: String? = nil, totalShippingCostAmount: Money? = nil, totalShippingTax: Double? = nil, totalShippingTaxCurrencyId: String? = nil, totalShippingTaxAmount: Money? = nil, totalWithheldTax: Double? = nil, totalWithheldTaxCurrencyId: String? = nil, totalWithheldTaxAmount: Money? = nil, totalGlobalDiscounts: Double? = nil, totalGlobalDiscountsCurrencyId: String? = nil, totalGlobalDiscountsAmount: Money? = nil, totalGlobalSurcharges: Double? = nil, totalGlobalSurchargesCurrencyId: String? = nil, totalGlobalSurchargesAmount: Money? = nil, total: Double? = nil, totalCurrencyId: String? = nil, totalAmount: Money? = nil, orderId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.closed = closed
@@ -147,37 +172,25 @@ public struct OrderLineDto: Codable, JSONEncodable, Hashable {
         self.unitGroupId = unitGroupId
         self.taxCalculationMethod = taxCalculationMethod
         self.costCalculationMethod = costCalculationMethod
-        self.forexRatesSnapshot = forexRatesSnapshot
+        self.forexRates = forexRates
         self.forexRate = forexRate
-        self.totalBaseAmountInUsd = totalBaseAmountInUsd
+        self.totalDetailInUsd = totalDetailInUsd
         self.totalProfitInUsd = totalProfitInUsd
-        self.totalDetailAmountInUsd = totalDetailAmountInUsd
-        self.totalTaxBaseInUsd = totalTaxBaseInUsd
         self.totalDiscountsInUsd = totalDiscountsInUsd
+        self.totalSurchargesInUsd = totalSurchargesInUsd
+        self.totalTaxBaseInUsd = totalTaxBaseInUsd
         self.totalTaxesInUsd = totalTaxesInUsd
-        self.totalWithholdingTaxesInUsd = totalWithholdingTaxesInUsd
+        self.totalWithheldTaxesInUsd = totalWithheldTaxesInUsd
         self.totalShippingCostInUsd = totalShippingCostInUsd
         self.totalShippingTaxesInUsd = totalShippingTaxesInUsd
         self.totalWarrantyCostInUsd = totalWarrantyCostInUsd
         self.totalReturnCostInUsd = totalReturnCostInUsd
         self.totalRefundCostInUsd = totalRefundCostInUsd
-        self.totalSurchargesInUsd = totalSurchargesInUsd
-        self.totalAmountInUsd = totalAmountInUsd
+        self.totalInUsd = totalInUsd
         self.totalGlobalDiscountsInUsd = totalGlobalDiscountsInUsd
         self.totalGlobalSurchargesInUsd = totalGlobalSurchargesInUsd
         self.customGlobalSurchargesAmount = customGlobalSurchargesAmount
         self.customGlobalDiscountsAmount = customGlobalDiscountsAmount
-        self.customBaseAmount = customBaseAmount
-        self.customDetailAmount = customDetailAmount
-        self.customDiscountsAmount = customDiscountsAmount
-        self.customTaxBase = customTaxBase
-        self.customSurchargesAmount = customSurchargesAmount
-        self.customProfitAmount = customProfitAmount
-        self.customShippingCostAmount = customShippingCostAmount
-        self.customShippingTaxAmount = customShippingTaxAmount
-        self.customTaxAmount = customTaxAmount
-        self.customWithholdingTaxAmount = customWithholdingTaxAmount
-        self.customTotalAmount = customTotalAmount
         self.returnPolicyId = returnPolicyId
         self.refundPolicyId = refundPolicyId
         self.warrantyPolicyId = warrantyPolicyId
@@ -187,6 +200,43 @@ public struct OrderLineDto: Codable, JSONEncodable, Hashable {
         self.quoteItemRecordId = quoteItemRecordId
         self.businessProfileRecordId = businessProfileRecordId
         self.parentBillingItemRecordId = parentBillingItemRecordId
+        self.currency = currency
+        self.totalDetail = totalDetail
+        self.totalDetailCurrencyId = totalDetailCurrencyId
+        self.totalDetailAmount = totalDetailAmount
+        self.totalProfit = totalProfit
+        self.totalProfitCurrencyId = totalProfitCurrencyId
+        self.totalProfitAmount = totalProfitAmount
+        self.totalDiscounts = totalDiscounts
+        self.totalDiscountsCurrencyId = totalDiscountsCurrencyId
+        self.totalDiscountsAmount = totalDiscountsAmount
+        self.totalSurcharges = totalSurcharges
+        self.totalSurchargesCurrencyId = totalSurchargesCurrencyId
+        self.totalSurchargesAmount = totalSurchargesAmount
+        self.totalTaxBase = totalTaxBase
+        self.totalTaxBaseCurrencyId = totalTaxBaseCurrencyId
+        self.totalTaxBaseAmount = totalTaxBaseAmount
+        self.totalTaxes = totalTaxes
+        self.totalTaxesCurrencyId = totalTaxesCurrencyId
+        self.totalTaxesAmount = totalTaxesAmount
+        self.totalShippingCost = totalShippingCost
+        self.totalShippingCostCurrencyId = totalShippingCostCurrencyId
+        self.totalShippingCostAmount = totalShippingCostAmount
+        self.totalShippingTax = totalShippingTax
+        self.totalShippingTaxCurrencyId = totalShippingTaxCurrencyId
+        self.totalShippingTaxAmount = totalShippingTaxAmount
+        self.totalWithheldTax = totalWithheldTax
+        self.totalWithheldTaxCurrencyId = totalWithheldTaxCurrencyId
+        self.totalWithheldTaxAmount = totalWithheldTaxAmount
+        self.totalGlobalDiscounts = totalGlobalDiscounts
+        self.totalGlobalDiscountsCurrencyId = totalGlobalDiscountsCurrencyId
+        self.totalGlobalDiscountsAmount = totalGlobalDiscountsAmount
+        self.totalGlobalSurcharges = totalGlobalSurcharges
+        self.totalGlobalSurchargesCurrencyId = totalGlobalSurchargesCurrencyId
+        self.totalGlobalSurchargesAmount = totalGlobalSurchargesAmount
+        self.total = total
+        self.totalCurrencyId = totalCurrencyId
+        self.totalAmount = totalAmount
         self.orderId = orderId
     }
 
@@ -233,37 +283,25 @@ public struct OrderLineDto: Codable, JSONEncodable, Hashable {
         case unitGroupId
         case taxCalculationMethod
         case costCalculationMethod
-        case forexRatesSnapshot
+        case forexRates
         case forexRate
-        case totalBaseAmountInUsd
+        case totalDetailInUsd
         case totalProfitInUsd
-        case totalDetailAmountInUsd
-        case totalTaxBaseInUsd
         case totalDiscountsInUsd
+        case totalSurchargesInUsd
+        case totalTaxBaseInUsd
         case totalTaxesInUsd
-        case totalWithholdingTaxesInUsd
+        case totalWithheldTaxesInUsd
         case totalShippingCostInUsd
         case totalShippingTaxesInUsd
         case totalWarrantyCostInUsd
         case totalReturnCostInUsd
         case totalRefundCostInUsd
-        case totalSurchargesInUsd
-        case totalAmountInUsd
+        case totalInUsd
         case totalGlobalDiscountsInUsd
         case totalGlobalSurchargesInUsd
         case customGlobalSurchargesAmount
         case customGlobalDiscountsAmount
-        case customBaseAmount
-        case customDetailAmount
-        case customDiscountsAmount
-        case customTaxBase
-        case customSurchargesAmount
-        case customProfitAmount
-        case customShippingCostAmount
-        case customShippingTaxAmount
-        case customTaxAmount
-        case customWithholdingTaxAmount
-        case customTotalAmount
         case returnPolicyId
         case refundPolicyId
         case warrantyPolicyId
@@ -273,6 +311,43 @@ public struct OrderLineDto: Codable, JSONEncodable, Hashable {
         case quoteItemRecordId
         case businessProfileRecordId
         case parentBillingItemRecordId
+        case currency
+        case totalDetail
+        case totalDetailCurrencyId
+        case totalDetailAmount
+        case totalProfit
+        case totalProfitCurrencyId
+        case totalProfitAmount
+        case totalDiscounts
+        case totalDiscountsCurrencyId
+        case totalDiscountsAmount
+        case totalSurcharges
+        case totalSurchargesCurrencyId
+        case totalSurchargesAmount
+        case totalTaxBase
+        case totalTaxBaseCurrencyId
+        case totalTaxBaseAmount
+        case totalTaxes
+        case totalTaxesCurrencyId
+        case totalTaxesAmount
+        case totalShippingCost
+        case totalShippingCostCurrencyId
+        case totalShippingCostAmount
+        case totalShippingTax
+        case totalShippingTaxCurrencyId
+        case totalShippingTaxAmount
+        case totalWithheldTax
+        case totalWithheldTaxCurrencyId
+        case totalWithheldTaxAmount
+        case totalGlobalDiscounts
+        case totalGlobalDiscountsCurrencyId
+        case totalGlobalDiscountsAmount
+        case totalGlobalSurcharges
+        case totalGlobalSurchargesCurrencyId
+        case totalGlobalSurchargesAmount
+        case total
+        case totalCurrencyId
+        case totalAmount
         case orderId
     }
 
@@ -322,37 +397,25 @@ public struct OrderLineDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(unitGroupId, forKey: .unitGroupId)
         try container.encodeIfPresent(taxCalculationMethod, forKey: .taxCalculationMethod)
         try container.encodeIfPresent(costCalculationMethod, forKey: .costCalculationMethod)
-        try container.encodeIfPresent(forexRatesSnapshot, forKey: .forexRatesSnapshot)
+        try container.encodeIfPresent(forexRates, forKey: .forexRates)
         try container.encodeIfPresent(forexRate, forKey: .forexRate)
-        try container.encodeIfPresent(totalBaseAmountInUsd, forKey: .totalBaseAmountInUsd)
+        try container.encodeIfPresent(totalDetailInUsd, forKey: .totalDetailInUsd)
         try container.encodeIfPresent(totalProfitInUsd, forKey: .totalProfitInUsd)
-        try container.encodeIfPresent(totalDetailAmountInUsd, forKey: .totalDetailAmountInUsd)
-        try container.encodeIfPresent(totalTaxBaseInUsd, forKey: .totalTaxBaseInUsd)
         try container.encodeIfPresent(totalDiscountsInUsd, forKey: .totalDiscountsInUsd)
+        try container.encodeIfPresent(totalSurchargesInUsd, forKey: .totalSurchargesInUsd)
+        try container.encodeIfPresent(totalTaxBaseInUsd, forKey: .totalTaxBaseInUsd)
         try container.encodeIfPresent(totalTaxesInUsd, forKey: .totalTaxesInUsd)
-        try container.encodeIfPresent(totalWithholdingTaxesInUsd, forKey: .totalWithholdingTaxesInUsd)
+        try container.encodeIfPresent(totalWithheldTaxesInUsd, forKey: .totalWithheldTaxesInUsd)
         try container.encodeIfPresent(totalShippingCostInUsd, forKey: .totalShippingCostInUsd)
         try container.encodeIfPresent(totalShippingTaxesInUsd, forKey: .totalShippingTaxesInUsd)
         try container.encodeIfPresent(totalWarrantyCostInUsd, forKey: .totalWarrantyCostInUsd)
         try container.encodeIfPresent(totalReturnCostInUsd, forKey: .totalReturnCostInUsd)
         try container.encodeIfPresent(totalRefundCostInUsd, forKey: .totalRefundCostInUsd)
-        try container.encodeIfPresent(totalSurchargesInUsd, forKey: .totalSurchargesInUsd)
-        try container.encodeIfPresent(totalAmountInUsd, forKey: .totalAmountInUsd)
+        try container.encodeIfPresent(totalInUsd, forKey: .totalInUsd)
         try container.encodeIfPresent(totalGlobalDiscountsInUsd, forKey: .totalGlobalDiscountsInUsd)
         try container.encodeIfPresent(totalGlobalSurchargesInUsd, forKey: .totalGlobalSurchargesInUsd)
         try container.encodeIfPresent(customGlobalSurchargesAmount, forKey: .customGlobalSurchargesAmount)
         try container.encodeIfPresent(customGlobalDiscountsAmount, forKey: .customGlobalDiscountsAmount)
-        try container.encodeIfPresent(customBaseAmount, forKey: .customBaseAmount)
-        try container.encodeIfPresent(customDetailAmount, forKey: .customDetailAmount)
-        try container.encodeIfPresent(customDiscountsAmount, forKey: .customDiscountsAmount)
-        try container.encodeIfPresent(customTaxBase, forKey: .customTaxBase)
-        try container.encodeIfPresent(customSurchargesAmount, forKey: .customSurchargesAmount)
-        try container.encodeIfPresent(customProfitAmount, forKey: .customProfitAmount)
-        try container.encodeIfPresent(customShippingCostAmount, forKey: .customShippingCostAmount)
-        try container.encodeIfPresent(customShippingTaxAmount, forKey: .customShippingTaxAmount)
-        try container.encodeIfPresent(customTaxAmount, forKey: .customTaxAmount)
-        try container.encodeIfPresent(customWithholdingTaxAmount, forKey: .customWithholdingTaxAmount)
-        try container.encodeIfPresent(customTotalAmount, forKey: .customTotalAmount)
         try container.encodeIfPresent(returnPolicyId, forKey: .returnPolicyId)
         try container.encodeIfPresent(refundPolicyId, forKey: .refundPolicyId)
         try container.encodeIfPresent(warrantyPolicyId, forKey: .warrantyPolicyId)
@@ -362,6 +425,43 @@ public struct OrderLineDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(quoteItemRecordId, forKey: .quoteItemRecordId)
         try container.encodeIfPresent(businessProfileRecordId, forKey: .businessProfileRecordId)
         try container.encodeIfPresent(parentBillingItemRecordId, forKey: .parentBillingItemRecordId)
+        try container.encodeIfPresent(currency, forKey: .currency)
+        try container.encodeIfPresent(totalDetail, forKey: .totalDetail)
+        try container.encodeIfPresent(totalDetailCurrencyId, forKey: .totalDetailCurrencyId)
+        try container.encodeIfPresent(totalDetailAmount, forKey: .totalDetailAmount)
+        try container.encodeIfPresent(totalProfit, forKey: .totalProfit)
+        try container.encodeIfPresent(totalProfitCurrencyId, forKey: .totalProfitCurrencyId)
+        try container.encodeIfPresent(totalProfitAmount, forKey: .totalProfitAmount)
+        try container.encodeIfPresent(totalDiscounts, forKey: .totalDiscounts)
+        try container.encodeIfPresent(totalDiscountsCurrencyId, forKey: .totalDiscountsCurrencyId)
+        try container.encodeIfPresent(totalDiscountsAmount, forKey: .totalDiscountsAmount)
+        try container.encodeIfPresent(totalSurcharges, forKey: .totalSurcharges)
+        try container.encodeIfPresent(totalSurchargesCurrencyId, forKey: .totalSurchargesCurrencyId)
+        try container.encodeIfPresent(totalSurchargesAmount, forKey: .totalSurchargesAmount)
+        try container.encodeIfPresent(totalTaxBase, forKey: .totalTaxBase)
+        try container.encodeIfPresent(totalTaxBaseCurrencyId, forKey: .totalTaxBaseCurrencyId)
+        try container.encodeIfPresent(totalTaxBaseAmount, forKey: .totalTaxBaseAmount)
+        try container.encodeIfPresent(totalTaxes, forKey: .totalTaxes)
+        try container.encodeIfPresent(totalTaxesCurrencyId, forKey: .totalTaxesCurrencyId)
+        try container.encodeIfPresent(totalTaxesAmount, forKey: .totalTaxesAmount)
+        try container.encodeIfPresent(totalShippingCost, forKey: .totalShippingCost)
+        try container.encodeIfPresent(totalShippingCostCurrencyId, forKey: .totalShippingCostCurrencyId)
+        try container.encodeIfPresent(totalShippingCostAmount, forKey: .totalShippingCostAmount)
+        try container.encodeIfPresent(totalShippingTax, forKey: .totalShippingTax)
+        try container.encodeIfPresent(totalShippingTaxCurrencyId, forKey: .totalShippingTaxCurrencyId)
+        try container.encodeIfPresent(totalShippingTaxAmount, forKey: .totalShippingTaxAmount)
+        try container.encodeIfPresent(totalWithheldTax, forKey: .totalWithheldTax)
+        try container.encodeIfPresent(totalWithheldTaxCurrencyId, forKey: .totalWithheldTaxCurrencyId)
+        try container.encodeIfPresent(totalWithheldTaxAmount, forKey: .totalWithheldTaxAmount)
+        try container.encodeIfPresent(totalGlobalDiscounts, forKey: .totalGlobalDiscounts)
+        try container.encodeIfPresent(totalGlobalDiscountsCurrencyId, forKey: .totalGlobalDiscountsCurrencyId)
+        try container.encodeIfPresent(totalGlobalDiscountsAmount, forKey: .totalGlobalDiscountsAmount)
+        try container.encodeIfPresent(totalGlobalSurcharges, forKey: .totalGlobalSurcharges)
+        try container.encodeIfPresent(totalGlobalSurchargesCurrencyId, forKey: .totalGlobalSurchargesCurrencyId)
+        try container.encodeIfPresent(totalGlobalSurchargesAmount, forKey: .totalGlobalSurchargesAmount)
+        try container.encodeIfPresent(total, forKey: .total)
+        try container.encodeIfPresent(totalCurrencyId, forKey: .totalCurrencyId)
+        try container.encodeIfPresent(totalAmount, forKey: .totalAmount)
         try container.encodeIfPresent(orderId, forKey: .orderId)
     }
 }

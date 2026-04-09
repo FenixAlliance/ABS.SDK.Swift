@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **discountAmount** | **Double** |  | [optional] 
 **totalSurcharge** | **Double** |  | [optional] 
 **totalDiscount** | **Double** |  | [optional] 
-**type** | **Int** |  | [optional] 
+**type** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

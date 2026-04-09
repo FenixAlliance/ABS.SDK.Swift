@@ -4,18 +4,20 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**apiV2ForexServiceRatesHistoryCurrencyIdGet**](RatesAPI.md#apiv2forexservicerateshistorycurrencyidget) | **GET** /api/v2/ForexService/Rates/History/{currencyId} | 
-[**apiV2ForexServiceRatesHistoryGet**](RatesAPI.md#apiv2forexservicerateshistoryget) | **GET** /api/v2/ForexService/Rates/History | 
-[**apiV2ForexServiceRatesLatestCurrencyIdGet**](RatesAPI.md#apiv2forexservicerateslatestcurrencyidget) | **GET** /api/v2/ForexService/Rates/Latest/{currencyId} | 
-[**apiV2ForexServiceRatesLatestGet**](RatesAPI.md#apiv2forexservicerateslatestget) | **GET** /api/v2/ForexService/Rates/Latest | 
+[**getHistoricalCurrencyRateAsync**](RatesAPI.md#gethistoricalcurrencyrateasync) | **GET** /api/v2/ForexService/Rates/History/{currencyId} | Get historical rate for a currency
+[**getHistoricalCurrencyRatesAsync**](RatesAPI.md#gethistoricalcurrencyratesasync) | **GET** /api/v2/ForexService/Rates/History | Get historical currency rates
+[**getLatestCurrencyRateAsync**](RatesAPI.md#getlatestcurrencyrateasync) | **GET** /api/v2/ForexService/Rates/Latest/{currencyId} | Get latest rate for a currency
+[**getLatestCurrencyRatesModelAsync**](RatesAPI.md#getlatestcurrencyratesmodelasync) | **GET** /api/v2/ForexService/Rates/Latest | Get latest currency rates
 
 
-# **apiV2ForexServiceRatesHistoryCurrencyIdGet**
+# **getHistoricalCurrencyRateAsync**
 ```swift
-    open class func apiV2ForexServiceRatesHistoryCurrencyIdGet(currencyId: String, date: Date? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ExchangeRateEnvelope?, _ error: Error?) -> Void)
+    open class func getHistoricalCurrencyRateAsync(currencyId: String, date: Date? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ExchangeRateEnvelope?, _ error: Error?) -> Void)
 ```
 
+Get historical rate for a currency
 
+Retrieves the exchange rate for a specific currency as of a specific historical date.
 
 ### Example
 ```swift
@@ -27,7 +29,8 @@ let date = Date() // Date |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
-RatesAPI.apiV2ForexServiceRatesHistoryCurrencyIdGet(currencyId: currencyId, date: date, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Get historical rate for a currency
+RatesAPI.getHistoricalCurrencyRateAsync(currencyId: currencyId, date: date, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -54,7 +57,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
@@ -63,12 +66,14 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **apiV2ForexServiceRatesHistoryGet**
+# **getHistoricalCurrencyRatesAsync**
 ```swift
-    open class func apiV2ForexServiceRatesHistoryGet(date: Date? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ForexRatesDtoEnvelope?, _ error: Error?) -> Void)
+    open class func getHistoricalCurrencyRatesAsync(date: Date? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ForexRatesDtoEnvelope?, _ error: Error?) -> Void)
 ```
 
+Get historical currency rates
 
+Retrieves exchange rates for all supported currencies as of a specific historical date.
 
 ### Example
 ```swift
@@ -79,7 +84,8 @@ let date = Date() // Date |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
-RatesAPI.apiV2ForexServiceRatesHistoryGet(date: date, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Get historical currency rates
+RatesAPI.getHistoricalCurrencyRatesAsync(date: date, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -105,7 +111,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
@@ -114,12 +120,14 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **apiV2ForexServiceRatesLatestCurrencyIdGet**
+# **getLatestCurrencyRateAsync**
 ```swift
-    open class func apiV2ForexServiceRatesLatestCurrencyIdGet(currencyId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ExchangeRateEnvelope?, _ error: Error?) -> Void)
+    open class func getLatestCurrencyRateAsync(currencyId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ExchangeRateEnvelope?, _ error: Error?) -> Void)
 ```
 
+Get latest rate for a currency
 
+Retrieves the latest exchange rate for a specific currency by its identifier.
 
 ### Example
 ```swift
@@ -130,7 +138,8 @@ let currencyId = "currencyId_example" // String |
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
-RatesAPI.apiV2ForexServiceRatesLatestCurrencyIdGet(currencyId: currencyId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Get latest rate for a currency
+RatesAPI.getLatestCurrencyRateAsync(currencyId: currencyId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -156,7 +165,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
@@ -165,12 +174,14 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **apiV2ForexServiceRatesLatestGet**
+# **getLatestCurrencyRatesModelAsync**
 ```swift
-    open class func apiV2ForexServiceRatesLatestGet(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ForexRatesDtoEnvelope?, _ error: Error?) -> Void)
+    open class func getLatestCurrencyRatesModelAsync(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ForexRatesDtoEnvelope?, _ error: Error?) -> Void)
 ```
 
+Get latest currency rates
 
+Retrieves the latest exchange rates for all supported currencies.
 
 ### Example
 ```swift
@@ -180,7 +191,8 @@ import OpenAPIClient
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
-RatesAPI.apiV2ForexServiceRatesLatestGet(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Get latest currency rates
+RatesAPI.getLatestCurrencyRatesModelAsync(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -205,7 +217,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 

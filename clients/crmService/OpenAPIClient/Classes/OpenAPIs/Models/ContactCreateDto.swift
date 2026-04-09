@@ -12,9 +12,9 @@ import AnyCodable
 
 public struct ContactCreateDto: Codable, JSONEncodable, Hashable {
 
-    public enum ModelType: Int, Codable, CaseIterable {
-        case _0 = 0
-        case _1 = 1
+    public enum ModelType: String, Codable, CaseIterable {
+        case individual = "Individual"
+        case organization = "Organization"
     }
     static let tenantIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     static let firstNameRule = StringRule(minLength: 1, maxLength: 50, pattern: nil)
@@ -63,13 +63,14 @@ public struct ContactCreateDto: Codable, JSONEncodable, Hashable {
     public var linkedInUrl: String?
     public var instagramUrl: String?
     public var githubUsername: String?
-    public var instagramUsername: AnyCodable?
-    public var tikTokUsername: AnyCodable?
-    public var stackExchangeUrl: AnyCodable?
-    public var stackOverflowUrl: AnyCodable?
-    public var parentContactId: AnyCodable?
+    public var instagramUsername: String?
+    public var tikTokUsername: String?
+    public var stackExchangeUrl: String?
+    public var stackOverflowUrl: String?
+    public var parentContactId: String?
+    public var faxNumber: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, tenantId: String, type: ModelType, firstName: String, lastName: String? = nil, email: String, taxId: String? = nil, primaryContactId: String? = nil, qualifiedName: String? = nil, about: String? = nil, countryId: String? = nil, stateId: String? = nil, cityId: String? = nil, mobilePhone: String? = nil, businessPhone: String? = nil, postalCode: String? = nil, duns: String? = nil, jobTitle: String? = nil, webUrl: String? = nil, currencyId: String? = nil, languageId: String? = nil, timezoneId: String? = nil, birthday: Date? = nil, streetLine1: String? = nil, streetLine2: String? = nil, gitHubUrl: String? = nil, twitchUrl: String? = nil, redditUrl: String? = nil, tikTokUrl: String? = nil, websiteUrl: String? = nil, twitterUrl: String? = nil, facebookUrl: String? = nil, youTubeUrl: String? = nil, linkedInUrl: String? = nil, instagramUrl: String? = nil, githubUsername: String? = nil, instagramUsername: AnyCodable? = nil, tikTokUsername: AnyCodable? = nil, stackExchangeUrl: AnyCodable? = nil, stackOverflowUrl: AnyCodable? = nil, parentContactId: AnyCodable? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, tenantId: String, type: ModelType, firstName: String, lastName: String? = nil, email: String, taxId: String? = nil, primaryContactId: String? = nil, qualifiedName: String? = nil, about: String? = nil, countryId: String? = nil, stateId: String? = nil, cityId: String? = nil, mobilePhone: String? = nil, businessPhone: String? = nil, postalCode: String? = nil, duns: String? = nil, jobTitle: String? = nil, webUrl: String? = nil, currencyId: String? = nil, languageId: String? = nil, timezoneId: String? = nil, birthday: Date? = nil, streetLine1: String? = nil, streetLine2: String? = nil, gitHubUrl: String? = nil, twitchUrl: String? = nil, redditUrl: String? = nil, tikTokUrl: String? = nil, websiteUrl: String? = nil, twitterUrl: String? = nil, facebookUrl: String? = nil, youTubeUrl: String? = nil, linkedInUrl: String? = nil, instagramUrl: String? = nil, githubUsername: String? = nil, instagramUsername: String? = nil, tikTokUsername: String? = nil, stackExchangeUrl: String? = nil, stackOverflowUrl: String? = nil, parentContactId: String? = nil, faxNumber: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.tenantId = tenantId
@@ -112,6 +113,7 @@ public struct ContactCreateDto: Codable, JSONEncodable, Hashable {
         self.stackExchangeUrl = stackExchangeUrl
         self.stackOverflowUrl = stackOverflowUrl
         self.parentContactId = parentContactId
+        self.faxNumber = faxNumber
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -157,6 +159,7 @@ public struct ContactCreateDto: Codable, JSONEncodable, Hashable {
         case stackExchangeUrl
         case stackOverflowUrl
         case parentContactId
+        case faxNumber
     }
 
     // Encodable protocol methods
@@ -205,6 +208,7 @@ public struct ContactCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(stackExchangeUrl, forKey: .stackExchangeUrl)
         try container.encodeIfPresent(stackOverflowUrl, forKey: .stackOverflowUrl)
         try container.encodeIfPresent(parentContactId, forKey: .parentContactId)
+        try container.encodeIfPresent(faxNumber, forKey: .faxNumber)
     }
 }
 

@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**kind** | **Int** |  | [optional] 
+**kind** | **String** |  | [optional] 
 **isFolder** | **Bool** |  | [optional] [readonly] 
 **isFile** | **Bool** |  | [optional] [readonly] 
 **folderPath** | **String** |  | [optional] [readonly] 

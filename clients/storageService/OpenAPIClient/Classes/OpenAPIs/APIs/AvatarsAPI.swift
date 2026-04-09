@@ -36,9 +36,6 @@ open class AvatarsAPI {
     /**
      Get the avatar for a given social profile.
      - GET /api/v2/StorageService/Avatars/{socialProfileId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter socialProfileId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -65,7 +62,7 @@ open class AvatarsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -92,9 +89,6 @@ open class AvatarsAPI {
     /**
      Get the avatar for a given contact.
      - GET /api/v2/StorageService/Avatars/Contact/{contactId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter contactId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -121,7 +115,7 @@ open class AvatarsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -147,9 +141,6 @@ open class AvatarsAPI {
     /**
      Get the avatar for the current user.
      - GET /api/v2/StorageService/Avatars/User
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
@@ -172,7 +163,7 @@ open class AvatarsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -199,9 +190,6 @@ open class AvatarsAPI {
     /**
      Get the avatar for a given tenant.
      - GET /api/v2/StorageService/Avatars/Tenant/{tenantId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter tenantId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -228,7 +216,7 @@ open class AvatarsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -255,9 +243,6 @@ open class AvatarsAPI {
     /**
      Get the avatar for a given user.
      - GET /api/v2/StorageService/Avatars/User/{userId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter userId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -284,7 +269,7 @@ open class AvatarsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -313,9 +298,6 @@ open class AvatarsAPI {
     /**
      Update the avatar for a given contact.
      - POST /api/v2/StorageService/Avatars/Contacts/{contactId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter contactId: (path)  
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
@@ -351,7 +333,7 @@ open class AvatarsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -379,9 +361,6 @@ open class AvatarsAPI {
     /**
      Update the avatar for a given tenant.
      - POST /api/v2/StorageService/Avatars/Tenant/{tenantId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter tenantId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -415,7 +394,7 @@ open class AvatarsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -442,9 +421,6 @@ open class AvatarsAPI {
     /**
      Update the avatar for the current user.
      - POST /api/v2/StorageService/Avatars/User
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter avatar: (form)  (optional)
@@ -474,6 +450,6 @@ open class AvatarsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 }

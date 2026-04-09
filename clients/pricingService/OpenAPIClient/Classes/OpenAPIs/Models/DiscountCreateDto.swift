@@ -13,7 +13,7 @@ import AnyCodable
 public struct DiscountCreateDto: Codable, JSONEncodable, Hashable {
 
     static let tenantIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    static let enrolmentIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
+    static let enrollmentIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let discountListIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
@@ -23,10 +23,10 @@ public struct DiscountCreateDto: Codable, JSONEncodable, Hashable {
     public var percent: Double?
     public var value: Double?
     public var tenantId: String?
-    public var enrolmentId: String?
+    public var enrollmentId: String?
     public var discountListId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, description: String? = nil, beginQuantity: Double? = nil, endQuantity: Double? = nil, percent: Double? = nil, value: Double? = nil, tenantId: String? = nil, enrolmentId: String? = nil, discountListId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, description: String? = nil, beginQuantity: Double? = nil, endQuantity: Double? = nil, percent: Double? = nil, value: Double? = nil, tenantId: String? = nil, enrollmentId: String? = nil, discountListId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.description = description
@@ -35,7 +35,7 @@ public struct DiscountCreateDto: Codable, JSONEncodable, Hashable {
         self.percent = percent
         self.value = value
         self.tenantId = tenantId
-        self.enrolmentId = enrolmentId
+        self.enrollmentId = enrollmentId
         self.discountListId = discountListId
     }
 
@@ -48,7 +48,7 @@ public struct DiscountCreateDto: Codable, JSONEncodable, Hashable {
         case percent
         case value
         case tenantId
-        case enrolmentId
+        case enrollmentId
         case discountListId
     }
 
@@ -64,7 +64,7 @@ public struct DiscountCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(percent, forKey: .percent)
         try container.encodeIfPresent(value, forKey: .value)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(enrolmentId, forKey: .enrolmentId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(discountListId, forKey: .discountListId)
     }
 }

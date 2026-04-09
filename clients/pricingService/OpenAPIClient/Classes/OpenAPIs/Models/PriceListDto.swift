@@ -24,9 +24,9 @@ public struct PriceListDto: Codable, JSONEncodable, Hashable {
     public var unitGroupId: String?
     public var partnerVisible: Bool?
     public var unitOfMeasureDependant: Bool?
-    public var enrolmentId: String?
+    public var enrollmentId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, startDate: Date? = nil, endDate: Date? = nil, description: String? = nil, currencyId: String? = nil, tenantId: String? = nil, unitId: String? = nil, unitGroupId: String? = nil, partnerVisible: Bool? = nil, unitOfMeasureDependant: Bool? = nil, enrolmentId: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, startDate: Date? = nil, endDate: Date? = nil, description: String? = nil, currencyId: String? = nil, tenantId: String? = nil, unitId: String? = nil, unitGroupId: String? = nil, partnerVisible: Bool? = nil, unitOfMeasureDependant: Bool? = nil, enrollmentId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
@@ -39,7 +39,7 @@ public struct PriceListDto: Codable, JSONEncodable, Hashable {
         self.unitGroupId = unitGroupId
         self.partnerVisible = partnerVisible
         self.unitOfMeasureDependant = unitOfMeasureDependant
-        self.enrolmentId = enrolmentId
+        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -55,7 +55,7 @@ public struct PriceListDto: Codable, JSONEncodable, Hashable {
         case unitGroupId
         case partnerVisible
         case unitOfMeasureDependant
-        case enrolmentId
+        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -74,7 +74,7 @@ public struct PriceListDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(unitGroupId, forKey: .unitGroupId)
         try container.encodeIfPresent(partnerVisible, forKey: .partnerVisible)
         try container.encodeIfPresent(unitOfMeasureDependant, forKey: .unitOfMeasureDependant)
-        try container.encodeIfPresent(enrolmentId, forKey: .enrolmentId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

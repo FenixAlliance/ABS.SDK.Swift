@@ -12,28 +12,30 @@ import AnyCodable
 
 public struct UserDto: Codable, JSONEncodable, Hashable {
 
-    public enum Gender: Int, Codable, CaseIterable {
-        case _0 = 0
-        case _1 = 1
-        case _2 = 2
+    public enum Gender: String, Codable, CaseIterable {
+        case unknown = "Unknown"
+        case male = "Male"
+        case female = "Female"
+        case preferNotToSay = "PreferNotToSay"
     }
-    public enum Availability: Int, Codable, CaseIterable {
-        case _0 = 0
-        case _1 = 1
-        case _2 = 2
-        case _3 = 3
-        case _4 = 4
+    public enum Availability: String, Codable, CaseIterable {
+        case dnd = "DND"
+        case busy = "Busy"
+        case away = "Away"
+        case offline = "Offline"
+        case available = "Available"
     }
-    public enum SiteTheme: Int, Codable, CaseIterable {
-        case _0 = 0
-        case _1 = 1
-        case _2 = 2
+    public enum SiteTheme: String, Codable, CaseIterable {
+        case system = "System"
+        case light = "Light"
+        case dark = "Dark"
     }
     public var id: String?
     public var timestamp: Date?
     public var fullName: String?
     public var qualifiedName: String?
     public var publicName: String?
+    public var handler: String?
     public var lastName: String?
     public var firstName: String?
     public var coverUrl: String?
@@ -76,12 +78,13 @@ public struct UserDto: Codable, JSONEncodable, Hashable {
     public var enrollmentsCount: Int?
     public var siteTheme: SiteTheme?
 
-    public init(id: String? = nil, timestamp: Date? = nil, fullName: String? = nil, qualifiedName: String? = nil, publicName: String? = nil, lastName: String? = nil, firstName: String? = nil, coverUrl: String? = nil, avatarUrl: String? = nil, gitHubUrl: String? = nil, countryId: String? = nil, timezoneId: String? = nil, websiteUrl: String? = nil, twitterUrl: String? = nil, youTubeUrl: String? = nil, linkedInUrl: String? = nil, facebookUrl: String? = nil, instagramUrl: String? = nil, socialProfileId: String? = nil, birthday: Date? = nil, idProvider: String? = nil, languageId: String? = nil, gender: Gender? = nil, cityId: String? = nil, stateId: String? = nil, email: String? = nil, about: String? = nil, jobTitle: String? = nil, socialFeedId: String? = nil, currentTenantId: String? = nil, currentEnrollmentId: String? = nil, status: String? = nil, cartId: String? = nil, walletId: String? = nil, userName: String? = nil, currencyId: String? = nil, phoneNumber: String? = nil, publicIdentifier: String? = nil, identityProvider: String? = nil, phoneNumberConfirmed: Bool? = nil, emailConfirmed: Bool? = nil, availability: Availability? = nil, lockoutEnabled: Bool? = nil, lockoutEnd: Date? = nil, enrollmentsCount: Int? = nil, siteTheme: SiteTheme? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, fullName: String? = nil, qualifiedName: String? = nil, publicName: String? = nil, handler: String? = nil, lastName: String? = nil, firstName: String? = nil, coverUrl: String? = nil, avatarUrl: String? = nil, gitHubUrl: String? = nil, countryId: String? = nil, timezoneId: String? = nil, websiteUrl: String? = nil, twitterUrl: String? = nil, youTubeUrl: String? = nil, linkedInUrl: String? = nil, facebookUrl: String? = nil, instagramUrl: String? = nil, socialProfileId: String? = nil, birthday: Date? = nil, idProvider: String? = nil, languageId: String? = nil, gender: Gender? = nil, cityId: String? = nil, stateId: String? = nil, email: String? = nil, about: String? = nil, jobTitle: String? = nil, socialFeedId: String? = nil, currentTenantId: String? = nil, currentEnrollmentId: String? = nil, status: String? = nil, cartId: String? = nil, walletId: String? = nil, userName: String? = nil, currencyId: String? = nil, phoneNumber: String? = nil, publicIdentifier: String? = nil, identityProvider: String? = nil, phoneNumberConfirmed: Bool? = nil, emailConfirmed: Bool? = nil, availability: Availability? = nil, lockoutEnabled: Bool? = nil, lockoutEnd: Date? = nil, enrollmentsCount: Int? = nil, siteTheme: SiteTheme? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.fullName = fullName
         self.qualifiedName = qualifiedName
         self.publicName = publicName
+        self.handler = handler
         self.lastName = lastName
         self.firstName = firstName
         self.coverUrl = coverUrl
@@ -131,6 +134,7 @@ public struct UserDto: Codable, JSONEncodable, Hashable {
         case fullName
         case qualifiedName
         case publicName
+        case handler
         case lastName
         case firstName
         case coverUrl
@@ -183,6 +187,7 @@ public struct UserDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(fullName, forKey: .fullName)
         try container.encodeIfPresent(qualifiedName, forKey: .qualifiedName)
         try container.encodeIfPresent(publicName, forKey: .publicName)
+        try container.encodeIfPresent(handler, forKey: .handler)
         try container.encodeIfPresent(lastName, forKey: .lastName)
         try container.encodeIfPresent(firstName, forKey: .firstName)
         try container.encodeIfPresent(coverUrl, forKey: .coverUrl)

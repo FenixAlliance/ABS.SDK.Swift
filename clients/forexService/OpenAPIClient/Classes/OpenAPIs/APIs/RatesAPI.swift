@@ -13,7 +13,8 @@ import AnyCodable
 open class RatesAPI {
 
     /**
-
+     Get historical rate for a currency
+     
      - parameter currencyId: (path)  
      - parameter date: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
@@ -22,8 +23,8 @@ open class RatesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2ForexServiceRatesHistoryCurrencyIdGet(currencyId: String, date: Date? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ExchangeRateEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2ForexServiceRatesHistoryCurrencyIdGetWithRequestBuilder(currencyId: currencyId, date: date, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getHistoricalCurrencyRateAsync(currencyId: String, date: Date? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ExchangeRateEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getHistoricalCurrencyRateAsyncWithRequestBuilder(currencyId: currencyId, date: date, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -34,17 +35,16 @@ open class RatesAPI {
     }
 
     /**
+     Get historical rate for a currency
      - GET /api/v2/ForexService/Rates/History/{currencyId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Retrieves the exchange rate for a specific currency as of a specific historical date.
      - parameter currencyId: (path)  
      - parameter date: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<ExchangeRateEnvelope> 
      */
-    open class func apiV2ForexServiceRatesHistoryCurrencyIdGetWithRequestBuilder(currencyId: String, date: Date? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ExchangeRateEnvelope> {
+    open class func getHistoricalCurrencyRateAsyncWithRequestBuilder(currencyId: String, date: Date? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ExchangeRateEnvelope> {
         var localVariablePath = "/api/v2/ForexService/Rates/History/{currencyId}"
         let currencyIdPreEscape = "\(APIHelper.mapValueToPathItem(currencyId))"
         let currencyIdPostEscape = currencyIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -66,11 +66,12 @@ open class RatesAPI {
 
         let localVariableRequestBuilder: RequestBuilder<ExchangeRateEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Get historical currency rates
+     
      - parameter date: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -78,8 +79,8 @@ open class RatesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2ForexServiceRatesHistoryGet(date: Date? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ForexRatesDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2ForexServiceRatesHistoryGetWithRequestBuilder(date: date, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getHistoricalCurrencyRatesAsync(date: Date? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ForexRatesDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getHistoricalCurrencyRatesAsyncWithRequestBuilder(date: date, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -90,16 +91,15 @@ open class RatesAPI {
     }
 
     /**
+     Get historical currency rates
      - GET /api/v2/ForexService/Rates/History
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Retrieves exchange rates for all supported currencies as of a specific historical date.
      - parameter date: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<ForexRatesDtoEnvelope> 
      */
-    open class func apiV2ForexServiceRatesHistoryGetWithRequestBuilder(date: Date? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ForexRatesDtoEnvelope> {
+    open class func getHistoricalCurrencyRatesAsyncWithRequestBuilder(date: Date? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ForexRatesDtoEnvelope> {
         let localVariablePath = "/api/v2/ForexService/Rates/History"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -118,11 +118,12 @@ open class RatesAPI {
 
         let localVariableRequestBuilder: RequestBuilder<ForexRatesDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Get latest rate for a currency
+     
      - parameter currencyId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -130,8 +131,8 @@ open class RatesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2ForexServiceRatesLatestCurrencyIdGet(currencyId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ExchangeRateEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2ForexServiceRatesLatestCurrencyIdGetWithRequestBuilder(currencyId: currencyId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getLatestCurrencyRateAsync(currencyId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ExchangeRateEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getLatestCurrencyRateAsyncWithRequestBuilder(currencyId: currencyId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -142,16 +143,15 @@ open class RatesAPI {
     }
 
     /**
+     Get latest rate for a currency
      - GET /api/v2/ForexService/Rates/Latest/{currencyId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Retrieves the latest exchange rate for a specific currency by its identifier.
      - parameter currencyId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<ExchangeRateEnvelope> 
      */
-    open class func apiV2ForexServiceRatesLatestCurrencyIdGetWithRequestBuilder(currencyId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ExchangeRateEnvelope> {
+    open class func getLatestCurrencyRateAsyncWithRequestBuilder(currencyId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ExchangeRateEnvelope> {
         var localVariablePath = "/api/v2/ForexService/Rates/Latest/{currencyId}"
         let currencyIdPreEscape = "\(APIHelper.mapValueToPathItem(currencyId))"
         let currencyIdPostEscape = currencyIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -172,19 +172,20 @@ open class RatesAPI {
 
         let localVariableRequestBuilder: RequestBuilder<ExchangeRateEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Get latest currency rates
+     
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2ForexServiceRatesLatestGet(apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ForexRatesDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2ForexServiceRatesLatestGetWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getLatestCurrencyRatesModelAsync(apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ForexRatesDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getLatestCurrencyRatesModelAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -195,15 +196,14 @@ open class RatesAPI {
     }
 
     /**
+     Get latest currency rates
      - GET /api/v2/ForexService/Rates/Latest
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Retrieves the latest exchange rates for all supported currencies.
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<ForexRatesDtoEnvelope> 
      */
-    open class func apiV2ForexServiceRatesLatestGetWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ForexRatesDtoEnvelope> {
+    open class func getLatestCurrencyRatesModelAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ForexRatesDtoEnvelope> {
         let localVariablePath = "/api/v2/ForexService/Rates/Latest"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -221,6 +221,6 @@ open class RatesAPI {
 
         let localVariableRequestBuilder: RequestBuilder<ForexRatesDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 }

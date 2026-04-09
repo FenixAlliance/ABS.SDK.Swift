@@ -14,19 +14,19 @@ public struct SocialPostBucketCreateDto: Codable, JSONEncodable, Hashable {
 
     static let nameRule = StringRule(minLength: 0, maxLength: 99, pattern: nil)
     static let tenantIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    static let enrolmentIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
+    static let enrollmentIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var name: String?
     public var tenantId: String?
-    public var enrolmentId: String?
+    public var enrollmentId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil, tenantId: String? = nil, enrolmentId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
         self.tenantId = tenantId
-        self.enrolmentId = enrolmentId
+        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -34,7 +34,7 @@ public struct SocialPostBucketCreateDto: Codable, JSONEncodable, Hashable {
         case timestamp
         case name
         case tenantId
-        case enrolmentId
+        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -45,7 +45,7 @@ public struct SocialPostBucketCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(enrolmentId, forKey: .enrolmentId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

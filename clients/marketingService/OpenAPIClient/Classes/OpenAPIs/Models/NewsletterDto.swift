@@ -12,45 +12,45 @@ import AnyCodable
 
 public struct NewsletterDto: Codable, JSONEncodable, Hashable {
 
-    public var timestamp: Date?
     public var id: String?
+    public var timestamp: Date?
     public var name: String?
     public var code: String?
     public var title: String?
     public var tenantId: String?
-    public var enrolmentId: String?
+    public var enrollmentId: String?
 
-    public init(timestamp: Date? = nil, id: String? = nil, name: String? = nil, code: String? = nil, title: String? = nil, tenantId: String? = nil, enrolmentId: String? = nil) {
-        self.timestamp = timestamp
+    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, code: String? = nil, title: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
         self.id = id
+        self.timestamp = timestamp
         self.name = name
         self.code = code
         self.title = title
         self.tenantId = tenantId
-        self.enrolmentId = enrolmentId
+        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case timestamp
         case id
+        case timestamp
         case name
         case code
         case title
         case tenantId
-        case enrolmentId
+        case enrollmentId
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(id, forKey: .id)
+        try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(code, forKey: .code)
         try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(enrolmentId, forKey: .enrolmentId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

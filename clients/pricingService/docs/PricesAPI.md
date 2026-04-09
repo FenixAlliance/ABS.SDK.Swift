@@ -4,18 +4,20 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**apiV2PricingServicePricesItemIdFinalPriceGet**](PricesAPI.md#apiv2pricingservicepricesitemidfinalpriceget) | **GET** /api/v2/PricingService/Prices/{itemId}/FinalPrice | 
-[**apiV2PricingServicePricesItemIdPriceGet**](PricesAPI.md#apiv2pricingservicepricesitemidpriceget) | **GET** /api/v2/PricingService/Prices/{itemId}/Price | 
-[**apiV2PricingServicePricesItemIdTotalSavingsGet**](PricesAPI.md#apiv2pricingservicepricesitemidtotalsavingsget) | **GET** /api/v2/PricingService/Prices/{itemId}/TotalSavings | 
-[**apiV2PricingServicePricesItemIdTotalTaxesGet**](PricesAPI.md#apiv2pricingservicepricesitemidtotaltaxesget) | **GET** /api/v2/PricingService/Prices/{itemId}/TotalTaxes | 
+[**getFinalPrice**](PricesAPI.md#getfinalprice) | **GET** /api/v2/PricingService/Prices/{itemId}/FinalPrice | Gets the final price for an item
+[**getPrice**](PricesAPI.md#getprice) | **GET** /api/v2/PricingService/Prices/{itemId}/Price | Gets the calculated price for an item
+[**getTotalSavingsInUsd**](PricesAPI.md#gettotalsavingsinusd) | **GET** /api/v2/PricingService/Prices/{itemId}/TotalSavings | Gets total savings for an item
+[**getTotalTaxesInUsd**](PricesAPI.md#gettotaltaxesinusd) | **GET** /api/v2/PricingService/Prices/{itemId}/TotalTaxes | Gets total taxes for an item
 
 
-# **apiV2PricingServicePricesItemIdFinalPriceGet**
+# **getFinalPrice**
 ```swift
-    open class func apiV2PricingServicePricesItemIdFinalPriceGet(itemId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: MoneyEnvelope?, _ error: Error?) -> Void)
+    open class func getFinalPrice(itemId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: MoneyEnvelope?, _ error: Error?) -> Void)
 ```
 
+Gets the final price for an item
 
+Gets the final price for an item after all discounts and taxes in the specified currency.
 
 ### Example
 ```swift
@@ -27,7 +29,8 @@ let currencyId = "currencyId_example" // String |  (optional) (default to "USD.U
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
-PricesAPI.apiV2PricingServicePricesItemIdFinalPriceGet(itemId: itemId, currencyId: currencyId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Gets the final price for an item
+PricesAPI.getFinalPrice(itemId: itemId, currencyId: currencyId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -54,7 +57,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
@@ -63,12 +66,14 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **apiV2PricingServicePricesItemIdPriceGet**
+# **getPrice**
 ```swift
-    open class func apiV2PricingServicePricesItemIdPriceGet(itemId: UUID, priceListId: UUID? = nil, discountsListId: UUID? = nil, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: PriceCalculationDtoEnvelope?, _ error: Error?) -> Void)
+    open class func getPrice(itemId: UUID, priceListId: UUID? = nil, discountsListId: UUID? = nil, quantity: Double? = nil, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemPriceCalculationEnvelope?, _ error: Error?) -> Void)
 ```
 
+Gets the calculated price for an item
 
+Calculates the price for an item considering price list, discount list, quantity, and currency.
 
 ### Example
 ```swift
@@ -78,11 +83,13 @@ import OpenAPIClient
 let itemId = 987 // UUID | 
 let priceListId = 987 // UUID |  (optional)
 let discountsListId = 987 // UUID |  (optional)
+let quantity = 987 // Double |  (optional) (default to 1)
 let currencyId = "currencyId_example" // String |  (optional) (default to "USD.USA")
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
-PricesAPI.apiV2PricingServicePricesItemIdPriceGet(itemId: itemId, priceListId: priceListId, discountsListId: discountsListId, currencyId: currencyId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Gets the calculated price for an item
+PricesAPI.getPrice(itemId: itemId, priceListId: priceListId, discountsListId: discountsListId, quantity: quantity, currencyId: currencyId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -101,17 +108,18 @@ Name | Type | Description  | Notes
  **itemId** | **UUID** |  | 
  **priceListId** | **UUID** |  | [optional] 
  **discountsListId** | **UUID** |  | [optional] 
+ **quantity** | **Double** |  | [optional] [default to 1]
  **currencyId** | **String** |  | [optional] [default to &quot;USD.USA&quot;]
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 
 ### Return type
 
-[**PriceCalculationDtoEnvelope**](PriceCalculationDtoEnvelope.md)
+[**ItemPriceCalculationEnvelope**](ItemPriceCalculationEnvelope.md)
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
@@ -120,12 +128,14 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **apiV2PricingServicePricesItemIdTotalSavingsGet**
+# **getTotalSavingsInUsd**
 ```swift
-    open class func apiV2PricingServicePricesItemIdTotalSavingsGet(itemId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: MoneyEnvelope?, _ error: Error?) -> Void)
+    open class func getTotalSavingsInUsd(itemId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: MoneyEnvelope?, _ error: Error?) -> Void)
 ```
 
+Gets total savings for an item
 
+Gets the total savings amount for an item in the specified currency.
 
 ### Example
 ```swift
@@ -137,7 +147,8 @@ let currencyId = "currencyId_example" // String |  (optional) (default to "USD.U
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
-PricesAPI.apiV2PricingServicePricesItemIdTotalSavingsGet(itemId: itemId, currencyId: currencyId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Gets total savings for an item
+PricesAPI.getTotalSavingsInUsd(itemId: itemId, currencyId: currencyId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -164,7 +175,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
@@ -173,12 +184,14 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **apiV2PricingServicePricesItemIdTotalTaxesGet**
+# **getTotalTaxesInUsd**
 ```swift
-    open class func apiV2PricingServicePricesItemIdTotalTaxesGet(itemId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: MoneyEnvelope?, _ error: Error?) -> Void)
+    open class func getTotalTaxesInUsd(itemId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: MoneyEnvelope?, _ error: Error?) -> Void)
 ```
 
+Gets total taxes for an item
 
+Gets the total tax amount for an item in the specified currency.
 
 ### Example
 ```swift
@@ -190,7 +203,8 @@ let currencyId = "currencyId_example" // String |  (optional) (default to "USD.U
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
-PricesAPI.apiV2PricingServicePricesItemIdTotalTaxesGet(itemId: itemId, currencyId: currencyId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Gets total taxes for an item
+PricesAPI.getTotalTaxesInUsd(itemId: itemId, currencyId: currencyId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -217,7 +231,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 

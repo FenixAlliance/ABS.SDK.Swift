@@ -16,18 +16,18 @@ public struct CityDto: Codable, JSONEncodable, Hashable {
     public var timestamp: Date?
     public var name: String?
     public var imageUrl: String?
-    public var stateID: String?
-    public var countryID: String?
+    public var stateId: String?
+    public var countryId: String?
     public var latitude: String?
     public var longitude: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, imageUrl: String? = nil, stateID: String? = nil, countryID: String? = nil, latitude: String? = nil, longitude: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, imageUrl: String? = nil, stateId: String? = nil, countryId: String? = nil, latitude: String? = nil, longitude: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
         self.imageUrl = imageUrl
-        self.stateID = stateID
-        self.countryID = countryID
+        self.stateId = stateId
+        self.countryId = countryId
         self.latitude = latitude
         self.longitude = longitude
     }
@@ -37,8 +37,8 @@ public struct CityDto: Codable, JSONEncodable, Hashable {
         case timestamp
         case name
         case imageUrl
-        case stateID
-        case countryID
+        case stateId
+        case countryId
         case latitude
         case longitude
     }
@@ -51,8 +51,8 @@ public struct CityDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(imageUrl, forKey: .imageUrl)
-        try container.encodeIfPresent(stateID, forKey: .stateID)
-        try container.encodeIfPresent(countryID, forKey: .countryID)
+        try container.encodeIfPresent(stateId, forKey: .stateId)
+        try container.encodeIfPresent(countryId, forKey: .countryId)
         try container.encodeIfPresent(latitude, forKey: .latitude)
         try container.encodeIfPresent(longitude, forKey: .longitude)
     }

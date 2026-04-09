@@ -13,62 +13,16 @@ import AnyCodable
 open class DealUnitsAPI {
 
     /**
-
-     - parameter tenantId: (query)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2DealsServiceDealUnitsCountGet(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2DealsServiceDealUnitsCountGetWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - GET /api/v2/DealsService/DealUnits/Count
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter tenantId: (query)  
-     - returns: RequestBuilder<Int32Envelope> 
-     */
-    open class func apiV2DealsServiceDealUnitsCountGetWithRequestBuilder(tenantId: UUID) -> RequestBuilder<Int32Envelope> {
-        let localVariablePath = "/api/v2/DealsService/DealUnits/Count"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
+     Calculate a deal unit
+     
      - parameter tenantId: (query)  
      - parameter dealUnitId: (path)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2DealsServiceDealUnitsDealUnitIdCalculatePut(tenantId: UUID, dealUnitId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2DealsServiceDealUnitsDealUnitIdCalculatePutWithRequestBuilder(tenantId: tenantId, dealUnitId: dealUnitId).execute(apiResponseQueue) { result in
+    open class func calculateDealUnitAsync(tenantId: UUID, dealUnitId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return calculateDealUnitAsyncWithRequestBuilder(tenantId: tenantId, dealUnitId: dealUnitId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -79,15 +33,14 @@ open class DealUnitsAPI {
     }
 
     /**
+     Calculate a deal unit
      - PUT /api/v2/DealsService/DealUnits/{dealUnitId}/Calculate
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Triggers recalculation of totals and derived values for a specific deal unit.
      - parameter tenantId: (query)  
      - parameter dealUnitId: (path)  
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func apiV2DealsServiceDealUnitsDealUnitIdCalculatePutWithRequestBuilder(tenantId: UUID, dealUnitId: UUID) -> RequestBuilder<EmptyEnvelope> {
+    open class func calculateDealUnitAsyncWithRequestBuilder(tenantId: UUID, dealUnitId: UUID) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/DealsService/DealUnits/{dealUnitId}/Calculate"
         let dealUnitIdPreEscape = "\(APIHelper.mapValueToPathItem(dealUnitId))"
         let dealUnitIdPostEscape = dealUnitIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -108,167 +61,12 @@ open class DealUnitsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
-     - parameter tenantId: (query)  
-     - parameter dealUnitId: (path)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2DealsServiceDealUnitsDealUnitIdDelete(tenantId: UUID, dealUnitId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2DealsServiceDealUnitsDealUnitIdDeleteWithRequestBuilder(tenantId: tenantId, dealUnitId: dealUnitId).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - DELETE /api/v2/DealsService/DealUnits/{dealUnitId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter tenantId: (query)  
-     - parameter dealUnitId: (path)  
-     - returns: RequestBuilder<EmptyEnvelope> 
-     */
-    open class func apiV2DealsServiceDealUnitsDealUnitIdDeleteWithRequestBuilder(tenantId: UUID, dealUnitId: UUID) -> RequestBuilder<EmptyEnvelope> {
-        var localVariablePath = "/api/v2/DealsService/DealUnits/{dealUnitId}"
-        let dealUnitIdPreEscape = "\(APIHelper.mapValueToPathItem(dealUnitId))"
-        let dealUnitIdPostEscape = dealUnitIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{dealUnitId}", with: dealUnitIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
-     - parameter tenantId: (query)  
-     - parameter dealUnitId: (path)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2DealsServiceDealUnitsDealUnitIdExtendedGet(tenantId: UUID, dealUnitId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ExtendedDealUnitDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2DealsServiceDealUnitsDealUnitIdExtendedGetWithRequestBuilder(tenantId: tenantId, dealUnitId: dealUnitId).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - GET /api/v2/DealsService/DealUnits/{dealUnitId}/Extended
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter tenantId: (query)  
-     - parameter dealUnitId: (path)  
-     - returns: RequestBuilder<ExtendedDealUnitDtoEnvelope> 
-     */
-    open class func apiV2DealsServiceDealUnitsDealUnitIdExtendedGetWithRequestBuilder(tenantId: UUID, dealUnitId: UUID) -> RequestBuilder<ExtendedDealUnitDtoEnvelope> {
-        var localVariablePath = "/api/v2/DealsService/DealUnits/{dealUnitId}/Extended"
-        let dealUnitIdPreEscape = "\(APIHelper.mapValueToPathItem(dealUnitId))"
-        let dealUnitIdPostEscape = dealUnitIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{dealUnitId}", with: dealUnitIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<ExtendedDealUnitDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
-     - parameter tenantId: (query)  
-     - parameter dealUnitId: (path)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2DealsServiceDealUnitsDealUnitIdLinesCountGet(tenantId: UUID, dealUnitId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2DealsServiceDealUnitsDealUnitIdLinesCountGetWithRequestBuilder(tenantId: tenantId, dealUnitId: dealUnitId).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - GET /api/v2/DealsService/DealUnits/{dealUnitId}/Lines/Count
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter tenantId: (query)  
-     - parameter dealUnitId: (path)  
-     - returns: RequestBuilder<Int32Envelope> 
-     */
-    open class func apiV2DealsServiceDealUnitsDealUnitIdLinesCountGetWithRequestBuilder(tenantId: UUID, dealUnitId: UUID) -> RequestBuilder<Int32Envelope> {
-        var localVariablePath = "/api/v2/DealsService/DealUnits/{dealUnitId}/Lines/Count"
-        let dealUnitIdPreEscape = "\(APIHelper.mapValueToPathItem(dealUnitId))"
-        let dealUnitIdPostEscape = dealUnitIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{dealUnitId}", with: dealUnitIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
+     Calculate a deal unit line
+     
      - parameter tenantId: (query)  
      - parameter dealUnitId: (path)  
      - parameter dealUnitLineId: (path)  
@@ -276,8 +74,8 @@ open class DealUnitsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2DealsServiceDealUnitsDealUnitIdLinesDealUnitLineIdCalculatePut(tenantId: UUID, dealUnitId: UUID, dealUnitLineId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2DealsServiceDealUnitsDealUnitIdLinesDealUnitLineIdCalculatePutWithRequestBuilder(tenantId: tenantId, dealUnitId: dealUnitId, dealUnitLineId: dealUnitLineId).execute(apiResponseQueue) { result in
+    open class func calculateDealUnitLineAsync(tenantId: UUID, dealUnitId: UUID, dealUnitLineId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return calculateDealUnitLineAsyncWithRequestBuilder(tenantId: tenantId, dealUnitId: dealUnitId, dealUnitLineId: dealUnitLineId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -288,16 +86,15 @@ open class DealUnitsAPI {
     }
 
     /**
+     Calculate a deal unit line
      - PUT /api/v2/DealsService/DealUnits/{dealUnitId}/Lines/{dealUnitLineId}/Calculate
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Triggers recalculation of totals and derived values for a specific deal unit line.
      - parameter tenantId: (query)  
      - parameter dealUnitId: (path)  
      - parameter dealUnitLineId: (path)  
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func apiV2DealsServiceDealUnitsDealUnitIdLinesDealUnitLineIdCalculatePutWithRequestBuilder(tenantId: UUID, dealUnitId: UUID, dealUnitLineId: UUID) -> RequestBuilder<EmptyEnvelope> {
+    open class func calculateDealUnitLineAsyncWithRequestBuilder(tenantId: UUID, dealUnitId: UUID, dealUnitLineId: UUID) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/DealsService/DealUnits/{dealUnitId}/Lines/{dealUnitLineId}/Calculate"
         let dealUnitIdPreEscape = "\(APIHelper.mapValueToPathItem(dealUnitId))"
         let dealUnitIdPostEscape = dealUnitIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -321,20 +118,20 @@ open class DealUnitsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Create a deal unit
+     
      - parameter tenantId: (query)  
-     - parameter dealUnitId: (path)  
-     - parameter dealUnitLineId: (path)  
+     - parameter dealUnitCreateDto: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2DealsServiceDealUnitsDealUnitIdLinesDealUnitLineIdDelete(tenantId: UUID, dealUnitId: UUID, dealUnitLineId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2DealsServiceDealUnitsDealUnitIdLinesDealUnitLineIdDeleteWithRequestBuilder(tenantId: tenantId, dealUnitId: dealUnitId, dealUnitLineId: dealUnitLineId).execute(apiResponseQueue) { result in
+    open class func createDealUnitAsync(tenantId: UUID, dealUnitCreateDto: DealUnitCreateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return createDealUnitAsyncWithRequestBuilder(tenantId: tenantId, dealUnitCreateDto: dealUnitCreateDto).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -345,141 +142,17 @@ open class DealUnitsAPI {
     }
 
     /**
-     - DELETE /api/v2/DealsService/DealUnits/{dealUnitId}/Lines/{dealUnitLineId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     Create a deal unit
+     - POST /api/v2/DealsService/DealUnits
+     - Creates a new deal unit for the specified tenant.
      - parameter tenantId: (query)  
-     - parameter dealUnitId: (path)  
-     - parameter dealUnitLineId: (path)  
+     - parameter dealUnitCreateDto: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func apiV2DealsServiceDealUnitsDealUnitIdLinesDealUnitLineIdDeleteWithRequestBuilder(tenantId: UUID, dealUnitId: UUID, dealUnitLineId: UUID) -> RequestBuilder<EmptyEnvelope> {
-        var localVariablePath = "/api/v2/DealsService/DealUnits/{dealUnitId}/Lines/{dealUnitLineId}"
-        let dealUnitIdPreEscape = "\(APIHelper.mapValueToPathItem(dealUnitId))"
-        let dealUnitIdPostEscape = dealUnitIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{dealUnitId}", with: dealUnitIdPostEscape, options: .literal, range: nil)
-        let dealUnitLineIdPreEscape = "\(APIHelper.mapValueToPathItem(dealUnitLineId))"
-        let dealUnitLineIdPostEscape = dealUnitLineIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{dealUnitLineId}", with: dealUnitLineIdPostEscape, options: .literal, range: nil)
+    open class func createDealUnitAsyncWithRequestBuilder(tenantId: UUID, dealUnitCreateDto: DealUnitCreateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
+        let localVariablePath = "/api/v2/DealsService/DealUnits"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
-     - parameter tenantId: (query)  
-     - parameter dealUnitId: (path)  
-     - parameter dealUnitLineId: (path)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2DealsServiceDealUnitsDealUnitIdLinesDealUnitLineIdGet(tenantId: UUID, dealUnitId: UUID, dealUnitLineId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: DealUnitLineDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2DealsServiceDealUnitsDealUnitIdLinesDealUnitLineIdGetWithRequestBuilder(tenantId: tenantId, dealUnitId: dealUnitId, dealUnitLineId: dealUnitLineId).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - GET /api/v2/DealsService/DealUnits/{dealUnitId}/Lines/{dealUnitLineId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter tenantId: (query)  
-     - parameter dealUnitId: (path)  
-     - parameter dealUnitLineId: (path)  
-     - returns: RequestBuilder<DealUnitLineDtoEnvelope> 
-     */
-    open class func apiV2DealsServiceDealUnitsDealUnitIdLinesDealUnitLineIdGetWithRequestBuilder(tenantId: UUID, dealUnitId: UUID, dealUnitLineId: UUID) -> RequestBuilder<DealUnitLineDtoEnvelope> {
-        var localVariablePath = "/api/v2/DealsService/DealUnits/{dealUnitId}/Lines/{dealUnitLineId}"
-        let dealUnitIdPreEscape = "\(APIHelper.mapValueToPathItem(dealUnitId))"
-        let dealUnitIdPostEscape = dealUnitIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{dealUnitId}", with: dealUnitIdPostEscape, options: .literal, range: nil)
-        let dealUnitLineIdPreEscape = "\(APIHelper.mapValueToPathItem(dealUnitLineId))"
-        let dealUnitLineIdPostEscape = dealUnitLineIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{dealUnitLineId}", with: dealUnitLineIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<DealUnitLineDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
-     - parameter tenantId: (query)  
-     - parameter dealUnitId: (path)  
-     - parameter dealUnitLineId: (path)  
-     - parameter dealUnitLineUpdateDto: (body)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2DealsServiceDealUnitsDealUnitIdLinesDealUnitLineIdPut(tenantId: UUID, dealUnitId: UUID, dealUnitLineId: UUID, dealUnitLineUpdateDto: DealUnitLineUpdateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2DealsServiceDealUnitsDealUnitIdLinesDealUnitLineIdPutWithRequestBuilder(tenantId: tenantId, dealUnitId: dealUnitId, dealUnitLineId: dealUnitLineId, dealUnitLineUpdateDto: dealUnitLineUpdateDto).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - PUT /api/v2/DealsService/DealUnits/{dealUnitId}/Lines/{dealUnitLineId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter tenantId: (query)  
-     - parameter dealUnitId: (path)  
-     - parameter dealUnitLineId: (path)  
-     - parameter dealUnitLineUpdateDto: (body)  (optional)
-     - returns: RequestBuilder<EmptyEnvelope> 
-     */
-    open class func apiV2DealsServiceDealUnitsDealUnitIdLinesDealUnitLineIdPutWithRequestBuilder(tenantId: UUID, dealUnitId: UUID, dealUnitLineId: UUID, dealUnitLineUpdateDto: DealUnitLineUpdateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
-        var localVariablePath = "/api/v2/DealsService/DealUnits/{dealUnitId}/Lines/{dealUnitLineId}"
-        let dealUnitIdPreEscape = "\(APIHelper.mapValueToPathItem(dealUnitId))"
-        let dealUnitIdPostEscape = dealUnitIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{dealUnitId}", with: dealUnitIdPostEscape, options: .literal, range: nil)
-        let dealUnitLineIdPreEscape = "\(APIHelper.mapValueToPathItem(dealUnitLineId))"
-        let dealUnitLineIdPostEscape = dealUnitLineIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{dealUnitLineId}", with: dealUnitLineIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: dealUnitLineUpdateDto)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: dealUnitCreateDto)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -494,66 +167,12 @@ open class DealUnitsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
-     - parameter tenantId: (query)  
-     - parameter dealUnitId: (path)  
-     - parameter itemId: (query)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2DealsServiceDealUnitsDealUnitIdLinesGet(tenantId: UUID, dealUnitId: UUID, itemId: UUID? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: DealUnitLineDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2DealsServiceDealUnitsDealUnitIdLinesGetWithRequestBuilder(tenantId: tenantId, dealUnitId: dealUnitId, itemId: itemId).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - GET /api/v2/DealsService/DealUnits/{dealUnitId}/Lines
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter tenantId: (query)  
-     - parameter dealUnitId: (path)  
-     - parameter itemId: (query)  (optional)
-     - returns: RequestBuilder<DealUnitLineDtoListEnvelope> 
-     */
-    open class func apiV2DealsServiceDealUnitsDealUnitIdLinesGetWithRequestBuilder(tenantId: UUID, dealUnitId: UUID, itemId: UUID? = nil) -> RequestBuilder<DealUnitLineDtoListEnvelope> {
-        var localVariablePath = "/api/v2/DealsService/DealUnits/{dealUnitId}/Lines"
-        let dealUnitIdPreEscape = "\(APIHelper.mapValueToPathItem(dealUnitId))"
-        let dealUnitIdPostEscape = dealUnitIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{dealUnitId}", with: dealUnitIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-            "itemId": (wrappedValue: itemId?.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<DealUnitLineDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
+     Create a deal unit line
+     
      - parameter tenantId: (query)  
      - parameter dealUnitId: (path)  
      - parameter dealUnitLineCreateDto: (body)  (optional)
@@ -561,8 +180,8 @@ open class DealUnitsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2DealsServiceDealUnitsDealUnitIdLinesPost(tenantId: UUID, dealUnitId: UUID, dealUnitLineCreateDto: DealUnitLineCreateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2DealsServiceDealUnitsDealUnitIdLinesPostWithRequestBuilder(tenantId: tenantId, dealUnitId: dealUnitId, dealUnitLineCreateDto: dealUnitLineCreateDto).execute(apiResponseQueue) { result in
+    open class func createGetDealUnitLinesAsync(tenantId: UUID, dealUnitId: UUID, dealUnitLineCreateDto: DealUnitLineCreateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return createGetDealUnitLinesAsyncWithRequestBuilder(tenantId: tenantId, dealUnitId: dealUnitId, dealUnitLineCreateDto: dealUnitLineCreateDto).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -573,16 +192,15 @@ open class DealUnitsAPI {
     }
 
     /**
+     Create a deal unit line
      - POST /api/v2/DealsService/DealUnits/{dealUnitId}/Lines
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Creates a new line within a specific deal unit.
      - parameter tenantId: (query)  
      - parameter dealUnitId: (path)  
      - parameter dealUnitLineCreateDto: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func apiV2DealsServiceDealUnitsDealUnitIdLinesPostWithRequestBuilder(tenantId: UUID, dealUnitId: UUID, dealUnitLineCreateDto: DealUnitLineCreateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func createGetDealUnitLinesAsyncWithRequestBuilder(tenantId: UUID, dealUnitId: UUID, dealUnitLineCreateDto: DealUnitLineCreateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/DealsService/DealUnits/{dealUnitId}/Lines"
         let dealUnitIdPreEscape = "\(APIHelper.mapValueToPathItem(dealUnitId))"
         let dealUnitIdPostEscape = dealUnitIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -603,20 +221,20 @@ open class DealUnitsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Delete a deal unit
+     
      - parameter tenantId: (query)  
      - parameter dealUnitId: (path)  
-     - parameter dealUnitUpdateDto: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2DealsServiceDealUnitsDealUnitIdPut(tenantId: UUID, dealUnitId: UUID, dealUnitUpdateDto: DealUnitUpdateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2DealsServiceDealUnitsDealUnitIdPutWithRequestBuilder(tenantId: tenantId, dealUnitId: dealUnitId, dealUnitUpdateDto: dealUnitUpdateDto).execute(apiResponseQueue) { result in
+    open class func deleteDealUnitAsync(tenantId: UUID, dealUnitId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return deleteDealUnitAsyncWithRequestBuilder(tenantId: tenantId, dealUnitId: dealUnitId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -627,22 +245,20 @@ open class DealUnitsAPI {
     }
 
     /**
-     - PUT /api/v2/DealsService/DealUnits/{dealUnitId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     Delete a deal unit
+     - DELETE /api/v2/DealsService/DealUnits/{dealUnitId}
+     - Deletes an existing deal unit by its unique identifier.
      - parameter tenantId: (query)  
      - parameter dealUnitId: (path)  
-     - parameter dealUnitUpdateDto: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func apiV2DealsServiceDealUnitsDealUnitIdPutWithRequestBuilder(tenantId: UUID, dealUnitId: UUID, dealUnitUpdateDto: DealUnitUpdateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func deleteDealUnitAsyncWithRequestBuilder(tenantId: UUID, dealUnitId: UUID) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/DealsService/DealUnits/{dealUnitId}"
         let dealUnitIdPreEscape = "\(APIHelper.mapValueToPathItem(dealUnitId))"
         let dealUnitIdPostEscape = dealUnitIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{dealUnitId}", with: dealUnitIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: dealUnitUpdateDto)
+        let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -650,25 +266,28 @@ open class DealUnitsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            "Content-Type": "application/json",
+            :
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Delete a deal unit line
+     
      - parameter tenantId: (query)  
+     - parameter dealUnitId: (path)  
+     - parameter dealUnitLineId: (path)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2DealsServiceDealUnitsExtendedGet(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ExtendedDealUnitDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2DealsServiceDealUnitsExtendedGetWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+    open class func deleteDealUnitPriceAsync(tenantId: UUID, dealUnitId: UUID, dealUnitLineId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return deleteDealUnitPriceAsyncWithRequestBuilder(tenantId: tenantId, dealUnitId: dealUnitId, dealUnitLineId: dealUnitLineId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -679,113 +298,24 @@ open class DealUnitsAPI {
     }
 
     /**
-     - GET /api/v2/DealsService/DealUnits/Extended
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     Delete a deal unit line
+     - DELETE /api/v2/DealsService/DealUnits/{dealUnitId}/Lines/{dealUnitLineId}
+     - Deletes an existing line from a specific deal unit.
      - parameter tenantId: (query)  
-     - returns: RequestBuilder<ExtendedDealUnitDtoListEnvelope> 
-     */
-    open class func apiV2DealsServiceDealUnitsExtendedGetWithRequestBuilder(tenantId: UUID) -> RequestBuilder<ExtendedDealUnitDtoListEnvelope> {
-        let localVariablePath = "/api/v2/DealsService/DealUnits/Extended"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<ExtendedDealUnitDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
-     - parameter tenantId: (query)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2DealsServiceDealUnitsGet(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: DealUnitDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2DealsServiceDealUnitsGetWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - GET /api/v2/DealsService/DealUnits
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter tenantId: (query)  
-     - returns: RequestBuilder<DealUnitDtoListEnvelope> 
-     */
-    open class func apiV2DealsServiceDealUnitsGetWithRequestBuilder(tenantId: UUID) -> RequestBuilder<DealUnitDtoListEnvelope> {
-        let localVariablePath = "/api/v2/DealsService/DealUnits"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<DealUnitDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
-     - parameter tenantId: (query)  
-     - parameter dealUnitCreateDto: (body)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2DealsServiceDealUnitsPost(tenantId: UUID, dealUnitCreateDto: DealUnitCreateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2DealsServiceDealUnitsPostWithRequestBuilder(tenantId: tenantId, dealUnitCreateDto: dealUnitCreateDto).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - POST /api/v2/DealsService/DealUnits
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter tenantId: (query)  
-     - parameter dealUnitCreateDto: (body)  (optional)
+     - parameter dealUnitId: (path)  
+     - parameter dealUnitLineId: (path)  
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func apiV2DealsServiceDealUnitsPostWithRequestBuilder(tenantId: UUID, dealUnitCreateDto: DealUnitCreateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
-        let localVariablePath = "/api/v2/DealsService/DealUnits"
+    open class func deleteDealUnitPriceAsyncWithRequestBuilder(tenantId: UUID, dealUnitId: UUID, dealUnitLineId: UUID) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/DealsService/DealUnits/{dealUnitId}/Lines/{dealUnitLineId}"
+        let dealUnitIdPreEscape = "\(APIHelper.mapValueToPathItem(dealUnitId))"
+        let dealUnitIdPostEscape = dealUnitIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{dealUnitId}", with: dealUnitIdPostEscape, options: .literal, range: nil)
+        let dealUnitLineIdPreEscape = "\(APIHelper.mapValueToPathItem(dealUnitLineId))"
+        let dealUnitLineIdPostEscape = dealUnitLineIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{dealUnitLineId}", with: dealUnitLineIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: dealUnitCreateDto)
+        let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -793,18 +323,19 @@ open class DealUnitsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            "Content-Type": "application/json",
+            :
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Get deal unit by ID
+     
      - parameter tenantId: (query)  
      - parameter dealUnitId: (path)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
@@ -823,10 +354,9 @@ open class DealUnitsAPI {
     }
 
     /**
+     Get deal unit by ID
      - GET /api/v2/DealsService/DealUnits/{dealUnitId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Retrieves a single deal unit by its unique identifier.
      - parameter tenantId: (query)  
      - parameter dealUnitId: (path)  
      - returns: RequestBuilder<DealUnitDtoEnvelope> 
@@ -852,6 +382,476 @@ open class DealUnitsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<DealUnitDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Get deal unit lines
+     
+     - parameter tenantId: (query)  
+     - parameter dealUnitId: (path)  
+     - parameter itemId: (query)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getDealUnitLinesAsync(tenantId: UUID, dealUnitId: UUID, itemId: UUID? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: DealUnitLineDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getDealUnitLinesAsyncWithRequestBuilder(tenantId: tenantId, dealUnitId: dealUnitId, itemId: itemId).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get deal unit lines
+     - GET /api/v2/DealsService/DealUnits/{dealUnitId}/Lines
+     - Retrieves a list of lines for a specific deal unit with OData query support.
+     - parameter tenantId: (query)  
+     - parameter dealUnitId: (path)  
+     - parameter itemId: (query)  (optional)
+     - returns: RequestBuilder<DealUnitLineDtoListEnvelope> 
+     */
+    open class func getDealUnitLinesAsyncWithRequestBuilder(tenantId: UUID, dealUnitId: UUID, itemId: UUID? = nil) -> RequestBuilder<DealUnitLineDtoListEnvelope> {
+        var localVariablePath = "/api/v2/DealsService/DealUnits/{dealUnitId}/Lines"
+        let dealUnitIdPreEscape = "\(APIHelper.mapValueToPathItem(dealUnitId))"
+        let dealUnitIdPostEscape = dealUnitIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{dealUnitId}", with: dealUnitIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "itemId": (wrappedValue: itemId?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<DealUnitLineDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Get deal unit lines count
+     
+     - parameter tenantId: (query)  
+     - parameter dealUnitId: (path)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getDealUnitLinesCountAsync(tenantId: UUID, dealUnitId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getDealUnitLinesCountAsyncWithRequestBuilder(tenantId: tenantId, dealUnitId: dealUnitId).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get deal unit lines count
+     - GET /api/v2/DealsService/DealUnits/{dealUnitId}/Lines/Count
+     - Returns the total count of lines for a specific deal unit with OData filter support.
+     - parameter tenantId: (query)  
+     - parameter dealUnitId: (path)  
+     - returns: RequestBuilder<Int32Envelope> 
+     */
+    open class func getDealUnitLinesCountAsyncWithRequestBuilder(tenantId: UUID, dealUnitId: UUID) -> RequestBuilder<Int32Envelope> {
+        var localVariablePath = "/api/v2/DealsService/DealUnits/{dealUnitId}/Lines/Count"
+        let dealUnitIdPreEscape = "\(APIHelper.mapValueToPathItem(dealUnitId))"
+        let dealUnitIdPostEscape = dealUnitIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{dealUnitId}", with: dealUnitIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Get a deal unit line by ID
+     
+     - parameter tenantId: (query)  
+     - parameter dealUnitId: (path)  
+     - parameter dealUnitLineId: (path)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getDealUnitPriceAsync(tenantId: UUID, dealUnitId: UUID, dealUnitLineId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: DealUnitLineDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getDealUnitPriceAsyncWithRequestBuilder(tenantId: tenantId, dealUnitId: dealUnitId, dealUnitLineId: dealUnitLineId).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get a deal unit line by ID
+     - GET /api/v2/DealsService/DealUnits/{dealUnitId}/Lines/{dealUnitLineId}
+     - Retrieves a single deal unit line by its unique identifier.
+     - parameter tenantId: (query)  
+     - parameter dealUnitId: (path)  
+     - parameter dealUnitLineId: (path)  
+     - returns: RequestBuilder<DealUnitLineDtoEnvelope> 
+     */
+    open class func getDealUnitPriceAsyncWithRequestBuilder(tenantId: UUID, dealUnitId: UUID, dealUnitLineId: UUID) -> RequestBuilder<DealUnitLineDtoEnvelope> {
+        var localVariablePath = "/api/v2/DealsService/DealUnits/{dealUnitId}/Lines/{dealUnitLineId}"
+        let dealUnitIdPreEscape = "\(APIHelper.mapValueToPathItem(dealUnitId))"
+        let dealUnitIdPostEscape = dealUnitIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{dealUnitId}", with: dealUnitIdPostEscape, options: .literal, range: nil)
+        let dealUnitLineIdPreEscape = "\(APIHelper.mapValueToPathItem(dealUnitLineId))"
+        let dealUnitLineIdPostEscape = dealUnitLineIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{dealUnitLineId}", with: dealUnitLineIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<DealUnitLineDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Get deal units
+     
+     - parameter tenantId: (query)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getDealUnitsAsync(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: DealUnitDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getDealUnitsAsyncWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get deal units
+     - GET /api/v2/DealsService/DealUnits
+     - Retrieves a list of deal units for the specified tenant with OData query support.
+     - parameter tenantId: (query)  
+     - returns: RequestBuilder<DealUnitDtoListEnvelope> 
+     */
+    open class func getDealUnitsAsyncWithRequestBuilder(tenantId: UUID) -> RequestBuilder<DealUnitDtoListEnvelope> {
+        let localVariablePath = "/api/v2/DealsService/DealUnits"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<DealUnitDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Get deal units count
+     
+     - parameter tenantId: (query)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getDealUnitsCountAsync(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getDealUnitsCountAsyncWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get deal units count
+     - GET /api/v2/DealsService/DealUnits/Count
+     - Returns the total count of deal units for the specified tenant with OData filter support.
+     - parameter tenantId: (query)  
+     - returns: RequestBuilder<Int32Envelope> 
+     */
+    open class func getDealUnitsCountAsyncWithRequestBuilder(tenantId: UUID) -> RequestBuilder<Int32Envelope> {
+        let localVariablePath = "/api/v2/DealsService/DealUnits/Count"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Get extended deal unit by ID
+     
+     - parameter tenantId: (query)  
+     - parameter dealUnitId: (path)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getExtendedDealUnitAsync(tenantId: UUID, dealUnitId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ExtendedDealUnitDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getExtendedDealUnitAsyncWithRequestBuilder(tenantId: tenantId, dealUnitId: dealUnitId).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get extended deal unit by ID
+     - GET /api/v2/DealsService/DealUnits/{dealUnitId}/Extended
+     - Retrieves a single deal unit with extended details by its unique identifier.
+     - parameter tenantId: (query)  
+     - parameter dealUnitId: (path)  
+     - returns: RequestBuilder<ExtendedDealUnitDtoEnvelope> 
+     */
+    open class func getExtendedDealUnitAsyncWithRequestBuilder(tenantId: UUID, dealUnitId: UUID) -> RequestBuilder<ExtendedDealUnitDtoEnvelope> {
+        var localVariablePath = "/api/v2/DealsService/DealUnits/{dealUnitId}/Extended"
+        let dealUnitIdPreEscape = "\(APIHelper.mapValueToPathItem(dealUnitId))"
+        let dealUnitIdPostEscape = dealUnitIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{dealUnitId}", with: dealUnitIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<ExtendedDealUnitDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Get extended deal units
+     
+     - parameter tenantId: (query)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getExtendedDealUnitsAsync(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ExtendedDealUnitDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getExtendedDealUnitsAsyncWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get extended deal units
+     - GET /api/v2/DealsService/DealUnits/Extended
+     - Retrieves a list of deal units with extended details for the specified tenant with OData query support.
+     - parameter tenantId: (query)  
+     - returns: RequestBuilder<ExtendedDealUnitDtoListEnvelope> 
+     */
+    open class func getExtendedDealUnitsAsyncWithRequestBuilder(tenantId: UUID) -> RequestBuilder<ExtendedDealUnitDtoListEnvelope> {
+        let localVariablePath = "/api/v2/DealsService/DealUnits/Extended"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<ExtendedDealUnitDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Update a deal unit
+     
+     - parameter tenantId: (query)  
+     - parameter dealUnitId: (path)  
+     - parameter dealUnitUpdateDto: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func updateDealUnitAsync(tenantId: UUID, dealUnitId: UUID, dealUnitUpdateDto: DealUnitUpdateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return updateDealUnitAsyncWithRequestBuilder(tenantId: tenantId, dealUnitId: dealUnitId, dealUnitUpdateDto: dealUnitUpdateDto).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Update a deal unit
+     - PUT /api/v2/DealsService/DealUnits/{dealUnitId}
+     - Updates an existing deal unit by its unique identifier.
+     - parameter tenantId: (query)  
+     - parameter dealUnitId: (path)  
+     - parameter dealUnitUpdateDto: (body)  (optional)
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func updateDealUnitAsyncWithRequestBuilder(tenantId: UUID, dealUnitId: UUID, dealUnitUpdateDto: DealUnitUpdateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/DealsService/DealUnits/{dealUnitId}"
+        let dealUnitIdPreEscape = "\(APIHelper.mapValueToPathItem(dealUnitId))"
+        let dealUnitIdPostEscape = dealUnitIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{dealUnitId}", with: dealUnitIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: dealUnitUpdateDto)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Update a deal unit line
+     
+     - parameter tenantId: (query)  
+     - parameter dealUnitId: (path)  
+     - parameter dealUnitLineId: (path)  
+     - parameter dealUnitLineUpdateDto: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func updateDealUnitPriceAsync(tenantId: UUID, dealUnitId: UUID, dealUnitLineId: UUID, dealUnitLineUpdateDto: DealUnitLineUpdateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return updateDealUnitPriceAsyncWithRequestBuilder(tenantId: tenantId, dealUnitId: dealUnitId, dealUnitLineId: dealUnitLineId, dealUnitLineUpdateDto: dealUnitLineUpdateDto).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Update a deal unit line
+     - PUT /api/v2/DealsService/DealUnits/{dealUnitId}/Lines/{dealUnitLineId}
+     - Updates an existing line within a specific deal unit.
+     - parameter tenantId: (query)  
+     - parameter dealUnitId: (path)  
+     - parameter dealUnitLineId: (path)  
+     - parameter dealUnitLineUpdateDto: (body)  (optional)
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func updateDealUnitPriceAsyncWithRequestBuilder(tenantId: UUID, dealUnitId: UUID, dealUnitLineId: UUID, dealUnitLineUpdateDto: DealUnitLineUpdateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/DealsService/DealUnits/{dealUnitId}/Lines/{dealUnitLineId}"
+        let dealUnitIdPreEscape = "\(APIHelper.mapValueToPathItem(dealUnitId))"
+        let dealUnitIdPostEscape = dealUnitIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{dealUnitId}", with: dealUnitIdPostEscape, options: .literal, range: nil)
+        let dealUnitLineIdPreEscape = "\(APIHelper.mapValueToPathItem(dealUnitLineId))"
+        let dealUnitLineIdPostEscape = dealUnitLineIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{dealUnitLineId}", with: dealUnitLineIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: dealUnitLineUpdateDto)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 }

@@ -13,109 +13,16 @@ import AnyCodable
 open class OrdersAPI {
 
     /**
-
-     - parameter tenantId: (query)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2OrdersServiceOrdersCountGet(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2OrdersServiceOrdersCountGetWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - GET /api/v2/OrdersService/Orders/Count
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter tenantId: (query)  
-     - returns: RequestBuilder<Int32Envelope> 
-     */
-    open class func apiV2OrdersServiceOrdersCountGetWithRequestBuilder(tenantId: UUID) -> RequestBuilder<Int32Envelope> {
-        let localVariablePath = "/api/v2/OrdersService/Orders/Count"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
-     - parameter tenantId: (query)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2OrdersServiceOrdersExtendedGet(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ExtendedOrderDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2OrdersServiceOrdersExtendedGetWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - GET /api/v2/OrdersService/Orders/Extended
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter tenantId: (query)  
-     - returns: RequestBuilder<ExtendedOrderDtoListEnvelope> 
-     */
-    open class func apiV2OrdersServiceOrdersExtendedGetWithRequestBuilder(tenantId: UUID) -> RequestBuilder<ExtendedOrderDtoListEnvelope> {
-        let localVariablePath = "/api/v2/OrdersService/Orders/Extended"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<ExtendedOrderDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
+     Calculates totals for an order.
+     
      - parameter tenantId: (query)  
      - parameter orderId: (path)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2OrdersServiceOrdersOrderIdCalculatePut(tenantId: UUID, orderId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2OrdersServiceOrdersOrderIdCalculatePutWithRequestBuilder(tenantId: tenantId, orderId: orderId).execute(apiResponseQueue) { result in
+    open class func calculateOrder(tenantId: UUID, orderId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return calculateOrderWithRequestBuilder(tenantId: tenantId, orderId: orderId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -126,15 +33,14 @@ open class OrdersAPI {
     }
 
     /**
+     Calculates totals for an order.
      - PUT /api/v2/OrdersService/Orders/{orderId}/Calculate
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Performs calculation of totals and taxes for the specified order.
      - parameter tenantId: (query)  
      - parameter orderId: (path)  
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func apiV2OrdersServiceOrdersOrderIdCalculatePutWithRequestBuilder(tenantId: UUID, orderId: UUID) -> RequestBuilder<EmptyEnvelope> {
+    open class func calculateOrderWithRequestBuilder(tenantId: UUID, orderId: UUID) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/OrdersService/Orders/{orderId}/Calculate"
         let orderIdPreEscape = "\(APIHelper.mapValueToPathItem(orderId))"
         let orderIdPostEscape = orderIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -155,170 +61,12 @@ open class OrdersAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
-     - parameter tenantId: (query)  
-     - parameter orderId: (path)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2OrdersServiceOrdersOrderIdDelete(tenantId: UUID, orderId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2OrdersServiceOrdersOrderIdDeleteWithRequestBuilder(tenantId: tenantId, orderId: orderId).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - DELETE /api/v2/OrdersService/Orders/{orderId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter tenantId: (query)  
-     - parameter orderId: (path)  
-     - returns: RequestBuilder<EmptyEnvelope> 
-     */
-    open class func apiV2OrdersServiceOrdersOrderIdDeleteWithRequestBuilder(tenantId: UUID, orderId: UUID) -> RequestBuilder<EmptyEnvelope> {
-        var localVariablePath = "/api/v2/OrdersService/Orders/{orderId}"
-        let orderIdPreEscape = "\(APIHelper.mapValueToPathItem(orderId))"
-        let orderIdPostEscape = orderIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{orderId}", with: orderIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
-     - parameter tenantId: (query)  
-     - parameter orderId: (path)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2OrdersServiceOrdersOrderIdLinesCountGet(tenantId: UUID, orderId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2OrdersServiceOrdersOrderIdLinesCountGetWithRequestBuilder(tenantId: tenantId, orderId: orderId).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - GET /api/v2/OrdersService/Orders/{orderId}/Lines/Count
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter tenantId: (query)  
-     - parameter orderId: (path)  
-     - returns: RequestBuilder<Int32Envelope> 
-     */
-    open class func apiV2OrdersServiceOrdersOrderIdLinesCountGetWithRequestBuilder(tenantId: UUID, orderId: UUID) -> RequestBuilder<Int32Envelope> {
-        var localVariablePath = "/api/v2/OrdersService/Orders/{orderId}/Lines/Count"
-        let orderIdPreEscape = "\(APIHelper.mapValueToPathItem(orderId))"
-        let orderIdPostEscape = orderIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{orderId}", with: orderIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
-     - parameter tenantId: (query)  
-     - parameter orderId: (path)  
-     - parameter itemId: (query)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2OrdersServiceOrdersOrderIdLinesGet(tenantId: UUID, orderId: UUID, itemId: UUID? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: OrderLineDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2OrdersServiceOrdersOrderIdLinesGetWithRequestBuilder(tenantId: tenantId, orderId: orderId, itemId: itemId).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - GET /api/v2/OrdersService/Orders/{orderId}/Lines
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter tenantId: (query)  
-     - parameter orderId: (path)  
-     - parameter itemId: (query)  (optional)
-     - returns: RequestBuilder<OrderLineDtoListEnvelope> 
-     */
-    open class func apiV2OrdersServiceOrdersOrderIdLinesGetWithRequestBuilder(tenantId: UUID, orderId: UUID, itemId: UUID? = nil) -> RequestBuilder<OrderLineDtoListEnvelope> {
-        var localVariablePath = "/api/v2/OrdersService/Orders/{orderId}/Lines"
-        let orderIdPreEscape = "\(APIHelper.mapValueToPathItem(orderId))"
-        let orderIdPostEscape = orderIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{orderId}", with: orderIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-            "itemId": (wrappedValue: itemId?.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<OrderLineDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
+     Calculates totals for an order line.
+     
      - parameter tenantId: (query)  
      - parameter orderId: (path)  
      - parameter orderLineId: (path)  
@@ -326,8 +74,8 @@ open class OrdersAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2OrdersServiceOrdersOrderIdLinesOrderLineIdCalculatePut(tenantId: UUID, orderId: UUID, orderLineId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2OrdersServiceOrdersOrderIdLinesOrderLineIdCalculatePutWithRequestBuilder(tenantId: tenantId, orderId: orderId, orderLineId: orderLineId).execute(apiResponseQueue) { result in
+    open class func calculateOrderLine(tenantId: UUID, orderId: UUID, orderLineId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return calculateOrderLineWithRequestBuilder(tenantId: tenantId, orderId: orderId, orderLineId: orderLineId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -338,16 +86,15 @@ open class OrdersAPI {
     }
 
     /**
+     Calculates totals for an order line.
      - PUT /api/v2/OrdersService/Orders/{orderId}/Lines/{orderLineId}/Calculate
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Performs calculation of totals and taxes for the specified order line.
      - parameter tenantId: (query)  
      - parameter orderId: (path)  
      - parameter orderLineId: (path)  
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func apiV2OrdersServiceOrdersOrderIdLinesOrderLineIdCalculatePutWithRequestBuilder(tenantId: UUID, orderId: UUID, orderLineId: UUID) -> RequestBuilder<EmptyEnvelope> {
+    open class func calculateOrderLineWithRequestBuilder(tenantId: UUID, orderId: UUID, orderLineId: UUID) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/OrdersService/Orders/{orderId}/Lines/{orderLineId}/Calculate"
         let orderIdPreEscape = "\(APIHelper.mapValueToPathItem(orderId))"
         let orderIdPostEscape = orderIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -371,20 +118,20 @@ open class OrdersAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Creates a new order.
+     
      - parameter tenantId: (query)  
-     - parameter orderId: (path)  
-     - parameter orderLineId: (path)  
+     - parameter orderCreateDto: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2OrdersServiceOrdersOrderIdLinesOrderLineIdDelete(tenantId: UUID, orderId: UUID, orderLineId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2OrdersServiceOrdersOrderIdLinesOrderLineIdDeleteWithRequestBuilder(tenantId: tenantId, orderId: orderId, orderLineId: orderLineId).execute(apiResponseQueue) { result in
+    open class func createOrder(tenantId: UUID, orderCreateDto: OrderCreateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return createOrderWithRequestBuilder(tenantId: tenantId, orderCreateDto: orderCreateDto).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -395,16 +142,171 @@ open class OrdersAPI {
     }
 
     /**
+     Creates a new order.
+     - POST /api/v2/OrdersService/Orders
+     - Creates a new order for the specified tenant.
+     - parameter tenantId: (query)  
+     - parameter orderCreateDto: (body)  (optional)
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func createOrderWithRequestBuilder(tenantId: UUID, orderCreateDto: OrderCreateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
+        let localVariablePath = "/api/v2/OrdersService/Orders"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: orderCreateDto)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Creates a new order line.
+     
+     - parameter tenantId: (query)  
+     - parameter orderId: (path)  
+     - parameter orderLineCreateDto: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func createOrderLine(tenantId: UUID, orderId: UUID, orderLineCreateDto: OrderLineCreateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return createOrderLineWithRequestBuilder(tenantId: tenantId, orderId: orderId, orderLineCreateDto: orderLineCreateDto).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Creates a new order line.
+     - POST /api/v2/OrdersService/Orders/{orderId}/Lines
+     - Creates a new line (item) for the specified order.
+     - parameter tenantId: (query)  
+     - parameter orderId: (path)  
+     - parameter orderLineCreateDto: (body)  (optional)
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func createOrderLineWithRequestBuilder(tenantId: UUID, orderId: UUID, orderLineCreateDto: OrderLineCreateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/OrdersService/Orders/{orderId}/Lines"
+        let orderIdPreEscape = "\(APIHelper.mapValueToPathItem(orderId))"
+        let orderIdPostEscape = orderIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{orderId}", with: orderIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: orderLineCreateDto)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Deletes an order.
+     
+     - parameter tenantId: (query)  
+     - parameter orderId: (path)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func deleteOrder(tenantId: UUID, orderId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return deleteOrderWithRequestBuilder(tenantId: tenantId, orderId: orderId).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Deletes an order.
+     - DELETE /api/v2/OrdersService/Orders/{orderId}
+     - Deletes the specified order.
+     - parameter tenantId: (query)  
+     - parameter orderId: (path)  
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func deleteOrderWithRequestBuilder(tenantId: UUID, orderId: UUID) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/OrdersService/Orders/{orderId}"
+        let orderIdPreEscape = "\(APIHelper.mapValueToPathItem(orderId))"
+        let orderIdPostEscape = orderIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{orderId}", with: orderIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Deletes an order line.
+     
+     - parameter tenantId: (query)  
+     - parameter orderId: (path)  
+     - parameter orderLineId: (path)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func deleteOrderLine(tenantId: UUID, orderId: UUID, orderLineId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return deleteOrderLineWithRequestBuilder(tenantId: tenantId, orderId: orderId, orderLineId: orderLineId).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Deletes an order line.
      - DELETE /api/v2/OrdersService/Orders/{orderId}/Lines/{orderLineId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Deletes the specified order line.
      - parameter tenantId: (query)  
      - parameter orderId: (path)  
      - parameter orderLineId: (path)  
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func apiV2OrdersServiceOrdersOrderIdLinesOrderLineIdDeleteWithRequestBuilder(tenantId: UUID, orderId: UUID, orderLineId: UUID) -> RequestBuilder<EmptyEnvelope> {
+    open class func deleteOrderLineWithRequestBuilder(tenantId: UUID, orderId: UUID, orderLineId: UUID) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/OrdersService/Orders/{orderId}/Lines/{orderLineId}"
         let orderIdPreEscape = "\(APIHelper.mapValueToPathItem(orderId))"
         let orderIdPostEscape = orderIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -428,20 +330,19 @@ open class OrdersAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Gets a list of extended orders for a tenant.
+     
      - parameter tenantId: (query)  
-     - parameter orderId: (path)  
-     - parameter orderLineId: (path)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2OrdersServiceOrdersOrderIdLinesOrderLineIdGet(tenantId: UUID, orderId: UUID, orderLineId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: OrderLineDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2OrdersServiceOrdersOrderIdLinesOrderLineIdGetWithRequestBuilder(tenantId: tenantId, orderId: orderId, orderLineId: orderLineId).execute(apiResponseQueue) { result in
+    open class func getExtendedOrders(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ExtendedOrderDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getExtendedOrdersWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -452,16 +353,116 @@ open class OrdersAPI {
     }
 
     /**
+     Gets a list of extended orders for a tenant.
+     - GET /api/v2/OrdersService/Orders/Extended
+     - Retrieves a list of extended order details for the specified tenant.
+     - parameter tenantId: (query)  
+     - returns: RequestBuilder<ExtendedOrderDtoListEnvelope> 
+     */
+    open class func getExtendedOrdersWithRequestBuilder(tenantId: UUID) -> RequestBuilder<ExtendedOrderDtoListEnvelope> {
+        let localVariablePath = "/api/v2/OrdersService/Orders/Extended"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<ExtendedOrderDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Gets a specific order by ID.
+     
+     - parameter tenantId: (query)  
+     - parameter orderId: (path)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getOrder(tenantId: UUID, orderId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: OrderDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getOrderWithRequestBuilder(tenantId: tenantId, orderId: orderId).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Gets a specific order by ID.
+     - GET /api/v2/OrdersService/Orders/{orderId}
+     - Retrieves the details of a specific order by its ID.
+     - parameter tenantId: (query)  
+     - parameter orderId: (path)  
+     - returns: RequestBuilder<OrderDtoEnvelope> 
+     */
+    open class func getOrderWithRequestBuilder(tenantId: UUID, orderId: UUID) -> RequestBuilder<OrderDtoEnvelope> {
+        var localVariablePath = "/api/v2/OrdersService/Orders/{orderId}"
+        let orderIdPreEscape = "\(APIHelper.mapValueToPathItem(orderId))"
+        let orderIdPostEscape = orderIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{orderId}", with: orderIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<OrderDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Gets a specific order line.
+     
+     - parameter tenantId: (query)  
+     - parameter orderId: (path)  
+     - parameter orderLineId: (path)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getOrderLine(tenantId: UUID, orderId: UUID, orderLineId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: OrderLineDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getOrderLineWithRequestBuilder(tenantId: tenantId, orderId: orderId, orderLineId: orderLineId).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Gets a specific order line.
      - GET /api/v2/OrdersService/Orders/{orderId}/Lines/{orderLineId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Retrieves the details of a specific order line by its ID.
      - parameter tenantId: (query)  
      - parameter orderId: (path)  
      - parameter orderLineId: (path)  
      - returns: RequestBuilder<OrderLineDtoEnvelope> 
      */
-    open class func apiV2OrdersServiceOrdersOrderIdLinesOrderLineIdGetWithRequestBuilder(tenantId: UUID, orderId: UUID, orderLineId: UUID) -> RequestBuilder<OrderLineDtoEnvelope> {
+    open class func getOrderLineWithRequestBuilder(tenantId: UUID, orderId: UUID, orderLineId: UUID) -> RequestBuilder<OrderLineDtoEnvelope> {
         var localVariablePath = "/api/v2/OrdersService/Orders/{orderId}/Lines/{orderLineId}"
         let orderIdPreEscape = "\(APIHelper.mapValueToPathItem(orderId))"
         let orderIdPostEscape = orderIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -485,21 +486,21 @@ open class OrdersAPI {
 
         let localVariableRequestBuilder: RequestBuilder<OrderLineDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Gets order lines for an order.
+     
      - parameter tenantId: (query)  
      - parameter orderId: (path)  
-     - parameter orderLineId: (path)  
-     - parameter orderLineUpdateDto: (body)  (optional)
+     - parameter itemId: (query)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2OrdersServiceOrdersOrderIdLinesOrderLineIdPut(tenantId: UUID, orderId: UUID, orderLineId: UUID, orderLineUpdateDto: OrderLineUpdateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2OrdersServiceOrdersOrderIdLinesOrderLineIdPutWithRequestBuilder(tenantId: tenantId, orderId: orderId, orderLineId: orderLineId, orderLineUpdateDto: orderLineUpdateDto).execute(apiResponseQueue) { result in
+    open class func getOrderLines(tenantId: UUID, orderId: UUID, itemId: UUID? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: OrderLineDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getOrderLinesWithRequestBuilder(tenantId: tenantId, orderId: orderId, itemId: itemId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -510,17 +511,427 @@ open class OrdersAPI {
     }
 
     /**
+     Gets order lines for an order.
+     - GET /api/v2/OrdersService/Orders/{orderId}/Lines
+     - Retrieves the lines (items) for the specified order.
+     - parameter tenantId: (query)  
+     - parameter orderId: (path)  
+     - parameter itemId: (query)  (optional)
+     - returns: RequestBuilder<OrderLineDtoListEnvelope> 
+     */
+    open class func getOrderLinesWithRequestBuilder(tenantId: UUID, orderId: UUID, itemId: UUID? = nil) -> RequestBuilder<OrderLineDtoListEnvelope> {
+        var localVariablePath = "/api/v2/OrdersService/Orders/{orderId}/Lines"
+        let orderIdPreEscape = "\(APIHelper.mapValueToPathItem(orderId))"
+        let orderIdPostEscape = orderIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{orderId}", with: orderIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "itemId": (wrappedValue: itemId?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<OrderLineDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Gets the count of order lines for an order.
+     
+     - parameter tenantId: (query)  
+     - parameter orderId: (path)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getOrderLinesCount(tenantId: UUID, orderId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getOrderLinesCountWithRequestBuilder(tenantId: tenantId, orderId: orderId).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Gets the count of order lines for an order.
+     - GET /api/v2/OrdersService/Orders/{orderId}/Lines/Count
+     - Retrieves the total number of lines for the specified order.
+     - parameter tenantId: (query)  
+     - parameter orderId: (path)  
+     - returns: RequestBuilder<Int32Envelope> 
+     */
+    open class func getOrderLinesCountWithRequestBuilder(tenantId: UUID, orderId: UUID) -> RequestBuilder<Int32Envelope> {
+        var localVariablePath = "/api/v2/OrdersService/Orders/{orderId}/Lines/Count"
+        let orderIdPreEscape = "\(APIHelper.mapValueToPathItem(orderId))"
+        let orderIdPostEscape = orderIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{orderId}", with: orderIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Gets a list of orders for a tenant.
+     
+     - parameter tenantId: (query)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getOrders(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: OrderDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getOrdersWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Gets a list of orders for a tenant.
+     - GET /api/v2/OrdersService/Orders
+     - Retrieves a list of orders for the specified tenant.
+     - parameter tenantId: (query)  
+     - returns: RequestBuilder<OrderDtoListEnvelope> 
+     */
+    open class func getOrdersWithRequestBuilder(tenantId: UUID) -> RequestBuilder<OrderDtoListEnvelope> {
+        let localVariablePath = "/api/v2/OrdersService/Orders"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<OrderDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Gets the count of orders for a tenant.
+     
+     - parameter tenantId: (query)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getOrdersCount(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getOrdersCountWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Gets the count of orders for a tenant.
+     - GET /api/v2/OrdersService/Orders/Count
+     - Retrieves the total number of orders for the specified tenant.
+     - parameter tenantId: (query)  
+     - returns: RequestBuilder<Int32Envelope> 
+     */
+    open class func getOrdersCountWithRequestBuilder(tenantId: UUID) -> RequestBuilder<Int32Envelope> {
+        let localVariablePath = "/api/v2/OrdersService/Orders/Count"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Preview the rendered email for an Order.
+     
+     - parameter orderId: (path)  
+     - parameter tenantId: (query)  
+     - parameter emailDispatchRequest: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func previewOrderEmailTemplate(orderId: UUID, tenantId: UUID, emailDispatchRequest: EmailDispatchRequest? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return previewOrderEmailTemplateWithRequestBuilder(orderId: orderId, tenantId: tenantId, emailDispatchRequest: emailDispatchRequest).execute(apiResponseQueue) { result in
+            switch result {
+            case .success:
+                completion((), nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Preview the rendered email for an Order.
+     - POST /api/v2/OrdersService/Orders/{orderId}/Emails/Preview
+     - Previews the rendered email template for the specified order. Only users with the 'send_email' permission are permitted.
+     - parameter orderId: (path)  
+     - parameter tenantId: (query)  
+     - parameter emailDispatchRequest: (body)  (optional)
+     - returns: RequestBuilder<Void> 
+     */
+    open class func previewOrderEmailTemplateWithRequestBuilder(orderId: UUID, tenantId: UUID, emailDispatchRequest: EmailDispatchRequest? = nil) -> RequestBuilder<Void> {
+        var localVariablePath = "/api/v2/OrdersService/Orders/{orderId}/Emails/Preview"
+        let orderIdPreEscape = "\(APIHelper.mapValueToPathItem(orderId))"
+        let orderIdPostEscape = orderIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{orderId}", with: orderIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: emailDispatchRequest)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Send a transactional email for an order.
+     
+     - parameter tenantId: (query)  
+     - parameter orderId: (path)  
+     - parameter emailDispatchRequest: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func sendOrderEmail(tenantId: UUID, orderId: UUID, emailDispatchRequest: EmailDispatchRequest? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return sendOrderEmailWithRequestBuilder(tenantId: tenantId, orderId: orderId, emailDispatchRequest: emailDispatchRequest).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Send a transactional email for an order.
+     - POST /api/v2/OrdersService/Orders/{orderId}/Emails/Send
+     - Sends a transactional email for the specified order. Only users with the 'send_email' permission are permitted.
+     - parameter tenantId: (query)  
+     - parameter orderId: (path)  
+     - parameter emailDispatchRequest: (body)  (optional)
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func sendOrderEmailWithRequestBuilder(tenantId: UUID, orderId: UUID, emailDispatchRequest: EmailDispatchRequest? = nil) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/OrdersService/Orders/{orderId}/Emails/Send"
+        let orderIdPreEscape = "\(APIHelper.mapValueToPathItem(orderId))"
+        let orderIdPostEscape = orderIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{orderId}", with: orderIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: emailDispatchRequest)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Submits a cart and creates an order.
+     
+     - parameter cartId: (query)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func submitCart(cartId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: OrderDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return submitCartWithRequestBuilder(cartId: cartId).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Submits a cart and creates an order.
+     - POST /api/v2/OrdersService/Orders/SubmitCart
+     - Submits the specified cart and creates an order for the authenticated user.
+     - parameter cartId: (query)  
+     - returns: RequestBuilder<OrderDtoEnvelope> 
+     */
+    open class func submitCartWithRequestBuilder(cartId: UUID) -> RequestBuilder<OrderDtoEnvelope> {
+        let localVariablePath = "/api/v2/OrdersService/Orders/SubmitCart"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "cartId": (wrappedValue: cartId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<OrderDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Updates an existing order.
+     
+     - parameter tenantId: (query)  
+     - parameter orderId: (path)  
+     - parameter orderUpdateDto: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func updateOrder(tenantId: UUID, orderId: UUID, orderUpdateDto: OrderUpdateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return updateOrderWithRequestBuilder(tenantId: tenantId, orderId: orderId, orderUpdateDto: orderUpdateDto).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Updates an existing order.
+     - PUT /api/v2/OrdersService/Orders/{orderId}
+     - Updates the details of an existing order.
+     - parameter tenantId: (query)  
+     - parameter orderId: (path)  
+     - parameter orderUpdateDto: (body)  (optional)
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func updateOrderWithRequestBuilder(tenantId: UUID, orderId: UUID, orderUpdateDto: OrderUpdateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/OrdersService/Orders/{orderId}"
+        let orderIdPreEscape = "\(APIHelper.mapValueToPathItem(orderId))"
+        let orderIdPostEscape = orderIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{orderId}", with: orderIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: orderUpdateDto)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Updates an order line.
+     
+     - parameter tenantId: (query)  
+     - parameter orderId: (path)  
+     - parameter orderLineId: (path)  
+     - parameter orderLineUpdateDto: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func updateOrderLine(tenantId: UUID, orderId: UUID, orderLineId: UUID, orderLineUpdateDto: OrderLineUpdateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return updateOrderLineWithRequestBuilder(tenantId: tenantId, orderId: orderId, orderLineId: orderLineId, orderLineUpdateDto: orderLineUpdateDto).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Updates an order line.
      - PUT /api/v2/OrdersService/Orders/{orderId}/Lines/{orderLineId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Updates the details of a specific order line.
      - parameter tenantId: (query)  
      - parameter orderId: (path)  
      - parameter orderLineId: (path)  
      - parameter orderLineUpdateDto: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func apiV2OrdersServiceOrdersOrderIdLinesOrderLineIdPutWithRequestBuilder(tenantId: UUID, orderId: UUID, orderLineId: UUID, orderLineUpdateDto: OrderLineUpdateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func updateOrderLineWithRequestBuilder(tenantId: UUID, orderId: UUID, orderLineId: UUID, orderLineUpdateDto: OrderLineUpdateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/OrdersService/Orders/{orderId}/Lines/{orderLineId}"
         let orderIdPreEscape = "\(APIHelper.mapValueToPathItem(orderId))"
         let orderIdPostEscape = orderIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -544,309 +955,6 @@ open class OrdersAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
-     - parameter tenantId: (query)  
-     - parameter orderId: (path)  
-     - parameter orderLineCreateDto: (body)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2OrdersServiceOrdersOrderIdLinesPost(tenantId: UUID, orderId: UUID, orderLineCreateDto: OrderLineCreateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2OrdersServiceOrdersOrderIdLinesPostWithRequestBuilder(tenantId: tenantId, orderId: orderId, orderLineCreateDto: orderLineCreateDto).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - POST /api/v2/OrdersService/Orders/{orderId}/Lines
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter tenantId: (query)  
-     - parameter orderId: (path)  
-     - parameter orderLineCreateDto: (body)  (optional)
-     - returns: RequestBuilder<EmptyEnvelope> 
-     */
-    open class func apiV2OrdersServiceOrdersOrderIdLinesPostWithRequestBuilder(tenantId: UUID, orderId: UUID, orderLineCreateDto: OrderLineCreateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
-        var localVariablePath = "/api/v2/OrdersService/Orders/{orderId}/Lines"
-        let orderIdPreEscape = "\(APIHelper.mapValueToPathItem(orderId))"
-        let orderIdPostEscape = orderIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{orderId}", with: orderIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: orderLineCreateDto)
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            "Content-Type": "application/json",
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
-     - parameter tenantId: (query)  
-     - parameter orderId: (path)  
-     - parameter orderUpdateDto: (body)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2OrdersServiceOrdersOrderIdPut(tenantId: UUID, orderId: UUID, orderUpdateDto: OrderUpdateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2OrdersServiceOrdersOrderIdPutWithRequestBuilder(tenantId: tenantId, orderId: orderId, orderUpdateDto: orderUpdateDto).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - PUT /api/v2/OrdersService/Orders/{orderId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter tenantId: (query)  
-     - parameter orderId: (path)  
-     - parameter orderUpdateDto: (body)  (optional)
-     - returns: RequestBuilder<EmptyEnvelope> 
-     */
-    open class func apiV2OrdersServiceOrdersOrderIdPutWithRequestBuilder(tenantId: UUID, orderId: UUID, orderUpdateDto: OrderUpdateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
-        var localVariablePath = "/api/v2/OrdersService/Orders/{orderId}"
-        let orderIdPreEscape = "\(APIHelper.mapValueToPathItem(orderId))"
-        let orderIdPostEscape = orderIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{orderId}", with: orderIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: orderUpdateDto)
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            "Content-Type": "application/json",
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
-     - parameter tenantId: (query)  
-     - parameter orderCreateDto: (body)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2OrdersServiceOrdersPost(tenantId: UUID, orderCreateDto: OrderCreateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2OrdersServiceOrdersPostWithRequestBuilder(tenantId: tenantId, orderCreateDto: orderCreateDto).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - POST /api/v2/OrdersService/Orders
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter tenantId: (query)  
-     - parameter orderCreateDto: (body)  (optional)
-     - returns: RequestBuilder<EmptyEnvelope> 
-     */
-    open class func apiV2OrdersServiceOrdersPostWithRequestBuilder(tenantId: UUID, orderCreateDto: OrderCreateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
-        let localVariablePath = "/api/v2/OrdersService/Orders"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: orderCreateDto)
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            "Content-Type": "application/json",
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
-     - parameter cartId: (query)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2OrdersServiceOrdersSubmitCartPost(cartId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: OrderDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2OrdersServiceOrdersSubmitCartPostWithRequestBuilder(cartId: cartId).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - POST /api/v2/OrdersService/Orders/SubmitCart
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter cartId: (query)  
-     - returns: RequestBuilder<OrderDtoEnvelope> 
-     */
-    open class func apiV2OrdersServiceOrdersSubmitCartPostWithRequestBuilder(cartId: UUID) -> RequestBuilder<OrderDtoEnvelope> {
-        let localVariablePath = "/api/v2/OrdersService/Orders/SubmitCart"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "cartId": (wrappedValue: cartId.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<OrderDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
-     - parameter tenantId: (query)  
-     - parameter orderId: (path)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func getOrderAsync(tenantId: UUID, orderId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: OrderDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getOrderAsyncWithRequestBuilder(tenantId: tenantId, orderId: orderId).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - GET /api/v2/OrdersService/Orders/{orderId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter tenantId: (query)  
-     - parameter orderId: (path)  
-     - returns: RequestBuilder<OrderDtoEnvelope> 
-     */
-    open class func getOrderAsyncWithRequestBuilder(tenantId: UUID, orderId: UUID) -> RequestBuilder<OrderDtoEnvelope> {
-        var localVariablePath = "/api/v2/OrdersService/Orders/{orderId}"
-        let orderIdPreEscape = "\(APIHelper.mapValueToPathItem(orderId))"
-        let orderIdPostEscape = orderIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{orderId}", with: orderIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<OrderDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
-     - parameter tenantId: (query)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func getOrdersAsync(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: OrderDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getOrdersAsyncWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - GET /api/v2/OrdersService/Orders
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter tenantId: (query)  
-     - returns: RequestBuilder<OrderDtoListEnvelope> 
-     */
-    open class func getOrdersAsyncWithRequestBuilder(tenantId: UUID) -> RequestBuilder<OrderDtoListEnvelope> {
-        let localVariablePath = "/api/v2/OrdersService/Orders"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<OrderDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 }

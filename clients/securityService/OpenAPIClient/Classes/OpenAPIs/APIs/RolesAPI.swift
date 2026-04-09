@@ -13,16 +13,19 @@ import AnyCodable
 open class RolesAPI {
 
     /**
-
+     Assign a permission to a role
+     
      - parameter tenantId: (query)  
+     - parameter securityRoleId: (path)  
+     - parameter securityPermissionId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2SecurityServiceRolesGet(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SecurityRoleDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2SecurityServiceRolesGetWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func assignPermissionToRoleAsync(tenantId: UUID, securityRoleId: String, securityPermissionId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return assignPermissionToRoleAsyncWithRequestBuilder(tenantId: tenantId, securityRoleId: securityRoleId, securityPermissionId: securityPermissionId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -33,17 +36,24 @@ open class RolesAPI {
     }
 
     /**
-     - GET /api/v2/SecurityService/Roles
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     Assign a permission to a role
+     - POST /api/v2/SecurityService/Roles/{securityRoleId}/Permissions/{securityPermissionId}
+     - Assigns a security permission to a security role.
      - parameter tenantId: (query)  
+     - parameter securityRoleId: (path)  
+     - parameter securityPermissionId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - returns: RequestBuilder<SecurityRoleDtoListEnvelope> 
+     - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func apiV2SecurityServiceRolesGetWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SecurityRoleDtoListEnvelope> {
-        let localVariablePath = "/api/v2/SecurityService/Roles"
+    open class func assignPermissionToRoleAsyncWithRequestBuilder(tenantId: UUID, securityRoleId: String, securityPermissionId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/SecurityService/Roles/{securityRoleId}/Permissions/{securityPermissionId}"
+        let securityRoleIdPreEscape = "\(APIHelper.mapValueToPathItem(securityRoleId))"
+        let securityRoleIdPostEscape = securityRoleIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{securityRoleId}", with: securityRoleIdPostEscape, options: .literal, range: nil)
+        let securityPermissionIdPreEscape = "\(APIHelper.mapValueToPathItem(securityPermissionId))"
+        let securityPermissionIdPostEscape = securityPermissionIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{securityPermissionId}", with: securityPermissionIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
@@ -59,23 +69,25 @@ open class RolesAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<SecurityRoleDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Assign a role to a business application
+     
      - parameter tenantId: (query)  
+     - parameter securityRoleId: (path)  
+     - parameter applicationId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter securityRoleCreateDto: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2SecurityServiceRolesPost(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, securityRoleCreateDto: SecurityRoleCreateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2SecurityServiceRolesPostWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, securityRoleCreateDto: securityRoleCreateDto).execute(apiResponseQueue) { result in
+    open class func assignRoleToBusinessApplicationAsync(tenantId: UUID, securityRoleId: String, applicationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return assignRoleToBusinessApplicationAsyncWithRequestBuilder(tenantId: tenantId, securityRoleId: securityRoleId, applicationId: applicationId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -86,17 +98,139 @@ open class RolesAPI {
     }
 
     /**
-     - POST /api/v2/SecurityService/Roles
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     Assign a role to a business application
+     - POST /api/v2/SecurityService/Roles/{securityRoleId}/Applications/{applicationId}
+     - Assigns a security role to a business application.
      - parameter tenantId: (query)  
+     - parameter securityRoleId: (path)  
+     - parameter applicationId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter securityRoleCreateDto: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func apiV2SecurityServiceRolesPostWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, securityRoleCreateDto: SecurityRoleCreateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func assignRoleToBusinessApplicationAsyncWithRequestBuilder(tenantId: UUID, securityRoleId: String, applicationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/SecurityService/Roles/{securityRoleId}/Applications/{applicationId}"
+        let securityRoleIdPreEscape = "\(APIHelper.mapValueToPathItem(securityRoleId))"
+        let securityRoleIdPostEscape = securityRoleIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{securityRoleId}", with: securityRoleIdPostEscape, options: .literal, range: nil)
+        let applicationIdPreEscape = "\(APIHelper.mapValueToPathItem(applicationId))"
+        let applicationIdPostEscape = applicationIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{applicationId}", with: applicationIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Assign a role to an enrollment
+     
+     - parameter tenantId: (query)  
+     - parameter securityRoleId: (path)  
+     - parameter enrollmentId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func assignRoleToEnrollmentAsync(tenantId: UUID, securityRoleId: String, enrollmentId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return assignRoleToEnrollmentAsyncWithRequestBuilder(tenantId: tenantId, securityRoleId: securityRoleId, enrollmentId: enrollmentId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Assign a role to an enrollment
+     - POST /api/v2/SecurityService/Roles/{securityRoleId}/Enrollments/{enrollmentId}
+     - Assigns a security role to a tenant enrollment.
+     - parameter tenantId: (query)  
+     - parameter securityRoleId: (path)  
+     - parameter enrollmentId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func assignRoleToEnrollmentAsyncWithRequestBuilder(tenantId: UUID, securityRoleId: String, enrollmentId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/SecurityService/Roles/{securityRoleId}/Enrollments/{enrollmentId}"
+        let securityRoleIdPreEscape = "\(APIHelper.mapValueToPathItem(securityRoleId))"
+        let securityRoleIdPostEscape = securityRoleIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{securityRoleId}", with: securityRoleIdPostEscape, options: .literal, range: nil)
+        let enrollmentIdPreEscape = "\(APIHelper.mapValueToPathItem(enrollmentId))"
+        let enrollmentIdPostEscape = enrollmentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{enrollmentId}", with: enrollmentIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Create a new role
+     
+     - parameter tenantId: (query)  
+     - parameter securityRoleCreateDto: (body)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func createRoleAsync(tenantId: UUID, securityRoleCreateDto: SecurityRoleCreateDto, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return createRoleAsyncWithRequestBuilder(tenantId: tenantId, securityRoleCreateDto: securityRoleCreateDto, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Create a new role
+     - POST /api/v2/SecurityService/Roles
+     - Creates a new security role for the specified tenant.
+     - parameter tenantId: (query)  
+     - parameter securityRoleCreateDto: (body)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func createRoleAsyncWithRequestBuilder(tenantId: UUID, securityRoleCreateDto: SecurityRoleCreateDto, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
         let localVariablePath = "/api/v2/SecurityService/Roles"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: securityRoleCreateDto)
@@ -116,22 +250,22 @@ open class RolesAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Delete an existing role
+     
      - parameter tenantId: (query)  
      - parameter securityRoleId: (path)  
-     - parameter applicationId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2SecurityServiceRolesSecurityRoleIdApplicationsApplicationIdDelete(tenantId: UUID, securityRoleId: String, applicationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2SecurityServiceRolesSecurityRoleIdApplicationsApplicationIdDeleteWithRequestBuilder(tenantId: tenantId, securityRoleId: securityRoleId, applicationId: applicationId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func deleteRoleAsync(tenantId: UUID, securityRoleId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return deleteRoleAsyncWithRequestBuilder(tenantId: tenantId, securityRoleId: securityRoleId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -142,140 +276,16 @@ open class RolesAPI {
     }
 
     /**
-     - DELETE /api/v2/SecurityService/Roles/{securityRoleId}/Applications/{applicationId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter tenantId: (query)  
-     - parameter securityRoleId: (path)  
-     - parameter applicationId: (path)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - returns: RequestBuilder<EmptyEnvelope> 
-     */
-    open class func apiV2SecurityServiceRolesSecurityRoleIdApplicationsApplicationIdDeleteWithRequestBuilder(tenantId: UUID, securityRoleId: String, applicationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
-        var localVariablePath = "/api/v2/SecurityService/Roles/{securityRoleId}/Applications/{applicationId}"
-        let securityRoleIdPreEscape = "\(APIHelper.mapValueToPathItem(securityRoleId))"
-        let securityRoleIdPostEscape = securityRoleIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{securityRoleId}", with: securityRoleIdPostEscape, options: .literal, range: nil)
-        let applicationIdPreEscape = "\(APIHelper.mapValueToPathItem(applicationId))"
-        let applicationIdPostEscape = applicationIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{applicationId}", with: applicationIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            "x-api-version": xApiVersion?.encodeToJSON(),
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
-     - parameter tenantId: (query)  
-     - parameter securityRoleId: (path)  
-     - parameter applicationId: (path)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2SecurityServiceRolesSecurityRoleIdApplicationsApplicationIdPost(tenantId: UUID, securityRoleId: String, applicationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2SecurityServiceRolesSecurityRoleIdApplicationsApplicationIdPostWithRequestBuilder(tenantId: tenantId, securityRoleId: securityRoleId, applicationId: applicationId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - POST /api/v2/SecurityService/Roles/{securityRoleId}/Applications/{applicationId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter tenantId: (query)  
-     - parameter securityRoleId: (path)  
-     - parameter applicationId: (path)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - returns: RequestBuilder<EmptyEnvelope> 
-     */
-    open class func apiV2SecurityServiceRolesSecurityRoleIdApplicationsApplicationIdPostWithRequestBuilder(tenantId: UUID, securityRoleId: String, applicationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
-        var localVariablePath = "/api/v2/SecurityService/Roles/{securityRoleId}/Applications/{applicationId}"
-        let securityRoleIdPreEscape = "\(APIHelper.mapValueToPathItem(securityRoleId))"
-        let securityRoleIdPostEscape = securityRoleIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{securityRoleId}", with: securityRoleIdPostEscape, options: .literal, range: nil)
-        let applicationIdPreEscape = "\(APIHelper.mapValueToPathItem(applicationId))"
-        let applicationIdPostEscape = applicationIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{applicationId}", with: applicationIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            "x-api-version": xApiVersion?.encodeToJSON(),
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
-     - parameter tenantId: (query)  
-     - parameter securityRoleId: (path)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2SecurityServiceRolesSecurityRoleIdDelete(tenantId: UUID, securityRoleId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2SecurityServiceRolesSecurityRoleIdDeleteWithRequestBuilder(tenantId: tenantId, securityRoleId: securityRoleId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
+     Delete an existing role
      - DELETE /api/v2/SecurityService/Roles/{securityRoleId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Deletes an existing security role for the specified tenant.
      - parameter tenantId: (query)  
      - parameter securityRoleId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func apiV2SecurityServiceRolesSecurityRoleIdDeleteWithRequestBuilder(tenantId: UUID, securityRoleId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func deleteRoleAsyncWithRequestBuilder(tenantId: UUID, securityRoleId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/SecurityService/Roles/{securityRoleId}"
         let securityRoleIdPreEscape = "\(APIHelper.mapValueToPathItem(securityRoleId))"
         let securityRoleIdPostEscape = securityRoleIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -297,22 +307,22 @@ open class RolesAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Get applications by role
+     
      - parameter tenantId: (query)  
      - parameter securityRoleId: (path)  
-     - parameter enrollmentId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2SecurityServiceRolesSecurityRoleIdEnrollmentsEnrollmentIdDelete(tenantId: UUID, securityRoleId: String, enrollmentId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2SecurityServiceRolesSecurityRoleIdEnrollmentsEnrollmentIdDeleteWithRequestBuilder(tenantId: tenantId, securityRoleId: securityRoleId, enrollmentId: enrollmentId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getApplicationsByRoleAsync(tenantId: UUID, securityRoleId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BusinessApplicationSimpleDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getApplicationsByRoleAsyncWithRequestBuilder(tenantId: tenantId, securityRoleId: securityRoleId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -323,25 +333,20 @@ open class RolesAPI {
     }
 
     /**
-     - DELETE /api/v2/SecurityService/Roles/{securityRoleId}/Enrollments/{enrollmentId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     Get applications by role
+     - GET /api/v2/SecurityService/Roles/{securityRoleId}/Applications
+     - Retrieves all business applications that have a specific role granted.
      - parameter tenantId: (query)  
      - parameter securityRoleId: (path)  
-     - parameter enrollmentId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - returns: RequestBuilder<EmptyEnvelope> 
+     - returns: RequestBuilder<BusinessApplicationSimpleDtoListEnvelope> 
      */
-    open class func apiV2SecurityServiceRolesSecurityRoleIdEnrollmentsEnrollmentIdDeleteWithRequestBuilder(tenantId: UUID, securityRoleId: String, enrollmentId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
-        var localVariablePath = "/api/v2/SecurityService/Roles/{securityRoleId}/Enrollments/{enrollmentId}"
+    open class func getApplicationsByRoleAsyncWithRequestBuilder(tenantId: UUID, securityRoleId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<BusinessApplicationSimpleDtoListEnvelope> {
+        var localVariablePath = "/api/v2/SecurityService/Roles/{securityRoleId}/Applications"
         let securityRoleIdPreEscape = "\(APIHelper.mapValueToPathItem(securityRoleId))"
         let securityRoleIdPostEscape = securityRoleIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{securityRoleId}", with: securityRoleIdPostEscape, options: .literal, range: nil)
-        let enrollmentIdPreEscape = "\(APIHelper.mapValueToPathItem(enrollmentId))"
-        let enrollmentIdPostEscape = enrollmentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{enrollmentId}", with: enrollmentIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
@@ -357,24 +362,24 @@ open class RolesAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<BusinessApplicationSimpleDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Get enrollments by role
+     
      - parameter tenantId: (query)  
      - parameter securityRoleId: (path)  
-     - parameter enrollmentId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2SecurityServiceRolesSecurityRoleIdEnrollmentsEnrollmentIdPost(tenantId: UUID, securityRoleId: String, enrollmentId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2SecurityServiceRolesSecurityRoleIdEnrollmentsEnrollmentIdPostWithRequestBuilder(tenantId: tenantId, securityRoleId: securityRoleId, enrollmentId: enrollmentId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getEnrollmentsByRoleAsync(tenantId: UUID, securityRoleId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TenantEnrollmentDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getEnrollmentsByRoleAsyncWithRequestBuilder(tenantId: tenantId, securityRoleId: securityRoleId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -385,78 +390,16 @@ open class RolesAPI {
     }
 
     /**
-     - POST /api/v2/SecurityService/Roles/{securityRoleId}/Enrollments/{enrollmentId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter tenantId: (query)  
-     - parameter securityRoleId: (path)  
-     - parameter enrollmentId: (path)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - returns: RequestBuilder<EmptyEnvelope> 
-     */
-    open class func apiV2SecurityServiceRolesSecurityRoleIdEnrollmentsEnrollmentIdPostWithRequestBuilder(tenantId: UUID, securityRoleId: String, enrollmentId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
-        var localVariablePath = "/api/v2/SecurityService/Roles/{securityRoleId}/Enrollments/{enrollmentId}"
-        let securityRoleIdPreEscape = "\(APIHelper.mapValueToPathItem(securityRoleId))"
-        let securityRoleIdPostEscape = securityRoleIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{securityRoleId}", with: securityRoleIdPostEscape, options: .literal, range: nil)
-        let enrollmentIdPreEscape = "\(APIHelper.mapValueToPathItem(enrollmentId))"
-        let enrollmentIdPostEscape = enrollmentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{enrollmentId}", with: enrollmentIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            "x-api-version": xApiVersion?.encodeToJSON(),
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
-     - parameter tenantId: (query)  
-     - parameter securityRoleId: (path)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2SecurityServiceRolesSecurityRoleIdEnrollmentsGet(tenantId: UUID, securityRoleId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TenantEnrolmentDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2SecurityServiceRolesSecurityRoleIdEnrollmentsGetWithRequestBuilder(tenantId: tenantId, securityRoleId: securityRoleId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
+     Get enrollments by role
      - GET /api/v2/SecurityService/Roles/{securityRoleId}/Enrollments
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Retrieves all tenant enrollments that have a specific role.
      - parameter tenantId: (query)  
      - parameter securityRoleId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - returns: RequestBuilder<TenantEnrolmentDtoListEnvelope> 
+     - returns: RequestBuilder<TenantEnrollmentDtoListEnvelope> 
      */
-    open class func apiV2SecurityServiceRolesSecurityRoleIdEnrollmentsGetWithRequestBuilder(tenantId: UUID, securityRoleId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<TenantEnrolmentDtoListEnvelope> {
+    open class func getEnrollmentsByRoleAsyncWithRequestBuilder(tenantId: UUID, securityRoleId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<TenantEnrollmentDtoListEnvelope> {
         var localVariablePath = "/api/v2/SecurityService/Roles/{securityRoleId}/Enrollments"
         let securityRoleIdPreEscape = "\(APIHelper.mapValueToPathItem(securityRoleId))"
         let securityRoleIdPostEscape = securityRoleIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -476,13 +419,14 @@ open class RolesAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<TenantEnrolmentDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TenantEnrollmentDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Get role by ID
+     
      - parameter tenantId: (query)  
      - parameter securityRoleId: (path)  
      - parameter apiVersion: (query)  (optional)
@@ -491,8 +435,8 @@ open class RolesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2SecurityServiceRolesSecurityRoleIdGet(tenantId: UUID, securityRoleId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SecurityRoleDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2SecurityServiceRolesSecurityRoleIdGetWithRequestBuilder(tenantId: tenantId, securityRoleId: securityRoleId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getRoleAsync(tenantId: UUID, securityRoleId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SecurityRoleDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getRoleAsyncWithRequestBuilder(tenantId: tenantId, securityRoleId: securityRoleId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -503,17 +447,16 @@ open class RolesAPI {
     }
 
     /**
+     Get role by ID
      - GET /api/v2/SecurityService/Roles/{securityRoleId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Retrieves a specific security role by its ID.
      - parameter tenantId: (query)  
      - parameter securityRoleId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - returns: RequestBuilder<SecurityRoleDtoListEnvelope> 
+     - returns: RequestBuilder<SecurityRoleDtoEnvelope> 
      */
-    open class func apiV2SecurityServiceRolesSecurityRoleIdGetWithRequestBuilder(tenantId: UUID, securityRoleId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SecurityRoleDtoListEnvelope> {
+    open class func getRoleAsyncWithRequestBuilder(tenantId: UUID, securityRoleId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SecurityRoleDtoEnvelope> {
         var localVariablePath = "/api/v2/SecurityService/Roles/{securityRoleId}"
         let securityRoleIdPreEscape = "\(APIHelper.mapValueToPathItem(securityRoleId))"
         let securityRoleIdPostEscape = securityRoleIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -533,13 +476,14 @@ open class RolesAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<SecurityRoleDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<SecurityRoleDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Get permissions by role
+     
      - parameter tenantId: (query)  
      - parameter securityRoleId: (path)  
      - parameter apiVersion: (query)  (optional)
@@ -548,8 +492,8 @@ open class RolesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2SecurityServiceRolesSecurityRoleIdPermissionsGet(tenantId: UUID, securityRoleId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SecurityPermissionDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2SecurityServiceRolesSecurityRoleIdPermissionsGetWithRequestBuilder(tenantId: tenantId, securityRoleId: securityRoleId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getRolePermissionsAsync(tenantId: UUID, securityRoleId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SecurityPermissionDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getRolePermissionsAsyncWithRequestBuilder(tenantId: tenantId, securityRoleId: securityRoleId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -560,17 +504,16 @@ open class RolesAPI {
     }
 
     /**
+     Get permissions by role
      - GET /api/v2/SecurityService/Roles/{securityRoleId}/Permissions
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Retrieves all security permissions assigned to a specific role.
      - parameter tenantId: (query)  
      - parameter securityRoleId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<SecurityPermissionDtoListEnvelope> 
      */
-    open class func apiV2SecurityServiceRolesSecurityRoleIdPermissionsGetWithRequestBuilder(tenantId: UUID, securityRoleId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SecurityPermissionDtoListEnvelope> {
+    open class func getRolePermissionsAsyncWithRequestBuilder(tenantId: UUID, securityRoleId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SecurityPermissionDtoListEnvelope> {
         var localVariablePath = "/api/v2/SecurityService/Roles/{securityRoleId}/Permissions"
         let securityRoleIdPreEscape = "\(APIHelper.mapValueToPathItem(securityRoleId))"
         let securityRoleIdPostEscape = securityRoleIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -592,22 +535,21 @@ open class RolesAPI {
 
         let localVariableRequestBuilder: RequestBuilder<SecurityPermissionDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Get all roles
+     
      - parameter tenantId: (query)  
-     - parameter securityRoleId: (path)  
-     - parameter securityPermissionId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2SecurityServiceRolesSecurityRoleIdPermissionsSecurityPermissionIdDelete(tenantId: UUID, securityRoleId: String, securityPermissionId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2SecurityServiceRolesSecurityRoleIdPermissionsSecurityPermissionIdDeleteWithRequestBuilder(tenantId: tenantId, securityRoleId: securityRoleId, securityPermissionId: securityPermissionId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getRolesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SecurityRoleDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getRolesAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -618,10 +560,172 @@ open class RolesAPI {
     }
 
     /**
+     Get all roles
+     - GET /api/v2/SecurityService/Roles
+     - Retrieves all security roles for the specified tenant.
+     - parameter tenantId: (query)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<SecurityRoleDtoListEnvelope> 
+     */
+    open class func getRolesAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SecurityRoleDtoListEnvelope> {
+        let localVariablePath = "/api/v2/SecurityService/Roles"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<SecurityRoleDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Get roles by enrollment
+     
+     - parameter tenantId: (query)  
+     - parameter enrollmentId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getRolesByEnrollmentAsync(tenantId: UUID, enrollmentId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SecurityRoleDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getRolesByEnrollmentAsyncWithRequestBuilder(tenantId: tenantId, enrollmentId: enrollmentId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get roles by enrollment
+     - GET /api/v2/SecurityService/Roles/ByEnrollment/{enrollmentId}
+     - Retrieves all security roles granted to a specific enrollment.
+     - parameter tenantId: (query)  
+     - parameter enrollmentId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<SecurityRoleDtoListEnvelope> 
+     */
+    open class func getRolesByEnrollmentAsyncWithRequestBuilder(tenantId: UUID, enrollmentId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SecurityRoleDtoListEnvelope> {
+        var localVariablePath = "/api/v2/SecurityService/Roles/ByEnrollment/{enrollmentId}"
+        let enrollmentIdPreEscape = "\(APIHelper.mapValueToPathItem(enrollmentId))"
+        let enrollmentIdPostEscape = enrollmentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{enrollmentId}", with: enrollmentIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<SecurityRoleDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Get roles count
+     
+     - parameter tenantId: (query)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getRolesCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getRolesCountAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get roles count
+     - GET /api/v2/SecurityService/Roles/Count
+     - Retrieves the count of security roles for the specified tenant.
+     - parameter tenantId: (query)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<Int32Envelope> 
+     */
+    open class func getRolesCountAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+        let localVariablePath = "/api/v2/SecurityService/Roles/Count"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Revoke a permission from a role
+     
+     - parameter tenantId: (query)  
+     - parameter securityRoleId: (path)  
+     - parameter securityPermissionId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func revokePermissionFromRoleAsync(tenantId: UUID, securityRoleId: String, securityPermissionId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return revokePermissionFromRoleAsyncWithRequestBuilder(tenantId: tenantId, securityRoleId: securityRoleId, securityPermissionId: securityPermissionId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Revoke a permission from a role
      - DELETE /api/v2/SecurityService/Roles/{securityRoleId}/Permissions/{securityPermissionId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Revokes a security permission from a security role.
      - parameter tenantId: (query)  
      - parameter securityRoleId: (path)  
      - parameter securityPermissionId: (path)  
@@ -629,7 +733,7 @@ open class RolesAPI {
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func apiV2SecurityServiceRolesSecurityRoleIdPermissionsSecurityPermissionIdDeleteWithRequestBuilder(tenantId: UUID, securityRoleId: String, securityPermissionId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func revokePermissionFromRoleAsyncWithRequestBuilder(tenantId: UUID, securityRoleId: String, securityPermissionId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/SecurityService/Roles/{securityRoleId}/Permissions/{securityPermissionId}"
         let securityRoleIdPreEscape = "\(APIHelper.mapValueToPathItem(securityRoleId))"
         let securityRoleIdPostEscape = securityRoleIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -654,22 +758,23 @@ open class RolesAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Revoke a role from a business application
+     
      - parameter tenantId: (query)  
      - parameter securityRoleId: (path)  
-     - parameter securityPermissionId: (path)  
+     - parameter applicationId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2SecurityServiceRolesSecurityRoleIdPermissionsSecurityPermissionIdPost(tenantId: UUID, securityRoleId: String, securityPermissionId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2SecurityServiceRolesSecurityRoleIdPermissionsSecurityPermissionIdPostWithRequestBuilder(tenantId: tenantId, securityRoleId: securityRoleId, securityPermissionId: securityPermissionId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func revokeRoleFromBusinessApplicationAsync(tenantId: UUID, securityRoleId: String, applicationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return revokeRoleFromBusinessApplicationAsyncWithRequestBuilder(tenantId: tenantId, securityRoleId: securityRoleId, applicationId: applicationId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -680,25 +785,24 @@ open class RolesAPI {
     }
 
     /**
-     - POST /api/v2/SecurityService/Roles/{securityRoleId}/Permissions/{securityPermissionId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     Revoke a role from a business application
+     - DELETE /api/v2/SecurityService/Roles/{securityRoleId}/Applications/{applicationId}
+     - Revokes a security role from a business application.
      - parameter tenantId: (query)  
      - parameter securityRoleId: (path)  
-     - parameter securityPermissionId: (path)  
+     - parameter applicationId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func apiV2SecurityServiceRolesSecurityRoleIdPermissionsSecurityPermissionIdPostWithRequestBuilder(tenantId: UUID, securityRoleId: String, securityPermissionId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
-        var localVariablePath = "/api/v2/SecurityService/Roles/{securityRoleId}/Permissions/{securityPermissionId}"
+    open class func revokeRoleFromBusinessApplicationAsyncWithRequestBuilder(tenantId: UUID, securityRoleId: String, applicationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/SecurityService/Roles/{securityRoleId}/Applications/{applicationId}"
         let securityRoleIdPreEscape = "\(APIHelper.mapValueToPathItem(securityRoleId))"
         let securityRoleIdPostEscape = securityRoleIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{securityRoleId}", with: securityRoleIdPostEscape, options: .literal, range: nil)
-        let securityPermissionIdPreEscape = "\(APIHelper.mapValueToPathItem(securityPermissionId))"
-        let securityPermissionIdPostEscape = securityPermissionIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{securityPermissionId}", with: securityPermissionIdPostEscape, options: .literal, range: nil)
+        let applicationIdPreEscape = "\(APIHelper.mapValueToPathItem(applicationId))"
+        let applicationIdPostEscape = applicationIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{applicationId}", with: applicationIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
@@ -716,22 +820,23 @@ open class RolesAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Revoke a role from an enrollment
+     
      - parameter tenantId: (query)  
      - parameter securityRoleId: (path)  
+     - parameter enrollmentId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter securityRoleUpdateDto: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2SecurityServiceRolesSecurityRoleIdPut(tenantId: UUID, securityRoleId: String, apiVersion: String? = nil, xApiVersion: String? = nil, securityRoleUpdateDto: SecurityRoleUpdateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2SecurityServiceRolesSecurityRoleIdPutWithRequestBuilder(tenantId: tenantId, securityRoleId: securityRoleId, apiVersion: apiVersion, xApiVersion: xApiVersion, securityRoleUpdateDto: securityRoleUpdateDto).execute(apiResponseQueue) { result in
+    open class func revokeRoleFromEnrollmentAsync(tenantId: UUID, securityRoleId: String, enrollmentId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return revokeRoleFromEnrollmentAsyncWithRequestBuilder(tenantId: tenantId, securityRoleId: securityRoleId, enrollmentId: enrollmentId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -742,18 +847,79 @@ open class RolesAPI {
     }
 
     /**
+     Revoke a role from an enrollment
+     - DELETE /api/v2/SecurityService/Roles/{securityRoleId}/Enrollments/{enrollmentId}
+     - Revokes a security role from a tenant enrollment.
+     - parameter tenantId: (query)  
+     - parameter securityRoleId: (path)  
+     - parameter enrollmentId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func revokeRoleFromEnrollmentAsyncWithRequestBuilder(tenantId: UUID, securityRoleId: String, enrollmentId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/SecurityService/Roles/{securityRoleId}/Enrollments/{enrollmentId}"
+        let securityRoleIdPreEscape = "\(APIHelper.mapValueToPathItem(securityRoleId))"
+        let securityRoleIdPostEscape = securityRoleIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{securityRoleId}", with: securityRoleIdPostEscape, options: .literal, range: nil)
+        let enrollmentIdPreEscape = "\(APIHelper.mapValueToPathItem(enrollmentId))"
+        let enrollmentIdPostEscape = enrollmentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{enrollmentId}", with: enrollmentIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Update an existing role
+     
+     - parameter tenantId: (query)  
+     - parameter securityRoleId: (path)  
+     - parameter securityRoleUpdateDto: (body)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func updateRoleAsync(tenantId: UUID, securityRoleId: String, securityRoleUpdateDto: SecurityRoleUpdateDto, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return updateRoleAsyncWithRequestBuilder(tenantId: tenantId, securityRoleId: securityRoleId, securityRoleUpdateDto: securityRoleUpdateDto, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Update an existing role
      - PUT /api/v2/SecurityService/Roles/{securityRoleId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Updates an existing security role for the specified tenant.
      - parameter tenantId: (query)  
      - parameter securityRoleId: (path)  
+     - parameter securityRoleUpdateDto: (body)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter securityRoleUpdateDto: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func apiV2SecurityServiceRolesSecurityRoleIdPutWithRequestBuilder(tenantId: UUID, securityRoleId: String, apiVersion: String? = nil, xApiVersion: String? = nil, securityRoleUpdateDto: SecurityRoleUpdateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func updateRoleAsyncWithRequestBuilder(tenantId: UUID, securityRoleId: String, securityRoleUpdateDto: SecurityRoleUpdateDto, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/SecurityService/Roles/{securityRoleId}"
         let securityRoleIdPreEscape = "\(APIHelper.mapValueToPathItem(securityRoleId))"
         let securityRoleIdPostEscape = securityRoleIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -776,6 +942,6 @@ open class RolesAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 }

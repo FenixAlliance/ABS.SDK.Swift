@@ -12,38 +12,52 @@ import AnyCodable
 
 public struct EmailSignatureCreateDto: Codable, JSONEncodable, Hashable {
 
+    public enum CodeType: String, Codable, CaseIterable {
+        case razor = "Razor"
+        case csharp = "CSharp"
+        case cshtml = "CSHtml"
+        case liquid = "Liquid"
+        case html5 = "Html5"
+        case markdown = "Markdown"
+    }
     public var id: UUID?
     public var timestamp: Date?
     public var tenantId: String?
-    public var enrolmentId: String?
+    public var enrollmentId: String?
     public var title: String?
-    public var authorId: String?
+    public var code: String?
+    public var published: Bool?
     public var description: String?
     public var htmlContent: String?
     public var featuredImageUrl: String?
+    public var codeType: CodeType?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, tenantId: String? = nil, enrolmentId: String? = nil, title: String? = nil, authorId: String? = nil, description: String? = nil, htmlContent: String? = nil, featuredImageUrl: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, tenantId: String? = nil, enrollmentId: String? = nil, title: String? = nil, code: String? = nil, published: Bool? = nil, description: String? = nil, htmlContent: String? = nil, featuredImageUrl: String? = nil, codeType: CodeType? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.tenantId = tenantId
-        self.enrolmentId = enrolmentId
+        self.enrollmentId = enrollmentId
         self.title = title
-        self.authorId = authorId
+        self.code = code
+        self.published = published
         self.description = description
         self.htmlContent = htmlContent
         self.featuredImageUrl = featuredImageUrl
+        self.codeType = codeType
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
         case tenantId
-        case enrolmentId
+        case enrollmentId
         case title
-        case authorId
+        case code
+        case published
         case description
         case htmlContent
         case featuredImageUrl
+        case codeType
     }
 
     // Encodable protocol methods
@@ -53,12 +67,14 @@ public struct EmailSignatureCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(enrolmentId, forKey: .enrolmentId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(title, forKey: .title)
-        try container.encodeIfPresent(authorId, forKey: .authorId)
+        try container.encodeIfPresent(code, forKey: .code)
+        try container.encodeIfPresent(published, forKey: .published)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(htmlContent, forKey: .htmlContent)
         try container.encodeIfPresent(featuredImageUrl, forKey: .featuredImageUrl)
+        try container.encodeIfPresent(codeType, forKey: .codeType)
     }
 }
 

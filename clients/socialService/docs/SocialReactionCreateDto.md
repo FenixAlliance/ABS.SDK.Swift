@@ -3,9 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **UUID** |  | [optional] [readonly] 
-**timestamp** | **Date** |  | [optional] [readonly] 
-**reaction** | **Int** |  | [optional] 
+**id** | **UUID** |  | [optional] 
+**timestamp** | **Date** |  | [optional] 
+**reaction** | **String** |  | [optional] 
 **reactionValue** | **String** |  | [optional] 
 **socialProfileId** | **String** |  | [optional] 
 

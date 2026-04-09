@@ -14,7 +14,6 @@ Name | Type | Description | Notes
 **validResponse** | **Bool** |  | [optional] 
 **parentFileUploadID** | **String** |  | [optional] 
 **filePath** | **String** |  | [optional] 
-**file** | **URL** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

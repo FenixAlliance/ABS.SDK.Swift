@@ -13,7 +13,8 @@ import AnyCodable
 open class InventoryAPI {
 
     /**
-
+     Get inventory details for a stock item
+     
      - parameter stockItemId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -21,8 +22,8 @@ open class InventoryAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2InventoryServiceInventoryStockItemIdDetailsGet(stockItemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2InventoryServiceInventoryStockItemIdDetailsGetWithRequestBuilder(stockItemId: stockItemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getInventoryDetailsAsync(stockItemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return getInventoryDetailsAsyncWithRequestBuilder(stockItemId: stockItemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 completion((), nil)
@@ -33,16 +34,15 @@ open class InventoryAPI {
     }
 
     /**
+     Get inventory details for a stock item
      - GET /api/v2/InventoryService/Inventory/{stockItemId}/Details
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Retrieves the inventory details for a specific stock item by its ID.
      - parameter stockItemId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<Void> 
      */
-    open class func apiV2InventoryServiceInventoryStockItemIdDetailsGetWithRequestBuilder(stockItemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Void> {
+    open class func getInventoryDetailsAsyncWithRequestBuilder(stockItemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Void> {
         var localVariablePath = "/api/v2/InventoryService/Inventory/{stockItemId}/Details"
         let stockItemIdPreEscape = "\(APIHelper.mapValueToPathItem(stockItemId))"
         let stockItemIdPostEscape = stockItemIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -63,6 +63,6 @@ open class InventoryAPI {
 
         let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 }

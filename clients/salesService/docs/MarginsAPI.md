@@ -4,15 +4,17 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**apiV2SalesServiceMarginsMarginIdDetailsGet**](MarginsAPI.md#apiv2salesservicemarginsmarginiddetailsget) | **GET** /api/v2/SalesService/Margins/{marginId}/Details | 
+[**getQuoteAsync**](MarginsAPI.md#getquoteasync) | **GET** /api/v2/SalesService/Margins/{marginId}/Details | Get margin details by ID
 
 
-# **apiV2SalesServiceMarginsMarginIdDetailsGet**
+# **getQuoteAsync**
 ```swift
-    open class func apiV2SalesServiceMarginsMarginIdDetailsGet(marginId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func getQuoteAsync(marginId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
+Get margin details by ID
 
+Retrieves the details of a specific sales margin by its ID.
 
 ### Example
 ```swift
@@ -23,7 +25,8 @@ let marginId = 987 // UUID |
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
-MarginsAPI.apiV2SalesServiceMarginsMarginIdDetailsGet(marginId: marginId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Get margin details by ID
+MarginsAPI.getQuoteAsync(marginId: marginId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -49,7 +52,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 

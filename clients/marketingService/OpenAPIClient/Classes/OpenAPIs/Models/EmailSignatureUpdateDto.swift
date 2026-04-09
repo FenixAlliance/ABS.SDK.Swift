@@ -12,6 +12,14 @@ import AnyCodable
 
 public struct EmailSignatureUpdateDto: Codable, JSONEncodable, Hashable {
 
+    public enum CodeType: String, Codable, CaseIterable {
+        case razor = "Razor"
+        case csharp = "CSharp"
+        case cshtml = "CSHtml"
+        case liquid = "Liquid"
+        case html5 = "Html5"
+        case markdown = "Markdown"
+    }
     public var order: Int?
     public var slug: String?
     public var name: String?
@@ -31,7 +39,7 @@ public struct EmailSignatureUpdateDto: Codable, JSONEncodable, Hashable {
     public var facebookImage: String?
     public var facebookTitle: String?
     public var facebookDescription: String?
-    public var featuredImageURL: String?
+    public var featuredImageUrl: String?
     public var content: String?
     public var code: String?
     public var namespace: String?
@@ -39,6 +47,7 @@ public struct EmailSignatureUpdateDto: Codable, JSONEncodable, Hashable {
     public var generatedCode: String?
     public var compilationPath: String?
     public var htmlContent: String?
+    public var codeType: CodeType?
     public var cSharpContent: String?
     public var razorContent: String?
     public var cssContent: String?
@@ -66,7 +75,7 @@ public struct EmailSignatureUpdateDto: Codable, JSONEncodable, Hashable {
     public var isEssentialContent: Bool?
     public var allowSearchEngineIndexing: Bool?
 
-    public init(order: Int? = nil, slug: String? = nil, name: String? = nil, title: String? = nil, excerpt: String? = nil, password: String? = nil, description: String? = nil, highlightImage: String? = nil, canonicalUrl: String? = nil, seoTitle: String? = nil, seoKeyWords: String? = nil, seoKeyPhrases: String? = nil, metaDescription: String? = nil, twitterImage: String? = nil, twitterTitle: String? = nil, twitterDescription: String? = nil, facebookImage: String? = nil, facebookTitle: String? = nil, facebookDescription: String? = nil, featuredImageURL: String? = nil, content: String? = nil, code: String? = nil, namespace: String? = nil, typeName: String? = nil, generatedCode: String? = nil, compilationPath: String? = nil, htmlContent: String? = nil, cSharpContent: String? = nil, razorContent: String? = nil, cssContent: String? = nil, jsContent: String? = nil, cssFiles: String? = nil, jsFiles: String? = nil, razorGeneratedCode: String? = nil, cSharpGeneratedCode: String? = nil, precompiledLogicSize: Int? = nil, precompiledLogicSizeLong: Int64? = nil, precompiledViewSize: Int? = nil, precompiledViewSizeLong: Int64? = nil, precompiledLogicViewSize: Int? = nil, template: Bool? = nil, _default: Bool? = nil, enable: Bool? = nil, enableComments: Bool? = nil, displaySocialBox: Bool? = nil, published: Bool? = nil, inTrashCan: Bool? = nil, systemLocked: Bool? = nil, allowPingbacks: Bool? = nil, allowTrackbacks: Bool? = nil, cornerstoneContent: Bool? = nil, isEssentialContent: Bool? = nil, allowSearchEngineIndexing: Bool? = nil) {
+    public init(order: Int? = nil, slug: String? = nil, name: String? = nil, title: String? = nil, excerpt: String? = nil, password: String? = nil, description: String? = nil, highlightImage: String? = nil, canonicalUrl: String? = nil, seoTitle: String? = nil, seoKeyWords: String? = nil, seoKeyPhrases: String? = nil, metaDescription: String? = nil, twitterImage: String? = nil, twitterTitle: String? = nil, twitterDescription: String? = nil, facebookImage: String? = nil, facebookTitle: String? = nil, facebookDescription: String? = nil, featuredImageUrl: String? = nil, content: String? = nil, code: String? = nil, namespace: String? = nil, typeName: String? = nil, generatedCode: String? = nil, compilationPath: String? = nil, htmlContent: String? = nil, codeType: CodeType? = nil, cSharpContent: String? = nil, razorContent: String? = nil, cssContent: String? = nil, jsContent: String? = nil, cssFiles: String? = nil, jsFiles: String? = nil, razorGeneratedCode: String? = nil, cSharpGeneratedCode: String? = nil, precompiledLogicSize: Int? = nil, precompiledLogicSizeLong: Int64? = nil, precompiledViewSize: Int? = nil, precompiledViewSizeLong: Int64? = nil, precompiledLogicViewSize: Int? = nil, template: Bool? = nil, _default: Bool? = nil, enable: Bool? = nil, enableComments: Bool? = nil, displaySocialBox: Bool? = nil, published: Bool? = nil, inTrashCan: Bool? = nil, systemLocked: Bool? = nil, allowPingbacks: Bool? = nil, allowTrackbacks: Bool? = nil, cornerstoneContent: Bool? = nil, isEssentialContent: Bool? = nil, allowSearchEngineIndexing: Bool? = nil) {
         self.order = order
         self.slug = slug
         self.name = name
@@ -86,7 +95,7 @@ public struct EmailSignatureUpdateDto: Codable, JSONEncodable, Hashable {
         self.facebookImage = facebookImage
         self.facebookTitle = facebookTitle
         self.facebookDescription = facebookDescription
-        self.featuredImageURL = featuredImageURL
+        self.featuredImageUrl = featuredImageUrl
         self.content = content
         self.code = code
         self.namespace = namespace
@@ -94,6 +103,7 @@ public struct EmailSignatureUpdateDto: Codable, JSONEncodable, Hashable {
         self.generatedCode = generatedCode
         self.compilationPath = compilationPath
         self.htmlContent = htmlContent
+        self.codeType = codeType
         self.cSharpContent = cSharpContent
         self.razorContent = razorContent
         self.cssContent = cssContent
@@ -142,7 +152,7 @@ public struct EmailSignatureUpdateDto: Codable, JSONEncodable, Hashable {
         case facebookImage
         case facebookTitle
         case facebookDescription
-        case featuredImageURL
+        case featuredImageUrl
         case content
         case code
         case namespace
@@ -150,6 +160,7 @@ public struct EmailSignatureUpdateDto: Codable, JSONEncodable, Hashable {
         case generatedCode
         case compilationPath
         case htmlContent
+        case codeType
         case cSharpContent
         case razorContent
         case cssContent
@@ -201,7 +212,7 @@ public struct EmailSignatureUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(facebookImage, forKey: .facebookImage)
         try container.encodeIfPresent(facebookTitle, forKey: .facebookTitle)
         try container.encodeIfPresent(facebookDescription, forKey: .facebookDescription)
-        try container.encodeIfPresent(featuredImageURL, forKey: .featuredImageURL)
+        try container.encodeIfPresent(featuredImageUrl, forKey: .featuredImageUrl)
         try container.encodeIfPresent(content, forKey: .content)
         try container.encodeIfPresent(code, forKey: .code)
         try container.encodeIfPresent(namespace, forKey: .namespace)
@@ -209,6 +220,7 @@ public struct EmailSignatureUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(generatedCode, forKey: .generatedCode)
         try container.encodeIfPresent(compilationPath, forKey: .compilationPath)
         try container.encodeIfPresent(htmlContent, forKey: .htmlContent)
+        try container.encodeIfPresent(codeType, forKey: .codeType)
         try container.encodeIfPresent(cSharpContent, forKey: .cSharpContent)
         try container.encodeIfPresent(razorContent, forKey: .razorContent)
         try container.encodeIfPresent(cssContent, forKey: .cssContent)

@@ -12,8 +12,17 @@ import AnyCodable
 
 public struct EmailTemplateDto: Codable, JSONEncodable, Hashable {
 
+    public enum CodeType: String, Codable, CaseIterable {
+        case razor = "Razor"
+        case csharp = "CSharp"
+        case cshtml = "CSHtml"
+        case liquid = "Liquid"
+        case html5 = "Html5"
+        case markdown = "Markdown"
+    }
     public var id: String?
     public var timestamp: Date?
+    public var codeType: CodeType?
     public var order: Int?
     public var slug: String?
     public var name: String?
@@ -23,6 +32,7 @@ public struct EmailTemplateDto: Codable, JSONEncodable, Hashable {
     public var description: String?
     public var highlightImage: String?
     public var canonicalUrl: String?
+    public var emitResult: AnyCodable?
     public var seoTitle: String?
     public var seoKeyWords: String?
     public var seoKeyPhrases: String?
@@ -72,9 +82,10 @@ public struct EmailTemplateDto: Codable, JSONEncodable, Hashable {
     public var marketingCampaignId: String?
     public var marketingCampaignName: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, order: Int? = nil, slug: String? = nil, name: String? = nil, title: String? = nil, excerpt: String? = nil, password: String? = nil, description: String? = nil, highlightImage: String? = nil, canonicalUrl: String? = nil, seoTitle: String? = nil, seoKeyWords: String? = nil, seoKeyPhrases: String? = nil, metaDescription: String? = nil, twitterImage: String? = nil, twitterTitle: String? = nil, twitterDescription: String? = nil, facebookImage: String? = nil, facebookTitle: String? = nil, facebookDescription: String? = nil, featuredImageUrl: String? = nil, content: String? = nil, code: String? = nil, namespace: String? = nil, typeName: String? = nil, generatedCode: String? = nil, compilationPath: String? = nil, htmlContent: String? = nil, cSharpContent: String? = nil, razorContent: String? = nil, cssContent: String? = nil, jsContent: String? = nil, cssFiles: String? = nil, jsFiles: String? = nil, razorGeneratedCode: String? = nil, cSharpGeneratedCode: String? = nil, template: Bool? = nil, _default: Bool? = nil, enable: Bool? = nil, enableComments: Bool? = nil, displaySocialBox: Bool? = nil, published: Bool? = nil, inTrashCan: Bool? = nil, systemLocked: Bool? = nil, allowPingBacks: Bool? = nil, allowTrackbacks: Bool? = nil, cornerstoneContent: Bool? = nil, isEssentialContent: Bool? = nil, allowSearchEngineIndexing: Bool? = nil, tenantId: String? = nil, webPortalId: String? = nil, websiteThemeId: String? = nil, enrollmentId: String? = nil, socialProfileId: String? = nil, parentWebContentId: String? = nil, parentWebContentVersionId: String? = nil, marketingCampaignId: String? = nil, marketingCampaignName: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, codeType: CodeType? = nil, order: Int? = nil, slug: String? = nil, name: String? = nil, title: String? = nil, excerpt: String? = nil, password: String? = nil, description: String? = nil, highlightImage: String? = nil, canonicalUrl: String? = nil, emitResult: AnyCodable? = nil, seoTitle: String? = nil, seoKeyWords: String? = nil, seoKeyPhrases: String? = nil, metaDescription: String? = nil, twitterImage: String? = nil, twitterTitle: String? = nil, twitterDescription: String? = nil, facebookImage: String? = nil, facebookTitle: String? = nil, facebookDescription: String? = nil, featuredImageUrl: String? = nil, content: String? = nil, code: String? = nil, namespace: String? = nil, typeName: String? = nil, generatedCode: String? = nil, compilationPath: String? = nil, htmlContent: String? = nil, cSharpContent: String? = nil, razorContent: String? = nil, cssContent: String? = nil, jsContent: String? = nil, cssFiles: String? = nil, jsFiles: String? = nil, razorGeneratedCode: String? = nil, cSharpGeneratedCode: String? = nil, template: Bool? = nil, _default: Bool? = nil, enable: Bool? = nil, enableComments: Bool? = nil, displaySocialBox: Bool? = nil, published: Bool? = nil, inTrashCan: Bool? = nil, systemLocked: Bool? = nil, allowPingBacks: Bool? = nil, allowTrackbacks: Bool? = nil, cornerstoneContent: Bool? = nil, isEssentialContent: Bool? = nil, allowSearchEngineIndexing: Bool? = nil, tenantId: String? = nil, webPortalId: String? = nil, websiteThemeId: String? = nil, enrollmentId: String? = nil, socialProfileId: String? = nil, parentWebContentId: String? = nil, parentWebContentVersionId: String? = nil, marketingCampaignId: String? = nil, marketingCampaignName: String? = nil) {
         self.id = id
         self.timestamp = timestamp
+        self.codeType = codeType
         self.order = order
         self.slug = slug
         self.name = name
@@ -84,6 +95,7 @@ public struct EmailTemplateDto: Codable, JSONEncodable, Hashable {
         self.description = description
         self.highlightImage = highlightImage
         self.canonicalUrl = canonicalUrl
+        self.emitResult = emitResult
         self.seoTitle = seoTitle
         self.seoKeyWords = seoKeyWords
         self.seoKeyPhrases = seoKeyPhrases
@@ -137,6 +149,7 @@ public struct EmailTemplateDto: Codable, JSONEncodable, Hashable {
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
+        case codeType
         case order
         case slug
         case name
@@ -146,6 +159,7 @@ public struct EmailTemplateDto: Codable, JSONEncodable, Hashable {
         case description
         case highlightImage
         case canonicalUrl
+        case emitResult
         case seoTitle
         case seoKeyWords
         case seoKeyPhrases
@@ -202,6 +216,7 @@ public struct EmailTemplateDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
+        try container.encodeIfPresent(codeType, forKey: .codeType)
         try container.encodeIfPresent(order, forKey: .order)
         try container.encodeIfPresent(slug, forKey: .slug)
         try container.encodeIfPresent(name, forKey: .name)
@@ -211,6 +226,7 @@ public struct EmailTemplateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(highlightImage, forKey: .highlightImage)
         try container.encodeIfPresent(canonicalUrl, forKey: .canonicalUrl)
+        try container.encodeIfPresent(emitResult, forKey: .emitResult)
         try container.encodeIfPresent(seoTitle, forKey: .seoTitle)
         try container.encodeIfPresent(seoKeyWords, forKey: .seoKeyWords)
         try container.encodeIfPresent(seoKeyPhrases, forKey: .seoKeyPhrases)

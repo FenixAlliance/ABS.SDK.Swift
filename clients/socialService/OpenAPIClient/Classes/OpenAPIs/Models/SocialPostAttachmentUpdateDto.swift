@@ -23,9 +23,8 @@ public struct SocialPostAttachmentUpdateDto: Codable, JSONEncodable, Hashable {
     public var validResponse: Bool?
     public var parentFileUploadID: String?
     public var filePath: String?
-    public var file: URL?
 
-    public init(notes: String? = nil, metadata: String? = nil, title: String? = nil, author: String? = nil, isFolder: Bool? = nil, fileName: String? = nil, abstract: String? = nil, keyWords: String? = nil, validResponse: Bool? = nil, parentFileUploadID: String? = nil, filePath: String? = nil, file: URL? = nil) {
+    public init(notes: String? = nil, metadata: String? = nil, title: String? = nil, author: String? = nil, isFolder: Bool? = nil, fileName: String? = nil, abstract: String? = nil, keyWords: String? = nil, validResponse: Bool? = nil, parentFileUploadID: String? = nil, filePath: String? = nil) {
         self.notes = notes
         self.metadata = metadata
         self.title = title
@@ -37,7 +36,6 @@ public struct SocialPostAttachmentUpdateDto: Codable, JSONEncodable, Hashable {
         self.validResponse = validResponse
         self.parentFileUploadID = parentFileUploadID
         self.filePath = filePath
-        self.file = file
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -52,7 +50,6 @@ public struct SocialPostAttachmentUpdateDto: Codable, JSONEncodable, Hashable {
         case validResponse
         case parentFileUploadID
         case filePath
-        case file
     }
 
     // Encodable protocol methods
@@ -70,7 +67,6 @@ public struct SocialPostAttachmentUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(validResponse, forKey: .validResponse)
         try container.encodeIfPresent(parentFileUploadID, forKey: .parentFileUploadID)
         try container.encodeIfPresent(filePath, forKey: .filePath)
-        try container.encodeIfPresent(file, forKey: .file)
     }
 }
 

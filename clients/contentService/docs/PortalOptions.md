@@ -1,0 +1,50 @@
+# PortalOptions
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**title** | **String** |  | [optional] 
+**description** | **String** |  | [optional] 
+**portalUiEngine** | **String** |  | [optional] 
+**seo** | [**SeoOptions**](SeoOptions.md) |  | [optional] 
+**store** | [**StoreOptions**](StoreOptions.md) |  | [optional] 
+**theming** | [**ThemingOptions**](ThemingOptions.md) |  | [optional] 
+**branding** | [**BrandingOptions**](BrandingOptions.md) |  | [optional] 
+**social** | [**SocialMediaOptions**](SocialMediaOptions.md) |  | [optional] 
+**privacy** | [**PrivacyOptions**](PrivacyOptions.md) |  | [optional] 
+**blog** | [**BlogOptions**](BlogOptions.md) |  | [optional] 
+**forums** | [**ForumOptions**](ForumOptions.md) |  | [optional] 
+**footer** | [**FooterOptions**](FooterOptions.md) |  | [optional] 
+**background** | [**BackgroundOptions**](BackgroundOptions.md) |  | [optional] 
+**breadcrumbs** | [**BreadcrumbsOptions**](BreadcrumbsOptions.md) |  | [optional] 
+**contact** | [**ContactOptions**](ContactOptions.md) |  | [optional] 
+**color** | [**ColorOptions**](ColorOptions.md) |  | [optional] 
+**dashboard** | [**DashboardOptions**](DashboardOptions.md) |  | [optional] 
+**header** | [**HeaderOptions**](HeaderOptions.md) |  | [optional] 
+**titleBar** | [**TitleBarOptions**](TitleBarOptions.md) |  | [optional] 
+**typography** | [**TypographyOptions**](TypographyOptions.md) |  | [optional] 
+**socialMedia** | [**SocialMediaOptions**](SocialMediaOptions.md) |  | [optional] 
+**slidingBar** | [**SlidingBarOptions**](SlidingBarOptions.md) |  | [optional] 
+**slideshow** | **AnyCodable** |  | [optional] 
+**slider** | **AnyCodable** |  | [optional] 
+**sidebar** | **AnyCodable** |  | [optional] 
+**search** | **AnyCodable** |  | [optional] 
+**responsive** | [**ResponsiveOptions**](ResponsiveOptions.md) |  | [optional] 
+**portfolio** | **AnyCodable** |  | [optional] 
+**performance** | **AnyCodable** |  | [optional] 
+**pagination** | **AnyCodable** |  | [optional] 
+**miscellaneous** | **AnyCodable** |  | [optional] 
+**menu** | [**MenuOptions**](MenuOptions.md) |  | [optional] 
+**grid** | **AnyCodable** |  | [optional] 
+**mansory** | **AnyCodable** |  | [optional] 
+**lightbox** | **AnyCodable** |  | [optional] 
+**layout** | [**LayoutOptions**](LayoutOptions.md) |  | [optional] 
+**codeFields** | **AnyCodable** |  | [optional] 
+**features** | **AnyCodable** |  | [optional] 
+**forms** | **AnyCodable** |  | [optional] 
+**integrations** | [**IntegrationsOptions**](IntegrationsOptions.md) |  | [optional] 
+**emails** | [**EmailsOptions**](EmailsOptions.md) |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

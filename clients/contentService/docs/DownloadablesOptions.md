@@ -1,0 +1,12 @@
+# DownloadablesOptions
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**maskFileNames** | **Bool** |  | [optional] 
+**grantAccessAfterPayment** | **Bool** |  | [optional] 
+**downloadsRequireLogin** | **Bool** |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

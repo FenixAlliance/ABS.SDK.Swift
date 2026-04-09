@@ -17,6 +17,7 @@ public struct SimpleUserDto: Codable, JSONEncodable, Hashable {
     public var fullName: String?
     public var qualifiedName: String?
     public var publicName: String?
+    public var handler: String?
     public var lastName: String?
     public var firstName: String?
     public var coverUrl: String?
@@ -32,12 +33,13 @@ public struct SimpleUserDto: Codable, JSONEncodable, Hashable {
     public var instagramUrl: String?
     public var socialProfileId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, fullName: String? = nil, qualifiedName: String? = nil, publicName: String? = nil, lastName: String? = nil, firstName: String? = nil, coverUrl: String? = nil, avatarUrl: String? = nil, gitHubUrl: String? = nil, countryId: String? = nil, timezoneId: String? = nil, websiteUrl: String? = nil, twitterUrl: String? = nil, youTubeUrl: String? = nil, linkedInUrl: String? = nil, facebookUrl: String? = nil, instagramUrl: String? = nil, socialProfileId: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, fullName: String? = nil, qualifiedName: String? = nil, publicName: String? = nil, handler: String? = nil, lastName: String? = nil, firstName: String? = nil, coverUrl: String? = nil, avatarUrl: String? = nil, gitHubUrl: String? = nil, countryId: String? = nil, timezoneId: String? = nil, websiteUrl: String? = nil, twitterUrl: String? = nil, youTubeUrl: String? = nil, linkedInUrl: String? = nil, facebookUrl: String? = nil, instagramUrl: String? = nil, socialProfileId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.fullName = fullName
         self.qualifiedName = qualifiedName
         self.publicName = publicName
+        self.handler = handler
         self.lastName = lastName
         self.firstName = firstName
         self.coverUrl = coverUrl
@@ -60,6 +62,7 @@ public struct SimpleUserDto: Codable, JSONEncodable, Hashable {
         case fullName
         case qualifiedName
         case publicName
+        case handler
         case lastName
         case firstName
         case coverUrl
@@ -85,6 +88,7 @@ public struct SimpleUserDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(fullName, forKey: .fullName)
         try container.encodeIfPresent(qualifiedName, forKey: .qualifiedName)
         try container.encodeIfPresent(publicName, forKey: .publicName)
+        try container.encodeIfPresent(handler, forKey: .handler)
         try container.encodeIfPresent(lastName, forKey: .lastName)
         try container.encodeIfPresent(firstName, forKey: .firstName)
         try container.encodeIfPresent(coverUrl, forKey: .coverUrl)

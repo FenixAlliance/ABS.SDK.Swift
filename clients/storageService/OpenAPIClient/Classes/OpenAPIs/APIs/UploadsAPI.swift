@@ -13,7 +13,20 @@ import AnyCodable
 open class UploadsAPI {
 
     /**
+     * enum for parameter appFileSource
+     */
+    public enum AppFileSource_saveFileAsync: String, CaseIterable {
+        case unknown = "Unknown"
+        case httpUpload = "HttpUpload"
+        case integration = "Integration"
+        case internalProcess = "InternalProcess"
+        case apiClient = "ApiClient"
+        case workflowEngine = "WorkflowEngine"
+    }
 
+    /**
+     Upload a file
+     
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -27,15 +40,29 @@ open class UploadsAPI {
      - parameter validResponse: (form)  (optional)
      - parameter parentFileUploadId: (form)  (optional)
      - parameter filePath: (form)  (optional)
-     - parameter file: (form)  (optional)
-     - parameter iD: (form)  (optional)
+     - parameter appFileContent: (form)  (optional)
+     - parameter appFileSha256: (form)  (optional)
+     - parameter appFileCreatedAtUtc: (form)  (optional)
+     - parameter appFileUserIdValue: (form)  (optional)
+     - parameter appFileTenantIdValue: (form)  (optional)
+     - parameter appFileEnrollmentIdValue: (form)  (optional)
+     - parameter appFileSource: (form)  (optional)
+     - parameter appFileLength: (form)  (optional)
+     - parameter appFileName: (form)  (optional)
+     - parameter appFileFileName: (form)  (optional)
+     - parameter appFileLastModified: (form)  (optional)
+     - parameter appFileSize: (form)  (optional)
+     - parameter appFileContentType: (form)  (optional)
+     - parameter appFileContentDisposition: (form)  (optional)
+     - parameter appFileHeaders: (form)  (optional)
+     - parameter id: (form)  (optional)
      - parameter timestamp: (form)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2StorageServiceUploadsPost(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, notes: String? = nil, title: String? = nil, author: String? = nil, isFolder: Bool? = nil, fileName: String? = nil, abstract: String? = nil, keyWords: String? = nil, validResponse: Bool? = nil, parentFileUploadId: String? = nil, filePath: String? = nil, file: URL? = nil, iD: UUID? = nil, timestamp: Date? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2StorageServiceUploadsPostWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, notes: notes, title: title, author: author, isFolder: isFolder, fileName: fileName, abstract: abstract, keyWords: keyWords, validResponse: validResponse, parentFileUploadId: parentFileUploadId, filePath: filePath, file: file, iD: iD, timestamp: timestamp).execute(apiResponseQueue) { result in
+    open class func saveFileAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, notes: String? = nil, title: String? = nil, author: String? = nil, isFolder: Bool? = nil, fileName: String? = nil, abstract: String? = nil, keyWords: String? = nil, validResponse: Bool? = nil, parentFileUploadId: String? = nil, filePath: String? = nil, appFileContent: Data? = nil, appFileSha256: String? = nil, appFileCreatedAtUtc: Date? = nil, appFileUserIdValue: UUID? = nil, appFileTenantIdValue: UUID? = nil, appFileEnrollmentIdValue: UUID? = nil, appFileSource: AppFileSource_saveFileAsync? = nil, appFileLength: Int64? = nil, appFileName: String? = nil, appFileFileName: String? = nil, appFileLastModified: Date? = nil, appFileSize: Int64? = nil, appFileContentType: String? = nil, appFileContentDisposition: String? = nil, appFileHeaders: [String: String]? = nil, id: UUID? = nil, timestamp: Date? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return saveFileAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, notes: notes, title: title, author: author, isFolder: isFolder, fileName: fileName, abstract: abstract, keyWords: keyWords, validResponse: validResponse, parentFileUploadId: parentFileUploadId, filePath: filePath, appFileContent: appFileContent, appFileSha256: appFileSha256, appFileCreatedAtUtc: appFileCreatedAtUtc, appFileUserIdValue: appFileUserIdValue, appFileTenantIdValue: appFileTenantIdValue, appFileEnrollmentIdValue: appFileEnrollmentIdValue, appFileSource: appFileSource, appFileLength: appFileLength, appFileName: appFileName, appFileFileName: appFileFileName, appFileLastModified: appFileLastModified, appFileSize: appFileSize, appFileContentType: appFileContentType, appFileContentDisposition: appFileContentDisposition, appFileHeaders: appFileHeaders, id: id, timestamp: timestamp).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -46,10 +73,9 @@ open class UploadsAPI {
     }
 
     /**
+     Upload a file
      - POST /api/v2/StorageService/Uploads
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Uploads a file to tenant or user storage.
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -63,12 +89,26 @@ open class UploadsAPI {
      - parameter validResponse: (form)  (optional)
      - parameter parentFileUploadId: (form)  (optional)
      - parameter filePath: (form)  (optional)
-     - parameter file: (form)  (optional)
-     - parameter iD: (form)  (optional)
+     - parameter appFileContent: (form)  (optional)
+     - parameter appFileSha256: (form)  (optional)
+     - parameter appFileCreatedAtUtc: (form)  (optional)
+     - parameter appFileUserIdValue: (form)  (optional)
+     - parameter appFileTenantIdValue: (form)  (optional)
+     - parameter appFileEnrollmentIdValue: (form)  (optional)
+     - parameter appFileSource: (form)  (optional)
+     - parameter appFileLength: (form)  (optional)
+     - parameter appFileName: (form)  (optional)
+     - parameter appFileFileName: (form)  (optional)
+     - parameter appFileLastModified: (form)  (optional)
+     - parameter appFileSize: (form)  (optional)
+     - parameter appFileContentType: (form)  (optional)
+     - parameter appFileContentDisposition: (form)  (optional)
+     - parameter appFileHeaders: (form)  (optional)
+     - parameter id: (form)  (optional)
      - parameter timestamp: (form)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func apiV2StorageServiceUploadsPostWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, notes: String? = nil, title: String? = nil, author: String? = nil, isFolder: Bool? = nil, fileName: String? = nil, abstract: String? = nil, keyWords: String? = nil, validResponse: Bool? = nil, parentFileUploadId: String? = nil, filePath: String? = nil, file: URL? = nil, iD: UUID? = nil, timestamp: Date? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func saveFileAsyncWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, notes: String? = nil, title: String? = nil, author: String? = nil, isFolder: Bool? = nil, fileName: String? = nil, abstract: String? = nil, keyWords: String? = nil, validResponse: Bool? = nil, parentFileUploadId: String? = nil, filePath: String? = nil, appFileContent: Data? = nil, appFileSha256: String? = nil, appFileCreatedAtUtc: Date? = nil, appFileUserIdValue: UUID? = nil, appFileTenantIdValue: UUID? = nil, appFileEnrollmentIdValue: UUID? = nil, appFileSource: AppFileSource_saveFileAsync? = nil, appFileLength: Int64? = nil, appFileName: String? = nil, appFileFileName: String? = nil, appFileLastModified: Date? = nil, appFileSize: Int64? = nil, appFileContentType: String? = nil, appFileContentDisposition: String? = nil, appFileHeaders: [String: String]? = nil, id: UUID? = nil, timestamp: Date? = nil) -> RequestBuilder<EmptyEnvelope> {
         let localVariablePath = "/api/v2/StorageService/Uploads"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableFormParams: [String: Any?] = [
@@ -82,8 +122,22 @@ open class UploadsAPI {
             "validResponse": validResponse?.encodeToJSON(),
             "parentFileUploadId": parentFileUploadId?.encodeToJSON(),
             "filePath": filePath?.encodeToJSON(),
-            "file": file?.encodeToJSON(),
-            "iD": iD?.encodeToJSON(),
+            "appFile.content": appFileContent?.encodeToJSON(),
+            "appFile.sha256": appFileSha256?.encodeToJSON(),
+            "appFile.createdAtUtc": appFileCreatedAtUtc?.encodeToJSON(),
+            "appFile.userId.value": appFileUserIdValue?.encodeToJSON(),
+            "appFile.tenantId.value": appFileTenantIdValue?.encodeToJSON(),
+            "appFile.enrollmentId.value": appFileEnrollmentIdValue?.encodeToJSON(),
+            "appFile.source": appFileSource?.encodeToJSON(),
+            "appFile.length": appFileLength?.encodeToJSON(),
+            "appFile.name": appFileName?.encodeToJSON(),
+            "appFile.fileName": appFileFileName?.encodeToJSON(),
+            "appFile.lastModified": appFileLastModified?.encodeToJSON(),
+            "appFile.size": appFileSize?.encodeToJSON(),
+            "appFile.contentType": appFileContentType?.encodeToJSON(),
+            "appFile.contentDisposition": appFileContentDisposition?.encodeToJSON(),
+            "appFile.headers": appFileHeaders?.encodeToJSON(),
+            "id": id?.encodeToJSON(),
             "timestamp": timestamp?.encodeToJSON(),
         ]
 
@@ -105,6 +159,6 @@ open class UploadsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 }

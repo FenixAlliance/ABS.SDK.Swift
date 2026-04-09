@@ -19,12 +19,12 @@ public struct DiscountDto: Codable, JSONEncodable, Hashable {
     public var percent: Double?
     public var itemId: String?
     public var tenantId: String?
-    public var enrolmentId: String?
+    public var enrollmentId: String?
     public var discountListId: String?
     public var endQuantity: Double?
     public var beginQuantity: Double?
 
-    public init(id: String? = nil, timestamp: Date? = nil, description: String? = nil, value: Double? = nil, percent: Double? = nil, itemId: String? = nil, tenantId: String? = nil, enrolmentId: String? = nil, discountListId: String? = nil, endQuantity: Double? = nil, beginQuantity: Double? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, description: String? = nil, value: Double? = nil, percent: Double? = nil, itemId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil, discountListId: String? = nil, endQuantity: Double? = nil, beginQuantity: Double? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.description = description
@@ -32,7 +32,7 @@ public struct DiscountDto: Codable, JSONEncodable, Hashable {
         self.percent = percent
         self.itemId = itemId
         self.tenantId = tenantId
-        self.enrolmentId = enrolmentId
+        self.enrollmentId = enrollmentId
         self.discountListId = discountListId
         self.endQuantity = endQuantity
         self.beginQuantity = beginQuantity
@@ -46,7 +46,7 @@ public struct DiscountDto: Codable, JSONEncodable, Hashable {
         case percent
         case itemId
         case tenantId
-        case enrolmentId
+        case enrollmentId
         case discountListId
         case endQuantity
         case beginQuantity
@@ -63,7 +63,7 @@ public struct DiscountDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(percent, forKey: .percent)
         try container.encodeIfPresent(itemId, forKey: .itemId)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(enrolmentId, forKey: .enrolmentId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(discountListId, forKey: .discountListId)
         try container.encodeIfPresent(endQuantity, forKey: .endQuantity)
         try container.encodeIfPresent(beginQuantity, forKey: .beginQuantity)

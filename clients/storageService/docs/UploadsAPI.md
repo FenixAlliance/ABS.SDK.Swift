@@ -4,15 +4,17 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**apiV2StorageServiceUploadsPost**](UploadsAPI.md#apiv2storageserviceuploadspost) | **POST** /api/v2/StorageService/Uploads | 
+[**saveFileAsync**](UploadsAPI.md#savefileasync) | **POST** /api/v2/StorageService/Uploads | Upload a file
 
 
-# **apiV2StorageServiceUploadsPost**
+# **saveFileAsync**
 ```swift
-    open class func apiV2StorageServiceUploadsPost(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, notes: String? = nil, title: String? = nil, author: String? = nil, isFolder: Bool? = nil, fileName: String? = nil, abstract: String? = nil, keyWords: String? = nil, validResponse: Bool? = nil, parentFileUploadId: String? = nil, filePath: String? = nil, file: URL? = nil, iD: UUID? = nil, timestamp: Date? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func saveFileAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, notes: String? = nil, title: String? = nil, author: String? = nil, isFolder: Bool? = nil, fileName: String? = nil, abstract: String? = nil, keyWords: String? = nil, validResponse: Bool? = nil, parentFileUploadId: String? = nil, filePath: String? = nil, appFileContent: Data? = nil, appFileSha256: String? = nil, appFileCreatedAtUtc: Date? = nil, appFileUserIdValue: UUID? = nil, appFileTenantIdValue: UUID? = nil, appFileEnrollmentIdValue: UUID? = nil, appFileSource: AppFileSource_saveFileAsync? = nil, appFileLength: Int64? = nil, appFileName: String? = nil, appFileFileName: String? = nil, appFileLastModified: Date? = nil, appFileSize: Int64? = nil, appFileContentType: String? = nil, appFileContentDisposition: String? = nil, appFileHeaders: [String: String]? = nil, id: UUID? = nil, timestamp: Date? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
+Upload a file
 
+Uploads a file to tenant or user storage.
 
 ### Example
 ```swift
@@ -32,11 +34,26 @@ let keyWords = "keyWords_example" // String |  (optional)
 let validResponse = true // Bool |  (optional)
 let parentFileUploadId = "parentFileUploadId_example" // String |  (optional)
 let filePath = "filePath_example" // String |  (optional)
-let file = URL(string: "https://example.com")! // URL |  (optional)
-let iD = 987 // UUID |  (optional)
+let appFileContent = Data([9, 8, 7]) // Data |  (optional)
+let appFileSha256 = "appFileSha256_example" // String |  (optional)
+let appFileCreatedAtUtc = Date() // Date |  (optional)
+let appFileUserIdValue = 987 // UUID |  (optional)
+let appFileTenantIdValue = 987 // UUID |  (optional)
+let appFileEnrollmentIdValue = 987 // UUID |  (optional)
+let appFileSource = "appFileSource_example" // String |  (optional)
+let appFileLength = 987 // Int64 |  (optional)
+let appFileName = "appFileName_example" // String |  (optional)
+let appFileFileName = "appFileFileName_example" // String |  (optional)
+let appFileLastModified = Date() // Date |  (optional)
+let appFileSize = 987 // Int64 |  (optional)
+let appFileContentType = "appFileContentType_example" // String |  (optional)
+let appFileContentDisposition = "appFileContentDisposition_example" // String |  (optional)
+let appFileHeaders = "TODO" // [String: String] |  (optional)
+let id = 987 // UUID |  (optional)
 let timestamp = Date() // Date |  (optional)
 
-UploadsAPI.apiV2StorageServiceUploadsPost(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, notes: notes, title: title, author: author, isFolder: isFolder, fileName: fileName, abstract: abstract, keyWords: keyWords, validResponse: validResponse, parentFileUploadId: parentFileUploadId, filePath: filePath, file: file, iD: iD, timestamp: timestamp) { (response, error) in
+// Upload a file
+UploadsAPI.saveFileAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, notes: notes, title: title, author: author, isFolder: isFolder, fileName: fileName, abstract: abstract, keyWords: keyWords, validResponse: validResponse, parentFileUploadId: parentFileUploadId, filePath: filePath, appFileContent: appFileContent, appFileSha256: appFileSha256, appFileCreatedAtUtc: appFileCreatedAtUtc, appFileUserIdValue: appFileUserIdValue, appFileTenantIdValue: appFileTenantIdValue, appFileEnrollmentIdValue: appFileEnrollmentIdValue, appFileSource: appFileSource, appFileLength: appFileLength, appFileName: appFileName, appFileFileName: appFileFileName, appFileLastModified: appFileLastModified, appFileSize: appFileSize, appFileContentType: appFileContentType, appFileContentDisposition: appFileContentDisposition, appFileHeaders: appFileHeaders, id: id, timestamp: timestamp) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -65,8 +82,22 @@ Name | Type | Description  | Notes
  **validResponse** | **Bool** |  | [optional] 
  **parentFileUploadId** | **String** |  | [optional] 
  **filePath** | **String** |  | [optional] 
- **file** | **URL** |  | [optional] 
- **iD** | **UUID** |  | [optional] 
+ **appFileContent** | **Data** |  | [optional] 
+ **appFileSha256** | **String** |  | [optional] 
+ **appFileCreatedAtUtc** | **Date** |  | [optional] 
+ **appFileUserIdValue** | **UUID** |  | [optional] 
+ **appFileTenantIdValue** | **UUID** |  | [optional] 
+ **appFileEnrollmentIdValue** | **UUID** |  | [optional] 
+ **appFileSource** | **String** |  | [optional] 
+ **appFileLength** | **Int64** |  | [optional] 
+ **appFileName** | **String** |  | [optional] 
+ **appFileFileName** | **String** |  | [optional] 
+ **appFileLastModified** | **Date** |  | [optional] 
+ **appFileSize** | **Int64** |  | [optional] 
+ **appFileContentType** | **String** |  | [optional] 
+ **appFileContentDisposition** | **String** |  | [optional] 
+ **appFileHeaders** | [**[String: String]**](Dictionary.md) |  | [optional] 
+ **id** | **UUID** |  | [optional] 
  **timestamp** | **Date** |  | [optional] 
 
 ### Return type
@@ -75,7 +106,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 

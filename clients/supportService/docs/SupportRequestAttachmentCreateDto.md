@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **UUID** |  | [optional] [readonly] 
-**timestamp** | **Date** |  | [optional] [readonly] 
+**id** | **UUID** |  | [optional] 
+**timestamp** | **Date** |  | [optional] 
 **notes** | **String** |  | [optional] 
 **title** | **String** |  | [optional] 
 **author** | **String** |  | [optional] 
@@ -15,7 +15,6 @@ Name | Type | Description | Notes
 **validResponse** | **Bool** |  | [optional] 
 **parentFileUploadId** | **String** |  | [optional] 
 **filePath** | **String** |  | [optional] 
-**file** | **URL** |  | [optional] 
 **businessID** | **String** |  | [optional] 
 **businessProfileRecordID** | **String** |  | [optional] 
 **metadata** | **String** |  | [optional] 

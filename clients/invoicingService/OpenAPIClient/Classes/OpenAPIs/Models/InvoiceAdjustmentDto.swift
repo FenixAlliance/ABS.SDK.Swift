@@ -12,9 +12,9 @@ import AnyCodable
 
 public struct InvoiceAdjustmentDto: Codable, JSONEncodable, Hashable {
 
-    public enum ModelType: Int, Codable, CaseIterable {
-        case _0 = 0
-        case _1 = 1
+    public enum ModelType: String, Codable, CaseIterable {
+        case discount = "Discount"
+        case surcharge = "Surcharge"
     }
     public var id: String?
     public var timestamp: Date?

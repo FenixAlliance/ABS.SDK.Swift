@@ -4,20 +4,23 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**apiV2DealsServiceSalesLiteraturesExtendedGet**](SalesLiteraturesAPI.md#apiv2dealsservicesalesliteraturesextendedget) | **GET** /api/v2/DealsService/SalesLiteratures/Extended | 
-[**apiV2DealsServiceSalesLiteraturesGet**](SalesLiteraturesAPI.md#apiv2dealsservicesalesliteraturesget) | **GET** /api/v2/DealsService/SalesLiteratures | 
-[**apiV2DealsServiceSalesLiteraturesPost**](SalesLiteraturesAPI.md#apiv2dealsservicesalesliteraturespost) | **POST** /api/v2/DealsService/SalesLiteratures | 
-[**apiV2DealsServiceSalesLiteraturesSalesLiteratureIdDelete**](SalesLiteraturesAPI.md#apiv2dealsservicesalesliteraturessalesliteratureiddelete) | **DELETE** /api/v2/DealsService/SalesLiteratures/{salesLiteratureId} | 
-[**apiV2DealsServiceSalesLiteraturesSalesLiteratureIdGet**](SalesLiteraturesAPI.md#apiv2dealsservicesalesliteraturessalesliteratureidget) | **GET** /api/v2/DealsService/SalesLiteratures/{salesLiteratureId} | 
-[**apiV2DealsServiceSalesLiteraturesSalesLiteratureIdPut**](SalesLiteraturesAPI.md#apiv2dealsservicesalesliteraturessalesliteratureidput) | **PUT** /api/v2/DealsService/SalesLiteratures/{salesLiteratureId} | 
+[**countSalesLiteraturesAsync**](SalesLiteraturesAPI.md#countsalesliteraturesasync) | **GET** /api/v2/DealsService/SalesLiteratures/Count | Get sales literatures count
+[**createSalesLiteratureAsync**](SalesLiteraturesAPI.md#createsalesliteratureasync) | **POST** /api/v2/DealsService/SalesLiteratures | Create a sales literature
+[**deleteSalesLiteratureAsync**](SalesLiteraturesAPI.md#deletesalesliteratureasync) | **DELETE** /api/v2/DealsService/SalesLiteratures/{salesLiteratureId} | Delete a sales literature
+[**getExtendedSalesLiteraturesAsync**](SalesLiteraturesAPI.md#getextendedsalesliteraturesasync) | **GET** /api/v2/DealsService/SalesLiteratures/Extended | Get extended sales literatures
+[**getSalesLiteratureAsync**](SalesLiteraturesAPI.md#getsalesliteratureasync) | **GET** /api/v2/DealsService/SalesLiteratures/{salesLiteratureId} | Get sales literature by ID
+[**getSalesLiteraturesAsync**](SalesLiteraturesAPI.md#getsalesliteraturesasync) | **GET** /api/v2/DealsService/SalesLiteratures | Get sales literatures
+[**updateSalesLiteratureAsync**](SalesLiteraturesAPI.md#updatesalesliteratureasync) | **PUT** /api/v2/DealsService/SalesLiteratures/{salesLiteratureId} | Update a sales literature
 
 
-# **apiV2DealsServiceSalesLiteraturesExtendedGet**
+# **countSalesLiteraturesAsync**
 ```swift
-    open class func apiV2DealsServiceSalesLiteraturesExtendedGet(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ExtendedSalesLiteratureDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func countSalesLiteraturesAsync(tenantId: UUID, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
+Get sales literatures count
 
+Returns the total count of sales literatures for the specified tenant with OData filter support.
 
 ### Example
 ```swift
@@ -25,10 +28,9 @@ Method | HTTP request | Description
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
 
-SalesLiteraturesAPI.apiV2DealsServiceSalesLiteraturesExtendedGet(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Get sales literatures count
+SalesLiteraturesAPI.countSalesLiteraturesAsync(tenantId: tenantId) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -45,16 +47,14 @@ SalesLiteraturesAPI.apiV2DealsServiceSalesLiteraturesExtendedGet(tenantId: tenan
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
 
 ### Return type
 
-[**ExtendedSalesLiteratureDtoListEnvelope**](ExtendedSalesLiteratureDtoListEnvelope.md)
+[**Int32Envelope**](Int32Envelope.md)
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
@@ -63,12 +63,14 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **apiV2DealsServiceSalesLiteraturesGet**
+# **createSalesLiteratureAsync**
 ```swift
-    open class func apiV2DealsServiceSalesLiteraturesGet(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: SalesLiteratureDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func createSalesLiteratureAsync(tenantId: UUID, salesLiteratureCreateDto: SalesLiteratureCreateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
+Create a sales literature
 
+Creates a new sales literature for the specified tenant.
 
 ### Example
 ```swift
@@ -76,10 +78,10 @@ Name | Type | Description  | Notes
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
+let salesLiteratureCreateDto = SalesLiteratureCreateDto(id: 123, timestamp: Date(), title: "title_example", content: "content_example", description: "description_example", modifiedDate: Date(), expirationDate: Date(), tenantId: "tenantId_example", enrollmentId: "enrollmentId_example", salesLiteratureTypeId: "salesLiteratureTypeId_example") // SalesLiteratureCreateDto |  (optional)
 
-SalesLiteraturesAPI.apiV2DealsServiceSalesLiteraturesGet(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Create a sales literature
+SalesLiteraturesAPI.createSalesLiteratureAsync(tenantId: tenantId, salesLiteratureCreateDto: salesLiteratureCreateDto) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -96,60 +98,6 @@ SalesLiteraturesAPI.apiV2DealsServiceSalesLiteraturesGet(tenantId: tenantId, api
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
-
-### Return type
-
-[**SalesLiteratureDtoListEnvelope**](SalesLiteratureDtoListEnvelope.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/xml
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **apiV2DealsServiceSalesLiteraturesPost**
-```swift
-    open class func apiV2DealsServiceSalesLiteraturesPost(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, salesLiteratureCreateDto: SalesLiteratureCreateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
-```
-
-
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
-
-let tenantId = 987 // UUID | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
-let salesLiteratureCreateDto = SalesLiteratureCreateDto(id: 123, timestamp: Date(), title: "title_example", content: "content_example", description: "description_example", modifiedDate: Date(), expirationDate: Date(), tenantId: "tenantId_example", enrolmentId: "enrolmentId_example", salesLiteratureTypeId: "salesLiteratureTypeId_example") // SalesLiteratureCreateDto |  (optional)
-
-SalesLiteraturesAPI.apiV2DealsServiceSalesLiteraturesPost(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, salesLiteratureCreateDto: salesLiteratureCreateDto) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **tenantId** | **UUID** |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
  **salesLiteratureCreateDto** | [**SalesLiteratureCreateDto**](SalesLiteratureCreateDto.md) |  | [optional] 
 
 ### Return type
@@ -158,7 +106,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
@@ -167,12 +115,14 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **apiV2DealsServiceSalesLiteraturesSalesLiteratureIdDelete**
+# **deleteSalesLiteratureAsync**
 ```swift
-    open class func apiV2DealsServiceSalesLiteraturesSalesLiteratureIdDelete(tenantId: UUID, salesLiteratureId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func deleteSalesLiteratureAsync(tenantId: UUID, salesLiteratureId: UUID, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
+Delete a sales literature
 
+Deletes an existing sales literature by its unique identifier.
 
 ### Example
 ```swift
@@ -181,10 +131,9 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let salesLiteratureId = 987 // UUID | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
 
-SalesLiteraturesAPI.apiV2DealsServiceSalesLiteraturesSalesLiteratureIdDelete(tenantId: tenantId, salesLiteratureId: salesLiteratureId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Delete a sales literature
+SalesLiteraturesAPI.deleteSalesLiteratureAsync(tenantId: tenantId, salesLiteratureId: salesLiteratureId) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -202,8 +151,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **salesLiteratureId** | **UUID** |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
 
 ### Return type
 
@@ -211,7 +158,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
@@ -220,23 +167,24 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **apiV2DealsServiceSalesLiteraturesSalesLiteratureIdGet**
+# **getExtendedSalesLiteraturesAsync**
 ```swift
-    open class func apiV2DealsServiceSalesLiteraturesSalesLiteratureIdGet(salesLiteratureId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: SalesLiteratureDtoEnvelope?, _ error: Error?) -> Void)
+    open class func getExtendedSalesLiteraturesAsync(tenantId: UUID, completion: @escaping (_ data: ExtendedSalesLiteratureDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
+Get extended sales literatures
 
+Retrieves a list of sales literatures with extended details for the specified tenant with OData query support.
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let salesLiteratureId = 987 // UUID | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
+let tenantId = 987 // UUID | 
 
-SalesLiteraturesAPI.apiV2DealsServiceSalesLiteraturesSalesLiteratureIdGet(salesLiteratureId: salesLiteratureId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Get extended sales literatures
+SalesLiteraturesAPI.getExtendedSalesLiteraturesAsync(tenantId: tenantId) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -252,17 +200,15 @@ SalesLiteraturesAPI.apiV2DealsServiceSalesLiteraturesSalesLiteratureIdGet(salesL
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **salesLiteratureId** | **UUID** |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
+ **tenantId** | **UUID** |  | 
 
 ### Return type
 
-[**SalesLiteratureDtoEnvelope**](SalesLiteratureDtoEnvelope.md)
+[**ExtendedSalesLiteratureDtoListEnvelope**](ExtendedSalesLiteratureDtoListEnvelope.md)
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
@@ -271,12 +217,14 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **apiV2DealsServiceSalesLiteraturesSalesLiteratureIdPut**
+# **getSalesLiteratureAsync**
 ```swift
-    open class func apiV2DealsServiceSalesLiteraturesSalesLiteratureIdPut(tenantId: UUID, salesLiteratureId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, salesLiteratureUpdateDto: SalesLiteratureUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func getSalesLiteratureAsync(tenantId: UUID, salesLiteratureId: UUID, completion: @escaping (_ data: SalesLiteratureDtoEnvelope?, _ error: Error?) -> Void)
 ```
 
+Get sales literature by ID
 
+Retrieves a single sales literature by its unique identifier.
 
 ### Example
 ```swift
@@ -285,11 +233,9 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let salesLiteratureId = 987 // UUID | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
-let salesLiteratureUpdateDto = SalesLiteratureUpdateDto(title: "title_example", content: "content_example", description: "description_example", modifiedDate: Date(), expirationDate: Date(), tenantId: "tenantId_example", enrolmentId: "enrolmentId_example", salesLiteratureTypeId: "salesLiteratureTypeId_example") // SalesLiteratureUpdateDto |  (optional)
 
-SalesLiteraturesAPI.apiV2DealsServiceSalesLiteraturesSalesLiteratureIdPut(tenantId: tenantId, salesLiteratureId: salesLiteratureId, apiVersion: apiVersion, xApiVersion: xApiVersion, salesLiteratureUpdateDto: salesLiteratureUpdateDto) { (response, error) in
+// Get sales literature by ID
+SalesLiteraturesAPI.getSalesLiteratureAsync(tenantId: tenantId, salesLiteratureId: salesLiteratureId) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -307,8 +253,109 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **salesLiteratureId** | **UUID** |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**SalesLiteratureDtoEnvelope**](SalesLiteratureDtoEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getSalesLiteraturesAsync**
+```swift
+    open class func getSalesLiteraturesAsync(tenantId: UUID, completion: @escaping (_ data: SalesLiteratureDtoListEnvelope?, _ error: Error?) -> Void)
+```
+
+Get sales literatures
+
+Retrieves a list of sales literatures for the specified tenant with OData query support.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+
+// Get sales literatures
+SalesLiteraturesAPI.getSalesLiteraturesAsync(tenantId: tenantId) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+
+### Return type
+
+[**SalesLiteratureDtoListEnvelope**](SalesLiteratureDtoListEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **updateSalesLiteratureAsync**
+```swift
+    open class func updateSalesLiteratureAsync(tenantId: UUID, salesLiteratureId: UUID, salesLiteratureUpdateDto: SalesLiteratureUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Update a sales literature
+
+Updates an existing sales literature by its unique identifier.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let salesLiteratureId = 987 // UUID | 
+let salesLiteratureUpdateDto = SalesLiteratureUpdateDto(title: "title_example", content: "content_example", description: "description_example", modifiedDate: Date(), expirationDate: Date(), tenantId: "tenantId_example", enrollmentId: "enrollmentId_example", salesLiteratureTypeId: "salesLiteratureTypeId_example") // SalesLiteratureUpdateDto |  (optional)
+
+// Update a sales literature
+SalesLiteraturesAPI.updateSalesLiteratureAsync(tenantId: tenantId, salesLiteratureId: salesLiteratureId, salesLiteratureUpdateDto: salesLiteratureUpdateDto) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **salesLiteratureId** | **UUID** |  | 
  **salesLiteratureUpdateDto** | [**SalesLiteratureUpdateDto**](SalesLiteratureUpdateDto.md) |  | [optional] 
 
 ### Return type
@@ -317,7 +364,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 

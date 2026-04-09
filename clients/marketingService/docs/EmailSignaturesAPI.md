@@ -4,20 +4,22 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**apiV2MarketingServiceEmailSignaturesCountGet**](EmailSignaturesAPI.md#apiv2marketingserviceemailsignaturescountget) | **GET** /api/v2/MarketingService/EmailSignatures/Count | 
-[**apiV2MarketingServiceEmailSignaturesEmailsignatureIdDelete**](EmailSignaturesAPI.md#apiv2marketingserviceemailsignaturesemailsignatureiddelete) | **DELETE** /api/v2/MarketingService/EmailSignatures/{emailsignatureId} | 
-[**apiV2MarketingServiceEmailSignaturesEmailsignatureIdGet**](EmailSignaturesAPI.md#apiv2marketingserviceemailsignaturesemailsignatureidget) | **GET** /api/v2/MarketingService/EmailSignatures/{emailsignatureId} | 
-[**apiV2MarketingServiceEmailSignaturesEmailsignatureIdPut**](EmailSignaturesAPI.md#apiv2marketingserviceemailsignaturesemailsignatureidput) | **PUT** /api/v2/MarketingService/EmailSignatures/{emailsignatureId} | 
-[**apiV2MarketingServiceEmailSignaturesGet**](EmailSignaturesAPI.md#apiv2marketingserviceemailsignaturesget) | **GET** /api/v2/MarketingService/EmailSignatures | 
-[**apiV2MarketingServiceEmailSignaturesPost**](EmailSignaturesAPI.md#apiv2marketingserviceemailsignaturespost) | **POST** /api/v2/MarketingService/EmailSignatures | 
+[**createEmailSignatureAsync**](EmailSignaturesAPI.md#createemailsignatureasync) | **POST** /api/v2/MarketingService/EmailSignatures | Create an email signature
+[**deleteEmailSignatureAsync**](EmailSignaturesAPI.md#deleteemailsignatureasync) | **DELETE** /api/v2/MarketingService/EmailSignatures/{emailsignatureId} | Delete an email signature
+[**getEmailSignatureDetailsAsync**](EmailSignaturesAPI.md#getemailsignaturedetailsasync) | **GET** /api/v2/MarketingService/EmailSignatures/{emailsignatureId} | Get email signature by ID
+[**getEmailSignaturesCountAsync**](EmailSignaturesAPI.md#getemailsignaturescountasync) | **GET** /api/v2/MarketingService/EmailSignatures/Count | Get email signatures count
+[**getEmailSignaturesODataAsync**](EmailSignaturesAPI.md#getemailsignaturesodataasync) | **GET** /api/v2/MarketingService/EmailSignatures | Get email signatures
+[**updateEmailSignatureAsync**](EmailSignaturesAPI.md#updateemailsignatureasync) | **PUT** /api/v2/MarketingService/EmailSignatures/{emailsignatureId} | Update an email signature
 
 
-# **apiV2MarketingServiceEmailSignaturesCountGet**
+# **createEmailSignatureAsync**
 ```swift
-    open class func apiV2MarketingServiceEmailSignaturesCountGet(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func createEmailSignatureAsync(tenantId: UUID, emailSignatureCreateDto: EmailSignatureCreateDto, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
+Create an email signature
 
+Creates a new email signature for the specified tenant.
 
 ### Example
 ```swift
@@ -25,10 +27,12 @@ Method | HTTP request | Description
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
+let emailSignatureCreateDto = EmailSignatureCreateDto(id: 123, timestamp: Date(), tenantId: "tenantId_example", enrollmentId: "enrollmentId_example", title: "title_example", code: "code_example", published: false, description: "description_example", htmlContent: "htmlContent_example", featuredImageUrl: "featuredImageUrl_example", codeType: "codeType_example") // EmailSignatureCreateDto | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
-EmailSignaturesAPI.apiV2MarketingServiceEmailSignaturesCountGet(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Create an email signature
+EmailSignaturesAPI.createEmailSignatureAsync(tenantId: tenantId, emailSignatureCreateDto: emailSignatureCreateDto, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -45,30 +49,33 @@ EmailSignaturesAPI.apiV2MarketingServiceEmailSignaturesCountGet(tenantId: tenant
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
+ **emailSignatureCreateDto** | [**EmailSignatureCreateDto**](EmailSignatureCreateDto.md) |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 
 ### Return type
 
-[**Int32Envelope**](Int32Envelope.md)
+[**EmptyEnvelope**](EmptyEnvelope.md)
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **apiV2MarketingServiceEmailSignaturesEmailsignatureIdDelete**
+# **deleteEmailSignatureAsync**
 ```swift
-    open class func apiV2MarketingServiceEmailSignaturesEmailsignatureIdDelete(tenantId: UUID, emailsignatureId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func deleteEmailSignatureAsync(tenantId: UUID, emailsignatureId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
+Delete an email signature
 
+Deletes an email signature by its ID.
 
 ### Example
 ```swift
@@ -80,7 +87,8 @@ let emailsignatureId = 987 // UUID |
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
-EmailSignaturesAPI.apiV2MarketingServiceEmailSignaturesEmailsignatureIdDelete(tenantId: tenantId, emailsignatureId: emailsignatureId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Delete an email signature
+EmailSignaturesAPI.deleteEmailSignatureAsync(tenantId: tenantId, emailsignatureId: emailsignatureId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -107,7 +115,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
@@ -116,12 +124,14 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **apiV2MarketingServiceEmailSignaturesEmailsignatureIdGet**
+# **getEmailSignatureDetailsAsync**
 ```swift
-    open class func apiV2MarketingServiceEmailSignaturesEmailsignatureIdGet(tenantId: UUID, emailsignatureId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmailSignatureDtoEnvelope?, _ error: Error?) -> Void)
+    open class func getEmailSignatureDetailsAsync(tenantId: UUID, emailsignatureId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmailSignatureDtoEnvelope?, _ error: Error?) -> Void)
 ```
 
+Get email signature by ID
 
+Retrieves the details of a specific email signature by its ID.
 
 ### Example
 ```swift
@@ -133,7 +143,8 @@ let emailsignatureId = 987 // UUID |
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
-EmailSignaturesAPI.apiV2MarketingServiceEmailSignaturesEmailsignatureIdGet(tenantId: tenantId, emailsignatureId: emailsignatureId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Get email signature by ID
+EmailSignaturesAPI.getEmailSignatureDetailsAsync(tenantId: tenantId, emailsignatureId: emailsignatureId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -160,7 +171,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
@@ -169,12 +180,122 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **apiV2MarketingServiceEmailSignaturesEmailsignatureIdPut**
+# **getEmailSignaturesCountAsync**
 ```swift
-    open class func apiV2MarketingServiceEmailSignaturesEmailsignatureIdPut(tenantId: UUID, emailsignatureId: UUID, emailSignatureUpdateDto: EmailSignatureUpdateDto, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func getEmailSignaturesCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
+Get email signatures count
 
+Returns the count of email signatures for the specified tenant using OData query options.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Get email signatures count
+EmailSignaturesAPI.getEmailSignaturesCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**Int32Envelope**](Int32Envelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getEmailSignaturesODataAsync**
+```swift
+    open class func getEmailSignaturesODataAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmailSignatureDtoListEnvelope?, _ error: Error?) -> Void)
+```
+
+Get email signatures
+
+Retrieves a collection of email signatures for the specified tenant using OData query options.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Get email signatures
+EmailSignaturesAPI.getEmailSignaturesODataAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**EmailSignatureDtoListEnvelope**](EmailSignatureDtoListEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **updateEmailSignatureAsync**
+```swift
+    open class func updateEmailSignatureAsync(tenantId: UUID, emailsignatureId: UUID, emailSignatureUpdateDto: EmailSignatureUpdateDto, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Update an email signature
+
+Updates an existing email signature by its ID.
 
 ### Example
 ```swift
@@ -183,11 +304,12 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let emailsignatureId = 987 // UUID | 
-let emailSignatureUpdateDto = EmailSignatureUpdateDto(order: 123, slug: "slug_example", name: "name_example", title: "title_example", excerpt: "excerpt_example", password: "password_example", description: "description_example", highlightImage: "highlightImage_example", canonicalUrl: "canonicalUrl_example", seoTitle: "seoTitle_example", seoKeyWords: "seoKeyWords_example", seoKeyPhrases: "seoKeyPhrases_example", metaDescription: "metaDescription_example", twitterImage: "twitterImage_example", twitterTitle: "twitterTitle_example", twitterDescription: "twitterDescription_example", facebookImage: "facebookImage_example", facebookTitle: "facebookTitle_example", facebookDescription: "facebookDescription_example", featuredImageURL: "featuredImageURL_example", content: "content_example", code: "code_example", namespace: "namespace_example", typeName: "typeName_example", generatedCode: "generatedCode_example", compilationPath: "compilationPath_example", htmlContent: "htmlContent_example", cSharpContent: "cSharpContent_example", razorContent: "razorContent_example", cssContent: "cssContent_example", jsContent: "jsContent_example", cssFiles: "cssFiles_example", jsFiles: "jsFiles_example", razorGeneratedCode: "razorGeneratedCode_example", cSharpGeneratedCode: "cSharpGeneratedCode_example", precompiledLogicSize: 123, precompiledLogicSizeLong: 123, precompiledViewSize: 123, precompiledViewSizeLong: 123, precompiledLogicViewSize: 123, template: false, _default: false, enable: false, enableComments: false, displaySocialBox: false, published: false, inTrashCan: false, systemLocked: false, allowPingbacks: false, allowTrackbacks: false, cornerstoneContent: false, isEssentialContent: false, allowSearchEngineIndexing: false) // EmailSignatureUpdateDto | 
+let emailSignatureUpdateDto = EmailSignatureUpdateDto(order: 123, slug: "slug_example", name: "name_example", title: "title_example", excerpt: "excerpt_example", password: "password_example", description: "description_example", highlightImage: "highlightImage_example", canonicalUrl: "canonicalUrl_example", seoTitle: "seoTitle_example", seoKeyWords: "seoKeyWords_example", seoKeyPhrases: "seoKeyPhrases_example", metaDescription: "metaDescription_example", twitterImage: "twitterImage_example", twitterTitle: "twitterTitle_example", twitterDescription: "twitterDescription_example", facebookImage: "facebookImage_example", facebookTitle: "facebookTitle_example", facebookDescription: "facebookDescription_example", featuredImageUrl: "featuredImageUrl_example", content: "content_example", code: "code_example", namespace: "namespace_example", typeName: "typeName_example", generatedCode: "generatedCode_example", compilationPath: "compilationPath_example", htmlContent: "htmlContent_example", codeType: "codeType_example", cSharpContent: "cSharpContent_example", razorContent: "razorContent_example", cssContent: "cssContent_example", jsContent: "jsContent_example", cssFiles: "cssFiles_example", jsFiles: "jsFiles_example", razorGeneratedCode: "razorGeneratedCode_example", cSharpGeneratedCode: "cSharpGeneratedCode_example", precompiledLogicSize: 123, precompiledLogicSizeLong: 123, precompiledViewSize: 123, precompiledViewSizeLong: 123, precompiledLogicViewSize: 123, template: false, _default: false, enable: false, enableComments: false, displaySocialBox: false, published: false, inTrashCan: false, systemLocked: false, allowPingbacks: false, allowTrackbacks: false, cornerstoneContent: false, isEssentialContent: false, allowSearchEngineIndexing: false) // EmailSignatureUpdateDto | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
-EmailSignaturesAPI.apiV2MarketingServiceEmailSignaturesEmailsignatureIdPut(tenantId: tenantId, emailsignatureId: emailsignatureId, emailSignatureUpdateDto: emailSignatureUpdateDto, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Update an email signature
+EmailSignaturesAPI.updateEmailSignatureAsync(tenantId: tenantId, emailsignatureId: emailsignatureId, emailSignatureUpdateDto: emailSignatureUpdateDto, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -215,111 +337,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, application/xml
- - **Accept**: application/json, application/xml
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **apiV2MarketingServiceEmailSignaturesGet**
-```swift
-    open class func apiV2MarketingServiceEmailSignaturesGet(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmailSignatureDtoListEnvelope?, _ error: Error?) -> Void)
-```
-
-
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
-
-let tenantId = 987 // UUID | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
-
-EmailSignaturesAPI.apiV2MarketingServiceEmailSignaturesGet(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **tenantId** | **UUID** |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
-
-### Return type
-
-[**EmailSignatureDtoListEnvelope**](EmailSignatureDtoListEnvelope.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/xml
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **apiV2MarketingServiceEmailSignaturesPost**
-```swift
-    open class func apiV2MarketingServiceEmailSignaturesPost(tenantId: UUID, emailSignatureCreateDto: EmailSignatureCreateDto, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
-```
-
-
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
-
-let tenantId = 987 // UUID | 
-let emailSignatureCreateDto = EmailSignatureCreateDto(id: 123, timestamp: Date(), tenantId: "tenantId_example", enrolmentId: "enrolmentId_example", title: "title_example", authorId: "authorId_example", description: "description_example", htmlContent: "htmlContent_example", featuredImageUrl: "featuredImageUrl_example") // EmailSignatureCreateDto | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
-
-EmailSignaturesAPI.apiV2MarketingServiceEmailSignaturesPost(tenantId: tenantId, emailSignatureCreateDto: emailSignatureCreateDto, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **tenantId** | **UUID** |  | 
- **emailSignatureCreateDto** | [**EmailSignatureCreateDto**](EmailSignatureCreateDto.md) |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
-
-### Return type
-
-[**EmptyEnvelope**](EmptyEnvelope.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 

@@ -12,10 +12,10 @@ import AnyCodable
 
 public struct ProjectTimeLogCreateDto: Codable, JSONEncodable, Hashable {
 
-    public enum ProjectTimeLogRecordType: Int, Codable, CaseIterable {
-        case _0 = 0
-        case _1 = 1
-        case _2 = 2
+    public enum ProjectTimeLogRecordType: String, Codable, CaseIterable {
+        case regularHours = "RegularHours"
+        case overtimeToPay = "OvertimeToPay"
+        case overtimeToCompensate = "OvertimeToCompensate"
     }
     static let projectTaskIDRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     static let projectPeriodIDRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)

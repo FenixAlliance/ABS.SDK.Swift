@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **UUID** |  | [optional] [readonly] 
-**timestamp** | **Date** |  | [optional] [readonly] 
+**id** | **UUID** |  | [optional] 
+**timestamp** | **Date** |  | [optional] 
 **locked** | **Bool** |  | [optional] 
 **name** | **String** |  | [optional] 
 **purpose** | **String** |  | [optional] 
@@ -15,9 +15,9 @@ Name | Type | Description | Notes
 **lastUsedOn** | **Date** |  | [optional] 
 **currencyId** | **String** |  | [optional] 
 **tenantId** | **String** |  | [optional] 
-**enrolmentId** | **String** |  | [optional] 
-**marketingListType** | **Int** |  | [optional] 
-**marketingListTarget** | **Int** |  | [optional] 
+**enrollmentId** | **String** |  | [optional] 
+**marketingListType** | **String** |  | [optional] 
+**marketingListTarget** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -16,7 +16,7 @@ public struct SalesLiteratureUpdateDto: Codable, JSONEncodable, Hashable {
     static let contentRule = StringRule(minLength: 0, maxLength: 1000, pattern: nil)
     static let descriptionRule = StringRule(minLength: 0, maxLength: 1000, pattern: nil)
     static let tenantIdRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
-    static let enrolmentIdRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
+    static let enrollmentIdRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     static let salesLiteratureTypeIdRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     public var title: String?
     public var content: String?
@@ -24,17 +24,17 @@ public struct SalesLiteratureUpdateDto: Codable, JSONEncodable, Hashable {
     public var modifiedDate: Date?
     public var expirationDate: Date?
     public var tenantId: String?
-    public var enrolmentId: String?
+    public var enrollmentId: String?
     public var salesLiteratureTypeId: String?
 
-    public init(title: String? = nil, content: String? = nil, description: String? = nil, modifiedDate: Date? = nil, expirationDate: Date? = nil, tenantId: String? = nil, enrolmentId: String? = nil, salesLiteratureTypeId: String? = nil) {
+    public init(title: String? = nil, content: String? = nil, description: String? = nil, modifiedDate: Date? = nil, expirationDate: Date? = nil, tenantId: String? = nil, enrollmentId: String? = nil, salesLiteratureTypeId: String? = nil) {
         self.title = title
         self.content = content
         self.description = description
         self.modifiedDate = modifiedDate
         self.expirationDate = expirationDate
         self.tenantId = tenantId
-        self.enrolmentId = enrolmentId
+        self.enrollmentId = enrollmentId
         self.salesLiteratureTypeId = salesLiteratureTypeId
     }
 
@@ -45,7 +45,7 @@ public struct SalesLiteratureUpdateDto: Codable, JSONEncodable, Hashable {
         case modifiedDate
         case expirationDate
         case tenantId
-        case enrolmentId
+        case enrollmentId
         case salesLiteratureTypeId
     }
 
@@ -59,7 +59,7 @@ public struct SalesLiteratureUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(modifiedDate, forKey: .modifiedDate)
         try container.encodeIfPresent(expirationDate, forKey: .expirationDate)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(enrolmentId, forKey: .enrolmentId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(salesLiteratureTypeId, forKey: .salesLiteratureTypeId)
     }
 }

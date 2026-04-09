@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **fullName** | **String** |  | [optional] [readonly] 
 **qualifiedName** | **String** |  | [optional] 
 **publicName** | **String** |  | [optional] 
+**handler** | **String** |  | [optional] 
 **lastName** | **String** |  | [optional] 
 **firstName** | **String** |  | [optional] 
 **coverUrl** | **String** |  | [optional] 

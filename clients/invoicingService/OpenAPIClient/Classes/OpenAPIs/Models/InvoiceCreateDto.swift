@@ -12,36 +12,42 @@ import AnyCodable
 
 public struct InvoiceCreateDto: Codable, JSONEncodable, Hashable {
 
-    public enum InvoiceType: Int, Codable, CaseIterable {
-        case _0 = 0
-        case _1 = 1
+    public enum CostCalculationMethod: String, Codable, CaseIterable {
+        case automatic = "Automatic"
+        case custom = "Custom"
     }
-    public enum DocumentType: Int, Codable, CaseIterable {
-        case _0 = 0
-        case _1 = 1
-        case _2 = 2
+    public enum TaxCalculationMethod: String, Codable, CaseIterable {
+        case included = "Included"
+        case excluded = "Excluded"
     }
-    public enum InvoiceStatus: Int, Codable, CaseIterable {
-        case _0 = 0
-        case _1 = 1
-        case _2 = 2
-        case _3 = 3
-        case _4 = 4
+    public enum InvoiceType: String, Codable, CaseIterable {
+        case purchaseInvoice = "PurchaseInvoice"
+        case salesInvoice = "SalesInvoice"
+        case creditNote = "CreditNote"
+        case debitNote = "DebitNote"
+    }
+    public enum DocumentType: String, Codable, CaseIterable {
+        case standard = "Standard"
+        case debitNote = "DebitNote"
+        case creditNote = "CreditNote"
+    }
+    public enum InvoiceStatus: String, Codable, CaseIterable {
+        case draft = "Draft"
+        case closed = "Closed"
+        case signed = "Signed"
+        case expired = "Expired"
+        case paid = "Paid"
     }
     public var id: UUID?
     public var timestamp: Date?
     public var closed: Bool?
     public var title: String?
-    public var userId: String?
-    public var tenantId: String?
     public var priceListId: String?
     public var description: String?
-    public var enrollmentId: String?
     public var individualId: String?
     public var paymentTermId: String?
     public var organizationId: String?
-    public var currencyId: String?
-    public var forexRate: Double?
+    public var receiverTenantId: String?
     public var firstName: String?
     public var lastName: String?
     public var companyName: String?
@@ -52,44 +58,67 @@ public struct InvoiceCreateDto: Codable, JSONEncodable, Hashable {
     public var countryId: String?
     public var stateId: String?
     public var cityId: String?
+    public var forexRate: Double?
+    public var currencyId: String?
+    public var totalDetail: Double?
+    public var totalDetailCurrencyId: String?
+    public var totalProfit: Double?
+    public var totalProfitCurrencyId: String?
+    public var totalDiscounts: Double?
+    public var totalDiscountsCurrencyId: String?
+    public var totalSurcharges: Double?
+    public var totalSurchargesCurrencyId: String?
+    public var totalShippingCost: Double?
+    public var totalShippingCostCurrencyId: String?
+    public var totalShippingTax: Double?
+    public var totalShippingTaxCurrencyId: String?
+    public var totalWithheldTax: Double?
+    public var totalWithheldTaxCurrencyId: String?
+    public var totalTaxBase: Double?
+    public var totalTaxBaseCurrencyId: String?
+    public var totalTaxes: Double?
+    public var totalTaxesCurrencyId: String?
+    public var totalGlobalSurcharges: Double?
+    public var totalGlobalSurchargesCurrencyId: String?
+    public var totalGlobalDiscounts: Double?
+    public var totalGlobalDiscountsCurrencyId: String?
+    public var total: Double?
+    public var totalCurrencyId: String?
+    public var costCalculationMethod: CostCalculationMethod?
+    public var taxCalculationMethod: TaxCalculationMethod?
     public var paid: Bool?
     public var number: Int?
     public var notes: String?
-    public var customerNotes: String?
     public var orderId: String?
     public var enumeration: String?
     public var paymentModeId: String?
-    public var receiverTenantId: String?
     public var enumerationRangeId: String?
     public var emisorBillingProfileId: String?
     public var receiverBillingProfileId: String?
     public var emisorWalletAccountId: String?
     public var receiverWalletAccountId: String?
-    public var paymentDue: Date?
+    public var customerNotes: String?
     public var invoiceType: InvoiceType?
     public var documentType: DocumentType?
     public var invoiceStatus: InvoiceStatus?
+    public var paymentDue: Date?
     public var validFrom: Date?
     public var validTo: Date?
-    public var invoiceReferences: [InvoiceReferenceDto]?
-    public var invoiceItemRecords: [InvoiceItemRecordDto]?
-    public var invoiceAdjustments: [InvoiceAdjustmentDto]?
+    public var invoiceLines: [InvoiceLineCreateDto]?
+    public var invoiceReferences: [InvoiceReferenceCreateDto]?
+    public var invoiceAdjustments: [InvoiceAdjustmentCreateDto]?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, closed: Bool? = nil, title: String? = nil, userId: String? = nil, tenantId: String? = nil, priceListId: String? = nil, description: String? = nil, enrollmentId: String? = nil, individualId: String? = nil, paymentTermId: String? = nil, organizationId: String? = nil, currencyId: String? = nil, forexRate: Double? = nil, firstName: String? = nil, lastName: String? = nil, companyName: String? = nil, billingEmail: String? = nil, addressLine1: String? = nil, addressLine2: String? = nil, postalCode: String? = nil, countryId: String? = nil, stateId: String? = nil, cityId: String? = nil, paid: Bool? = nil, number: Int? = nil, notes: String? = nil, customerNotes: String? = nil, orderId: String? = nil, enumeration: String? = nil, paymentModeId: String? = nil, receiverTenantId: String? = nil, enumerationRangeId: String? = nil, emisorBillingProfileId: String? = nil, receiverBillingProfileId: String? = nil, emisorWalletAccountId: String? = nil, receiverWalletAccountId: String? = nil, paymentDue: Date? = nil, invoiceType: InvoiceType? = nil, documentType: DocumentType? = nil, invoiceStatus: InvoiceStatus? = nil, validFrom: Date? = nil, validTo: Date? = nil, invoiceReferences: [InvoiceReferenceDto]? = nil, invoiceItemRecords: [InvoiceItemRecordDto]? = nil, invoiceAdjustments: [InvoiceAdjustmentDto]? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, closed: Bool? = nil, title: String? = nil, priceListId: String? = nil, description: String? = nil, individualId: String? = nil, paymentTermId: String? = nil, organizationId: String? = nil, receiverTenantId: String? = nil, firstName: String? = nil, lastName: String? = nil, companyName: String? = nil, billingEmail: String? = nil, addressLine1: String? = nil, addressLine2: String? = nil, postalCode: String? = nil, countryId: String? = nil, stateId: String? = nil, cityId: String? = nil, forexRate: Double? = nil, currencyId: String? = nil, totalDetail: Double? = nil, totalDetailCurrencyId: String? = nil, totalProfit: Double? = nil, totalProfitCurrencyId: String? = nil, totalDiscounts: Double? = nil, totalDiscountsCurrencyId: String? = nil, totalSurcharges: Double? = nil, totalSurchargesCurrencyId: String? = nil, totalShippingCost: Double? = nil, totalShippingCostCurrencyId: String? = nil, totalShippingTax: Double? = nil, totalShippingTaxCurrencyId: String? = nil, totalWithheldTax: Double? = nil, totalWithheldTaxCurrencyId: String? = nil, totalTaxBase: Double? = nil, totalTaxBaseCurrencyId: String? = nil, totalTaxes: Double? = nil, totalTaxesCurrencyId: String? = nil, totalGlobalSurcharges: Double? = nil, totalGlobalSurchargesCurrencyId: String? = nil, totalGlobalDiscounts: Double? = nil, totalGlobalDiscountsCurrencyId: String? = nil, total: Double? = nil, totalCurrencyId: String? = nil, costCalculationMethod: CostCalculationMethod? = nil, taxCalculationMethod: TaxCalculationMethod? = nil, paid: Bool? = nil, number: Int? = nil, notes: String? = nil, orderId: String? = nil, enumeration: String? = nil, paymentModeId: String? = nil, enumerationRangeId: String? = nil, emisorBillingProfileId: String? = nil, receiverBillingProfileId: String? = nil, emisorWalletAccountId: String? = nil, receiverWalletAccountId: String? = nil, customerNotes: String? = nil, invoiceType: InvoiceType? = nil, documentType: DocumentType? = nil, invoiceStatus: InvoiceStatus? = nil, paymentDue: Date? = nil, validFrom: Date? = nil, validTo: Date? = nil, invoiceLines: [InvoiceLineCreateDto]? = nil, invoiceReferences: [InvoiceReferenceCreateDto]? = nil, invoiceAdjustments: [InvoiceAdjustmentCreateDto]? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.closed = closed
         self.title = title
-        self.userId = userId
-        self.tenantId = tenantId
         self.priceListId = priceListId
         self.description = description
-        self.enrollmentId = enrollmentId
         self.individualId = individualId
         self.paymentTermId = paymentTermId
         self.organizationId = organizationId
-        self.currencyId = currencyId
-        self.forexRate = forexRate
+        self.receiverTenantId = receiverTenantId
         self.firstName = firstName
         self.lastName = lastName
         self.companyName = companyName
@@ -100,27 +129,54 @@ public struct InvoiceCreateDto: Codable, JSONEncodable, Hashable {
         self.countryId = countryId
         self.stateId = stateId
         self.cityId = cityId
+        self.forexRate = forexRate
+        self.currencyId = currencyId
+        self.totalDetail = totalDetail
+        self.totalDetailCurrencyId = totalDetailCurrencyId
+        self.totalProfit = totalProfit
+        self.totalProfitCurrencyId = totalProfitCurrencyId
+        self.totalDiscounts = totalDiscounts
+        self.totalDiscountsCurrencyId = totalDiscountsCurrencyId
+        self.totalSurcharges = totalSurcharges
+        self.totalSurchargesCurrencyId = totalSurchargesCurrencyId
+        self.totalShippingCost = totalShippingCost
+        self.totalShippingCostCurrencyId = totalShippingCostCurrencyId
+        self.totalShippingTax = totalShippingTax
+        self.totalShippingTaxCurrencyId = totalShippingTaxCurrencyId
+        self.totalWithheldTax = totalWithheldTax
+        self.totalWithheldTaxCurrencyId = totalWithheldTaxCurrencyId
+        self.totalTaxBase = totalTaxBase
+        self.totalTaxBaseCurrencyId = totalTaxBaseCurrencyId
+        self.totalTaxes = totalTaxes
+        self.totalTaxesCurrencyId = totalTaxesCurrencyId
+        self.totalGlobalSurcharges = totalGlobalSurcharges
+        self.totalGlobalSurchargesCurrencyId = totalGlobalSurchargesCurrencyId
+        self.totalGlobalDiscounts = totalGlobalDiscounts
+        self.totalGlobalDiscountsCurrencyId = totalGlobalDiscountsCurrencyId
+        self.total = total
+        self.totalCurrencyId = totalCurrencyId
+        self.costCalculationMethod = costCalculationMethod
+        self.taxCalculationMethod = taxCalculationMethod
         self.paid = paid
         self.number = number
         self.notes = notes
-        self.customerNotes = customerNotes
         self.orderId = orderId
         self.enumeration = enumeration
         self.paymentModeId = paymentModeId
-        self.receiverTenantId = receiverTenantId
         self.enumerationRangeId = enumerationRangeId
         self.emisorBillingProfileId = emisorBillingProfileId
         self.receiverBillingProfileId = receiverBillingProfileId
         self.emisorWalletAccountId = emisorWalletAccountId
         self.receiverWalletAccountId = receiverWalletAccountId
-        self.paymentDue = paymentDue
+        self.customerNotes = customerNotes
         self.invoiceType = invoiceType
         self.documentType = documentType
         self.invoiceStatus = invoiceStatus
+        self.paymentDue = paymentDue
         self.validFrom = validFrom
         self.validTo = validTo
+        self.invoiceLines = invoiceLines
         self.invoiceReferences = invoiceReferences
-        self.invoiceItemRecords = invoiceItemRecords
         self.invoiceAdjustments = invoiceAdjustments
     }
 
@@ -129,16 +185,12 @@ public struct InvoiceCreateDto: Codable, JSONEncodable, Hashable {
         case timestamp
         case closed
         case title
-        case userId
-        case tenantId
         case priceListId
         case description
-        case enrollmentId
         case individualId
         case paymentTermId
         case organizationId
-        case currencyId
-        case forexRate
+        case receiverTenantId
         case firstName
         case lastName
         case companyName
@@ -149,27 +201,54 @@ public struct InvoiceCreateDto: Codable, JSONEncodable, Hashable {
         case countryId
         case stateId
         case cityId
+        case forexRate
+        case currencyId
+        case totalDetail
+        case totalDetailCurrencyId
+        case totalProfit
+        case totalProfitCurrencyId
+        case totalDiscounts
+        case totalDiscountsCurrencyId
+        case totalSurcharges
+        case totalSurchargesCurrencyId
+        case totalShippingCost
+        case totalShippingCostCurrencyId
+        case totalShippingTax
+        case totalShippingTaxCurrencyId
+        case totalWithheldTax
+        case totalWithheldTaxCurrencyId
+        case totalTaxBase
+        case totalTaxBaseCurrencyId
+        case totalTaxes
+        case totalTaxesCurrencyId
+        case totalGlobalSurcharges
+        case totalGlobalSurchargesCurrencyId
+        case totalGlobalDiscounts
+        case totalGlobalDiscountsCurrencyId
+        case total
+        case totalCurrencyId
+        case costCalculationMethod
+        case taxCalculationMethod
         case paid
         case number
         case notes
-        case customerNotes
         case orderId
         case enumeration
         case paymentModeId
-        case receiverTenantId
         case enumerationRangeId
         case emisorBillingProfileId
         case receiverBillingProfileId
         case emisorWalletAccountId
         case receiverWalletAccountId
-        case paymentDue
+        case customerNotes
         case invoiceType
         case documentType
         case invoiceStatus
+        case paymentDue
         case validFrom
         case validTo
+        case invoiceLines
         case invoiceReferences
-        case invoiceItemRecords
         case invoiceAdjustments
     }
 
@@ -181,16 +260,12 @@ public struct InvoiceCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(closed, forKey: .closed)
         try container.encodeIfPresent(title, forKey: .title)
-        try container.encodeIfPresent(userId, forKey: .userId)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encodeIfPresent(priceListId, forKey: .priceListId)
         try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(individualId, forKey: .individualId)
         try container.encodeIfPresent(paymentTermId, forKey: .paymentTermId)
         try container.encodeIfPresent(organizationId, forKey: .organizationId)
-        try container.encodeIfPresent(currencyId, forKey: .currencyId)
-        try container.encodeIfPresent(forexRate, forKey: .forexRate)
+        try container.encodeIfPresent(receiverTenantId, forKey: .receiverTenantId)
         try container.encodeIfPresent(firstName, forKey: .firstName)
         try container.encodeIfPresent(lastName, forKey: .lastName)
         try container.encodeIfPresent(companyName, forKey: .companyName)
@@ -201,27 +276,54 @@ public struct InvoiceCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(countryId, forKey: .countryId)
         try container.encodeIfPresent(stateId, forKey: .stateId)
         try container.encodeIfPresent(cityId, forKey: .cityId)
+        try container.encodeIfPresent(forexRate, forKey: .forexRate)
+        try container.encodeIfPresent(currencyId, forKey: .currencyId)
+        try container.encodeIfPresent(totalDetail, forKey: .totalDetail)
+        try container.encodeIfPresent(totalDetailCurrencyId, forKey: .totalDetailCurrencyId)
+        try container.encodeIfPresent(totalProfit, forKey: .totalProfit)
+        try container.encodeIfPresent(totalProfitCurrencyId, forKey: .totalProfitCurrencyId)
+        try container.encodeIfPresent(totalDiscounts, forKey: .totalDiscounts)
+        try container.encodeIfPresent(totalDiscountsCurrencyId, forKey: .totalDiscountsCurrencyId)
+        try container.encodeIfPresent(totalSurcharges, forKey: .totalSurcharges)
+        try container.encodeIfPresent(totalSurchargesCurrencyId, forKey: .totalSurchargesCurrencyId)
+        try container.encodeIfPresent(totalShippingCost, forKey: .totalShippingCost)
+        try container.encodeIfPresent(totalShippingCostCurrencyId, forKey: .totalShippingCostCurrencyId)
+        try container.encodeIfPresent(totalShippingTax, forKey: .totalShippingTax)
+        try container.encodeIfPresent(totalShippingTaxCurrencyId, forKey: .totalShippingTaxCurrencyId)
+        try container.encodeIfPresent(totalWithheldTax, forKey: .totalWithheldTax)
+        try container.encodeIfPresent(totalWithheldTaxCurrencyId, forKey: .totalWithheldTaxCurrencyId)
+        try container.encodeIfPresent(totalTaxBase, forKey: .totalTaxBase)
+        try container.encodeIfPresent(totalTaxBaseCurrencyId, forKey: .totalTaxBaseCurrencyId)
+        try container.encodeIfPresent(totalTaxes, forKey: .totalTaxes)
+        try container.encodeIfPresent(totalTaxesCurrencyId, forKey: .totalTaxesCurrencyId)
+        try container.encodeIfPresent(totalGlobalSurcharges, forKey: .totalGlobalSurcharges)
+        try container.encodeIfPresent(totalGlobalSurchargesCurrencyId, forKey: .totalGlobalSurchargesCurrencyId)
+        try container.encodeIfPresent(totalGlobalDiscounts, forKey: .totalGlobalDiscounts)
+        try container.encodeIfPresent(totalGlobalDiscountsCurrencyId, forKey: .totalGlobalDiscountsCurrencyId)
+        try container.encodeIfPresent(total, forKey: .total)
+        try container.encodeIfPresent(totalCurrencyId, forKey: .totalCurrencyId)
+        try container.encodeIfPresent(costCalculationMethod, forKey: .costCalculationMethod)
+        try container.encodeIfPresent(taxCalculationMethod, forKey: .taxCalculationMethod)
         try container.encodeIfPresent(paid, forKey: .paid)
         try container.encodeIfPresent(number, forKey: .number)
         try container.encodeIfPresent(notes, forKey: .notes)
-        try container.encodeIfPresent(customerNotes, forKey: .customerNotes)
         try container.encodeIfPresent(orderId, forKey: .orderId)
         try container.encodeIfPresent(enumeration, forKey: .enumeration)
         try container.encodeIfPresent(paymentModeId, forKey: .paymentModeId)
-        try container.encodeIfPresent(receiverTenantId, forKey: .receiverTenantId)
         try container.encodeIfPresent(enumerationRangeId, forKey: .enumerationRangeId)
         try container.encodeIfPresent(emisorBillingProfileId, forKey: .emisorBillingProfileId)
         try container.encodeIfPresent(receiverBillingProfileId, forKey: .receiverBillingProfileId)
         try container.encodeIfPresent(emisorWalletAccountId, forKey: .emisorWalletAccountId)
         try container.encodeIfPresent(receiverWalletAccountId, forKey: .receiverWalletAccountId)
-        try container.encodeIfPresent(paymentDue, forKey: .paymentDue)
+        try container.encodeIfPresent(customerNotes, forKey: .customerNotes)
         try container.encodeIfPresent(invoiceType, forKey: .invoiceType)
         try container.encodeIfPresent(documentType, forKey: .documentType)
         try container.encodeIfPresent(invoiceStatus, forKey: .invoiceStatus)
+        try container.encodeIfPresent(paymentDue, forKey: .paymentDue)
         try container.encodeIfPresent(validFrom, forKey: .validFrom)
         try container.encodeIfPresent(validTo, forKey: .validTo)
+        try container.encodeIfPresent(invoiceLines, forKey: .invoiceLines)
         try container.encodeIfPresent(invoiceReferences, forKey: .invoiceReferences)
-        try container.encodeIfPresent(invoiceItemRecords, forKey: .invoiceItemRecords)
         try container.encodeIfPresent(invoiceAdjustments, forKey: .invoiceAdjustments)
     }
 }

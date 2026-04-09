@@ -4,15 +4,17 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**apiV2InventoryServiceInventoryStockItemIdDetailsGet**](InventoryAPI.md#apiv2inventoryserviceinventorystockitemiddetailsget) | **GET** /api/v2/InventoryService/Inventory/{stockItemId}/Details | 
+[**getInventoryDetailsAsync**](InventoryAPI.md#getinventorydetailsasync) | **GET** /api/v2/InventoryService/Inventory/{stockItemId}/Details | Get inventory details for a stock item
 
 
-# **apiV2InventoryServiceInventoryStockItemIdDetailsGet**
+# **getInventoryDetailsAsync**
 ```swift
-    open class func apiV2InventoryServiceInventoryStockItemIdDetailsGet(stockItemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func getInventoryDetailsAsync(stockItemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
+Get inventory details for a stock item
 
+Retrieves the inventory details for a specific stock item by its ID.
 
 ### Example
 ```swift
@@ -23,7 +25,8 @@ let stockItemId = 987 // UUID |
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
-InventoryAPI.apiV2InventoryServiceInventoryStockItemIdDetailsGet(stockItemId: stockItemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Get inventory details for a stock item
+InventoryAPI.getInventoryDetailsAsync(stockItemId: stockItemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -49,7 +52,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 

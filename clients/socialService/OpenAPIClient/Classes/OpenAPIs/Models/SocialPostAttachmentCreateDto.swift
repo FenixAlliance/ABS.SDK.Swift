@@ -24,10 +24,9 @@ public struct SocialPostAttachmentCreateDto: Codable, JSONEncodable, Hashable {
     public var validResponse: Bool?
     public var parentFileUploadId: String?
     public var filePath: String?
-    public var file: URL?
     public var socialPostId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, notes: String? = nil, title: String? = nil, author: String? = nil, isFolder: Bool? = nil, fileName: String? = nil, abstract: String? = nil, keyWords: String? = nil, validResponse: Bool? = nil, parentFileUploadId: String? = nil, filePath: String? = nil, file: URL? = nil, socialPostId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, notes: String? = nil, title: String? = nil, author: String? = nil, isFolder: Bool? = nil, fileName: String? = nil, abstract: String? = nil, keyWords: String? = nil, validResponse: Bool? = nil, parentFileUploadId: String? = nil, filePath: String? = nil, socialPostId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.notes = notes
@@ -40,7 +39,6 @@ public struct SocialPostAttachmentCreateDto: Codable, JSONEncodable, Hashable {
         self.validResponse = validResponse
         self.parentFileUploadId = parentFileUploadId
         self.filePath = filePath
-        self.file = file
         self.socialPostId = socialPostId
     }
 
@@ -57,7 +55,6 @@ public struct SocialPostAttachmentCreateDto: Codable, JSONEncodable, Hashable {
         case validResponse
         case parentFileUploadId
         case filePath
-        case file
         case socialPostId
     }
 
@@ -77,7 +74,6 @@ public struct SocialPostAttachmentCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(validResponse, forKey: .validResponse)
         try container.encodeIfPresent(parentFileUploadId, forKey: .parentFileUploadId)
         try container.encodeIfPresent(filePath, forKey: .filePath)
-        try container.encodeIfPresent(file, forKey: .file)
         try container.encodeIfPresent(socialPostId, forKey: .socialPostId)
     }
 }

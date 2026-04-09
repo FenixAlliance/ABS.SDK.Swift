@@ -4,32 +4,35 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**apiV2ProjectsServiceProjectsCountGet**](ProjectsAPI.md#apiv2projectsserviceprojectscountget) | **GET** /api/v2/ProjectsService/Projects/Count | 
-[**apiV2ProjectsServiceProjectsGet**](ProjectsAPI.md#apiv2projectsserviceprojectsget) | **GET** /api/v2/ProjectsService/Projects | 
-[**apiV2ProjectsServiceProjectsPost**](ProjectsAPI.md#apiv2projectsserviceprojectspost) | **POST** /api/v2/ProjectsService/Projects | 
-[**apiV2ProjectsServiceProjectsProjectIdDelete**](ProjectsAPI.md#apiv2projectsserviceprojectsprojectiddelete) | **DELETE** /api/v2/ProjectsService/Projects/{projectId} | 
-[**apiV2ProjectsServiceProjectsProjectIdGet**](ProjectsAPI.md#apiv2projectsserviceprojectsprojectidget) | **GET** /api/v2/ProjectsService/Projects/{projectId} | 
-[**apiV2ProjectsServiceProjectsProjectIdPeriodsGet**](ProjectsAPI.md#apiv2projectsserviceprojectsprojectidperiodsget) | **GET** /api/v2/ProjectsService/Projects/{projectId}/Periods | 
-[**apiV2ProjectsServiceProjectsProjectIdPeriodsProjectPeriodIdDelete**](ProjectsAPI.md#apiv2projectsserviceprojectsprojectidperiodsprojectperiodiddelete) | **DELETE** /api/v2/ProjectsService/Projects/{projectId}/Periods/{projectPeriodId} | 
-[**apiV2ProjectsServiceProjectsProjectIdPeriodsProjectPeriodIdPut**](ProjectsAPI.md#apiv2projectsserviceprojectsprojectidperiodsprojectperiodidput) | **PUT** /api/v2/ProjectsService/Projects/{projectId}/Periods/{projectPeriodId} | 
-[**apiV2ProjectsServiceProjectsProjectIdPut**](ProjectsAPI.md#apiv2projectsserviceprojectsprojectidput) | **PUT** /api/v2/ProjectsService/Projects/{projectId} | 
-[**apiV2ProjectsServiceProjectsProjectIdTaskCategoriesCountGet**](ProjectsAPI.md#apiv2projectsserviceprojectsprojectidtaskcategoriescountget) | **GET** /api/v2/ProjectsService/Projects/{projectId}/TaskCategories/Count | 
-[**apiV2ProjectsServiceProjectsProjectIdTaskCategoriesGet**](ProjectsAPI.md#apiv2projectsserviceprojectsprojectidtaskcategoriesget) | **GET** /api/v2/ProjectsService/Projects/{projectId}/TaskCategories | 
-[**apiV2ProjectsServiceProjectsProjectIdTasksCountGet**](ProjectsAPI.md#apiv2projectsserviceprojectsprojectidtaskscountget) | **GET** /api/v2/ProjectsService/Projects/{projectId}/Tasks/Count | 
-[**apiV2ProjectsServiceProjectsProjectIdTasksGet**](ProjectsAPI.md#apiv2projectsserviceprojectsprojectidtasksget) | **GET** /api/v2/ProjectsService/Projects/{projectId}/Tasks | 
-[**apiV2ProjectsServiceProjectsProjectIdTasksPost**](ProjectsAPI.md#apiv2projectsserviceprojectsprojectidtaskspost) | **POST** /api/v2/ProjectsService/Projects/{projectId}/Tasks | 
-[**apiV2ProjectsServiceProjectsProjectIdTasksProjectTaskIdDelete**](ProjectsAPI.md#apiv2projectsserviceprojectsprojectidtasksprojecttaskiddelete) | **DELETE** /api/v2/ProjectsService/Projects/{projectId}/Tasks/{projectTaskId} | 
-[**apiV2ProjectsServiceProjectsProjectIdTasksProjectTaskIdPut**](ProjectsAPI.md#apiv2projectsserviceprojectsprojectidtasksprojecttaskidput) | **PUT** /api/v2/ProjectsService/Projects/{projectId}/Tasks/{projectTaskId} | 
-[**apiV2ProjectsServiceProjectsProjectIdTimeLogsCountGet**](ProjectsAPI.md#apiv2projectsserviceprojectsprojectidtimelogscountget) | **GET** /api/v2/ProjectsService/Projects/{projectId}/TimeLogs/Count | 
-[**apiV2ProjectsServiceProjectsProjectIdTimeLogsGet**](ProjectsAPI.md#apiv2projectsserviceprojectsprojectidtimelogsget) | **GET** /api/v2/ProjectsService/Projects/{projectId}/TimeLogs | 
+[**createProjectAsync**](ProjectsAPI.md#createprojectasync) | **POST** /api/v2/ProjectsService/Projects | Creates a new project
+[**createProjectPeriodAsync**](ProjectsAPI.md#createprojectperiodasync) | **POST** /api/v2/ProjectsService/Projects/{projectId}/Periods | Creates a project period
+[**createProjectTaskAsync**](ProjectsAPI.md#createprojecttaskasync) | **POST** /api/v2/ProjectsService/Projects/{projectId}/Tasks | Creates a project task
+[**deleteProjectAsync**](ProjectsAPI.md#deleteprojectasync) | **DELETE** /api/v2/ProjectsService/Projects/{projectId} | Deletes a project
+[**deleteProjectPeriodAsync**](ProjectsAPI.md#deleteprojectperiodasync) | **DELETE** /api/v2/ProjectsService/Projects/{projectId}/Periods/{projectPeriodId} | Deletes a project period
+[**deleteProjectTaskAsync**](ProjectsAPI.md#deleteprojecttaskasync) | **DELETE** /api/v2/ProjectsService/Projects/{projectId}/Tasks/{projectTaskId} | Deletes a project task
+[**getProjectByIdAsync**](ProjectsAPI.md#getprojectbyidasync) | **GET** /api/v2/ProjectsService/Projects/{projectId} | Gets a project by ID
+[**getProjectPeriodsAsync**](ProjectsAPI.md#getprojectperiodsasync) | **GET** /api/v2/ProjectsService/Projects/{projectId}/Periods | Retrieves project periods
+[**getProjectTaskCategoriesAsync**](ProjectsAPI.md#getprojecttaskcategoriesasync) | **GET** /api/v2/ProjectsService/Projects/{projectId}/TaskCategories | Retrieves project task categories
+[**getProjectTaskCategoriesCountAsync**](ProjectsAPI.md#getprojecttaskcategoriescountasync) | **GET** /api/v2/ProjectsService/Projects/{projectId}/TaskCategories/Count | Counts project task categories
+[**getProjectTasksAsync**](ProjectsAPI.md#getprojecttasksasync) | **GET** /api/v2/ProjectsService/Projects/{projectId}/Tasks | Retrieves project tasks
+[**getProjectTasksCountAsync**](ProjectsAPI.md#getprojecttaskscountasync) | **GET** /api/v2/ProjectsService/Projects/{projectId}/Tasks/Count | Counts project tasks
+[**getProjectTimeLogsAsync**](ProjectsAPI.md#getprojecttimelogsasync) | **GET** /api/v2/ProjectsService/Projects/{projectId}/TimeLogs | Retrieves project time logs
+[**getProjectTimeLogsCountAsync**](ProjectsAPI.md#getprojecttimelogscountasync) | **GET** /api/v2/ProjectsService/Projects/{projectId}/TimeLogs/Count | Counts project time logs
+[**getProjectsByTenantIdAsync**](ProjectsAPI.md#getprojectsbytenantidasync) | **GET** /api/v2/ProjectsService/Projects | Retrieves all projects
+[**getProjectsCountByTenantIdAsync**](ProjectsAPI.md#getprojectscountbytenantidasync) | **GET** /api/v2/ProjectsService/Projects/Count | Counts projects
+[**updateProjectAsync**](ProjectsAPI.md#updateprojectasync) | **PUT** /api/v2/ProjectsService/Projects/{projectId} | Updates a project
+[**updateProjectPeriodAsync**](ProjectsAPI.md#updateprojectperiodasync) | **PUT** /api/v2/ProjectsService/Projects/{projectId}/Periods/{projectPeriodId} | Updates a project period
+[**updateProjectTaskAsync**](ProjectsAPI.md#updateprojecttaskasync) | **PUT** /api/v2/ProjectsService/Projects/{projectId}/Tasks/{projectTaskId} | Updates a project task
 
 
-# **apiV2ProjectsServiceProjectsCountGet**
+# **createProjectAsync**
 ```swift
-    open class func apiV2ProjectsServiceProjectsCountGet(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func createProjectAsync(tenantId: UUID, projectCreateDto: ProjectCreateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
+Creates a new project
 
+Creates a new project for the current tenant.
 
 ### Example
 ```swift
@@ -37,113 +40,10 @@ Method | HTTP request | Description
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
-
-ProjectsAPI.apiV2ProjectsServiceProjectsCountGet(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **tenantId** | **UUID** |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
-
-### Return type
-
-[**Int32Envelope**](Int32Envelope.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/xml
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **apiV2ProjectsServiceProjectsGet**
-```swift
-    open class func apiV2ProjectsServiceProjectsGet(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ProjectDtoListEnvelope?, _ error: Error?) -> Void)
-```
-
-
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
-
-let tenantId = 987 // UUID | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
-
-ProjectsAPI.apiV2ProjectsServiceProjectsGet(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **tenantId** | **UUID** |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
-
-### Return type
-
-[**ProjectDtoListEnvelope**](ProjectDtoListEnvelope.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/xml
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **apiV2ProjectsServiceProjectsPost**
-```swift
-    open class func apiV2ProjectsServiceProjectsPost(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, projectCreateDto: ProjectCreateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
-```
-
-
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
-
-let tenantId = 987 // UUID | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
 let projectCreateDto = ProjectCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", projectStartDate: Date(), projectEndDate: Date()) // ProjectCreateDto |  (optional)
 
-ProjectsAPI.apiV2ProjectsServiceProjectsPost(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, projectCreateDto: projectCreateDto) { (response, error) in
+// Creates a new project
+ProjectsAPI.createProjectAsync(tenantId: tenantId, projectCreateDto: projectCreateDto) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -160,8 +60,6 @@ ProjectsAPI.apiV2ProjectsServiceProjectsPost(tenantId: tenantId, apiVersion: api
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
  **projectCreateDto** | [**ProjectCreateDto**](ProjectCreateDto.md) |  | [optional] 
 
 ### Return type
@@ -170,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
@@ -179,12 +77,14 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **apiV2ProjectsServiceProjectsProjectIdDelete**
+# **createProjectPeriodAsync**
 ```swift
-    open class func apiV2ProjectsServiceProjectsProjectIdDelete(projectId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func createProjectPeriodAsync(projectId: UUID, tenantId: UUID, projectPeriodCreateDto: ProjectPeriodCreateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
+Creates a project period
 
+Creates a new period for the specified project.
 
 ### Example
 ```swift
@@ -193,117 +93,10 @@ import OpenAPIClient
 
 let projectId = 987 // UUID | 
 let tenantId = 987 // UUID | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
-
-ProjectsAPI.apiV2ProjectsServiceProjectsProjectIdDelete(projectId: projectId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **projectId** | **UUID** |  | 
- **tenantId** | **UUID** |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
-
-### Return type
-
-[**EmptyEnvelope**](EmptyEnvelope.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/xml
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **apiV2ProjectsServiceProjectsProjectIdGet**
-```swift
-    open class func apiV2ProjectsServiceProjectsProjectIdGet(projectId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ProjectDtoEnvelope?, _ error: Error?) -> Void)
-```
-
-
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
-
-let projectId = 987 // UUID | 
-let tenantId = 987 // UUID | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
-
-ProjectsAPI.apiV2ProjectsServiceProjectsProjectIdGet(projectId: projectId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **projectId** | **UUID** |  | 
- **tenantId** | **UUID** |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
-
-### Return type
-
-[**ProjectDtoEnvelope**](ProjectDtoEnvelope.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/xml
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **apiV2ProjectsServiceProjectsProjectIdPeriodsGet**
-```swift
-    open class func apiV2ProjectsServiceProjectsProjectIdPeriodsGet(projectId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, projectPeriodCreateDto: ProjectPeriodCreateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
-```
-
-
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
-
-let projectId = 987 // UUID | 
-let tenantId = 987 // UUID | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
 let projectPeriodCreateDto = ProjectPeriodCreateDto(id: 123, timestamp: Date(), periodStartDate: Date(), periodEndDate: Date(), projectID: "projectID_example") // ProjectPeriodCreateDto |  (optional)
 
-ProjectsAPI.apiV2ProjectsServiceProjectsProjectIdPeriodsGet(projectId: projectId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, projectPeriodCreateDto: projectPeriodCreateDto) { (response, error) in
+// Creates a project period
+ProjectsAPI.createProjectPeriodAsync(projectId: projectId, tenantId: tenantId, projectPeriodCreateDto: projectPeriodCreateDto) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -321,8 +114,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectId** | **UUID** |  | 
  **tenantId** | **UUID** |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
  **projectPeriodCreateDto** | [**ProjectPeriodCreateDto**](ProjectPeriodCreateDto.md) |  | [optional] 
 
 ### Return type
@@ -331,7 +122,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
@@ -340,124 +131,14 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **apiV2ProjectsServiceProjectsProjectIdPeriodsProjectPeriodIdDelete**
+# **createProjectTaskAsync**
 ```swift
-    open class func apiV2ProjectsServiceProjectsProjectIdPeriodsProjectPeriodIdDelete(projectId: UUID, projectPeriodId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func createProjectTaskAsync(projectId: UUID, tenantId: UUID, projectTaskCreateDto: ProjectTaskCreateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
+Creates a project task
 
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
-
-let projectId = 987 // UUID | 
-let projectPeriodId = 987 // UUID | 
-let tenantId = 987 // UUID | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
-
-ProjectsAPI.apiV2ProjectsServiceProjectsProjectIdPeriodsProjectPeriodIdDelete(projectId: projectId, projectPeriodId: projectPeriodId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **projectId** | **UUID** |  | 
- **projectPeriodId** | **UUID** |  | 
- **tenantId** | **UUID** |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
-
-### Return type
-
-[**EmptyEnvelope**](EmptyEnvelope.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/xml
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **apiV2ProjectsServiceProjectsProjectIdPeriodsProjectPeriodIdPut**
-```swift
-    open class func apiV2ProjectsServiceProjectsProjectIdPeriodsProjectPeriodIdPut(projectId: UUID, projectPeriodId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, projectPeriodUpdateDto: ProjectPeriodUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
-```
-
-
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
-
-let projectId = 987 // UUID | 
-let projectPeriodId = 987 // UUID | 
-let tenantId = 987 // UUID | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
-let projectPeriodUpdateDto = ProjectPeriodUpdateDto(periodStartDate: Date(), periodEndDate: Date()) // ProjectPeriodUpdateDto |  (optional)
-
-ProjectsAPI.apiV2ProjectsServiceProjectsProjectIdPeriodsProjectPeriodIdPut(projectId: projectId, projectPeriodId: projectPeriodId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, projectPeriodUpdateDto: projectPeriodUpdateDto) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **projectId** | **UUID** |  | 
- **projectPeriodId** | **UUID** |  | 
- **tenantId** | **UUID** |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
- **projectPeriodUpdateDto** | [**ProjectPeriodUpdateDto**](ProjectPeriodUpdateDto.md) |  | [optional] 
-
-### Return type
-
-[**EmptyEnvelope**](EmptyEnvelope.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, application/xml
- - **Accept**: application/json, application/xml
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **apiV2ProjectsServiceProjectsProjectIdPut**
-```swift
-    open class func apiV2ProjectsServiceProjectsProjectIdPut(projectId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, projectUpdateDto: ProjectUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
-```
-
-
+Creates a new task for the specified project.
 
 ### Example
 ```swift
@@ -466,278 +147,10 @@ import OpenAPIClient
 
 let projectId = 987 // UUID | 
 let tenantId = 987 // UUID | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
-let projectUpdateDto = ProjectUpdateDto(title: "title_example", description: "description_example", projectStartDate: Date(), projectEndDate: Date()) // ProjectUpdateDto |  (optional)
-
-ProjectsAPI.apiV2ProjectsServiceProjectsProjectIdPut(projectId: projectId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, projectUpdateDto: projectUpdateDto) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **projectId** | **UUID** |  | 
- **tenantId** | **UUID** |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
- **projectUpdateDto** | [**ProjectUpdateDto**](ProjectUpdateDto.md) |  | [optional] 
-
-### Return type
-
-[**EmptyEnvelope**](EmptyEnvelope.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, application/xml
- - **Accept**: application/json, application/xml
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **apiV2ProjectsServiceProjectsProjectIdTaskCategoriesCountGet**
-```swift
-    open class func apiV2ProjectsServiceProjectsProjectIdTaskCategoriesCountGet(projectId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
-```
-
-
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
-
-let projectId = 987 // UUID | 
-let tenantId = 987 // UUID | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
-
-ProjectsAPI.apiV2ProjectsServiceProjectsProjectIdTaskCategoriesCountGet(projectId: projectId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **projectId** | **UUID** |  | 
- **tenantId** | **UUID** |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
-
-### Return type
-
-[**Int32Envelope**](Int32Envelope.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/xml
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **apiV2ProjectsServiceProjectsProjectIdTaskCategoriesGet**
-```swift
-    open class func apiV2ProjectsServiceProjectsProjectIdTaskCategoriesGet(projectId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: TaskCategoryDtoListEnvelope?, _ error: Error?) -> Void)
-```
-
-
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
-
-let projectId = 987 // UUID | 
-let tenantId = 987 // UUID | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
-
-ProjectsAPI.apiV2ProjectsServiceProjectsProjectIdTaskCategoriesGet(projectId: projectId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **projectId** | **UUID** |  | 
- **tenantId** | **UUID** |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
-
-### Return type
-
-[**TaskCategoryDtoListEnvelope**](TaskCategoryDtoListEnvelope.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/xml
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **apiV2ProjectsServiceProjectsProjectIdTasksCountGet**
-```swift
-    open class func apiV2ProjectsServiceProjectsProjectIdTasksCountGet(projectId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
-```
-
-
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
-
-let projectId = 987 // UUID | 
-let tenantId = 987 // UUID | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
-
-ProjectsAPI.apiV2ProjectsServiceProjectsProjectIdTasksCountGet(projectId: projectId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **projectId** | **UUID** |  | 
- **tenantId** | **UUID** |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
-
-### Return type
-
-[**Int32Envelope**](Int32Envelope.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/xml
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **apiV2ProjectsServiceProjectsProjectIdTasksGet**
-```swift
-    open class func apiV2ProjectsServiceProjectsProjectIdTasksGet(projectId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ProjectTaskDtoListEnvelope?, _ error: Error?) -> Void)
-```
-
-
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
-
-let projectId = 987 // UUID | 
-let tenantId = 987 // UUID | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
-
-ProjectsAPI.apiV2ProjectsServiceProjectsProjectIdTasksGet(projectId: projectId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **projectId** | **UUID** |  | 
- **tenantId** | **UUID** |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
-
-### Return type
-
-[**ProjectTaskDtoListEnvelope**](ProjectTaskDtoListEnvelope.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/xml
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **apiV2ProjectsServiceProjectsProjectIdTasksPost**
-```swift
-    open class func apiV2ProjectsServiceProjectsProjectIdTasksPost(projectId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, projectTaskCreateDto: ProjectTaskCreateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
-```
-
-
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
-
-let projectId = 987 // UUID | 
-let tenantId = 987 // UUID | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
 let projectTaskCreateDto = ProjectTaskCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", startDate: Date(), dueLine: Date(), projectID: "projectID_example") // ProjectTaskCreateDto |  (optional)
 
-ProjectsAPI.apiV2ProjectsServiceProjectsProjectIdTasksPost(projectId: projectId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, projectTaskCreateDto: projectTaskCreateDto) { (response, error) in
+// Creates a project task
+ProjectsAPI.createProjectTaskAsync(projectId: projectId, tenantId: tenantId, projectTaskCreateDto: projectTaskCreateDto) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -755,8 +168,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectId** | **UUID** |  | 
  **tenantId** | **UUID** |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
  **projectTaskCreateDto** | [**ProjectTaskCreateDto**](ProjectTaskCreateDto.md) |  | [optional] 
 
 ### Return type
@@ -765,7 +176,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
@@ -774,25 +185,25 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **apiV2ProjectsServiceProjectsProjectIdTasksProjectTaskIdDelete**
+# **deleteProjectAsync**
 ```swift
-    open class func apiV2ProjectsServiceProjectsProjectIdTasksProjectTaskIdDelete(tenantId: UUID, projectId: UUID, projectTaskId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func deleteProjectAsync(projectId: UUID, tenantId: UUID, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
+Deletes a project
 
+Deletes the specified project.
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let tenantId = 987 // UUID | 
 let projectId = 987 // UUID | 
-let projectTaskId = 987 // UUID | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
+let tenantId = 987 // UUID | 
 
-ProjectsAPI.apiV2ProjectsServiceProjectsProjectIdTasksProjectTaskIdDelete(tenantId: tenantId, projectId: projectId, projectTaskId: projectTaskId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Deletes a project
+ProjectsAPI.deleteProjectAsync(projectId: projectId, tenantId: tenantId) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -808,11 +219,8 @@ ProjectsAPI.apiV2ProjectsServiceProjectsProjectIdTasksProjectTaskIdDelete(tenant
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenantId** | **UUID** |  | 
  **projectId** | **UUID** |  | 
- **projectTaskId** | **UUID** |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
+ **tenantId** | **UUID** |  | 
 
 ### Return type
 
@@ -820,7 +228,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
@@ -829,12 +237,748 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **apiV2ProjectsServiceProjectsProjectIdTasksProjectTaskIdPut**
+# **deleteProjectPeriodAsync**
 ```swift
-    open class func apiV2ProjectsServiceProjectsProjectIdTasksProjectTaskIdPut(projectId: UUID, projectTaskId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, projectTaskUpdateDto: ProjectTaskUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func deleteProjectPeriodAsync(projectId: UUID, projectPeriodId: UUID, tenantId: UUID, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
+Deletes a project period
 
+Deletes the specified period from a project.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let projectId = 987 // UUID | 
+let projectPeriodId = 987 // UUID | 
+let tenantId = 987 // UUID | 
+
+// Deletes a project period
+ProjectsAPI.deleteProjectPeriodAsync(projectId: projectId, projectPeriodId: projectPeriodId, tenantId: tenantId) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **projectId** | **UUID** |  | 
+ **projectPeriodId** | **UUID** |  | 
+ **tenantId** | **UUID** |  | 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deleteProjectTaskAsync**
+```swift
+    open class func deleteProjectTaskAsync(tenantId: UUID, projectId: UUID, projectTaskId: UUID, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Deletes a project task
+
+Deletes the specified task from a project.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let projectId = 987 // UUID | 
+let projectTaskId = 987 // UUID | 
+
+// Deletes a project task
+ProjectsAPI.deleteProjectTaskAsync(tenantId: tenantId, projectId: projectId, projectTaskId: projectTaskId) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **projectId** | **UUID** |  | 
+ **projectTaskId** | **UUID** |  | 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getProjectByIdAsync**
+```swift
+    open class func getProjectByIdAsync(projectId: UUID, tenantId: UUID, completion: @escaping (_ data: ProjectDtoEnvelope?, _ error: Error?) -> Void)
+```
+
+Gets a project by ID
+
+Retrieves the details of a project using its unique identifier.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let projectId = 987 // UUID | 
+let tenantId = 987 // UUID | 
+
+// Gets a project by ID
+ProjectsAPI.getProjectByIdAsync(projectId: projectId, tenantId: tenantId) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **projectId** | **UUID** |  | 
+ **tenantId** | **UUID** |  | 
+
+### Return type
+
+[**ProjectDtoEnvelope**](ProjectDtoEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getProjectPeriodsAsync**
+```swift
+    open class func getProjectPeriodsAsync(projectId: UUID, tenantId: UUID, completion: @escaping (_ data: ProjectPeriodDtoListEnvelope?, _ error: Error?) -> Void)
+```
+
+Retrieves project periods
+
+Gets all periods for a specific project.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let projectId = 987 // UUID | 
+let tenantId = 987 // UUID | 
+
+// Retrieves project periods
+ProjectsAPI.getProjectPeriodsAsync(projectId: projectId, tenantId: tenantId) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **projectId** | **UUID** |  | 
+ **tenantId** | **UUID** |  | 
+
+### Return type
+
+[**ProjectPeriodDtoListEnvelope**](ProjectPeriodDtoListEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getProjectTaskCategoriesAsync**
+```swift
+    open class func getProjectTaskCategoriesAsync(projectId: UUID, tenantId: UUID, completion: @escaping (_ data: TaskCategoryDtoListEnvelope?, _ error: Error?) -> Void)
+```
+
+Retrieves project task categories
+
+Gets all task categories for a specific project with OData support.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let projectId = 987 // UUID | 
+let tenantId = 987 // UUID | 
+
+// Retrieves project task categories
+ProjectsAPI.getProjectTaskCategoriesAsync(projectId: projectId, tenantId: tenantId) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **projectId** | **UUID** |  | 
+ **tenantId** | **UUID** |  | 
+
+### Return type
+
+[**TaskCategoryDtoListEnvelope**](TaskCategoryDtoListEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getProjectTaskCategoriesCountAsync**
+```swift
+    open class func getProjectTaskCategoriesCountAsync(projectId: UUID, tenantId: UUID, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+```
+
+Counts project task categories
+
+Gets the count of task categories for a specific project.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let projectId = 987 // UUID | 
+let tenantId = 987 // UUID | 
+
+// Counts project task categories
+ProjectsAPI.getProjectTaskCategoriesCountAsync(projectId: projectId, tenantId: tenantId) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **projectId** | **UUID** |  | 
+ **tenantId** | **UUID** |  | 
+
+### Return type
+
+[**Int32Envelope**](Int32Envelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getProjectTasksAsync**
+```swift
+    open class func getProjectTasksAsync(projectId: UUID, tenantId: UUID, completion: @escaping (_ data: ProjectTaskDtoListEnvelope?, _ error: Error?) -> Void)
+```
+
+Retrieves project tasks
+
+Gets all tasks for a specific project with OData support.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let projectId = 987 // UUID | 
+let tenantId = 987 // UUID | 
+
+// Retrieves project tasks
+ProjectsAPI.getProjectTasksAsync(projectId: projectId, tenantId: tenantId) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **projectId** | **UUID** |  | 
+ **tenantId** | **UUID** |  | 
+
+### Return type
+
+[**ProjectTaskDtoListEnvelope**](ProjectTaskDtoListEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getProjectTasksCountAsync**
+```swift
+    open class func getProjectTasksCountAsync(projectId: UUID, tenantId: UUID, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+```
+
+Counts project tasks
+
+Gets the count of tasks for a specific project.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let projectId = 987 // UUID | 
+let tenantId = 987 // UUID | 
+
+// Counts project tasks
+ProjectsAPI.getProjectTasksCountAsync(projectId: projectId, tenantId: tenantId) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **projectId** | **UUID** |  | 
+ **tenantId** | **UUID** |  | 
+
+### Return type
+
+[**Int32Envelope**](Int32Envelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getProjectTimeLogsAsync**
+```swift
+    open class func getProjectTimeLogsAsync(projectId: UUID, tenantId: UUID, completion: @escaping (_ data: ProjectTimeLogDtoListEnvelope?, _ error: Error?) -> Void)
+```
+
+Retrieves project time logs
+
+Gets all time log entries for a specific project with OData support.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let projectId = 987 // UUID | 
+let tenantId = 987 // UUID | 
+
+// Retrieves project time logs
+ProjectsAPI.getProjectTimeLogsAsync(projectId: projectId, tenantId: tenantId) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **projectId** | **UUID** |  | 
+ **tenantId** | **UUID** |  | 
+
+### Return type
+
+[**ProjectTimeLogDtoListEnvelope**](ProjectTimeLogDtoListEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getProjectTimeLogsCountAsync**
+```swift
+    open class func getProjectTimeLogsCountAsync(projectId: UUID, tenantId: UUID, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+```
+
+Counts project time logs
+
+Gets the count of time log entries for a specific project.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let projectId = 987 // UUID | 
+let tenantId = 987 // UUID | 
+
+// Counts project time logs
+ProjectsAPI.getProjectTimeLogsCountAsync(projectId: projectId, tenantId: tenantId) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **projectId** | **UUID** |  | 
+ **tenantId** | **UUID** |  | 
+
+### Return type
+
+[**Int32Envelope**](Int32Envelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getProjectsByTenantIdAsync**
+```swift
+    open class func getProjectsByTenantIdAsync(tenantId: UUID, completion: @escaping (_ data: ProjectDtoListEnvelope?, _ error: Error?) -> Void)
+```
+
+Retrieves all projects
+
+Gets all projects for the current tenant with OData support.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+
+// Retrieves all projects
+ProjectsAPI.getProjectsByTenantIdAsync(tenantId: tenantId) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+
+### Return type
+
+[**ProjectDtoListEnvelope**](ProjectDtoListEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getProjectsCountByTenantIdAsync**
+```swift
+    open class func getProjectsCountByTenantIdAsync(tenantId: UUID, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+```
+
+Counts projects
+
+Gets the count of projects for the current tenant.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+
+// Counts projects
+ProjectsAPI.getProjectsCountByTenantIdAsync(tenantId: tenantId) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+
+### Return type
+
+[**Int32Envelope**](Int32Envelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **updateProjectAsync**
+```swift
+    open class func updateProjectAsync(projectId: UUID, tenantId: UUID, projectUpdateDto: ProjectUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Updates a project
+
+Updates the specified project.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let projectId = 987 // UUID | 
+let tenantId = 987 // UUID | 
+let projectUpdateDto = ProjectUpdateDto(title: "title_example", description: "description_example", projectStartDate: Date(), projectEndDate: Date()) // ProjectUpdateDto |  (optional)
+
+// Updates a project
+ProjectsAPI.updateProjectAsync(projectId: projectId, tenantId: tenantId, projectUpdateDto: projectUpdateDto) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **projectId** | **UUID** |  | 
+ **tenantId** | **UUID** |  | 
+ **projectUpdateDto** | [**ProjectUpdateDto**](ProjectUpdateDto.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **updateProjectPeriodAsync**
+```swift
+    open class func updateProjectPeriodAsync(projectId: UUID, projectPeriodId: UUID, tenantId: UUID, projectPeriodUpdateDto: ProjectPeriodUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Updates a project period
+
+Updates the specified period for a project.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let projectId = 987 // UUID | 
+let projectPeriodId = 987 // UUID | 
+let tenantId = 987 // UUID | 
+let projectPeriodUpdateDto = ProjectPeriodUpdateDto(periodStartDate: Date(), periodEndDate: Date()) // ProjectPeriodUpdateDto |  (optional)
+
+// Updates a project period
+ProjectsAPI.updateProjectPeriodAsync(projectId: projectId, projectPeriodId: projectPeriodId, tenantId: tenantId, projectPeriodUpdateDto: projectPeriodUpdateDto) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **projectId** | **UUID** |  | 
+ **projectPeriodId** | **UUID** |  | 
+ **tenantId** | **UUID** |  | 
+ **projectPeriodUpdateDto** | [**ProjectPeriodUpdateDto**](ProjectPeriodUpdateDto.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **updateProjectTaskAsync**
+```swift
+    open class func updateProjectTaskAsync(projectId: UUID, projectTaskId: UUID, tenantId: UUID, projectTaskUpdateDto: ProjectTaskUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Updates a project task
+
+Updates the specified task in a project.
 
 ### Example
 ```swift
@@ -844,11 +988,10 @@ import OpenAPIClient
 let projectId = 987 // UUID | 
 let projectTaskId = 987 // UUID | 
 let tenantId = 987 // UUID | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
 let projectTaskUpdateDto = ProjectTaskUpdateDto(startDate: Date(), dueLine: Date()) // ProjectTaskUpdateDto |  (optional)
 
-ProjectsAPI.apiV2ProjectsServiceProjectsProjectIdTasksProjectTaskIdPut(projectId: projectId, projectTaskId: projectTaskId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, projectTaskUpdateDto: projectTaskUpdateDto) { (response, error) in
+// Updates a project task
+ProjectsAPI.updateProjectTaskAsync(projectId: projectId, projectTaskId: projectTaskId, tenantId: tenantId, projectTaskUpdateDto: projectTaskUpdateDto) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -867,8 +1010,6 @@ Name | Type | Description  | Notes
  **projectId** | **UUID** |  | 
  **projectTaskId** | **UUID** |  | 
  **tenantId** | **UUID** |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
  **projectTaskUpdateDto** | [**ProjectTaskUpdateDto**](ProjectTaskUpdateDto.md) |  | [optional] 
 
 ### Return type
@@ -877,117 +1018,11 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
  - **Content-Type**: application/json, application/xml
- - **Accept**: application/json, application/xml
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **apiV2ProjectsServiceProjectsProjectIdTimeLogsCountGet**
-```swift
-    open class func apiV2ProjectsServiceProjectsProjectIdTimeLogsCountGet(projectId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
-```
-
-
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
-
-let projectId = 987 // UUID | 
-let tenantId = 987 // UUID | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
-
-ProjectsAPI.apiV2ProjectsServiceProjectsProjectIdTimeLogsCountGet(projectId: projectId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **projectId** | **UUID** |  | 
- **tenantId** | **UUID** |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
-
-### Return type
-
-[**Int32Envelope**](Int32Envelope.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/xml
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **apiV2ProjectsServiceProjectsProjectIdTimeLogsGet**
-```swift
-    open class func apiV2ProjectsServiceProjectsProjectIdTimeLogsGet(projectId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ProjectTimeLogDtoListEnvelope?, _ error: Error?) -> Void)
-```
-
-
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
-
-let projectId = 987 // UUID | 
-let tenantId = 987 // UUID | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
-
-ProjectsAPI.apiV2ProjectsServiceProjectsProjectIdTimeLogsGet(projectId: projectId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **projectId** | **UUID** |  | 
- **tenantId** | **UUID** |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
-
-### Return type
-
-[**ProjectTimeLogDtoListEnvelope**](ProjectTimeLogDtoListEnvelope.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

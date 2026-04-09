@@ -26,13 +26,12 @@ public struct SupportRequestAttachmentCreateDto: Codable, JSONEncodable, Hashabl
     public var validResponse: Bool?
     public var parentFileUploadId: String?
     public var filePath: String?
-    public var file: URL?
     public var businessID: String?
     public var businessProfileRecordID: String?
     public var metadata: String?
     public var supportRequestID: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, notes: String? = nil, title: String? = nil, author: String? = nil, isFolder: Bool? = nil, fileName: String? = nil, abstract: String? = nil, keyWords: String? = nil, validResponse: Bool? = nil, parentFileUploadId: String? = nil, filePath: String? = nil, file: URL? = nil, businessID: String? = nil, businessProfileRecordID: String? = nil, metadata: String? = nil, supportRequestID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, notes: String? = nil, title: String? = nil, author: String? = nil, isFolder: Bool? = nil, fileName: String? = nil, abstract: String? = nil, keyWords: String? = nil, validResponse: Bool? = nil, parentFileUploadId: String? = nil, filePath: String? = nil, businessID: String? = nil, businessProfileRecordID: String? = nil, metadata: String? = nil, supportRequestID: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.notes = notes
@@ -45,7 +44,6 @@ public struct SupportRequestAttachmentCreateDto: Codable, JSONEncodable, Hashabl
         self.validResponse = validResponse
         self.parentFileUploadId = parentFileUploadId
         self.filePath = filePath
-        self.file = file
         self.businessID = businessID
         self.businessProfileRecordID = businessProfileRecordID
         self.metadata = metadata
@@ -65,7 +63,6 @@ public struct SupportRequestAttachmentCreateDto: Codable, JSONEncodable, Hashabl
         case validResponse
         case parentFileUploadId
         case filePath
-        case file
         case businessID
         case businessProfileRecordID
         case metadata
@@ -88,7 +85,6 @@ public struct SupportRequestAttachmentCreateDto: Codable, JSONEncodable, Hashabl
         try container.encodeIfPresent(validResponse, forKey: .validResponse)
         try container.encodeIfPresent(parentFileUploadId, forKey: .parentFileUploadId)
         try container.encodeIfPresent(filePath, forKey: .filePath)
-        try container.encodeIfPresent(file, forKey: .file)
         try container.encodeIfPresent(businessID, forKey: .businessID)
         try container.encodeIfPresent(businessProfileRecordID, forKey: .businessProfileRecordID)
         try container.encodeIfPresent(metadata, forKey: .metadata)

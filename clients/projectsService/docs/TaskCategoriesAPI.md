@@ -4,20 +4,23 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**apiV2ProjectsServiceTaskCategoriesGet**](TaskCategoriesAPI.md#apiv2projectsservicetaskcategoriesget) | **GET** /api/v2/ProjectsService/TaskCategories | 
-[**apiV2ProjectsServiceTaskCategoriesPost**](TaskCategoriesAPI.md#apiv2projectsservicetaskcategoriespost) | **POST** /api/v2/ProjectsService/TaskCategories | 
-[**apiV2ProjectsServiceTaskCategoriesTaskCategoryIdDelete**](TaskCategoriesAPI.md#apiv2projectsservicetaskcategoriestaskcategoryiddelete) | **DELETE** /api/v2/ProjectsService/TaskCategories/{taskCategoryId} | 
-[**apiV2ProjectsServiceTaskCategoriesTaskCategoryIdGet**](TaskCategoriesAPI.md#apiv2projectsservicetaskcategoriestaskcategoryidget) | **GET** /api/v2/ProjectsService/TaskCategories/{taskCategoryId} | 
-[**apiV2ProjectsServiceTaskCategoriesTaskCategoryIdPut**](TaskCategoriesAPI.md#apiv2projectsservicetaskcategoriestaskcategoryidput) | **PUT** /api/v2/ProjectsService/TaskCategories/{taskCategoryId} | 
-[**apiV2ProjectsServiceTaskCategoriesTaskCategoryIdTypesGet**](TaskCategoriesAPI.md#apiv2projectsservicetaskcategoriestaskcategoryidtypesget) | **GET** /api/v2/ProjectsService/TaskCategories/{taskCategoryId}/Types | 
+[**countTenantTaskCategoriesAsync**](TaskCategoriesAPI.md#counttenanttaskcategoriesasync) | **GET** /api/v2/ProjectsService/TaskCategories/Count | Counts task categories
+[**createTaskCategoryAsync**](TaskCategoriesAPI.md#createtaskcategoryasync) | **POST** /api/v2/ProjectsService/TaskCategories | Creates a new task category
+[**deleteTaskCategoryAsync**](TaskCategoriesAPI.md#deletetaskcategoryasync) | **DELETE** /api/v2/ProjectsService/TaskCategories/{taskCategoryId} | Deletes a task category
+[**getTaskCategoryByIdAsync**](TaskCategoriesAPI.md#gettaskcategorybyidasync) | **GET** /api/v2/ProjectsService/TaskCategories/{taskCategoryId} | Gets a task category by ID
+[**getTaskCategoryTaskTypesAsync**](TaskCategoriesAPI.md#gettaskcategorytasktypesasync) | **GET** /api/v2/ProjectsService/TaskCategories/{taskCategoryId}/Types | Retrieves task types for a category
+[**getTenantTaskCategoriesAsync**](TaskCategoriesAPI.md#gettenanttaskcategoriesasync) | **GET** /api/v2/ProjectsService/TaskCategories | Retrieves all task categories
+[**updateTaskCategoryAsync**](TaskCategoriesAPI.md#updatetaskcategoryasync) | **PUT** /api/v2/ProjectsService/TaskCategories/{taskCategoryId} | Updates a task category
 
 
-# **apiV2ProjectsServiceTaskCategoriesGet**
+# **countTenantTaskCategoriesAsync**
 ```swift
-    open class func apiV2ProjectsServiceTaskCategoriesGet(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: TaskCategoryDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func countTenantTaskCategoriesAsync(tenantId: UUID, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
+Counts task categories
 
+Gets the count of task categories for the current tenant.
 
 ### Example
 ```swift
@@ -25,10 +28,9 @@ Method | HTTP request | Description
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
 
-TaskCategoriesAPI.apiV2ProjectsServiceTaskCategoriesGet(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Counts task categories
+TaskCategoriesAPI.countTenantTaskCategoriesAsync(tenantId: tenantId) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -45,16 +47,14 @@ TaskCategoriesAPI.apiV2ProjectsServiceTaskCategoriesGet(tenantId: tenantId, apiV
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
 
 ### Return type
 
-[**TaskCategoryDtoListEnvelope**](TaskCategoryDtoListEnvelope.md)
+[**Int32Envelope**](Int32Envelope.md)
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
@@ -63,12 +63,14 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **apiV2ProjectsServiceTaskCategoriesPost**
+# **createTaskCategoryAsync**
 ```swift
-    open class func apiV2ProjectsServiceTaskCategoriesPost(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, taskCategoryCreateDto: TaskCategoryCreateDto? = nil, completion: @escaping (_ data: TaskCategoryDto?, _ error: Error?) -> Void)
+    open class func createTaskCategoryAsync(tenantId: UUID, taskCategoryCreateDto: TaskCategoryCreateDto? = nil, completion: @escaping (_ data: TaskCategoryDto?, _ error: Error?) -> Void)
 ```
 
+Creates a new task category
 
+Creates a new task category for the current tenant.
 
 ### Example
 ```swift
@@ -76,11 +78,10 @@ Name | Type | Description  | Notes
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
 let taskCategoryCreateDto = TaskCategoryCreateDto(id: 123, timestamp: Date(), title: "title_example") // TaskCategoryCreateDto |  (optional)
 
-TaskCategoriesAPI.apiV2ProjectsServiceTaskCategoriesPost(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, taskCategoryCreateDto: taskCategoryCreateDto) { (response, error) in
+// Creates a new task category
+TaskCategoriesAPI.createTaskCategoryAsync(tenantId: tenantId, taskCategoryCreateDto: taskCategoryCreateDto) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -97,8 +98,6 @@ TaskCategoriesAPI.apiV2ProjectsServiceTaskCategoriesPost(tenantId: tenantId, api
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
  **taskCategoryCreateDto** | [**TaskCategoryCreateDto**](TaskCategoryCreateDto.md) |  | [optional] 
 
 ### Return type
@@ -107,7 +106,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
@@ -116,12 +115,14 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **apiV2ProjectsServiceTaskCategoriesTaskCategoryIdDelete**
+# **deleteTaskCategoryAsync**
 ```swift
-    open class func apiV2ProjectsServiceTaskCategoriesTaskCategoryIdDelete(taskCategoryId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: TaskCategoryDto?, _ error: Error?) -> Void)
+    open class func deleteTaskCategoryAsync(taskCategoryId: UUID, tenantId: UUID, completion: @escaping (_ data: TaskCategoryDto?, _ error: Error?) -> Void)
 ```
 
+Deletes a task category
 
+Deletes the specified task category.
 
 ### Example
 ```swift
@@ -130,10 +131,9 @@ import OpenAPIClient
 
 let taskCategoryId = 987 // UUID | 
 let tenantId = 987 // UUID | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
 
-TaskCategoriesAPI.apiV2ProjectsServiceTaskCategoriesTaskCategoryIdDelete(taskCategoryId: taskCategoryId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Deletes a task category
+TaskCategoriesAPI.deleteTaskCategoryAsync(taskCategoryId: taskCategoryId, tenantId: tenantId) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -151,8 +151,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **taskCategoryId** | **UUID** |  | 
  **tenantId** | **UUID** |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
 
 ### Return type
 
@@ -160,7 +158,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
@@ -169,12 +167,14 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **apiV2ProjectsServiceTaskCategoriesTaskCategoryIdGet**
+# **getTaskCategoryByIdAsync**
 ```swift
-    open class func apiV2ProjectsServiceTaskCategoriesTaskCategoryIdGet(taskCategoryId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: TaskCategoryDto?, _ error: Error?) -> Void)
+    open class func getTaskCategoryByIdAsync(taskCategoryId: UUID, tenantId: UUID, completion: @escaping (_ data: TaskCategoryDto?, _ error: Error?) -> Void)
 ```
 
+Gets a task category by ID
 
+Retrieves the details of a task category using its unique identifier.
 
 ### Example
 ```swift
@@ -183,10 +183,9 @@ import OpenAPIClient
 
 let taskCategoryId = 987 // UUID | 
 let tenantId = 987 // UUID | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
 
-TaskCategoriesAPI.apiV2ProjectsServiceTaskCategoriesTaskCategoryIdGet(taskCategoryId: taskCategoryId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Gets a task category by ID
+TaskCategoriesAPI.getTaskCategoryByIdAsync(taskCategoryId: taskCategoryId, tenantId: tenantId) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -204,8 +203,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **taskCategoryId** | **UUID** |  | 
  **tenantId** | **UUID** |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
 
 ### Return type
 
@@ -213,7 +210,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
@@ -222,12 +219,14 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **apiV2ProjectsServiceTaskCategoriesTaskCategoryIdPut**
+# **getTaskCategoryTaskTypesAsync**
 ```swift
-    open class func apiV2ProjectsServiceTaskCategoriesTaskCategoryIdPut(taskCategoryId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, taskCategoryUpdateDto: TaskCategoryUpdateDto? = nil, completion: @escaping (_ data: TaskCategoryDto?, _ error: Error?) -> Void)
+    open class func getTaskCategoryTaskTypesAsync(taskCategoryId: UUID, tenantId: UUID, completion: @escaping (_ data: TaskCategoryDto?, _ error: Error?) -> Void)
 ```
 
+Retrieves task types for a category
 
+Gets all task types belonging to the specified task category.
 
 ### Example
 ```swift
@@ -236,11 +235,112 @@ import OpenAPIClient
 
 let taskCategoryId = 987 // UUID | 
 let tenantId = 987 // UUID | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Retrieves task types for a category
+TaskCategoriesAPI.getTaskCategoryTaskTypesAsync(taskCategoryId: taskCategoryId, tenantId: tenantId) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **taskCategoryId** | **UUID** |  | 
+ **tenantId** | **UUID** |  | 
+
+### Return type
+
+[**TaskCategoryDto**](TaskCategoryDto.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getTenantTaskCategoriesAsync**
+```swift
+    open class func getTenantTaskCategoriesAsync(tenantId: UUID, completion: @escaping (_ data: TaskCategoryDtoListEnvelope?, _ error: Error?) -> Void)
+```
+
+Retrieves all task categories
+
+Gets all task categories for the current tenant with OData support.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+
+// Retrieves all task categories
+TaskCategoriesAPI.getTenantTaskCategoriesAsync(tenantId: tenantId) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+
+### Return type
+
+[**TaskCategoryDtoListEnvelope**](TaskCategoryDtoListEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **updateTaskCategoryAsync**
+```swift
+    open class func updateTaskCategoryAsync(taskCategoryId: UUID, tenantId: UUID, taskCategoryUpdateDto: TaskCategoryUpdateDto? = nil, completion: @escaping (_ data: TaskCategoryDto?, _ error: Error?) -> Void)
+```
+
+Updates a task category
+
+Updates the specified task category.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let taskCategoryId = 987 // UUID | 
+let tenantId = 987 // UUID | 
 let taskCategoryUpdateDto = TaskCategoryUpdateDto(title: "title_example") // TaskCategoryUpdateDto |  (optional)
 
-TaskCategoriesAPI.apiV2ProjectsServiceTaskCategoriesTaskCategoryIdPut(taskCategoryId: taskCategoryId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, taskCategoryUpdateDto: taskCategoryUpdateDto) { (response, error) in
+// Updates a task category
+TaskCategoriesAPI.updateTaskCategoryAsync(taskCategoryId: taskCategoryId, tenantId: tenantId, taskCategoryUpdateDto: taskCategoryUpdateDto) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -258,8 +358,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **taskCategoryId** | **UUID** |  | 
  **tenantId** | **UUID** |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
  **taskCategoryUpdateDto** | [**TaskCategoryUpdateDto**](TaskCategoryUpdateDto.md) |  | [optional] 
 
 ### Return type
@@ -268,64 +366,11 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
  - **Content-Type**: application/json, application/xml
- - **Accept**: application/json, application/xml
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **apiV2ProjectsServiceTaskCategoriesTaskCategoryIdTypesGet**
-```swift
-    open class func apiV2ProjectsServiceTaskCategoriesTaskCategoryIdTypesGet(taskCategoryId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: TaskCategoryDto?, _ error: Error?) -> Void)
-```
-
-
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
-
-let taskCategoryId = 987 // UUID | 
-let tenantId = 987 // UUID | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
-
-TaskCategoriesAPI.apiV2ProjectsServiceTaskCategoriesTaskCategoryIdTypesGet(taskCategoryId: taskCategoryId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **taskCategoryId** | **UUID** |  | 
- **tenantId** | **UUID** |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
-
-### Return type
-
-[**TaskCategoryDto**](TaskCategoryDto.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

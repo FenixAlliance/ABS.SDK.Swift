@@ -13,7 +13,8 @@ import AnyCodable
 open class MarginsAPI {
 
     /**
-
+     Get margin details by ID
+     
      - parameter marginId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -21,8 +22,8 @@ open class MarginsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2SalesServiceMarginsMarginIdDetailsGet(marginId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2SalesServiceMarginsMarginIdDetailsGetWithRequestBuilder(marginId: marginId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getQuoteAsync(marginId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return getQuoteAsyncWithRequestBuilder(marginId: marginId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 completion((), nil)
@@ -33,16 +34,15 @@ open class MarginsAPI {
     }
 
     /**
+     Get margin details by ID
      - GET /api/v2/SalesService/Margins/{marginId}/Details
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Retrieves the details of a specific sales margin by its ID.
      - parameter marginId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<Void> 
      */
-    open class func apiV2SalesServiceMarginsMarginIdDetailsGetWithRequestBuilder(marginId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Void> {
+    open class func getQuoteAsyncWithRequestBuilder(marginId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Void> {
         var localVariablePath = "/api/v2/SalesService/Margins/{marginId}/Details"
         let marginIdPreEscape = "\(APIHelper.mapValueToPathItem(marginId))"
         let marginIdPostEscape = marginIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -63,6 +63,6 @@ open class MarginsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 }

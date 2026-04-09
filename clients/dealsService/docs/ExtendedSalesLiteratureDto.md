@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **modifiedDate** | **Date** |  | [optional] 
 **expirationDate** | **Date** |  | [optional] 
 **tenantId** | **String** |  | [optional] 
-**enrolmentId** | **String** |  | [optional] 
+**enrollmentId** | **String** |  | [optional] 
 **salesLiteratureTypeId** | **String** |  | [optional] 
 **salesLiteratureType** | [**SalesLiteratureTypeDto**](SalesLiteratureTypeDto.md) |  | [optional] 
 **tenant** | [**TenantDto**](TenantDto.md) |  | [optional] 

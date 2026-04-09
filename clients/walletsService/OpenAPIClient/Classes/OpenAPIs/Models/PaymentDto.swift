@@ -12,34 +12,33 @@ import AnyCodable
 
 public struct PaymentDto: Codable, JSONEncodable, Hashable {
 
-    public enum OnBehalfOf: Int, Codable, CaseIterable {
-        case _0 = 0
-        case _1 = 1
-        case _2 = 2
-        case _3 = 3
+    public enum OnBehalfOf: String, Codable, CaseIterable {
+        case _self = "Self"
+        case tenant = "Tenant"
+        case individual = "Individual"
+        case organization = "Organization"
     }
-    public enum PaymentType: Int, Codable, CaseIterable {
-        case _0 = 0
-        case _1 = 1
-        case _2 = 2
+    public enum PaymentType: String, Codable, CaseIterable {
+        case paid = "Paid"
+        case received = "Received"
+        case _internal = "Internal"
     }
-    public enum PaymentStatus: Int, Codable, CaseIterable {
-        case _0 = 0
-        case _1 = 1
-        case _2 = 2
-        case _3 = 3
-        case _4 = 4
-        case _5 = 5
-        case _6 = 6
-        case _7 = 7
-        case _8 = 8
-        case _9 = 9
-        case _10 = 10
-        case _11 = 11
+    public enum PaymentStatus: String, Codable, CaseIterable {
+        case unset = "Unset"
+        case accepted = "Accepted"
+        case rejected = "Rejected"
+        case onHold = "OnHold"
+        case failed = "Failed"
+        case reversed = "Reversed"
+        case retained = "Retained"
+        case initialized = "Initialized"
+        case expired = "Expired"
+        case abandoned = "Abandoned"
+        case cancelled = "Cancelled"
+        case acceptedRetained = "AcceptedRetained"
     }
     public var id: String?
     public var timestamp: Date?
-    public var timeStamp: Date?
     public var test: Bool?
     public var invoiceId: String?
     public var tenantId: String?
@@ -94,14 +93,13 @@ public struct PaymentDto: Codable, JSONEncodable, Hashable {
     public var accountingEntryId: String?
     public var paymentGatewayId: String?
     public var bankAccountId: String?
-    public var enrolmentId: String?
+    public var enrollmentId: String?
     public var bankId: String?
     public var paymentTokenId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, timeStamp: Date? = nil, test: Bool? = nil, invoiceId: String? = nil, tenantId: String? = nil, emisorWalletId: String? = nil, receiverWalletId: String? = nil, currencyId: String? = nil, forexRate: Double? = nil, totalCost: Double? = nil, totalTaxes: Double? = nil, closed: Bool? = nil, data: String? = nil, dataLabel: String? = nil, data1: String? = nil, data1Label: String? = nil, response: String? = nil, authorization: String? = nil, referenceCode: String? = nil, correlationCode: String? = nil, lastUpdated: Date? = nil, onBehalfOf: OnBehalfOf? = nil, paymentType: PaymentType? = nil, paymentStatus: PaymentStatus? = nil, baseCost: Double? = nil, signature: String? = nil, signatureMismatch: Bool? = nil, isExternal: Bool? = nil, markedForRevision: Bool? = nil, forexRatesSnapshot: String? = nil, officialId: String? = nil, officialIdExpeditionDate: Date? = nil, fiscalIdentificationTypeId: String? = nil, billingAddress: String? = nil, phone: String? = nil, cellphone: String? = nil, department: String? = nil, city: String? = nil, countryId: String? = nil, locationId: String? = nil, entitlementId: String? = nil, antiFraudScore: Double? = nil, callRecordURL: String? = nil, called: Bool? = nil, verified: Bool? = nil, payerPictureTimestamp: String? = nil, payerPicture: String? = nil, identificationPictureTimestamp: String? = nil, identificationPicture: String? = nil, identificationBackPicture: String? = nil, identificationBackPictureTimestamp: String? = nil, ipLookupId: String? = nil, orderId: String? = nil, accountingEntryId: String? = nil, paymentGatewayId: String? = nil, bankAccountId: String? = nil, enrolmentId: String? = nil, bankId: String? = nil, paymentTokenId: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, test: Bool? = nil, invoiceId: String? = nil, tenantId: String? = nil, emisorWalletId: String? = nil, receiverWalletId: String? = nil, currencyId: String? = nil, forexRate: Double? = nil, totalCost: Double? = nil, totalTaxes: Double? = nil, closed: Bool? = nil, data: String? = nil, dataLabel: String? = nil, data1: String? = nil, data1Label: String? = nil, response: String? = nil, authorization: String? = nil, referenceCode: String? = nil, correlationCode: String? = nil, lastUpdated: Date? = nil, onBehalfOf: OnBehalfOf? = nil, paymentType: PaymentType? = nil, paymentStatus: PaymentStatus? = nil, baseCost: Double? = nil, signature: String? = nil, signatureMismatch: Bool? = nil, isExternal: Bool? = nil, markedForRevision: Bool? = nil, forexRatesSnapshot: String? = nil, officialId: String? = nil, officialIdExpeditionDate: Date? = nil, fiscalIdentificationTypeId: String? = nil, billingAddress: String? = nil, phone: String? = nil, cellphone: String? = nil, department: String? = nil, city: String? = nil, countryId: String? = nil, locationId: String? = nil, entitlementId: String? = nil, antiFraudScore: Double? = nil, callRecordURL: String? = nil, called: Bool? = nil, verified: Bool? = nil, payerPictureTimestamp: String? = nil, payerPicture: String? = nil, identificationPictureTimestamp: String? = nil, identificationPicture: String? = nil, identificationBackPicture: String? = nil, identificationBackPictureTimestamp: String? = nil, ipLookupId: String? = nil, orderId: String? = nil, accountingEntryId: String? = nil, paymentGatewayId: String? = nil, bankAccountId: String? = nil, enrollmentId: String? = nil, bankId: String? = nil, paymentTokenId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
-        self.timeStamp = timeStamp
         self.test = test
         self.invoiceId = invoiceId
         self.tenantId = tenantId
@@ -156,7 +154,7 @@ public struct PaymentDto: Codable, JSONEncodable, Hashable {
         self.accountingEntryId = accountingEntryId
         self.paymentGatewayId = paymentGatewayId
         self.bankAccountId = bankAccountId
-        self.enrolmentId = enrolmentId
+        self.enrollmentId = enrollmentId
         self.bankId = bankId
         self.paymentTokenId = paymentTokenId
     }
@@ -164,7 +162,6 @@ public struct PaymentDto: Codable, JSONEncodable, Hashable {
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
-        case timeStamp
         case test
         case invoiceId
         case tenantId
@@ -219,7 +216,7 @@ public struct PaymentDto: Codable, JSONEncodable, Hashable {
         case accountingEntryId
         case paymentGatewayId
         case bankAccountId
-        case enrolmentId
+        case enrollmentId
         case bankId
         case paymentTokenId
     }
@@ -230,7 +227,6 @@ public struct PaymentDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
-        try container.encodeIfPresent(timeStamp, forKey: .timeStamp)
         try container.encodeIfPresent(test, forKey: .test)
         try container.encodeIfPresent(invoiceId, forKey: .invoiceId)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
@@ -285,7 +281,7 @@ public struct PaymentDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(accountingEntryId, forKey: .accountingEntryId)
         try container.encodeIfPresent(paymentGatewayId, forKey: .paymentGatewayId)
         try container.encodeIfPresent(bankAccountId, forKey: .bankAccountId)
-        try container.encodeIfPresent(enrolmentId, forKey: .enrolmentId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(bankId, forKey: .bankId)
         try container.encodeIfPresent(paymentTokenId, forKey: .paymentTokenId)
     }

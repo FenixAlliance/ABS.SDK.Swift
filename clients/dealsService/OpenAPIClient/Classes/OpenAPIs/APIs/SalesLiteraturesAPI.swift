@@ -13,16 +13,15 @@ import AnyCodable
 open class SalesLiteraturesAPI {
 
     /**
-
+     Get sales literatures count
+     
      - parameter tenantId: (query)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2DealsServiceSalesLiteraturesExtendedGet(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ExtendedSalesLiteratureDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2DealsServiceSalesLiteraturesExtendedGetWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func countSalesLiteraturesAsync(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return countSalesLiteraturesAsyncWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -33,101 +32,44 @@ open class SalesLiteraturesAPI {
     }
 
     /**
-     - GET /api/v2/DealsService/SalesLiteratures/Extended
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     Get sales literatures count
+     - GET /api/v2/DealsService/SalesLiteratures/Count
+     - Returns the total count of sales literatures for the specified tenant with OData filter support.
      - parameter tenantId: (query)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - returns: RequestBuilder<ExtendedSalesLiteratureDtoListEnvelope> 
+     - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func apiV2DealsServiceSalesLiteraturesExtendedGetWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ExtendedSalesLiteratureDtoListEnvelope> {
-        let localVariablePath = "/api/v2/DealsService/SalesLiteratures/Extended"
+    open class func countSalesLiteraturesAsyncWithRequestBuilder(tenantId: UUID) -> RequestBuilder<Int32Envelope> {
+        let localVariablePath = "/api/v2/DealsService/SalesLiteratures/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            "x-api-version": xApiVersion?.encodeToJSON(),
+            :
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ExtendedSalesLiteratureDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Create a sales literature
+     
      - parameter tenantId: (query)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2DealsServiceSalesLiteraturesGet(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SalesLiteratureDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2DealsServiceSalesLiteraturesGetWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - GET /api/v2/DealsService/SalesLiteratures
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter tenantId: (query)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - returns: RequestBuilder<SalesLiteratureDtoListEnvelope> 
-     */
-    open class func apiV2DealsServiceSalesLiteraturesGetWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SalesLiteratureDtoListEnvelope> {
-        let localVariablePath = "/api/v2/DealsService/SalesLiteratures"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            "x-api-version": xApiVersion?.encodeToJSON(),
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<SalesLiteratureDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
-     - parameter tenantId: (query)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
      - parameter salesLiteratureCreateDto: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2DealsServiceSalesLiteraturesPost(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, salesLiteratureCreateDto: SalesLiteratureCreateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2DealsServiceSalesLiteraturesPostWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, salesLiteratureCreateDto: salesLiteratureCreateDto).execute(apiResponseQueue) { result in
+    open class func createSalesLiteratureAsync(tenantId: UUID, salesLiteratureCreateDto: SalesLiteratureCreateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return createSalesLiteratureAsyncWithRequestBuilder(tenantId: tenantId, salesLiteratureCreateDto: salesLiteratureCreateDto).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -138,17 +80,14 @@ open class SalesLiteraturesAPI {
     }
 
     /**
+     Create a sales literature
      - POST /api/v2/DealsService/SalesLiteratures
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Creates a new sales literature for the specified tenant.
      - parameter tenantId: (query)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
      - parameter salesLiteratureCreateDto: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func apiV2DealsServiceSalesLiteraturesPostWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, salesLiteratureCreateDto: SalesLiteratureCreateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func createSalesLiteratureAsyncWithRequestBuilder(tenantId: UUID, salesLiteratureCreateDto: SalesLiteratureCreateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
         let localVariablePath = "/api/v2/DealsService/SalesLiteratures"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: salesLiteratureCreateDto)
@@ -156,33 +95,30 @@ open class SalesLiteraturesAPI {
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
             "Content-Type": "application/json",
-            "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Delete a sales literature
+     
      - parameter tenantId: (query)  
      - parameter salesLiteratureId: (path)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2DealsServiceSalesLiteraturesSalesLiteratureIdDelete(tenantId: UUID, salesLiteratureId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2DealsServiceSalesLiteraturesSalesLiteratureIdDeleteWithRequestBuilder(tenantId: tenantId, salesLiteratureId: salesLiteratureId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func deleteSalesLiteratureAsync(tenantId: UUID, salesLiteratureId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return deleteSalesLiteratureAsyncWithRequestBuilder(tenantId: tenantId, salesLiteratureId: salesLiteratureId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -193,17 +129,14 @@ open class SalesLiteraturesAPI {
     }
 
     /**
+     Delete a sales literature
      - DELETE /api/v2/DealsService/SalesLiteratures/{salesLiteratureId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Deletes an existing sales literature by its unique identifier.
      - parameter tenantId: (query)  
      - parameter salesLiteratureId: (path)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func apiV2DealsServiceSalesLiteraturesSalesLiteratureIdDeleteWithRequestBuilder(tenantId: UUID, salesLiteratureId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func deleteSalesLiteratureAsyncWithRequestBuilder(tenantId: UUID, salesLiteratureId: UUID) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/DealsService/SalesLiteratures/{salesLiteratureId}"
         let salesLiteratureIdPreEscape = "\(APIHelper.mapValueToPathItem(salesLiteratureId))"
         let salesLiteratureIdPostEscape = salesLiteratureIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -214,31 +147,29 @@ open class SalesLiteraturesAPI {
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            "x-api-version": xApiVersion?.encodeToJSON(),
+            :
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
-     - parameter salesLiteratureId: (path)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
+     Get extended sales literatures
+     
+     - parameter tenantId: (query)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2DealsServiceSalesLiteraturesSalesLiteratureIdGet(salesLiteratureId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SalesLiteratureDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2DealsServiceSalesLiteraturesSalesLiteratureIdGetWithRequestBuilder(salesLiteratureId: salesLiteratureId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getExtendedSalesLiteraturesAsync(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ExtendedSalesLiteratureDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getExtendedSalesLiteraturesAsyncWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -249,16 +180,62 @@ open class SalesLiteraturesAPI {
     }
 
     /**
-     - GET /api/v2/DealsService/SalesLiteratures/{salesLiteratureId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     Get extended sales literatures
+     - GET /api/v2/DealsService/SalesLiteratures/Extended
+     - Retrieves a list of sales literatures with extended details for the specified tenant with OData query support.
+     - parameter tenantId: (query)  
+     - returns: RequestBuilder<ExtendedSalesLiteratureDtoListEnvelope> 
+     */
+    open class func getExtendedSalesLiteraturesAsyncWithRequestBuilder(tenantId: UUID) -> RequestBuilder<ExtendedSalesLiteratureDtoListEnvelope> {
+        let localVariablePath = "/api/v2/DealsService/SalesLiteratures/Extended"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<ExtendedSalesLiteratureDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Get sales literature by ID
+     
+     - parameter tenantId: (query)  
      - parameter salesLiteratureId: (path)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getSalesLiteratureAsync(tenantId: UUID, salesLiteratureId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SalesLiteratureDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getSalesLiteratureAsyncWithRequestBuilder(tenantId: tenantId, salesLiteratureId: salesLiteratureId).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get sales literature by ID
+     - GET /api/v2/DealsService/SalesLiteratures/{salesLiteratureId}
+     - Retrieves a single sales literature by its unique identifier.
+     - parameter tenantId: (query)  
+     - parameter salesLiteratureId: (path)  
      - returns: RequestBuilder<SalesLiteratureDtoEnvelope> 
      */
-    open class func apiV2DealsServiceSalesLiteraturesSalesLiteratureIdGetWithRequestBuilder(salesLiteratureId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SalesLiteratureDtoEnvelope> {
+    open class func getSalesLiteratureAsyncWithRequestBuilder(tenantId: UUID, salesLiteratureId: UUID) -> RequestBuilder<SalesLiteratureDtoEnvelope> {
         var localVariablePath = "/api/v2/DealsService/SalesLiteratures/{salesLiteratureId}"
         let salesLiteratureIdPreEscape = "\(APIHelper.mapValueToPathItem(salesLiteratureId))"
         let salesLiteratureIdPostEscape = salesLiteratureIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -268,33 +245,30 @@ open class SalesLiteraturesAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            "x-api-version": xApiVersion?.encodeToJSON(),
+            :
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         let localVariableRequestBuilder: RequestBuilder<SalesLiteratureDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Get sales literatures
+     
      - parameter tenantId: (query)  
-     - parameter salesLiteratureId: (path)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - parameter salesLiteratureUpdateDto: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2DealsServiceSalesLiteraturesSalesLiteratureIdPut(tenantId: UUID, salesLiteratureId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, salesLiteratureUpdateDto: SalesLiteratureUpdateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2DealsServiceSalesLiteraturesSalesLiteratureIdPutWithRequestBuilder(tenantId: tenantId, salesLiteratureId: salesLiteratureId, apiVersion: apiVersion, xApiVersion: xApiVersion, salesLiteratureUpdateDto: salesLiteratureUpdateDto).execute(apiResponseQueue) { result in
+    open class func getSalesLiteraturesAsync(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SalesLiteratureDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getSalesLiteraturesAsyncWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -305,18 +279,64 @@ open class SalesLiteraturesAPI {
     }
 
     /**
-     - PUT /api/v2/DealsService/SalesLiteratures/{salesLiteratureId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     Get sales literatures
+     - GET /api/v2/DealsService/SalesLiteratures
+     - Retrieves a list of sales literatures for the specified tenant with OData query support.
+     - parameter tenantId: (query)  
+     - returns: RequestBuilder<SalesLiteratureDtoListEnvelope> 
+     */
+    open class func getSalesLiteraturesAsyncWithRequestBuilder(tenantId: UUID) -> RequestBuilder<SalesLiteratureDtoListEnvelope> {
+        let localVariablePath = "/api/v2/DealsService/SalesLiteratures"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<SalesLiteratureDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Update a sales literature
+     
      - parameter tenantId: (query)  
      - parameter salesLiteratureId: (path)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
+     - parameter salesLiteratureUpdateDto: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func updateSalesLiteratureAsync(tenantId: UUID, salesLiteratureId: UUID, salesLiteratureUpdateDto: SalesLiteratureUpdateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return updateSalesLiteratureAsyncWithRequestBuilder(tenantId: tenantId, salesLiteratureId: salesLiteratureId, salesLiteratureUpdateDto: salesLiteratureUpdateDto).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Update a sales literature
+     - PUT /api/v2/DealsService/SalesLiteratures/{salesLiteratureId}
+     - Updates an existing sales literature by its unique identifier.
+     - parameter tenantId: (query)  
+     - parameter salesLiteratureId: (path)  
      - parameter salesLiteratureUpdateDto: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func apiV2DealsServiceSalesLiteraturesSalesLiteratureIdPutWithRequestBuilder(tenantId: UUID, salesLiteratureId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, salesLiteratureUpdateDto: SalesLiteratureUpdateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func updateSalesLiteratureAsyncWithRequestBuilder(tenantId: UUID, salesLiteratureId: UUID, salesLiteratureUpdateDto: SalesLiteratureUpdateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/DealsService/SalesLiteratures/{salesLiteratureId}"
         let salesLiteratureIdPreEscape = "\(APIHelper.mapValueToPathItem(salesLiteratureId))"
         let salesLiteratureIdPostEscape = salesLiteratureIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -327,18 +347,16 @@ open class SalesLiteraturesAPI {
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
             "Content-Type": "application/json",
-            "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 }

@@ -13,205 +13,16 @@ import AnyCodable
 open class QuotesAPI {
 
     /**
-
-     - parameter tenantId: (query)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2QuotesServiceQuotesCountGet(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2QuotesServiceQuotesCountGetWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - GET /api/v2/QuotesService/Quotes/Count
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter tenantId: (query)  
-     - returns: RequestBuilder<Int32Envelope> 
-     */
-    open class func apiV2QuotesServiceQuotesCountGetWithRequestBuilder(tenantId: UUID) -> RequestBuilder<Int32Envelope> {
-        let localVariablePath = "/api/v2/QuotesService/Quotes/Count"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
-     - parameter tenantId: (query)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2QuotesServiceQuotesExtendedGet(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ExtendedQuoteDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2QuotesServiceQuotesExtendedGetWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - GET /api/v2/QuotesService/Quotes/Extended
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter tenantId: (query)  
-     - returns: RequestBuilder<ExtendedQuoteDtoListEnvelope> 
-     */
-    open class func apiV2QuotesServiceQuotesExtendedGetWithRequestBuilder(tenantId: UUID) -> RequestBuilder<ExtendedQuoteDtoListEnvelope> {
-        let localVariablePath = "/api/v2/QuotesService/Quotes/Extended"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<ExtendedQuoteDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
-     - parameter tenantId: (query)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2QuotesServiceQuotesGet(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: QuoteDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2QuotesServiceQuotesGetWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - GET /api/v2/QuotesService/Quotes
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter tenantId: (query)  
-     - returns: RequestBuilder<QuoteDtoListEnvelope> 
-     */
-    open class func apiV2QuotesServiceQuotesGetWithRequestBuilder(tenantId: UUID) -> RequestBuilder<QuoteDtoListEnvelope> {
-        let localVariablePath = "/api/v2/QuotesService/Quotes"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<QuoteDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
-     - parameter tenantId: (query)  
-     - parameter quoteCreateDto: (body)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2QuotesServiceQuotesPost(tenantId: UUID, quoteCreateDto: QuoteCreateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2QuotesServiceQuotesPostWithRequestBuilder(tenantId: tenantId, quoteCreateDto: quoteCreateDto).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - POST /api/v2/QuotesService/Quotes
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter tenantId: (query)  
-     - parameter quoteCreateDto: (body)  (optional)
-     - returns: RequestBuilder<EmptyEnvelope> 
-     */
-    open class func apiV2QuotesServiceQuotesPostWithRequestBuilder(tenantId: UUID, quoteCreateDto: QuoteCreateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
-        let localVariablePath = "/api/v2/QuotesService/Quotes"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: quoteCreateDto)
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            "Content-Type": "application/json",
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
+     Calculate a quote.
+     
      - parameter tenantId: (query)  
      - parameter quoteId: (path)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2QuotesServiceQuotesQuoteIdCalculatePut(tenantId: UUID, quoteId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2QuotesServiceQuotesQuoteIdCalculatePutWithRequestBuilder(tenantId: tenantId, quoteId: quoteId).execute(apiResponseQueue) { result in
+    open class func calculateQuote(tenantId: UUID, quoteId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return calculateQuoteWithRequestBuilder(tenantId: tenantId, quoteId: quoteId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -222,15 +33,14 @@ open class QuotesAPI {
     }
 
     /**
+     Calculate a quote.
      - PUT /api/v2/QuotesService/Quotes/{quoteId}/Calculate
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Performs calculation logic for the specified quote.
      - parameter tenantId: (query)  
      - parameter quoteId: (path)  
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func apiV2QuotesServiceQuotesQuoteIdCalculatePutWithRequestBuilder(tenantId: UUID, quoteId: UUID) -> RequestBuilder<EmptyEnvelope> {
+    open class func calculateQuoteWithRequestBuilder(tenantId: UUID, quoteId: UUID) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/QuotesService/Quotes/{quoteId}/Calculate"
         let quoteIdPreEscape = "\(APIHelper.mapValueToPathItem(quoteId))"
         let quoteIdPostEscape = quoteIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -251,224 +61,12 @@ open class QuotesAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
-     - parameter quoteId: (path)  
-     - parameter tenantId: (query)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2QuotesServiceQuotesQuoteIdDelete(quoteId: UUID, tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2QuotesServiceQuotesQuoteIdDeleteWithRequestBuilder(quoteId: quoteId, tenantId: tenantId).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - DELETE /api/v2/QuotesService/Quotes/{quoteId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter quoteId: (path)  
-     - parameter tenantId: (query)  
-     - returns: RequestBuilder<EmptyEnvelope> 
-     */
-    open class func apiV2QuotesServiceQuotesQuoteIdDeleteWithRequestBuilder(quoteId: UUID, tenantId: UUID) -> RequestBuilder<EmptyEnvelope> {
-        var localVariablePath = "/api/v2/QuotesService/Quotes/{quoteId}"
-        let quoteIdPreEscape = "\(APIHelper.mapValueToPathItem(quoteId))"
-        let quoteIdPostEscape = quoteIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{quoteId}", with: quoteIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
-     - parameter tenantId: (query)  
-     - parameter quoteId: (path)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2QuotesServiceQuotesQuoteIdLinesCountGet(tenantId: UUID, quoteId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2QuotesServiceQuotesQuoteIdLinesCountGetWithRequestBuilder(tenantId: tenantId, quoteId: quoteId).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - GET /api/v2/QuotesService/Quotes/{quoteId}/Lines/Count
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter tenantId: (query)  
-     - parameter quoteId: (path)  
-     - returns: RequestBuilder<Int32Envelope> 
-     */
-    open class func apiV2QuotesServiceQuotesQuoteIdLinesCountGetWithRequestBuilder(tenantId: UUID, quoteId: UUID) -> RequestBuilder<Int32Envelope> {
-        var localVariablePath = "/api/v2/QuotesService/Quotes/{quoteId}/Lines/Count"
-        let quoteIdPreEscape = "\(APIHelper.mapValueToPathItem(quoteId))"
-        let quoteIdPostEscape = quoteIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{quoteId}", with: quoteIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
-     - parameter tenantId: (query)  
-     - parameter quoteId: (path)  
-     - parameter itemId: (query)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2QuotesServiceQuotesQuoteIdLinesGet(tenantId: UUID, quoteId: UUID, itemId: UUID? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: QuoteLineDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2QuotesServiceQuotesQuoteIdLinesGetWithRequestBuilder(tenantId: tenantId, quoteId: quoteId, itemId: itemId).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - GET /api/v2/QuotesService/Quotes/{quoteId}/Lines
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter tenantId: (query)  
-     - parameter quoteId: (path)  
-     - parameter itemId: (query)  (optional)
-     - returns: RequestBuilder<QuoteLineDtoListEnvelope> 
-     */
-    open class func apiV2QuotesServiceQuotesQuoteIdLinesGetWithRequestBuilder(tenantId: UUID, quoteId: UUID, itemId: UUID? = nil) -> RequestBuilder<QuoteLineDtoListEnvelope> {
-        var localVariablePath = "/api/v2/QuotesService/Quotes/{quoteId}/Lines"
-        let quoteIdPreEscape = "\(APIHelper.mapValueToPathItem(quoteId))"
-        let quoteIdPostEscape = quoteIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{quoteId}", with: quoteIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-            "itemId": (wrappedValue: itemId?.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<QuoteLineDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
-     - parameter tenantId: (query)  
-     - parameter quoteId: (path)  
-     - parameter quoteLineCreateDto: (body)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2QuotesServiceQuotesQuoteIdLinesPost(tenantId: UUID, quoteId: UUID, quoteLineCreateDto: QuoteLineCreateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2QuotesServiceQuotesQuoteIdLinesPostWithRequestBuilder(tenantId: tenantId, quoteId: quoteId, quoteLineCreateDto: quoteLineCreateDto).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - POST /api/v2/QuotesService/Quotes/{quoteId}/Lines
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter tenantId: (query)  
-     - parameter quoteId: (path)  
-     - parameter quoteLineCreateDto: (body)  (optional)
-     - returns: RequestBuilder<EmptyEnvelope> 
-     */
-    open class func apiV2QuotesServiceQuotesQuoteIdLinesPostWithRequestBuilder(tenantId: UUID, quoteId: UUID, quoteLineCreateDto: QuoteLineCreateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
-        var localVariablePath = "/api/v2/QuotesService/Quotes/{quoteId}/Lines"
-        let quoteIdPreEscape = "\(APIHelper.mapValueToPathItem(quoteId))"
-        let quoteIdPostEscape = quoteIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{quoteId}", with: quoteIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: quoteLineCreateDto)
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            "Content-Type": "application/json",
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
+     Calculate a quote line.
+     
      - parameter tenantId: (query)  
      - parameter quoteId: (path)  
      - parameter quoteLineId: (path)  
@@ -476,8 +74,8 @@ open class QuotesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2QuotesServiceQuotesQuoteIdLinesQuoteLineIdCalculatePut(tenantId: UUID, quoteId: UUID, quoteLineId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2QuotesServiceQuotesQuoteIdLinesQuoteLineIdCalculatePutWithRequestBuilder(tenantId: tenantId, quoteId: quoteId, quoteLineId: quoteLineId).execute(apiResponseQueue) { result in
+    open class func calculateQuoteLine(tenantId: UUID, quoteId: UUID, quoteLineId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return calculateQuoteLineWithRequestBuilder(tenantId: tenantId, quoteId: quoteId, quoteLineId: quoteLineId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -488,16 +86,15 @@ open class QuotesAPI {
     }
 
     /**
+     Calculate a quote line.
      - PUT /api/v2/QuotesService/Quotes/{quoteId}/Lines/{quoteLineId}/Calculate
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Performs calculation logic for the specified quote line.
      - parameter tenantId: (query)  
      - parameter quoteId: (path)  
      - parameter quoteLineId: (path)  
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func apiV2QuotesServiceQuotesQuoteIdLinesQuoteLineIdCalculatePutWithRequestBuilder(tenantId: UUID, quoteId: UUID, quoteLineId: UUID) -> RequestBuilder<EmptyEnvelope> {
+    open class func calculateQuoteLineWithRequestBuilder(tenantId: UUID, quoteId: UUID, quoteLineId: UUID) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/QuotesService/Quotes/{quoteId}/Lines/{quoteLineId}/Calculate"
         let quoteIdPreEscape = "\(APIHelper.mapValueToPathItem(quoteId))"
         let quoteIdPostEscape = quoteIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -521,20 +118,20 @@ open class QuotesAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Close a quote.
+     
      - parameter tenantId: (query)  
      - parameter quoteId: (path)  
-     - parameter quoteLineId: (path)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2QuotesServiceQuotesQuoteIdLinesQuoteLineIdDelete(tenantId: UUID, quoteId: UUID, quoteLineId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2QuotesServiceQuotesQuoteIdLinesQuoteLineIdDeleteWithRequestBuilder(tenantId: tenantId, quoteId: quoteId, quoteLineId: quoteLineId).execute(apiResponseQueue) { result in
+    open class func closeQuote(tenantId: UUID, quoteId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return closeQuoteWithRequestBuilder(tenantId: tenantId, quoteId: quoteId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -545,16 +142,275 @@ open class QuotesAPI {
     }
 
     /**
+     Close a quote.
+     - PUT /api/v2/QuotesService/Quotes/{quoteId}/Close
+     - Closes the specified quote for the tenant.
+     - parameter tenantId: (query)  
+     - parameter quoteId: (path)  
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func closeQuoteWithRequestBuilder(tenantId: UUID, quoteId: UUID) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/QuotesService/Quotes/{quoteId}/Close"
+        let quoteIdPreEscape = "\(APIHelper.mapValueToPathItem(quoteId))"
+        let quoteIdPostEscape = quoteIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{quoteId}", with: quoteIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Create an order from a quote.
+     
+     - parameter tenantId: (query)  
+     - parameter quoteId: (path)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func createOrderFromQuote(tenantId: UUID, quoteId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return createOrderFromQuoteWithRequestBuilder(tenantId: tenantId, quoteId: quoteId).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Create an order from a quote.
+     - POST /api/v2/QuotesService/Quotes/{quoteId}/Orders
+     - Creates an order based on the specified quote for the tenant.
+     - parameter tenantId: (query)  
+     - parameter quoteId: (path)  
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func createOrderFromQuoteWithRequestBuilder(tenantId: UUID, quoteId: UUID) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/QuotesService/Quotes/{quoteId}/Orders"
+        let quoteIdPreEscape = "\(APIHelper.mapValueToPathItem(quoteId))"
+        let quoteIdPostEscape = quoteIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{quoteId}", with: quoteIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Create a new quote.
+     
+     - parameter tenantId: (query)  
+     - parameter quoteCreateDto: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func createQuote(tenantId: UUID, quoteCreateDto: QuoteCreateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return createQuoteWithRequestBuilder(tenantId: tenantId, quoteCreateDto: quoteCreateDto).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Create a new quote.
+     - POST /api/v2/QuotesService/Quotes
+     - Creates a new quote for the specified tenant.
+     - parameter tenantId: (query)  
+     - parameter quoteCreateDto: (body)  (optional)
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func createQuoteWithRequestBuilder(tenantId: UUID, quoteCreateDto: QuoteCreateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
+        let localVariablePath = "/api/v2/QuotesService/Quotes"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: quoteCreateDto)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Create a new quote line.
+     
+     - parameter tenantId: (query)  
+     - parameter quoteId: (path)  
+     - parameter quoteLineCreateDto: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func createQuoteLine(tenantId: UUID, quoteId: UUID, quoteLineCreateDto: QuoteLineCreateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return createQuoteLineWithRequestBuilder(tenantId: tenantId, quoteId: quoteId, quoteLineCreateDto: quoteLineCreateDto).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Create a new quote line.
+     - POST /api/v2/QuotesService/Quotes/{quoteId}/Lines
+     - Creates a new quote line for the specified quote and tenant.
+     - parameter tenantId: (query)  
+     - parameter quoteId: (path)  
+     - parameter quoteLineCreateDto: (body)  (optional)
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func createQuoteLineWithRequestBuilder(tenantId: UUID, quoteId: UUID, quoteLineCreateDto: QuoteLineCreateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/QuotesService/Quotes/{quoteId}/Lines"
+        let quoteIdPreEscape = "\(APIHelper.mapValueToPathItem(quoteId))"
+        let quoteIdPostEscape = quoteIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{quoteId}", with: quoteIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: quoteLineCreateDto)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Delete a quote.
+     
+     - parameter quoteId: (path)  
+     - parameter tenantId: (query)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func deleteQuote(quoteId: UUID, tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return deleteQuoteWithRequestBuilder(quoteId: quoteId, tenantId: tenantId).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Delete a quote.
+     - DELETE /api/v2/QuotesService/Quotes/{quoteId}
+     - Deletes the specified quote for the tenant.
+     - parameter quoteId: (path)  
+     - parameter tenantId: (query)  
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func deleteQuoteWithRequestBuilder(quoteId: UUID, tenantId: UUID) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/QuotesService/Quotes/{quoteId}"
+        let quoteIdPreEscape = "\(APIHelper.mapValueToPathItem(quoteId))"
+        let quoteIdPostEscape = quoteIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{quoteId}", with: quoteIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Delete a quote line.
+     
+     - parameter tenantId: (query)  
+     - parameter quoteId: (path)  
+     - parameter quoteLineId: (path)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func deleteQuoteLine(tenantId: UUID, quoteId: UUID, quoteLineId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return deleteQuoteLineWithRequestBuilder(tenantId: tenantId, quoteId: quoteId, quoteLineId: quoteLineId).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Delete a quote line.
      - DELETE /api/v2/QuotesService/Quotes/{quoteId}/Lines/{quoteLineId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Deletes the specified quote line for the quote and tenant.
      - parameter tenantId: (query)  
      - parameter quoteId: (path)  
      - parameter quoteLineId: (path)  
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func apiV2QuotesServiceQuotesQuoteIdLinesQuoteLineIdDeleteWithRequestBuilder(tenantId: UUID, quoteId: UUID, quoteLineId: UUID) -> RequestBuilder<EmptyEnvelope> {
+    open class func deleteQuoteLineWithRequestBuilder(tenantId: UUID, quoteId: UUID, quoteLineId: UUID) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/QuotesService/Quotes/{quoteId}/Lines/{quoteLineId}"
         let quoteIdPreEscape = "\(APIHelper.mapValueToPathItem(quoteId))"
         let quoteIdPostEscape = quoteIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -578,20 +434,19 @@ open class QuotesAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Get a list of extended quotes.
+     
      - parameter tenantId: (query)  
-     - parameter quoteId: (path)  
-     - parameter quoteLineId: (path)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2QuotesServiceQuotesQuoteIdLinesQuoteLineIdGet(tenantId: UUID, quoteId: UUID, quoteLineId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: QuoteLineDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2QuotesServiceQuotesQuoteIdLinesQuoteLineIdGetWithRequestBuilder(tenantId: tenantId, quoteId: quoteId, quoteLineId: quoteLineId).execute(apiResponseQueue) { result in
+    open class func getExtendedQuotes(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ExtendedQuoteDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getExtendedQuotesWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -602,16 +457,116 @@ open class QuotesAPI {
     }
 
     /**
+     Get a list of extended quotes.
+     - GET /api/v2/QuotesService/Quotes/Extended
+     - Retrieves a list of extended quotes for the specified tenant, supporting OData query options.
+     - parameter tenantId: (query)  
+     - returns: RequestBuilder<ExtendedQuoteDtoListEnvelope> 
+     */
+    open class func getExtendedQuotesWithRequestBuilder(tenantId: UUID) -> RequestBuilder<ExtendedQuoteDtoListEnvelope> {
+        let localVariablePath = "/api/v2/QuotesService/Quotes/Extended"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<ExtendedQuoteDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Get a quote by ID.
+     
+     - parameter tenantId: (query)  
+     - parameter quoteId: (path)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getQuote(tenantId: UUID, quoteId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: QuoteDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getQuoteWithRequestBuilder(tenantId: tenantId, quoteId: quoteId).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get a quote by ID.
+     - GET /api/v2/QuotesService/Quotes/{quoteId}
+     - Retrieves a single quote by its unique identifier for the specified tenant.
+     - parameter tenantId: (query)  
+     - parameter quoteId: (path)  
+     - returns: RequestBuilder<QuoteDtoEnvelope> 
+     */
+    open class func getQuoteWithRequestBuilder(tenantId: UUID, quoteId: UUID) -> RequestBuilder<QuoteDtoEnvelope> {
+        var localVariablePath = "/api/v2/QuotesService/Quotes/{quoteId}"
+        let quoteIdPreEscape = "\(APIHelper.mapValueToPathItem(quoteId))"
+        let quoteIdPostEscape = quoteIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{quoteId}", with: quoteIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<QuoteDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Get a quote line by ID.
+     
+     - parameter tenantId: (query)  
+     - parameter quoteId: (path)  
+     - parameter quoteLineId: (path)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getQuoteLine(tenantId: UUID, quoteId: UUID, quoteLineId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: QuoteLineDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getQuoteLineWithRequestBuilder(tenantId: tenantId, quoteId: quoteId, quoteLineId: quoteLineId).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get a quote line by ID.
      - GET /api/v2/QuotesService/Quotes/{quoteId}/Lines/{quoteLineId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Retrieves a single quote line by its unique identifier for the specified quote and tenant.
      - parameter tenantId: (query)  
      - parameter quoteId: (path)  
      - parameter quoteLineId: (path)  
      - returns: RequestBuilder<QuoteLineDtoEnvelope> 
      */
-    open class func apiV2QuotesServiceQuotesQuoteIdLinesQuoteLineIdGetWithRequestBuilder(tenantId: UUID, quoteId: UUID, quoteLineId: UUID) -> RequestBuilder<QuoteLineDtoEnvelope> {
+    open class func getQuoteLineWithRequestBuilder(tenantId: UUID, quoteId: UUID, quoteLineId: UUID) -> RequestBuilder<QuoteLineDtoEnvelope> {
         var localVariablePath = "/api/v2/QuotesService/Quotes/{quoteId}/Lines/{quoteLineId}"
         let quoteIdPreEscape = "\(APIHelper.mapValueToPathItem(quoteId))"
         let quoteIdPostEscape = quoteIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -635,21 +590,21 @@ open class QuotesAPI {
 
         let localVariableRequestBuilder: RequestBuilder<QuoteLineDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Get quote lines for a quote.
+     
      - parameter tenantId: (query)  
      - parameter quoteId: (path)  
-     - parameter quoteLineId: (path)  
-     - parameter quoteLineUpdateDto: (body)  (optional)
+     - parameter itemId: (query)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2QuotesServiceQuotesQuoteIdLinesQuoteLineIdPut(tenantId: UUID, quoteId: UUID, quoteLineId: UUID, quoteLineUpdateDto: QuoteLineUpdateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2QuotesServiceQuotesQuoteIdLinesQuoteLineIdPutWithRequestBuilder(tenantId: tenantId, quoteId: quoteId, quoteLineId: quoteLineId, quoteLineUpdateDto: quoteLineUpdateDto).execute(apiResponseQueue) { result in
+    open class func getQuoteLines(tenantId: UUID, quoteId: UUID, itemId: UUID? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: QuoteLineDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getQuoteLinesWithRequestBuilder(tenantId: tenantId, quoteId: quoteId, itemId: itemId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -660,17 +615,490 @@ open class QuotesAPI {
     }
 
     /**
+     Get quote lines for a quote.
+     - GET /api/v2/QuotesService/Quotes/{quoteId}/Lines
+     - Retrieves all quote lines for the specified quote and tenant.
+     - parameter tenantId: (query)  
+     - parameter quoteId: (path)  
+     - parameter itemId: (query)  (optional)
+     - returns: RequestBuilder<QuoteLineDtoListEnvelope> 
+     */
+    open class func getQuoteLinesWithRequestBuilder(tenantId: UUID, quoteId: UUID, itemId: UUID? = nil) -> RequestBuilder<QuoteLineDtoListEnvelope> {
+        var localVariablePath = "/api/v2/QuotesService/Quotes/{quoteId}/Lines"
+        let quoteIdPreEscape = "\(APIHelper.mapValueToPathItem(quoteId))"
+        let quoteIdPostEscape = quoteIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{quoteId}", with: quoteIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "itemId": (wrappedValue: itemId?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<QuoteLineDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Get the count of quote lines.
+     
+     - parameter tenantId: (query)  
+     - parameter quoteId: (path)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getQuoteLinesCount(tenantId: UUID, quoteId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getQuoteLinesCountWithRequestBuilder(tenantId: tenantId, quoteId: quoteId).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get the count of quote lines.
+     - GET /api/v2/QuotesService/Quotes/{quoteId}/Lines/Count
+     - Retrieves the total count of quote lines for the specified quote and tenant.
+     - parameter tenantId: (query)  
+     - parameter quoteId: (path)  
+     - returns: RequestBuilder<Int32Envelope> 
+     */
+    open class func getQuoteLinesCountWithRequestBuilder(tenantId: UUID, quoteId: UUID) -> RequestBuilder<Int32Envelope> {
+        var localVariablePath = "/api/v2/QuotesService/Quotes/{quoteId}/Lines/Count"
+        let quoteIdPreEscape = "\(APIHelper.mapValueToPathItem(quoteId))"
+        let quoteIdPostEscape = quoteIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{quoteId}", with: quoteIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Get a list of quotes.
+     
+     - parameter tenantId: (query)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getQuotes(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: QuoteDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getQuotesWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get a list of quotes.
+     - GET /api/v2/QuotesService/Quotes
+     - Retrieves a list of quotes for the specified tenant, supporting OData query options.
+     - parameter tenantId: (query)  
+     - returns: RequestBuilder<QuoteDtoListEnvelope> 
+     */
+    open class func getQuotesWithRequestBuilder(tenantId: UUID) -> RequestBuilder<QuoteDtoListEnvelope> {
+        let localVariablePath = "/api/v2/QuotesService/Quotes"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<QuoteDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Get the count of quotes.
+     
+     - parameter tenantId: (query)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getQuotesCount(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getQuotesCountWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get the count of quotes.
+     - GET /api/v2/QuotesService/Quotes/Count
+     - Retrieves the total count of quotes for the specified tenant, supporting OData query options.
+     - parameter tenantId: (query)  
+     - returns: RequestBuilder<Int32Envelope> 
+     */
+    open class func getQuotesCountWithRequestBuilder(tenantId: UUID) -> RequestBuilder<Int32Envelope> {
+        let localVariablePath = "/api/v2/QuotesService/Quotes/Count"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Preview the rendered email for an invoice.
+     
+     - parameter quoteId: (path)  
+     - parameter tenantId: (query)  
+     - parameter emailDispatchRequest: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func previewQuoteEmailTemplate(quoteId: UUID, tenantId: UUID, emailDispatchRequest: EmailDispatchRequest? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return previewQuoteEmailTemplateWithRequestBuilder(quoteId: quoteId, tenantId: tenantId, emailDispatchRequest: emailDispatchRequest).execute(apiResponseQueue) { result in
+            switch result {
+            case .success:
+                completion((), nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Preview the rendered email for an invoice.
+     - POST /api/v2/QuotesService/Quotes/{quoteId}/Emails/Preview
+     - This action is only available for users with the 'send_email' permission.
+     - parameter quoteId: (path)  
+     - parameter tenantId: (query)  
+     - parameter emailDispatchRequest: (body)  (optional)
+     - returns: RequestBuilder<Void> 
+     */
+    open class func previewQuoteEmailTemplateWithRequestBuilder(quoteId: UUID, tenantId: UUID, emailDispatchRequest: EmailDispatchRequest? = nil) -> RequestBuilder<Void> {
+        var localVariablePath = "/api/v2/QuotesService/Quotes/{quoteId}/Emails/Preview"
+        let quoteIdPreEscape = "\(APIHelper.mapValueToPathItem(quoteId))"
+        let quoteIdPostEscape = quoteIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{quoteId}", with: quoteIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: emailDispatchRequest)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Check if a quote line exists.
+     
+     - parameter tenantId: (query)  
+     - parameter quoteId: (path)  
+     - parameter quoteLineId: (query)  (optional)
+     - parameter itemId: (query)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func quoteLineExists(tenantId: UUID, quoteId: UUID, quoteLineId: UUID? = nil, itemId: UUID? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BooleanEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return quoteLineExistsWithRequestBuilder(tenantId: tenantId, quoteId: quoteId, quoteLineId: quoteLineId, itemId: itemId).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Check if a quote line exists.
+     - GET /api/v2/QuotesService/Quotes/{quoteId}/Lines/Exists
+     - Checks if a quote line exists for the specified quote and tenant, by quote line ID or item ID.
+     - parameter tenantId: (query)  
+     - parameter quoteId: (path)  
+     - parameter quoteLineId: (query)  (optional)
+     - parameter itemId: (query)  (optional)
+     - returns: RequestBuilder<BooleanEnvelope> 
+     */
+    open class func quoteLineExistsWithRequestBuilder(tenantId: UUID, quoteId: UUID, quoteLineId: UUID? = nil, itemId: UUID? = nil) -> RequestBuilder<BooleanEnvelope> {
+        var localVariablePath = "/api/v2/QuotesService/Quotes/{quoteId}/Lines/Exists"
+        let quoteIdPreEscape = "\(APIHelper.mapValueToPathItem(quoteId))"
+        let quoteIdPostEscape = quoteIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{quoteId}", with: quoteIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "quoteLineId": (wrappedValue: quoteLineId?.encodeToJSON(), isExplode: true),
+            "itemId": (wrappedValue: itemId?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<BooleanEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Reopen a closed quote.
+     
+     - parameter tenantId: (query)  
+     - parameter quoteId: (path)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func reopenQuote(tenantId: UUID, quoteId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return reopenQuoteWithRequestBuilder(tenantId: tenantId, quoteId: quoteId).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Reopen a closed quote.
+     - PUT /api/v2/QuotesService/Quotes/{quoteId}/Reopen
+     - Reopens a previously closed quote for the tenant.
+     - parameter tenantId: (query)  
+     - parameter quoteId: (path)  
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func reopenQuoteWithRequestBuilder(tenantId: UUID, quoteId: UUID) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/QuotesService/Quotes/{quoteId}/Reopen"
+        let quoteIdPreEscape = "\(APIHelper.mapValueToPathItem(quoteId))"
+        let quoteIdPostEscape = quoteIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{quoteId}", with: quoteIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Send a quote transactional email to recipients.
+     
+     - parameter tenantId: (query)  
+     - parameter quoteId: (path)  
+     - parameter emailDispatchRequest: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func sendQuoteEmail(tenantId: UUID, quoteId: UUID, emailDispatchRequest: EmailDispatchRequest? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return sendQuoteEmailWithRequestBuilder(tenantId: tenantId, quoteId: quoteId, emailDispatchRequest: emailDispatchRequest).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Send a quote transactional email to recipients.
+     - POST /api/v2/QuotesService/Quotes/{quoteId}/Emails/Send
+     - This action is only available for users with the 'send_email' permission.
+     - parameter tenantId: (query)  
+     - parameter quoteId: (path)  
+     - parameter emailDispatchRequest: (body)  (optional)
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func sendQuoteEmailWithRequestBuilder(tenantId: UUID, quoteId: UUID, emailDispatchRequest: EmailDispatchRequest? = nil) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/QuotesService/Quotes/{quoteId}/Emails/Send"
+        let quoteIdPreEscape = "\(APIHelper.mapValueToPathItem(quoteId))"
+        let quoteIdPostEscape = quoteIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{quoteId}", with: quoteIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: emailDispatchRequest)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Update an existing quote.
+     
+     - parameter tenantId: (query)  
+     - parameter quoteId: (path)  
+     - parameter quoteUpdateDto: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func updateQuote(tenantId: UUID, quoteId: UUID, quoteUpdateDto: QuoteUpdateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return updateQuoteWithRequestBuilder(tenantId: tenantId, quoteId: quoteId, quoteUpdateDto: quoteUpdateDto).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Update an existing quote.
+     - PUT /api/v2/QuotesService/Quotes/{quoteId}
+     - Updates an existing quote for the specified tenant and quote ID.
+     - parameter tenantId: (query)  
+     - parameter quoteId: (path)  
+     - parameter quoteUpdateDto: (body)  (optional)
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func updateQuoteWithRequestBuilder(tenantId: UUID, quoteId: UUID, quoteUpdateDto: QuoteUpdateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/QuotesService/Quotes/{quoteId}"
+        let quoteIdPreEscape = "\(APIHelper.mapValueToPathItem(quoteId))"
+        let quoteIdPostEscape = quoteIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{quoteId}", with: quoteIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: quoteUpdateDto)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Update a quote line.
+     
+     - parameter tenantId: (query)  
+     - parameter quoteId: (path)  
+     - parameter quoteLineId: (path)  
+     - parameter quoteLineUpdateDto: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func updateQuoteLine(tenantId: UUID, quoteId: UUID, quoteLineId: UUID, quoteLineUpdateDto: QuoteLineUpdateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return updateQuoteLineWithRequestBuilder(tenantId: tenantId, quoteId: quoteId, quoteLineId: quoteLineId, quoteLineUpdateDto: quoteLineUpdateDto).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Update a quote line.
      - PUT /api/v2/QuotesService/Quotes/{quoteId}/Lines/{quoteLineId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Updates an existing quote line for the specified quote and tenant.
      - parameter tenantId: (query)  
      - parameter quoteId: (path)  
      - parameter quoteLineId: (path)  
      - parameter quoteLineUpdateDto: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func apiV2QuotesServiceQuotesQuoteIdLinesQuoteLineIdPutWithRequestBuilder(tenantId: UUID, quoteId: UUID, quoteLineId: UUID, quoteLineUpdateDto: QuoteLineUpdateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func updateQuoteLineWithRequestBuilder(tenantId: UUID, quoteId: UUID, quoteLineId: UUID, quoteLineUpdateDto: QuoteLineUpdateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/QuotesService/Quotes/{quoteId}/Lines/{quoteLineId}"
         let quoteIdPreEscape = "\(APIHelper.mapValueToPathItem(quoteId))"
         let quoteIdPostEscape = quoteIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -694,20 +1122,22 @@ open class QuotesAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Upsert a quote line.
+     
      - parameter tenantId: (query)  
      - parameter quoteId: (path)  
-     - parameter quoteUpdateDto: (body)  (optional)
+     - parameter quoteLineId: (path)  
+     - parameter quoteLineUpsertDto: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2QuotesServiceQuotesQuoteIdPut(tenantId: UUID, quoteId: UUID, quoteUpdateDto: QuoteUpdateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2QuotesServiceQuotesQuoteIdPutWithRequestBuilder(tenantId: tenantId, quoteId: quoteId, quoteUpdateDto: quoteUpdateDto).execute(apiResponseQueue) { result in
+    open class func upsertQuoteLine(tenantId: UUID, quoteId: UUID, quoteLineId: UUID, quoteLineUpsertDto: QuoteLineUpsertDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return upsertQuoteLineWithRequestBuilder(tenantId: tenantId, quoteId: quoteId, quoteLineId: quoteLineId, quoteLineUpsertDto: quoteLineUpsertDto).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -718,22 +1148,25 @@ open class QuotesAPI {
     }
 
     /**
-     - PUT /api/v2/QuotesService/Quotes/{quoteId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     Upsert a quote line.
+     - PUT /api/v2/QuotesService/Quotes/{quoteId}/Lines/{quoteLineId}/Upsert
+     - Creates or updates a quote line for the specified quote and tenant.
      - parameter tenantId: (query)  
      - parameter quoteId: (path)  
-     - parameter quoteUpdateDto: (body)  (optional)
+     - parameter quoteLineId: (path)  
+     - parameter quoteLineUpsertDto: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func apiV2QuotesServiceQuotesQuoteIdPutWithRequestBuilder(tenantId: UUID, quoteId: UUID, quoteUpdateDto: QuoteUpdateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
-        var localVariablePath = "/api/v2/QuotesService/Quotes/{quoteId}"
+    open class func upsertQuoteLineWithRequestBuilder(tenantId: UUID, quoteId: UUID, quoteLineId: UUID, quoteLineUpsertDto: QuoteLineUpsertDto? = nil) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/QuotesService/Quotes/{quoteId}/Lines/{quoteLineId}/Upsert"
         let quoteIdPreEscape = "\(APIHelper.mapValueToPathItem(quoteId))"
         let quoteIdPostEscape = quoteIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{quoteId}", with: quoteIdPostEscape, options: .literal, range: nil)
+        let quoteLineIdPreEscape = "\(APIHelper.mapValueToPathItem(quoteLineId))"
+        let quoteLineIdPostEscape = quoteLineIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{quoteLineId}", with: quoteLineIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: quoteUpdateDto)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: quoteLineUpsertDto)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -748,58 +1181,6 @@ open class QuotesAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
-     - parameter tenantId: (query)  
-     - parameter quoteId: (path)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func getQuoteAsync(tenantId: UUID, quoteId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: QuoteDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getQuoteAsyncWithRequestBuilder(tenantId: tenantId, quoteId: quoteId).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - GET /api/v2/QuotesService/Quotes/{quoteId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter tenantId: (query)  
-     - parameter quoteId: (path)  
-     - returns: RequestBuilder<QuoteDtoEnvelope> 
-     */
-    open class func getQuoteAsyncWithRequestBuilder(tenantId: UUID, quoteId: UUID) -> RequestBuilder<QuoteDtoEnvelope> {
-        var localVariablePath = "/api/v2/QuotesService/Quotes/{quoteId}"
-        let quoteIdPreEscape = "\(APIHelper.mapValueToPathItem(quoteId))"
-        let quoteIdPostEscape = quoteIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{quoteId}", with: quoteIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<QuoteDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 }

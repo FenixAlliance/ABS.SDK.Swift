@@ -4,16 +4,18 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**apiV3ForexServiceExchangeHistoryGet**](ExchangeVAPI.md#apiv3forexserviceexchangehistoryget) | **GET** /api/v3/ForexService/Exchange/History | 
-[**apiV3ForexServiceExchangeLatestGet**](ExchangeVAPI.md#apiv3forexserviceexchangelatestget) | **GET** /api/v3/ForexService/Exchange/Latest | 
+[**exchangeAmountHistoricalV3Async**](ExchangeVAPI.md#exchangeamounthistoricalv3async) | **GET** /api/v3/ForexService/Exchange/History | Exchange currency at historical rates (v3)
+[**exchangeAmountV3Async**](ExchangeVAPI.md#exchangeamountv3async) | **GET** /api/v3/ForexService/Exchange/Latest | Exchange currency at latest rates (v3)
 
 
-# **apiV3ForexServiceExchangeHistoryGet**
+# **exchangeAmountHistoricalV3Async**
 ```swift
-    open class func apiV3ForexServiceExchangeHistoryGet(amount: Double, sourceCurrencyId: String, targetCurrencyId: String, date: Date, completion: @escaping (_ data: ExchangeRateEnvelope?, _ error: Error?) -> Void)
+    open class func exchangeAmountHistoricalV3Async(amount: Double, sourceCurrencyId: String, targetCurrencyId: String, date: Date, completion: @escaping (_ data: ExchangeRateEnvelope?, _ error: Error?) -> Void)
 ```
 
+Exchange currency at historical rates (v3)
 
+Exchange an amount of money from one currency to another using exchange rates from a specific historical date. Returns the full ExchangeRate details.
 
 ### Example
 ```swift
@@ -25,7 +27,8 @@ let sourceCurrencyId = "sourceCurrencyId_example" // String |
 let targetCurrencyId = "targetCurrencyId_example" // String | 
 let date = Date() // Date | 
 
-ExchangeVAPI.apiV3ForexServiceExchangeHistoryGet(amount: amount, sourceCurrencyId: sourceCurrencyId, targetCurrencyId: targetCurrencyId, date: date) { (response, error) in
+// Exchange currency at historical rates (v3)
+ExchangeVAPI.exchangeAmountHistoricalV3Async(amount: amount, sourceCurrencyId: sourceCurrencyId, targetCurrencyId: targetCurrencyId, date: date) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -52,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
@@ -61,12 +64,14 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **apiV3ForexServiceExchangeLatestGet**
+# **exchangeAmountV3Async**
 ```swift
-    open class func apiV3ForexServiceExchangeLatestGet(amount: Double, sourceCurrencyId: String, targetCurrencyId: String, completion: @escaping (_ data: ExchangeRateEnvelope?, _ error: Error?) -> Void)
+    open class func exchangeAmountV3Async(amount: Double, sourceCurrencyId: String, targetCurrencyId: String, completion: @escaping (_ data: ExchangeRateEnvelope?, _ error: Error?) -> Void)
 ```
 
+Exchange currency at latest rates (v3)
 
+Exchange an amount of money from one currency to another using the latest available exchange rates. Returns the full ExchangeRate details.
 
 ### Example
 ```swift
@@ -77,7 +82,8 @@ let amount = 987 // Double |
 let sourceCurrencyId = "sourceCurrencyId_example" // String | 
 let targetCurrencyId = "targetCurrencyId_example" // String | 
 
-ExchangeVAPI.apiV3ForexServiceExchangeLatestGet(amount: amount, sourceCurrencyId: sourceCurrencyId, targetCurrencyId: targetCurrencyId) { (response, error) in
+// Exchange currency at latest rates (v3)
+ExchangeVAPI.exchangeAmountV3Async(amount: amount, sourceCurrencyId: sourceCurrencyId, targetCurrencyId: targetCurrencyId) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -103,7 +109,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 

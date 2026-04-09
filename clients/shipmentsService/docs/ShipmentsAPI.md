@@ -4,15 +4,17 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**apiV2ShipmentsServiceShipmentsGet**](ShipmentsAPI.md#apiv2shipmentsserviceshipmentsget) | **GET** /api/v2/ShipmentsService/Shipments | 
+[**getShipmentsAsync**](ShipmentsAPI.md#getshipmentsasync) | **GET** /api/v2/ShipmentsService/Shipments | Retrieve a list of shipments
 
 
-# **apiV2ShipmentsServiceShipmentsGet**
+# **getShipmentsAsync**
 ```swift
-    open class func apiV2ShipmentsServiceShipmentsGet(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ShipmentDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getShipmentsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ShipmentDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
+Retrieve a list of shipments
 
+Retrieves a list of shipments for the specified tenant.
 
 ### Example
 ```swift
@@ -23,7 +25,8 @@ let tenantId = 987 // UUID |
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
-ShipmentsAPI.apiV2ShipmentsServiceShipmentsGet(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Retrieve a list of shipments
+ShipmentsAPI.getShipmentsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -49,7 +52,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 

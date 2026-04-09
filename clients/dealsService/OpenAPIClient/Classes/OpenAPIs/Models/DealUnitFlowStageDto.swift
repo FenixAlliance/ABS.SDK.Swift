@@ -19,10 +19,10 @@ public struct DealUnitFlowStageDto: Codable, JSONEncodable, Hashable {
     public var dealUnitFlowId: String?
     public var tenantId: String?
     public var description: String?
-    public var enrolmentId: String?
+    public var enrollmentId: String?
     public var parentBusinessProcessStageId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, order: Int? = nil, name: String? = nil, dealUnitFlowId: String? = nil, tenantId: String? = nil, description: String? = nil, enrolmentId: String? = nil, parentBusinessProcessStageId: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, order: Int? = nil, name: String? = nil, dealUnitFlowId: String? = nil, tenantId: String? = nil, description: String? = nil, enrollmentId: String? = nil, parentBusinessProcessStageId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.order = order
@@ -30,7 +30,7 @@ public struct DealUnitFlowStageDto: Codable, JSONEncodable, Hashable {
         self.dealUnitFlowId = dealUnitFlowId
         self.tenantId = tenantId
         self.description = description
-        self.enrolmentId = enrolmentId
+        self.enrollmentId = enrollmentId
         self.parentBusinessProcessStageId = parentBusinessProcessStageId
     }
 
@@ -42,7 +42,7 @@ public struct DealUnitFlowStageDto: Codable, JSONEncodable, Hashable {
         case dealUnitFlowId
         case tenantId
         case description
-        case enrolmentId
+        case enrollmentId
         case parentBusinessProcessStageId
     }
 
@@ -57,7 +57,7 @@ public struct DealUnitFlowStageDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(dealUnitFlowId, forKey: .dealUnitFlowId)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(enrolmentId, forKey: .enrolmentId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(parentBusinessProcessStageId, forKey: .parentBusinessProcessStageId)
     }
 }

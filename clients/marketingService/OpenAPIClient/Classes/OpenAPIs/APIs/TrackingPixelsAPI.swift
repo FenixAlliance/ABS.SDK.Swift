@@ -13,7 +13,8 @@ import AnyCodable
 open class TrackingPixelsAPI {
 
     /**
-
+     Get a tracking pixel
+     
      - parameter pixelId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -21,8 +22,8 @@ open class TrackingPixelsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2MarketingServiceTrackingPixelsPixelIdGet(pixelId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: OrderDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2MarketingServiceTrackingPixelsPixelIdGetWithRequestBuilder(pixelId: pixelId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getTrackingPixelAsync(pixelId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: OrderDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getTrackingPixelAsyncWithRequestBuilder(pixelId: pixelId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -33,16 +34,15 @@ open class TrackingPixelsAPI {
     }
 
     /**
+     Get a tracking pixel
      - GET /api/v2/MarketingService/TrackingPixels/{pixelId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Retrieves a tracking pixel by its ID.
      - parameter pixelId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<OrderDtoEnvelope> 
      */
-    open class func apiV2MarketingServiceTrackingPixelsPixelIdGetWithRequestBuilder(pixelId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<OrderDtoEnvelope> {
+    open class func getTrackingPixelAsyncWithRequestBuilder(pixelId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<OrderDtoEnvelope> {
         var localVariablePath = "/api/v2/MarketingService/TrackingPixels/{pixelId}"
         let pixelIdPreEscape = "\(APIHelper.mapValueToPathItem(pixelId))"
         let pixelIdPostEscape = pixelIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -63,6 +63,6 @@ open class TrackingPixelsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<OrderDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 }

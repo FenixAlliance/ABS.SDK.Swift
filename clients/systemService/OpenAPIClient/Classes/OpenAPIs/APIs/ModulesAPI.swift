@@ -36,9 +36,6 @@ open class ModulesAPI {
     /**
      Get all modules available on this suite server instance.
      - GET /api/v2/StudioService/Modules
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -63,7 +60,7 @@ open class ModulesAPI {
 
         let localVariableRequestBuilder: RequestBuilder<StudioModuleListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -90,9 +87,6 @@ open class ModulesAPI {
     /**
      Get all modules available to a tenant user.
      - GET /api/v2/StudioService/Modules/Data
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -117,6 +111,6 @@ open class ModulesAPI {
 
         let localVariableRequestBuilder: RequestBuilder<ModuleListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 }

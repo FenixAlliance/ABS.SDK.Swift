@@ -14,15 +14,36 @@ public struct GigCreateDto: Codable, JSONEncodable, Hashable {
 
     public var id: UUID?
     public var timestamp: Date?
+    public var title: String?
+    public var description: String?
+    public var startDate: Date?
+    public var endDate: Date?
+    public var budget: Double?
+    public var location: String?
+    public var skillsRequired: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil, startDate: Date? = nil, endDate: Date? = nil, budget: Double? = nil, location: String? = nil, skillsRequired: String? = nil) {
         self.id = id
         self.timestamp = timestamp
+        self.title = title
+        self.description = description
+        self.startDate = startDate
+        self.endDate = endDate
+        self.budget = budget
+        self.location = location
+        self.skillsRequired = skillsRequired
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
+        case title
+        case description
+        case startDate
+        case endDate
+        case budget
+        case location
+        case skillsRequired
     }
 
     // Encodable protocol methods
@@ -31,6 +52,13 @@ public struct GigCreateDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
+        try container.encodeIfPresent(title, forKey: .title)
+        try container.encodeIfPresent(description, forKey: .description)
+        try container.encodeIfPresent(startDate, forKey: .startDate)
+        try container.encodeIfPresent(endDate, forKey: .endDate)
+        try container.encodeIfPresent(budget, forKey: .budget)
+        try container.encodeIfPresent(location, forKey: .location)
+        try container.encodeIfPresent(skillsRequired, forKey: .skillsRequired)
     }
 }
 

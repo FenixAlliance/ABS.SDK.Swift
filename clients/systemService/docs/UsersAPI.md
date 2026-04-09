@@ -4,33 +4,40 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**apiV2SystemServiceUsersCountGet**](UsersAPI.md#apiv2systemserviceuserscountget) | **GET** /api/v2/SystemService/Users/Count | 
-[**apiV2SystemServiceUsersExtendedCountGet**](UsersAPI.md#apiv2systemserviceusersextendedcountget) | **GET** /api/v2/SystemService/Users/Extended/Count | 
-[**apiV2SystemServiceUsersExtendedGet**](UsersAPI.md#apiv2systemserviceusersextendedget) | **GET** /api/v2/SystemService/Users/Extended | 
-[**apiV2SystemServiceUsersGet**](UsersAPI.md#apiv2systemserviceusersget) | **GET** /api/v2/SystemService/Users | 
-[**apiV2SystemServiceUsersPost**](UsersAPI.md#apiv2systemserviceuserspost) | **POST** /api/v2/SystemService/Users | 
-[**apiV2SystemServiceUsersUserIdDelete**](UsersAPI.md#apiv2systemserviceusersuseriddelete) | **DELETE** /api/v2/SystemService/Users/{userId} | 
-[**apiV2SystemServiceUsersUserIdExtendedGet**](UsersAPI.md#apiv2systemserviceusersuseridextendedget) | **GET** /api/v2/SystemService/Users/{userId}/Extended | 
-[**apiV2SystemServiceUsersUserIdPut**](UsersAPI.md#apiv2systemserviceusersuseridput) | **PUT** /api/v2/SystemService/Users/{userId} | 
-[**getUserAsync**](UsersAPI.md#getuserasync) | **GET** /api/v2/SystemService/Users/{userId} | 
+[**adminPreviewUserEmailTemplate**](UsersAPI.md#adminpreviewuseremailtemplate) | **POST** /api/v2/SystemService/Users/{userId}/Emails/Preview | Preview the rendered email for a user.
+[**adminSendUserEmail**](UsersAPI.md#adminsenduseremail) | **POST** /api/v2/SystemService/Users/{userId}/Emails/Send | Send an email to a user.
+[**createAccountHolderAsync**](UsersAPI.md#createaccountholderasync) | **POST** /api/v2/SystemService/Users | Create a new user
+[**deleteAccountHolderAsync**](UsersAPI.md#deleteaccountholderasync) | **DELETE** /api/v2/SystemService/Users/{userId} | Delete a user
+[**getExtendedAccountHolderAsync**](UsersAPI.md#getextendedaccountholderasync) | **GET** /api/v2/SystemService/Users/{userId}/Extended | Retrieve an extended user by ID
+[**getExtendedUsersAsync**](UsersAPI.md#getextendedusersasync) | **GET** /api/v2/SystemService/Users/Extended | Retrieve a list of extended users
+[**getExtendedUsersCountAsync**](UsersAPI.md#getextendeduserscountasync) | **GET** /api/v2/SystemService/Users/Extended/Count | Get the count of extended users
+[**getUserAsync**](UsersAPI.md#getuserasync) | **GET** /api/v2/SystemService/Users/{userId} | Retrieve a user by ID
+[**getUsersAsync**](UsersAPI.md#getusersasync) | **GET** /api/v2/SystemService/Users | Retrieve a list of users
+[**getUsersCountAsync**](UsersAPI.md#getuserscountasync) | **GET** /api/v2/SystemService/Users/Count | Get the count of users
+[**updateAccountHolderAsync**](UsersAPI.md#updateaccountholderasync) | **PUT** /api/v2/SystemService/Users/{userId} | Update a user
 
 
-# **apiV2SystemServiceUsersCountGet**
+# **adminPreviewUserEmailTemplate**
 ```swift
-    open class func apiV2SystemServiceUsersCountGet(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func adminPreviewUserEmailTemplate(userId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, emailDispatchRequest: EmailDispatchRequest? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
+Preview the rendered email for a user.
 
+This action is only available for users with the 'business_owner' role (global administrators).
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
+let userId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let emailDispatchRequest = EmailDispatchRequest(title: "title_example", message: "message_example", buttonLink: "buttonLink_example", buttonText: "buttonText_example", alertMessage: "alertMessage_example", alertType: "alertType_example", culture: "culture_example", uiCulture: "uiCulture_example", recipients: ["recipients_example"], contactIds: ["contactIds_example"], tenantIds: ["tenantIds_example"], userIds: ["userIds_example"], templateUrl: "templateUrl_example", emailTemplateId: "emailTemplateId_example") // EmailDispatchRequest |  (optional)
 
-UsersAPI.apiV2SystemServiceUsersCountGet(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Preview the rendered email for a user.
+UsersAPI.adminPreviewUserEmailTemplate(userId: userId, apiVersion: apiVersion, xApiVersion: xApiVersion, emailDispatchRequest: emailDispatchRequest) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -46,214 +53,18 @@ UsersAPI.apiV2SystemServiceUsersCountGet(apiVersion: apiVersion, xApiVersion: xA
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **userId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **emailDispatchRequest** | [**EmailDispatchRequest**](EmailDispatchRequest.md) |  | [optional] 
 
 ### Return type
 
-[**Int32Envelope**](Int32Envelope.md)
+Void (empty response body)
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/xml
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **apiV2SystemServiceUsersExtendedCountGet**
-```swift
-    open class func apiV2SystemServiceUsersExtendedCountGet(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
-```
-
-
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
-
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
-
-UsersAPI.apiV2SystemServiceUsersExtendedCountGet(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
-
-### Return type
-
-[**Int32Envelope**](Int32Envelope.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/xml
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **apiV2SystemServiceUsersExtendedGet**
-```swift
-    open class func apiV2SystemServiceUsersExtendedGet(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ExtendedUserDtoListEnvelope?, _ error: Error?) -> Void)
-```
-
-
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
-
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
-
-UsersAPI.apiV2SystemServiceUsersExtendedGet(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
-
-### Return type
-
-[**ExtendedUserDtoListEnvelope**](ExtendedUserDtoListEnvelope.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/xml
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **apiV2SystemServiceUsersGet**
-```swift
-    open class func apiV2SystemServiceUsersGet(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: UserDtoListEnvelope?, _ error: Error?) -> Void)
-```
-
-
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
-
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
-
-UsersAPI.apiV2SystemServiceUsersGet(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
-
-### Return type
-
-[**UserDtoListEnvelope**](UserDtoListEnvelope.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/xml
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **apiV2SystemServiceUsersPost**
-```swift
-    open class func apiV2SystemServiceUsersPost(apiVersion: String? = nil, xApiVersion: String? = nil, accountHolderCreateDto: AccountHolderCreateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
-```
-
-
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
-
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
-let accountHolderCreateDto = AccountHolderCreateDto(id: 123, timestamp: Date(), qualifiedName: "qualifiedName_example", birthday: Date(), firstName: "firstName_example", lastName: "lastName_example", publicName: "publicName_example", idProvider: "idProvider_example", gender: 123, email: "email_example", about: "about_example", status: "status_example", jobTitle: "jobTitle_example", gitHubUrl: "gitHubUrl_example", websiteUrl: "websiteUrl_example", twitterUrl: "twitterUrl_example", facebookUrl: "facebookUrl_example", youTubeUrl: "youTubeUrl_example", linkedInUrl: "linkedInUrl_example", instagramUrl: "instagramUrl_example", timezoneId: "timezoneId_example", languageId: "languageId_example", currencyId: "currencyId_example", countryId: "countryId_example", stateId: "stateId_example", cityId: "cityId_example", password: "password_example") // AccountHolderCreateDto |  (optional)
-
-UsersAPI.apiV2SystemServiceUsersPost(apiVersion: apiVersion, xApiVersion: xApiVersion, accountHolderCreateDto: accountHolderCreateDto) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
- **accountHolderCreateDto** | [**AccountHolderCreateDto**](AccountHolderCreateDto.md) |  | [optional] 
-
-### Return type
-
-[**EmptyEnvelope**](EmptyEnvelope.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
@@ -262,23 +73,27 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **apiV2SystemServiceUsersUserIdDelete**
+# **adminSendUserEmail**
 ```swift
-    open class func apiV2SystemServiceUsersUserIdDelete(userId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func adminSendUserEmail(userId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, emailDispatchRequest: EmailDispatchRequest? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
+Send an email to a user.
 
+This action is only available for users with the 'business_owner' role (global administrators).
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let userId = "userId_example" // String | 
+let userId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let emailDispatchRequest = EmailDispatchRequest(title: "title_example", message: "message_example", buttonLink: "buttonLink_example", buttonText: "buttonText_example", alertMessage: "alertMessage_example", alertType: "alertType_example", culture: "culture_example", uiCulture: "uiCulture_example", recipients: ["recipients_example"], contactIds: ["contactIds_example"], tenantIds: ["tenantIds_example"], userIds: ["userIds_example"], templateUrl: "templateUrl_example", emailTemplateId: "emailTemplateId_example") // EmailDispatchRequest |  (optional)
 
-UsersAPI.apiV2SystemServiceUsersUserIdDelete(userId: userId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Send an email to a user.
+UsersAPI.adminSendUserEmail(userId: userId, apiVersion: apiVersion, xApiVersion: xApiVersion, emailDispatchRequest: emailDispatchRequest) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -294,7 +109,116 @@ UsersAPI.apiV2SystemServiceUsersUserIdDelete(userId: userId, apiVersion: apiVers
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **String** |  | 
+ **userId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **emailDispatchRequest** | [**EmailDispatchRequest**](EmailDispatchRequest.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **createAccountHolderAsync**
+```swift
+    open class func createAccountHolderAsync(apiVersion: String? = nil, xApiVersion: String? = nil, userCreateDto: UserCreateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Create a new user
+
+This action is only available for users with the 'business_owner' role (global administrators).
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let userCreateDto = UserCreateDto(id: 123, timestamp: Date(), qualifiedName: "qualifiedName_example", birthday: Date(), firstName: "firstName_example", lastName: "lastName_example", publicName: "publicName_example", idProvider: "idProvider_example", gender: "gender_example", email: "email_example", about: "about_example", status: "status_example", jobTitle: "jobTitle_example", gitHubUrl: "gitHubUrl_example", websiteUrl: "websiteUrl_example", twitterUrl: "twitterUrl_example", facebookUrl: "facebookUrl_example", youTubeUrl: "youTubeUrl_example", linkedInUrl: "linkedInUrl_example", instagramUrl: "instagramUrl_example", timezoneId: "timezoneId_example", languageId: "languageId_example", currencyId: "currencyId_example", countryId: "countryId_example", stateId: "stateId_example", cityId: "cityId_example", password: "password_example") // UserCreateDto |  (optional)
+
+// Create a new user
+UsersAPI.createAccountHolderAsync(apiVersion: apiVersion, xApiVersion: xApiVersion, userCreateDto: userCreateDto) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **userCreateDto** | [**UserCreateDto**](UserCreateDto.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deleteAccountHolderAsync**
+```swift
+    open class func deleteAccountHolderAsync(userId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Delete a user
+
+This action is only available for users with the 'business_owner' role (global administrators).
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let userId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Delete a user
+UsersAPI.deleteAccountHolderAsync(userId: userId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 
@@ -304,7 +228,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
@@ -313,12 +237,14 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **apiV2SystemServiceUsersUserIdExtendedGet**
+# **getExtendedAccountHolderAsync**
 ```swift
-    open class func apiV2SystemServiceUsersUserIdExtendedGet(userId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ExtendedUserDtoEnvelope?, _ error: Error?) -> Void)
+    open class func getExtendedAccountHolderAsync(userId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ExtendedUserDtoEnvelope?, _ error: Error?) -> Void)
 ```
 
+Retrieve an extended user by ID
 
+This action is only available for users with the 'business_owner' role (global administrators).
 
 ### Example
 ```swift
@@ -329,7 +255,8 @@ let userId = "userId_example" // String |
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
-UsersAPI.apiV2SystemServiceUsersUserIdExtendedGet(userId: userId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Retrieve an extended user by ID
+UsersAPI.getExtendedAccountHolderAsync(userId: userId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -355,7 +282,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
@@ -364,24 +291,25 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **apiV2SystemServiceUsersUserIdPut**
+# **getExtendedUsersAsync**
 ```swift
-    open class func apiV2SystemServiceUsersUserIdPut(userId: String, apiVersion: String? = nil, xApiVersion: String? = nil, body: AnyCodable? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func getExtendedUsersAsync(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ExtendedUserDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
+Retrieve a list of extended users
 
+This action is only available for users with the 'business_owner' role (global administrators).
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let userId = "userId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let body = "TODO" // AnyCodable |  (optional)
 
-UsersAPI.apiV2SystemServiceUsersUserIdPut(userId: userId, apiVersion: apiVersion, xApiVersion: xApiVersion, body: body) { (response, error) in
+// Retrieve a list of extended users
+UsersAPI.getExtendedUsersAsync(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -397,22 +325,72 @@ UsersAPI.apiV2SystemServiceUsersUserIdPut(userId: userId, apiVersion: apiVersion
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **body** | **AnyCodable** |  | [optional] 
 
 ### Return type
 
-[**EmptyEnvelope**](EmptyEnvelope.md)
+[**ExtendedUserDtoListEnvelope**](ExtendedUserDtoListEnvelope.md)
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getExtendedUsersCountAsync**
+```swift
+    open class func getExtendedUsersCountAsync(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+```
+
+Get the count of extended users
+
+This action is only available for users with the 'business_owner' role (global administrators).
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Get the count of extended users
+UsersAPI.getExtendedUsersCountAsync(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**Int32Envelope**](Int32Envelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -422,7 +400,9 @@ Name | Type | Description  | Notes
     open class func getUserAsync(userId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: UserDtoEnvelope?, _ error: Error?) -> Void)
 ```
 
+Retrieve a user by ID
 
+This action is only available for users with the 'business_owner' role (global administrators).
 
 ### Example
 ```swift
@@ -433,6 +413,7 @@ let userId = "userId_example" // String |
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
+// Retrieve a user by ID
 UsersAPI.getUserAsync(userId: userId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
@@ -459,11 +440,171 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getUsersAsync**
+```swift
+    open class func getUsersAsync(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: UserDtoListEnvelope?, _ error: Error?) -> Void)
+```
+
+Retrieve a list of users
+
+This action is only available for users with the 'business_owner' role (global administrators).
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Retrieve a list of users
+UsersAPI.getUsersAsync(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**UserDtoListEnvelope**](UserDtoListEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getUsersCountAsync**
+```swift
+    open class func getUsersCountAsync(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+```
+
+Get the count of users
+
+This action is only available for users with the 'business_owner' role (global administrators).
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Get the count of users
+UsersAPI.getUsersCountAsync(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**Int32Envelope**](Int32Envelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **updateAccountHolderAsync**
+```swift
+    open class func updateAccountHolderAsync(userId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, userUpdateDto: UserUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Update a user
+
+This action is only available for users with the 'business_owner' role (global administrators).
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let userId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let userUpdateDto = UserUpdateDto(qualifiedName: "qualifiedName_example", birthday: Date(), firstName: "firstName_example", lastName: "lastName_example", publicName: "publicName_example", idProvider: "idProvider_example", gender: "gender_example", email: "email_example", about: "about_example", status: "status_example", jobTitle: "jobTitle_example", timezoneId: "timezoneId_example", languageId: "languageId_example", currencyId: "currencyId_example", countryId: "countryId_example", stateId: "stateId_example", cityId: "cityId_example", gitHubUrl: "gitHubUrl_example", websiteUrl: "websiteUrl_example", twitterUrl: "twitterUrl_example", facebookUrl: "facebookUrl_example", youTubeUrl: "youTubeUrl_example", linkedInUrl: "linkedInUrl_example", instagramUrl: "instagramUrl_example", webUrl: "webUrl_example", availability: "availability_example") // UserUpdateDto |  (optional)
+
+// Update a user
+UsersAPI.updateAccountHolderAsync(userId: userId, apiVersion: apiVersion, xApiVersion: xApiVersion, userUpdateDto: userUpdateDto) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **userUpdateDto** | [**UserUpdateDto**](UserUpdateDto.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

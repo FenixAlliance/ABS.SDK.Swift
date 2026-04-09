@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **notificationsCount** | **Int** |  | [optional] 
 **unreadNotificationsCount** | **Int** |  | [optional] 
 **unreadMessagesCount** | **Int** |  | [optional] 
-**type** | **Int** |  | [optional] 
+**type** | **String** |  | [optional] 
 **socialFeedId** | **String** |  | [optional] 
 **twitterUrl** | **String** |  | [optional] 
 **facebookURL** | **String** |  | [optional] 

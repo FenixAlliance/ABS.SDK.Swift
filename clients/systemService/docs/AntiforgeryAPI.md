@@ -4,16 +4,18 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**apiV2SystemServiceAntiforgeryGetAndStoreTokensGet**](AntiforgeryAPI.md#apiv2systemserviceantiforgerygetandstoretokensget) | **GET** /api/v2/SystemService/Antiforgery/GetAndStoreTokens | 
-[**apiV2SystemServiceAntiforgeryIsRequestValidGet**](AntiforgeryAPI.md#apiv2systemserviceantiforgeryisrequestvalidget) | **GET** /api/v2/SystemService/Antiforgery/IsRequestValid | 
+[**getAndStoreTokens**](AntiforgeryAPI.md#getandstoretokens) | **GET** /api/v2/SystemService/Antiforgery/GetAndStoreTokens | Get and store antiforgery tokens
+[**isRequestValidAsync**](AntiforgeryAPI.md#isrequestvalidasync) | **GET** /api/v2/SystemService/Antiforgery/IsRequestValid | Validate antiforgery request
 
 
-# **apiV2SystemServiceAntiforgeryGetAndStoreTokensGet**
+# **getAndStoreTokens**
 ```swift
-    open class func apiV2SystemServiceAntiforgeryGetAndStoreTokensGet(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func getAndStoreTokens(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
+Get and store antiforgery tokens
 
+Generates antiforgery tokens and stores them in the current HTTP context.
 
 ### Example
 ```swift
@@ -23,7 +25,8 @@ import OpenAPIClient
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
-AntiforgeryAPI.apiV2SystemServiceAntiforgeryGetAndStoreTokensGet(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Get and store antiforgery tokens
+AntiforgeryAPI.getAndStoreTokens(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -48,7 +51,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
@@ -57,12 +60,14 @@ Void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **apiV2SystemServiceAntiforgeryIsRequestValidGet**
+# **isRequestValidAsync**
 ```swift
-    open class func apiV2SystemServiceAntiforgeryIsRequestValidGet(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func isRequestValidAsync(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
+Validate antiforgery request
 
+Validates whether the current HTTP request contains a valid antiforgery token.
 
 ### Example
 ```swift
@@ -72,7 +77,8 @@ import OpenAPIClient
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
-AntiforgeryAPI.apiV2SystemServiceAntiforgeryIsRequestValidGet(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Validate antiforgery request
+AntiforgeryAPI.isRequestValidAsync(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -97,7 +103,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 

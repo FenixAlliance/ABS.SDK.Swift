@@ -14,24 +14,24 @@ public struct DiscountListUpdateDto: Codable, JSONEncodable, Hashable {
 
     static let nameRule = StringRule(minLength: 0, maxLength: 50, pattern: nil)
     static let tenantIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    static let enrolmentIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
+    static let enrollmentIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     public var name: String?
     public var currencyId: String?
     public var tenantId: String?
-    public var enrolmentId: String?
+    public var enrollmentId: String?
 
-    public init(name: String? = nil, currencyId: String? = nil, tenantId: String? = nil, enrolmentId: String? = nil) {
+    public init(name: String? = nil, currencyId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
         self.name = name
         self.currencyId = currencyId
         self.tenantId = tenantId
-        self.enrolmentId = enrolmentId
+        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case name
         case currencyId
         case tenantId
-        case enrolmentId
+        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -41,7 +41,7 @@ public struct DiscountListUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(currencyId, forKey: .currencyId)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(enrolmentId, forKey: .enrolmentId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

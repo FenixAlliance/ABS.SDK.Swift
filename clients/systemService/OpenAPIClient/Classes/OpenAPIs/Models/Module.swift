@@ -12,11 +12,11 @@ import AnyCodable
 
 public struct Module: Codable, JSONEncodable, Hashable {
 
-    public enum ModelType: Int, Codable, CaseIterable {
-        case _0 = 0
-        case _1 = 1
-        case _2 = 2
-        case _3 = 3
+    public enum ModelType: String, Codable, CaseIterable {
+        case module = "Module"
+        case integration = "Integration"
+        case studioModule = "StudioModule"
+        case studioIntegration = "StudioIntegration"
     }
     public var enable: Bool?
     public var active: Bool?

@@ -15,7 +15,7 @@ open class ContactsAPI {
     /**
      Create a new contact
      
-     - parameter tenantId: (query)  
+     - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter contactCreateDto: (body)  (optional)
@@ -23,7 +23,7 @@ open class ContactsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func createContactAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, contactCreateDto: ContactCreateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func createContactAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, contactCreateDto: ContactCreateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
         return createContactAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, contactCreateDto: contactCreateDto).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -38,23 +38,20 @@ open class ContactsAPI {
      Create a new contact
      - POST /api/v2/CrmService/Contacts
      - Create a new contact
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter tenantId: (query)  
+     - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter contactCreateDto: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func createContactAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, contactCreateDto: ContactCreateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func createContactAsyncWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, contactCreateDto: ContactCreateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
         let localVariablePath = "/api/v2/CrmService/Contacts"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: contactCreateDto)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 
@@ -67,7 +64,7 @@ open class ContactsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -96,9 +93,6 @@ open class ContactsAPI {
      Delete a contact
      - DELETE /api/v2/CrmService/Contacts/{contactId}
      - Delete a contact
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter tenantId: (query)  
      - parameter contactId: (path)  
      - parameter apiVersion: (query)  (optional)
@@ -127,7 +121,7 @@ open class ContactsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -156,9 +150,6 @@ open class ContactsAPI {
      Get a Contact of type Individual by ID
      - GET /api/v2/CrmService/Contacts/Individuals/{contactId}
      - Get a Contact of type Individual by ID
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter tenantId: (query)  
      - parameter contactId: (path)  
      - parameter apiVersion: (query)  (optional)
@@ -187,7 +178,7 @@ open class ContactsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<ContactDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -215,9 +206,6 @@ open class ContactsAPI {
      Get all contacts of type individual
      - GET /api/v2/CrmService/Contacts/Individuals
      - Get all contacts of type individual
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -242,7 +230,7 @@ open class ContactsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<ContactDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -270,9 +258,6 @@ open class ContactsAPI {
      Get all contacts of type individual count
      - GET /api/v2/CrmService/Contacts/Individuals/Count
      - Get all contacts of type individual count
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -297,7 +282,7 @@ open class ContactsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<ContactDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -326,9 +311,6 @@ open class ContactsAPI {
      Get a Contact of type Organization by ID
      - GET /api/v2/CrmService/Contacts/Organizations/{contactId}
      - Get a Contact of type Organization by ID
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter tenantId: (query)  
      - parameter contactId: (path)  
      - parameter apiVersion: (query)  (optional)
@@ -357,7 +339,7 @@ open class ContactsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<ContactDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -385,9 +367,6 @@ open class ContactsAPI {
      Get all contacts of type organization
      - GET /api/v2/CrmService/Contacts/Organizations
      - Get all contacts of type organization
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -412,7 +391,7 @@ open class ContactsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<[ContactDto]>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -440,9 +419,6 @@ open class ContactsAPI {
      Get all contacts of type organization count
      - GET /api/v2/CrmService/Contacts/Organizations/Count
      - Get all contacts of type organization count
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -467,7 +443,7 @@ open class ContactsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<ContactDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -496,9 +472,6 @@ open class ContactsAPI {
      Get a contact by ID
      - GET /api/v2/CrmService/Contacts/{contactId}
      - Get a contact by ID
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter tenantId: (query)  
      - parameter contactId: (path)  
      - parameter apiVersion: (query)  (optional)
@@ -527,7 +500,7 @@ open class ContactsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<ContactDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -556,9 +529,6 @@ open class ContactsAPI {
      Get a contact's avatar
      - GET /api/v2/CrmService/Contacts/{contactId}/Avatar
      - Get a contact's avatar
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter tenantId: (query)  
      - parameter contactId: (path)  
      - parameter apiVersion: (query)  (optional)
@@ -587,7 +557,7 @@ open class ContactsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -616,9 +586,6 @@ open class ContactsAPI {
      Get a contact's cart
      - GET /api/v2/CrmService/Contacts/{contactId}/Cart
      - Get a contact's cart
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter tenantId: (query)  
      - parameter contactId: (path)  
      - parameter apiVersion: (query)  (optional)
@@ -647,7 +614,7 @@ open class ContactsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<CartDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -676,9 +643,6 @@ open class ContactsAPI {
      Get a contact's social profiles
      - GET /api/v2/CrmService/Contacts/{contactId}/Profiles
      - Get a contact's social profiles
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter tenantId: (query)  
      - parameter contactId: (path)  
      - parameter apiVersion: (query)  (optional)
@@ -707,7 +671,7 @@ open class ContactsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<ContactProfileDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -736,9 +700,6 @@ open class ContactsAPI {
      Get a contact's social profile
      - GET /api/v2/CrmService/Contacts/{contactId}/SocialProfile
      - Get a contact's social profile
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter tenantId: (query)  
      - parameter contactId: (path)  
      - parameter apiVersion: (query)  (optional)
@@ -767,7 +728,7 @@ open class ContactsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<SocialProfileDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -796,9 +757,6 @@ open class ContactsAPI {
      Get a contact's wallet
      - GET /api/v2/CrmService/Contacts/{contactId}/Wallet
      - Get a contact's wallet
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter tenantId: (query)  
      - parameter contactId: (path)  
      - parameter apiVersion: (query)  (optional)
@@ -827,7 +785,7 @@ open class ContactsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<WalletDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -855,9 +813,6 @@ open class ContactsAPI {
      Get all business owned contacts
      - GET /api/v2/CrmService/Contacts
      - Get all business owned contacts
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -882,7 +837,7 @@ open class ContactsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<ContactDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -910,9 +865,6 @@ open class ContactsAPI {
      Get all business owned contacts count
      - GET /api/v2/CrmService/Contacts/Count
      - Get all business owned contacts count
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -937,7 +889,7 @@ open class ContactsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<ContactDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -965,9 +917,6 @@ open class ContactsAPI {
      Get all contacts of type individual
      - GET /api/v2/CrmService/Contacts/Individuals/Extended
      - Get all contacts of type individual
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -992,7 +941,7 @@ open class ContactsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<ExtendedContactDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -1020,9 +969,6 @@ open class ContactsAPI {
      Get all contacts of type organization
      - GET /api/v2/CrmService/Contacts/Organizations/Extended
      - Get all contacts of type organization
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -1047,7 +993,7 @@ open class ContactsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<ExtendedContactDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -1076,9 +1022,6 @@ open class ContactsAPI {
      Get a contact by ID
      - GET /api/v2/CrmService/Contacts/{contactId}/Extended
      - Get a contact by ID
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter tenantId: (query)  
      - parameter contactId: (path)  
      - parameter apiVersion: (query)  (optional)
@@ -1107,7 +1050,7 @@ open class ContactsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<ExtendedContactDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -1135,9 +1078,6 @@ open class ContactsAPI {
      Get all business owned contacts
      - GET /api/v2/CrmService/Contacts/Extended
      - Get all business owned contacts
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -1162,7 +1102,7 @@ open class ContactsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<ExtendedContactDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -1191,9 +1131,6 @@ open class ContactsAPI {
      Get individual related individuals
      - GET /api/v2/CrmService/Contacts/Individuals/{contactId}/Individuals
      - Get individual related individuals
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter tenantId: (query)  
      - parameter contactId: (path)  
      - parameter apiVersion: (query)  (optional)
@@ -1222,7 +1159,7 @@ open class ContactsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<ContactDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -1251,9 +1188,6 @@ open class ContactsAPI {
      Get individual related organizations
      - GET /api/v2/CrmService/Contacts/Individuals/{contactId}/Organizations
      - Get individual related organizations
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter tenantId: (query)  
      - parameter contactId: (path)  
      - parameter apiVersion: (query)  (optional)
@@ -1282,7 +1216,7 @@ open class ContactsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<ContactDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -1311,9 +1245,6 @@ open class ContactsAPI {
      Get organization related individuals
      - GET /api/v2/CrmService/Contacts/Organizations/{contactId}/Individuals
      - Get organization related individuals
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter tenantId: (query)  
      - parameter contactId: (path)  
      - parameter apiVersion: (query)  (optional)
@@ -1342,7 +1273,7 @@ open class ContactsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<ContactDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -1371,9 +1302,6 @@ open class ContactsAPI {
      Get organization related organizations
      - GET /api/v2/CrmService/Contacts/Organizations/{contactId}/Organizations
      - Get organization related organizations
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter tenantId: (query)  
      - parameter contactId: (path)  
      - parameter apiVersion: (query)  (optional)
@@ -1402,7 +1330,7 @@ open class ContactsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<ContactDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -1432,9 +1360,6 @@ open class ContactsAPI {
      Patch a contact
      - PATCH /api/v2/CrmService/Contacts/{contactId}
      - Patch a contact
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter tenantId: (query)  
      - parameter contactId: (path)  
      - parameter apiVersion: (query)  (optional)
@@ -1465,7 +1390,121 @@ open class ContactsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Preview the rendered email for a contact.
+     
+     - parameter contactId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter emailDispatchRequest: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func previewContactEmailTemplate(contactId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, emailDispatchRequest: EmailDispatchRequest? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return previewContactEmailTemplateWithRequestBuilder(contactId: contactId, apiVersion: apiVersion, xApiVersion: xApiVersion, emailDispatchRequest: emailDispatchRequest).execute(apiResponseQueue) { result in
+            switch result {
+            case .success:
+                completion((), nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Preview the rendered email for a contact.
+     - POST /api/v2/CrmService/Contacts/{contactId}/Emails/Preview
+     - This action is only available for global administrators (business_owner role).
+     - parameter contactId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter emailDispatchRequest: (body)  (optional)
+     - returns: RequestBuilder<Void> 
+     */
+    open class func previewContactEmailTemplateWithRequestBuilder(contactId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, emailDispatchRequest: EmailDispatchRequest? = nil) -> RequestBuilder<Void> {
+        var localVariablePath = "/api/v2/CrmService/Contacts/{contactId}/Emails/Preview"
+        let contactIdPreEscape = "\(APIHelper.mapValueToPathItem(contactId))"
+        let contactIdPostEscape = contactIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{contactId}", with: contactIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: emailDispatchRequest)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Send an email to a contact.
+     
+     - parameter contactId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter emailDispatchRequest: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func sendContactEmail(contactId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, emailDispatchRequest: EmailDispatchRequest? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return sendContactEmailWithRequestBuilder(contactId: contactId, apiVersion: apiVersion, xApiVersion: xApiVersion, emailDispatchRequest: emailDispatchRequest).execute(apiResponseQueue) { result in
+            switch result {
+            case .success:
+                completion((), nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Send an email to a contact.
+     - POST /api/v2/CrmService/Contacts/{contactId}/Emails/Send
+     - This action is only available for global administrators (business_owner role).
+     - parameter contactId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter emailDispatchRequest: (body)  (optional)
+     - returns: RequestBuilder<Void> 
+     */
+    open class func sendContactEmailWithRequestBuilder(contactId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, emailDispatchRequest: EmailDispatchRequest? = nil) -> RequestBuilder<Void> {
+        var localVariablePath = "/api/v2/CrmService/Contacts/{contactId}/Emails/Send"
+        let contactIdPreEscape = "\(APIHelper.mapValueToPathItem(contactId))"
+        let contactIdPostEscape = contactIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{contactId}", with: contactIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: emailDispatchRequest)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -1495,9 +1534,6 @@ open class ContactsAPI {
      Update a contact
      - PUT /api/v2/CrmService/Contacts/{contactId}
      - Update a contact
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter tenantId: (query)  
      - parameter contactId: (path)  
      - parameter apiVersion: (query)  (optional)
@@ -1528,7 +1564,7 @@ open class ContactsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -1558,9 +1594,6 @@ open class ContactsAPI {
      Update a contact's avatar
      - POST /api/v2/CrmService/Contacts/{contactId}/Avatar
      - Update a contact's avatar
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter contactId: (path)  
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
@@ -1596,7 +1629,7 @@ open class ContactsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -1625,9 +1658,6 @@ open class ContactsAPI {
      Upsert a tenant onto another tenant's contact list
      - POST /api/v2/CrmService/Contacts/Organizations/Upsert
      - Upsert a tenant onto another tenant's contact list
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter tenantId: (query)  
      - parameter relatedTenantId: (query)  
      - parameter apiVersion: (query)  (optional)
@@ -1654,7 +1684,7 @@ open class ContactsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<ContactDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -1683,9 +1713,6 @@ open class ContactsAPI {
      Upsert a user onto a tenant's contact list
      - POST /api/v2/CrmService/Contacts/Individuals/Upsert
      - Upsert a user onto a tenant's contact list
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter tenantId: (query)  
      - parameter relatedUserId: (query)  
      - parameter apiVersion: (query)  (optional)
@@ -1712,6 +1739,6 @@ open class ContactsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<ContactDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 }

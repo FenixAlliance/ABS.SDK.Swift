@@ -13,7 +13,8 @@ import AnyCodable
 open class ShipmentsAPI {
 
     /**
-
+     Retrieve a list of shipments
+     
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -21,8 +22,8 @@ open class ShipmentsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2ShipmentsServiceShipmentsGet(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ShipmentDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2ShipmentsServiceShipmentsGetWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getShipmentsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ShipmentDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getShipmentsAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -33,16 +34,15 @@ open class ShipmentsAPI {
     }
 
     /**
+     Retrieve a list of shipments
      - GET /api/v2/ShipmentsService/Shipments
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Retrieves a list of shipments for the specified tenant.
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<ShipmentDtoListEnvelope> 
      */
-    open class func apiV2ShipmentsServiceShipmentsGetWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ShipmentDtoListEnvelope> {
+    open class func getShipmentsAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ShipmentDtoListEnvelope> {
         let localVariablePath = "/api/v2/ShipmentsService/Shipments"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -61,6 +61,6 @@ open class ShipmentsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<ShipmentDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 }

@@ -13,174 +13,8 @@ import AnyCodable
 open class ProjectTimeLogsAPI {
 
     /**
-
-     - parameter contactId: (query)  
-     - parameter tenantId: (query)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2TimeTrackerServiceProjectTimeLogsByResponsibleContactGet(contactId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ProjectTimeLogDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2TimeTrackerServiceProjectTimeLogsByResponsibleContactGetWithRequestBuilder(contactId: contactId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - GET /api/v2/TimeTrackerService/ProjectTimeLogs/ByResponsibleContact
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter contactId: (query)  
-     - parameter tenantId: (query)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - returns: RequestBuilder<ProjectTimeLogDtoListEnvelope> 
-     */
-    open class func apiV2TimeTrackerServiceProjectTimeLogsByResponsibleContactGetWithRequestBuilder(contactId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ProjectTimeLogDtoListEnvelope> {
-        let localVariablePath = "/api/v2/TimeTrackerService/ProjectTimeLogs/ByResponsibleContact"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "contactId": (wrappedValue: contactId.encodeToJSON(), isExplode: true),
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            "x-api-version": xApiVersion?.encodeToJSON(),
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<ProjectTimeLogDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
-     - parameter contactId: (query)  
-     - parameter tenantId: (query)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2TimeTrackerServiceProjectTimeLogsCreatedByContactGet(contactId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ProjectTimeLogDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2TimeTrackerServiceProjectTimeLogsCreatedByContactGetWithRequestBuilder(contactId: contactId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - GET /api/v2/TimeTrackerService/ProjectTimeLogs/CreatedByContact
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter contactId: (query)  
-     - parameter tenantId: (query)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - returns: RequestBuilder<ProjectTimeLogDtoListEnvelope> 
-     */
-    open class func apiV2TimeTrackerServiceProjectTimeLogsCreatedByContactGetWithRequestBuilder(contactId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ProjectTimeLogDtoListEnvelope> {
-        let localVariablePath = "/api/v2/TimeTrackerService/ProjectTimeLogs/CreatedByContact"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "contactId": (wrappedValue: contactId.encodeToJSON(), isExplode: true),
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            "x-api-version": xApiVersion?.encodeToJSON(),
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<ProjectTimeLogDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
-     - parameter projectId: (path)  
-     - parameter tenantId: (query)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2TimeTrackerServiceProjectTimeLogsForProjectProjectIdGet(projectId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ProjectTimeLogDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2TimeTrackerServiceProjectTimeLogsForProjectProjectIdGetWithRequestBuilder(projectId: projectId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - GET /api/v2/TimeTrackerService/ProjectTimeLogs/ForProject/{projectId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter projectId: (path)  
-     - parameter tenantId: (query)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - returns: RequestBuilder<ProjectTimeLogDtoListEnvelope> 
-     */
-    open class func apiV2TimeTrackerServiceProjectTimeLogsForProjectProjectIdGetWithRequestBuilder(projectId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ProjectTimeLogDtoListEnvelope> {
-        var localVariablePath = "/api/v2/TimeTrackerService/ProjectTimeLogs/ForProject/{projectId}"
-        let projectIdPreEscape = "\(APIHelper.mapValueToPathItem(projectId))"
-        let projectIdPostEscape = projectIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{projectId}", with: projectIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            "x-api-version": xApiVersion?.encodeToJSON(),
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<ProjectTimeLogDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
+     Get the count of project period time logs
+     
      - parameter tenantId: (query)  
      - parameter projectPeriodId: (query)  
      - parameter apiVersion: (query)  (optional)
@@ -189,8 +23,8 @@ open class ProjectTimeLogsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2TimeTrackerServiceProjectTimeLogsGet(tenantId: UUID, projectPeriodId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ProjectTimeLogDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2TimeTrackerServiceProjectTimeLogsGetWithRequestBuilder(tenantId: tenantId, projectPeriodId: projectPeriodId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func countProjectPeriodTimeLogsAsync(tenantId: UUID, projectPeriodId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return countProjectPeriodTimeLogsAsyncWithRequestBuilder(tenantId: tenantId, projectPeriodId: projectPeriodId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -201,18 +35,17 @@ open class ProjectTimeLogsAPI {
     }
 
     /**
-     - GET /api/v2/TimeTrackerService/ProjectTimeLogs
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     Get the count of project period time logs
+     - GET /api/v2/TimeTrackerService/ProjectTimeLogs/Count
+     - Returns the total count of time logs for a specific project period with OData query support.
      - parameter tenantId: (query)  
      - parameter projectPeriodId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - returns: RequestBuilder<ProjectTimeLogDtoListEnvelope> 
+     - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func apiV2TimeTrackerServiceProjectTimeLogsGetWithRequestBuilder(tenantId: UUID, projectPeriodId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ProjectTimeLogDtoListEnvelope> {
-        let localVariablePath = "/api/v2/TimeTrackerService/ProjectTimeLogs"
+    open class func countProjectPeriodTimeLogsAsyncWithRequestBuilder(tenantId: UUID, projectPeriodId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+        let localVariablePath = "/api/v2/TimeTrackerService/ProjectTimeLogs/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
@@ -229,13 +62,14 @@ open class ProjectTimeLogsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ProjectTimeLogDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Create a new project time log
+     
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -244,8 +78,8 @@ open class ProjectTimeLogsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2TimeTrackerServiceProjectTimeLogsPost(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, projectTimeLogCreateDto: ProjectTimeLogCreateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2TimeTrackerServiceProjectTimeLogsPostWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, projectTimeLogCreateDto: projectTimeLogCreateDto).execute(apiResponseQueue) { result in
+    open class func createProjectTimeLogAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, projectTimeLogCreateDto: ProjectTimeLogCreateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return createProjectTimeLogAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, projectTimeLogCreateDto: projectTimeLogCreateDto).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 completion((), nil)
@@ -256,17 +90,16 @@ open class ProjectTimeLogsAPI {
     }
 
     /**
+     Create a new project time log
      - POST /api/v2/TimeTrackerService/ProjectTimeLogs
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Creates a new project time log entry.
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter projectTimeLogCreateDto: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
-    open class func apiV2TimeTrackerServiceProjectTimeLogsPostWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, projectTimeLogCreateDto: ProjectTimeLogCreateDto? = nil) -> RequestBuilder<Void> {
+    open class func createProjectTimeLogAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, projectTimeLogCreateDto: ProjectTimeLogCreateDto? = nil) -> RequestBuilder<Void> {
         let localVariablePath = "/api/v2/TimeTrackerService/ProjectTimeLogs"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: projectTimeLogCreateDto)
@@ -286,11 +119,12 @@ open class ProjectTimeLogsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
 
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Delete a project time log
+     
      - parameter tenantId: (query)  
      - parameter timeLogId: (path)  
      - parameter apiVersion: (query)  (optional)
@@ -299,8 +133,8 @@ open class ProjectTimeLogsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2TimeTrackerServiceProjectTimeLogsTimeLogIdDelete(tenantId: UUID, timeLogId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2TimeTrackerServiceProjectTimeLogsTimeLogIdDeleteWithRequestBuilder(tenantId: tenantId, timeLogId: timeLogId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func deleteProjectTimeLogAsync(tenantId: UUID, timeLogId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return deleteProjectTimeLogAsyncWithRequestBuilder(tenantId: tenantId, timeLogId: timeLogId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 completion((), nil)
@@ -311,17 +145,16 @@ open class ProjectTimeLogsAPI {
     }
 
     /**
+     Delete a project time log
      - DELETE /api/v2/TimeTrackerService/ProjectTimeLogs/{timeLogId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Deletes a project time log entry.
      - parameter tenantId: (query)  
      - parameter timeLogId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<Void> 
      */
-    open class func apiV2TimeTrackerServiceProjectTimeLogsTimeLogIdDeleteWithRequestBuilder(tenantId: UUID, timeLogId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Void> {
+    open class func deleteProjectTimeLogAsyncWithRequestBuilder(tenantId: UUID, timeLogId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Void> {
         var localVariablePath = "/api/v2/TimeTrackerService/ProjectTimeLogs/{timeLogId}"
         let timeLogIdPreEscape = "\(APIHelper.mapValueToPathItem(timeLogId))"
         let timeLogIdPostEscape = timeLogIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -343,21 +176,22 @@ open class ProjectTimeLogsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
 
-        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
-     - parameter timeLogId: (path)  
+     Retrieve project period time logs
+     
      - parameter tenantId: (query)  
+     - parameter projectPeriodId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2TimeTrackerServiceProjectTimeLogsTimeLogIdGet(timeLogId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ProjectTimeLogDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2TimeTrackerServiceProjectTimeLogsTimeLogIdGetWithRequestBuilder(timeLogId: timeLogId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getProjectPeriodTimeLogsAsync(tenantId: UUID, projectPeriodId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ProjectTimeLogDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getProjectPeriodTimeLogsAsyncWithRequestBuilder(tenantId: tenantId, projectPeriodId: projectPeriodId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -368,17 +202,71 @@ open class ProjectTimeLogsAPI {
     }
 
     /**
+     Retrieve project period time logs
+     - GET /api/v2/TimeTrackerService/ProjectTimeLogs
+     - Retrieves a list of time logs for a specific project period with OData query support.
+     - parameter tenantId: (query)  
+     - parameter projectPeriodId: (query)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<ProjectTimeLogDtoListEnvelope> 
+     */
+    open class func getProjectPeriodTimeLogsAsyncWithRequestBuilder(tenantId: UUID, projectPeriodId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ProjectTimeLogDtoListEnvelope> {
+        let localVariablePath = "/api/v2/TimeTrackerService/ProjectTimeLogs"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "projectPeriodId": (wrappedValue: projectPeriodId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<ProjectTimeLogDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Retrieve a project time log by ID
+     
+     - parameter timeLogId: (path)  
+     - parameter tenantId: (query)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getProjectTimeLogByIdAsync(timeLogId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ProjectTimeLogDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getProjectTimeLogByIdAsyncWithRequestBuilder(timeLogId: timeLogId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Retrieve a project time log by ID
      - GET /api/v2/TimeTrackerService/ProjectTimeLogs/{timeLogId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Retrieves a single project time log by its unique identifier.
      - parameter timeLogId: (path)  
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<ProjectTimeLogDtoEnvelope> 
      */
-    open class func apiV2TimeTrackerServiceProjectTimeLogsTimeLogIdGetWithRequestBuilder(timeLogId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ProjectTimeLogDtoEnvelope> {
+    open class func getProjectTimeLogByIdAsyncWithRequestBuilder(timeLogId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ProjectTimeLogDtoEnvelope> {
         var localVariablePath = "/api/v2/TimeTrackerService/ProjectTimeLogs/{timeLogId}"
         let timeLogIdPreEscape = "\(APIHelper.mapValueToPathItem(timeLogId))"
         let timeLogIdPostEscape = timeLogIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -400,11 +288,179 @@ open class ProjectTimeLogsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<ProjectTimeLogDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
+     Retrieve time logs for a project
+     
+     - parameter projectId: (path)  
+     - parameter tenantId: (query)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getProjectTimeLogsAsync(projectId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ProjectTimeLogDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getProjectTimeLogsAsyncWithRequestBuilder(projectId: projectId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
 
+    /**
+     Retrieve time logs for a project
+     - GET /api/v2/TimeTrackerService/ProjectTimeLogs/ForProject/{projectId}
+     - Retrieves all time logs associated with the specified project.
+     - parameter projectId: (path)  
+     - parameter tenantId: (query)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<ProjectTimeLogDtoListEnvelope> 
+     */
+    open class func getProjectTimeLogsAsyncWithRequestBuilder(projectId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ProjectTimeLogDtoListEnvelope> {
+        var localVariablePath = "/api/v2/TimeTrackerService/ProjectTimeLogs/ForProject/{projectId}"
+        let projectIdPreEscape = "\(APIHelper.mapValueToPathItem(projectId))"
+        let projectIdPostEscape = projectIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{projectId}", with: projectIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<ProjectTimeLogDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Retrieve time logs by responsible contact
+     
+     - parameter contactId: (query)  
+     - parameter tenantId: (query)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getProjectTimeLogsByResponsibleContactAsync(contactId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ProjectTimeLogDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getProjectTimeLogsByResponsibleContactAsyncWithRequestBuilder(contactId: contactId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Retrieve time logs by responsible contact
+     - GET /api/v2/TimeTrackerService/ProjectTimeLogs/ByResponsibleContact
+     - Retrieves time logs where the specified contact is the responsible party.
+     - parameter contactId: (query)  
+     - parameter tenantId: (query)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<ProjectTimeLogDtoListEnvelope> 
+     */
+    open class func getProjectTimeLogsByResponsibleContactAsyncWithRequestBuilder(contactId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ProjectTimeLogDtoListEnvelope> {
+        let localVariablePath = "/api/v2/TimeTrackerService/ProjectTimeLogs/ByResponsibleContact"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "contactId": (wrappedValue: contactId.encodeToJSON(), isExplode: true),
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<ProjectTimeLogDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Retrieve time logs created by a contact
+     
+     - parameter contactId: (query)  
+     - parameter tenantId: (query)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getProjectTimeLogsCreatedByContactAsync(contactId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ProjectTimeLogDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getProjectTimeLogsCreatedByContactAsyncWithRequestBuilder(contactId: contactId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Retrieve time logs created by a contact
+     - GET /api/v2/TimeTrackerService/ProjectTimeLogs/CreatedByContact
+     - Retrieves time logs that were created by the specified contact.
+     - parameter contactId: (query)  
+     - parameter tenantId: (query)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<ProjectTimeLogDtoListEnvelope> 
+     */
+    open class func getProjectTimeLogsCreatedByContactAsyncWithRequestBuilder(contactId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ProjectTimeLogDtoListEnvelope> {
+        let localVariablePath = "/api/v2/TimeTrackerService/ProjectTimeLogs/CreatedByContact"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "contactId": (wrappedValue: contactId.encodeToJSON(), isExplode: true),
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<ProjectTimeLogDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Update a project time log
+     
      - parameter timeLogId: (path)  
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
@@ -414,8 +470,8 @@ open class ProjectTimeLogsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2TimeTrackerServiceProjectTimeLogsTimeLogIdPut(timeLogId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, projectTimeLogUpdateDto: ProjectTimeLogUpdateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2TimeTrackerServiceProjectTimeLogsTimeLogIdPutWithRequestBuilder(timeLogId: timeLogId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, projectTimeLogUpdateDto: projectTimeLogUpdateDto).execute(apiResponseQueue) { result in
+    open class func updateProjectTimeLogAsync(timeLogId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, projectTimeLogUpdateDto: ProjectTimeLogUpdateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return updateProjectTimeLogAsyncWithRequestBuilder(timeLogId: timeLogId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, projectTimeLogUpdateDto: projectTimeLogUpdateDto).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 completion((), nil)
@@ -426,10 +482,9 @@ open class ProjectTimeLogsAPI {
     }
 
     /**
+     Update a project time log
      - PUT /api/v2/TimeTrackerService/ProjectTimeLogs/{timeLogId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Updates an existing project time log entry.
      - parameter timeLogId: (path)  
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
@@ -437,7 +492,7 @@ open class ProjectTimeLogsAPI {
      - parameter projectTimeLogUpdateDto: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
-    open class func apiV2TimeTrackerServiceProjectTimeLogsTimeLogIdPutWithRequestBuilder(timeLogId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, projectTimeLogUpdateDto: ProjectTimeLogUpdateDto? = nil) -> RequestBuilder<Void> {
+    open class func updateProjectTimeLogAsyncWithRequestBuilder(timeLogId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, projectTimeLogUpdateDto: ProjectTimeLogUpdateDto? = nil) -> RequestBuilder<Void> {
         var localVariablePath = "/api/v2/TimeTrackerService/ProjectTimeLogs/{timeLogId}"
         let timeLogIdPreEscape = "\(APIHelper.mapValueToPathItem(timeLogId))"
         let timeLogIdPostEscape = timeLogIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -460,6 +515,6 @@ open class ProjectTimeLogsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
 
-        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 }

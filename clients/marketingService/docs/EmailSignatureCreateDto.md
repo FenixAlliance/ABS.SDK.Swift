@@ -3,15 +3,17 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **UUID** |  | [optional] [readonly] 
-**timestamp** | **Date** |  | [optional] [readonly] 
+**id** | **UUID** |  | [optional] 
+**timestamp** | **Date** |  | [optional] 
 **tenantId** | **String** |  | [optional] 
-**enrolmentId** | **String** |  | [optional] 
+**enrollmentId** | **String** |  | [optional] 
 **title** | **String** |  | [optional] 
-**authorId** | **String** |  | [optional] 
+**code** | **String** |  | [optional] 
+**published** | **Bool** |  | [optional] 
 **description** | **String** |  | [optional] 
 **htmlContent** | **String** |  | [optional] 
 **featuredImageUrl** | **String** |  | [optional] 
+**codeType** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

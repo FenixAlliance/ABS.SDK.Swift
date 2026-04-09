@@ -12,15 +12,17 @@ import AnyCodable
 
 public struct SimpleContactDto: Codable, JSONEncodable, Hashable {
 
-    public enum ModelType: Int, Codable, CaseIterable {
-        case _0 = 0
-        case _1 = 1
+    public enum ModelType: String, Codable, CaseIterable {
+        case individual = "Individual"
+        case organization = "Organization"
     }
     public var id: String?
     public var timestamp: Date?
     public var qualifiedName: String?
     public var tenantId: String?
     public var type: ModelType?
+    public var email: String?
+    public var phone: String?
     public var publicName: String?
     public var firstName: String?
     public var lastName: String?
@@ -44,12 +46,14 @@ public struct SimpleContactDto: Codable, JSONEncodable, Hashable {
     public var instagramUrl: String?
     public var githubUsername: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, qualifiedName: String? = nil, tenantId: String? = nil, type: ModelType? = nil, publicName: String? = nil, firstName: String? = nil, lastName: String? = nil, jobTitle: String? = nil, coverUrl: String? = nil, avatarUrl: String? = nil, countryId: String? = nil, timezoneId: String? = nil, languageId: String? = nil, socialProfileId: String? = nil, webUrl: String? = nil, gitHubUrl: String? = nil, twitchUrl: String? = nil, redditUrl: String? = nil, tikTokUrl: String? = nil, websiteUrl: String? = nil, twitterUrl: String? = nil, facebookUrl: String? = nil, youTubeUrl: String? = nil, linkedInUrl: String? = nil, instagramUrl: String? = nil, githubUsername: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, qualifiedName: String? = nil, tenantId: String? = nil, type: ModelType? = nil, email: String? = nil, phone: String? = nil, publicName: String? = nil, firstName: String? = nil, lastName: String? = nil, jobTitle: String? = nil, coverUrl: String? = nil, avatarUrl: String? = nil, countryId: String? = nil, timezoneId: String? = nil, languageId: String? = nil, socialProfileId: String? = nil, webUrl: String? = nil, gitHubUrl: String? = nil, twitchUrl: String? = nil, redditUrl: String? = nil, tikTokUrl: String? = nil, websiteUrl: String? = nil, twitterUrl: String? = nil, facebookUrl: String? = nil, youTubeUrl: String? = nil, linkedInUrl: String? = nil, instagramUrl: String? = nil, githubUsername: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.qualifiedName = qualifiedName
         self.tenantId = tenantId
         self.type = type
+        self.email = email
+        self.phone = phone
         self.publicName = publicName
         self.firstName = firstName
         self.lastName = lastName
@@ -80,6 +84,8 @@ public struct SimpleContactDto: Codable, JSONEncodable, Hashable {
         case qualifiedName
         case tenantId
         case type
+        case email
+        case phone
         case publicName
         case firstName
         case lastName
@@ -113,6 +119,8 @@ public struct SimpleContactDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(qualifiedName, forKey: .qualifiedName)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encodeIfPresent(type, forKey: .type)
+        try container.encodeIfPresent(email, forKey: .email)
+        try container.encodeIfPresent(phone, forKey: .phone)
         try container.encodeIfPresent(publicName, forKey: .publicName)
         try container.encodeIfPresent(firstName, forKey: .firstName)
         try container.encodeIfPresent(lastName, forKey: .lastName)

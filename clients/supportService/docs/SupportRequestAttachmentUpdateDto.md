@@ -14,7 +14,6 @@ Name | Type | Description | Notes
 **validResponse** | **Bool** |  | [optional] 
 **parentFileUploadID** | **String** |  | [optional] 
 **filePath** | **String** |  | [optional] 
-**file** | **URL** |  | [optional] 
 **contentType** | **String** |  | [optional] 
 **fileLength** | **Int64** |  | [optional] 
 

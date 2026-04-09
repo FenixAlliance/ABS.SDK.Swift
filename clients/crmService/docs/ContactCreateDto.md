@@ -3,10 +3,10 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **UUID** |  | [optional] [readonly] 
-**timestamp** | **Date** |  | [optional] [readonly] 
+**id** | **UUID** |  | [optional] 
+**timestamp** | **Date** |  | [optional] 
 **tenantId** | **String** |  | 
-**type** | **Int** |  | 
+**type** | **String** |  | 
 **firstName** | **String** |  | 
 **lastName** | **String** |  | [optional] 
 **email** | **String** |  | 
@@ -40,11 +40,12 @@ Name | Type | Description | Notes
 **linkedInUrl** | **String** |  | [optional] 
 **instagramUrl** | **String** |  | [optional] 
 **githubUsername** | **String** |  | [optional] 
-**instagramUsername** | **AnyCodable** |  | [optional] 
-**tikTokUsername** | **AnyCodable** |  | [optional] 
-**stackExchangeUrl** | **AnyCodable** |  | [optional] 
-**stackOverflowUrl** | **AnyCodable** |  | [optional] 
-**parentContactId** | **AnyCodable** |  | [optional] 
+**instagramUsername** | **String** |  | [optional] 
+**tikTokUsername** | **String** |  | [optional] 
+**stackExchangeUrl** | **String** |  | [optional] 
+**stackOverflowUrl** | **String** |  | [optional] 
+**parentContactId** | **String** |  | [optional] 
+**faxNumber** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

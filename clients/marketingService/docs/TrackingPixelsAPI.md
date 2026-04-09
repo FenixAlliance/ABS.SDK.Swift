@@ -4,15 +4,17 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**apiV2MarketingServiceTrackingPixelsPixelIdGet**](TrackingPixelsAPI.md#apiv2marketingservicetrackingpixelspixelidget) | **GET** /api/v2/MarketingService/TrackingPixels/{pixelId} | 
+[**getTrackingPixelAsync**](TrackingPixelsAPI.md#gettrackingpixelasync) | **GET** /api/v2/MarketingService/TrackingPixels/{pixelId} | Get a tracking pixel
 
 
-# **apiV2MarketingServiceTrackingPixelsPixelIdGet**
+# **getTrackingPixelAsync**
 ```swift
-    open class func apiV2MarketingServiceTrackingPixelsPixelIdGet(pixelId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: OrderDtoEnvelope?, _ error: Error?) -> Void)
+    open class func getTrackingPixelAsync(pixelId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: OrderDtoEnvelope?, _ error: Error?) -> Void)
 ```
 
+Get a tracking pixel
 
+Retrieves a tracking pixel by its ID.
 
 ### Example
 ```swift
@@ -23,7 +25,8 @@ let pixelId = 987 // UUID |
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
-TrackingPixelsAPI.apiV2MarketingServiceTrackingPixelsPixelIdGet(pixelId: pixelId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Get a tracking pixel
+TrackingPixelsAPI.getTrackingPixelAsync(pixelId: pixelId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -49,7 +52,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 

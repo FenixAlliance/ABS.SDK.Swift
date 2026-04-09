@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | [optional] 
 **timestamp** | **Date** |  | [optional] 
-**reaction** | **Int** |  | [optional] 
+**reaction** | **String** |  | [optional] 
 **reactionValue** | **String** |  | [optional] 
 **socialProfileId** | **String** |  | [optional] 
 **socialProfileName** | **String** |  | [optional] 

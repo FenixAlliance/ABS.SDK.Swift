@@ -12,15 +12,17 @@ import AnyCodable
 
 public struct ContactDto: Codable, JSONEncodable, Hashable {
 
-    public enum ModelType: Int, Codable, CaseIterable {
-        case _0 = 0
-        case _1 = 1
+    public enum ModelType: String, Codable, CaseIterable {
+        case individual = "Individual"
+        case organization = "Organization"
     }
     public var id: String?
     public var timestamp: Date?
     public var qualifiedName: String?
     public var tenantId: String?
     public var type: ModelType?
+    public var email: String?
+    public var phone: String?
     public var publicName: String?
     public var firstName: String?
     public var lastName: String?
@@ -45,7 +47,6 @@ public struct ContactDto: Codable, JSONEncodable, Hashable {
     public var githubUsername: String?
     public var duns: String?
     public var taxId: String?
-    public var email: String?
     public var about: String?
     public var street: String?
     public var cartId: String?
@@ -75,12 +76,14 @@ public struct ContactDto: Codable, JSONEncodable, Hashable {
     public var identityProviderAccessToken: String?
     public var birthday: Date?
 
-    public init(id: String? = nil, timestamp: Date? = nil, qualifiedName: String? = nil, tenantId: String? = nil, type: ModelType? = nil, publicName: String? = nil, firstName: String? = nil, lastName: String? = nil, jobTitle: String? = nil, coverUrl: String? = nil, avatarUrl: String? = nil, countryId: String? = nil, timezoneId: String? = nil, languageId: String? = nil, socialProfileId: String? = nil, webUrl: String? = nil, gitHubUrl: String? = nil, twitchUrl: String? = nil, redditUrl: String? = nil, tikTokUrl: String? = nil, websiteUrl: String? = nil, twitterUrl: String? = nil, facebookUrl: String? = nil, youTubeUrl: String? = nil, linkedInUrl: String? = nil, instagramUrl: String? = nil, githubUsername: String? = nil, duns: String? = nil, taxId: String? = nil, email: String? = nil, about: String? = nil, street: String? = nil, cartId: String? = nil, cityId: String? = nil, zipCode: String? = nil, stateId: String? = nil, walletId: String? = nil, faxNumber: String? = nil, postalCode: String? = nil, currencyId: String? = nil, streetLine1: String? = nil, streetLine2: String? = nil, territoryId: String? = nil, mobilePhone: String? = nil, enrollmentId: String? = nil, annualRevenue: String? = nil, relatedUserId: String? = nil, businessPhone: String? = nil, ownerContactId: String? = nil, relatedTenantId: String? = nil, activityFeedId: String? = nil, parentContactId: String? = nil, identityProvider: String? = nil, partnerProfileId: String? = nil, primaryContactId: String? = nil, activeDirectoryId: String? = nil, identityProviderAccessToken: String? = nil, birthday: Date? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, qualifiedName: String? = nil, tenantId: String? = nil, type: ModelType? = nil, email: String? = nil, phone: String? = nil, publicName: String? = nil, firstName: String? = nil, lastName: String? = nil, jobTitle: String? = nil, coverUrl: String? = nil, avatarUrl: String? = nil, countryId: String? = nil, timezoneId: String? = nil, languageId: String? = nil, socialProfileId: String? = nil, webUrl: String? = nil, gitHubUrl: String? = nil, twitchUrl: String? = nil, redditUrl: String? = nil, tikTokUrl: String? = nil, websiteUrl: String? = nil, twitterUrl: String? = nil, facebookUrl: String? = nil, youTubeUrl: String? = nil, linkedInUrl: String? = nil, instagramUrl: String? = nil, githubUsername: String? = nil, duns: String? = nil, taxId: String? = nil, about: String? = nil, street: String? = nil, cartId: String? = nil, cityId: String? = nil, zipCode: String? = nil, stateId: String? = nil, walletId: String? = nil, faxNumber: String? = nil, postalCode: String? = nil, currencyId: String? = nil, streetLine1: String? = nil, streetLine2: String? = nil, territoryId: String? = nil, mobilePhone: String? = nil, enrollmentId: String? = nil, annualRevenue: String? = nil, relatedUserId: String? = nil, businessPhone: String? = nil, ownerContactId: String? = nil, relatedTenantId: String? = nil, activityFeedId: String? = nil, parentContactId: String? = nil, identityProvider: String? = nil, partnerProfileId: String? = nil, primaryContactId: String? = nil, activeDirectoryId: String? = nil, identityProviderAccessToken: String? = nil, birthday: Date? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.qualifiedName = qualifiedName
         self.tenantId = tenantId
         self.type = type
+        self.email = email
+        self.phone = phone
         self.publicName = publicName
         self.firstName = firstName
         self.lastName = lastName
@@ -105,7 +108,6 @@ public struct ContactDto: Codable, JSONEncodable, Hashable {
         self.githubUsername = githubUsername
         self.duns = duns
         self.taxId = taxId
-        self.email = email
         self.about = about
         self.street = street
         self.cartId = cartId
@@ -142,6 +144,8 @@ public struct ContactDto: Codable, JSONEncodable, Hashable {
         case qualifiedName
         case tenantId
         case type
+        case email
+        case phone
         case publicName
         case firstName
         case lastName
@@ -166,7 +170,6 @@ public struct ContactDto: Codable, JSONEncodable, Hashable {
         case githubUsername
         case duns
         case taxId
-        case email
         case about
         case street
         case cartId
@@ -206,6 +209,8 @@ public struct ContactDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(qualifiedName, forKey: .qualifiedName)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encodeIfPresent(type, forKey: .type)
+        try container.encodeIfPresent(email, forKey: .email)
+        try container.encodeIfPresent(phone, forKey: .phone)
         try container.encodeIfPresent(publicName, forKey: .publicName)
         try container.encodeIfPresent(firstName, forKey: .firstName)
         try container.encodeIfPresent(lastName, forKey: .lastName)
@@ -230,7 +235,6 @@ public struct ContactDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(githubUsername, forKey: .githubUsername)
         try container.encodeIfPresent(duns, forKey: .duns)
         try container.encodeIfPresent(taxId, forKey: .taxId)
-        try container.encodeIfPresent(email, forKey: .email)
         try container.encodeIfPresent(about, forKey: .about)
         try container.encodeIfPresent(street, forKey: .street)
         try container.encodeIfPresent(cartId, forKey: .cartId)

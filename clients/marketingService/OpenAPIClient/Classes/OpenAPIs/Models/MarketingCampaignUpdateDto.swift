@@ -27,9 +27,9 @@ public struct MarketingCampaignUpdateDto: Codable, JSONEncodable, Hashable {
     public var marketingAreaId: String?
     public var currencyId: String?
     public var tenantId: String?
-    public var enrolmentId: String?
+    public var enrollmentId: String?
 
-    public init(name: String? = nil, offer: String? = nil, active: Bool? = nil, proposedStart: Date? = nil, proposedEnd: Date? = nil, actualStart: Date? = nil, actualEnd: Date? = nil, code: String? = nil, allocatedBudget: Double? = nil, activityCost: Double? = nil, miscCost: Double? = nil, expectedResponsePercent: Double? = nil, marketingAreaId: String? = nil, currencyId: String? = nil, tenantId: String? = nil, enrolmentId: String? = nil) {
+    public init(name: String? = nil, offer: String? = nil, active: Bool? = nil, proposedStart: Date? = nil, proposedEnd: Date? = nil, actualStart: Date? = nil, actualEnd: Date? = nil, code: String? = nil, allocatedBudget: Double? = nil, activityCost: Double? = nil, miscCost: Double? = nil, expectedResponsePercent: Double? = nil, marketingAreaId: String? = nil, currencyId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
         self.name = name
         self.offer = offer
         self.active = active
@@ -45,7 +45,7 @@ public struct MarketingCampaignUpdateDto: Codable, JSONEncodable, Hashable {
         self.marketingAreaId = marketingAreaId
         self.currencyId = currencyId
         self.tenantId = tenantId
-        self.enrolmentId = enrolmentId
+        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -64,7 +64,7 @@ public struct MarketingCampaignUpdateDto: Codable, JSONEncodable, Hashable {
         case marketingAreaId
         case currencyId
         case tenantId
-        case enrolmentId
+        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -86,7 +86,7 @@ public struct MarketingCampaignUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(marketingAreaId, forKey: .marketingAreaId)
         try container.encodeIfPresent(currencyId, forKey: .currencyId)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(enrolmentId, forKey: .enrolmentId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

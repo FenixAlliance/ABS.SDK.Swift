@@ -12,10 +12,10 @@ import AnyCodable
 
 public struct SocialProfileDto: Codable, JSONEncodable, Hashable {
 
-    public enum ModelType: Int, Codable, CaseIterable {
-        case _0 = 0
-        case _1 = 1
-        case _2 = 2
+    public enum ModelType: String, Codable, CaseIterable {
+        case user = "User"
+        case tenant = "Tenant"
+        case contact = "Contact"
     }
     public var id: String?
     public var timestamp: Date?

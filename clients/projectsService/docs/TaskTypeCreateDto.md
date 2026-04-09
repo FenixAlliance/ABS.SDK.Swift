@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **UUID** |  | [optional] [readonly] 
-**timestamp** | **Date** |  | [optional] [readonly] 
+**id** | **UUID** |  | [optional] 
+**timestamp** | **Date** |  | [optional] 
 **title** | **String** |  | [optional] 
 **taskCategoryID** | **String** |  | [optional] 
 **displayInTimeTracker** | **Bool** |  | [optional] 

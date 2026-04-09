@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **fullName** | **String** |  | [optional] [readonly] 
 **qualifiedName** | **String** |  | [optional] 
 **publicName** | **String** |  | [optional] 
+**handler** | **String** |  | [optional] 
 **lastName** | **String** |  | [optional] 
 **firstName** | **String** |  | [optional] 
 **coverUrl** | **String** |  | [optional] 
@@ -25,7 +26,7 @@ Name | Type | Description | Notes
 **birthday** | **Date** |  | [optional] 
 **idProvider** | **String** |  | [optional] 
 **languageId** | **String** |  | [optional] 
-**gender** | **Int** |  | [optional] 
+**gender** | **String** |  | [optional] 
 **cityId** | **String** |  | [optional] 
 **stateId** | **String** |  | [optional] 
 **email** | **String** |  | [optional] 
@@ -44,11 +45,11 @@ Name | Type | Description | Notes
 **identityProvider** | **String** |  | [optional] 
 **phoneNumberConfirmed** | **Bool** |  | [optional] 
 **emailConfirmed** | **Bool** |  | [optional] 
-**availability** | **Int** |  | [optional] 
+**availability** | **String** |  | [optional] 
 **lockoutEnabled** | **Bool** |  | [optional] 
 **lockoutEnd** | **Date** |  | [optional] 
 **enrollmentsCount** | **Int** |  | [optional] 
-**siteTheme** | **Int** |  | [optional] 
+**siteTheme** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -1,0 +1,22 @@
+# ItemAttachmentCreateDto
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**id** | **UUID** |  | [optional] 
+**timestamp** | **Date** |  | [optional] 
+**notes** | **String** |  | [optional] 
+**title** | **String** |  | [optional] 
+**author** | **String** |  | [optional] 
+**isFolder** | **Bool** |  | [optional] 
+**fileName** | **String** |  | [optional] 
+**abstract** | **String** |  | [optional] 
+**keyWords** | **String** |  | [optional] 
+**validResponse** | **Bool** |  | [optional] 
+**parentFileUploadId** | **String** |  | [optional] 
+**filePath** | **String** |  | [optional] 
+**itemID** | **String** |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

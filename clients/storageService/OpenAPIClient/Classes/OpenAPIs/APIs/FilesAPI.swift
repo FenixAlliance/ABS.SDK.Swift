@@ -47,9 +47,6 @@ open class FilesAPI {
 
     /**
      - POST /api/v2/StorageService/Files
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -105,7 +102,7 @@ open class FilesAPI {
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -131,9 +128,6 @@ open class FilesAPI {
 
     /**
      - DELETE /api/v2/StorageService/Files/{fileId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter fileId: (path)  
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
@@ -162,7 +156,7 @@ open class FilesAPI {
 
         let localVariableRequestBuilder: RequestBuilder<FileUploadDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -188,9 +182,6 @@ open class FilesAPI {
 
     /**
      - GET /api/v2/StorageService/Files/{fileId}/Raw
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter fileId: (path)  
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
@@ -219,7 +210,7 @@ open class FilesAPI {
 
         let localVariableRequestBuilder: RequestBuilder<URL>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -245,9 +236,6 @@ open class FilesAPI {
 
     /**
      - GET /api/v2/StorageService/Files/{fileId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter fileId: (path)  
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
@@ -276,7 +264,7 @@ open class FilesAPI {
 
         let localVariableRequestBuilder: RequestBuilder<FileUploadDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -301,9 +289,6 @@ open class FilesAPI {
 
     /**
      - GET /api/v2/StorageService/Files
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -328,7 +313,7 @@ open class FilesAPI {
 
         let localVariableRequestBuilder: RequestBuilder<FileUploadDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -366,9 +351,6 @@ open class FilesAPI {
 
     /**
      - PUT /api/v2/StorageService/Files/{fileId}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter fileId: (path)  
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
@@ -426,6 +408,6 @@ open class FilesAPI {
 
         let localVariableRequestBuilder: RequestBuilder<FileUploadDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 }

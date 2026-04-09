@@ -35,9 +35,6 @@ open class BlobsAPI {
 
     /**
      - GET /api/v2/StorageService/Blobs/Single
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter tenantId: (query)  (optional)
      - parameter filePath: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
@@ -64,7 +61,7 @@ open class BlobsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<BlobEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -95,9 +92,6 @@ open class BlobsAPI {
 
     /**
      - GET /api/v2/StorageService/Blobs
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
      - parameter tenantId: (query)  (optional)
      - parameter folderPath: (query)  (optional)
      - parameter browseFilter: (query)  (optional)
@@ -134,6 +128,6 @@ open class BlobsAPI {
 
         let localVariableRequestBuilder: RequestBuilder<BlobEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 }

@@ -4,12 +4,12 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createEmployeeAsync**](EmployeesAPI.md#createemployeeasync) | **POST** /api/v2/HrmsService/Employees | 
-[**deleteEmployeeAsync**](EmployeesAPI.md#deleteemployeeasync) | **DELETE** /api/v2/HrmsService/Employees/{employeeId} | 
-[**getEmployeeByIdAsync**](EmployeesAPI.md#getemployeebyidasync) | **GET** /api/v2/HrmsService/Employees/{employeeId} | 
-[**getEmployeesAsync**](EmployeesAPI.md#getemployeesasync) | **GET** /api/v2/HrmsService/Employees | 
-[**getEmployeesCountAsync**](EmployeesAPI.md#getemployeescountasync) | **GET** /api/v2/HrmsService/Employees/Count | 
-[**updateEmployeeAsync**](EmployeesAPI.md#updateemployeeasync) | **PUT** /api/v2/HrmsService/Employees/{employeeId} | 
+[**createEmployeeAsync**](EmployeesAPI.md#createemployeeasync) | **POST** /api/v2/HrmsService/Employees | Create an employee
+[**deleteEmployeeAsync**](EmployeesAPI.md#deleteemployeeasync) | **DELETE** /api/v2/HrmsService/Employees/{employeeId} | Delete an employee
+[**getEmployeeByIdAsync**](EmployeesAPI.md#getemployeebyidasync) | **GET** /api/v2/HrmsService/Employees/{employeeId} | Get employee by ID
+[**getEmployeesAsync**](EmployeesAPI.md#getemployeesasync) | **GET** /api/v2/HrmsService/Employees | Get employees
+[**getEmployeesCountAsync**](EmployeesAPI.md#getemployeescountasync) | **GET** /api/v2/HrmsService/Employees/Count | Count employees
+[**updateEmployeeAsync**](EmployeesAPI.md#updateemployeeasync) | **PUT** /api/v2/HrmsService/Employees/{employeeId} | Update an employee
 
 
 # **createEmployeeAsync**
@@ -17,7 +17,9 @@ Method | HTTP request | Description
     open class func createEmployeeAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, employeeProfileCreateDto: EmployeeProfileCreateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
+Create an employee
 
+Creates a new employee for the specified tenant.
 
 ### Example
 ```swift
@@ -29,6 +31,7 @@ let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 let employeeProfileCreateDto = EmployeeProfileCreateDto(id: 123, timestamp: Date()) // EmployeeProfileCreateDto |  (optional)
 
+// Create an employee
 EmployeesAPI.createEmployeeAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, employeeProfileCreateDto: employeeProfileCreateDto) { (response, error) in
     guard error == nil else {
         print(error)
@@ -56,7 +59,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
@@ -70,7 +73,9 @@ Name | Type | Description  | Notes
     open class func deleteEmployeeAsync(tenantId: UUID, employeeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
+Delete an employee
 
+Deletes an employee for the specified tenant.
 
 ### Example
 ```swift
@@ -82,6 +87,7 @@ let employeeId = 987 // UUID |
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
+// Delete an employee
 EmployeesAPI.deleteEmployeeAsync(tenantId: tenantId, employeeId: employeeId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
@@ -109,7 +115,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
@@ -123,7 +129,9 @@ Name | Type | Description  | Notes
     open class func getEmployeeByIdAsync(tenantId: UUID, employeeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmployeeProfileDtoEnvelope?, _ error: Error?) -> Void)
 ```
 
+Get employee by ID
 
+Retrieves a specific employee by its identifier.
 
 ### Example
 ```swift
@@ -135,6 +143,7 @@ let employeeId = 987 // UUID |
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
+// Get employee by ID
 EmployeesAPI.getEmployeeByIdAsync(tenantId: tenantId, employeeId: employeeId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
@@ -162,7 +171,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
@@ -176,7 +185,9 @@ Name | Type | Description  | Notes
     open class func getEmployeesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmployeeProfileDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
+Get employees
 
+Retrieves employees for the specified tenant.
 
 ### Example
 ```swift
@@ -187,6 +198,7 @@ let tenantId = 987 // UUID |
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
+// Get employees
 EmployeesAPI.getEmployeesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
@@ -213,7 +225,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
@@ -227,7 +239,9 @@ Name | Type | Description  | Notes
     open class func getEmployeesCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
+Count employees
 
+Counts employees for the specified tenant.
 
 ### Example
 ```swift
@@ -238,6 +252,7 @@ let tenantId = 987 // UUID |
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
+// Count employees
 EmployeesAPI.getEmployeesCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
@@ -264,7 +279,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 
@@ -278,7 +293,9 @@ Name | Type | Description  | Notes
     open class func updateEmployeeAsync(tenantId: UUID, employeeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, body: AnyCodable? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
+Update an employee
 
+Updates an existing employee for the specified tenant.
 
 ### Example
 ```swift
@@ -291,6 +308,7 @@ let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 let body = "TODO" // AnyCodable |  (optional)
 
+// Update an employee
 EmployeesAPI.updateEmployeeAsync(tenantId: tenantId, employeeId: employeeId, apiVersion: apiVersion, xApiVersion: xApiVersion, body: body) { (response, error) in
     guard error == nil else {
         print(error)
@@ -319,7 +337,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 

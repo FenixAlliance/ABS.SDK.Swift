@@ -15,14 +15,14 @@ public struct NewsletterUpdateDto: Codable, JSONEncodable, Hashable {
     public var code: String?
     public var title: String?
     public var tenantId: String?
-    public var enrolmentId: String?
+    public var enrollmentId: String?
     public var name: String?
 
-    public init(code: String? = nil, title: String? = nil, tenantId: String? = nil, enrolmentId: String? = nil, name: String? = nil) {
+    public init(code: String? = nil, title: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil, name: String? = nil) {
         self.code = code
         self.title = title
         self.tenantId = tenantId
-        self.enrolmentId = enrolmentId
+        self.enrollmentId = enrollmentId
         self.name = name
     }
 
@@ -30,7 +30,7 @@ public struct NewsletterUpdateDto: Codable, JSONEncodable, Hashable {
         case code
         case title
         case tenantId
-        case enrolmentId
+        case enrollmentId
         case name
     }
 
@@ -41,7 +41,7 @@ public struct NewsletterUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(code, forKey: .code)
         try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(enrolmentId, forKey: .enrolmentId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(name, forKey: .name)
     }
 }

@@ -13,18 +13,18 @@ import AnyCodable
 open class RadzenEditorAPI {
 
     /**
-
-     - parameter id: (path)  
+     Upload an image file
+     
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter files: (form)  (optional)
+     - parameter file: (form)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2StorageServiceRadzenEditorUploadsIdPost(id: Int, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, files: [URL]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2StorageServiceRadzenEditorUploadsIdPostWithRequestBuilder(id: id, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, files: files).execute(apiResponseQueue) { result in
+    open class func image(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, file: URL? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return imageWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, file: file).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 completion((), nil)
@@ -35,10 +35,130 @@ open class RadzenEditorAPI {
     }
 
     /**
+     Upload an image file
+     - POST /api/v2/StorageService/RadzenEditor/Uploads/Image
+     - Uploads an image file and returns its URL for editor embedding.
+     - parameter tenantId: (query)  (optional)
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter file: (form)  (optional)
+     - returns: RequestBuilder<Void> 
+     */
+    open class func imageWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, file: URL? = nil) -> RequestBuilder<Void> {
+        let localVariablePath = "/api/v2/StorageService/RadzenEditor/Uploads/Image"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableFormParams: [String: Any?] = [
+            "file": file?.encodeToJSON(),
+        ]
+
+        let localVariableNonNullParameters = APIHelper.rejectNil(localVariableFormParams)
+        let localVariableParameters = APIHelper.convertBoolToString(localVariableNonNullParameters)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "multipart/form-data",
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Upload multiple files
+     
+     - parameter tenantId: (query)  (optional)
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter files: (form)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func multiple(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, files: [URL]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return multipleWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, files: files).execute(apiResponseQueue) { result in
+            switch result {
+            case .success:
+                completion((), nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Upload multiple files
+     - POST /api/v2/StorageService/RadzenEditor/Uploads/Multiple
+     - Uploads multiple files to tenant or user storage.
+     - parameter tenantId: (query)  (optional)
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter files: (form)  (optional)
+     - returns: RequestBuilder<Void> 
+     */
+    open class func multipleWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, files: [URL]? = nil) -> RequestBuilder<Void> {
+        let localVariablePath = "/api/v2/StorageService/RadzenEditor/Uploads/Multiple"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableFormParams: [String: Any?] = [
+            "files": files?.encodeToJSON(),
+        ]
+
+        let localVariableNonNullParameters = APIHelper.rejectNil(localVariableFormParams)
+        let localVariableParameters = APIHelper.convertBoolToString(localVariableNonNullParameters)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "multipart/form-data",
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Upload files by ID
+     
+     - parameter id: (path)  
+     - parameter tenantId: (query)  (optional)
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter files: (form)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func post(id: Int, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, files: [URL]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return postWithRequestBuilder(id: id, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, files: files).execute(apiResponseQueue) { result in
+            switch result {
+            case .success:
+                completion((), nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Upload files by ID
      - POST /api/v2/StorageService/RadzenEditor/Uploads/{id}
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Uploads files associated with a specific resource ID.
      - parameter id: (path)  
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
@@ -46,7 +166,7 @@ open class RadzenEditorAPI {
      - parameter files: (form)  (optional)
      - returns: RequestBuilder<Void> 
      */
-    open class func apiV2StorageServiceRadzenEditorUploadsIdPostWithRequestBuilder(id: Int, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, files: [URL]? = nil) -> RequestBuilder<Void> {
+    open class func postWithRequestBuilder(id: Int, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, files: [URL]? = nil) -> RequestBuilder<Void> {
         var localVariablePath = "/api/v2/StorageService/RadzenEditor/Uploads/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -74,11 +194,12 @@ open class RadzenEditorAPI {
 
         let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
 
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Upload a single file
+     
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -87,8 +208,8 @@ open class RadzenEditorAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2StorageServiceRadzenEditorUploadsImagePost(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, file: URL? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2StorageServiceRadzenEditorUploadsImagePostWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, file: file).execute(apiResponseQueue) { result in
+    open class func single(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, file: URL? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return singleWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, file: file).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 completion((), nil)
@@ -99,137 +220,16 @@ open class RadzenEditorAPI {
     }
 
     /**
-     - POST /api/v2/StorageService/RadzenEditor/Uploads/Image
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter tenantId: (query)  (optional)
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - parameter file: (form)  (optional)
-     - returns: RequestBuilder<Void> 
-     */
-    open class func apiV2StorageServiceRadzenEditorUploadsImagePostWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, file: URL? = nil) -> RequestBuilder<Void> {
-        let localVariablePath = "/api/v2/StorageService/RadzenEditor/Uploads/Image"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableFormParams: [String: Any?] = [
-            "file": file?.encodeToJSON(),
-        ]
-
-        let localVariableNonNullParameters = APIHelper.rejectNil(localVariableFormParams)
-        let localVariableParameters = APIHelper.convertBoolToString(localVariableNonNullParameters)
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
-            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            "Content-Type": "multipart/form-data",
-            "x-api-version": xApiVersion?.encodeToJSON(),
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
-
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
-     - parameter tenantId: (query)  (optional)
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - parameter files: (form)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2StorageServiceRadzenEditorUploadsMultiplePost(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, files: [URL]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2StorageServiceRadzenEditorUploadsMultiplePostWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, files: files).execute(apiResponseQueue) { result in
-            switch result {
-            case .success:
-                completion((), nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - POST /api/v2/StorageService/RadzenEditor/Uploads/Multiple
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
-     - parameter tenantId: (query)  (optional)
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - parameter files: (form)  (optional)
-     - returns: RequestBuilder<Void> 
-     */
-    open class func apiV2StorageServiceRadzenEditorUploadsMultiplePostWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, files: [URL]? = nil) -> RequestBuilder<Void> {
-        let localVariablePath = "/api/v2/StorageService/RadzenEditor/Uploads/Multiple"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableFormParams: [String: Any?] = [
-            "files": files?.encodeToJSON(),
-        ]
-
-        let localVariableNonNullParameters = APIHelper.rejectNil(localVariableFormParams)
-        let localVariableParameters = APIHelper.convertBoolToString(localVariableNonNullParameters)
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
-            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            "Content-Type": "multipart/form-data",
-            "x-api-version": xApiVersion?.encodeToJSON(),
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
-
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
-     - parameter tenantId: (query)  (optional)
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - parameter file: (form)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func apiV2StorageServiceRadzenEditorUploadsSinglePost(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, file: URL? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2StorageServiceRadzenEditorUploadsSinglePostWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, file: file).execute(apiResponseQueue) { result in
-            switch result {
-            case .success:
-                completion((), nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
+     Upload a single file
      - POST /api/v2/StorageService/RadzenEditor/Uploads/Single
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Uploads a single file to tenant or user storage.
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter file: (form)  (optional)
      - returns: RequestBuilder<Void> 
      */
-    open class func apiV2StorageServiceRadzenEditorUploadsSinglePostWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, file: URL? = nil) -> RequestBuilder<Void> {
+    open class func singleWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, file: URL? = nil) -> RequestBuilder<Void> {
         let localVariablePath = "/api/v2/StorageService/RadzenEditor/Uploads/Single"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableFormParams: [String: Any?] = [
@@ -254,11 +254,12 @@ open class RadzenEditorAPI {
 
         let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
 
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-
+     Upload a specific file
+     
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -267,8 +268,8 @@ open class RadzenEditorAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2StorageServiceRadzenEditorUploadsSpecificPost(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, file: URL? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2StorageServiceRadzenEditorUploadsSpecificPostWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, file: file).execute(apiResponseQueue) { result in
+    open class func specific(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, file: URL? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return specificWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, file: file).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 completion((), nil)
@@ -279,17 +280,16 @@ open class RadzenEditorAPI {
     }
 
     /**
+     Upload a specific file
      - POST /api/v2/StorageService/RadzenEditor/Uploads/Specific
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer
+     - Uploads a specific file to tenant or user storage.
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter file: (form)  (optional)
      - returns: RequestBuilder<Void> 
      */
-    open class func apiV2StorageServiceRadzenEditorUploadsSpecificPostWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, file: URL? = nil) -> RequestBuilder<Void> {
+    open class func specificWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, file: URL? = nil) -> RequestBuilder<Void> {
         let localVariablePath = "/api/v2/StorageService/RadzenEditor/Uploads/Specific"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableFormParams: [String: Any?] = [
@@ -314,6 +314,6 @@ open class RadzenEditorAPI {
 
         let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
 
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 }
