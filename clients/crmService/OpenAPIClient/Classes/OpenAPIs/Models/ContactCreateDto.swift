@@ -16,7 +16,6 @@ public struct ContactCreateDto: Codable, JSONEncodable, Hashable {
         case individual = "Individual"
         case organization = "Organization"
     }
-    static let tenantIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     static let firstNameRule = StringRule(minLength: 1, maxLength: 50, pattern: nil)
     static let lastNameRule = StringRule(minLength: nil, maxLength: 50, pattern: nil)
     static let emailRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
@@ -28,7 +27,6 @@ public struct ContactCreateDto: Codable, JSONEncodable, Hashable {
     static let dunsRule = StringRule(minLength: 0, maxLength: 9, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
-    public var tenantId: String
     public var type: ModelType
     public var firstName: String
     public var lastName: String?
@@ -70,10 +68,9 @@ public struct ContactCreateDto: Codable, JSONEncodable, Hashable {
     public var parentContactId: String?
     public var faxNumber: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, tenantId: String, type: ModelType, firstName: String, lastName: String? = nil, email: String, taxId: String? = nil, primaryContactId: String? = nil, qualifiedName: String? = nil, about: String? = nil, countryId: String? = nil, stateId: String? = nil, cityId: String? = nil, mobilePhone: String? = nil, businessPhone: String? = nil, postalCode: String? = nil, duns: String? = nil, jobTitle: String? = nil, webUrl: String? = nil, currencyId: String? = nil, languageId: String? = nil, timezoneId: String? = nil, birthday: Date? = nil, streetLine1: String? = nil, streetLine2: String? = nil, gitHubUrl: String? = nil, twitchUrl: String? = nil, redditUrl: String? = nil, tikTokUrl: String? = nil, websiteUrl: String? = nil, twitterUrl: String? = nil, facebookUrl: String? = nil, youTubeUrl: String? = nil, linkedInUrl: String? = nil, instagramUrl: String? = nil, githubUsername: String? = nil, instagramUsername: String? = nil, tikTokUsername: String? = nil, stackExchangeUrl: String? = nil, stackOverflowUrl: String? = nil, parentContactId: String? = nil, faxNumber: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, type: ModelType, firstName: String, lastName: String? = nil, email: String, taxId: String? = nil, primaryContactId: String? = nil, qualifiedName: String? = nil, about: String? = nil, countryId: String? = nil, stateId: String? = nil, cityId: String? = nil, mobilePhone: String? = nil, businessPhone: String? = nil, postalCode: String? = nil, duns: String? = nil, jobTitle: String? = nil, webUrl: String? = nil, currencyId: String? = nil, languageId: String? = nil, timezoneId: String? = nil, birthday: Date? = nil, streetLine1: String? = nil, streetLine2: String? = nil, gitHubUrl: String? = nil, twitchUrl: String? = nil, redditUrl: String? = nil, tikTokUrl: String? = nil, websiteUrl: String? = nil, twitterUrl: String? = nil, facebookUrl: String? = nil, youTubeUrl: String? = nil, linkedInUrl: String? = nil, instagramUrl: String? = nil, githubUsername: String? = nil, instagramUsername: String? = nil, tikTokUsername: String? = nil, stackExchangeUrl: String? = nil, stackOverflowUrl: String? = nil, parentContactId: String? = nil, faxNumber: String? = nil) {
         self.id = id
         self.timestamp = timestamp
-        self.tenantId = tenantId
         self.type = type
         self.firstName = firstName
         self.lastName = lastName
@@ -119,7 +116,6 @@ public struct ContactCreateDto: Codable, JSONEncodable, Hashable {
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
-        case tenantId
         case type
         case firstName
         case lastName
@@ -168,7 +164,6 @@ public struct ContactCreateDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
-        try container.encode(tenantId, forKey: .tenantId)
         try container.encode(type, forKey: .type)
         try container.encode(firstName, forKey: .firstName)
         try container.encodeIfPresent(lastName, forKey: .lastName)

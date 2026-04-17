@@ -29,7 +29,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseSectionCreateDto = CourseSectionCreateDto(id: 123, timestamp: Date(), name: "name_example", icon: "icon_example", description: "description_example", courseID: "courseID_example", businessID: "businessID_example", releaseDateTime: Date(), hideFromStudents: false) // CourseSectionCreateDto |  (optional)
+let courseSectionCreateDto = CourseSectionCreateDto(id: 123, timestamp: Date(), name: "name_example", icon: "icon_example", description: "description_example", courseID: "courseID_example", releaseDateTime: Date(), hideFromStudents: false) // CourseSectionCreateDto |  (optional)
 
 // Create a new course section
 CourseSectionsAPI.createCourseSectionAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseSectionCreateDto: courseSectionCreateDto) { (response, error) in

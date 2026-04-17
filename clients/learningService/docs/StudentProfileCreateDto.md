@@ -31,9 +31,7 @@ Name | Type | Description | Notes
 **data8Label** | **String** |  | [optional] 
 **data9** | **String** |  | [optional] 
 **data9Label** | **String** |  | [optional] 
-**businessID** | **String** |  | [optional] 
 **contactID** | **String** |  | [optional] 
-**businessProfileRecordID** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

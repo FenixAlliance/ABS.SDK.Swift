@@ -28,7 +28,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let pricingRuleCreateDto = PricingRuleCreateDto(id: 123, timestamp: Date(), code: "code_example", title: "title_example", description: "description_example", isFree: false, reduce: false, isEnabled: false, isDefault: false, allowInternational: false, hours: 123, days: 123, weeks: 123, months: 123, years: 123, value: 123, percentage: 123, currencyID: "currencyID_example", countryID: "countryID_example", countryStateID: "countryStateID_example", customState: "customState_example", customCity: "customCity_example", cityID: "cityID_example", businessID: "businessID_example", businessProfileRecordID: "businessProfileRecordID_example") // PricingRuleCreateDto |  (optional)
+let pricingRuleCreateDto = PricingRuleCreateDto(id: 123, timestamp: Date(), code: "code_example", title: "title_example", description: "description_example", isFree: false, reduce: false, isEnabled: false, isDefault: false, allowInternational: false, hours: 123, days: 123, weeks: 123, months: 123, years: 123, value: 123, percentage: 123, currencyID: "currencyID_example", countryID: "countryID_example", countryStateID: "countryStateID_example", customState: "customState_example", customCity: "customCity_example", cityID: "cityID_example") // PricingRuleCreateDto |  (optional)
 
 // Create a new pricing rule
 PricingRulesAPI.createPricingRule(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, pricingRuleCreateDto: pricingRuleCreateDto) { (response, error) in

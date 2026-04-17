@@ -29,7 +29,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let tenantTeamProjectEnrollmentCreateDto = TenantTeamProjectEnrollmentCreateDto(id: 123, timestamp: Date(), businessID: "businessID_example", businessProfileRecordID: "businessProfileRecordID_example", businessTeamID: "businessTeamID_example", projectID: "projectID_example") // TenantTeamProjectEnrollmentCreateDto |  (optional)
+let tenantTeamProjectEnrollmentCreateDto = TenantTeamProjectEnrollmentCreateDto(id: 123, timestamp: Date(), businessTeamID: "businessTeamID_example", projectID: "projectID_example") // TenantTeamProjectEnrollmentCreateDto |  (optional)
 
 // Create a new tenant team project enrollment
 TeamProjectEnrollmentsAPI.createTenantTeamProjectEnrollment(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, tenantTeamProjectEnrollmentCreateDto: tenantTeamProjectEnrollmentCreateDto) { (response, error) in
@@ -306,7 +306,7 @@ let tenantId = 987 // UUID |
 let tenantTeamProjectEnrollmentId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let tenantTeamProjectEnrollmentUpdateDto = TenantTeamProjectEnrollmentUpdateDto(businessID: "businessID_example", businessProfileRecordID: "businessProfileRecordID_example", businessTeamID: "businessTeamID_example", projectID: "projectID_example") // TenantTeamProjectEnrollmentUpdateDto |  (optional)
+let tenantTeamProjectEnrollmentUpdateDto = TenantTeamProjectEnrollmentUpdateDto(businessTeamID: "businessTeamID_example", projectID: "projectID_example") // TenantTeamProjectEnrollmentUpdateDto |  (optional)
 
 // Update a tenant team project enrollment
 TeamProjectEnrollmentsAPI.updateTenantTeamProjectEnrollment(tenantId: tenantId, tenantTeamProjectEnrollmentId: tenantTeamProjectEnrollmentId, apiVersion: apiVersion, xApiVersion: xApiVersion, tenantTeamProjectEnrollmentUpdateDto: tenantTeamProjectEnrollmentUpdateDto) { (response, error) in

@@ -14,17 +14,13 @@ public struct TenantTerritoryCreateDto: Codable, JSONEncodable, Hashable {
 
     public var id: UUID?
     public var timestamp: Date?
-    public var businessID: String?
-    public var businessProfileRecordID: String?
     public var name: String?
     public var description: String?
     public var parentTerritoryID: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, businessID: String? = nil, businessProfileRecordID: String? = nil, name: String? = nil, description: String? = nil, parentTerritoryID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil, description: String? = nil, parentTerritoryID: String? = nil) {
         self.id = id
         self.timestamp = timestamp
-        self.businessID = businessID
-        self.businessProfileRecordID = businessProfileRecordID
         self.name = name
         self.description = description
         self.parentTerritoryID = parentTerritoryID
@@ -33,8 +29,6 @@ public struct TenantTerritoryCreateDto: Codable, JSONEncodable, Hashable {
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
-        case businessID
-        case businessProfileRecordID
         case name
         case description
         case parentTerritoryID
@@ -46,8 +40,6 @@ public struct TenantTerritoryCreateDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
-        try container.encodeIfPresent(businessID, forKey: .businessID)
-        try container.encodeIfPresent(businessProfileRecordID, forKey: .businessProfileRecordID)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(parentTerritoryID, forKey: .parentTerritoryID)

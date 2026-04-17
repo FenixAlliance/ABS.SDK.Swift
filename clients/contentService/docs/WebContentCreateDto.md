@@ -5,8 +5,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **UUID** |  | [optional] 
 **timestamp** | **Date** |  | [optional] 
-**tenantId** | **String** |  | [optional] 
-**enrollmentId** | **String** |  | [optional] 
 **title** | **String** |  | [optional] 
 **code** | **String** |  | [optional] 
 **published** | **Bool** |  | [optional] 

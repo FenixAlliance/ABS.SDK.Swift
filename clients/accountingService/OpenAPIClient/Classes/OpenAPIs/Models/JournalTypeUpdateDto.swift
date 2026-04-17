@@ -13,19 +13,13 @@ import AnyCodable
 public struct JournalTypeUpdateDto: Codable, JSONEncodable, Hashable {
 
     public var name: String?
-    public var tenantId: String?
-    public var enrollmentId: String?
 
-    public init(name: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
+    public init(name: String? = nil) {
         self.name = name
-        self.tenantId = tenantId
-        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case name
-        case tenantId
-        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -33,8 +27,6 @@ public struct JournalTypeUpdateDto: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(name, forKey: .name)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

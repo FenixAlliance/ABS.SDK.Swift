@@ -15,15 +15,13 @@ public struct DealUnitFlowStageUpdateDto: Codable, JSONEncodable, Hashable {
     public var order: Int?
     public var name: String?
     public var description: String?
-    public var enrollmentId: String?
     public var dealUnitFlowId: String?
     public var parentBusinessProcessStageId: String?
 
-    public init(order: Int? = nil, name: String? = nil, description: String? = nil, enrollmentId: String? = nil, dealUnitFlowId: String? = nil, parentBusinessProcessStageId: String? = nil) {
+    public init(order: Int? = nil, name: String? = nil, description: String? = nil, dealUnitFlowId: String? = nil, parentBusinessProcessStageId: String? = nil) {
         self.order = order
         self.name = name
         self.description = description
-        self.enrollmentId = enrollmentId
         self.dealUnitFlowId = dealUnitFlowId
         self.parentBusinessProcessStageId = parentBusinessProcessStageId
     }
@@ -32,7 +30,6 @@ public struct DealUnitFlowStageUpdateDto: Codable, JSONEncodable, Hashable {
         case order
         case name
         case description
-        case enrollmentId
         case dealUnitFlowId
         case parentBusinessProcessStageId
     }
@@ -44,7 +41,6 @@ public struct DealUnitFlowStageUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(order, forKey: .order)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(dealUnitFlowId, forKey: .dealUnitFlowId)
         try container.encodeIfPresent(parentBusinessProcessStageId, forKey: .parentBusinessProcessStageId)
     }

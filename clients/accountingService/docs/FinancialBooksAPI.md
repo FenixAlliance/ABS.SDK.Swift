@@ -27,7 +27,7 @@ Creates a new financial book.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let financialBookCreateDto = FinancialBookCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", tenantID: "tenantID_example") // FinancialBookCreateDto | 
+let financialBookCreateDto = FinancialBookCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example") // FinancialBookCreateDto | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
@@ -304,7 +304,7 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let financialBookId = 987 // UUID | 
-let financialBookUpdateDto = FinancialBookUpdateDto(name: "name_example", description: "description_example", tenantId: "tenantId_example") // FinancialBookUpdateDto | 
+let financialBookUpdateDto = FinancialBookUpdateDto(name: "name_example", description: "description_example") // FinancialBookUpdateDto | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 

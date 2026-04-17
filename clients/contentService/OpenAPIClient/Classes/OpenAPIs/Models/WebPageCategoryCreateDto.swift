@@ -26,9 +26,8 @@ public struct WebPageCategoryCreateDto: Codable, JSONEncodable, Hashable {
     public var imageURL: String?
     public var image: String?
     public var webPortalID: String?
-    public var businessProfileRecordID: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, slug: String? = nil, title: String? = nil, description: String? = nil, seoTitle: String? = nil, metaDescription: String? = nil, cornerstoneContent: Bool? = nil, allowSerachEngines: Bool? = nil, seoKeyPhrases: String? = nil, canonicalUrl: String? = nil, imageURL: String? = nil, image: String? = nil, webPortalID: String? = nil, businessProfileRecordID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, slug: String? = nil, title: String? = nil, description: String? = nil, seoTitle: String? = nil, metaDescription: String? = nil, cornerstoneContent: Bool? = nil, allowSerachEngines: Bool? = nil, seoKeyPhrases: String? = nil, canonicalUrl: String? = nil, imageURL: String? = nil, image: String? = nil, webPortalID: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.slug = slug
@@ -43,7 +42,6 @@ public struct WebPageCategoryCreateDto: Codable, JSONEncodable, Hashable {
         self.imageURL = imageURL
         self.image = image
         self.webPortalID = webPortalID
-        self.businessProfileRecordID = businessProfileRecordID
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -61,7 +59,6 @@ public struct WebPageCategoryCreateDto: Codable, JSONEncodable, Hashable {
         case imageURL
         case image
         case webPortalID
-        case businessProfileRecordID
     }
 
     // Encodable protocol methods
@@ -82,7 +79,6 @@ public struct WebPageCategoryCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(imageURL, forKey: .imageURL)
         try container.encodeIfPresent(image, forKey: .image)
         try container.encodeIfPresent(webPortalID, forKey: .webPortalID)
-        try container.encodeIfPresent(businessProfileRecordID, forKey: .businessProfileRecordID)
     }
 }
 

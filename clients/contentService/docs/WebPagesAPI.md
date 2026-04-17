@@ -91,7 +91,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let webPageCreateDto = WebPageCreateDto(id: 123, timestamp: Date(), tenantId: "tenantId_example", enrollmentId: "enrollmentId_example", title: "title_example", code: "code_example", published: false, description: "description_example", htmlContent: "htmlContent_example", featuredImageUrl: "featuredImageUrl_example", codeType: "codeType_example", webTemplateID: "webTemplateID_example") // WebPageCreateDto |  (optional)
+let webPageCreateDto = WebPageCreateDto(id: 123, timestamp: Date(), title: "title_example", code: "code_example", published: false, description: "description_example", htmlContent: "htmlContent_example", featuredImageUrl: "featuredImageUrl_example", codeType: "codeType_example", webTemplateID: "webTemplateID_example") // WebPageCreateDto |  (optional)
 
 // Create a web page
 WebPagesAPI.createWebPageAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, webPageCreateDto: webPageCreateDto) { (response, error) in
@@ -148,7 +148,7 @@ let tenantId = 987 // UUID |
 let webPageId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let webPageCategoryCreateDto = WebPageCategoryCreateDto(id: 123, timestamp: Date(), slug: "slug_example", title: "title_example", description: "description_example", seoTitle: "seoTitle_example", metaDescription: "metaDescription_example", cornerstoneContent: false, allowSerachEngines: false, seoKeyPhrases: "seoKeyPhrases_example", canonicalUrl: "canonicalUrl_example", imageURL: "imageURL_example", image: "image_example", webPortalID: "webPortalID_example", businessProfileRecordID: "businessProfileRecordID_example") // WebPageCategoryCreateDto |  (optional)
+let webPageCategoryCreateDto = WebPageCategoryCreateDto(id: 123, timestamp: Date(), slug: "slug_example", title: "title_example", description: "description_example", seoTitle: "seoTitle_example", metaDescription: "metaDescription_example", cornerstoneContent: false, allowSerachEngines: false, seoKeyPhrases: "seoKeyPhrases_example", canonicalUrl: "canonicalUrl_example", imageURL: "imageURL_example", image: "image_example", webPortalID: "webPortalID_example") // WebPageCategoryCreateDto |  (optional)
 
 // Create a web page category relation
 WebPagesAPI.createWebPageCategoryRelationAsync(tenantId: tenantId, webPageId: webPageId, apiVersion: apiVersion, xApiVersion: xApiVersion, webPageCategoryCreateDto: webPageCategoryCreateDto) { (response, error) in
@@ -206,7 +206,7 @@ let tenantId = 987 // UUID |
 let webPageId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let webPageTagCreateDto = WebPageTagCreateDto(id: 123, timestamp: Date(), slug: "slug_example", title: "title_example", description: "description_example", seoTitle: "seoTitle_example", metaDescription: "metaDescription_example", cornerstoneContent: false, allowSerachEngines: false, seoKeyPhrases: "seoKeyPhrases_example", canonicalUrl: "canonicalUrl_example", imageURL: "imageURL_example", image: "image_example", webPortalID: "webPortalID_example", businessProfileRecordID: "businessProfileRecordID_example") // WebPageTagCreateDto |  (optional)
+let webPageTagCreateDto = WebPageTagCreateDto(id: 123, timestamp: Date(), slug: "slug_example", title: "title_example", description: "description_example", seoTitle: "seoTitle_example", metaDescription: "metaDescription_example", cornerstoneContent: false, allowSerachEngines: false, seoKeyPhrases: "seoKeyPhrases_example", canonicalUrl: "canonicalUrl_example", imageURL: "imageURL_example", image: "image_example", webPortalID: "webPortalID_example") // WebPageTagCreateDto |  (optional)
 
 // Create a web page tag relation
 WebPagesAPI.createWebPageTagRelationAsync(tenantId: tenantId, webPageId: webPageId, apiVersion: apiVersion, xApiVersion: xApiVersion, webPageTagCreateDto: webPageTagCreateDto) { (response, error) in

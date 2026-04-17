@@ -28,7 +28,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let itemBrandCreateDto = ItemBrandCreateDto(id: 123, timestamp: Date(), code: "code_example", name: "name_example", description: "description_example", websiteURL: "websiteURL_example", featured: false, trending: false, businessID: "businessID_example") // ItemBrandCreateDto |  (optional)
+let itemBrandCreateDto = ItemBrandCreateDto(id: 123, timestamp: Date(), code: "code_example", name: "name_example", description: "description_example", websiteURL: "websiteURL_example", featured: false, trending: false) // ItemBrandCreateDto |  (optional)
 
 // Create a new item brand
 ItemBrandsAPI.createItemBrandAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemBrandCreateDto: itemBrandCreateDto) { (response, error) in

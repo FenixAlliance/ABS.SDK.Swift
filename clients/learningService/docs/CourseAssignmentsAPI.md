@@ -29,7 +29,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseAssignmentCreateDto = CourseAssignmentCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", instructions: "instructions_example", points: 123, courseID: "courseID_example", businessID: "businessID_example", courseUnitID: "courseUnitID_example", courseCohortID: "courseCohortID_example", courseAssignmentTypeID: "courseAssignmentTypeID_example", dueDateTime: Date(), asignToAllCohorts: false, resources: "resources_example") // CourseAssignmentCreateDto |  (optional)
+let courseAssignmentCreateDto = CourseAssignmentCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", instructions: "instructions_example", points: 123, courseID: "courseID_example", courseUnitID: "courseUnitID_example", courseCohortID: "courseCohortID_example", courseAssignmentTypeID: "courseAssignmentTypeID_example", dueDateTime: Date(), asignToAllCohorts: false, resources: "resources_example") // CourseAssignmentCreateDto |  (optional)
 
 // Create a new course assignment
 CourseAssignmentsAPI.createCourseAssignmentAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseAssignmentCreateDto: courseAssignmentCreateDto) { (response, error) in

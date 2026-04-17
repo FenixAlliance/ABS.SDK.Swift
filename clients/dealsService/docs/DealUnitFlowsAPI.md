@@ -33,7 +33,7 @@ Creates a new deal unit flow for the specified tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let dealUnitFlowCreateDto = DealUnitFlowCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", parentBusinessProcessId: "parentBusinessProcessId_example", tenantId: "tenantId_example", tenantEnrollmentId: "tenantEnrollmentId_example") // DealUnitFlowCreateDto |  (optional)
+let dealUnitFlowCreateDto = DealUnitFlowCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", parentBusinessProcessId: "parentBusinessProcessId_example") // DealUnitFlowCreateDto |  (optional)
 
 // Create a deal unit flow
 DealUnitFlowsAPI.createDealUnitFlowAsync(tenantId: tenantId, dealUnitFlowCreateDto: dealUnitFlowCreateDto) { (response, error) in
@@ -86,7 +86,7 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let dealUnitFlowId = 987 // UUID | 
-let dealUnitFlowStageCreateDto = DealUnitFlowStageCreateDto(id: 123, timestamp: Date(), order: 123, name: "name_example", dealUnitFlowId: "dealUnitFlowId_example", tenantId: "tenantId_example", description: "description_example", enrollmentId: "enrollmentId_example", parentBusinessProcessStageId: "parentBusinessProcessStageId_example") // DealUnitFlowStageCreateDto |  (optional)
+let dealUnitFlowStageCreateDto = DealUnitFlowStageCreateDto(id: 123, timestamp: Date(), order: 123, name: "name_example", dealUnitFlowId: "dealUnitFlowId_example", description: "description_example", parentBusinessProcessStageId: "parentBusinessProcessStageId_example") // DealUnitFlowStageCreateDto |  (optional)
 
 // Create a deal unit flow stage
 DealUnitFlowsAPI.createDealUnitFlowStageAsync(tenantId: tenantId, dealUnitFlowId: dealUnitFlowId, dealUnitFlowStageCreateDto: dealUnitFlowStageCreateDto) { (response, error) in
@@ -556,7 +556,7 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let dealUnitFlowId = 987 // UUID | 
-let dealUnitFlowUpdateDto = DealUnitFlowUpdateDto(name: "name_example", description: "description_example", parentBusinessProcessId: "parentBusinessProcessId_example", tenantId: "tenantId_example", tenantEnrollmentId: "tenantEnrollmentId_example") // DealUnitFlowUpdateDto |  (optional)
+let dealUnitFlowUpdateDto = DealUnitFlowUpdateDto(name: "name_example", description: "description_example", parentBusinessProcessId: "parentBusinessProcessId_example", tenantEnrollmentId: "tenantEnrollmentId_example") // DealUnitFlowUpdateDto |  (optional)
 
 // Update a deal unit flow
 DealUnitFlowsAPI.updateDealUnitFlowAsync(tenantId: tenantId, dealUnitFlowId: dealUnitFlowId, dealUnitFlowUpdateDto: dealUnitFlowUpdateDto) { (response, error) in
@@ -611,7 +611,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let dealUnitFlowId = 987 // UUID | 
 let dealUnitFlowStageId = 987 // UUID | 
-let dealUnitFlowStageUpdateDto = DealUnitFlowStageUpdateDto(order: 123, name: "name_example", description: "description_example", enrollmentId: "enrollmentId_example", dealUnitFlowId: "dealUnitFlowId_example", parentBusinessProcessStageId: "parentBusinessProcessStageId_example") // DealUnitFlowStageUpdateDto |  (optional)
+let dealUnitFlowStageUpdateDto = DealUnitFlowStageUpdateDto(order: 123, name: "name_example", description: "description_example", dealUnitFlowId: "dealUnitFlowId_example", parentBusinessProcessStageId: "parentBusinessProcessStageId_example") // DealUnitFlowStageUpdateDto |  (optional)
 
 // Update a deal unit flow stage
 DealUnitFlowsAPI.updateDealUnitFlowStageAsync(tenantId: tenantId, dealUnitFlowId: dealUnitFlowId, dealUnitFlowStageId: dealUnitFlowStageId, dealUnitFlowStageUpdateDto: dealUnitFlowStageUpdateDto) { (response, error) in

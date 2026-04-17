@@ -17,10 +17,8 @@ public struct TaxRateCreateDto: Codable, JSONEncodable, Hashable {
     static let unitGroupIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let fiscalAuthorityIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let fiscalYearIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    static let tenantIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let taxClassIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let taxPolicyIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    static let enrollmentIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var name: String?
@@ -37,14 +35,12 @@ public struct TaxRateCreateDto: Codable, JSONEncodable, Hashable {
     public var cumulativeTransactionThreshold: Double?
     public var fiscalAuthorityId: String?
     public var fiscalYearId: String?
-    public var tenantId: String?
     public var countryId: String?
     public var taxClassId: String?
     public var currencyId: String?
     public var taxPolicyId: String?
-    public var enrollmentId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil, rate: Double? = nil, value: Double? = nil, um: String? = nil, unitId: String? = nil, unitGroupId: String? = nil, priority: Int? = nil, compound: Bool? = nil, shipping: Bool? = nil, withholding: Bool? = nil, singleTransactionThreshold: Double? = nil, cumulativeTransactionThreshold: Double? = nil, fiscalAuthorityId: String? = nil, fiscalYearId: String? = nil, tenantId: String? = nil, countryId: String? = nil, taxClassId: String? = nil, currencyId: String? = nil, taxPolicyId: String? = nil, enrollmentId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil, rate: Double? = nil, value: Double? = nil, um: String? = nil, unitId: String? = nil, unitGroupId: String? = nil, priority: Int? = nil, compound: Bool? = nil, shipping: Bool? = nil, withholding: Bool? = nil, singleTransactionThreshold: Double? = nil, cumulativeTransactionThreshold: Double? = nil, fiscalAuthorityId: String? = nil, fiscalYearId: String? = nil, countryId: String? = nil, taxClassId: String? = nil, currencyId: String? = nil, taxPolicyId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
@@ -61,12 +57,10 @@ public struct TaxRateCreateDto: Codable, JSONEncodable, Hashable {
         self.cumulativeTransactionThreshold = cumulativeTransactionThreshold
         self.fiscalAuthorityId = fiscalAuthorityId
         self.fiscalYearId = fiscalYearId
-        self.tenantId = tenantId
         self.countryId = countryId
         self.taxClassId = taxClassId
         self.currencyId = currencyId
         self.taxPolicyId = taxPolicyId
-        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -86,12 +80,10 @@ public struct TaxRateCreateDto: Codable, JSONEncodable, Hashable {
         case cumulativeTransactionThreshold
         case fiscalAuthorityId
         case fiscalYearId
-        case tenantId
         case countryId
         case taxClassId
         case currencyId
         case taxPolicyId
-        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -114,12 +106,10 @@ public struct TaxRateCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(cumulativeTransactionThreshold, forKey: .cumulativeTransactionThreshold)
         try container.encodeIfPresent(fiscalAuthorityId, forKey: .fiscalAuthorityId)
         try container.encodeIfPresent(fiscalYearId, forKey: .fiscalYearId)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encodeIfPresent(countryId, forKey: .countryId)
         try container.encodeIfPresent(taxClassId, forKey: .taxClassId)
         try container.encodeIfPresent(currencyId, forKey: .currencyId)
         try container.encodeIfPresent(taxPolicyId, forKey: .taxPolicyId)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

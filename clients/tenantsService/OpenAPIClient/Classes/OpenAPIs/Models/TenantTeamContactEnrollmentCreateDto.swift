@@ -12,22 +12,16 @@ import AnyCodable
 
 public struct TenantTeamContactEnrollmentCreateDto: Codable, JSONEncodable, Hashable {
 
-    static let businessIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
-    static let businessProfileRecordIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     static let businessTeamIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     static let contactIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
-    public var businessID: String
-    public var businessProfileRecordID: String
     public var businessTeamID: String
     public var contactID: String
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, businessID: String, businessProfileRecordID: String, businessTeamID: String, contactID: String) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, businessTeamID: String, contactID: String) {
         self.id = id
         self.timestamp = timestamp
-        self.businessID = businessID
-        self.businessProfileRecordID = businessProfileRecordID
         self.businessTeamID = businessTeamID
         self.contactID = contactID
     }
@@ -35,8 +29,6 @@ public struct TenantTeamContactEnrollmentCreateDto: Codable, JSONEncodable, Hash
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
-        case businessID
-        case businessProfileRecordID
         case businessTeamID
         case contactID
     }
@@ -47,8 +39,6 @@ public struct TenantTeamContactEnrollmentCreateDto: Codable, JSONEncodable, Hash
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
-        try container.encode(businessID, forKey: .businessID)
-        try container.encode(businessProfileRecordID, forKey: .businessProfileRecordID)
         try container.encode(businessTeamID, forKey: .businessTeamID)
         try container.encode(contactID, forKey: .contactID)
     }

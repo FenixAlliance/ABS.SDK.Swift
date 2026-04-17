@@ -16,8 +16,6 @@ public struct BankGuaranteeUpdateDto: Codable, JSONEncodable, Hashable {
         case receiving = "Receiving"
         case providing = "Providing"
     }
-    static let tenantIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    static let enrollmentIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let contactIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let projectIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let orderIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
@@ -32,9 +30,7 @@ public struct BankGuaranteeUpdateDto: Codable, JSONEncodable, Hashable {
     public var startDate: Date?
     public var endDate: Date?
     public var validityInDays: Int?
-    public var tenantId: String?
     public var bankGuaranteeType: BankGuaranteeType?
-    public var enrollmentId: String?
     public var contactId: String?
     public var projectId: String?
     public var orderId: String?
@@ -42,7 +38,7 @@ public struct BankGuaranteeUpdateDto: Codable, JSONEncodable, Hashable {
     public var bankAccountId: String?
     public var currencyId: String?
 
-    public init(margin: Double? = nil, charges: Double? = nil, beneficiaryName: String? = nil, guaranteeNumber: String? = nil, guaranteeConditions: String? = nil, fixedDepositNumber: Double? = nil, startDate: Date? = nil, endDate: Date? = nil, validityInDays: Int? = nil, tenantId: String? = nil, bankGuaranteeType: BankGuaranteeType? = nil, enrollmentId: String? = nil, contactId: String? = nil, projectId: String? = nil, orderId: String? = nil, bankProfileId: String? = nil, bankAccountId: String? = nil, currencyId: String? = nil) {
+    public init(margin: Double? = nil, charges: Double? = nil, beneficiaryName: String? = nil, guaranteeNumber: String? = nil, guaranteeConditions: String? = nil, fixedDepositNumber: Double? = nil, startDate: Date? = nil, endDate: Date? = nil, validityInDays: Int? = nil, bankGuaranteeType: BankGuaranteeType? = nil, contactId: String? = nil, projectId: String? = nil, orderId: String? = nil, bankProfileId: String? = nil, bankAccountId: String? = nil, currencyId: String? = nil) {
         self.margin = margin
         self.charges = charges
         self.beneficiaryName = beneficiaryName
@@ -52,9 +48,7 @@ public struct BankGuaranteeUpdateDto: Codable, JSONEncodable, Hashable {
         self.startDate = startDate
         self.endDate = endDate
         self.validityInDays = validityInDays
-        self.tenantId = tenantId
         self.bankGuaranteeType = bankGuaranteeType
-        self.enrollmentId = enrollmentId
         self.contactId = contactId
         self.projectId = projectId
         self.orderId = orderId
@@ -73,9 +67,7 @@ public struct BankGuaranteeUpdateDto: Codable, JSONEncodable, Hashable {
         case startDate
         case endDate
         case validityInDays
-        case tenantId
         case bankGuaranteeType
-        case enrollmentId
         case contactId
         case projectId
         case orderId
@@ -97,9 +89,7 @@ public struct BankGuaranteeUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(startDate, forKey: .startDate)
         try container.encodeIfPresent(endDate, forKey: .endDate)
         try container.encodeIfPresent(validityInDays, forKey: .validityInDays)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encodeIfPresent(bankGuaranteeType, forKey: .bankGuaranteeType)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(contactId, forKey: .contactId)
         try container.encodeIfPresent(projectId, forKey: .projectId)
         try container.encodeIfPresent(orderId, forKey: .orderId)

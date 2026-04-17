@@ -30,7 +30,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseEnrollmentCreateDto = CourseEnrollmentCreateDto(id: 123, timestamp: Date(), courseID: "courseID_example", courseCohortID: "courseCohortID_example", studentProfileID: "studentProfileID_example", businessProfileRecordID: "businessProfileRecordID_example", courseCompletionCertificateID: "courseCompletionCertificateID_example") // CourseEnrollmentCreateDto |  (optional)
+let courseEnrollmentCreateDto = CourseEnrollmentCreateDto(id: 123, timestamp: Date(), courseID: "courseID_example", courseCohortID: "courseCohortID_example", studentProfileID: "studentProfileID_example", courseCompletionCertificateID: "courseCompletionCertificateID_example") // CourseEnrollmentCreateDto |  (optional)
 
 // Create a new course enrollment
 CourseEnrollmentsAPI.createCourseEnrollmentAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseEnrollmentCreateDto: courseEnrollmentCreateDto) { (response, error) in

@@ -13,22 +13,14 @@ import AnyCodable
 public struct AccountRelationUpdateDto: Codable, JSONEncodable, Hashable {
 
     static let accountIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    static let tenantIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    static let enrollmentIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     public var accountId: String?
-    public var tenantId: String?
-    public var enrollmentId: String?
 
-    public init(accountId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
+    public init(accountId: String? = nil) {
         self.accountId = accountId
-        self.tenantId = tenantId
-        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case accountId
-        case tenantId
-        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -36,8 +28,6 @@ public struct AccountRelationUpdateDto: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(accountId, forKey: .accountId)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

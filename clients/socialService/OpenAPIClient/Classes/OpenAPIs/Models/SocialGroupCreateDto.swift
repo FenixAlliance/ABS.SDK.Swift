@@ -12,12 +12,16 @@ import AnyCodable
 
 public struct SocialGroupCreateDto: Codable, JSONEncodable, Hashable {
 
+    public var id: UUID?
+    public var timestamp: Date?
     public var name: String?
     public var title: String?
     public var avatarURL: String?
     public var socialProfileID: String?
 
-    public init(name: String? = nil, title: String? = nil, avatarURL: String? = nil, socialProfileID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil, title: String? = nil, avatarURL: String? = nil, socialProfileID: String? = nil) {
+        self.id = id
+        self.timestamp = timestamp
         self.name = name
         self.title = title
         self.avatarURL = avatarURL
@@ -25,6 +29,8 @@ public struct SocialGroupCreateDto: Codable, JSONEncodable, Hashable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case id
+        case timestamp
         case name
         case title
         case avatarURL
@@ -35,6 +41,8 @@ public struct SocialGroupCreateDto: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(id, forKey: .id)
+        try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(avatarURL, forKey: .avatarURL)

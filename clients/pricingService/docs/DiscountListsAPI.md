@@ -33,7 +33,7 @@ Creates a new discount list for the current tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let discountListCreateDto = DiscountListCreateDto(id: 123, timestamp: Date(), name: "name_example", currencyId: "currencyId_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example") // DiscountListCreateDto |  (optional)
+let discountListCreateDto = DiscountListCreateDto(id: 123, timestamp: Date(), name: "name_example", currencyId: "currencyId_example") // DiscountListCreateDto |  (optional)
 
 // Creates a new discount list
 DiscountListsAPI.createDiscountList(tenantId: tenantId, discountListCreateDto: discountListCreateDto) { (response, error) in
@@ -86,7 +86,7 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let discountListId = 987 // UUID | 
-let discountCreateDto = DiscountCreateDto(id: 123, timestamp: Date(), description: "description_example", beginQuantity: 123, endQuantity: 123, percent: 123, value: 123, tenantId: "tenantId_example", enrollmentId: "enrollmentId_example", discountListId: "discountListId_example") // DiscountCreateDto |  (optional)
+let discountCreateDto = DiscountCreateDto(id: 123, timestamp: Date(), description: "description_example", beginQuantity: 123, endQuantity: 123, percent: 123, value: 123, discountListId: "discountListId_example") // DiscountCreateDto |  (optional)
 
 // Creates a discount list entry
 DiscountListsAPI.createDiscountListEntry(tenantId: tenantId, discountListId: discountListId, discountCreateDto: discountCreateDto) { (response, error) in
@@ -556,7 +556,7 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let discountListId = 987 // UUID | 
-let discountListUpdateDto = DiscountListUpdateDto(name: "name_example", currencyId: "currencyId_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example") // DiscountListUpdateDto |  (optional)
+let discountListUpdateDto = DiscountListUpdateDto(name: "name_example", currencyId: "currencyId_example") // DiscountListUpdateDto |  (optional)
 
 // Updates a discount list
 DiscountListsAPI.updateDiscountList(tenantId: tenantId, discountListId: discountListId, discountListUpdateDto: discountListUpdateDto) { (response, error) in
@@ -611,7 +611,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let discountListId = 987 // UUID | 
 let discountListEntryId = 987 // UUID | 
-let discountUpdateDto = DiscountUpdateDto(description: "description_example", beginQuantity: 123, endQuantity: 123, percent: 123, value: 123, tenantId: "tenantId_example", enrollmentId: "enrollmentId_example", discountListId: "discountListId_example") // DiscountUpdateDto |  (optional)
+let discountUpdateDto = DiscountUpdateDto(description: "description_example", beginQuantity: 123, endQuantity: 123, percent: 123, value: 123, discountListId: "discountListId_example") // DiscountUpdateDto |  (optional)
 
 // Updates a discount list entry
 DiscountListsAPI.updateDiscountListEntry(tenantId: tenantId, discountListId: discountListId, discountListEntryId: discountListEntryId, discountUpdateDto: discountUpdateDto) { (response, error) in

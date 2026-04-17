@@ -29,7 +29,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseForumCreateDto = CourseForumCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", courseID: "courseID_example", businessID: "businessID_example") // CourseForumCreateDto |  (optional)
+let courseForumCreateDto = CourseForumCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", courseID: "courseID_example") // CourseForumCreateDto |  (optional)
 
 // Create a course forum
 CourseForumsAPI.createCourseForumAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseForumCreateDto: courseForumCreateDto) { (response, error) in

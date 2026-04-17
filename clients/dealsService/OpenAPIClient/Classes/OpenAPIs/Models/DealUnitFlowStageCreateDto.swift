@@ -17,20 +17,16 @@ public struct DealUnitFlowStageCreateDto: Codable, JSONEncodable, Hashable {
     public var order: Int?
     public var name: String?
     public var dealUnitFlowId: String?
-    public var tenantId: String?
     public var description: String?
-    public var enrollmentId: String?
     public var parentBusinessProcessStageId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, order: Int? = nil, name: String? = nil, dealUnitFlowId: String? = nil, tenantId: String? = nil, description: String? = nil, enrollmentId: String? = nil, parentBusinessProcessStageId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, order: Int? = nil, name: String? = nil, dealUnitFlowId: String? = nil, description: String? = nil, parentBusinessProcessStageId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.order = order
         self.name = name
         self.dealUnitFlowId = dealUnitFlowId
-        self.tenantId = tenantId
         self.description = description
-        self.enrollmentId = enrollmentId
         self.parentBusinessProcessStageId = parentBusinessProcessStageId
     }
 
@@ -40,9 +36,7 @@ public struct DealUnitFlowStageCreateDto: Codable, JSONEncodable, Hashable {
         case order
         case name
         case dealUnitFlowId
-        case tenantId
         case description
-        case enrollmentId
         case parentBusinessProcessStageId
     }
 
@@ -55,9 +49,7 @@ public struct DealUnitFlowStageCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(order, forKey: .order)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(dealUnitFlowId, forKey: .dealUnitFlowId)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(parentBusinessProcessStageId, forKey: .parentBusinessProcessStageId)
     }
 }

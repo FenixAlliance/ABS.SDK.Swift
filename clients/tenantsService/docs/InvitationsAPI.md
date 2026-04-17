@@ -358,7 +358,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let tenantInvitationCreateDto = TenantInvitationCreateDto(id: 123, timestamp: Date(), userEmail: "userEmail_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example") // TenantInvitationCreateDto |  (optional)
+let tenantInvitationCreateDto = TenantInvitationCreateDto(id: 123, timestamp: Date(), userEmail: "userEmail_example") // TenantInvitationCreateDto |  (optional)
 
 // Send an invitation to a user to join a tenant
 InvitationsAPI.sendTenantInvitation(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, tenantInvitationCreateDto: tenantInvitationCreateDto) { (response, error) in

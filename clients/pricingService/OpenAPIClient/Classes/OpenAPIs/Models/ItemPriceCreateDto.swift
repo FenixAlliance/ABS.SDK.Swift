@@ -17,26 +17,22 @@ public struct ItemPriceCreateDto: Codable, JSONEncodable, Hashable {
     public var timestamp: Date?
     public var itemId: String
     public var unitId: String?
-    public var tenantId: String?
     public var currencyId: String?
     public var priceListId: String?
     public var unitGroupId: String?
-    public var enrollmentId: String?
     public var discountListId: String?
     public var roundingPolicyId: String?
     public var price: Double?
     public var percent: Double?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, itemId: String, unitId: String? = nil, tenantId: String? = nil, currencyId: String? = nil, priceListId: String? = nil, unitGroupId: String? = nil, enrollmentId: String? = nil, discountListId: String? = nil, roundingPolicyId: String? = nil, price: Double? = nil, percent: Double? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, itemId: String, unitId: String? = nil, currencyId: String? = nil, priceListId: String? = nil, unitGroupId: String? = nil, discountListId: String? = nil, roundingPolicyId: String? = nil, price: Double? = nil, percent: Double? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.itemId = itemId
         self.unitId = unitId
-        self.tenantId = tenantId
         self.currencyId = currencyId
         self.priceListId = priceListId
         self.unitGroupId = unitGroupId
-        self.enrollmentId = enrollmentId
         self.discountListId = discountListId
         self.roundingPolicyId = roundingPolicyId
         self.price = price
@@ -48,11 +44,9 @@ public struct ItemPriceCreateDto: Codable, JSONEncodable, Hashable {
         case timestamp
         case itemId
         case unitId
-        case tenantId
         case currencyId
         case priceListId
         case unitGroupId
-        case enrollmentId
         case discountListId
         case roundingPolicyId
         case price
@@ -67,11 +61,9 @@ public struct ItemPriceCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encode(itemId, forKey: .itemId)
         try container.encodeIfPresent(unitId, forKey: .unitId)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encodeIfPresent(currencyId, forKey: .currencyId)
         try container.encodeIfPresent(priceListId, forKey: .priceListId)
         try container.encodeIfPresent(unitGroupId, forKey: .unitGroupId)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(discountListId, forKey: .discountListId)
         try container.encodeIfPresent(roundingPolicyId, forKey: .roundingPolicyId)
         try container.encodeIfPresent(price, forKey: .price)

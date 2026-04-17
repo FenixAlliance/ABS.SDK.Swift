@@ -88,7 +88,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let journalCreateDto = JournalCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", dateTime: Date(), tenantID: "tenantID_example", enrollmentID: "enrollmentID_example", parentJournalID: "parentJournalID_example", journalTypeID: "journalTypeID_example", ledgerID: "ledgerID_example") // JournalCreateDto |  (optional)
+let journalCreateDto = JournalCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", dateTime: Date(), parentJournalID: "parentJournalID_example", journalTypeID: "journalTypeID_example", ledgerID: "ledgerID_example") // JournalCreateDto |  (optional)
 
 // Create journal
 JournalsAPI.createJournalAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, journalCreateDto: journalCreateDto) { (response, error) in

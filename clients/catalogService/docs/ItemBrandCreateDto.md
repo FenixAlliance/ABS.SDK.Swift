@@ -11,7 +11,6 @@ Name | Type | Description | Notes
 **websiteURL** | **String** |  | [optional] 
 **featured** | **Bool** |  | [optional] 
 **trending** | **Bool** |  | [optional] 
-**businessID** | **String** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

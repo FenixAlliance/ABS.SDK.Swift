@@ -17,15 +17,11 @@ public struct BudgetAccountEntryCreateDto: Codable, JSONEncodable, Hashable {
         case debit = "Debit"
         case credit = "Credit"
     }
-    static let tenantIdRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
-    static let enrollmentIdRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     static let descriptionRule = StringRule(minLength: 1, maxLength: 300, pattern: nil)
     static let currencyIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     static let budgetIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
-    public var tenantId: String?
-    public var enrollmentId: String?
     public var description: String
     public var date: Date?
     public var amount: Double?
@@ -36,11 +32,9 @@ public struct BudgetAccountEntryCreateDto: Codable, JSONEncodable, Hashable {
     public var accountingEntryType: AccountingEntryType?
     public var budgetId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, tenantId: String? = nil, enrollmentId: String? = nil, description: String, date: Date? = nil, amount: Double? = nil, currencyId: String, debitAccountId: String? = nil, creditAccountId: String? = nil, journalEntryId: String? = nil, accountingEntryType: AccountingEntryType? = nil, budgetId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, description: String, date: Date? = nil, amount: Double? = nil, currencyId: String, debitAccountId: String? = nil, creditAccountId: String? = nil, journalEntryId: String? = nil, accountingEntryType: AccountingEntryType? = nil, budgetId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
-        self.tenantId = tenantId
-        self.enrollmentId = enrollmentId
         self.description = description
         self.date = date
         self.amount = amount
@@ -55,8 +49,6 @@ public struct BudgetAccountEntryCreateDto: Codable, JSONEncodable, Hashable {
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
-        case tenantId
-        case enrollmentId
         case description
         case date
         case amount
@@ -74,8 +66,6 @@ public struct BudgetAccountEntryCreateDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encode(description, forKey: .description)
         try container.encodeIfPresent(date, forKey: .date)
         try container.encodeIfPresent(amount, forKey: .amount)

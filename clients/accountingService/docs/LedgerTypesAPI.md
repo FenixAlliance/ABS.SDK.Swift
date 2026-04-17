@@ -29,7 +29,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let ledgerTypeCreateDto = LedgerTypeCreateDto(id: 123, timestamp: Date(), name: "name_example", ledgerClass: "ledgerClass_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example") // LedgerTypeCreateDto |  (optional)
+let ledgerTypeCreateDto = LedgerTypeCreateDto(id: 123, timestamp: Date(), name: "name_example", ledgerClass: "ledgerClass_example") // LedgerTypeCreateDto |  (optional)
 
 // Creates a new ledger type
 LedgerTypesAPI.createLedgerTypeAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, ledgerTypeCreateDto: ledgerTypeCreateDto) { (response, error) in
@@ -306,7 +306,7 @@ let tenantId = 987 // UUID |
 let ledgerTypeId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let ledgerTypeUpdateDto = LedgerTypeUpdateDto(name: "name_example", ledgerClass: "ledgerClass_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example") // LedgerTypeUpdateDto |  (optional)
+let ledgerTypeUpdateDto = LedgerTypeUpdateDto(name: "name_example", ledgerClass: "ledgerClass_example") // LedgerTypeUpdateDto |  (optional)
 
 // Updates a ledger type
 LedgerTypesAPI.updateLedgerTypeAsync(tenantId: tenantId, ledgerTypeId: ledgerTypeId, apiVersion: apiVersion, xApiVersion: xApiVersion, ledgerTypeUpdateDto: ledgerTypeUpdateDto) { (response, error) in

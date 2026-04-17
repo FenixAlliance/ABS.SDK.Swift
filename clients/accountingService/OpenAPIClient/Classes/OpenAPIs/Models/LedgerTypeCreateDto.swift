@@ -22,22 +22,16 @@ public struct LedgerTypeCreateDto: Codable, JSONEncodable, Hashable {
         case liabilities = "Liabilities"
     }
     static let nameRule = StringRule(minLength: 0, maxLength: 50, pattern: nil)
-    static let tenantIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    static let enrollmentIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var name: String
     public var ledgerClass: LedgerClass?
-    public var tenantId: String?
-    public var enrollmentId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, name: String, ledgerClass: LedgerClass? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, name: String, ledgerClass: LedgerClass? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
         self.ledgerClass = ledgerClass
-        self.tenantId = tenantId
-        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -45,8 +39,6 @@ public struct LedgerTypeCreateDto: Codable, JSONEncodable, Hashable {
         case timestamp
         case name
         case ledgerClass
-        case tenantId
-        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -57,8 +49,6 @@ public struct LedgerTypeCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encode(name, forKey: .name)
         try container.encodeIfPresent(ledgerClass, forKey: .ledgerClass)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

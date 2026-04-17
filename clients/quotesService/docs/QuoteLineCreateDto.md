@@ -11,8 +11,6 @@ Name | Type | Description | Notes
 **itemShortDescription** | **String** |  | [optional] 
 **itemPrimaryImageUrl** | **String** |  | [optional] 
 **shippingPolicyId** | **String** |  | [optional] 
-**tenantId** | **String** |  | [optional] 
-**enrollmentId** | **String** |  | [optional] 
 **currencyId** | **String** |  | [optional] 
 **description** | **String** |  | [optional] 
 **quantity** | **Double** |  | [optional] 
@@ -98,7 +96,6 @@ Name | Type | Description | Notes
 **shippingLocationId** | **String** |  | [optional] 
 **locationId** | **String** |  | [optional] 
 **quoteItemRecordId** | **String** |  | [optional] 
-**businessProfileRecordId** | **String** |  | [optional] 
 **parentBillingItemRecordId** | **String** |  | [optional] 
 **quoteId** | **String** |  | [optional] 
 

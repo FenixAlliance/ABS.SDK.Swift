@@ -29,7 +29,7 @@ import OpenAPIClient
 let tenantId = "TODO" // AnyCodable | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let fiscalResponsibilityCreateDto = FiscalResponsibilityCreateDto(id: 123, timestamp: Date(), code: "code_example", name: "name_example", fiscalAuthorityId: "fiscalAuthorityId_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example") // FiscalResponsibilityCreateDto |  (optional)
+let fiscalResponsibilityCreateDto = FiscalResponsibilityCreateDto(id: 123, timestamp: Date(), code: "code_example", name: "name_example", fiscalAuthorityId: "fiscalAuthorityId_example") // FiscalResponsibilityCreateDto |  (optional)
 
 // Create a fiscal responsibility
 FiscalResponsibilitiesAPI.createFiscalResponsibility(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, fiscalResponsibilityCreateDto: fiscalResponsibilityCreateDto) { (response, error) in
@@ -310,7 +310,7 @@ let tenantId = "TODO" // AnyCodable |
 let fiscalResponsibilityId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let fiscalResponsibilityUpdateDto = FiscalResponsibilityUpdateDto(code: "code_example", name: "name_example", fiscalAuthorityId: "fiscalAuthorityId_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example") // FiscalResponsibilityUpdateDto |  (optional)
+let fiscalResponsibilityUpdateDto = FiscalResponsibilityUpdateDto(code: "code_example", name: "name_example", fiscalAuthorityId: "fiscalAuthorityId_example") // FiscalResponsibilityUpdateDto |  (optional)
 
 // Update a fiscal responsibility
 FiscalResponsibilitiesAPI.updateFiscalResponsibility(tenantId: tenantId, fiscalResponsibilityId: fiscalResponsibilityId, apiVersion: apiVersion, xApiVersion: xApiVersion, fiscalResponsibilityUpdateDto: fiscalResponsibilityUpdateDto) { (response, error) in

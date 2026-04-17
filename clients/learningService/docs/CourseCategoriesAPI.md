@@ -29,7 +29,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseCategoryCreateDto = CourseCategoryCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", imageURL: "imageURL_example", isFeatured: false, businessID: "businessID_example") // CourseCategoryCreateDto |  (optional)
+let courseCategoryCreateDto = CourseCategoryCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", imageURL: "imageURL_example", isFeatured: false) // CourseCategoryCreateDto |  (optional)
 
 // Create a new course category
 CourseCategoriesAPI.createCourseCategoryAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseCategoryCreateDto: courseCategoryCreateDto) { (response, error) in

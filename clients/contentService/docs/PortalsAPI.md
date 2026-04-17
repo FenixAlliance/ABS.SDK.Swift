@@ -4,10 +4,12 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**countPortalsAsync**](PortalsAPI.md#countportalsasync) | **GET** /api/v2/ContentService/Portals/Count | Count portals
 [**createWebPortalAsync**](PortalsAPI.md#createwebportalasync) | **POST** /api/v2/ContentService/Portals | Create a new web portal
 [**deleteWebPortalAsync**](PortalsAPI.md#deletewebportalasync) | **DELETE** /api/v2/ContentService/Portals/{portalId} | Delete a web portal
 [**getCurrentWebPortalAsync**](PortalsAPI.md#getcurrentwebportalasync) | **GET** /api/v2/ContentService/Portals/Current | Get the current portal
 [**getCurrentWebPortalOptionsAsync**](PortalsAPI.md#getcurrentwebportaloptionsasync) | **GET** /api/v2/ContentService/Portals/Current/Options | Get the current portal&#39;s options
+[**getPortalsAsync**](PortalsAPI.md#getportalsasync) | **GET** /api/v2/ContentService/Portals | Get portals
 [**getRootWebPortalAsync**](PortalsAPI.md#getrootwebportalasync) | **GET** /api/v2/ContentService/Portals/Root | Get the root portal
 [**getWebPortalByIdAsync**](PortalsAPI.md#getwebportalbyidasync) | **GET** /api/v2/ContentService/Portals/{portalId} | Get a web portal by its ID
 [**getWebPortalOptionsAsync**](PortalsAPI.md#getwebportaloptionsasync) | **GET** /api/v2/ContentService/Portals/{portalId}/Options | Get a web portal&#39;s options by its ID
@@ -17,6 +19,60 @@ Method | HTTP request | Description
 [**searchWebPortalAsync**](PortalsAPI.md#searchwebportalasync) | **GET** /api/v2/ContentService/Portals/Search | Search for a portal by its domain
 [**updateWebPortalAsync**](PortalsAPI.md#updatewebportalasync) | **PUT** /api/v2/ContentService/Portals/{portalId} | Update an existing web portal
 
+
+# **countPortalsAsync**
+```swift
+    open class func countPortalsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+```
+
+Count portals
+
+Counts all portals for the specified tenant.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Count portals
+PortalsAPI.countPortalsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**Int32Envelope**](Int32Envelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **createWebPortalAsync**
 ```swift
@@ -35,7 +91,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let webPortalCreateDto = WebPortalCreateDto(id: 123, timestamp: Date(), root: false, title: "title_example", domain: "domain_example", disabled: false, businessID: "businessID_example", description: "description_example", websiteThemeID: "websiteThemeID_example", businessDomainID: "businessDomainID_example", businessProfileRecordID: "businessProfileRecordID_example", businessPortalApplicationID: "businessPortalApplicationID_example") // WebPortalCreateDto |  (optional)
+let webPortalCreateDto = WebPortalCreateDto(id: 123, timestamp: Date(), root: false, title: "title_example", domain: "domain_example", disabled: false, description: "description_example", websiteThemeID: "websiteThemeID_example", businessDomainID: "businessDomainID_example", businessPortalApplicationID: "businessPortalApplicationID_example") // WebPortalCreateDto |  (optional)
 
 // Create a new web portal
 PortalsAPI.createWebPortalAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, webPortalCreateDto: webPortalCreateDto) { (response, error) in
@@ -222,6 +278,60 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**PortalOptionsEnvelope**](PortalOptionsEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getPortalsAsync**
+```swift
+    open class func getPortalsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: WebPortalDtoListEnvelope?, _ error: Error?) -> Void)
+```
+
+Get portals
+
+Retrieves all portals for the specified tenant.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Get portals
+PortalsAPI.getPortalsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**WebPortalDtoListEnvelope**](WebPortalDtoListEnvelope.md)
 
 ### Authorization
 
@@ -630,7 +740,7 @@ let tenantId = 987 // UUID |
 let portalId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let webPortalUpdateDto = WebPortalUpdateDto(root: false, title: "title_example", domain: "domain_example", disabled: false, description: "description_example", websiteThemeID: "websiteThemeID_example", businessDomainID: "businessDomainID_example", businessProfileRecordID: "businessProfileRecordID_example", businessPortalApplicationID: "businessPortalApplicationID_example") // WebPortalUpdateDto |  (optional)
+let webPortalUpdateDto = WebPortalUpdateDto(root: false, title: "title_example", domain: "domain_example", disabled: false, description: "description_example", websiteThemeID: "websiteThemeID_example", businessDomainID: "businessDomainID_example", businessPortalApplicationID: "businessPortalApplicationID_example") // WebPortalUpdateDto |  (optional)
 
 // Update an existing web portal
 PortalsAPI.updateWebPortalAsync(tenantId: tenantId, portalId: portalId, apiVersion: apiVersion, xApiVersion: xApiVersion, webPortalUpdateDto: webPortalUpdateDto) { (response, error) in

@@ -29,7 +29,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let journalTypeCreateDto = JournalTypeCreateDto(id: 123, timestamp: Date(), name: "name_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example") // JournalTypeCreateDto |  (optional)
+let journalTypeCreateDto = JournalTypeCreateDto(id: 123, timestamp: Date(), name: "name_example") // JournalTypeCreateDto |  (optional)
 
 // Creates a new journal type
 JournalTypesAPI.createJournalTypeAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, journalTypeCreateDto: journalTypeCreateDto) { (response, error) in
@@ -306,7 +306,7 @@ let tenantId = 987 // UUID |
 let journalTypeId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let journalTypeUpdateDto = JournalTypeUpdateDto(name: "name_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example") // JournalTypeUpdateDto |  (optional)
+let journalTypeUpdateDto = JournalTypeUpdateDto(name: "name_example") // JournalTypeUpdateDto |  (optional)
 
 // Updates an existing journal type
 JournalTypesAPI.updateJournalTypeAsync(tenantId: tenantId, journalTypeId: journalTypeId, apiVersion: apiVersion, xApiVersion: xApiVersion, journalTypeUpdateDto: journalTypeUpdateDto) { (response, error) in

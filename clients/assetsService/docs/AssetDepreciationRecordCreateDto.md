@@ -3,6 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **UUID** |  | [optional] 
+**timestamp** | **Date** |  | [optional] 
 **assetId** | **String** |  | [optional] 
 **assetDepreciationPolicyId** | **String** |  | [optional] 
 **depreciationAmount** | **Double** |  | [optional] 

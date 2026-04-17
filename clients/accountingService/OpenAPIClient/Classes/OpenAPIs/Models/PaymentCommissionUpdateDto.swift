@@ -14,8 +14,6 @@ public struct PaymentCommissionUpdateDto: Codable, JSONEncodable, Hashable {
 
     static let titleRule = StringRule(minLength: 0, maxLength: 50, pattern: nil)
     static let descriptionRule = StringRule(minLength: 0, maxLength: 250, pattern: nil)
-    static let tenantIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    static let enrollmentIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let salaryIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let emisorWalletAccountIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let receiverWalletAccountIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
@@ -28,8 +26,6 @@ public struct PaymentCommissionUpdateDto: Codable, JSONEncodable, Hashable {
     public var addedPercent: Double?
     public var addedAmount: Double?
     public var taxComission: Double?
-    public var tenantId: String?
-    public var enrollmentId: String?
     public var salaryId: String?
     public var emisorWalletAccountId: String?
     public var receiverWalletAccountId: String?
@@ -37,15 +33,13 @@ public struct PaymentCommissionUpdateDto: Codable, JSONEncodable, Hashable {
     public var receiverContactId: String?
     public var paymentId: String?
 
-    public init(title: String? = nil, description: String? = nil, baseAmount: Double? = nil, addedPercent: Double? = nil, addedAmount: Double? = nil, taxComission: Double? = nil, tenantId: String? = nil, enrollmentId: String? = nil, salaryId: String? = nil, emisorWalletAccountId: String? = nil, receiverWalletAccountId: String? = nil, emisorContactId: String? = nil, receiverContactId: String? = nil, paymentId: String? = nil) {
+    public init(title: String? = nil, description: String? = nil, baseAmount: Double? = nil, addedPercent: Double? = nil, addedAmount: Double? = nil, taxComission: Double? = nil, salaryId: String? = nil, emisorWalletAccountId: String? = nil, receiverWalletAccountId: String? = nil, emisorContactId: String? = nil, receiverContactId: String? = nil, paymentId: String? = nil) {
         self.title = title
         self.description = description
         self.baseAmount = baseAmount
         self.addedPercent = addedPercent
         self.addedAmount = addedAmount
         self.taxComission = taxComission
-        self.tenantId = tenantId
-        self.enrollmentId = enrollmentId
         self.salaryId = salaryId
         self.emisorWalletAccountId = emisorWalletAccountId
         self.receiverWalletAccountId = receiverWalletAccountId
@@ -61,8 +55,6 @@ public struct PaymentCommissionUpdateDto: Codable, JSONEncodable, Hashable {
         case addedPercent
         case addedAmount
         case taxComission
-        case tenantId
-        case enrollmentId
         case salaryId
         case emisorWalletAccountId
         case receiverWalletAccountId
@@ -81,8 +73,6 @@ public struct PaymentCommissionUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(addedPercent, forKey: .addedPercent)
         try container.encodeIfPresent(addedAmount, forKey: .addedAmount)
         try container.encodeIfPresent(taxComission, forKey: .taxComission)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(salaryId, forKey: .salaryId)
         try container.encodeIfPresent(emisorWalletAccountId, forKey: .emisorWalletAccountId)
         try container.encodeIfPresent(receiverWalletAccountId, forKey: .receiverWalletAccountId)

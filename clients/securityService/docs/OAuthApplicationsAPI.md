@@ -30,7 +30,7 @@ Creates a new OAuth application for the specified tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let oAuthApplicationCreateDto = OAuthApplicationCreateDto(displayName: "displayName_example", clientId: "clientId_example", clientSecret: "clientSecret_example", consentType: "consentType_example", permissions: "permissions_example", requirements: "requirements_example", redirectUris: "redirectUris_example", postLogoutRedirectUris: "postLogoutRedirectUris_example", logo: "logo_example", businessID: "businessID_example", businessProfileRecordID: "businessProfileRecordID_example") // OAuthApplicationCreateDto | 
+let oAuthApplicationCreateDto = OAuthApplicationCreateDto(id: 123, timestamp: Date(), displayName: "displayName_example", clientId: "clientId_example", clientSecret: "clientSecret_example", consentType: "consentType_example", permissions: "permissions_example", requirements: "requirements_example", redirectUris: "redirectUris_example", postLogoutRedirectUris: "postLogoutRedirectUris_example", logo: "logo_example") // OAuthApplicationCreateDto | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 

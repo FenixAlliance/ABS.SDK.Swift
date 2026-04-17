@@ -24,8 +24,6 @@ public struct AssetCreateDto: Codable, JSONEncodable, Hashable {
     }
     public var id: UUID?
     public var timestamp: Date?
-    public var businessId: String?
-    public var businessProfileRecordId: String?
     public var name: String?
     public var description: String?
     public var assetClass: AssetClass?
@@ -45,11 +43,9 @@ public struct AssetCreateDto: Codable, JSONEncodable, Hashable {
     public var contactId: String?
     public var organizationDepartmentId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, businessId: String? = nil, businessProfileRecordId: String? = nil, name: String? = nil, description: String? = nil, assetClass: AssetClass? = nil, assetOwner: AssetOwner? = nil, isExistingAsset: Bool? = nil, calculateDepreciation: Bool? = nil, allowMonthlyDepreciation: Bool? = nil, openingDepreciation: Double? = nil, purchaseDate: Date? = nil, purchasePrice: Double? = nil, currencyId: String? = nil, itemId: String? = nil, assetCategoryId: String? = nil, purchaseInvoiceId: String? = nil, purchaseReceiptId: String? = nil, assetLocationId: String? = nil, contactId: String? = nil, organizationDepartmentId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil, description: String? = nil, assetClass: AssetClass? = nil, assetOwner: AssetOwner? = nil, isExistingAsset: Bool? = nil, calculateDepreciation: Bool? = nil, allowMonthlyDepreciation: Bool? = nil, openingDepreciation: Double? = nil, purchaseDate: Date? = nil, purchasePrice: Double? = nil, currencyId: String? = nil, itemId: String? = nil, assetCategoryId: String? = nil, purchaseInvoiceId: String? = nil, purchaseReceiptId: String? = nil, assetLocationId: String? = nil, contactId: String? = nil, organizationDepartmentId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
-        self.businessId = businessId
-        self.businessProfileRecordId = businessProfileRecordId
         self.name = name
         self.description = description
         self.assetClass = assetClass
@@ -73,8 +69,6 @@ public struct AssetCreateDto: Codable, JSONEncodable, Hashable {
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
-        case businessId
-        case businessProfileRecordId
         case name
         case description
         case assetClass
@@ -101,8 +95,6 @@ public struct AssetCreateDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
-        try container.encodeIfPresent(businessId, forKey: .businessId)
-        try container.encodeIfPresent(businessProfileRecordId, forKey: .businessProfileRecordId)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(assetClass, forKey: .assetClass)

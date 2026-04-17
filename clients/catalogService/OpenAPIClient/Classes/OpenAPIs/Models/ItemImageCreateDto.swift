@@ -12,8 +12,6 @@ import AnyCodable
 
 public struct ItemImageCreateDto: Codable, JSONEncodable, Hashable {
 
-    static let businessIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
-    static let businessProfileRecordIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     static let itemIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     static let mD5HashRule = StringRule(minLength: 32, maxLength: 32, pattern: nil)
     static let metadataRule = StringRule(minLength: 0, maxLength: 1000, pattern: nil)
@@ -27,11 +25,8 @@ public struct ItemImageCreateDto: Codable, JSONEncodable, Hashable {
     static let fileLengthRule = NumericRule<Int64>(minimum: 0, exclusiveMinimum: false, maximum: -9223372036854775616, exclusiveMaximum: false, multipleOf: nil)
     static let socialProfileIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     static let parentFileUploadIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
-    static let accountHolderIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
-    public var businessID: String
-    public var businessProfileRecordID: String?
     public var itemID: String?
     public var isItemMozaicBG: Bool?
     public var mD5Hash: String?
@@ -48,13 +43,10 @@ public struct ItemImageCreateDto: Codable, JSONEncodable, Hashable {
     public var validResponse: Bool?
     public var socialProfileID: String?
     public var parentFileUploadID: String?
-    public var accountHolderID: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, businessID: String, businessProfileRecordID: String? = nil, itemID: String? = nil, isItemMozaicBG: Bool? = nil, mD5Hash: String? = nil, metadata: String? = nil, fileUploadURL: String? = nil, fileName: String, title: String? = nil, abstract: String? = nil, author: String? = nil, keyWords: String? = nil, notes: String? = nil, contentType: String? = nil, fileLength: Int64? = nil, validResponse: Bool? = nil, socialProfileID: String? = nil, parentFileUploadID: String? = nil, accountHolderID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, itemID: String? = nil, isItemMozaicBG: Bool? = nil, mD5Hash: String? = nil, metadata: String? = nil, fileUploadURL: String? = nil, fileName: String, title: String? = nil, abstract: String? = nil, author: String? = nil, keyWords: String? = nil, notes: String? = nil, contentType: String? = nil, fileLength: Int64? = nil, validResponse: Bool? = nil, socialProfileID: String? = nil, parentFileUploadID: String? = nil) {
         self.id = id
         self.timestamp = timestamp
-        self.businessID = businessID
-        self.businessProfileRecordID = businessProfileRecordID
         self.itemID = itemID
         self.isItemMozaicBG = isItemMozaicBG
         self.mD5Hash = mD5Hash
@@ -71,14 +63,11 @@ public struct ItemImageCreateDto: Codable, JSONEncodable, Hashable {
         self.validResponse = validResponse
         self.socialProfileID = socialProfileID
         self.parentFileUploadID = parentFileUploadID
-        self.accountHolderID = accountHolderID
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
-        case businessID
-        case businessProfileRecordID
         case itemID
         case isItemMozaicBG
         case mD5Hash
@@ -95,7 +84,6 @@ public struct ItemImageCreateDto: Codable, JSONEncodable, Hashable {
         case validResponse
         case socialProfileID
         case parentFileUploadID
-        case accountHolderID
     }
 
     // Encodable protocol methods
@@ -104,8 +92,6 @@ public struct ItemImageCreateDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
-        try container.encode(businessID, forKey: .businessID)
-        try container.encodeIfPresent(businessProfileRecordID, forKey: .businessProfileRecordID)
         try container.encodeIfPresent(itemID, forKey: .itemID)
         try container.encodeIfPresent(isItemMozaicBG, forKey: .isItemMozaicBG)
         try container.encodeIfPresent(mD5Hash, forKey: .mD5Hash)
@@ -122,7 +108,6 @@ public struct ItemImageCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(validResponse, forKey: .validResponse)
         try container.encodeIfPresent(socialProfileID, forKey: .socialProfileID)
         try container.encodeIfPresent(parentFileUploadID, forKey: .parentFileUploadID)
-        try container.encodeIfPresent(accountHolderID, forKey: .accountHolderID)
     }
 }
 

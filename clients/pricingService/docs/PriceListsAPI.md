@@ -32,7 +32,7 @@ Creates a new price list for the current tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let priceListCreateDto = PriceListCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", startDate: Date(), endDate: Date(), currencyId: "currencyId_example", unitId: "unitId_example", unitGroupId: "unitGroupId_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example") // PriceListCreateDto |  (optional)
+let priceListCreateDto = PriceListCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", startDate: Date(), endDate: Date(), currencyId: "currencyId_example", unitId: "unitId_example", unitGroupId: "unitGroupId_example") // PriceListCreateDto |  (optional)
 
 // Creates a new price list
 PriceListsAPI.createPriceListAsync(tenantId: tenantId, priceListCreateDto: priceListCreateDto) { (response, error) in
@@ -85,7 +85,7 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let priceListId = 987 // UUID | 
-let itemPriceCreateDto = ItemPriceCreateDto(id: 123, timestamp: Date(), itemId: "itemId_example", unitId: "unitId_example", tenantId: "tenantId_example", currencyId: "currencyId_example", priceListId: "priceListId_example", unitGroupId: "unitGroupId_example", enrollmentId: "enrollmentId_example", discountListId: "discountListId_example", roundingPolicyId: "roundingPolicyId_example", price: 123, percent: 123) // ItemPriceCreateDto |  (optional)
+let itemPriceCreateDto = ItemPriceCreateDto(id: 123, timestamp: Date(), itemId: "itemId_example", unitId: "unitId_example", currencyId: "currencyId_example", priceListId: "priceListId_example", unitGroupId: "unitGroupId_example", discountListId: "discountListId_example", roundingPolicyId: "roundingPolicyId_example", price: 123, percent: 123) // ItemPriceCreateDto |  (optional)
 
 // Creates a price list entry
 PriceListsAPI.createPriceListPricesAsync(tenantId: tenantId, priceListId: priceListId, itemPriceCreateDto: itemPriceCreateDto) { (response, error) in

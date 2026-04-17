@@ -38,7 +38,6 @@ public struct PaymentCreateDto: Codable, JSONEncodable, Hashable {
         case acceptedRetained = "AcceptedRetained"
     }
     static let invoiceIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    static let tenantIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let emisorWalletIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let receiverWalletIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let countryIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
@@ -49,7 +48,6 @@ public struct PaymentCreateDto: Codable, JSONEncodable, Hashable {
     static let accountingEntryIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let paymentGatewayIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let bankAccountIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    static let enrollmentIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let bankIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let paymentTokenIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let emisorWalletAccountIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
@@ -57,7 +55,6 @@ public struct PaymentCreateDto: Codable, JSONEncodable, Hashable {
     public var id: UUID?
     public var timestamp: Date?
     public var invoiceId: String?
-    public var tenantId: String?
     public var emisorWalletId: String?
     public var receiverWalletId: String?
     public var currencyId: String?
@@ -109,17 +106,15 @@ public struct PaymentCreateDto: Codable, JSONEncodable, Hashable {
     public var accountingEntryId: String?
     public var paymentGatewayId: String?
     public var bankAccountId: String?
-    public var enrollmentId: String?
     public var bankId: String?
     public var paymentTokenId: String?
     public var emisorWalletAccountId: String?
     public var receiverWalletAccountId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, invoiceId: String? = nil, tenantId: String? = nil, emisorWalletId: String? = nil, receiverWalletId: String? = nil, currencyId: String? = nil, forexRate: Double? = nil, totalCost: Double? = nil, totalTaxes: Double? = nil, closed: Bool? = nil, data: String? = nil, dataLabel: String? = nil, data1: String? = nil, data1Label: String? = nil, response: String? = nil, authorization: String? = nil, referenceCode: String? = nil, correlationCode: String? = nil, lastUpdated: Date? = nil, onBehalfOf: OnBehalfOf? = nil, paymentType: PaymentType? = nil, paymentStatus: PaymentStatus? = nil, baseCost: Double? = nil, signature: String? = nil, signatureMismatch: Bool? = nil, isExternal: Bool? = nil, markedForRevision: Bool? = nil, forexRatesSnapshot: String? = nil, officialId: String? = nil, officialIdExpeditionDate: Date? = nil, fiscalIdentificationTypeId: String? = nil, billingAddress: String? = nil, phone: String? = nil, cellphone: String? = nil, department: String? = nil, city: String? = nil, countryId: String? = nil, locationId: String? = nil, entitlementId: String? = nil, antiFraudScore: Double? = nil, callRecordURL: String? = nil, called: Bool? = nil, verified: Bool? = nil, payerPictureTimestamp: String? = nil, payerPicture: String? = nil, identificationPictureTimestamp: String? = nil, identificationPicture: String? = nil, identificationBackPicture: String? = nil, identificationBackPictureTimestamp: String? = nil, ipLookupId: String? = nil, orderId: String? = nil, accountingEntryId: String? = nil, paymentGatewayId: String? = nil, bankAccountId: String? = nil, enrollmentId: String? = nil, bankId: String? = nil, paymentTokenId: String? = nil, emisorWalletAccountId: String? = nil, receiverWalletAccountId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, invoiceId: String? = nil, emisorWalletId: String? = nil, receiverWalletId: String? = nil, currencyId: String? = nil, forexRate: Double? = nil, totalCost: Double? = nil, totalTaxes: Double? = nil, closed: Bool? = nil, data: String? = nil, dataLabel: String? = nil, data1: String? = nil, data1Label: String? = nil, response: String? = nil, authorization: String? = nil, referenceCode: String? = nil, correlationCode: String? = nil, lastUpdated: Date? = nil, onBehalfOf: OnBehalfOf? = nil, paymentType: PaymentType? = nil, paymentStatus: PaymentStatus? = nil, baseCost: Double? = nil, signature: String? = nil, signatureMismatch: Bool? = nil, isExternal: Bool? = nil, markedForRevision: Bool? = nil, forexRatesSnapshot: String? = nil, officialId: String? = nil, officialIdExpeditionDate: Date? = nil, fiscalIdentificationTypeId: String? = nil, billingAddress: String? = nil, phone: String? = nil, cellphone: String? = nil, department: String? = nil, city: String? = nil, countryId: String? = nil, locationId: String? = nil, entitlementId: String? = nil, antiFraudScore: Double? = nil, callRecordURL: String? = nil, called: Bool? = nil, verified: Bool? = nil, payerPictureTimestamp: String? = nil, payerPicture: String? = nil, identificationPictureTimestamp: String? = nil, identificationPicture: String? = nil, identificationBackPicture: String? = nil, identificationBackPictureTimestamp: String? = nil, ipLookupId: String? = nil, orderId: String? = nil, accountingEntryId: String? = nil, paymentGatewayId: String? = nil, bankAccountId: String? = nil, bankId: String? = nil, paymentTokenId: String? = nil, emisorWalletAccountId: String? = nil, receiverWalletAccountId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.invoiceId = invoiceId
-        self.tenantId = tenantId
         self.emisorWalletId = emisorWalletId
         self.receiverWalletId = receiverWalletId
         self.currencyId = currencyId
@@ -171,7 +166,6 @@ public struct PaymentCreateDto: Codable, JSONEncodable, Hashable {
         self.accountingEntryId = accountingEntryId
         self.paymentGatewayId = paymentGatewayId
         self.bankAccountId = bankAccountId
-        self.enrollmentId = enrollmentId
         self.bankId = bankId
         self.paymentTokenId = paymentTokenId
         self.emisorWalletAccountId = emisorWalletAccountId
@@ -182,7 +176,6 @@ public struct PaymentCreateDto: Codable, JSONEncodable, Hashable {
         case id
         case timestamp
         case invoiceId
-        case tenantId
         case emisorWalletId
         case receiverWalletId
         case currencyId
@@ -234,7 +227,6 @@ public struct PaymentCreateDto: Codable, JSONEncodable, Hashable {
         case accountingEntryId
         case paymentGatewayId
         case bankAccountId
-        case enrollmentId
         case bankId
         case paymentTokenId
         case emisorWalletAccountId
@@ -248,7 +240,6 @@ public struct PaymentCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(invoiceId, forKey: .invoiceId)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encodeIfPresent(emisorWalletId, forKey: .emisorWalletId)
         try container.encodeIfPresent(receiverWalletId, forKey: .receiverWalletId)
         try container.encodeIfPresent(currencyId, forKey: .currencyId)
@@ -300,7 +291,6 @@ public struct PaymentCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(accountingEntryId, forKey: .accountingEntryId)
         try container.encodeIfPresent(paymentGatewayId, forKey: .paymentGatewayId)
         try container.encodeIfPresent(bankAccountId, forKey: .bankAccountId)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(bankId, forKey: .bankId)
         try container.encodeIfPresent(paymentTokenId, forKey: .paymentTokenId)
         try container.encodeIfPresent(emisorWalletAccountId, forKey: .emisorWalletAccountId)

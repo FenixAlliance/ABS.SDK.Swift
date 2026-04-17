@@ -27,7 +27,7 @@ Creates a new newsletter for the specified tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let newsletterCreateDto = NewsletterCreateDto(id: 123, timestamp: Date(), name: "name_example", code: "code_example", title: "title_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example") // NewsletterCreateDto | 
+let newsletterCreateDto = NewsletterCreateDto(id: 123, timestamp: Date(), name: "name_example", code: "code_example", title: "title_example") // NewsletterCreateDto | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
@@ -304,7 +304,7 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let newsletterId = 987 // UUID | 
-let newsletterUpdateDto = NewsletterUpdateDto(code: "code_example", title: "title_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example", name: "name_example") // NewsletterUpdateDto | 
+let newsletterUpdateDto = NewsletterUpdateDto(code: "code_example", title: "title_example", name: "name_example") // NewsletterUpdateDto | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 

@@ -29,7 +29,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let tenantTerritoryCreateDto = TenantTerritoryCreateDto(id: 123, timestamp: Date(), businessID: "businessID_example", businessProfileRecordID: "businessProfileRecordID_example", name: "name_example", description: "description_example", parentTerritoryID: "parentTerritoryID_example") // TenantTerritoryCreateDto |  (optional)
+let tenantTerritoryCreateDto = TenantTerritoryCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", parentTerritoryID: "parentTerritoryID_example") // TenantTerritoryCreateDto |  (optional)
 
 // Create a new tenant territory
 TerritoriesAPI.createTenantTerritory(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, tenantTerritoryCreateDto: tenantTerritoryCreateDto) { (response, error) in

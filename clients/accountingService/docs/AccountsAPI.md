@@ -168,7 +168,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let accountCreateDto = AccountCreateDto(id: 123, timestamp: Date(), group: false, frozen: false, name: "name_example", code: "code_example", path: "path_example", _prefix: "_prefix_example", tenantId: "tenantId_example", currencyId: "currencyId_example", enrollmentId: "enrollmentId_example", accountTypeId: "accountTypeId_example", parentAccountId: "parentAccountId_example", accountCategory: "accountCategory_example") // AccountCreateDto |  (optional)
+let accountCreateDto = AccountCreateDto(id: 123, timestamp: Date(), group: false, frozen: false, name: "name_example", code: "code_example", path: "path_example", _prefix: "_prefix_example", currencyId: "currencyId_example", accountTypeId: "accountTypeId_example", parentAccountId: "parentAccountId_example", accountCategory: "accountCategory_example") // AccountCreateDto |  (optional)
 
 // Get root accounts
 AccountsAPI.createAccountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountCreateDto: accountCreateDto) { (response, error) in
@@ -225,7 +225,7 @@ let tenantId = 987 // UUID |
 let accountId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let accountingEntryCreateDto = AccountingEntryCreateDto(id: 123, timestamp: Date(), tenantId: "tenantId_example", enrollmentId: "enrollmentId_example", description: "description_example", date: Date(), amount: 123, currencyId: "currencyId_example", debitAccountId: "debitAccountId_example", creditAccountId: "creditAccountId_example", journalEntryId: "journalEntryId_example", accountingEntryType: "accountingEntryType_example") // AccountingEntryCreateDto |  (optional)
+let accountingEntryCreateDto = AccountingEntryCreateDto(id: 123, timestamp: Date(), description: "description_example", date: Date(), amount: 123, currencyId: "currencyId_example", debitAccountId: "debitAccountId_example", creditAccountId: "creditAccountId_example", journalEntryId: "journalEntryId_example", accountingEntryType: "accountingEntryType_example") // AccountingEntryCreateDto |  (optional)
 
 // Create account credit
 AccountsAPI.createAccountCreditAsync(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountingEntryCreateDto: accountingEntryCreateDto) { (response, error) in
@@ -283,7 +283,7 @@ let tenantId = 987 // UUID |
 let accountId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let accountingEntryCreateDto = AccountingEntryCreateDto(id: 123, timestamp: Date(), tenantId: "tenantId_example", enrollmentId: "enrollmentId_example", description: "description_example", date: Date(), amount: 123, currencyId: "currencyId_example", debitAccountId: "debitAccountId_example", creditAccountId: "creditAccountId_example", journalEntryId: "journalEntryId_example", accountingEntryType: "accountingEntryType_example") // AccountingEntryCreateDto |  (optional)
+let accountingEntryCreateDto = AccountingEntryCreateDto(id: 123, timestamp: Date(), description: "description_example", date: Date(), amount: 123, currencyId: "currencyId_example", debitAccountId: "debitAccountId_example", creditAccountId: "creditAccountId_example", journalEntryId: "journalEntryId_example", accountingEntryType: "accountingEntryType_example") // AccountingEntryCreateDto |  (optional)
 
 // Create account debit
 AccountsAPI.createAccountDebitAsync(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountingEntryCreateDto: accountingEntryCreateDto) { (response, error) in
@@ -341,7 +341,7 @@ let tenantId = 987 // UUID |
 let accountId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let accountingEntryCreateDto = AccountingEntryCreateDto(id: 123, timestamp: Date(), tenantId: "tenantId_example", enrollmentId: "enrollmentId_example", description: "description_example", date: Date(), amount: 123, currencyId: "currencyId_example", debitAccountId: "debitAccountId_example", creditAccountId: "creditAccountId_example", journalEntryId: "journalEntryId_example", accountingEntryType: "accountingEntryType_example") // AccountingEntryCreateDto |  (optional)
+let accountingEntryCreateDto = AccountingEntryCreateDto(id: 123, timestamp: Date(), description: "description_example", date: Date(), amount: 123, currencyId: "currencyId_example", debitAccountId: "debitAccountId_example", creditAccountId: "creditAccountId_example", journalEntryId: "journalEntryId_example", accountingEntryType: "accountingEntryType_example") // AccountingEntryCreateDto |  (optional)
 
 // Create account entry
 AccountsAPI.createAccountEntryAsync(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountingEntryCreateDto: accountingEntryCreateDto) { (response, error) in
@@ -399,7 +399,7 @@ let tenantId = 987 // UUID |
 let accountId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let accountRelationCreateDto = AccountRelationCreateDto(id: 123, timestamp: Date(), accountId: "accountId_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example") // AccountRelationCreateDto |  (optional)
+let accountRelationCreateDto = AccountRelationCreateDto(id: 123, timestamp: Date(), accountId: "accountId_example") // AccountRelationCreateDto |  (optional)
 
 // Create account relation
 AccountsAPI.createAccountRelationAsync(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountRelationCreateDto: accountRelationCreateDto) { (response, error) in
@@ -457,7 +457,7 @@ let tenantId = 987 // UUID |
 let accountId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let accountTypeCreateDto = AccountTypeCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example") // AccountTypeCreateDto |  (optional)
+let accountTypeCreateDto = AccountTypeCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example") // AccountTypeCreateDto |  (optional)
 
 // Create account type
 AccountsAPI.createAccountTypeAsync(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountTypeCreateDto: accountTypeCreateDto) { (response, error) in
@@ -1868,7 +1868,7 @@ let accountId = 987 // UUID |
 let entryId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let accountingEntryUpdateDto = AccountingEntryUpdateDto(tenantId: "tenantId_example", enrollmentId: "enrollmentId_example", description: "description_example", amount: 123, date: Date(), currencyId: "currencyId_example", debitAccountId: "debitAccountId_example", creditAccountId: "creditAccountId_example", journalEntryId: "journalEntryId_example", accountingEntryType: "accountingEntryType_example") // AccountingEntryUpdateDto |  (optional)
+let accountingEntryUpdateDto = AccountingEntryUpdateDto(description: "description_example", amount: 123, date: Date(), currencyId: "currencyId_example", debitAccountId: "debitAccountId_example", creditAccountId: "creditAccountId_example", journalEntryId: "journalEntryId_example", accountingEntryType: "accountingEntryType_example") // AccountingEntryUpdateDto |  (optional)
 
 // Update account entry
 AccountsAPI.updateAccountEntryAsync(tenantId: tenantId, accountId: accountId, entryId: entryId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountingEntryUpdateDto: accountingEntryUpdateDto) { (response, error) in
@@ -1928,7 +1928,7 @@ let accountRelationId = 987 // UUID |
 let accountId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let accountRelationUpdateDto = AccountRelationUpdateDto(accountId: "accountId_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example") // AccountRelationUpdateDto |  (optional)
+let accountRelationUpdateDto = AccountRelationUpdateDto(accountId: "accountId_example") // AccountRelationUpdateDto |  (optional)
 
 // Update account relation
 AccountsAPI.updateAccountRelationAsync(tenantId: tenantId, accountRelationId: accountRelationId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountRelationUpdateDto: accountRelationUpdateDto) { (response, error) in
@@ -1988,7 +1988,7 @@ let accountTypeId = 987 // UUID |
 let accountId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let accountTypeUpdateDto = AccountTypeUpdateDto(name: "name_example", description: "description_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example") // AccountTypeUpdateDto |  (optional)
+let accountTypeUpdateDto = AccountTypeUpdateDto(name: "name_example", description: "description_example") // AccountTypeUpdateDto |  (optional)
 
 // Update account type
 AccountsAPI.updateAccountTypeAsync(tenantId: tenantId, accountTypeId: accountTypeId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountTypeUpdateDto: accountTypeUpdateDto) { (response, error) in

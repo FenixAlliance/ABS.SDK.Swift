@@ -14,24 +14,26 @@ public struct SupportTicketPriorityCreateDto: Codable, JSONEncodable, Hashable {
 
     static let titleRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     static let descriptionRule = StringRule(minLength: 0, maxLength: 1000, pattern: nil)
-    static let businessIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     static let supportEntitlementIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
+    public var id: UUID?
+    public var timestamp: Date?
     public var title: String?
     public var description: String?
-    public var businessID: String?
     public var supportEntitlementID: String?
 
-    public init(title: String? = nil, description: String? = nil, businessID: String? = nil, supportEntitlementID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil, supportEntitlementID: String? = nil) {
+        self.id = id
+        self.timestamp = timestamp
         self.title = title
         self.description = description
-        self.businessID = businessID
         self.supportEntitlementID = supportEntitlementID
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case id
+        case timestamp
         case title
         case description
-        case businessID
         case supportEntitlementID
     }
 
@@ -39,9 +41,10 @@ public struct SupportTicketPriorityCreateDto: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(id, forKey: .id)
+        try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(businessID, forKey: .businessID)
         try container.encodeIfPresent(supportEntitlementID, forKey: .supportEntitlementID)
     }
 }

@@ -27,7 +27,7 @@ Creates a new email template for the specified tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let emailTemplateCreateDto = EmailTemplateCreateDto(id: 123, timestamp: Date(), tenantId: "tenantId_example", enrollmentId: "enrollmentId_example", title: "title_example", code: "code_example", published: false, description: "description_example", htmlContent: "htmlContent_example", featuredImageUrl: "featuredImageUrl_example", codeType: "codeType_example", marketingCampaignId: "marketingCampaignId_example") // EmailTemplateCreateDto | 
+let emailTemplateCreateDto = EmailTemplateCreateDto(id: 123, timestamp: Date(), title: "title_example", code: "code_example", published: false, description: "description_example", htmlContent: "htmlContent_example", featuredImageUrl: "featuredImageUrl_example", codeType: "codeType_example", marketingCampaignId: "marketingCampaignId_example") // EmailTemplateCreateDto | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 

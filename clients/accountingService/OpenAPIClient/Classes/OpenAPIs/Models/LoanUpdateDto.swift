@@ -19,9 +19,8 @@ public struct LoanUpdateDto: Codable, JSONEncodable, Hashable {
     public var isCompundInterestRate: Bool?
     public var loanTypeId: String?
     public var currencyId: String?
-    public var enrollmentId: String?
 
-    public init(loanTimestamp: Date? = nil, paymentDeadline: Date? = nil, value: Double? = nil, interestRate: Double? = nil, isCompundInterestRate: Bool? = nil, loanTypeId: String? = nil, currencyId: String? = nil, enrollmentId: String? = nil) {
+    public init(loanTimestamp: Date? = nil, paymentDeadline: Date? = nil, value: Double? = nil, interestRate: Double? = nil, isCompundInterestRate: Bool? = nil, loanTypeId: String? = nil, currencyId: String? = nil) {
         self.loanTimestamp = loanTimestamp
         self.paymentDeadline = paymentDeadline
         self.value = value
@@ -29,7 +28,6 @@ public struct LoanUpdateDto: Codable, JSONEncodable, Hashable {
         self.isCompundInterestRate = isCompundInterestRate
         self.loanTypeId = loanTypeId
         self.currencyId = currencyId
-        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -40,7 +38,6 @@ public struct LoanUpdateDto: Codable, JSONEncodable, Hashable {
         case isCompundInterestRate
         case loanTypeId
         case currencyId
-        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -54,7 +51,6 @@ public struct LoanUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(isCompundInterestRate, forKey: .isCompundInterestRate)
         try container.encodeIfPresent(loanTypeId, forKey: .loanTypeId)
         try container.encodeIfPresent(currencyId, forKey: .currencyId)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

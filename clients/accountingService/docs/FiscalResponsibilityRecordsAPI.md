@@ -29,7 +29,7 @@ import OpenAPIClient
 let tenantId = "TODO" // AnyCodable | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let fiscalResponsibilityRecordCreateDto = FiscalResponsibilityRecordCreateDto(id: 123, timestamp: Date(), fiscalResponsibilityId: "fiscalResponsibilityId_example", billingProfileId: "billingProfileId_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example") // FiscalResponsibilityRecordCreateDto |  (optional)
+let fiscalResponsibilityRecordCreateDto = FiscalResponsibilityRecordCreateDto(id: 123, timestamp: Date(), fiscalResponsibilityId: "fiscalResponsibilityId_example", billingProfileId: "billingProfileId_example") // FiscalResponsibilityRecordCreateDto |  (optional)
 
 // Create a fiscal responsibility record
 FiscalResponsibilityRecordsAPI.createFiscalResponsibilityRecord(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, fiscalResponsibilityRecordCreateDto: fiscalResponsibilityRecordCreateDto) { (response, error) in
@@ -318,7 +318,7 @@ let tenantId = "TODO" // AnyCodable |
 let fiscalResponsibilityRecordId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let fiscalResponsibilityRecordUpdateDto = FiscalResponsibilityRecordUpdateDto(fiscalResponsibilityId: "fiscalResponsibilityId_example", billingProfileId: "billingProfileId_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example") // FiscalResponsibilityRecordUpdateDto |  (optional)
+let fiscalResponsibilityRecordUpdateDto = FiscalResponsibilityRecordUpdateDto(fiscalResponsibilityId: "fiscalResponsibilityId_example", billingProfileId: "billingProfileId_example") // FiscalResponsibilityRecordUpdateDto |  (optional)
 
 // Update a fiscal responsibility record
 FiscalResponsibilityRecordsAPI.updateFiscalResponsibilityRecord(tenantId: tenantId, fiscalResponsibilityRecordId: fiscalResponsibilityRecordId, apiVersion: apiVersion, xApiVersion: xApiVersion, fiscalResponsibilityRecordUpdateDto: fiscalResponsibilityRecordUpdateDto) { (response, error) in

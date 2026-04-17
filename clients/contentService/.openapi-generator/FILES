@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .swiftformat
 Cartfile
 OpenAPIClient.podspec
@@ -165,6 +164,7 @@ OpenAPIClient/Classes/OpenAPIs/Models/WebPageUpdateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/WebPortalCreateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/WebPortalDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/WebPortalDtoEnvelope.swift
+OpenAPIClient/Classes/OpenAPIs/Models/WebPortalDtoListEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/WebPortalUpdateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/WebTemplateCreateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/WebTemplateDto.swift
@@ -330,6 +330,7 @@ docs/WebPagesAPI.md
 docs/WebPortalCreateDto.md
 docs/WebPortalDto.md
 docs/WebPortalDtoEnvelope.md
+docs/WebPortalDtoListEnvelope.md
 docs/WebPortalUpdateDto.md
 docs/WebTemplateCreateDto.md
 docs/WebTemplateDto.md

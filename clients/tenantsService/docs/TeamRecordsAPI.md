@@ -29,7 +29,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let tenantTeamRecordCreateDto = TenantTeamRecordCreateDto(id: 123, timestamp: Date(), businessID: "businessID_example", businessProfileRecordID: "businessProfileRecordID_example", businessTeamID: "businessTeamID_example") // TenantTeamRecordCreateDto |  (optional)
+let tenantTeamRecordCreateDto = TenantTeamRecordCreateDto(id: 123, timestamp: Date(), businessTeamID: "businessTeamID_example") // TenantTeamRecordCreateDto |  (optional)
 
 // Create a new tenant team record
 TeamRecordsAPI.createTenantTeamRecord(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, tenantTeamRecordCreateDto: tenantTeamRecordCreateDto) { (response, error) in
@@ -306,7 +306,7 @@ let tenantId = 987 // UUID |
 let tenantTeamRecordId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let tenantTeamRecordUpdateDto = TenantTeamRecordUpdateDto(businessID: "businessID_example", businessProfileRecordID: "businessProfileRecordID_example", businessTeamID: "businessTeamID_example") // TenantTeamRecordUpdateDto |  (optional)
+let tenantTeamRecordUpdateDto = TenantTeamRecordUpdateDto(businessTeamID: "businessTeamID_example") // TenantTeamRecordUpdateDto |  (optional)
 
 // Update a tenant team record
 TeamRecordsAPI.updateTenantTeamRecord(tenantId: tenantId, tenantTeamRecordId: tenantTeamRecordId, apiVersion: apiVersion, xApiVersion: xApiVersion, tenantTeamRecordUpdateDto: tenantTeamRecordUpdateDto) { (response, error) in

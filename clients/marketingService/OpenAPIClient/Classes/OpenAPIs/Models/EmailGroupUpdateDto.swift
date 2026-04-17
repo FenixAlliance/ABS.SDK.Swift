@@ -15,23 +15,17 @@ public struct EmailGroupUpdateDto: Codable, JSONEncodable, Hashable {
     public var name: String?
     public var description: String?
     public var enabled: Bool?
-    public var tenantId: String?
-    public var enrollmentId: String?
 
-    public init(name: String? = nil, description: String? = nil, enabled: Bool? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
+    public init(name: String? = nil, description: String? = nil, enabled: Bool? = nil) {
         self.name = name
         self.description = description
         self.enabled = enabled
-        self.tenantId = tenantId
-        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case name
         case description
         case enabled
-        case tenantId
-        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -41,8 +35,6 @@ public struct EmailGroupUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(enabled, forKey: .enabled)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

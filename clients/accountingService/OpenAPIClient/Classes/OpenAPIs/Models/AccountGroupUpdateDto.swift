@@ -15,28 +15,20 @@ public struct AccountGroupUpdateDto: Codable, JSONEncodable, Hashable {
     static let titleRule = StringRule(minLength: 0, maxLength: 50, pattern: nil)
     static let descriptionRule = StringRule(minLength: 0, maxLength: 150, pattern: nil)
     static let parentAccountGroupIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    static let tenantIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    static let enrollmentIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     public var title: String?
     public var description: String?
     public var parentAccountGroupId: String?
-    public var tenantId: String?
-    public var enrollmentId: String?
 
-    public init(title: String? = nil, description: String? = nil, parentAccountGroupId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
+    public init(title: String? = nil, description: String? = nil, parentAccountGroupId: String? = nil) {
         self.title = title
         self.description = description
         self.parentAccountGroupId = parentAccountGroupId
-        self.tenantId = tenantId
-        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case title
         case description
         case parentAccountGroupId
-        case tenantId
-        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -46,8 +38,6 @@ public struct AccountGroupUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(parentAccountGroupId, forKey: .parentAccountGroupId)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

@@ -29,7 +29,7 @@ import OpenAPIClient
 let tenantId = "TODO" // AnyCodable | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let fiscalIdentificationTypeCreateDto = FiscalIdentificationTypeCreateDto(id: 123, timestamp: Date(), code: "code_example", name: "name_example", fiscalAuthorityId: "fiscalAuthorityId_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example") // FiscalIdentificationTypeCreateDto |  (optional)
+let fiscalIdentificationTypeCreateDto = FiscalIdentificationTypeCreateDto(id: 123, timestamp: Date(), code: "code_example", name: "name_example", fiscalAuthorityId: "fiscalAuthorityId_example") // FiscalIdentificationTypeCreateDto |  (optional)
 
 // Create a fiscal identification type
 FiscalIdentificationTypesAPI.createFiscalIdentificationType(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, fiscalIdentificationTypeCreateDto: fiscalIdentificationTypeCreateDto) { (response, error) in
@@ -308,7 +308,7 @@ let tenantId = "TODO" // AnyCodable |
 let identificationTypeId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let fiscalIdentificationTypeUpdateDto = FiscalIdentificationTypeUpdateDto(code: "code_example", name: "name_example", fiscalAuthorityId: "fiscalAuthorityId_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example") // FiscalIdentificationTypeUpdateDto |  (optional)
+let fiscalIdentificationTypeUpdateDto = FiscalIdentificationTypeUpdateDto(code: "code_example", name: "name_example", fiscalAuthorityId: "fiscalAuthorityId_example") // FiscalIdentificationTypeUpdateDto |  (optional)
 
 // Update a fiscal identification type
 FiscalIdentificationTypesAPI.updateFiscalIdentificationType(tenantId: tenantId, identificationTypeId: identificationTypeId, apiVersion: apiVersion, xApiVersion: xApiVersion, fiscalIdentificationTypeUpdateDto: fiscalIdentificationTypeUpdateDto) { (response, error) in

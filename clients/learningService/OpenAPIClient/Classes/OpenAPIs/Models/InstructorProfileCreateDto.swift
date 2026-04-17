@@ -41,11 +41,9 @@ public struct InstructorProfileCreateDto: Codable, JSONEncodable, Hashable {
     public var data8Label: String?
     public var data9: String?
     public var data9Label: String?
-    public var businessID: String?
     public var contactID: String?
-    public var businessProfileRecordID: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, authorized: Bool? = nil, about: String? = nil, verified: Bool? = nil, submitted: Bool? = nil, avatarUrl: String? = nil, qualifiedName: String? = nil, verificationTimestamp: Date? = nil, data: String? = nil, dataLabel: String? = nil, data1: String? = nil, data1Label: String? = nil, data2: String? = nil, data2Label: String? = nil, data3: String? = nil, data3Label: String? = nil, data4: String? = nil, data4Label: String? = nil, data5: String? = nil, data5Label: String? = nil, data6: String? = nil, data6Label: String? = nil, data7: String? = nil, data7Label: String? = nil, data8: String? = nil, data8Label: String? = nil, data9: String? = nil, data9Label: String? = nil, businessID: String? = nil, contactID: String? = nil, businessProfileRecordID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, authorized: Bool? = nil, about: String? = nil, verified: Bool? = nil, submitted: Bool? = nil, avatarUrl: String? = nil, qualifiedName: String? = nil, verificationTimestamp: Date? = nil, data: String? = nil, dataLabel: String? = nil, data1: String? = nil, data1Label: String? = nil, data2: String? = nil, data2Label: String? = nil, data3: String? = nil, data3Label: String? = nil, data4: String? = nil, data4Label: String? = nil, data5: String? = nil, data5Label: String? = nil, data6: String? = nil, data6Label: String? = nil, data7: String? = nil, data7Label: String? = nil, data8: String? = nil, data8Label: String? = nil, data9: String? = nil, data9Label: String? = nil, contactID: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.authorized = authorized
@@ -75,9 +73,7 @@ public struct InstructorProfileCreateDto: Codable, JSONEncodable, Hashable {
         self.data8Label = data8Label
         self.data9 = data9
         self.data9Label = data9Label
-        self.businessID = businessID
         self.contactID = contactID
-        self.businessProfileRecordID = businessProfileRecordID
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -110,9 +106,7 @@ public struct InstructorProfileCreateDto: Codable, JSONEncodable, Hashable {
         case data8Label
         case data9
         case data9Label
-        case businessID
         case contactID
-        case businessProfileRecordID
     }
 
     // Encodable protocol methods
@@ -148,9 +142,7 @@ public struct InstructorProfileCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(data8Label, forKey: .data8Label)
         try container.encodeIfPresent(data9, forKey: .data9)
         try container.encodeIfPresent(data9Label, forKey: .data9Label)
-        try container.encodeIfPresent(businessID, forKey: .businessID)
         try container.encodeIfPresent(contactID, forKey: .contactID)
-        try container.encodeIfPresent(businessProfileRecordID, forKey: .businessProfileRecordID)
     }
 }
 

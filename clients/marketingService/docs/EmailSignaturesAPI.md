@@ -27,7 +27,7 @@ Creates a new email signature for the specified tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let emailSignatureCreateDto = EmailSignatureCreateDto(id: 123, timestamp: Date(), tenantId: "tenantId_example", enrollmentId: "enrollmentId_example", title: "title_example", code: "code_example", published: false, description: "description_example", htmlContent: "htmlContent_example", featuredImageUrl: "featuredImageUrl_example", codeType: "codeType_example") // EmailSignatureCreateDto | 
+let emailSignatureCreateDto = EmailSignatureCreateDto(id: 123, timestamp: Date(), title: "title_example", code: "code_example", published: false, description: "description_example", htmlContent: "htmlContent_example", featuredImageUrl: "featuredImageUrl_example", codeType: "codeType_example") // EmailSignatureCreateDto | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 

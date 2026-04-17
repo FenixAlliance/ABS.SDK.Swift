@@ -12,26 +12,20 @@ import AnyCodable
 
 public struct AppliedTaxPolicyRecordCreateDto: Codable, JSONEncodable, Hashable {
 
-    static let tenantIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    static let enrollmentIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let taxPolicyIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let invoiceIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let itemIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
-    public var tenantId: String?
-    public var enrollmentId: String?
     public var taxPolicyId: String?
     public var invoiceId: String?
     public var itemId: String?
     public var taxAmountInUSD: Double?
     public var taxBaseAmountInUSD: Double?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, tenantId: String? = nil, enrollmentId: String? = nil, taxPolicyId: String? = nil, invoiceId: String? = nil, itemId: String? = nil, taxAmountInUSD: Double? = nil, taxBaseAmountInUSD: Double? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, taxPolicyId: String? = nil, invoiceId: String? = nil, itemId: String? = nil, taxAmountInUSD: Double? = nil, taxBaseAmountInUSD: Double? = nil) {
         self.id = id
         self.timestamp = timestamp
-        self.tenantId = tenantId
-        self.enrollmentId = enrollmentId
         self.taxPolicyId = taxPolicyId
         self.invoiceId = invoiceId
         self.itemId = itemId
@@ -42,8 +36,6 @@ public struct AppliedTaxPolicyRecordCreateDto: Codable, JSONEncodable, Hashable 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
-        case tenantId
-        case enrollmentId
         case taxPolicyId
         case invoiceId
         case itemId
@@ -57,8 +49,6 @@ public struct AppliedTaxPolicyRecordCreateDto: Codable, JSONEncodable, Hashable 
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(taxPolicyId, forKey: .taxPolicyId)
         try container.encodeIfPresent(invoiceId, forKey: .invoiceId)
         try container.encodeIfPresent(itemId, forKey: .itemId)

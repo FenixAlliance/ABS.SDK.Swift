@@ -12,6 +12,8 @@ import AnyCodable
 
 public struct AssetTransferCreateDto: Codable, JSONEncodable, Hashable {
 
+    public var id: UUID?
+    public var timestamp: Date?
     public var assetId: String?
     public var isRootTransfer: Bool?
     public var serialList: String?
@@ -25,7 +27,9 @@ public struct AssetTransferCreateDto: Codable, JSONEncodable, Hashable {
     public var sourceDepartmentId: String?
     public var destinationDepartmentId: String?
 
-    public init(assetId: String? = nil, isRootTransfer: Bool? = nil, serialList: String? = nil, quantity: String? = nil, serial: String? = nil, previousAssetTransferId: String? = nil, sourceLocationId: String? = nil, destinationLocationId: String? = nil, sourceContactId: String? = nil, destinationContactId: String? = nil, sourceDepartmentId: String? = nil, destinationDepartmentId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, assetId: String? = nil, isRootTransfer: Bool? = nil, serialList: String? = nil, quantity: String? = nil, serial: String? = nil, previousAssetTransferId: String? = nil, sourceLocationId: String? = nil, destinationLocationId: String? = nil, sourceContactId: String? = nil, destinationContactId: String? = nil, sourceDepartmentId: String? = nil, destinationDepartmentId: String? = nil) {
+        self.id = id
+        self.timestamp = timestamp
         self.assetId = assetId
         self.isRootTransfer = isRootTransfer
         self.serialList = serialList
@@ -41,6 +45,8 @@ public struct AssetTransferCreateDto: Codable, JSONEncodable, Hashable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case id
+        case timestamp
         case assetId
         case isRootTransfer
         case serialList
@@ -59,6 +65,8 @@ public struct AssetTransferCreateDto: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(id, forKey: .id)
+        try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(assetId, forKey: .assetId)
         try container.encodeIfPresent(isRootTransfer, forKey: .isRootTransfer)
         try container.encodeIfPresent(serialList, forKey: .serialList)

@@ -29,7 +29,7 @@ import OpenAPIClient
 let tenantId = "TODO" // AnyCodable | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let fiscalRegimeCreateDto = FiscalRegimeCreateDto(id: 123, timestamp: Date(), code: "code_example", name: "name_example", fiscalAuthorityId: "fiscalAuthorityId_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example") // FiscalRegimeCreateDto |  (optional)
+let fiscalRegimeCreateDto = FiscalRegimeCreateDto(id: 123, timestamp: Date(), code: "code_example", name: "name_example", fiscalAuthorityId: "fiscalAuthorityId_example") // FiscalRegimeCreateDto |  (optional)
 
 // Create a fiscal regime
 FiscalRegimesAPI.createFiscalRegime(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, fiscalRegimeCreateDto: fiscalRegimeCreateDto) { (response, error) in
@@ -310,7 +310,7 @@ let tenantId = "TODO" // AnyCodable |
 let regimeId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let fiscalRegimeUpdateDto = FiscalRegimeUpdateDto(code: "code_example", name: "name_example", fiscalAuthorityId: "fiscalAuthorityId_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example") // FiscalRegimeUpdateDto |  (optional)
+let fiscalRegimeUpdateDto = FiscalRegimeUpdateDto(code: "code_example", name: "name_example", fiscalAuthorityId: "fiscalAuthorityId_example") // FiscalRegimeUpdateDto |  (optional)
 
 // Update a fiscal regime
 FiscalRegimesAPI.updateFiscalRegime(tenantId: tenantId, regimeId: regimeId, apiVersion: apiVersion, xApiVersion: xApiVersion, fiscalRegimeUpdateDto: fiscalRegimeUpdateDto) { (response, error) in

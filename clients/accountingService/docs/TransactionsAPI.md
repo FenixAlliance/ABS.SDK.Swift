@@ -35,7 +35,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let transactionCreateDto = TransactionCreateDto(id: 123, timestamp: Date(), description: "description_example", price: 123, quantity: 123, externalDescription: "externalDescription_example", basisQuantity: 123, basisAmount: 123, percent: 123, unitGroupId: "unitGroupId_example", unitId: "unitId_example", transactionCategoryId: "transactionCategoryId_example", currencyId: "currencyId_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example") // TransactionCreateDto |  (optional)
+let transactionCreateDto = TransactionCreateDto(id: 123, timestamp: Date(), description: "description_example", price: 123, quantity: 123, externalDescription: "externalDescription_example", basisQuantity: 123, basisAmount: 123, percent: 123, unitGroupId: "unitGroupId_example", unitId: "unitId_example", transactionCategoryId: "transactionCategoryId_example", currencyId: "currencyId_example") // TransactionCreateDto |  (optional)
 
 // Create a transaction
 TransactionsAPI.createTransaction(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, transactionCreateDto: transactionCreateDto) { (response, error) in
@@ -91,7 +91,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let transactionCategoryCreateDto = TransactionCategoryCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", enrollmentId: "enrollmentId_example", tenantId: "tenantId_example") // TransactionCategoryCreateDto |  (optional)
+let transactionCategoryCreateDto = TransactionCategoryCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example") // TransactionCategoryCreateDto |  (optional)
 
 // Create a transaction category
 TransactionsAPI.createTransactionCategory(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, transactionCategoryCreateDto: transactionCategoryCreateDto) { (response, error) in
@@ -588,7 +588,7 @@ let tenantId = 987 // UUID |
 let transactionId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let transactionUpdateDto = TransactionUpdateDto(description: "description_example", price: 123, quantity: 123, externalDescription: "externalDescription_example", basisQuantity: 123, basisAmount: 123, percent: 123, unitGroupId: "unitGroupId_example", unitId: "unitId_example", transactionCategoryId: "transactionCategoryId_example", currencyId: "currencyId_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example") // TransactionUpdateDto |  (optional)
+let transactionUpdateDto = TransactionUpdateDto(description: "description_example", price: 123, quantity: 123, externalDescription: "externalDescription_example", basisQuantity: 123, basisAmount: 123, percent: 123, unitGroupId: "unitGroupId_example", unitId: "unitId_example", transactionCategoryId: "transactionCategoryId_example", currencyId: "currencyId_example") // TransactionUpdateDto |  (optional)
 
 // Update a transaction
 TransactionsAPI.updateTransaction(tenantId: tenantId, transactionId: transactionId, apiVersion: apiVersion, xApiVersion: xApiVersion, transactionUpdateDto: transactionUpdateDto) { (response, error) in
@@ -646,7 +646,7 @@ let tenantId = 987 // UUID |
 let categoryId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let transactionCategoryUpdateDto = TransactionCategoryUpdateDto(name: "name_example", description: "description_example", enrollmentId: "enrollmentId_example", tenantId: "tenantId_example") // TransactionCategoryUpdateDto |  (optional)
+let transactionCategoryUpdateDto = TransactionCategoryUpdateDto(name: "name_example", description: "description_example") // TransactionCategoryUpdateDto |  (optional)
 
 // Update a transaction category
 TransactionsAPI.updateTransactionCategory(tenantId: tenantId, categoryId: categoryId, apiVersion: apiVersion, xApiVersion: xApiVersion, transactionCategoryUpdateDto: transactionCategoryUpdateDto) { (response, error) in

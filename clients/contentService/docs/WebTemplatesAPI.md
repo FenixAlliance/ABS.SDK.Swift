@@ -83,7 +83,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let webTemplateCreateDto = WebTemplateCreateDto(id: "id_example", timestamp: Date(), slug: "slug_example", name: "name_example", title: "title_example", description: "description_example", content: "content_example", htmlContent: "htmlContent_example", cssContent: "cssContent_example", jsContent: "jsContent_example", razorContent: "razorContent_example", highlightImage: "highlightImage_example", order: 123) // WebTemplateCreateDto |  (optional)
+let webTemplateCreateDto = WebTemplateCreateDto(id: 123, timestamp: Date(), slug: "slug_example", name: "name_example", title: "title_example", description: "description_example", content: "content_example", htmlContent: "htmlContent_example", cssContent: "cssContent_example", jsContent: "jsContent_example", razorContent: "razorContent_example", highlightImage: "highlightImage_example", order: 123) // WebTemplateCreateDto |  (optional)
 
 // Create a web template
 WebTemplatesAPI.createWebTemplateAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, webTemplateCreateDto: webTemplateCreateDto) { (response, error) in

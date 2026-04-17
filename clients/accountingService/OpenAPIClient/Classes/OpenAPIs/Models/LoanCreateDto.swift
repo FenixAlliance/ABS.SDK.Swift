@@ -21,10 +21,8 @@ public struct LoanCreateDto: Codable, JSONEncodable, Hashable {
     public var isCompundInterestRate: Bool?
     public var loanTypeId: String?
     public var currencyId: String?
-    public var tenantId: String?
-    public var enrollmentId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, loanTimestamp: Date? = nil, paymentDeadline: Date? = nil, value: Double? = nil, interestRate: Double? = nil, isCompundInterestRate: Bool? = nil, loanTypeId: String? = nil, currencyId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, loanTimestamp: Date? = nil, paymentDeadline: Date? = nil, value: Double? = nil, interestRate: Double? = nil, isCompundInterestRate: Bool? = nil, loanTypeId: String? = nil, currencyId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.loanTimestamp = loanTimestamp
@@ -34,8 +32,6 @@ public struct LoanCreateDto: Codable, JSONEncodable, Hashable {
         self.isCompundInterestRate = isCompundInterestRate
         self.loanTypeId = loanTypeId
         self.currencyId = currencyId
-        self.tenantId = tenantId
-        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -48,8 +44,6 @@ public struct LoanCreateDto: Codable, JSONEncodable, Hashable {
         case isCompundInterestRate
         case loanTypeId
         case currencyId
-        case tenantId
-        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -65,8 +59,6 @@ public struct LoanCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(isCompundInterestRate, forKey: .isCompundInterestRate)
         try container.encodeIfPresent(loanTypeId, forKey: .loanTypeId)
         try container.encodeIfPresent(currencyId, forKey: .currencyId)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 **name** | **String** |  | [optional] 
 **description** | **String** |  | [optional] 
 **disabled** | **Bool** |  | [optional] 
-**businessProfileRecordID** | **String** |  | [optional] 
 **organizationProfileID** | **String** |  | [optional] 
 **parentDepartmentID** | **String** |  | [optional] 
 

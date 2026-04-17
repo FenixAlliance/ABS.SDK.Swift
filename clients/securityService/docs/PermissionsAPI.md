@@ -211,7 +211,7 @@ Creates a new security permission for the specified tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let securityPermissionCreateDto = SecurityPermissionCreateDto(id: 123, timestamp: Date(), name: "name_example", tenantId: "tenantId_example", description: "description_example") // SecurityPermissionCreateDto | 
+let securityPermissionCreateDto = SecurityPermissionCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example") // SecurityPermissionCreateDto | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 

@@ -5,8 +5,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **UUID** |  | [optional] 
 **timestamp** | **Date** |  | [optional] 
-**businessID** | **String** |  | 
-**businessProfileRecordID** | **String** |  | [optional] 
 **name** | **String** |  | [optional] 
 **description** | **String** |  | [optional] 
 **avatarURL** | **String** |  | [optional] 

@@ -29,7 +29,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let taxRateCreateDto = TaxRateCreateDto(id: 123, timestamp: Date(), name: "name_example", rate: 123, value: 123, um: "um_example", unitId: "unitId_example", unitGroupId: "unitGroupId_example", priority: 123, compound: false, shipping: false, withholding: false, singleTransactionThreshold: 123, cumulativeTransactionThreshold: 123, fiscalAuthorityId: "fiscalAuthorityId_example", fiscalYearId: "fiscalYearId_example", tenantId: "tenantId_example", countryId: "countryId_example", taxClassId: "taxClassId_example", currencyId: "currencyId_example", taxPolicyId: "taxPolicyId_example", enrollmentId: "enrollmentId_example") // TaxRateCreateDto |  (optional)
+let taxRateCreateDto = TaxRateCreateDto(id: 123, timestamp: Date(), name: "name_example", rate: 123, value: 123, um: "um_example", unitId: "unitId_example", unitGroupId: "unitGroupId_example", priority: 123, compound: false, shipping: false, withholding: false, singleTransactionThreshold: 123, cumulativeTransactionThreshold: 123, fiscalAuthorityId: "fiscalAuthorityId_example", fiscalYearId: "fiscalYearId_example", countryId: "countryId_example", taxClassId: "taxClassId_example", currencyId: "currencyId_example", taxPolicyId: "taxPolicyId_example") // TaxRateCreateDto |  (optional)
 
 // Create a tax rate
 TaxRatesAPI.createTaxRate(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, taxRateCreateDto: taxRateCreateDto) { (response, error) in
@@ -306,7 +306,7 @@ let tenantId = 987 // UUID |
 let id = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let taxRateUpdateDto = TaxRateUpdateDto(name: "name_example", rate: 123, value: 123, um: "um_example", unitId: "unitId_example", unitGroupId: "unitGroupId_example", priority: 123, compound: false, shipping: false, withholding: false, singleTransactionThreshold: 123, cumulativeTransactionThreshold: 123, fiscalAuthorityId: "fiscalAuthorityId_example", fiscalYearId: "fiscalYearId_example", tenantId: "tenantId_example", countryId: "countryId_example", taxClassId: "taxClassId_example", currencyId: "currencyId_example", taxPolicyId: "taxPolicyId_example", enrollmentId: "enrollmentId_example") // TaxRateUpdateDto |  (optional)
+let taxRateUpdateDto = TaxRateUpdateDto(name: "name_example", rate: 123, value: 123, um: "um_example", unitId: "unitId_example", unitGroupId: "unitGroupId_example", priority: 123, compound: false, shipping: false, withholding: false, singleTransactionThreshold: 123, cumulativeTransactionThreshold: 123, fiscalAuthorityId: "fiscalAuthorityId_example", fiscalYearId: "fiscalYearId_example", countryId: "countryId_example", taxClassId: "taxClassId_example", currencyId: "currencyId_example", taxPolicyId: "taxPolicyId_example") // TaxRateUpdateDto |  (optional)
 
 // Update a tax rate
 TaxRatesAPI.updateTaxRate(tenantId: tenantId, id: id, apiVersion: apiVersion, xApiVersion: xApiVersion, taxRateUpdateDto: taxRateUpdateDto) { (response, error) in

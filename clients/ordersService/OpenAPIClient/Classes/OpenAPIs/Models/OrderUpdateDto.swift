@@ -20,7 +20,6 @@ public struct OrderUpdateDto: Codable, JSONEncodable, Hashable {
         case included = "Included"
         case excluded = "Excluded"
     }
-    public var tenantId: String?
     public var firstName: String?
     public var lastName: String?
     public var companyName: String?
@@ -64,7 +63,6 @@ public struct OrderUpdateDto: Codable, JSONEncodable, Hashable {
     public var userId: String?
     public var forexRate: Double?
     public var currencyId: String?
-    public var enrollmentId: String?
     public var individualId: String?
     public var organizationId: String?
     public var totalAmountInUsd: Double?
@@ -79,8 +77,7 @@ public struct OrderUpdateDto: Codable, JSONEncodable, Hashable {
     public var description: String?
     public var title: String?
 
-    public init(tenantId: String? = nil, firstName: String? = nil, lastName: String? = nil, companyName: String? = nil, billingEmail: String? = nil, addressLine1: String? = nil, addressLine2: String? = nil, postalCode: String? = nil, countryId: String? = nil, stateId: String? = nil, cityId: String? = nil, billingLocationId: String? = nil, shippingLocationId: String? = nil, shippingMethodId: String? = nil, totalDetail: Double? = nil, totalDetailCurrencyId: String? = nil, totalProfit: Double? = nil, totalProfitCurrencyId: String? = nil, totalDiscounts: Double? = nil, totalDiscountsCurrencyId: String? = nil, totalSurcharges: Double? = nil, totalSurchargesCurrencyId: String? = nil, totalShippingTax: Double? = nil, totalShippingTaxCurrencyId: String? = nil, totalShippingCost: Double? = nil, totalShippingCostCurrencyId: String? = nil, totalGlobalDiscounts: Double? = nil, totalGlobalDiscountsCurrencyId: String? = nil, totalGlobalSurcharges: Double? = nil, totalGlobalSurchargesCurrencyId: String? = nil, totalWithheldTax: Double? = nil, totalWithheldTaxCurrencyId: String? = nil, totalTaxBase: Double? = nil, totalTaxBaseCurrencyId: String? = nil, totalTaxes: Double? = nil, totalTaxesCurrencyId: String? = nil, total: Double? = nil, totalCurrencyId: String? = nil, costCalculationMethod: CostCalculationMethod? = nil, taxCalculationMethod: TaxCalculationMethod? = nil, cartId: String? = nil, userId: String? = nil, forexRate: Double? = nil, currencyId: String? = nil, enrollmentId: String? = nil, individualId: String? = nil, organizationId: String? = nil, totalAmountInUsd: Double? = nil, totalTaxesInUsd: Double? = nil, receiverTenantId: String? = nil, closed: Bool? = nil, priceListId: String? = nil, paymentTermId: String? = nil, quoteStatus: String? = nil, effectiveTo: Date? = nil, effectiveFrom: Date? = nil, description: String? = nil, title: String? = nil) {
-        self.tenantId = tenantId
+    public init(firstName: String? = nil, lastName: String? = nil, companyName: String? = nil, billingEmail: String? = nil, addressLine1: String? = nil, addressLine2: String? = nil, postalCode: String? = nil, countryId: String? = nil, stateId: String? = nil, cityId: String? = nil, billingLocationId: String? = nil, shippingLocationId: String? = nil, shippingMethodId: String? = nil, totalDetail: Double? = nil, totalDetailCurrencyId: String? = nil, totalProfit: Double? = nil, totalProfitCurrencyId: String? = nil, totalDiscounts: Double? = nil, totalDiscountsCurrencyId: String? = nil, totalSurcharges: Double? = nil, totalSurchargesCurrencyId: String? = nil, totalShippingTax: Double? = nil, totalShippingTaxCurrencyId: String? = nil, totalShippingCost: Double? = nil, totalShippingCostCurrencyId: String? = nil, totalGlobalDiscounts: Double? = nil, totalGlobalDiscountsCurrencyId: String? = nil, totalGlobalSurcharges: Double? = nil, totalGlobalSurchargesCurrencyId: String? = nil, totalWithheldTax: Double? = nil, totalWithheldTaxCurrencyId: String? = nil, totalTaxBase: Double? = nil, totalTaxBaseCurrencyId: String? = nil, totalTaxes: Double? = nil, totalTaxesCurrencyId: String? = nil, total: Double? = nil, totalCurrencyId: String? = nil, costCalculationMethod: CostCalculationMethod? = nil, taxCalculationMethod: TaxCalculationMethod? = nil, cartId: String? = nil, userId: String? = nil, forexRate: Double? = nil, currencyId: String? = nil, individualId: String? = nil, organizationId: String? = nil, totalAmountInUsd: Double? = nil, totalTaxesInUsd: Double? = nil, receiverTenantId: String? = nil, closed: Bool? = nil, priceListId: String? = nil, paymentTermId: String? = nil, quoteStatus: String? = nil, effectiveTo: Date? = nil, effectiveFrom: Date? = nil, description: String? = nil, title: String? = nil) {
         self.firstName = firstName
         self.lastName = lastName
         self.companyName = companyName
@@ -124,7 +121,6 @@ public struct OrderUpdateDto: Codable, JSONEncodable, Hashable {
         self.userId = userId
         self.forexRate = forexRate
         self.currencyId = currencyId
-        self.enrollmentId = enrollmentId
         self.individualId = individualId
         self.organizationId = organizationId
         self.totalAmountInUsd = totalAmountInUsd
@@ -141,7 +137,6 @@ public struct OrderUpdateDto: Codable, JSONEncodable, Hashable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case tenantId
         case firstName
         case lastName
         case companyName
@@ -185,7 +180,6 @@ public struct OrderUpdateDto: Codable, JSONEncodable, Hashable {
         case userId
         case forexRate
         case currencyId
-        case enrollmentId
         case individualId
         case organizationId
         case totalAmountInUsd
@@ -205,7 +199,6 @@ public struct OrderUpdateDto: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encodeIfPresent(firstName, forKey: .firstName)
         try container.encodeIfPresent(lastName, forKey: .lastName)
         try container.encodeIfPresent(companyName, forKey: .companyName)
@@ -249,7 +242,6 @@ public struct OrderUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(userId, forKey: .userId)
         try container.encodeIfPresent(forexRate, forKey: .forexRate)
         try container.encodeIfPresent(currencyId, forKey: .currencyId)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(individualId, forKey: .individualId)
         try container.encodeIfPresent(organizationId, forKey: .organizationId)
         try container.encodeIfPresent(totalAmountInUsd, forKey: .totalAmountInUsd)

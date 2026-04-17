@@ -14,26 +14,20 @@ public struct ItemCategoryCreateDto: Codable, JSONEncodable, Hashable {
 
     static let titleRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     static let descriptionRule = StringRule(minLength: 0, maxLength: 1000, pattern: nil)
-    static let businessIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
-    static let businessProfileRecordIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     static let parentItemCategoryIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var title: String
     public var description: String?
     public var imageURL: String?
-    public var businessID: String
-    public var businessProfileRecordID: String?
     public var parentItemCategoryID: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, title: String, description: String? = nil, imageURL: String? = nil, businessID: String, businessProfileRecordID: String? = nil, parentItemCategoryID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, title: String, description: String? = nil, imageURL: String? = nil, parentItemCategoryID: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
         self.description = description
         self.imageURL = imageURL
-        self.businessID = businessID
-        self.businessProfileRecordID = businessProfileRecordID
         self.parentItemCategoryID = parentItemCategoryID
     }
 
@@ -43,8 +37,6 @@ public struct ItemCategoryCreateDto: Codable, JSONEncodable, Hashable {
         case title
         case description
         case imageURL
-        case businessID
-        case businessProfileRecordID
         case parentItemCategoryID
     }
 
@@ -57,8 +49,6 @@ public struct ItemCategoryCreateDto: Codable, JSONEncodable, Hashable {
         try container.encode(title, forKey: .title)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(imageURL, forKey: .imageURL)
-        try container.encode(businessID, forKey: .businessID)
-        try container.encodeIfPresent(businessProfileRecordID, forKey: .businessProfileRecordID)
         try container.encodeIfPresent(parentItemCategoryID, forKey: .parentItemCategoryID)
     }
 }

@@ -29,7 +29,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let fiscalYearCreateDto = FiscalYearCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", closed: false, tenantId: "tenantId_example", enrollmentId: "enrollmentId_example", endDate: Date(), startDate: Date()) // FiscalYearCreateDto |  (optional)
+let fiscalYearCreateDto = FiscalYearCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", closed: false, endDate: Date(), startDate: Date(), fiscalAuthorityId: "fiscalAuthorityId_example") // FiscalYearCreateDto |  (optional)
 
 // Create fiscal year
 FiscalYearsAPI.createFiscalYearAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, fiscalYearCreateDto: fiscalYearCreateDto) { (response, error) in
@@ -306,7 +306,7 @@ let tenantId = 987 // UUID |
 let fiscalYearId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let fiscalYearUpdateDto = FiscalYearUpdateDto(name: "name_example", description: "description_example", closed: false, endDate: Date(), startDate: Date()) // FiscalYearUpdateDto |  (optional)
+let fiscalYearUpdateDto = FiscalYearUpdateDto(name: "name_example", description: "description_example", closed: false, endDate: Date(), startDate: Date(), fiscalAuthorityId: "fiscalAuthorityId_example") // FiscalYearUpdateDto |  (optional)
 
 // Update fiscal year
 FiscalYearsAPI.updateFiscalYearAsync(tenantId: tenantId, fiscalYearId: fiscalYearId, apiVersion: apiVersion, xApiVersion: xApiVersion, fiscalYearUpdateDto: fiscalYearUpdateDto) { (response, error) in

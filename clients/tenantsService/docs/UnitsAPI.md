@@ -29,7 +29,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let tenantUnitCreateDto = TenantUnitCreateDto(id: 123, timestamp: Date(), businessID: "businessID_example", businessProfileRecordID: "businessProfileRecordID_example", name: "name_example", description: "description_example", disabled: false, businessUnitQualifiedName: "businessUnitQualifiedName_example", countryID: "countryID_example", organizationProfileID: "organizationProfileID_example", parentBusinessUnitID: "parentBusinessUnitID_example") // TenantUnitCreateDto |  (optional)
+let tenantUnitCreateDto = TenantUnitCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", disabled: false, businessUnitQualifiedName: "businessUnitQualifiedName_example", countryID: "countryID_example", organizationProfileID: "organizationProfileID_example", parentBusinessUnitID: "parentBusinessUnitID_example") // TenantUnitCreateDto |  (optional)
 
 // Create a new tenant unit
 UnitsAPI.createTenantUnit(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, tenantUnitCreateDto: tenantUnitCreateDto) { (response, error) in

@@ -31,7 +31,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let tenantEnrollmentCreateDto = TenantEnrollmentCreateDto(id: 123, timestamp: Date(), tenantId: "tenantId_example", userId: "userId_example") // TenantEnrollmentCreateDto |  (optional)
+let tenantEnrollmentCreateDto = TenantEnrollmentCreateDto(id: 123, timestamp: Date(), userId: "userId_example") // TenantEnrollmentCreateDto |  (optional)
 
 // Create a new tenant enrollment
 EnrollmentsAPI.createTenantEnrollment(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, tenantEnrollmentCreateDto: tenantEnrollmentCreateDto) { (response, error) in

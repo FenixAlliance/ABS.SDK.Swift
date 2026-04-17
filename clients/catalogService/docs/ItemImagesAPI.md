@@ -28,7 +28,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let itemImageCreateDto = ItemImageCreateDto(id: 123, timestamp: Date(), businessID: "businessID_example", businessProfileRecordID: "businessProfileRecordID_example", itemID: "itemID_example", isItemMozaicBG: false, mD5Hash: "mD5Hash_example", metadata: "metadata_example", fileUploadURL: "fileUploadURL_example", fileName: "fileName_example", title: "title_example", abstract: "abstract_example", author: "author_example", keyWords: "keyWords_example", notes: "notes_example", contentType: "contentType_example", fileLength: 123, validResponse: false, socialProfileID: "socialProfileID_example", parentFileUploadID: "parentFileUploadID_example", accountHolderID: "accountHolderID_example") // ItemImageCreateDto |  (optional)
+let itemImageCreateDto = ItemImageCreateDto(id: 123, timestamp: Date(), itemID: "itemID_example", isItemMozaicBG: false, mD5Hash: "mD5Hash_example", metadata: "metadata_example", fileUploadURL: "fileUploadURL_example", fileName: "fileName_example", title: "title_example", abstract: "abstract_example", author: "author_example", keyWords: "keyWords_example", notes: "notes_example", contentType: "contentType_example", fileLength: 123, validResponse: false, socialProfileID: "socialProfileID_example", parentFileUploadID: "parentFileUploadID_example") // ItemImageCreateDto |  (optional)
 
 // Create a new item image
 ItemImagesAPI.createItemImageAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemImageCreateDto: itemImageCreateDto) { (response, error) in

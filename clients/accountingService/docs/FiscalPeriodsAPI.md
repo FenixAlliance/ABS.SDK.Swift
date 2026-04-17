@@ -29,7 +29,7 @@ import OpenAPIClient
 let tenantId = "TODO" // AnyCodable | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let fiscalPeriodCreateDto = FiscalPeriodCreateDto(id: 123, timestamp: Date(), name: "name_example", fromDate: Date(), toDate: Date(), tenantId: "tenantId_example", enrollmentId: "enrollmentId_example", fiscalYearId: "fiscalYearId_example") // FiscalPeriodCreateDto |  (optional)
+let fiscalPeriodCreateDto = FiscalPeriodCreateDto(id: 123, timestamp: Date(), name: "name_example", fromDate: Date(), toDate: Date(), fiscalYearId: "fiscalYearId_example") // FiscalPeriodCreateDto |  (optional)
 
 // Create a fiscal period
 FiscalPeriodsAPI.createFiscalPeriod(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, fiscalPeriodCreateDto: fiscalPeriodCreateDto) { (response, error) in
@@ -320,7 +320,7 @@ let tenantId = "TODO" // AnyCodable |
 let fiscalPeriodId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let fiscalPeriodUpdateDto = FiscalPeriodUpdateDto(name: "name_example", fromDate: Date(), toDate: Date(), tenantId: "tenantId_example", enrollmentId: "enrollmentId_example", fiscalYearId: "fiscalYearId_example") // FiscalPeriodUpdateDto |  (optional)
+let fiscalPeriodUpdateDto = FiscalPeriodUpdateDto(name: "name_example", fromDate: Date(), toDate: Date(), fiscalYearId: "fiscalYearId_example") // FiscalPeriodUpdateDto |  (optional)
 
 // Update a fiscal period
 FiscalPeriodsAPI.updateFiscalPeriod(tenantId: tenantId, fiscalPeriodId: fiscalPeriodId, apiVersion: apiVersion, xApiVersion: xApiVersion, fiscalPeriodUpdateDto: fiscalPeriodUpdateDto) { (response, error) in

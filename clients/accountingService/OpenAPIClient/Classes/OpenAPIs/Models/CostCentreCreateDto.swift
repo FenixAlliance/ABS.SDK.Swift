@@ -18,7 +18,6 @@ public struct CostCentreCreateDto: Codable, JSONEncodable, Hashable {
     }
     static let nameRule = StringRule(minLength: 0, maxLength: 50, pattern: nil)
     static let descriptionRule = StringRule(minLength: 0, maxLength: 250, pattern: nil)
-    static let tenantIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let costCentresGroupIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let parentCostCentreIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     public var id: UUID?
@@ -27,18 +26,16 @@ public struct CostCentreCreateDto: Codable, JSONEncodable, Hashable {
     public var disabled: Bool?
     public var description: String?
     public var costCentreType: CostCentreType?
-    public var tenantId: String?
     public var costCentresGroupId: String?
     public var parentCostCentreId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil, disabled: Bool? = nil, description: String? = nil, costCentreType: CostCentreType? = nil, tenantId: String? = nil, costCentresGroupId: String? = nil, parentCostCentreId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil, disabled: Bool? = nil, description: String? = nil, costCentreType: CostCentreType? = nil, costCentresGroupId: String? = nil, parentCostCentreId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
         self.disabled = disabled
         self.description = description
         self.costCentreType = costCentreType
-        self.tenantId = tenantId
         self.costCentresGroupId = costCentresGroupId
         self.parentCostCentreId = parentCostCentreId
     }
@@ -50,7 +47,6 @@ public struct CostCentreCreateDto: Codable, JSONEncodable, Hashable {
         case disabled
         case description
         case costCentreType
-        case tenantId
         case costCentresGroupId
         case parentCostCentreId
     }
@@ -65,7 +61,6 @@ public struct CostCentreCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(disabled, forKey: .disabled)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(costCentreType, forKey: .costCentreType)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encodeIfPresent(costCentresGroupId, forKey: .costCentresGroupId)
         try container.encodeIfPresent(parentCostCentreId, forKey: .parentCostCentreId)
     }

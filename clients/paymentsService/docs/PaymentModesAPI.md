@@ -29,7 +29,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let paymentModeCreateDto = PaymentModeCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example") // PaymentModeCreateDto |  (optional)
+let paymentModeCreateDto = PaymentModeCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example") // PaymentModeCreateDto |  (optional)
 
 // Creates a new payment mode
 PaymentModesAPI.createPaymentModeAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, paymentModeCreateDto: paymentModeCreateDto) { (response, error) in

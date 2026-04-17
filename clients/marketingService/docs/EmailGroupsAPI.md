@@ -27,7 +27,7 @@ Creates a new email group for the specified tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let emailGroupCreateDto = EmailGroupCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", enabled: false, tenantId: "tenantId_example", enrollmentId: "enrollmentId_example") // EmailGroupCreateDto | 
+let emailGroupCreateDto = EmailGroupCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", enabled: false) // EmailGroupCreateDto | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
@@ -304,7 +304,7 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let emailgroupId = 987 // UUID | 
-let emailGroupUpdateDto = EmailGroupUpdateDto(name: "name_example", description: "description_example", enabled: false, tenantId: "tenantId_example", enrollmentId: "enrollmentId_example") // EmailGroupUpdateDto | 
+let emailGroupUpdateDto = EmailGroupUpdateDto(name: "name_example", description: "description_example", enabled: false) // EmailGroupUpdateDto | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 

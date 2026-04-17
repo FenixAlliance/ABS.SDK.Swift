@@ -16,8 +16,6 @@ public struct TaxPolicyUpdateDto: Codable, JSONEncodable, Hashable {
     static let descriptionRule = StringRule(minLength: 0, maxLength: 150, pattern: nil)
     static let countryStateIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let cityIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    static let enrollmentIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    static let tenantIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let fiscalAuthorityIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     public var code: String?
     public var title: String?
@@ -40,14 +38,12 @@ public struct TaxPolicyUpdateDto: Codable, JSONEncodable, Hashable {
     public var customState: String?
     public var customCity: String?
     public var cityId: String?
-    public var enrollmentId: String?
-    public var tenantId: String?
     public var zero: Bool?
     public var reduced: Bool?
     public var withholding: Bool?
     public var fiscalAuthorityId: String?
 
-    public init(code: String? = nil, title: String? = nil, description: String? = nil, isFree: Bool? = nil, reduce: Bool? = nil, isEnabled: Bool? = nil, isDefault: Bool? = nil, allowInternational: Bool? = nil, hours: Int? = nil, days: Int? = nil, weeks: Int? = nil, months: Int? = nil, years: Int? = nil, value: Double? = nil, percentage: Double? = nil, currencyId: String? = nil, countryId: String? = nil, countryStateId: String? = nil, customState: String? = nil, customCity: String? = nil, cityId: String? = nil, enrollmentId: String? = nil, tenantId: String? = nil, zero: Bool? = nil, reduced: Bool? = nil, withholding: Bool? = nil, fiscalAuthorityId: String? = nil) {
+    public init(code: String? = nil, title: String? = nil, description: String? = nil, isFree: Bool? = nil, reduce: Bool? = nil, isEnabled: Bool? = nil, isDefault: Bool? = nil, allowInternational: Bool? = nil, hours: Int? = nil, days: Int? = nil, weeks: Int? = nil, months: Int? = nil, years: Int? = nil, value: Double? = nil, percentage: Double? = nil, currencyId: String? = nil, countryId: String? = nil, countryStateId: String? = nil, customState: String? = nil, customCity: String? = nil, cityId: String? = nil, zero: Bool? = nil, reduced: Bool? = nil, withholding: Bool? = nil, fiscalAuthorityId: String? = nil) {
         self.code = code
         self.title = title
         self.description = description
@@ -69,8 +65,6 @@ public struct TaxPolicyUpdateDto: Codable, JSONEncodable, Hashable {
         self.customState = customState
         self.customCity = customCity
         self.cityId = cityId
-        self.enrollmentId = enrollmentId
-        self.tenantId = tenantId
         self.zero = zero
         self.reduced = reduced
         self.withholding = withholding
@@ -99,8 +93,6 @@ public struct TaxPolicyUpdateDto: Codable, JSONEncodable, Hashable {
         case customState
         case customCity
         case cityId
-        case enrollmentId
-        case tenantId
         case zero
         case reduced
         case withholding
@@ -132,8 +124,6 @@ public struct TaxPolicyUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(customState, forKey: .customState)
         try container.encodeIfPresent(customCity, forKey: .customCity)
         try container.encodeIfPresent(cityId, forKey: .cityId)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encodeIfPresent(zero, forKey: .zero)
         try container.encodeIfPresent(reduced, forKey: .reduced)
         try container.encodeIfPresent(withholding, forKey: .withholding)

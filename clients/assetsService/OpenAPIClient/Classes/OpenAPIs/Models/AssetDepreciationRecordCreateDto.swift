@@ -12,6 +12,8 @@ import AnyCodable
 
 public struct AssetDepreciationRecordCreateDto: Codable, JSONEncodable, Hashable {
 
+    public var id: UUID?
+    public var timestamp: Date?
     public var assetId: String?
     public var assetDepreciationPolicyId: String?
     public var depreciationAmount: Double?
@@ -21,7 +23,9 @@ public struct AssetDepreciationRecordCreateDto: Codable, JSONEncodable, Hashable
     public var year: Int?
     public var month: Int?
 
-    public init(assetId: String? = nil, assetDepreciationPolicyId: String? = nil, depreciationAmount: Double? = nil, accumulatedDepreciation: Double? = nil, bookValue: Double? = nil, depreciationDate: Date? = nil, year: Int? = nil, month: Int? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, assetId: String? = nil, assetDepreciationPolicyId: String? = nil, depreciationAmount: Double? = nil, accumulatedDepreciation: Double? = nil, bookValue: Double? = nil, depreciationDate: Date? = nil, year: Int? = nil, month: Int? = nil) {
+        self.id = id
+        self.timestamp = timestamp
         self.assetId = assetId
         self.assetDepreciationPolicyId = assetDepreciationPolicyId
         self.depreciationAmount = depreciationAmount
@@ -33,6 +37,8 @@ public struct AssetDepreciationRecordCreateDto: Codable, JSONEncodable, Hashable
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case id
+        case timestamp
         case assetId
         case assetDepreciationPolicyId
         case depreciationAmount
@@ -47,6 +53,8 @@ public struct AssetDepreciationRecordCreateDto: Codable, JSONEncodable, Hashable
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(id, forKey: .id)
+        try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(assetId, forKey: .assetId)
         try container.encodeIfPresent(assetDepreciationPolicyId, forKey: .assetDepreciationPolicyId)
         try container.encodeIfPresent(depreciationAmount, forKey: .depreciationAmount)

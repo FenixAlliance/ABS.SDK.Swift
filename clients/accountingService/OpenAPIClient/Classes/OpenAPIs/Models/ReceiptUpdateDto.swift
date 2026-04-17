@@ -13,44 +13,35 @@ import AnyCodable
 public struct ReceiptUpdateDto: Codable, JSONEncodable, Hashable {
 
     public var paymentId: String?
-    public var tenantId: String?
     public var forexRate: Double?
     public var totalAmount: Double?
     public var totalAmountInUsd: Double?
     public var closed: Bool?
     public var currencyId: String?
-    public var accountHolderId: String?
     public var contactId: String?
-    public var enrollmentId: String?
     public var orderId: String?
     public var invoiceId: String?
 
-    public init(paymentId: String? = nil, tenantId: String? = nil, forexRate: Double? = nil, totalAmount: Double? = nil, totalAmountInUsd: Double? = nil, closed: Bool? = nil, currencyId: String? = nil, accountHolderId: String? = nil, contactId: String? = nil, enrollmentId: String? = nil, orderId: String? = nil, invoiceId: String? = nil) {
+    public init(paymentId: String? = nil, forexRate: Double? = nil, totalAmount: Double? = nil, totalAmountInUsd: Double? = nil, closed: Bool? = nil, currencyId: String? = nil, contactId: String? = nil, orderId: String? = nil, invoiceId: String? = nil) {
         self.paymentId = paymentId
-        self.tenantId = tenantId
         self.forexRate = forexRate
         self.totalAmount = totalAmount
         self.totalAmountInUsd = totalAmountInUsd
         self.closed = closed
         self.currencyId = currencyId
-        self.accountHolderId = accountHolderId
         self.contactId = contactId
-        self.enrollmentId = enrollmentId
         self.orderId = orderId
         self.invoiceId = invoiceId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case paymentId
-        case tenantId
         case forexRate
         case totalAmount
         case totalAmountInUsd
         case closed
         case currencyId
-        case accountHolderId
         case contactId
-        case enrollmentId
         case orderId
         case invoiceId
     }
@@ -60,15 +51,12 @@ public struct ReceiptUpdateDto: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(paymentId, forKey: .paymentId)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encodeIfPresent(forexRate, forKey: .forexRate)
         try container.encodeIfPresent(totalAmount, forKey: .totalAmount)
         try container.encodeIfPresent(totalAmountInUsd, forKey: .totalAmountInUsd)
         try container.encodeIfPresent(closed, forKey: .closed)
         try container.encodeIfPresent(currencyId, forKey: .currencyId)
-        try container.encodeIfPresent(accountHolderId, forKey: .accountHolderId)
         try container.encodeIfPresent(contactId, forKey: .contactId)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(orderId, forKey: .orderId)
         try container.encodeIfPresent(invoiceId, forKey: .invoiceId)
     }

@@ -15,7 +15,6 @@ public struct ItemQuestionCreateDto: Codable, JSONEncodable, Hashable {
     static let titleRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     static let questionRule = StringRule(minLength: 0, maxLength: 1000, pattern: nil)
     static let socialProfileIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
-    static let businessIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     static let itemIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
@@ -23,17 +22,15 @@ public struct ItemQuestionCreateDto: Codable, JSONEncodable, Hashable {
     public var needsRevision: Bool
     public var question: String
     public var socialProfileID: String?
-    public var businessID: String
     public var itemID: String
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, title: String, needsRevision: Bool, question: String, socialProfileID: String? = nil, businessID: String, itemID: String) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, title: String, needsRevision: Bool, question: String, socialProfileID: String? = nil, itemID: String) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
         self.needsRevision = needsRevision
         self.question = question
         self.socialProfileID = socialProfileID
-        self.businessID = businessID
         self.itemID = itemID
     }
 
@@ -44,7 +41,6 @@ public struct ItemQuestionCreateDto: Codable, JSONEncodable, Hashable {
         case needsRevision
         case question
         case socialProfileID
-        case businessID
         case itemID
     }
 
@@ -58,7 +54,6 @@ public struct ItemQuestionCreateDto: Codable, JSONEncodable, Hashable {
         try container.encode(needsRevision, forKey: .needsRevision)
         try container.encode(question, forKey: .question)
         try container.encodeIfPresent(socialProfileID, forKey: .socialProfileID)
-        try container.encode(businessID, forKey: .businessID)
         try container.encode(itemID, forKey: .itemID)
     }
 }

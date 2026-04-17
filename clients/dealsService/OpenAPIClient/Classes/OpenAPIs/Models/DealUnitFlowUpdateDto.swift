@@ -15,19 +15,16 @@ public struct DealUnitFlowUpdateDto: Codable, JSONEncodable, Hashable {
     static let nameRule = StringRule(minLength: 0, maxLength: 100, pattern: nil)
     static let descriptionRule = StringRule(minLength: 0, maxLength: 1000, pattern: nil)
     static let parentBusinessProcessIdRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
-    static let tenantIdRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     static let tenantEnrollmentIdRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     public var name: String?
     public var description: String?
     public var parentBusinessProcessId: String?
-    public var tenantId: String?
     public var tenantEnrollmentId: String?
 
-    public init(name: String? = nil, description: String? = nil, parentBusinessProcessId: String? = nil, tenantId: String? = nil, tenantEnrollmentId: String? = nil) {
+    public init(name: String? = nil, description: String? = nil, parentBusinessProcessId: String? = nil, tenantEnrollmentId: String? = nil) {
         self.name = name
         self.description = description
         self.parentBusinessProcessId = parentBusinessProcessId
-        self.tenantId = tenantId
         self.tenantEnrollmentId = tenantEnrollmentId
     }
 
@@ -35,7 +32,6 @@ public struct DealUnitFlowUpdateDto: Codable, JSONEncodable, Hashable {
         case name
         case description
         case parentBusinessProcessId
-        case tenantId
         case tenantEnrollmentId
     }
 
@@ -46,7 +42,6 @@ public struct DealUnitFlowUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(parentBusinessProcessId, forKey: .parentBusinessProcessId)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encodeIfPresent(tenantEnrollmentId, forKey: .tenantEnrollmentId)
     }
 }

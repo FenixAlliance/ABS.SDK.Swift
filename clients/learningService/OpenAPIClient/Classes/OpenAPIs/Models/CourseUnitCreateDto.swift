@@ -15,7 +15,6 @@ public struct CourseUnitCreateDto: Codable, JSONEncodable, Hashable {
     static let titleRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     static let courseIDRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     static let courseSectionIDRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    static let businessIDRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var title: String
@@ -23,11 +22,10 @@ public struct CourseUnitCreateDto: Codable, JSONEncodable, Hashable {
     public var content: String?
     public var courseID: String
     public var courseSectionID: String
-    public var businessID: String
     public var courseContentGroupID: String?
     public var releaseDateTime: Date?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, title: String, description: String? = nil, content: String? = nil, courseID: String, courseSectionID: String, businessID: String, courseContentGroupID: String? = nil, releaseDateTime: Date? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, title: String, description: String? = nil, content: String? = nil, courseID: String, courseSectionID: String, courseContentGroupID: String? = nil, releaseDateTime: Date? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
@@ -35,7 +33,6 @@ public struct CourseUnitCreateDto: Codable, JSONEncodable, Hashable {
         self.content = content
         self.courseID = courseID
         self.courseSectionID = courseSectionID
-        self.businessID = businessID
         self.courseContentGroupID = courseContentGroupID
         self.releaseDateTime = releaseDateTime
     }
@@ -48,7 +45,6 @@ public struct CourseUnitCreateDto: Codable, JSONEncodable, Hashable {
         case content
         case courseID
         case courseSectionID
-        case businessID
         case courseContentGroupID
         case releaseDateTime
     }
@@ -64,7 +60,6 @@ public struct CourseUnitCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(content, forKey: .content)
         try container.encode(courseID, forKey: .courseID)
         try container.encode(courseSectionID, forKey: .courseSectionID)
-        try container.encode(businessID, forKey: .businessID)
         try container.encodeIfPresent(courseContentGroupID, forKey: .courseContentGroupID)
         try container.encodeIfPresent(releaseDateTime, forKey: .releaseDateTime)
     }

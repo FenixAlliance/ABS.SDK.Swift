@@ -4,12 +4,67 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**countWebPageCategoriesAsync**](WebPageCategoriesAPI.md#countwebpagecategoriesasync) | **GET** /api/v2/ContentService/WebPageCategories/Count | Count web page categories
 [**createWebPageCategoryAsync**](WebPageCategoriesAPI.md#createwebpagecategoryasync) | **POST** /api/v2/ContentService/WebPageCategories | Create a web page category
 [**deleteWebPageCategoryAsync**](WebPageCategoriesAPI.md#deletewebpagecategoryasync) | **DELETE** /api/v2/ContentService/WebPageCategories/{webPageCategoryId} | Delete a web page category
 [**getWebPageCategoriesAsync**](WebPageCategoriesAPI.md#getwebpagecategoriesasync) | **GET** /api/v2/ContentService/WebPageCategories | Get web page categories
 [**getWebPageCategoryByIdAsync**](WebPageCategoriesAPI.md#getwebpagecategorybyidasync) | **GET** /api/v2/ContentService/WebPageCategories/{webPageCategoryId} | Get web page category by ID
 [**updateWebPageCategoryAsync**](WebPageCategoriesAPI.md#updatewebpagecategoryasync) | **PUT** /api/v2/ContentService/WebPageCategories/{webPageCategoryId} | Update a web page category
 
+
+# **countWebPageCategoriesAsync**
+```swift
+    open class func countWebPageCategoriesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+```
+
+Count web page categories
+
+Counts all web page categories for the specified tenant.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Count web page categories
+WebPageCategoriesAPI.countWebPageCategoriesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**Int32Envelope**](Int32Envelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **createWebPageCategoryAsync**
 ```swift
@@ -28,7 +83,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let webPageCategoryCreateDto = WebPageCategoryCreateDto(id: 123, timestamp: Date(), slug: "slug_example", title: "title_example", description: "description_example", seoTitle: "seoTitle_example", metaDescription: "metaDescription_example", cornerstoneContent: false, allowSerachEngines: false, seoKeyPhrases: "seoKeyPhrases_example", canonicalUrl: "canonicalUrl_example", imageURL: "imageURL_example", image: "image_example", webPortalID: "webPortalID_example", businessProfileRecordID: "businessProfileRecordID_example") // WebPageCategoryCreateDto |  (optional)
+let webPageCategoryCreateDto = WebPageCategoryCreateDto(id: 123, timestamp: Date(), slug: "slug_example", title: "title_example", description: "description_example", seoTitle: "seoTitle_example", metaDescription: "metaDescription_example", cornerstoneContent: false, allowSerachEngines: false, seoKeyPhrases: "seoKeyPhrases_example", canonicalUrl: "canonicalUrl_example", imageURL: "imageURL_example", image: "image_example", webPortalID: "webPortalID_example") // WebPageCategoryCreateDto |  (optional)
 
 // Create a web page category
 WebPageCategoriesAPI.createWebPageCategoryAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, webPageCategoryCreateDto: webPageCategoryCreateDto) { (response, error) in

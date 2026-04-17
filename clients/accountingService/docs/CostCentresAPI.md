@@ -38,7 +38,7 @@ Creates a new cost centre.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let costCentreCreateDto = CostCentreCreateDto(id: 123, timestamp: Date(), name: "name_example", disabled: false, description: "description_example", costCentreType: "costCentreType_example", tenantId: "tenantId_example", costCentresGroupId: "costCentresGroupId_example", parentCostCentreId: "parentCostCentreId_example") // CostCentreCreateDto | 
+let costCentreCreateDto = CostCentreCreateDto(id: 123, timestamp: Date(), name: "name_example", disabled: false, description: "description_example", costCentreType: "costCentreType_example", costCentresGroupId: "costCentresGroupId_example", parentCostCentreId: "parentCostCentreId_example") // CostCentreCreateDto | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
@@ -94,7 +94,7 @@ Creates a new cost centre budget.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let costCentreBudgetCreateDto = CostCentreBudgetCreateDto(id: 123, timestamp: Date(), name: "name_example", tenantId: "tenantId_example", fiscalYearId: "fiscalYearId_example", costCentreId: "costCentreId_example") // CostCentreBudgetCreateDto | 
+let costCentreBudgetCreateDto = CostCentreBudgetCreateDto(id: 123, timestamp: Date(), name: "name_example", fiscalYearId: "fiscalYearId_example", costCentreId: "costCentreId_example") // CostCentreBudgetCreateDto | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
@@ -150,7 +150,7 @@ Creates a new cost centre group.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let costCentreGroupCreateDto = CostCentreGroupCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", disabled: false, tenantId: "tenantId_example", parentCostCentresGroupId: "parentCostCentresGroupId_example") // CostCentreGroupCreateDto | 
+let costCentreGroupCreateDto = CostCentreGroupCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", disabled: false, parentCostCentresGroupId: "parentCostCentresGroupId_example") // CostCentreGroupCreateDto | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
@@ -813,7 +813,7 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let costCentreId = 987 // UUID | 
-let costCentreUpdateDto = CostCentreUpdateDto(name: "name_example", disabled: false, description: "description_example", costCentreType: "costCentreType_example", tenantId: "tenantId_example", costCentresGroupId: "costCentresGroupId_example", parentCostCentreId: "parentCostCentreId_example") // CostCentreUpdateDto | 
+let costCentreUpdateDto = CostCentreUpdateDto(name: "name_example", disabled: false, description: "description_example", costCentreType: "costCentreType_example", costCentresGroupId: "costCentresGroupId_example", parentCostCentreId: "parentCostCentreId_example") // CostCentreUpdateDto | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
@@ -929,7 +929,7 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let groupId = 987 // UUID | 
-let costCentreGroupUpdateDto = CostCentreGroupUpdateDto(name: "name_example", description: "description_example", disabled: false, tenantId: "tenantId_example", parentCostCentresGroupId: "parentCostCentresGroupId_example") // CostCentreGroupUpdateDto | 
+let costCentreGroupUpdateDto = CostCentreGroupUpdateDto(name: "name_example", description: "description_example", disabled: false, parentCostCentresGroupId: "parentCostCentresGroupId_example") // CostCentreGroupUpdateDto | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 

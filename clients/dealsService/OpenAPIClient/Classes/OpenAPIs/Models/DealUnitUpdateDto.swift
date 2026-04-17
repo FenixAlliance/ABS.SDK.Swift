@@ -48,10 +48,8 @@ public struct DealUnitUpdateDto: Codable, JSONEncodable, Hashable {
     public var closed: Bool?
     public var title: String?
     public var userId: String?
-    public var tenantId: String?
     public var priceListId: String?
     public var description: String?
-    public var enrollmentId: String?
     public var individualId: String?
     public var paymentTermId: String?
     public var organizationId: String?
@@ -118,14 +116,12 @@ public struct DealUnitUpdateDto: Codable, JSONEncodable, Hashable {
     public var dealUnitForecastCategory: DealUnitForecastCategory?
     public var dealUnitAmountsCalculation: DealUnitAmountsCalculation?
 
-    public init(closed: Bool? = nil, title: String? = nil, userId: String? = nil, tenantId: String? = nil, priceListId: String? = nil, description: String? = nil, enrollmentId: String? = nil, individualId: String? = nil, paymentTermId: String? = nil, organizationId: String? = nil, receiverTenantId: String? = nil, firstName: String? = nil, lastName: String? = nil, companyName: String? = nil, billingEmail: String? = nil, addressLine1: String? = nil, addressLine2: String? = nil, postalCode: String? = nil, countryId: String? = nil, stateId: String? = nil, cityId: String? = nil, billingLocationId: String? = nil, shippingLocationId: String? = nil, shippingMethodId: String? = nil, forexRate: Double? = nil, currencyId: String? = nil, totalDetail: Double? = nil, totalDetailCurrencyId: String? = nil, totalProfit: Double? = nil, totalProfitCurrencyId: String? = nil, totalDiscounts: Double? = nil, totalDiscountsCurrencyId: String? = nil, totalSurcharges: Double? = nil, totalSurchargesCurrencyId: String? = nil, totalShippingTax: Double? = nil, totalShippingTaxCurrencyId: String? = nil, totalShippingCost: Double? = nil, totalShippingCostCurrencyId: String? = nil, totalGlobalDiscounts: Double? = nil, totalGlobalDiscountsCurrencyId: String? = nil, totalGlobalSurcharges: Double? = nil, totalGlobalSurchargesCurrencyId: String? = nil, totalWithheldTax: Double? = nil, totalWithheldTaxCurrencyId: String? = nil, totalTaxBase: Double? = nil, totalTaxBaseCurrencyId: String? = nil, totalTaxes: Double? = nil, totalTaxesCurrencyId: String? = nil, total: Double? = nil, totalCurrencyId: String? = nil, costCalculationMethod: CostCalculationMethod? = nil, taxCalculationMethod: TaxCalculationMethod? = nil, ordered: Bool? = nil, cartId: String? = nil, dealUnitFeedId: String? = nil, dealUnitFlowId: String? = nil, dealUnitFlowStageId: String? = nil, partnerCreated: Bool? = nil, partnerCollaboration: Bool? = nil, proposedSolution: String? = nil, currentSituation: String? = nil, customerNeed: String? = nil, wonDate: Date? = nil, lostDate: Date? = nil, expiryDate: Date? = nil, deliveredDate: Date? = nil, closedTimestamp: Date? = nil, expectedCloseDate: Date? = nil, dealUnitStatus: DealUnitStatus? = nil, dealUnitPurchaseProcess: DealUnitPurchaseProcess? = nil, dealUnitForecastCategory: DealUnitForecastCategory? = nil, dealUnitAmountsCalculation: DealUnitAmountsCalculation? = nil) {
+    public init(closed: Bool? = nil, title: String? = nil, userId: String? = nil, priceListId: String? = nil, description: String? = nil, individualId: String? = nil, paymentTermId: String? = nil, organizationId: String? = nil, receiverTenantId: String? = nil, firstName: String? = nil, lastName: String? = nil, companyName: String? = nil, billingEmail: String? = nil, addressLine1: String? = nil, addressLine2: String? = nil, postalCode: String? = nil, countryId: String? = nil, stateId: String? = nil, cityId: String? = nil, billingLocationId: String? = nil, shippingLocationId: String? = nil, shippingMethodId: String? = nil, forexRate: Double? = nil, currencyId: String? = nil, totalDetail: Double? = nil, totalDetailCurrencyId: String? = nil, totalProfit: Double? = nil, totalProfitCurrencyId: String? = nil, totalDiscounts: Double? = nil, totalDiscountsCurrencyId: String? = nil, totalSurcharges: Double? = nil, totalSurchargesCurrencyId: String? = nil, totalShippingTax: Double? = nil, totalShippingTaxCurrencyId: String? = nil, totalShippingCost: Double? = nil, totalShippingCostCurrencyId: String? = nil, totalGlobalDiscounts: Double? = nil, totalGlobalDiscountsCurrencyId: String? = nil, totalGlobalSurcharges: Double? = nil, totalGlobalSurchargesCurrencyId: String? = nil, totalWithheldTax: Double? = nil, totalWithheldTaxCurrencyId: String? = nil, totalTaxBase: Double? = nil, totalTaxBaseCurrencyId: String? = nil, totalTaxes: Double? = nil, totalTaxesCurrencyId: String? = nil, total: Double? = nil, totalCurrencyId: String? = nil, costCalculationMethod: CostCalculationMethod? = nil, taxCalculationMethod: TaxCalculationMethod? = nil, ordered: Bool? = nil, cartId: String? = nil, dealUnitFeedId: String? = nil, dealUnitFlowId: String? = nil, dealUnitFlowStageId: String? = nil, partnerCreated: Bool? = nil, partnerCollaboration: Bool? = nil, proposedSolution: String? = nil, currentSituation: String? = nil, customerNeed: String? = nil, wonDate: Date? = nil, lostDate: Date? = nil, expiryDate: Date? = nil, deliveredDate: Date? = nil, closedTimestamp: Date? = nil, expectedCloseDate: Date? = nil, dealUnitStatus: DealUnitStatus? = nil, dealUnitPurchaseProcess: DealUnitPurchaseProcess? = nil, dealUnitForecastCategory: DealUnitForecastCategory? = nil, dealUnitAmountsCalculation: DealUnitAmountsCalculation? = nil) {
         self.closed = closed
         self.title = title
         self.userId = userId
-        self.tenantId = tenantId
         self.priceListId = priceListId
         self.description = description
-        self.enrollmentId = enrollmentId
         self.individualId = individualId
         self.paymentTermId = paymentTermId
         self.organizationId = organizationId
@@ -197,10 +193,8 @@ public struct DealUnitUpdateDto: Codable, JSONEncodable, Hashable {
         case closed
         case title
         case userId
-        case tenantId
         case priceListId
         case description
-        case enrollmentId
         case individualId
         case paymentTermId
         case organizationId
@@ -275,10 +269,8 @@ public struct DealUnitUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(closed, forKey: .closed)
         try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(userId, forKey: .userId)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encodeIfPresent(priceListId, forKey: .priceListId)
         try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(individualId, forKey: .individualId)
         try container.encodeIfPresent(paymentTermId, forKey: .paymentTermId)
         try container.encodeIfPresent(organizationId, forKey: .organizationId)

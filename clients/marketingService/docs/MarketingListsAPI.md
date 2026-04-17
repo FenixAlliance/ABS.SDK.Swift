@@ -27,7 +27,7 @@ Creates a new marketing list for the specified tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let marketingListCreateDto = MarketingListCreateDto(id: 123, timestamp: Date(), locked: false, name: "name_example", purpose: "purpose_example", description: "description_example", source: "source_example", cost: 123, modifiedOn: Date(), lastUsedOn: Date(), currencyId: "currencyId_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example", marketingListType: "marketingListType_example", marketingListTarget: "marketingListTarget_example") // MarketingListCreateDto | 
+let marketingListCreateDto = MarketingListCreateDto(id: 123, timestamp: Date(), locked: false, name: "name_example", purpose: "purpose_example", description: "description_example", source: "source_example", cost: 123, modifiedOn: Date(), lastUsedOn: Date(), currencyId: "currencyId_example", marketingListType: "marketingListType_example", marketingListTarget: "marketingListTarget_example") // MarketingListCreateDto | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
@@ -304,7 +304,7 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let marketinglistId = 987 // UUID | 
-let marketingListUpdateDto = MarketingListUpdateDto(locked: false, name: "name_example", purpose: "purpose_example", description: "description_example", source: "source_example", cost: 123, modifiedOn: Date(), lastUsedOn: Date(), currencyId: "currencyId_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example", marketingListType: "marketingListType_example", marketingListTarget: "marketingListTarget_example") // MarketingListUpdateDto | 
+let marketingListUpdateDto = MarketingListUpdateDto(locked: false, name: "name_example", purpose: "purpose_example", description: "description_example", source: "source_example", cost: 123, modifiedOn: Date(), lastUsedOn: Date(), currencyId: "currencyId_example", marketingListType: "marketingListType_example", marketingListTarget: "marketingListTarget_example") // MarketingListUpdateDto | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 

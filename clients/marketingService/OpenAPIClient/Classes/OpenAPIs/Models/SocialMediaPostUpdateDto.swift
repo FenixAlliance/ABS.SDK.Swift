@@ -13,32 +13,24 @@ import AnyCodable
 public struct SocialMediaPostUpdateDto: Codable, JSONEncodable, Hashable {
 
     static let titleRule = StringRule(minLength: 0, maxLength: 99, pattern: nil)
-    static let tenantIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let socialPostBucketIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    static let enrollmentIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     public var title: String?
     public var content: String?
     public var featuredImageUrl: String?
-    public var tenantId: String?
     public var socialPostBucketId: String?
-    public var enrollmentId: String?
 
-    public init(title: String? = nil, content: String? = nil, featuredImageUrl: String? = nil, tenantId: String? = nil, socialPostBucketId: String? = nil, enrollmentId: String? = nil) {
+    public init(title: String? = nil, content: String? = nil, featuredImageUrl: String? = nil, socialPostBucketId: String? = nil) {
         self.title = title
         self.content = content
         self.featuredImageUrl = featuredImageUrl
-        self.tenantId = tenantId
         self.socialPostBucketId = socialPostBucketId
-        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case title
         case content
         case featuredImageUrl
-        case tenantId
         case socialPostBucketId
-        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -48,9 +40,7 @@ public struct SocialMediaPostUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(content, forKey: .content)
         try container.encodeIfPresent(featuredImageUrl, forKey: .featuredImageUrl)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encodeIfPresent(socialPostBucketId, forKey: .socialPostBucketId)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

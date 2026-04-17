@@ -35,7 +35,6 @@ Name | Type | Description | Notes
 **pattern** | **String** |  | [optional] 
 **features** | **String** |  | [optional] 
 **material** | **String** |  | [optional] 
-**tenantId** | **String** |  | [optional] 
 **permalink** | **String** |  | [optional] 
 **brandName** | **String** |  | [optional] 
 **variations** | **String** |  | [optional] 

@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **content** | **String** |  | [optional] 
 **courseID** | **String** |  | 
 **courseSectionID** | **String** |  | 
-**businessID** | **String** |  | 
 **courseContentGroupID** | **String** |  | [optional] 
 **releaseDateTime** | **Date** |  | [optional] 
 

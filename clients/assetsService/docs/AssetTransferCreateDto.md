@@ -3,6 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **UUID** |  | [optional] 
+**timestamp** | **Date** |  | [optional] 
 **assetId** | **String** |  | [optional] 
 **isRootTransfer** | **Bool** |  | [optional] 
 **serialList** | **String** |  | [optional] 

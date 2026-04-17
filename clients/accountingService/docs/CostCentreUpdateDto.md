@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 **disabled** | **Bool** |  | [optional] 
 **description** | **String** |  | [optional] 
 **costCentreType** | **String** |  | [optional] 
-**tenantId** | **String** |  | [optional] 
 **costCentresGroupId** | **String** |  | [optional] 
 **parentCostCentreId** | **String** |  | [optional] 
 

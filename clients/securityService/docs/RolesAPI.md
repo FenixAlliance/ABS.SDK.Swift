@@ -211,7 +211,7 @@ Creates a new security role for the specified tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let securityRoleCreateDto = SecurityRoleCreateDto(id: 123, timestamp: Date(), name: "name_example", tenantId: 123, description: "description_example") // SecurityRoleCreateDto | 
+let securityRoleCreateDto = SecurityRoleCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example") // SecurityRoleCreateDto | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 

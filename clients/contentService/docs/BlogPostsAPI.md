@@ -40,7 +40,7 @@ Creates a new blog post for the specified tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let blogPostCreateDto = BlogPostCreateDto(id: 123, timestamp: Date(), tenantId: "tenantId_example", enrollmentId: "enrollmentId_example", title: "title_example", code: "code_example", published: false, description: "description_example", htmlContent: "htmlContent_example", featuredImageUrl: "featuredImageUrl_example", codeType: "codeType_example", blogPostCategoryID: "blogPostCategoryID_example", webTemplateID: "webTemplateID_example") // BlogPostCreateDto |  (optional)
+let blogPostCreateDto = BlogPostCreateDto(id: 123, timestamp: Date(), title: "title_example", code: "code_example", published: false, description: "description_example", htmlContent: "htmlContent_example", featuredImageUrl: "featuredImageUrl_example", codeType: "codeType_example", blogPostCategoryID: "blogPostCategoryID_example", webTemplateID: "webTemplateID_example") // BlogPostCreateDto |  (optional)
 
 // Create a new blog post
 BlogPostsAPI.createBlogPostAsync(tenantId: tenantId, blogPostCreateDto: blogPostCreateDto) { (response, error) in
@@ -93,7 +93,7 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let blogPostId = 987 // UUID | 
-let blogPostCategoryCreateDto = BlogPostCategoryCreateDto(id: 123, timestamp: Date(), slug: "slug_example", type: "type_example", title: "title_example", description: "description_example", seoTitle: "seoTitle_example", metaDescription: "metaDescription_example", cornerstoneContent: false, allowSerachEngines: false, seoKeyPhrases: "seoKeyPhrases_example", canonicalUrl: "canonicalUrl_example", imageURL: "imageURL_example", image: "image_example", webPortalID: "webPortalID_example", businessID: "businessID_example", businessProfileRecordID: "businessProfileRecordID_example") // BlogPostCategoryCreateDto |  (optional)
+let blogPostCategoryCreateDto = BlogPostCategoryCreateDto(id: 123, timestamp: Date(), slug: "slug_example", type: "type_example", title: "title_example", description: "description_example", seoTitle: "seoTitle_example", metaDescription: "metaDescription_example", cornerstoneContent: false, allowSerachEngines: false, seoKeyPhrases: "seoKeyPhrases_example", canonicalUrl: "canonicalUrl_example", imageURL: "imageURL_example", image: "image_example", webPortalID: "webPortalID_example") // BlogPostCategoryCreateDto |  (optional)
 
 // Create a category for a blog post
 BlogPostsAPI.createCategoryForBlogPostAsync(tenantId: tenantId, blogPostId: blogPostId, blogPostCategoryCreateDto: blogPostCategoryCreateDto) { (response, error) in
@@ -201,7 +201,7 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let blogPostId = 987 // UUID | 
-let blogPostTagCreateDto = BlogPostTagCreateDto(id: 123, timestamp: Date(), slug: "slug_example", type: "type_example", title: "title_example", description: "description_example", seoTitle: "seoTitle_example", metaDescription: "metaDescription_example", cornerstoneContent: false, allowSerachEngines: false, seoKeyPhrases: "seoKeyPhrases_example", canonicalUrl: "canonicalUrl_example", imageURL: "imageURL_example", image: "image_example", webPortalID: "webPortalID_example", businessID: "businessID_example", businessProfileRecordID: "businessProfileRecordID_example") // BlogPostTagCreateDto |  (optional)
+let blogPostTagCreateDto = BlogPostTagCreateDto(id: 123, timestamp: Date(), slug: "slug_example", type: "type_example", title: "title_example", description: "description_example", seoTitle: "seoTitle_example", metaDescription: "metaDescription_example", cornerstoneContent: false, allowSerachEngines: false, seoKeyPhrases: "seoKeyPhrases_example", canonicalUrl: "canonicalUrl_example", imageURL: "imageURL_example", image: "image_example", webPortalID: "webPortalID_example") // BlogPostTagCreateDto |  (optional)
 
 // Create a tag for a blog post
 BlogPostsAPI.createTagForBlogPostAsync(tenantId: tenantId, blogPostId: blogPostId, blogPostTagCreateDto: blogPostTagCreateDto) { (response, error) in

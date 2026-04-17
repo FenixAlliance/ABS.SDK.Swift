@@ -29,7 +29,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let accountingPeriodCreateDto = AccountingPeriodCreateDto(id: 123, timestamp: Date(), name: "name_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example", dateStart: Date(), dateEnd: Date()) // AccountingPeriodCreateDto |  (optional)
+let accountingPeriodCreateDto = AccountingPeriodCreateDto(id: 123, timestamp: Date(), name: "name_example", dateStart: Date(), dateEnd: Date()) // AccountingPeriodCreateDto |  (optional)
 
 // Creates a new accounting period
 AccountingPeriodsAPI.createAccountingPeriod(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountingPeriodCreateDto: accountingPeriodCreateDto) { (response, error) in
@@ -306,7 +306,7 @@ let tenantId = 987 // UUID |
 let accountingPeriodId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let accountingPeriodUpdateDto = AccountingPeriodUpdateDto(name: "name_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example", dateStart: Date(), dateEnd: Date()) // AccountingPeriodUpdateDto |  (optional)
+let accountingPeriodUpdateDto = AccountingPeriodUpdateDto(name: "name_example", dateStart: Date(), dateEnd: Date()) // AccountingPeriodUpdateDto |  (optional)
 
 // Updates an existing accounting period
 AccountingPeriodsAPI.updateAccountingPeriod(tenantId: tenantId, accountingPeriodId: accountingPeriodId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountingPeriodUpdateDto: accountingPeriodUpdateDto) { (response, error) in

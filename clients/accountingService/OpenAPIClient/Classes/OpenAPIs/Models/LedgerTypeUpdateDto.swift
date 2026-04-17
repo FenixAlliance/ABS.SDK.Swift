@@ -22,25 +22,17 @@ public struct LedgerTypeUpdateDto: Codable, JSONEncodable, Hashable {
         case liabilities = "Liabilities"
     }
     static let nameRule = StringRule(minLength: 0, maxLength: 50, pattern: nil)
-    static let tenantIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    static let enrollmentIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     public var name: String?
     public var ledgerClass: LedgerClass?
-    public var tenantId: String?
-    public var enrollmentId: String?
 
-    public init(name: String? = nil, ledgerClass: LedgerClass? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
+    public init(name: String? = nil, ledgerClass: LedgerClass? = nil) {
         self.name = name
         self.ledgerClass = ledgerClass
-        self.tenantId = tenantId
-        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case name
         case ledgerClass
-        case tenantId
-        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -49,8 +41,6 @@ public struct LedgerTypeUpdateDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(ledgerClass, forKey: .ledgerClass)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

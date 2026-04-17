@@ -83,7 +83,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let itemCategoryCreateDto = ItemCategoryCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", imageURL: "imageURL_example", businessID: "businessID_example", businessProfileRecordID: "businessProfileRecordID_example", parentItemCategoryID: "parentItemCategoryID_example") // ItemCategoryCreateDto |  (optional)
+let itemCategoryCreateDto = ItemCategoryCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", imageURL: "imageURL_example", parentItemCategoryID: "parentItemCategoryID_example") // ItemCategoryCreateDto |  (optional)
 
 // Create a new item category
 ItemCategoriesAPI.createItemCategoryAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemCategoryCreateDto: itemCategoryCreateDto) { (response, error) in

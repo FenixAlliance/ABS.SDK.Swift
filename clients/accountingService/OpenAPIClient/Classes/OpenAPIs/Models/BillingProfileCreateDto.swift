@@ -28,7 +28,6 @@ public struct BillingProfileCreateDto: Codable, JSONEncodable, Hashable {
     public var id: UUID?
     public var timestamp: Date?
     public var contactId: String?
-    public var tenantId: String?
     public var taxId: String
     public var phone: String
     public var email: String
@@ -49,11 +48,10 @@ public struct BillingProfileCreateDto: Codable, JSONEncodable, Hashable {
     public var fiscalAuthorityId: String
     public var fiscalRegimeId: String
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, contactId: String? = nil, tenantId: String? = nil, taxId: String, phone: String, email: String, address: String, address1: String? = nil, address2: String? = nil, postalCode: String, businessName: String, commercialName: String, ticker: String? = nil, duns: String? = nil, isPublicCompany: Bool? = nil, isFactaCustomer: Bool? = nil, countryId: String, stateId: String, cityId: String, fiscalIdentificationTypeId: String, fiscalAuthorityId: String, fiscalRegimeId: String) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, contactId: String? = nil, taxId: String, phone: String, email: String, address: String, address1: String? = nil, address2: String? = nil, postalCode: String, businessName: String, commercialName: String, ticker: String? = nil, duns: String? = nil, isPublicCompany: Bool? = nil, isFactaCustomer: Bool? = nil, countryId: String, stateId: String, cityId: String, fiscalIdentificationTypeId: String, fiscalAuthorityId: String, fiscalRegimeId: String) {
         self.id = id
         self.timestamp = timestamp
         self.contactId = contactId
-        self.tenantId = tenantId
         self.taxId = taxId
         self.phone = phone
         self.email = email
@@ -79,7 +77,6 @@ public struct BillingProfileCreateDto: Codable, JSONEncodable, Hashable {
         case id
         case timestamp
         case contactId
-        case tenantId
         case taxId
         case phone
         case email
@@ -108,7 +105,6 @@ public struct BillingProfileCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(contactId, forKey: .contactId)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encode(taxId, forKey: .taxId)
         try container.encode(phone, forKey: .phone)
         try container.encode(email, forKey: .email)

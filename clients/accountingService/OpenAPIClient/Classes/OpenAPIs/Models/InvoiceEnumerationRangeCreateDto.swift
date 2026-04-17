@@ -29,11 +29,9 @@ public struct InvoiceEnumerationRangeCreateDto: Codable, JSONEncodable, Hashable
     public var validFrom: Date
     public var validTo: Date
     public var fiscalAuthorityId: String?
-    public var tenantId: String?
-    public var enrollmentId: String?
     public var documentType: DocumentType?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, _prefix: String? = nil, suffix: String? = nil, identifier: String? = nil, qualifiedName: String? = nil, currentNumeration: Int64? = nil, numerationFrom: Int64? = nil, numerationTo: Int64? = nil, validFrom: Date, validTo: Date, fiscalAuthorityId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil, documentType: DocumentType? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, _prefix: String? = nil, suffix: String? = nil, identifier: String? = nil, qualifiedName: String? = nil, currentNumeration: Int64? = nil, numerationFrom: Int64? = nil, numerationTo: Int64? = nil, validFrom: Date, validTo: Date, fiscalAuthorityId: String? = nil, documentType: DocumentType? = nil) {
         self.id = id
         self.timestamp = timestamp
         self._prefix = _prefix
@@ -46,8 +44,6 @@ public struct InvoiceEnumerationRangeCreateDto: Codable, JSONEncodable, Hashable
         self.validFrom = validFrom
         self.validTo = validTo
         self.fiscalAuthorityId = fiscalAuthorityId
-        self.tenantId = tenantId
-        self.enrollmentId = enrollmentId
         self.documentType = documentType
     }
 
@@ -64,8 +60,6 @@ public struct InvoiceEnumerationRangeCreateDto: Codable, JSONEncodable, Hashable
         case validFrom
         case validTo
         case fiscalAuthorityId
-        case tenantId
-        case enrollmentId
         case documentType
     }
 
@@ -85,8 +79,6 @@ public struct InvoiceEnumerationRangeCreateDto: Codable, JSONEncodable, Hashable
         try container.encode(validFrom, forKey: .validFrom)
         try container.encode(validTo, forKey: .validTo)
         try container.encodeIfPresent(fiscalAuthorityId, forKey: .fiscalAuthorityId)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(documentType, forKey: .documentType)
     }
 }

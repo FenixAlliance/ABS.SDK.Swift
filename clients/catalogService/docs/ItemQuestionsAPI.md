@@ -28,7 +28,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let itemQuestionCreateDto = ItemQuestionCreateDto(id: 123, timestamp: Date(), title: "title_example", needsRevision: false, question: "question_example", socialProfileID: "socialProfileID_example", businessID: "businessID_example", itemID: "itemID_example") // ItemQuestionCreateDto |  (optional)
+let itemQuestionCreateDto = ItemQuestionCreateDto(id: 123, timestamp: Date(), title: "title_example", needsRevision: false, question: "question_example", socialProfileID: "socialProfileID_example", itemID: "itemID_example") // ItemQuestionCreateDto |  (optional)
 
 // Create a new item question
 ItemQuestionsAPI.createItemQuestionAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemQuestionCreateDto: itemQuestionCreateDto) { (response, error) in

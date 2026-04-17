@@ -29,7 +29,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let tenantPositionCreateDto = TenantPositionCreateDto(id: 123, timestamp: Date(), businessID: "businessID_example", businessProfileRecordID: "businessProfileRecordID_example", title: "title_example", description: "description_example") // TenantPositionCreateDto |  (optional)
+let tenantPositionCreateDto = TenantPositionCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example") // TenantPositionCreateDto |  (optional)
 
 // Create a new tenant position
 PositionsAPI.createTenantPosition(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, tenantPositionCreateDto: tenantPositionCreateDto) { (response, error) in
@@ -306,7 +306,7 @@ let tenantId = 987 // UUID |
 let tenantPositionId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let tenantPositionUpdateDto = TenantPositionUpdateDto(title: "title_example", description: "description_example", type: "type_example", businessProfileRecordID: "businessProfileRecordID_example") // TenantPositionUpdateDto |  (optional)
+let tenantPositionUpdateDto = TenantPositionUpdateDto(title: "title_example", description: "description_example", type: "type_example") // TenantPositionUpdateDto |  (optional)
 
 // Update a tenant position
 PositionsAPI.updateTenantPosition(tenantId: tenantId, tenantPositionId: tenantPositionId, apiVersion: apiVersion, xApiVersion: xApiVersion, tenantPositionUpdateDto: tenantPositionUpdateDto) { (response, error) in

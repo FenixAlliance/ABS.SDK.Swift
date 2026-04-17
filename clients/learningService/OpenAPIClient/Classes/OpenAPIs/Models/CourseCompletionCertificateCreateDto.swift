@@ -18,18 +18,14 @@ public struct CourseCompletionCertificateCreateDto: Codable, JSONEncodable, Hash
     public var timestamp: Date?
     public var studentProfileID: String
     public var courseEnrollmentID: String
-    public var businessID: String?
-    public var businessProfileRecordID: String?
     public var courseCompletionCertificateTemplateID: String?
     public var courseID: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, studentProfileID: String, courseEnrollmentID: String, businessID: String? = nil, businessProfileRecordID: String? = nil, courseCompletionCertificateTemplateID: String? = nil, courseID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, studentProfileID: String, courseEnrollmentID: String, courseCompletionCertificateTemplateID: String? = nil, courseID: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.studentProfileID = studentProfileID
         self.courseEnrollmentID = courseEnrollmentID
-        self.businessID = businessID
-        self.businessProfileRecordID = businessProfileRecordID
         self.courseCompletionCertificateTemplateID = courseCompletionCertificateTemplateID
         self.courseID = courseID
     }
@@ -39,8 +35,6 @@ public struct CourseCompletionCertificateCreateDto: Codable, JSONEncodable, Hash
         case timestamp
         case studentProfileID
         case courseEnrollmentID
-        case businessID
-        case businessProfileRecordID
         case courseCompletionCertificateTemplateID
         case courseID
     }
@@ -53,8 +47,6 @@ public struct CourseCompletionCertificateCreateDto: Codable, JSONEncodable, Hash
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encode(studentProfileID, forKey: .studentProfileID)
         try container.encode(courseEnrollmentID, forKey: .courseEnrollmentID)
-        try container.encodeIfPresent(businessID, forKey: .businessID)
-        try container.encodeIfPresent(businessProfileRecordID, forKey: .businessProfileRecordID)
         try container.encodeIfPresent(courseCompletionCertificateTemplateID, forKey: .courseCompletionCertificateTemplateID)
         try container.encodeIfPresent(courseID, forKey: .courseID)
     }

@@ -12,8 +12,6 @@ import AnyCodable
 
 public struct SupportRequestAttachmentCreateDto: Codable, JSONEncodable, Hashable {
 
-    static let businessIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
-    static let businessProfileRecordIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var notes: String?
@@ -26,12 +24,10 @@ public struct SupportRequestAttachmentCreateDto: Codable, JSONEncodable, Hashabl
     public var validResponse: Bool?
     public var parentFileUploadId: String?
     public var filePath: String?
-    public var businessID: String?
-    public var businessProfileRecordID: String?
     public var metadata: String?
     public var supportRequestID: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, notes: String? = nil, title: String? = nil, author: String? = nil, isFolder: Bool? = nil, fileName: String? = nil, abstract: String? = nil, keyWords: String? = nil, validResponse: Bool? = nil, parentFileUploadId: String? = nil, filePath: String? = nil, businessID: String? = nil, businessProfileRecordID: String? = nil, metadata: String? = nil, supportRequestID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, notes: String? = nil, title: String? = nil, author: String? = nil, isFolder: Bool? = nil, fileName: String? = nil, abstract: String? = nil, keyWords: String? = nil, validResponse: Bool? = nil, parentFileUploadId: String? = nil, filePath: String? = nil, metadata: String? = nil, supportRequestID: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.notes = notes
@@ -44,8 +40,6 @@ public struct SupportRequestAttachmentCreateDto: Codable, JSONEncodable, Hashabl
         self.validResponse = validResponse
         self.parentFileUploadId = parentFileUploadId
         self.filePath = filePath
-        self.businessID = businessID
-        self.businessProfileRecordID = businessProfileRecordID
         self.metadata = metadata
         self.supportRequestID = supportRequestID
     }
@@ -63,8 +57,6 @@ public struct SupportRequestAttachmentCreateDto: Codable, JSONEncodable, Hashabl
         case validResponse
         case parentFileUploadId
         case filePath
-        case businessID
-        case businessProfileRecordID
         case metadata
         case supportRequestID
     }
@@ -85,8 +77,6 @@ public struct SupportRequestAttachmentCreateDto: Codable, JSONEncodable, Hashabl
         try container.encodeIfPresent(validResponse, forKey: .validResponse)
         try container.encodeIfPresent(parentFileUploadId, forKey: .parentFileUploadId)
         try container.encodeIfPresent(filePath, forKey: .filePath)
-        try container.encodeIfPresent(businessID, forKey: .businessID)
-        try container.encodeIfPresent(businessProfileRecordID, forKey: .businessProfileRecordID)
         try container.encodeIfPresent(metadata, forKey: .metadata)
         try container.encodeIfPresent(supportRequestID, forKey: .supportRequestID)
     }

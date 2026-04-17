@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **description** | **String** |  | [optional] 
 **imageURL** | **String** |  | [optional] 
 **googleCategoryTaxonomy** | **String** |  | [optional] 
-**businessID** | **String** |  | 
 **itemCategoryID** | **String** |  | 
 **itemGoogleCategoryID** | **String** |  | [optional] 
 

@@ -83,7 +83,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let itemTypeCreateDto = ItemTypeCreateDto(id: 123, timestamp: Date(), pluralTitle: "pluralTitle_example", singularTitle: "singularTitle_example", description: "description_example", imageURL: "imageURL_example", googleCategoryTaxonomy: "googleCategoryTaxonomy_example", businessID: "businessID_example", itemCategoryID: "itemCategoryID_example", itemGoogleCategoryID: "itemGoogleCategoryID_example") // ItemTypeCreateDto |  (optional)
+let itemTypeCreateDto = ItemTypeCreateDto(id: 123, timestamp: Date(), pluralTitle: "pluralTitle_example", singularTitle: "singularTitle_example", description: "description_example", imageURL: "imageURL_example", googleCategoryTaxonomy: "googleCategoryTaxonomy_example", itemCategoryID: "itemCategoryID_example", itemGoogleCategoryID: "itemGoogleCategoryID_example") // ItemTypeCreateDto |  (optional)
 
 // Create a new item type
 ItemTypesAPI.createItemTypeAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemTypeCreateDto: itemTypeCreateDto) { (response, error) in

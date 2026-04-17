@@ -12,28 +12,20 @@ import AnyCodable
 
 public struct TenantTeamRecordCreateDto: Codable, JSONEncodable, Hashable {
 
-    static let businessIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
-    static let businessProfileRecordIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     static let businessTeamIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
-    public var businessID: String
-    public var businessProfileRecordID: String
     public var businessTeamID: String
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, businessID: String, businessProfileRecordID: String, businessTeamID: String) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, businessTeamID: String) {
         self.id = id
         self.timestamp = timestamp
-        self.businessID = businessID
-        self.businessProfileRecordID = businessProfileRecordID
         self.businessTeamID = businessTeamID
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
-        case businessID
-        case businessProfileRecordID
         case businessTeamID
     }
 
@@ -43,8 +35,6 @@ public struct TenantTeamRecordCreateDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
-        try container.encode(businessID, forKey: .businessID)
-        try container.encode(businessProfileRecordID, forKey: .businessProfileRecordID)
         try container.encode(businessTeamID, forKey: .businessTeamID)
     }
 }

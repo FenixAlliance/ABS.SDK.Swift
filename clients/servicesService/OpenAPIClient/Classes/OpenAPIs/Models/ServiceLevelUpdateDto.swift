@@ -69,7 +69,6 @@ public struct ServiceLevelUpdateDto: Codable, JSONEncodable, Hashable {
     public var material: String?
     public var onDiscount: Bool?
     public var totalTax: Double?
-    public var tenantId: String?
     public var permalink: String?
     public var brandName: String?
     public var reviewsCount: Int?
@@ -94,7 +93,6 @@ public struct ServiceLevelUpdateDto: Codable, JSONEncodable, Hashable {
     public var customTaxValue: Double?
     public var hasVariations: Bool?
     public var questionsCount: Int?
-    public var enrollmentId: String?
     public var supplierCode: String?
     public var auctionEnd: Date?
     public var purchaseNote: String?
@@ -192,7 +190,7 @@ public struct ServiceLevelUpdateDto: Codable, JSONEncodable, Hashable {
     public var selectedSellingMarginPolicies: [String]?
     public var serviceId: String?
 
-    public init(hot: Bool? = nil, sku: String? = nil, upc: String? = nil, ean: String? = nil, mpn: String? = nil, skUs: String? = nil, isbn: String? = nil, upCs: String? = nil, eaNs: String? = nil, asin: String? = nil, gtin: String? = nil, mpNs: String? = nil, part: String? = nil, name: String? = nil, onSale: Bool? = nil, isbNs: String? = nil, asiNs: String? = nil, gtiNs: String? = nil, width: Double? = nil, model: String? = nil, auction: Bool? = nil, title: String? = nil, color: String? = nil, deleted: Bool? = nil, digital: Bool? = nil, preSale: Bool? = nil, taxable: Bool? = nil, inStock: Bool? = nil, isbN13: String? = nil, unspsc: String? = nil, weight: Double? = nil, length: Double? = nil, height: Double? = nil, unitId: String? = nil, series: String? = nil, featured: Bool? = nil, brands: String? = nil, trending: Bool? = nil, lowStock: Bool? = nil, barcode: String? = nil, unspsCs: String? = nil, pattern: String? = nil, published: Bool? = nil, byRequest: Bool? = nil, summary: String? = nil, brandId: String? = nil, viewsCount: Int? = nil, features: String? = nil, material: String? = nil, onDiscount: Bool? = nil, totalTax: Double? = nil, tenantId: String? = nil, permalink: String? = nil, brandName: String? = nil, reviewsCount: Int? = nil, isDailyDeal: Bool? = nil, languageId: String? = nil, categories: String? = nil, finalPrice: Double? = nil, itemTypeId: String? = nil, categoryId: String? = nil, currencyId: String? = nil, reviewsAvg: Double? = nil, isNewArrival: Bool? = nil, isWeeklyDeal: Bool? = nil, isBestSeller: Bool? = nil, unitGroupId: String? = nil, description: String? = nil, ingredients: String? = nil, releaseDate: String? = nil, isMonthlyDeal: Bool? = nil, recurrency: Double? = nil, paymentCost: Double? = nil, customTaxValue: Double? = nil, hasVariations: Bool? = nil, questionsCount: Int? = nil, enrollmentId: String? = nil, supplierCode: String? = nil, auctionEnd: Date? = nil, purchaseNote: String? = nil, shipsToRules: String? = nil, regularPrice: Double? = nil, images: [String]? = nil, shippingCost: Double? = nil, parentItemId: String? = nil, itemTypeName: String? = nil, cartRecordId: String? = nil, variations: [String]? = nil, tariffHeading: String? = nil, packagedQuantity: Int? = nil, isFixedDiscount: Bool? = nil, discountPrice: Double? = nil, isDealersChoice: Bool? = nil, currentStock: Double? = nil, manageInventory: Bool? = nil, auctionStart: Date? = nil, nutritionFacts: String? = nil, mozaicCoverUrl: String? = nil, packageContent: String? = nil, discountAmount: Double? = nil, youtubeVideoId: String? = nil, inCartQuantity: Double? = nil, isOfficialChoice: Bool? = nil, publishedDate: Date? = nil, primaryImageUrl: String? = nil, validPrimaryImage: Bool? = nil, customTaxAmount: Double? = nil, longDescription: String? = nil, compareRecordId: String? = nil, measurementUnit: String? = nil, shortDescription: String? = nil, googleCategories: String? = nil, isDeadlineDiscount: Bool? = nil, displayShowcaseTab: Bool? = nil, taxIncludedInPrice: Bool? = nil, isProductOfTheWeek: Bool? = nil, supplierProfileId: String? = nil, shippingCountryId: String? = nil, isProductOfTheMonth: Bool? = nil, systemRequirements: String? = nil, isPorcentualDiscount: Bool? = nil, discountPercentage: Double? = nil, discountDeadLine: Date? = nil, displayOnGlobalMozaic: Bool? = nil, displayOnBrandsMozaic: Bool? = nil, customTaxPercentage: Double? = nil, estimatedTaxesInUsd: Double? = nil, customTaxDescription: String? = nil, disableDefaultPolicies: Bool? = nil, estimatedProfitInUsd: Double? = nil, displayOnCategoryMozaic: Bool? = nil, officialDescriptionUrl: String? = nil, energyEfficiencyRating: String? = nil, pageCoverBackgroundUrl: String? = nil, estimatedBasePriceInUsd: Double? = nil, estimatedDiscountsInUsd: Double? = nil, operatingSystemSupported: String? = nil, estimatedSurchargesInUsd: Double? = nil, deadlineDiscountDueDate: Date? = nil, deadlineDiscountFromDate: Date? = nil, estimatedRegularPriceInUsd: Double? = nil, estimatedTaxBasePriceInUsd: Double? = nil, displayOnBannerMarketingRotation: Bool? = nil, lastFixedPricesUpdateDateTime: Date? = nil, estimatedWitholdingTaxesInUsd: Double? = nil, estimatedPaymentCostInUsd: Double? = nil, estimatedPaymentTaxInUsd: Double? = nil, estimatedDefaultShippingCostInUsd: Double? = nil, estimatedDefaultShippingTaxInUsd: Double? = nil, estimatedTotalPriceInUsd: Double? = nil, recentlyViewedRecordId: String? = nil, displayDescriptionEditor: Bool? = nil, primaryGoogleCategoryId: String? = nil, supportedOperatingSystem: String? = nil, estimatedDealSavingsInUsd: Double? = nil, primaryGoogleCategoryName: String? = nil, displayShortDescriptionEditor: Bool? = nil, estimatedWithholdingTaxesInUsd: Double? = nil, selectedTags: [String]? = nil, selectedTypes: [String]? = nil, selectedBrands: [String]? = nil, selectedCategories: [String]? = nil, selectedTaxPolicies: [String]? = nil, selectedPricingRules: [String]? = nil, selectedRefundPolicies: [String]? = nil, selectedReturnPolicies: [String]? = nil, selectedPricingPolicies: [String]? = nil, selectedGoogleCategories: [String]? = nil, selectedWarrantyPolicies: [String]? = nil, selectedShipmentPolicies: [String]? = nil, selectedAttributesOptions: [String]? = nil, selectedSellingMarginPolicies: [String]? = nil, serviceId: String? = nil) {
+    public init(hot: Bool? = nil, sku: String? = nil, upc: String? = nil, ean: String? = nil, mpn: String? = nil, skUs: String? = nil, isbn: String? = nil, upCs: String? = nil, eaNs: String? = nil, asin: String? = nil, gtin: String? = nil, mpNs: String? = nil, part: String? = nil, name: String? = nil, onSale: Bool? = nil, isbNs: String? = nil, asiNs: String? = nil, gtiNs: String? = nil, width: Double? = nil, model: String? = nil, auction: Bool? = nil, title: String? = nil, color: String? = nil, deleted: Bool? = nil, digital: Bool? = nil, preSale: Bool? = nil, taxable: Bool? = nil, inStock: Bool? = nil, isbN13: String? = nil, unspsc: String? = nil, weight: Double? = nil, length: Double? = nil, height: Double? = nil, unitId: String? = nil, series: String? = nil, featured: Bool? = nil, brands: String? = nil, trending: Bool? = nil, lowStock: Bool? = nil, barcode: String? = nil, unspsCs: String? = nil, pattern: String? = nil, published: Bool? = nil, byRequest: Bool? = nil, summary: String? = nil, brandId: String? = nil, viewsCount: Int? = nil, features: String? = nil, material: String? = nil, onDiscount: Bool? = nil, totalTax: Double? = nil, permalink: String? = nil, brandName: String? = nil, reviewsCount: Int? = nil, isDailyDeal: Bool? = nil, languageId: String? = nil, categories: String? = nil, finalPrice: Double? = nil, itemTypeId: String? = nil, categoryId: String? = nil, currencyId: String? = nil, reviewsAvg: Double? = nil, isNewArrival: Bool? = nil, isWeeklyDeal: Bool? = nil, isBestSeller: Bool? = nil, unitGroupId: String? = nil, description: String? = nil, ingredients: String? = nil, releaseDate: String? = nil, isMonthlyDeal: Bool? = nil, recurrency: Double? = nil, paymentCost: Double? = nil, customTaxValue: Double? = nil, hasVariations: Bool? = nil, questionsCount: Int? = nil, supplierCode: String? = nil, auctionEnd: Date? = nil, purchaseNote: String? = nil, shipsToRules: String? = nil, regularPrice: Double? = nil, images: [String]? = nil, shippingCost: Double? = nil, parentItemId: String? = nil, itemTypeName: String? = nil, cartRecordId: String? = nil, variations: [String]? = nil, tariffHeading: String? = nil, packagedQuantity: Int? = nil, isFixedDiscount: Bool? = nil, discountPrice: Double? = nil, isDealersChoice: Bool? = nil, currentStock: Double? = nil, manageInventory: Bool? = nil, auctionStart: Date? = nil, nutritionFacts: String? = nil, mozaicCoverUrl: String? = nil, packageContent: String? = nil, discountAmount: Double? = nil, youtubeVideoId: String? = nil, inCartQuantity: Double? = nil, isOfficialChoice: Bool? = nil, publishedDate: Date? = nil, primaryImageUrl: String? = nil, validPrimaryImage: Bool? = nil, customTaxAmount: Double? = nil, longDescription: String? = nil, compareRecordId: String? = nil, measurementUnit: String? = nil, shortDescription: String? = nil, googleCategories: String? = nil, isDeadlineDiscount: Bool? = nil, displayShowcaseTab: Bool? = nil, taxIncludedInPrice: Bool? = nil, isProductOfTheWeek: Bool? = nil, supplierProfileId: String? = nil, shippingCountryId: String? = nil, isProductOfTheMonth: Bool? = nil, systemRequirements: String? = nil, isPorcentualDiscount: Bool? = nil, discountPercentage: Double? = nil, discountDeadLine: Date? = nil, displayOnGlobalMozaic: Bool? = nil, displayOnBrandsMozaic: Bool? = nil, customTaxPercentage: Double? = nil, estimatedTaxesInUsd: Double? = nil, customTaxDescription: String? = nil, disableDefaultPolicies: Bool? = nil, estimatedProfitInUsd: Double? = nil, displayOnCategoryMozaic: Bool? = nil, officialDescriptionUrl: String? = nil, energyEfficiencyRating: String? = nil, pageCoverBackgroundUrl: String? = nil, estimatedBasePriceInUsd: Double? = nil, estimatedDiscountsInUsd: Double? = nil, operatingSystemSupported: String? = nil, estimatedSurchargesInUsd: Double? = nil, deadlineDiscountDueDate: Date? = nil, deadlineDiscountFromDate: Date? = nil, estimatedRegularPriceInUsd: Double? = nil, estimatedTaxBasePriceInUsd: Double? = nil, displayOnBannerMarketingRotation: Bool? = nil, lastFixedPricesUpdateDateTime: Date? = nil, estimatedWitholdingTaxesInUsd: Double? = nil, estimatedPaymentCostInUsd: Double? = nil, estimatedPaymentTaxInUsd: Double? = nil, estimatedDefaultShippingCostInUsd: Double? = nil, estimatedDefaultShippingTaxInUsd: Double? = nil, estimatedTotalPriceInUsd: Double? = nil, recentlyViewedRecordId: String? = nil, displayDescriptionEditor: Bool? = nil, primaryGoogleCategoryId: String? = nil, supportedOperatingSystem: String? = nil, estimatedDealSavingsInUsd: Double? = nil, primaryGoogleCategoryName: String? = nil, displayShortDescriptionEditor: Bool? = nil, estimatedWithholdingTaxesInUsd: Double? = nil, selectedTags: [String]? = nil, selectedTypes: [String]? = nil, selectedBrands: [String]? = nil, selectedCategories: [String]? = nil, selectedTaxPolicies: [String]? = nil, selectedPricingRules: [String]? = nil, selectedRefundPolicies: [String]? = nil, selectedReturnPolicies: [String]? = nil, selectedPricingPolicies: [String]? = nil, selectedGoogleCategories: [String]? = nil, selectedWarrantyPolicies: [String]? = nil, selectedShipmentPolicies: [String]? = nil, selectedAttributesOptions: [String]? = nil, selectedSellingMarginPolicies: [String]? = nil, serviceId: String? = nil) {
         self.hot = hot
         self.sku = sku
         self.upc = upc
@@ -244,7 +242,6 @@ public struct ServiceLevelUpdateDto: Codable, JSONEncodable, Hashable {
         self.material = material
         self.onDiscount = onDiscount
         self.totalTax = totalTax
-        self.tenantId = tenantId
         self.permalink = permalink
         self.brandName = brandName
         self.reviewsCount = reviewsCount
@@ -269,7 +266,6 @@ public struct ServiceLevelUpdateDto: Codable, JSONEncodable, Hashable {
         self.customTaxValue = customTaxValue
         self.hasVariations = hasVariations
         self.questionsCount = questionsCount
-        self.enrollmentId = enrollmentId
         self.supplierCode = supplierCode
         self.auctionEnd = auctionEnd
         self.purchaseNote = purchaseNote
@@ -420,7 +416,6 @@ public struct ServiceLevelUpdateDto: Codable, JSONEncodable, Hashable {
         case material
         case onDiscount
         case totalTax
-        case tenantId
         case permalink
         case brandName
         case reviewsCount
@@ -445,7 +440,6 @@ public struct ServiceLevelUpdateDto: Codable, JSONEncodable, Hashable {
         case customTaxValue
         case hasVariations
         case questionsCount
-        case enrollmentId
         case supplierCode
         case auctionEnd
         case purchaseNote
@@ -599,7 +593,6 @@ public struct ServiceLevelUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(material, forKey: .material)
         try container.encodeIfPresent(onDiscount, forKey: .onDiscount)
         try container.encodeIfPresent(totalTax, forKey: .totalTax)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encodeIfPresent(permalink, forKey: .permalink)
         try container.encodeIfPresent(brandName, forKey: .brandName)
         try container.encodeIfPresent(reviewsCount, forKey: .reviewsCount)
@@ -624,7 +617,6 @@ public struct ServiceLevelUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(customTaxValue, forKey: .customTaxValue)
         try container.encodeIfPresent(hasVariations, forKey: .hasVariations)
         try container.encodeIfPresent(questionsCount, forKey: .questionsCount)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(supplierCode, forKey: .supplierCode)
         try container.encodeIfPresent(auctionEnd, forKey: .auctionEnd)
         try container.encodeIfPresent(purchaseNote, forKey: .purchaseNote)

@@ -563,15 +563,15 @@ open class LoansAPI {
      
      - parameter tenantId: (query)  
      - parameter applicationId: (path)  
-     - parameter loanApplicationUpdateDto: (body)  
+     - parameter body: (body)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func updateLoanApplicationAsync(tenantId: UUID, applicationId: UUID, loanApplicationUpdateDto: LoanApplicationUpdateDto, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return updateLoanApplicationAsyncWithRequestBuilder(tenantId: tenantId, applicationId: applicationId, loanApplicationUpdateDto: loanApplicationUpdateDto, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func updateLoanApplicationAsync(tenantId: UUID, applicationId: UUID, body: AnyCodable, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return updateLoanApplicationAsyncWithRequestBuilder(tenantId: tenantId, applicationId: applicationId, body: body, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -587,18 +587,18 @@ open class LoansAPI {
      - Updates the specified loan application.
      - parameter tenantId: (query)  
      - parameter applicationId: (path)  
-     - parameter loanApplicationUpdateDto: (body)  
+     - parameter body: (body)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func updateLoanApplicationAsyncWithRequestBuilder(tenantId: UUID, applicationId: UUID, loanApplicationUpdateDto: LoanApplicationUpdateDto, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func updateLoanApplicationAsyncWithRequestBuilder(tenantId: UUID, applicationId: UUID, body: AnyCodable, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/Loans/Applications/{applicationId}"
         let applicationIdPreEscape = "\(APIHelper.mapValueToPathItem(applicationId))"
         let applicationIdPostEscape = applicationIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{applicationId}", with: applicationIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: loanApplicationUpdateDto)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

@@ -14,22 +14,16 @@ public struct AccountTypeCreateDto: Codable, JSONEncodable, Hashable {
 
     static let nameRule = StringRule(minLength: 0, maxLength: 50, pattern: nil)
     static let descriptionRule = StringRule(minLength: 0, maxLength: 250, pattern: nil)
-    static let tenantIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    static let enrollmentIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var name: String?
     public var description: String?
-    public var tenantId: String?
-    public var enrollmentId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil, description: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil, description: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
         self.description = description
-        self.tenantId = tenantId
-        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -37,8 +31,6 @@ public struct AccountTypeCreateDto: Codable, JSONEncodable, Hashable {
         case timestamp
         case name
         case description
-        case tenantId
-        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -49,8 +41,6 @@ public struct AccountTypeCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

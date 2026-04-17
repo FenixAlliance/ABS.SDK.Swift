@@ -29,7 +29,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let tenantDepartmentCreateDto = TenantDepartmentCreateDto(id: 123, timestamp: Date(), businessID: "businessID_example", businessProfileRecordID: "businessProfileRecordID_example", name: "name_example", description: "description_example", disabled: false, organizationProfileID: "organizationProfileID_example", parentDepartmentID: "parentDepartmentID_example") // TenantDepartmentCreateDto |  (optional)
+let tenantDepartmentCreateDto = TenantDepartmentCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", disabled: false, organizationProfileID: "organizationProfileID_example", parentDepartmentID: "parentDepartmentID_example") // TenantDepartmentCreateDto |  (optional)
 
 // Create a new tenant department
 DepartmentsAPI.createTenantDepartment(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, tenantDepartmentCreateDto: tenantDepartmentCreateDto) { (response, error) in
@@ -306,7 +306,7 @@ let tenantId = 987 // UUID |
 let tenantDepartmentId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let tenantDepartmentUpdateDto = TenantDepartmentUpdateDto(name: "name_example", description: "description_example", disabled: false, businessProfileRecordID: "businessProfileRecordID_example", organizationProfileID: "organizationProfileID_example", parentDepartmentID: "parentDepartmentID_example") // TenantDepartmentUpdateDto |  (optional)
+let tenantDepartmentUpdateDto = TenantDepartmentUpdateDto(name: "name_example", description: "description_example", disabled: false, organizationProfileID: "organizationProfileID_example", parentDepartmentID: "parentDepartmentID_example") // TenantDepartmentUpdateDto |  (optional)
 
 // Update a tenant department
 DepartmentsAPI.updateTenantDepartment(tenantId: tenantId, tenantDepartmentId: tenantDepartmentId, apiVersion: apiVersion, xApiVersion: xApiVersion, tenantDepartmentUpdateDto: tenantDepartmentUpdateDto) { (response, error) in

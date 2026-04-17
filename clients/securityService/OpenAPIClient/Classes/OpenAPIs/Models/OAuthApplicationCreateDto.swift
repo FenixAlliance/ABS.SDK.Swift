@@ -13,6 +13,8 @@ import AnyCodable
 public struct OAuthApplicationCreateDto: Codable, JSONEncodable, Hashable {
 
     static let displayNameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    public var id: UUID?
+    public var timestamp: Date?
     public var displayName: String
     public var clientId: String?
     public var clientSecret: String?
@@ -22,10 +24,10 @@ public struct OAuthApplicationCreateDto: Codable, JSONEncodable, Hashable {
     public var redirectUris: String?
     public var postLogoutRedirectUris: String?
     public var logo: String?
-    public var businessID: String?
-    public var businessProfileRecordID: String?
 
-    public init(displayName: String, clientId: String? = nil, clientSecret: String? = nil, consentType: String? = nil, permissions: String? = nil, requirements: String? = nil, redirectUris: String? = nil, postLogoutRedirectUris: String? = nil, logo: String? = nil, businessID: String? = nil, businessProfileRecordID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, displayName: String, clientId: String? = nil, clientSecret: String? = nil, consentType: String? = nil, permissions: String? = nil, requirements: String? = nil, redirectUris: String? = nil, postLogoutRedirectUris: String? = nil, logo: String? = nil) {
+        self.id = id
+        self.timestamp = timestamp
         self.displayName = displayName
         self.clientId = clientId
         self.clientSecret = clientSecret
@@ -35,11 +37,11 @@ public struct OAuthApplicationCreateDto: Codable, JSONEncodable, Hashable {
         self.redirectUris = redirectUris
         self.postLogoutRedirectUris = postLogoutRedirectUris
         self.logo = logo
-        self.businessID = businessID
-        self.businessProfileRecordID = businessProfileRecordID
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case id
+        case timestamp
         case displayName
         case clientId
         case clientSecret
@@ -49,14 +51,14 @@ public struct OAuthApplicationCreateDto: Codable, JSONEncodable, Hashable {
         case redirectUris
         case postLogoutRedirectUris
         case logo
-        case businessID
-        case businessProfileRecordID
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(id, forKey: .id)
+        try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encode(displayName, forKey: .displayName)
         try container.encodeIfPresent(clientId, forKey: .clientId)
         try container.encodeIfPresent(clientSecret, forKey: .clientSecret)
@@ -66,8 +68,6 @@ public struct OAuthApplicationCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(redirectUris, forKey: .redirectUris)
         try container.encodeIfPresent(postLogoutRedirectUris, forKey: .postLogoutRedirectUris)
         try container.encodeIfPresent(logo, forKey: .logo)
-        try container.encodeIfPresent(businessID, forKey: .businessID)
-        try container.encodeIfPresent(businessProfileRecordID, forKey: .businessProfileRecordID)
     }
 }
 

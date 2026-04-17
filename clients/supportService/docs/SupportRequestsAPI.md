@@ -34,7 +34,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let supportRequestCreateDto = SupportRequestCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", approved: false, approvedTimestamp: Date(), businessID: "businessID_example", businessProfileRecordID: "businessProfileRecordID_example", supportEntitlementID: "supportEntitlementID_example", contactID: "contactID_example", accountHolderID: "accountHolderID_example") // SupportRequestCreateDto |  (optional)
+let supportRequestCreateDto = SupportRequestCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", approved: false, approvedTimestamp: Date(), supportEntitlementID: "supportEntitlementID_example", contactID: "contactID_example") // SupportRequestCreateDto |  (optional)
 
 // Create a new support request
 SupportRequestsAPI.createSupportRequestAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, supportRequestCreateDto: supportRequestCreateDto) { (response, error) in
@@ -537,7 +537,7 @@ let tenantId = 987 // UUID |
 let supportRequestId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let supportRequestAttachmentCreateDto = SupportRequestAttachmentCreateDto(id: 123, timestamp: Date(), notes: "notes_example", title: "title_example", author: "author_example", isFolder: false, fileName: "fileName_example", abstract: "abstract_example", keyWords: "keyWords_example", validResponse: false, parentFileUploadId: "parentFileUploadId_example", filePath: "filePath_example", businessID: "businessID_example", businessProfileRecordID: "businessProfileRecordID_example", metadata: "metadata_example", supportRequestID: "supportRequestID_example") // SupportRequestAttachmentCreateDto |  (optional)
+let supportRequestAttachmentCreateDto = SupportRequestAttachmentCreateDto(id: 123, timestamp: Date(), notes: "notes_example", title: "title_example", author: "author_example", isFolder: false, fileName: "fileName_example", abstract: "abstract_example", keyWords: "keyWords_example", validResponse: false, parentFileUploadId: "parentFileUploadId_example", filePath: "filePath_example", metadata: "metadata_example", supportRequestID: "supportRequestID_example") // SupportRequestAttachmentCreateDto |  (optional)
 
 // Add an attachment to a support request
 SupportRequestsAPI.relateSupportRequestToAttachmentAsync(tenantId: tenantId, supportRequestId: supportRequestId, apiVersion: apiVersion, xApiVersion: xApiVersion, supportRequestAttachmentCreateDto: supportRequestAttachmentCreateDto) { (response, error) in

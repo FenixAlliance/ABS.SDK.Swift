@@ -14,7 +14,6 @@ public struct CourseAssignmentCreateDto: Codable, JSONEncodable, Hashable {
 
     static let titleRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     static let courseIDRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    static let businessIDRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var title: String
@@ -22,7 +21,6 @@ public struct CourseAssignmentCreateDto: Codable, JSONEncodable, Hashable {
     public var instructions: String?
     public var points: Double?
     public var courseID: String
-    public var businessID: String
     public var courseUnitID: String?
     public var courseCohortID: String?
     public var courseAssignmentTypeID: String?
@@ -30,7 +28,7 @@ public struct CourseAssignmentCreateDto: Codable, JSONEncodable, Hashable {
     public var asignToAllCohorts: Bool?
     public var resources: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, title: String, description: String? = nil, instructions: String? = nil, points: Double? = nil, courseID: String, businessID: String, courseUnitID: String? = nil, courseCohortID: String? = nil, courseAssignmentTypeID: String? = nil, dueDateTime: Date? = nil, asignToAllCohorts: Bool? = nil, resources: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, title: String, description: String? = nil, instructions: String? = nil, points: Double? = nil, courseID: String, courseUnitID: String? = nil, courseCohortID: String? = nil, courseAssignmentTypeID: String? = nil, dueDateTime: Date? = nil, asignToAllCohorts: Bool? = nil, resources: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
@@ -38,7 +36,6 @@ public struct CourseAssignmentCreateDto: Codable, JSONEncodable, Hashable {
         self.instructions = instructions
         self.points = points
         self.courseID = courseID
-        self.businessID = businessID
         self.courseUnitID = courseUnitID
         self.courseCohortID = courseCohortID
         self.courseAssignmentTypeID = courseAssignmentTypeID
@@ -55,7 +52,6 @@ public struct CourseAssignmentCreateDto: Codable, JSONEncodable, Hashable {
         case instructions
         case points
         case courseID
-        case businessID
         case courseUnitID
         case courseCohortID
         case courseAssignmentTypeID
@@ -75,7 +71,6 @@ public struct CourseAssignmentCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(instructions, forKey: .instructions)
         try container.encodeIfPresent(points, forKey: .points)
         try container.encode(courseID, forKey: .courseID)
-        try container.encode(businessID, forKey: .businessID)
         try container.encodeIfPresent(courseUnitID, forKey: .courseUnitID)
         try container.encodeIfPresent(courseCohortID, forKey: .courseCohortID)
         try container.encodeIfPresent(courseAssignmentTypeID, forKey: .courseAssignmentTypeID)

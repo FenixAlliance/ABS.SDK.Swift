@@ -27,7 +27,7 @@ Creates a new social post bucket for the specified tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let socialPostBucketCreateDto = SocialPostBucketCreateDto(id: 123, timestamp: Date(), name: "name_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example") // SocialPostBucketCreateDto | 
+let socialPostBucketCreateDto = SocialPostBucketCreateDto(id: 123, timestamp: Date(), name: "name_example") // SocialPostBucketCreateDto | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
@@ -304,7 +304,7 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let socialpostbucketId = 987 // UUID | 
-let socialPostBucketUpdateDto = SocialPostBucketUpdateDto(name: "name_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example") // SocialPostBucketUpdateDto | 
+let socialPostBucketUpdateDto = SocialPostBucketUpdateDto(name: "name_example") // SocialPostBucketUpdateDto | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 

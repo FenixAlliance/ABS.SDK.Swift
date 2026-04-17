@@ -6,8 +6,6 @@ Name | Type | Description | Notes
 **id** | **UUID** |  | [optional] 
 **timestamp** | **Date** |  | [optional] 
 **name** | **String** |  | [optional] 
-**tenantId** | **String** |  | [optional] 
-**enrollmentId** | **String** |  | [optional] 
 **dateStart** | **Date** |  | [optional] 
 **dateEnd** | **Date** |  | [optional] 
 

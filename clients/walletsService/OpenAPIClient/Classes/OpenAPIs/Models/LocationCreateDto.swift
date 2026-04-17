@@ -26,7 +26,6 @@ public struct LocationCreateDto: Codable, JSONEncodable, Hashable {
     public var stateId: String?
     public var postalCode: String?
     public var countryId: String?
-    public var tenantId: String?
     public var longitude: Double?
     public var latitude: Double?
     public var isRoutable: Bool?
@@ -37,7 +36,7 @@ public struct LocationCreateDto: Codable, JSONEncodable, Hashable {
     public var isDefaultReturnAddress: Bool?
     public var isDefaultSuppingLocation: Bool?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, title: String? = nil, email: String? = nil, phone: String? = nil, fax: String? = nil, address1: String? = nil, address2: String? = nil, address3: String? = nil, unit: String? = nil, cityId: String? = nil, stateId: String? = nil, postalCode: String? = nil, countryId: String? = nil, tenantId: String? = nil, longitude: Double? = nil, latitude: Double? = nil, isRoutable: Bool? = nil, isGlobalPrimary: Bool? = nil, isCountryPrimary: Bool? = nil, canGenerateLabels: Bool? = nil, isDefaultSenderAddress: Bool? = nil, isDefaultReturnAddress: Bool? = nil, isDefaultSuppingLocation: Bool? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, title: String? = nil, email: String? = nil, phone: String? = nil, fax: String? = nil, address1: String? = nil, address2: String? = nil, address3: String? = nil, unit: String? = nil, cityId: String? = nil, stateId: String? = nil, postalCode: String? = nil, countryId: String? = nil, longitude: Double? = nil, latitude: Double? = nil, isRoutable: Bool? = nil, isGlobalPrimary: Bool? = nil, isCountryPrimary: Bool? = nil, canGenerateLabels: Bool? = nil, isDefaultSenderAddress: Bool? = nil, isDefaultReturnAddress: Bool? = nil, isDefaultSuppingLocation: Bool? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
@@ -52,7 +51,6 @@ public struct LocationCreateDto: Codable, JSONEncodable, Hashable {
         self.stateId = stateId
         self.postalCode = postalCode
         self.countryId = countryId
-        self.tenantId = tenantId
         self.longitude = longitude
         self.latitude = latitude
         self.isRoutable = isRoutable
@@ -79,7 +77,6 @@ public struct LocationCreateDto: Codable, JSONEncodable, Hashable {
         case stateId
         case postalCode
         case countryId
-        case tenantId
         case longitude
         case latitude
         case isRoutable
@@ -109,7 +106,6 @@ public struct LocationCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(stateId, forKey: .stateId)
         try container.encodeIfPresent(postalCode, forKey: .postalCode)
         try container.encodeIfPresent(countryId, forKey: .countryId)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encodeIfPresent(longitude, forKey: .longitude)
         try container.encodeIfPresent(latitude, forKey: .latitude)
         try container.encodeIfPresent(isRoutable, forKey: .isRoutable)

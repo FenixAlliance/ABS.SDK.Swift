@@ -29,7 +29,7 @@ import OpenAPIClient
 let tenantId = "TODO" // AnyCodable | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let invoiceEnumerationRangeCreateDto = InvoiceEnumerationRangeCreateDto(id: 123, timestamp: Date(), _prefix: "_prefix_example", suffix: "suffix_example", identifier: "identifier_example", qualifiedName: "qualifiedName_example", currentNumeration: 123, numerationFrom: 123, numerationTo: 123, validFrom: Date(), validTo: Date(), fiscalAuthorityId: "fiscalAuthorityId_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example", documentType: "documentType_example") // InvoiceEnumerationRangeCreateDto |  (optional)
+let invoiceEnumerationRangeCreateDto = InvoiceEnumerationRangeCreateDto(id: 123, timestamp: Date(), _prefix: "_prefix_example", suffix: "suffix_example", identifier: "identifier_example", qualifiedName: "qualifiedName_example", currentNumeration: 123, numerationFrom: 123, numerationTo: 123, validFrom: Date(), validTo: Date(), fiscalAuthorityId: "fiscalAuthorityId_example", documentType: "documentType_example") // InvoiceEnumerationRangeCreateDto |  (optional)
 
 // Create an invoice enumeration range
 FiscalEnumerationRangesAPI.createInvoiceEnumerationRange(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, invoiceEnumerationRangeCreateDto: invoiceEnumerationRangeCreateDto) { (response, error) in
@@ -310,7 +310,7 @@ let tenantId = "TODO" // AnyCodable |
 let enumerationRangeId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let invoiceEnumerationRangeUpdateDto = InvoiceEnumerationRangeUpdateDto(_prefix: "_prefix_example", suffix: "suffix_example", identifier: "identifier_example", qualifiedName: "qualifiedName_example", currentNumeration: 123, numerationFrom: 123, numerationTo: 123, validFrom: Date(), validTo: Date(), fiscalAuthorityId: "fiscalAuthorityId_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example", documentType: "documentType_example") // InvoiceEnumerationRangeUpdateDto |  (optional)
+let invoiceEnumerationRangeUpdateDto = InvoiceEnumerationRangeUpdateDto(_prefix: "_prefix_example", suffix: "suffix_example", identifier: "identifier_example", qualifiedName: "qualifiedName_example", currentNumeration: 123, numerationFrom: 123, numerationTo: 123, validFrom: Date(), validTo: Date(), fiscalAuthorityId: "fiscalAuthorityId_example", documentType: "documentType_example") // InvoiceEnumerationRangeUpdateDto |  (optional)
 
 // Update an invoice enumeration range
 FiscalEnumerationRangesAPI.updateInvoiceEnumerationRange(tenantId: tenantId, enumerationRangeId: enumerationRangeId, apiVersion: apiVersion, xApiVersion: xApiVersion, invoiceEnumerationRangeUpdateDto: invoiceEnumerationRangeUpdateDto) { (response, error) in

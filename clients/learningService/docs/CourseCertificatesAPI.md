@@ -33,7 +33,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseCompletionCertificateCreateDto = CourseCompletionCertificateCreateDto(id: 123, timestamp: Date(), studentProfileID: "studentProfileID_example", courseEnrollmentID: "courseEnrollmentID_example", businessID: "businessID_example", businessProfileRecordID: "businessProfileRecordID_example", courseCompletionCertificateTemplateID: "courseCompletionCertificateTemplateID_example", courseID: "courseID_example") // CourseCompletionCertificateCreateDto |  (optional)
+let courseCompletionCertificateCreateDto = CourseCompletionCertificateCreateDto(id: 123, timestamp: Date(), studentProfileID: "studentProfileID_example", courseEnrollmentID: "courseEnrollmentID_example", courseCompletionCertificateTemplateID: "courseCompletionCertificateTemplateID_example", courseID: "courseID_example") // CourseCompletionCertificateCreateDto |  (optional)
 
 // Create a course certificate
 CourseCertificatesAPI.createCourseCertificateAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseCompletionCertificateCreateDto: courseCompletionCertificateCreateDto) { (response, error) in
@@ -89,7 +89,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseCertificateTemplateCreateDto = CourseCertificateTemplateCreateDto(id: 123, timestamp: Date(), courseID: "courseID_example", businessID: "businessID_example", webPortalID: "webPortalID_example", websiteThemeID: "websiteThemeID_example", businessProfileRecordID: "businessProfileRecordID_example", socialProfileID: "socialProfileID_example", parentWebContentID: "parentWebContentID_example", parentWebContentVersionID: "parentWebContentVersionID_example") // CourseCertificateTemplateCreateDto |  (optional)
+let courseCertificateTemplateCreateDto = CourseCertificateTemplateCreateDto(id: 123, timestamp: Date(), courseID: "courseID_example", webPortalID: "webPortalID_example", websiteThemeID: "websiteThemeID_example", socialProfileID: "socialProfileID_example", parentWebContentID: "parentWebContentID_example", parentWebContentVersionID: "parentWebContentVersionID_example") // CourseCertificateTemplateCreateDto |  (optional)
 
 // Create a certificate template
 CourseCertificatesAPI.createCourseCertificateTemplateAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseCertificateTemplateCreateDto: courseCertificateTemplateCreateDto) { (response, error) in
@@ -532,7 +532,7 @@ let tenantId = 987 // UUID |
 let courseCertificateId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseCompletionCertificateUpdateDto = CourseCompletionCertificateUpdateDto(studentProfileID: "studentProfileID_example", courseEnrollmentID: "courseEnrollmentID_example", businessID: "businessID_example", businessProfileRecordID: "businessProfileRecordID_example", courseCompletionCertificateTemplateID: "courseCompletionCertificateTemplateID_example", courseID: "courseID_example") // CourseCompletionCertificateUpdateDto |  (optional)
+let courseCompletionCertificateUpdateDto = CourseCompletionCertificateUpdateDto(studentProfileID: "studentProfileID_example", courseEnrollmentID: "courseEnrollmentID_example", courseCompletionCertificateTemplateID: "courseCompletionCertificateTemplateID_example", courseID: "courseID_example") // CourseCompletionCertificateUpdateDto |  (optional)
 
 // Update a course certificate
 CourseCertificatesAPI.updateCourseCertificateAsync(tenantId: tenantId, courseCertificateId: courseCertificateId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseCompletionCertificateUpdateDto: courseCompletionCertificateUpdateDto) { (response, error) in

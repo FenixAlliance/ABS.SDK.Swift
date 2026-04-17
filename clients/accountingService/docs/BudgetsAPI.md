@@ -32,7 +32,7 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let budgetId = 987 // UUID | 
-let budgetAccountEntryCreateDto = BudgetAccountEntryCreateDto(id: 123, timestamp: Date(), tenantId: "tenantId_example", enrollmentId: "enrollmentId_example", description: "description_example", date: Date(), amount: 123, currencyId: "currencyId_example", debitAccountId: "debitAccountId_example", creditAccountId: "creditAccountId_example", journalEntryId: "journalEntryId_example", accountingEntryType: "accountingEntryType_example", budgetId: "budgetId_example") // BudgetAccountEntryCreateDto | 
+let budgetAccountEntryCreateDto = BudgetAccountEntryCreateDto(id: 123, timestamp: Date(), description: "description_example", date: Date(), amount: 123, currencyId: "currencyId_example", debitAccountId: "debitAccountId_example", creditAccountId: "creditAccountId_example", journalEntryId: "journalEntryId_example", accountingEntryType: "accountingEntryType_example", budgetId: "budgetId_example") // BudgetAccountEntryCreateDto | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
@@ -89,7 +89,7 @@ Create a budget
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let budgetCreateDto = BudgetCreateDto(id: 123, timestamp: Date(), name: "name_example", tenantId: "tenantId_example", fiscalYearId: "fiscalYearId_example") // BudgetCreateDto | 
+let budgetCreateDto = BudgetCreateDto(id: 123, timestamp: Date(), name: "name_example", fiscalYearId: "fiscalYearId_example") // BudgetCreateDto | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
@@ -485,7 +485,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let budgetId = 987 // UUID | 
 let entryId = 987 // UUID | 
-let budgetAccountEntryUpdateDto = BudgetAccountEntryUpdateDto(tenantId: "tenantId_example", enrollmentId: "enrollmentId_example", description: "description_example", amount: 123, date: Date(), currencyId: "currencyId_example", debitAccountId: "debitAccountId_example", creditAccountId: "creditAccountId_example", journalEntryId: "journalEntryId_example", accountingEntryType: "accountingEntryType_example", budgetId: "budgetId_example") // BudgetAccountEntryUpdateDto | 
+let budgetAccountEntryUpdateDto = BudgetAccountEntryUpdateDto(description: "description_example", amount: 123, date: Date(), currencyId: "currencyId_example", debitAccountId: "debitAccountId_example", creditAccountId: "creditAccountId_example", journalEntryId: "journalEntryId_example", accountingEntryType: "accountingEntryType_example", budgetId: "budgetId_example") // BudgetAccountEntryUpdateDto | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 

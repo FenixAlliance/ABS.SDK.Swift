@@ -13,26 +13,20 @@ import AnyCodable
 public struct FiscalPeriodCreateDto: Codable, JSONEncodable, Hashable {
 
     static let nameRule = StringRule(minLength: 0, maxLength: 50, pattern: nil)
-    static let tenantIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    static let enrollmentIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let fiscalYearIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var name: String?
     public var fromDate: Date?
     public var toDate: Date?
-    public var tenantId: String?
-    public var enrollmentId: String?
     public var fiscalYearId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil, fromDate: Date? = nil, toDate: Date? = nil, tenantId: String? = nil, enrollmentId: String? = nil, fiscalYearId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil, fromDate: Date? = nil, toDate: Date? = nil, fiscalYearId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
         self.fromDate = fromDate
         self.toDate = toDate
-        self.tenantId = tenantId
-        self.enrollmentId = enrollmentId
         self.fiscalYearId = fiscalYearId
     }
 
@@ -42,8 +36,6 @@ public struct FiscalPeriodCreateDto: Codable, JSONEncodable, Hashable {
         case name
         case fromDate
         case toDate
-        case tenantId
-        case enrollmentId
         case fiscalYearId
     }
 
@@ -56,8 +48,6 @@ public struct FiscalPeriodCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(fromDate, forKey: .fromDate)
         try container.encodeIfPresent(toDate, forKey: .toDate)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(fiscalYearId, forKey: .fiscalYearId)
     }
 }

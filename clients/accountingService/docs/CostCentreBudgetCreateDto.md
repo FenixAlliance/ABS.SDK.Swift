@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 **id** | **UUID** |  | [optional] 
 **timestamp** | **Date** |  | [optional] 
 **name** | **String** |  | [optional] 
-**tenantId** | **String** |  | [optional] 
 **fiscalYearId** | **String** |  | [optional] 
 **costCentreId** | **String** |  | [optional] 
 

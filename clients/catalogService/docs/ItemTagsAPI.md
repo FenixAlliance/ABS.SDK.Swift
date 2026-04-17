@@ -28,7 +28,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let itemTagCreateDto = ItemTagCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", businessID: "businessID_example") // ItemTagCreateDto |  (optional)
+let itemTagCreateDto = ItemTagCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example") // ItemTagCreateDto |  (optional)
 
 // Create a new item tag
 ItemTagsAPI.createItemTagAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemTagCreateDto: itemTagCreateDto) { (response, error) in

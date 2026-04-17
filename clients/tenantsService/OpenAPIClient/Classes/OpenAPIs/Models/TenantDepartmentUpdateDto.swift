@@ -15,15 +15,13 @@ public struct TenantDepartmentUpdateDto: Codable, JSONEncodable, Hashable {
     public var name: String?
     public var description: String?
     public var disabled: Bool?
-    public var businessProfileRecordID: String?
     public var organizationProfileID: String?
     public var parentDepartmentID: String?
 
-    public init(name: String? = nil, description: String? = nil, disabled: Bool? = nil, businessProfileRecordID: String? = nil, organizationProfileID: String? = nil, parentDepartmentID: String? = nil) {
+    public init(name: String? = nil, description: String? = nil, disabled: Bool? = nil, organizationProfileID: String? = nil, parentDepartmentID: String? = nil) {
         self.name = name
         self.description = description
         self.disabled = disabled
-        self.businessProfileRecordID = businessProfileRecordID
         self.organizationProfileID = organizationProfileID
         self.parentDepartmentID = parentDepartmentID
     }
@@ -32,7 +30,6 @@ public struct TenantDepartmentUpdateDto: Codable, JSONEncodable, Hashable {
         case name
         case description
         case disabled
-        case businessProfileRecordID
         case organizationProfileID
         case parentDepartmentID
     }
@@ -44,7 +41,6 @@ public struct TenantDepartmentUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(disabled, forKey: .disabled)
-        try container.encodeIfPresent(businessProfileRecordID, forKey: .businessProfileRecordID)
         try container.encodeIfPresent(organizationProfileID, forKey: .organizationProfileID)
         try container.encodeIfPresent(parentDepartmentID, forKey: .parentDepartmentID)
     }

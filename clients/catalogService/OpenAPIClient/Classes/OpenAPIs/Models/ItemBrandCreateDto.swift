@@ -15,7 +15,6 @@ public struct ItemBrandCreateDto: Codable, JSONEncodable, Hashable {
     static let codeRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     static let descriptionRule = StringRule(minLength: 0, maxLength: 1000, pattern: nil)
-    static let businessIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var code: String?
@@ -24,9 +23,8 @@ public struct ItemBrandCreateDto: Codable, JSONEncodable, Hashable {
     public var websiteURL: String?
     public var featured: Bool?
     public var trending: Bool?
-    public var businessID: String
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, code: String? = nil, name: String, description: String? = nil, websiteURL: String? = nil, featured: Bool? = nil, trending: Bool? = nil, businessID: String) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, code: String? = nil, name: String, description: String? = nil, websiteURL: String? = nil, featured: Bool? = nil, trending: Bool? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.code = code
@@ -35,7 +33,6 @@ public struct ItemBrandCreateDto: Codable, JSONEncodable, Hashable {
         self.websiteURL = websiteURL
         self.featured = featured
         self.trending = trending
-        self.businessID = businessID
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -47,7 +44,6 @@ public struct ItemBrandCreateDto: Codable, JSONEncodable, Hashable {
         case websiteURL
         case featured
         case trending
-        case businessID
     }
 
     // Encodable protocol methods
@@ -62,7 +58,6 @@ public struct ItemBrandCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(websiteURL, forKey: .websiteURL)
         try container.encodeIfPresent(featured, forKey: .featured)
         try container.encodeIfPresent(trending, forKey: .trending)
-        try container.encode(businessID, forKey: .businessID)
     }
 }
 

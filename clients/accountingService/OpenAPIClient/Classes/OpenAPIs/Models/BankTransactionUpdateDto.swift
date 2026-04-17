@@ -17,8 +17,6 @@ public struct BankTransactionUpdateDto: Codable, JSONEncodable, Hashable {
     static let unitGroupIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let unitIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let transactionCategoryIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    static let tenantIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    static let enrollmentIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let bankProfileIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let bankAccountIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     public var description: String?
@@ -32,12 +30,10 @@ public struct BankTransactionUpdateDto: Codable, JSONEncodable, Hashable {
     public var unitId: String?
     public var transactionCategoryId: String?
     public var currencyId: String?
-    public var tenantId: String?
-    public var enrollmentId: String?
     public var bankProfileId: String?
     public var bankAccountId: String?
 
-    public init(description: String? = nil, price: Double? = nil, quantity: Double? = nil, externalDescription: String? = nil, basisQuantity: Double? = nil, basisAmount: Double? = nil, percent: Double? = nil, unitGroupId: String? = nil, unitId: String? = nil, transactionCategoryId: String? = nil, currencyId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil, bankProfileId: String? = nil, bankAccountId: String? = nil) {
+    public init(description: String? = nil, price: Double? = nil, quantity: Double? = nil, externalDescription: String? = nil, basisQuantity: Double? = nil, basisAmount: Double? = nil, percent: Double? = nil, unitGroupId: String? = nil, unitId: String? = nil, transactionCategoryId: String? = nil, currencyId: String? = nil, bankProfileId: String? = nil, bankAccountId: String? = nil) {
         self.description = description
         self.price = price
         self.quantity = quantity
@@ -49,8 +45,6 @@ public struct BankTransactionUpdateDto: Codable, JSONEncodable, Hashable {
         self.unitId = unitId
         self.transactionCategoryId = transactionCategoryId
         self.currencyId = currencyId
-        self.tenantId = tenantId
-        self.enrollmentId = enrollmentId
         self.bankProfileId = bankProfileId
         self.bankAccountId = bankAccountId
     }
@@ -67,8 +61,6 @@ public struct BankTransactionUpdateDto: Codable, JSONEncodable, Hashable {
         case unitId
         case transactionCategoryId
         case currencyId
-        case tenantId
-        case enrollmentId
         case bankProfileId
         case bankAccountId
     }
@@ -88,8 +80,6 @@ public struct BankTransactionUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(unitId, forKey: .unitId)
         try container.encodeIfPresent(transactionCategoryId, forKey: .transactionCategoryId)
         try container.encodeIfPresent(currencyId, forKey: .currencyId)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(bankProfileId, forKey: .bankProfileId)
         try container.encodeIfPresent(bankAccountId, forKey: .bankAccountId)
     }

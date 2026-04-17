@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 **timestamp** | **Date** |  | [optional] 
 **name** | **String** |  | 
 **courseID** | **String** |  | 
-**businessID** | **String** |  | 
 **startDateTime** | **Date** |  | [optional] 
 **endDateTime** | **Date** |  | [optional] 
 **expectedStartDateTime** | **Date** |  | [optional] 

@@ -57,7 +57,7 @@ Creates a new asset for the authenticated tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let assetCreateDto = AssetCreateDto(id: 123, timestamp: Date(), businessId: "businessId_example", businessProfileRecordId: "businessProfileRecordId_example", name: "name_example", description: "description_example", assetClass: "assetClass_example", assetOwner: "assetOwner_example", isExistingAsset: false, calculateDepreciation: false, allowMonthlyDepreciation: false, openingDepreciation: 123, purchaseDate: Date(), purchasePrice: 123, currencyId: "currencyId_example", itemId: "itemId_example", assetCategoryId: "assetCategoryId_example", purchaseInvoiceId: "purchaseInvoiceId_example", purchaseReceiptId: "purchaseReceiptId_example", assetLocationId: "assetLocationId_example", contactId: "contactId_example", organizationDepartmentId: "organizationDepartmentId_example") // AssetCreateDto |  (optional)
+let assetCreateDto = AssetCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", assetClass: "assetClass_example", assetOwner: "assetOwner_example", isExistingAsset: false, calculateDepreciation: false, allowMonthlyDepreciation: false, openingDepreciation: 123, purchaseDate: Date(), purchasePrice: 123, currencyId: "currencyId_example", itemId: "itemId_example", assetCategoryId: "assetCategoryId_example", purchaseInvoiceId: "purchaseInvoiceId_example", purchaseReceiptId: "purchaseReceiptId_example", assetLocationId: "assetLocationId_example", contactId: "contactId_example", organizationDepartmentId: "organizationDepartmentId_example") // AssetCreateDto |  (optional)
 
 // Creates a new asset
 AssetsAPI.createAsset(tenantId: tenantId, assetCreateDto: assetCreateDto) { (response, error) in
@@ -109,7 +109,7 @@ Creates a new asset category for the authenticated tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let assetCategoryCreateDto = AssetCategoryCreateDto(id: 123, timestamp: Date(), businessId: "businessId_example", businessProfileRecordId: "businessProfileRecordId_example", name: "name_example", description: "description_example") // AssetCategoryCreateDto |  (optional)
+let assetCategoryCreateDto = AssetCategoryCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example") // AssetCategoryCreateDto |  (optional)
 
 // Creates a new asset category
 AssetsAPI.createAssetAssetCategory(tenantId: tenantId, assetCategoryCreateDto: assetCategoryCreateDto) { (response, error) in
@@ -162,7 +162,7 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let assetId = 987 // UUID | 
-let assetDepreciationRecordCreateDto = AssetDepreciationRecordCreateDto(assetId: "assetId_example", assetDepreciationPolicyId: "assetDepreciationPolicyId_example", depreciationAmount: 123, accumulatedDepreciation: 123, bookValue: 123, depreciationDate: Date(), year: 123, month: 123) // AssetDepreciationRecordCreateDto |  (optional)
+let assetDepreciationRecordCreateDto = AssetDepreciationRecordCreateDto(id: 123, timestamp: Date(), assetId: "assetId_example", assetDepreciationPolicyId: "assetDepreciationPolicyId_example", depreciationAmount: 123, accumulatedDepreciation: 123, bookValue: 123, depreciationDate: Date(), year: 123, month: 123) // AssetDepreciationRecordCreateDto |  (optional)
 
 // Creates a new depreciation record for an asset
 AssetsAPI.createAssetDepreciationRecord(tenantId: tenantId, assetId: assetId, assetDepreciationRecordCreateDto: assetDepreciationRecordCreateDto) { (response, error) in
@@ -270,7 +270,7 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let assetId = 987 // UUID | 
-let assetTransferCreateDto = AssetTransferCreateDto(assetId: "assetId_example", isRootTransfer: false, serialList: "serialList_example", quantity: "quantity_example", serial: "serial_example", previousAssetTransferId: "previousAssetTransferId_example", sourceLocationId: "sourceLocationId_example", destinationLocationId: "destinationLocationId_example", sourceContactId: "sourceContactId_example", destinationContactId: "destinationContactId_example", sourceDepartmentId: "sourceDepartmentId_example", destinationDepartmentId: "destinationDepartmentId_example") // AssetTransferCreateDto |  (optional)
+let assetTransferCreateDto = AssetTransferCreateDto(id: 123, timestamp: Date(), assetId: "assetId_example", isRootTransfer: false, serialList: "serialList_example", quantity: "quantity_example", serial: "serial_example", previousAssetTransferId: "previousAssetTransferId_example", sourceLocationId: "sourceLocationId_example", destinationLocationId: "destinationLocationId_example", sourceContactId: "sourceContactId_example", destinationContactId: "destinationContactId_example", sourceDepartmentId: "sourceDepartmentId_example", destinationDepartmentId: "destinationDepartmentId_example") // AssetTransferCreateDto |  (optional)
 
 // Creates a new transfer for an asset
 AssetsAPI.createAssetTransfer(tenantId: tenantId, assetId: assetId, assetTransferCreateDto: assetTransferCreateDto) { (response, error) in

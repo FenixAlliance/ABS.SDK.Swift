@@ -20,24 +20,18 @@ public struct SupportRequestCreateDto: Codable, JSONEncodable, Hashable {
     public var description: String?
     public var approved: Bool?
     public var approvedTimestamp: Date?
-    public var businessID: String?
-    public var businessProfileRecordID: String?
     public var supportEntitlementID: String?
     public var contactID: String?
-    public var accountHolderID: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, title: String, description: String? = nil, approved: Bool? = nil, approvedTimestamp: Date? = nil, businessID: String? = nil, businessProfileRecordID: String? = nil, supportEntitlementID: String? = nil, contactID: String? = nil, accountHolderID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, title: String, description: String? = nil, approved: Bool? = nil, approvedTimestamp: Date? = nil, supportEntitlementID: String? = nil, contactID: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
         self.description = description
         self.approved = approved
         self.approvedTimestamp = approvedTimestamp
-        self.businessID = businessID
-        self.businessProfileRecordID = businessProfileRecordID
         self.supportEntitlementID = supportEntitlementID
         self.contactID = contactID
-        self.accountHolderID = accountHolderID
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -47,11 +41,8 @@ public struct SupportRequestCreateDto: Codable, JSONEncodable, Hashable {
         case description
         case approved
         case approvedTimestamp
-        case businessID
-        case businessProfileRecordID
         case supportEntitlementID
         case contactID
-        case accountHolderID
     }
 
     // Encodable protocol methods
@@ -64,11 +55,8 @@ public struct SupportRequestCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(approved, forKey: .approved)
         try container.encodeIfPresent(approvedTimestamp, forKey: .approvedTimestamp)
-        try container.encodeIfPresent(businessID, forKey: .businessID)
-        try container.encodeIfPresent(businessProfileRecordID, forKey: .businessProfileRecordID)
         try container.encodeIfPresent(supportEntitlementID, forKey: .supportEntitlementID)
         try container.encodeIfPresent(contactID, forKey: .contactID)
-        try container.encodeIfPresent(accountHolderID, forKey: .accountHolderID)
     }
 }
 

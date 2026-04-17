@@ -14,24 +14,21 @@ public struct CourseLibraryCreateDto: Codable, JSONEncodable, Hashable {
 
     static let titleRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     static let courseIDRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    static let businessIDRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var title: String
     public var description: String?
     public var courseID: String
     public var courseUnitID: String?
-    public var businessID: String
     public var releaseDateTime: Date?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, title: String, description: String? = nil, courseID: String, courseUnitID: String? = nil, businessID: String, releaseDateTime: Date? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, title: String, description: String? = nil, courseID: String, courseUnitID: String? = nil, releaseDateTime: Date? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
         self.description = description
         self.courseID = courseID
         self.courseUnitID = courseUnitID
-        self.businessID = businessID
         self.releaseDateTime = releaseDateTime
     }
 
@@ -42,7 +39,6 @@ public struct CourseLibraryCreateDto: Codable, JSONEncodable, Hashable {
         case description
         case courseID
         case courseUnitID
-        case businessID
         case releaseDateTime
     }
 
@@ -56,7 +52,6 @@ public struct CourseLibraryCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(description, forKey: .description)
         try container.encode(courseID, forKey: .courseID)
         try container.encodeIfPresent(courseUnitID, forKey: .courseUnitID)
-        try container.encode(businessID, forKey: .businessID)
         try container.encodeIfPresent(releaseDateTime, forKey: .releaseDateTime)
     }
 }

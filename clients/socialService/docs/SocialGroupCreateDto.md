@@ -3,6 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **UUID** |  | [optional] 
+**timestamp** | **Date** |  | [optional] 
 **name** | **String** |  | [optional] 
 **title** | **String** |  | [optional] 
 **avatarURL** | **String** |  | [optional] 

@@ -14,27 +14,21 @@ public struct InvoiceLineAppliedTaxCreateDto: Codable, JSONEncodable, Hashable {
 
     public var id: UUID?
     public var timestamp: Date?
-    public var tenantId: String?
     public var invoiceId: String?
     public var taxPolicyId: String?
-    public var enrollmentId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, tenantId: String? = nil, invoiceId: String? = nil, taxPolicyId: String? = nil, enrollmentId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, invoiceId: String? = nil, taxPolicyId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
-        self.tenantId = tenantId
         self.invoiceId = invoiceId
         self.taxPolicyId = taxPolicyId
-        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
-        case tenantId
         case invoiceId
         case taxPolicyId
-        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -43,10 +37,8 @@ public struct InvoiceLineAppliedTaxCreateDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encodeIfPresent(invoiceId, forKey: .invoiceId)
         try container.encodeIfPresent(taxPolicyId, forKey: .taxPolicyId)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

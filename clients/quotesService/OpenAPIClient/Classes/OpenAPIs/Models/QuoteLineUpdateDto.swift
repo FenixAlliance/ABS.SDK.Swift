@@ -26,8 +26,6 @@ public struct QuoteLineUpdateDto: Codable, JSONEncodable, Hashable {
     public var itemShortDescription: String?
     public var itemPrimaryImageUrl: String?
     public var shippingPolicyId: String?
-    public var tenantId: String?
-    public var enrollmentId: String?
     public var currencyId: String?
     public var description: String?
     public var quantity: Double?
@@ -113,18 +111,15 @@ public struct QuoteLineUpdateDto: Codable, JSONEncodable, Hashable {
     public var shippingLocationId: String?
     public var locationId: String?
     public var quoteItemRecordId: String?
-    public var businessProfileRecordId: String?
     public var parentBillingItemRecordId: String?
 
-    public init(closed: Bool? = nil, itemId: String? = nil, itemTitle: String? = nil, itemShortDescription: String? = nil, itemPrimaryImageUrl: String? = nil, shippingPolicyId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil, currencyId: String? = nil, description: String? = nil, quantity: Double? = nil, free: Bool? = nil, freeReason: String? = nil, freeReasonCode: String? = nil, data: String? = nil, dataLabel: String? = nil, data1: String? = nil, data1Label: String? = nil, data2: String? = nil, data2Label: String? = nil, data3: String? = nil, data3Label: String? = nil, data4: String? = nil, data4Label: String? = nil, data5: String? = nil, data5Label: String? = nil, data6: String? = nil, data6Label: String? = nil, data7: String? = nil, data7Label: String? = nil, data8: String? = nil, data8Label: String? = nil, data9: String? = nil, data9Label: String? = nil, itemPriceId: String? = nil, priceListItemId: String? = nil, unitId: String? = nil, unitGroupId: String? = nil, taxCalculationMethod: TaxCalculationMethod? = nil, costCalculationMethod: CostCalculationMethod? = nil, forexRatesSnapshot: String? = nil, forexRate: Double? = nil, totalBaseAmountInUsd: Double? = nil, totalProfitInUsd: Double? = nil, totalDetailAmountInUsd: Double? = nil, totalTaxBaseInUsd: Double? = nil, totalDiscountsInUsd: Double? = nil, totalTaxesInUsd: Double? = nil, totalWithheldTaxesInUsd: Double? = nil, totalShippingCostInUsd: Double? = nil, totalShippingTaxesInUsd: Double? = nil, totalWarrantyCostInUsd: Double? = nil, totalReturnCostInUsd: Double? = nil, totalRefundCostInUsd: Double? = nil, totalSurchargesInUsd: Double? = nil, totalAmountInUsd: Double? = nil, totalGlobalDiscountsInUsd: Double? = nil, totalGlobalSurchargesInUsd: Double? = nil, customGlobalSurchargesAmount: Double? = nil, customGlobalSurchargesAmountCurrencyId: String? = nil, customGlobalDiscountsAmount: Double? = nil, customGlobalDiscountsAmountCurrencyId: String? = nil, totalDetail: Double? = nil, totalDetailCurrencyId: String? = nil, totalProfit: Double? = nil, totalProfitCurrencyId: String? = nil, totalDiscounts: Double? = nil, totalDiscountsCurrencyId: String? = nil, totalSurcharges: Double? = nil, totalSurchargesCurrencyId: String? = nil, totalTaxBase: Double? = nil, totalTaxBaseCurrencyId: String? = nil, totalShippingCost: Double? = nil, totalShippingCostCurrencyId: String? = nil, totalShippingTax: Double? = nil, totalShippingTaxCurrencyId: String? = nil, totalTaxes: Double? = nil, totalTaxesCurrencyId: String? = nil, totalWithheldTax: Double? = nil, totalWithheldTaxCurrencyId: String? = nil, totalGlobalDiscounts: Double? = nil, totalGlobalDiscountsCurrencyId: String? = nil, totalGlobalSurcharges: Double? = nil, totalGlobalSurchargesCurrencyId: String? = nil, total: Double? = nil, totalCurrencyId: String? = nil, returnPolicyId: String? = nil, refundPolicyId: String? = nil, warrantyPolicyId: String? = nil, shipmentPolicyId: String? = nil, shippingLocationId: String? = nil, locationId: String? = nil, quoteItemRecordId: String? = nil, businessProfileRecordId: String? = nil, parentBillingItemRecordId: String? = nil) {
+    public init(closed: Bool? = nil, itemId: String? = nil, itemTitle: String? = nil, itemShortDescription: String? = nil, itemPrimaryImageUrl: String? = nil, shippingPolicyId: String? = nil, currencyId: String? = nil, description: String? = nil, quantity: Double? = nil, free: Bool? = nil, freeReason: String? = nil, freeReasonCode: String? = nil, data: String? = nil, dataLabel: String? = nil, data1: String? = nil, data1Label: String? = nil, data2: String? = nil, data2Label: String? = nil, data3: String? = nil, data3Label: String? = nil, data4: String? = nil, data4Label: String? = nil, data5: String? = nil, data5Label: String? = nil, data6: String? = nil, data6Label: String? = nil, data7: String? = nil, data7Label: String? = nil, data8: String? = nil, data8Label: String? = nil, data9: String? = nil, data9Label: String? = nil, itemPriceId: String? = nil, priceListItemId: String? = nil, unitId: String? = nil, unitGroupId: String? = nil, taxCalculationMethod: TaxCalculationMethod? = nil, costCalculationMethod: CostCalculationMethod? = nil, forexRatesSnapshot: String? = nil, forexRate: Double? = nil, totalBaseAmountInUsd: Double? = nil, totalProfitInUsd: Double? = nil, totalDetailAmountInUsd: Double? = nil, totalTaxBaseInUsd: Double? = nil, totalDiscountsInUsd: Double? = nil, totalTaxesInUsd: Double? = nil, totalWithheldTaxesInUsd: Double? = nil, totalShippingCostInUsd: Double? = nil, totalShippingTaxesInUsd: Double? = nil, totalWarrantyCostInUsd: Double? = nil, totalReturnCostInUsd: Double? = nil, totalRefundCostInUsd: Double? = nil, totalSurchargesInUsd: Double? = nil, totalAmountInUsd: Double? = nil, totalGlobalDiscountsInUsd: Double? = nil, totalGlobalSurchargesInUsd: Double? = nil, customGlobalSurchargesAmount: Double? = nil, customGlobalSurchargesAmountCurrencyId: String? = nil, customGlobalDiscountsAmount: Double? = nil, customGlobalDiscountsAmountCurrencyId: String? = nil, totalDetail: Double? = nil, totalDetailCurrencyId: String? = nil, totalProfit: Double? = nil, totalProfitCurrencyId: String? = nil, totalDiscounts: Double? = nil, totalDiscountsCurrencyId: String? = nil, totalSurcharges: Double? = nil, totalSurchargesCurrencyId: String? = nil, totalTaxBase: Double? = nil, totalTaxBaseCurrencyId: String? = nil, totalShippingCost: Double? = nil, totalShippingCostCurrencyId: String? = nil, totalShippingTax: Double? = nil, totalShippingTaxCurrencyId: String? = nil, totalTaxes: Double? = nil, totalTaxesCurrencyId: String? = nil, totalWithheldTax: Double? = nil, totalWithheldTaxCurrencyId: String? = nil, totalGlobalDiscounts: Double? = nil, totalGlobalDiscountsCurrencyId: String? = nil, totalGlobalSurcharges: Double? = nil, totalGlobalSurchargesCurrencyId: String? = nil, total: Double? = nil, totalCurrencyId: String? = nil, returnPolicyId: String? = nil, refundPolicyId: String? = nil, warrantyPolicyId: String? = nil, shipmentPolicyId: String? = nil, shippingLocationId: String? = nil, locationId: String? = nil, quoteItemRecordId: String? = nil, parentBillingItemRecordId: String? = nil) {
         self.closed = closed
         self.itemId = itemId
         self.itemTitle = itemTitle
         self.itemShortDescription = itemShortDescription
         self.itemPrimaryImageUrl = itemPrimaryImageUrl
         self.shippingPolicyId = shippingPolicyId
-        self.tenantId = tenantId
-        self.enrollmentId = enrollmentId
         self.currencyId = currencyId
         self.description = description
         self.quantity = quantity
@@ -210,7 +205,6 @@ public struct QuoteLineUpdateDto: Codable, JSONEncodable, Hashable {
         self.shippingLocationId = shippingLocationId
         self.locationId = locationId
         self.quoteItemRecordId = quoteItemRecordId
-        self.businessProfileRecordId = businessProfileRecordId
         self.parentBillingItemRecordId = parentBillingItemRecordId
     }
 
@@ -221,8 +215,6 @@ public struct QuoteLineUpdateDto: Codable, JSONEncodable, Hashable {
         case itemShortDescription
         case itemPrimaryImageUrl
         case shippingPolicyId
-        case tenantId
-        case enrollmentId
         case currencyId
         case description
         case quantity
@@ -308,7 +300,6 @@ public struct QuoteLineUpdateDto: Codable, JSONEncodable, Hashable {
         case shippingLocationId
         case locationId
         case quoteItemRecordId
-        case businessProfileRecordId
         case parentBillingItemRecordId
     }
 
@@ -322,8 +313,6 @@ public struct QuoteLineUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(itemShortDescription, forKey: .itemShortDescription)
         try container.encodeIfPresent(itemPrimaryImageUrl, forKey: .itemPrimaryImageUrl)
         try container.encodeIfPresent(shippingPolicyId, forKey: .shippingPolicyId)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(currencyId, forKey: .currencyId)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(quantity, forKey: .quantity)
@@ -409,7 +398,6 @@ public struct QuoteLineUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(shippingLocationId, forKey: .shippingLocationId)
         try container.encodeIfPresent(locationId, forKey: .locationId)
         try container.encodeIfPresent(quoteItemRecordId, forKey: .quoteItemRecordId)
-        try container.encodeIfPresent(businessProfileRecordId, forKey: .businessProfileRecordId)
         try container.encodeIfPresent(parentBillingItemRecordId, forKey: .parentBillingItemRecordId)
     }
 }

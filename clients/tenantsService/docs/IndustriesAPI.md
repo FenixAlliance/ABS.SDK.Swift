@@ -29,7 +29,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let tenantIndustryCreateDto = TenantIndustryCreateDto(id: 123, timestamp: Date(), name: "name_example", parentBusinessIndustryID: "parentBusinessIndustryID_example", businessProfileRecordID: "businessProfileRecordID_example") // TenantIndustryCreateDto |  (optional)
+let tenantIndustryCreateDto = TenantIndustryCreateDto(id: 123, timestamp: Date(), name: "name_example", parentBusinessIndustryID: "parentBusinessIndustryID_example") // TenantIndustryCreateDto |  (optional)
 
 // Create a new tenant industry
 IndustriesAPI.createTenantIndustry(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, tenantIndustryCreateDto: tenantIndustryCreateDto) { (response, error) in
@@ -306,7 +306,7 @@ let tenantId = 987 // UUID |
 let tenantIndustryId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let tenantIndustryUpdateDto = TenantIndustryUpdateDto(name: "name_example", parentBusinessIndustryID: "parentBusinessIndustryID_example", businessProfileRecordID: "businessProfileRecordID_example") // TenantIndustryUpdateDto |  (optional)
+let tenantIndustryUpdateDto = TenantIndustryUpdateDto(name: "name_example", parentBusinessIndustryID: "parentBusinessIndustryID_example") // TenantIndustryUpdateDto |  (optional)
 
 // Update a tenant industry
 IndustriesAPI.updateTenantIndustry(tenantId: tenantId, tenantIndustryId: tenantIndustryId, apiVersion: apiVersion, xApiVersion: xApiVersion, tenantIndustryUpdateDto: tenantIndustryUpdateDto) { (response, error) in

@@ -29,7 +29,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseHandoutCreateDto = CourseHandoutCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", content: "content_example", url: "url_example", releaseDateTime: Date(), courseID: "courseID_example", courseUnitID: "courseUnitID_example", businessID: "businessID_example") // CourseHandoutCreateDto |  (optional)
+let courseHandoutCreateDto = CourseHandoutCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", content: "content_example", url: "url_example", releaseDateTime: Date(), courseID: "courseID_example", courseUnitID: "courseUnitID_example") // CourseHandoutCreateDto |  (optional)
 
 // Create a course handout
 CourseHandoutsAPI.createCourseHandoutAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseHandoutCreateDto: courseHandoutCreateDto) { (response, error) in

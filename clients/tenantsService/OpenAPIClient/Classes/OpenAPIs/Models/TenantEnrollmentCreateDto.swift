@@ -14,20 +14,17 @@ public struct TenantEnrollmentCreateDto: Codable, JSONEncodable, Hashable {
 
     public var id: UUID?
     public var timestamp: Date?
-    public var tenantId: String?
     public var userId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, tenantId: String? = nil, userId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, userId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
-        self.tenantId = tenantId
         self.userId = userId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
-        case tenantId
         case userId
     }
 
@@ -37,7 +34,6 @@ public struct TenantEnrollmentCreateDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encodeIfPresent(userId, forKey: .userId)
     }
 }

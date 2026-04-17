@@ -27,7 +27,7 @@ Creates a new social media post for the specified tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let socialMediaPostCreateDto = SocialMediaPostCreateDto(title: "title_example", content: "content_example", featuredImageUrl: "featuredImageUrl_example", tenantId: "tenantId_example", socialPostBucketId: "socialPostBucketId_example", enrollmentId: "enrollmentId_example") // SocialMediaPostCreateDto | 
+let socialMediaPostCreateDto = SocialMediaPostCreateDto(id: 123, timestamp: Date(), title: "title_example", content: "content_example", featuredImageUrl: "featuredImageUrl_example", socialPostBucketId: "socialPostBucketId_example") // SocialMediaPostCreateDto | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
@@ -304,7 +304,7 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let socialmediapostId = 987 // UUID | 
-let socialMediaPostUpdateDto = SocialMediaPostUpdateDto(title: "title_example", content: "content_example", featuredImageUrl: "featuredImageUrl_example", tenantId: "tenantId_example", socialPostBucketId: "socialPostBucketId_example", enrollmentId: "enrollmentId_example") // SocialMediaPostUpdateDto | 
+let socialMediaPostUpdateDto = SocialMediaPostUpdateDto(title: "title_example", content: "content_example", featuredImageUrl: "featuredImageUrl_example", socialPostBucketId: "socialPostBucketId_example") // SocialMediaPostUpdateDto | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 

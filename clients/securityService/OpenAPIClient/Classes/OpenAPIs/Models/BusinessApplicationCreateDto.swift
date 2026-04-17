@@ -28,8 +28,6 @@ public struct BusinessApplicationCreateDto: Codable, JSONEncodable, Hashable {
     public var contactEmail: String?
     public var privacyPolicyURL: String?
     public var termsAndConditionsURL: String?
-    public var businessID: String?
-    public var businessProfileRecordID: String?
     public var requireHttps: Bool?
     public var requireAppSecret: Bool?
     public var enableClientOauthLogin: Bool?
@@ -53,7 +51,7 @@ public struct BusinessApplicationCreateDto: Codable, JSONEncodable, Hashable {
     public var enableGitRepoManagement: Bool?
     public var gitRepoUrl: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, name: String, namespace: String? = nil, displayName: String? = nil, avatarURL: String? = nil, websiteUrl: String? = nil, isMultiTenant: Bool? = nil, isVerified: Bool? = nil, isDisabled: Bool? = nil, isSinglePageApplication: Bool? = nil, isNativeOrDesktopApp: Bool? = nil, contactEmail: String? = nil, privacyPolicyURL: String? = nil, termsAndConditionsURL: String? = nil, businessID: String? = nil, businessProfileRecordID: String? = nil, requireHttps: Bool? = nil, requireAppSecret: Bool? = nil, enableClientOauthLogin: Bool? = nil, enableWebOAuthLogin: Bool? = nil, enableDeviceOAuthLogin: Bool? = nil, allowAccessToSuiteSettings: Bool? = nil, requireWebOAuthReauthentication: Bool? = nil, requireTwoFactorReauthorization: Bool? = nil, enableEmbeddedBrowserOAuthLogin: Bool? = nil, useStrictModeForRedirectURIs: Bool? = nil, countryRestricted: Bool? = nil, spaUIEngine: String? = nil, spaStaticFilesRootPath: String? = nil, spaRelativeAppPath: String? = nil, spaNpmStartScript: String? = nil, spaNpmPublishScript: String? = nil, spaRelativeSourcePath: String? = nil, spaRelativeOutputPath: String? = nil, useProxyToSpaDevelopmentServer: Bool? = nil, spaDevelopmentServerUri: String? = nil, enableGitRepoManagement: Bool? = nil, gitRepoUrl: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, name: String, namespace: String? = nil, displayName: String? = nil, avatarURL: String? = nil, websiteUrl: String? = nil, isMultiTenant: Bool? = nil, isVerified: Bool? = nil, isDisabled: Bool? = nil, isSinglePageApplication: Bool? = nil, isNativeOrDesktopApp: Bool? = nil, contactEmail: String? = nil, privacyPolicyURL: String? = nil, termsAndConditionsURL: String? = nil, requireHttps: Bool? = nil, requireAppSecret: Bool? = nil, enableClientOauthLogin: Bool? = nil, enableWebOAuthLogin: Bool? = nil, enableDeviceOAuthLogin: Bool? = nil, allowAccessToSuiteSettings: Bool? = nil, requireWebOAuthReauthentication: Bool? = nil, requireTwoFactorReauthorization: Bool? = nil, enableEmbeddedBrowserOAuthLogin: Bool? = nil, useStrictModeForRedirectURIs: Bool? = nil, countryRestricted: Bool? = nil, spaUIEngine: String? = nil, spaStaticFilesRootPath: String? = nil, spaRelativeAppPath: String? = nil, spaNpmStartScript: String? = nil, spaNpmPublishScript: String? = nil, spaRelativeSourcePath: String? = nil, spaRelativeOutputPath: String? = nil, useProxyToSpaDevelopmentServer: Bool? = nil, spaDevelopmentServerUri: String? = nil, enableGitRepoManagement: Bool? = nil, gitRepoUrl: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
@@ -69,8 +67,6 @@ public struct BusinessApplicationCreateDto: Codable, JSONEncodable, Hashable {
         self.contactEmail = contactEmail
         self.privacyPolicyURL = privacyPolicyURL
         self.termsAndConditionsURL = termsAndConditionsURL
-        self.businessID = businessID
-        self.businessProfileRecordID = businessProfileRecordID
         self.requireHttps = requireHttps
         self.requireAppSecret = requireAppSecret
         self.enableClientOauthLogin = enableClientOauthLogin
@@ -111,8 +107,6 @@ public struct BusinessApplicationCreateDto: Codable, JSONEncodable, Hashable {
         case contactEmail
         case privacyPolicyURL
         case termsAndConditionsURL
-        case businessID
-        case businessProfileRecordID
         case requireHttps
         case requireAppSecret
         case enableClientOauthLogin
@@ -156,8 +150,6 @@ public struct BusinessApplicationCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(contactEmail, forKey: .contactEmail)
         try container.encodeIfPresent(privacyPolicyURL, forKey: .privacyPolicyURL)
         try container.encodeIfPresent(termsAndConditionsURL, forKey: .termsAndConditionsURL)
-        try container.encodeIfPresent(businessID, forKey: .businessID)
-        try container.encodeIfPresent(businessProfileRecordID, forKey: .businessProfileRecordID)
         try container.encodeIfPresent(requireHttps, forKey: .requireHttps)
         try container.encodeIfPresent(requireAppSecret, forKey: .requireAppSecret)
         try container.encodeIfPresent(enableClientOauthLogin, forKey: .enableClientOauthLogin)

@@ -29,7 +29,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let supportTicketTypeCreateDto = SupportTicketTypeCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", businessID: "businessID_example") // SupportTicketTypeCreateDto |  (optional)
+let supportTicketTypeCreateDto = SupportTicketTypeCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example") // SupportTicketTypeCreateDto |  (optional)
 
 // Create a new support ticket type
 SupportTicketTypesAPI.createSupportTicketTypeAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, supportTicketTypeCreateDto: supportTicketTypeCreateDto) { (response, error) in

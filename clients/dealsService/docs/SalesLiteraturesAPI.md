@@ -78,7 +78,7 @@ Creates a new sales literature for the specified tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let salesLiteratureCreateDto = SalesLiteratureCreateDto(id: 123, timestamp: Date(), title: "title_example", content: "content_example", description: "description_example", modifiedDate: Date(), expirationDate: Date(), tenantId: "tenantId_example", enrollmentId: "enrollmentId_example", salesLiteratureTypeId: "salesLiteratureTypeId_example") // SalesLiteratureCreateDto |  (optional)
+let salesLiteratureCreateDto = SalesLiteratureCreateDto(id: 123, timestamp: Date(), title: "title_example", content: "content_example", description: "description_example", modifiedDate: Date(), expirationDate: Date(), salesLiteratureTypeId: "salesLiteratureTypeId_example") // SalesLiteratureCreateDto |  (optional)
 
 // Create a sales literature
 SalesLiteraturesAPI.createSalesLiteratureAsync(tenantId: tenantId, salesLiteratureCreateDto: salesLiteratureCreateDto) { (response, error) in
@@ -335,7 +335,7 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let salesLiteratureId = 987 // UUID | 
-let salesLiteratureUpdateDto = SalesLiteratureUpdateDto(title: "title_example", content: "content_example", description: "description_example", modifiedDate: Date(), expirationDate: Date(), tenantId: "tenantId_example", enrollmentId: "enrollmentId_example", salesLiteratureTypeId: "salesLiteratureTypeId_example") // SalesLiteratureUpdateDto |  (optional)
+let salesLiteratureUpdateDto = SalesLiteratureUpdateDto(title: "title_example", content: "content_example", description: "description_example", modifiedDate: Date(), expirationDate: Date(), salesLiteratureTypeId: "salesLiteratureTypeId_example") // SalesLiteratureUpdateDto |  (optional)
 
 // Update a sales literature
 SalesLiteraturesAPI.updateSalesLiteratureAsync(tenantId: tenantId, salesLiteratureId: salesLiteratureId, salesLiteratureUpdateDto: salesLiteratureUpdateDto) { (response, error) in

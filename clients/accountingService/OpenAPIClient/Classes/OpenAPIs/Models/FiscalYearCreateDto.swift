@@ -17,21 +17,19 @@ public struct FiscalYearCreateDto: Codable, JSONEncodable, Hashable {
     public var name: String?
     public var description: String?
     public var closed: Bool?
-    public var tenantId: String?
-    public var enrollmentId: String?
     public var endDate: Date?
     public var startDate: Date?
+    public var fiscalAuthorityId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil, description: String? = nil, closed: Bool? = nil, tenantId: String? = nil, enrollmentId: String? = nil, endDate: Date? = nil, startDate: Date? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil, description: String? = nil, closed: Bool? = nil, endDate: Date? = nil, startDate: Date? = nil, fiscalAuthorityId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
         self.description = description
         self.closed = closed
-        self.tenantId = tenantId
-        self.enrollmentId = enrollmentId
         self.endDate = endDate
         self.startDate = startDate
+        self.fiscalAuthorityId = fiscalAuthorityId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -40,10 +38,9 @@ public struct FiscalYearCreateDto: Codable, JSONEncodable, Hashable {
         case name
         case description
         case closed
-        case tenantId
-        case enrollmentId
         case endDate
         case startDate
+        case fiscalAuthorityId
     }
 
     // Encodable protocol methods
@@ -55,10 +52,9 @@ public struct FiscalYearCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(closed, forKey: .closed)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(endDate, forKey: .endDate)
         try container.encodeIfPresent(startDate, forKey: .startDate)
+        try container.encodeIfPresent(fiscalAuthorityId, forKey: .fiscalAuthorityId)
     }
 }
 

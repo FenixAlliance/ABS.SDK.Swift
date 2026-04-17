@@ -3,7 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tenantId** | **String** |  | [optional] 
 **firstName** | **String** |  | [optional] 
 **lastName** | **String** |  | [optional] 
 **companyName** | **String** |  | [optional] 
@@ -47,7 +46,6 @@ Name | Type | Description | Notes
 **userId** | **String** |  | [optional] 
 **forexRate** | **Double** |  | [optional] 
 **currencyId** | **String** |  | [optional] 
-**enrollmentId** | **String** |  | [optional] 
 **individualId** | **String** |  | [optional] 
 **organizationId** | **String** |  | [optional] 
 **totalAmountInUsd** | **Double** |  | [optional] 

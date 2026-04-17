@@ -14,21 +14,17 @@ public struct FinancialBookUpdateDto: Codable, JSONEncodable, Hashable {
 
     static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     static let descriptionRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
-    static let tenantIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     public var name: String?
     public var description: String?
-    public var tenantId: String?
 
-    public init(name: String? = nil, description: String? = nil, tenantId: String? = nil) {
+    public init(name: String? = nil, description: String? = nil) {
         self.name = name
         self.description = description
-        self.tenantId = tenantId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case name
         case description
-        case tenantId
     }
 
     // Encodable protocol methods
@@ -37,7 +33,6 @@ public struct FinancialBookUpdateDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
     }
 }
 

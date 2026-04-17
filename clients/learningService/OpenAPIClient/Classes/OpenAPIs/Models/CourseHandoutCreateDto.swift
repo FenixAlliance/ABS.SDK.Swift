@@ -14,7 +14,6 @@ public struct CourseHandoutCreateDto: Codable, JSONEncodable, Hashable {
 
     static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     static let courseIDRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    static let businessIDRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var name: String
@@ -24,9 +23,8 @@ public struct CourseHandoutCreateDto: Codable, JSONEncodable, Hashable {
     public var releaseDateTime: Date?
     public var courseID: String
     public var courseUnitID: String?
-    public var businessID: String
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, name: String, description: String? = nil, content: String? = nil, url: String? = nil, releaseDateTime: Date? = nil, courseID: String, courseUnitID: String? = nil, businessID: String) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, name: String, description: String? = nil, content: String? = nil, url: String? = nil, releaseDateTime: Date? = nil, courseID: String, courseUnitID: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
@@ -36,7 +34,6 @@ public struct CourseHandoutCreateDto: Codable, JSONEncodable, Hashable {
         self.releaseDateTime = releaseDateTime
         self.courseID = courseID
         self.courseUnitID = courseUnitID
-        self.businessID = businessID
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -49,7 +46,6 @@ public struct CourseHandoutCreateDto: Codable, JSONEncodable, Hashable {
         case releaseDateTime
         case courseID
         case courseUnitID
-        case businessID
     }
 
     // Encodable protocol methods
@@ -65,7 +61,6 @@ public struct CourseHandoutCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(releaseDateTime, forKey: .releaseDateTime)
         try container.encode(courseID, forKey: .courseID)
         try container.encodeIfPresent(courseUnitID, forKey: .courseUnitID)
-        try container.encode(businessID, forKey: .businessID)
     }
 }
 

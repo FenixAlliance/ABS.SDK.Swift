@@ -14,19 +14,16 @@ public struct ItemTagCreateDto: Codable, JSONEncodable, Hashable {
 
     static let titleRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     static let descriptionRule = StringRule(minLength: 0, maxLength: 1000, pattern: nil)
-    static let businessIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var title: String
     public var description: String?
-    public var businessID: String
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, title: String, description: String? = nil, businessID: String) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, title: String, description: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
         self.description = description
-        self.businessID = businessID
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -34,7 +31,6 @@ public struct ItemTagCreateDto: Codable, JSONEncodable, Hashable {
         case timestamp
         case title
         case description
-        case businessID
     }
 
     // Encodable protocol methods
@@ -45,7 +41,6 @@ public struct ItemTagCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encode(title, forKey: .title)
         try container.encodeIfPresent(description, forKey: .description)
-        try container.encode(businessID, forKey: .businessID)
     }
 }
 

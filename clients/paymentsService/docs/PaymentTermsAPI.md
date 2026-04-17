@@ -29,7 +29,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let paymentTermCreateDto = PaymentTermCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", isTemplate: false, percentage: 123, creditDays: 123, creditWeeks: 123, creditMonths: 123, creditYears: 123, paymentModeID: "paymentModeID_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example") // PaymentTermCreateDto |  (optional)
+let paymentTermCreateDto = PaymentTermCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", isTemplate: false, percentage: 123, creditDays: 123, creditWeeks: 123, creditMonths: 123, creditYears: 123, paymentModeID: "paymentModeID_example") // PaymentTermCreateDto |  (optional)
 
 // Creates a new payment term
 PaymentTermsAPI.createPaymentTermAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, paymentTermCreateDto: paymentTermCreateDto) { (response, error) in

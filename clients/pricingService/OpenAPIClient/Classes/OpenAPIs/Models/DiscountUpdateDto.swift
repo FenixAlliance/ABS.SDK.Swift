@@ -12,26 +12,20 @@ import AnyCodable
 
 public struct DiscountUpdateDto: Codable, JSONEncodable, Hashable {
 
-    static let tenantIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    static let enrollmentIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let discountListIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     public var description: String?
     public var beginQuantity: Double?
     public var endQuantity: Double?
     public var percent: Double?
     public var value: Double?
-    public var tenantId: String?
-    public var enrollmentId: String?
     public var discountListId: String?
 
-    public init(description: String? = nil, beginQuantity: Double? = nil, endQuantity: Double? = nil, percent: Double? = nil, value: Double? = nil, tenantId: String? = nil, enrollmentId: String? = nil, discountListId: String? = nil) {
+    public init(description: String? = nil, beginQuantity: Double? = nil, endQuantity: Double? = nil, percent: Double? = nil, value: Double? = nil, discountListId: String? = nil) {
         self.description = description
         self.beginQuantity = beginQuantity
         self.endQuantity = endQuantity
         self.percent = percent
         self.value = value
-        self.tenantId = tenantId
-        self.enrollmentId = enrollmentId
         self.discountListId = discountListId
     }
 
@@ -41,8 +35,6 @@ public struct DiscountUpdateDto: Codable, JSONEncodable, Hashable {
         case endQuantity
         case percent
         case value
-        case tenantId
-        case enrollmentId
         case discountListId
     }
 
@@ -55,8 +47,6 @@ public struct DiscountUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(endQuantity, forKey: .endQuantity)
         try container.encodeIfPresent(percent, forKey: .percent)
         try container.encodeIfPresent(value, forKey: .value)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(discountListId, forKey: .discountListId)
     }
 }

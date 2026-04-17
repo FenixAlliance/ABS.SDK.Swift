@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 **id** | **UUID** |  | [optional] 
 **timestamp** | **Date** |  | [optional] 
 **contactId** | **String** |  | [optional] 
-**tenantId** | **String** |  | [optional] 
 **taxId** | **String** |  | 
 **phone** | **String** |  | 
 **email** | **String** |  | 

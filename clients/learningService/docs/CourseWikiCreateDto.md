@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **title** | **String** |  | 
 **description** | **String** |  | [optional] 
 **courseID** | **String** |  | 
-**businessID** | **String** |  | 
 **courseUnitID** | **String** |  | [optional] 
 **releaseDateTime** | **Date** |  | [optional] 
 

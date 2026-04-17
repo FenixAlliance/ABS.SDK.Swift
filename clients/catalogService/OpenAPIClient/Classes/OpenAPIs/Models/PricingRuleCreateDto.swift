@@ -35,10 +35,8 @@ public struct PricingRuleCreateDto: Codable, JSONEncodable, Hashable {
     public var customState: String?
     public var customCity: String?
     public var cityID: String?
-    public var businessID: String?
-    public var businessProfileRecordID: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, code: String? = nil, title: String? = nil, description: String? = nil, isFree: Bool? = nil, reduce: Bool? = nil, isEnabled: Bool? = nil, isDefault: Bool? = nil, allowInternational: Bool? = nil, hours: Int? = nil, days: Int? = nil, weeks: Int? = nil, months: Int? = nil, years: Int? = nil, value: Double? = nil, percentage: Double? = nil, currencyID: String? = nil, countryID: String? = nil, countryStateID: String? = nil, customState: String? = nil, customCity: String? = nil, cityID: String? = nil, businessID: String? = nil, businessProfileRecordID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, code: String? = nil, title: String? = nil, description: String? = nil, isFree: Bool? = nil, reduce: Bool? = nil, isEnabled: Bool? = nil, isDefault: Bool? = nil, allowInternational: Bool? = nil, hours: Int? = nil, days: Int? = nil, weeks: Int? = nil, months: Int? = nil, years: Int? = nil, value: Double? = nil, percentage: Double? = nil, currencyID: String? = nil, countryID: String? = nil, countryStateID: String? = nil, customState: String? = nil, customCity: String? = nil, cityID: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.code = code
@@ -62,8 +60,6 @@ public struct PricingRuleCreateDto: Codable, JSONEncodable, Hashable {
         self.customState = customState
         self.customCity = customCity
         self.cityID = cityID
-        self.businessID = businessID
-        self.businessProfileRecordID = businessProfileRecordID
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -90,8 +86,6 @@ public struct PricingRuleCreateDto: Codable, JSONEncodable, Hashable {
         case customState
         case customCity
         case cityID
-        case businessID
-        case businessProfileRecordID
     }
 
     // Encodable protocol methods
@@ -121,8 +115,6 @@ public struct PricingRuleCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(customState, forKey: .customState)
         try container.encodeIfPresent(customCity, forKey: .customCity)
         try container.encodeIfPresent(cityID, forKey: .cityID)
-        try container.encodeIfPresent(businessID, forKey: .businessID)
-        try container.encodeIfPresent(businessProfileRecordID, forKey: .businessProfileRecordID)
     }
 }
 

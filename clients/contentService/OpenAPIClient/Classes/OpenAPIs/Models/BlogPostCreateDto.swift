@@ -22,8 +22,6 @@ public struct BlogPostCreateDto: Codable, JSONEncodable, Hashable {
     }
     public var id: UUID?
     public var timestamp: Date?
-    public var tenantId: String?
-    public var enrollmentId: String?
     public var title: String?
     public var code: String?
     public var published: Bool?
@@ -34,11 +32,9 @@ public struct BlogPostCreateDto: Codable, JSONEncodable, Hashable {
     public var blogPostCategoryID: String?
     public var webTemplateID: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, tenantId: String? = nil, enrollmentId: String? = nil, title: String? = nil, code: String? = nil, published: Bool? = nil, description: String? = nil, htmlContent: String? = nil, featuredImageUrl: String? = nil, codeType: CodeType? = nil, blogPostCategoryID: String? = nil, webTemplateID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, title: String? = nil, code: String? = nil, published: Bool? = nil, description: String? = nil, htmlContent: String? = nil, featuredImageUrl: String? = nil, codeType: CodeType? = nil, blogPostCategoryID: String? = nil, webTemplateID: String? = nil) {
         self.id = id
         self.timestamp = timestamp
-        self.tenantId = tenantId
-        self.enrollmentId = enrollmentId
         self.title = title
         self.code = code
         self.published = published
@@ -53,8 +49,6 @@ public struct BlogPostCreateDto: Codable, JSONEncodable, Hashable {
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
-        case tenantId
-        case enrollmentId
         case title
         case code
         case published
@@ -72,8 +66,6 @@ public struct BlogPostCreateDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(code, forKey: .code)
         try container.encodeIfPresent(published, forKey: .published)

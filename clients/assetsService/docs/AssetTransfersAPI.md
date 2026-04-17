@@ -27,7 +27,7 @@ Creates a new asset transfer for the authenticated tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let assetTransferCreateDto = AssetTransferCreateDto(assetId: "assetId_example", isRootTransfer: false, serialList: "serialList_example", quantity: "quantity_example", serial: "serial_example", previousAssetTransferId: "previousAssetTransferId_example", sourceLocationId: "sourceLocationId_example", destinationLocationId: "destinationLocationId_example", sourceContactId: "sourceContactId_example", destinationContactId: "destinationContactId_example", sourceDepartmentId: "sourceDepartmentId_example", destinationDepartmentId: "destinationDepartmentId_example") // AssetTransferCreateDto |  (optional)
+let assetTransferCreateDto = AssetTransferCreateDto(id: 123, timestamp: Date(), assetId: "assetId_example", isRootTransfer: false, serialList: "serialList_example", quantity: "quantity_example", serial: "serial_example", previousAssetTransferId: "previousAssetTransferId_example", sourceLocationId: "sourceLocationId_example", destinationLocationId: "destinationLocationId_example", sourceContactId: "sourceContactId_example", destinationContactId: "destinationContactId_example", sourceDepartmentId: "sourceDepartmentId_example", destinationDepartmentId: "destinationDepartmentId_example") // AssetTransferCreateDto |  (optional)
 
 // Creates a new asset transfer
 AssetTransfersAPI.createAssetTransferAsync(tenantId: tenantId, assetTransferCreateDto: assetTransferCreateDto) { (response, error) in

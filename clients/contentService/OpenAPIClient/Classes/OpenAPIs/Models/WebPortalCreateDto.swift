@@ -18,25 +18,21 @@ public struct WebPortalCreateDto: Codable, JSONEncodable, Hashable {
     public var title: String?
     public var domain: String?
     public var disabled: Bool?
-    public var businessID: String?
     public var description: String?
     public var websiteThemeID: String?
     public var businessDomainID: String?
-    public var businessProfileRecordID: String?
     public var businessPortalApplicationID: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, root: Bool? = nil, title: String? = nil, domain: String? = nil, disabled: Bool? = nil, businessID: String? = nil, description: String? = nil, websiteThemeID: String? = nil, businessDomainID: String? = nil, businessProfileRecordID: String? = nil, businessPortalApplicationID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, root: Bool? = nil, title: String? = nil, domain: String? = nil, disabled: Bool? = nil, description: String? = nil, websiteThemeID: String? = nil, businessDomainID: String? = nil, businessPortalApplicationID: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.root = root
         self.title = title
         self.domain = domain
         self.disabled = disabled
-        self.businessID = businessID
         self.description = description
         self.websiteThemeID = websiteThemeID
         self.businessDomainID = businessDomainID
-        self.businessProfileRecordID = businessProfileRecordID
         self.businessPortalApplicationID = businessPortalApplicationID
     }
 
@@ -47,11 +43,9 @@ public struct WebPortalCreateDto: Codable, JSONEncodable, Hashable {
         case title
         case domain
         case disabled
-        case businessID
         case description
         case websiteThemeID
         case businessDomainID
-        case businessProfileRecordID
         case businessPortalApplicationID
     }
 
@@ -65,11 +59,9 @@ public struct WebPortalCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(domain, forKey: .domain)
         try container.encodeIfPresent(disabled, forKey: .disabled)
-        try container.encodeIfPresent(businessID, forKey: .businessID)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(websiteThemeID, forKey: .websiteThemeID)
         try container.encodeIfPresent(businessDomainID, forKey: .businessDomainID)
-        try container.encodeIfPresent(businessProfileRecordID, forKey: .businessProfileRecordID)
         try container.encodeIfPresent(businessPortalApplicationID, forKey: .businessPortalApplicationID)
     }
 }

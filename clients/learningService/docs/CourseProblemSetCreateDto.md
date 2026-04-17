@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **description** | **String** |  | [optional] 
 **overallScore** | **Double** |  | [optional] 
 **courseID** | **String** |  | 
-**businessID** | **String** |  | 
 **courseUnitID** | **String** |  | [optional] 
 **courseGradingRubricID** | **String** |  | [optional] 
 **releaseDateTime** | **Date** |  | [optional] 

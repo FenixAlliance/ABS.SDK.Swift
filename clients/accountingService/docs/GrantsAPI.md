@@ -29,7 +29,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let grantCreateDto = GrantCreateDto(id: 123, timestamp: Date(), tenantId: "tenantId_example", enrollmentId: "enrollmentId_example") // GrantCreateDto |  (optional)
+let grantCreateDto = GrantCreateDto(id: 123, timestamp: Date()) // GrantCreateDto |  (optional)
 
 // Create grant
 GrantsAPI.createGrantAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, grantCreateDto: grantCreateDto) { (response, error) in
@@ -290,7 +290,7 @@ No authorization required
 
 # **updateGrantAsync**
 ```swift
-    open class func updateGrantAsync(tenantId: UUID, grantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, grantUpdateDto: GrantUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func updateGrantAsync(tenantId: UUID, grantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, body: AnyCodable? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Update grant
@@ -306,10 +306,10 @@ let tenantId = 987 // UUID |
 let grantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let grantUpdateDto = GrantUpdateDto(tenantId: "tenantId_example", enrollmentId: "enrollmentId_example") // GrantUpdateDto |  (optional)
+let body = "TODO" // AnyCodable |  (optional)
 
 // Update grant
-GrantsAPI.updateGrantAsync(tenantId: tenantId, grantId: grantId, apiVersion: apiVersion, xApiVersion: xApiVersion, grantUpdateDto: grantUpdateDto) { (response, error) in
+GrantsAPI.updateGrantAsync(tenantId: tenantId, grantId: grantId, apiVersion: apiVersion, xApiVersion: xApiVersion, body: body) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -329,7 +329,7 @@ Name | Type | Description  | Notes
  **grantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **grantUpdateDto** | [**GrantUpdateDto**](GrantUpdateDto.md) |  | [optional] 
+ **body** | **AnyCodable** |  | [optional] 
 
 ### Return type
 

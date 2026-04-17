@@ -14,7 +14,6 @@ public struct CourseUnitComponentCreateDto: Codable, JSONEncodable, Hashable {
 
     static let titleRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     static let courseIDRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    static let businessIDRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var title: String
@@ -22,10 +21,9 @@ public struct CourseUnitComponentCreateDto: Codable, JSONEncodable, Hashable {
     public var content: String?
     public var order: Int?
     public var courseID: String
-    public var businessID: String
     public var courseUnitID: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, title: String, description: String? = nil, content: String? = nil, order: Int? = nil, courseID: String, businessID: String, courseUnitID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, title: String, description: String? = nil, content: String? = nil, order: Int? = nil, courseID: String, courseUnitID: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
@@ -33,7 +31,6 @@ public struct CourseUnitComponentCreateDto: Codable, JSONEncodable, Hashable {
         self.content = content
         self.order = order
         self.courseID = courseID
-        self.businessID = businessID
         self.courseUnitID = courseUnitID
     }
 
@@ -45,7 +42,6 @@ public struct CourseUnitComponentCreateDto: Codable, JSONEncodable, Hashable {
         case content
         case order
         case courseID
-        case businessID
         case courseUnitID
     }
 
@@ -60,7 +56,6 @@ public struct CourseUnitComponentCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(content, forKey: .content)
         try container.encodeIfPresent(order, forKey: .order)
         try container.encode(courseID, forKey: .courseID)
-        try container.encode(businessID, forKey: .businessID)
         try container.encodeIfPresent(courseUnitID, forKey: .courseUnitID)
     }
 }

@@ -33,7 +33,7 @@ Creates a new loan application.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let loanApplicationCreateDto = LoanApplicationCreateDto(id: 123, timestamp: Date(), tenantId: "tenantId_example", enrollmentId: "enrollmentId_example") // LoanApplicationCreateDto | 
+let loanApplicationCreateDto = LoanApplicationCreateDto(id: 123, timestamp: Date()) // LoanApplicationCreateDto | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
@@ -89,7 +89,7 @@ Creates a new loan for the current tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let loanCreateDto = LoanCreateDto(id: 123, timestamp: Date(), loanTimestamp: Date(), paymentDeadline: Date(), value: 123, interestRate: 123, isCompundInterestRate: false, loanTypeId: "loanTypeId_example", currencyId: "currencyId_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example") // LoanCreateDto | 
+let loanCreateDto = LoanCreateDto(id: 123, timestamp: Date(), loanTimestamp: Date(), paymentDeadline: Date(), value: 123, interestRate: 123, isCompundInterestRate: false, loanTypeId: "loanTypeId_example", currencyId: "currencyId_example") // LoanCreateDto | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
@@ -572,7 +572,7 @@ No authorization required
 
 # **updateLoanApplicationAsync**
 ```swift
-    open class func updateLoanApplicationAsync(tenantId: UUID, applicationId: UUID, loanApplicationUpdateDto: LoanApplicationUpdateDto, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func updateLoanApplicationAsync(tenantId: UUID, applicationId: UUID, body: AnyCodable, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Updates a loan application
@@ -586,12 +586,12 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let applicationId = 987 // UUID | 
-let loanApplicationUpdateDto = LoanApplicationUpdateDto(tenantId: "tenantId_example", enrollmentId: "enrollmentId_example") // LoanApplicationUpdateDto | 
+let body = "TODO" // AnyCodable | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Updates a loan application
-LoansAPI.updateLoanApplicationAsync(tenantId: tenantId, applicationId: applicationId, loanApplicationUpdateDto: loanApplicationUpdateDto, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+LoansAPI.updateLoanApplicationAsync(tenantId: tenantId, applicationId: applicationId, body: body, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -609,7 +609,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **applicationId** | **UUID** |  | 
- **loanApplicationUpdateDto** | [**LoanApplicationUpdateDto**](LoanApplicationUpdateDto.md) |  | 
+ **body** | **AnyCodable** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 
@@ -644,7 +644,7 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let loanId = 987 // UUID | 
-let loanUpdateDto = LoanUpdateDto(loanTimestamp: Date(), paymentDeadline: Date(), value: 123, interestRate: 123, isCompundInterestRate: false, loanTypeId: "loanTypeId_example", currencyId: "currencyId_example", enrollmentId: "enrollmentId_example") // LoanUpdateDto | 
+let loanUpdateDto = LoanUpdateDto(loanTimestamp: Date(), paymentDeadline: Date(), value: 123, interestRate: 123, isCompundInterestRate: false, loanTypeId: "loanTypeId_example", currencyId: "currencyId_example") // LoanUpdateDto | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 

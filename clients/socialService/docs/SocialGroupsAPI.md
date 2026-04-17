@@ -83,7 +83,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let socialGroupCreateDto = SocialGroupCreateDto(name: "name_example", title: "title_example", avatarURL: "avatarURL_example", socialProfileID: "socialProfileID_example") // SocialGroupCreateDto |  (optional)
+let socialGroupCreateDto = SocialGroupCreateDto(id: 123, timestamp: Date(), name: "name_example", title: "title_example", avatarURL: "avatarURL_example", socialProfileID: "socialProfileID_example") // SocialGroupCreateDto |  (optional)
 
 // Create a social group
 SocialGroupsAPI.createSocialGroupAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialGroupCreateDto: socialGroupCreateDto) { (response, error) in

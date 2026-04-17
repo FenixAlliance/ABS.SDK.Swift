@@ -5,8 +5,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **UUID** |  | [optional] 
 **timestamp** | **Date** |  | [optional] 
-**businessID** | **String** |  | 
-**businessProfileRecordID** | **String** |  | 
 **businessTeamID** | **String** |  | 
 **projectID** | **String** |  | 
 

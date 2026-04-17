@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **closed** | **Bool** |  | [optional] 
 **endDate** | **Date** |  | [optional] 
 **startDate** | **Date** |  | [optional] 
+**fiscalAuthorityId** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

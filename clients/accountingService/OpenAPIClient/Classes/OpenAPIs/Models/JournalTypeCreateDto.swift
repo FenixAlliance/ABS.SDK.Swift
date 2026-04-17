@@ -15,23 +15,17 @@ public struct JournalTypeCreateDto: Codable, JSONEncodable, Hashable {
     public var id: UUID?
     public var timestamp: Date?
     public var name: String?
-    public var tenantId: String?
-    public var enrollmentId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
-        self.tenantId = tenantId
-        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
         case name
-        case tenantId
-        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -41,8 +35,6 @@ public struct JournalTypeCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(name, forKey: .name)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

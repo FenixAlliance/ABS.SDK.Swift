@@ -13,26 +13,21 @@ import AnyCodable
 public struct CourseCertificateTemplateCreateDto: Codable, JSONEncodable, Hashable {
 
     static let courseIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
-    static let businessIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var courseID: String
-    public var businessID: String
     public var webPortalID: String?
     public var websiteThemeID: String?
-    public var businessProfileRecordID: String?
     public var socialProfileID: String?
     public var parentWebContentID: String?
     public var parentWebContentVersionID: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, courseID: String, businessID: String, webPortalID: String? = nil, websiteThemeID: String? = nil, businessProfileRecordID: String? = nil, socialProfileID: String? = nil, parentWebContentID: String? = nil, parentWebContentVersionID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, courseID: String, webPortalID: String? = nil, websiteThemeID: String? = nil, socialProfileID: String? = nil, parentWebContentID: String? = nil, parentWebContentVersionID: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.courseID = courseID
-        self.businessID = businessID
         self.webPortalID = webPortalID
         self.websiteThemeID = websiteThemeID
-        self.businessProfileRecordID = businessProfileRecordID
         self.socialProfileID = socialProfileID
         self.parentWebContentID = parentWebContentID
         self.parentWebContentVersionID = parentWebContentVersionID
@@ -42,10 +37,8 @@ public struct CourseCertificateTemplateCreateDto: Codable, JSONEncodable, Hashab
         case id
         case timestamp
         case courseID
-        case businessID
         case webPortalID
         case websiteThemeID
-        case businessProfileRecordID
         case socialProfileID
         case parentWebContentID
         case parentWebContentVersionID
@@ -58,10 +51,8 @@ public struct CourseCertificateTemplateCreateDto: Codable, JSONEncodable, Hashab
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encode(courseID, forKey: .courseID)
-        try container.encode(businessID, forKey: .businessID)
         try container.encodeIfPresent(webPortalID, forKey: .webPortalID)
         try container.encodeIfPresent(websiteThemeID, forKey: .websiteThemeID)
-        try container.encodeIfPresent(businessProfileRecordID, forKey: .businessProfileRecordID)
         try container.encodeIfPresent(socialProfileID, forKey: .socialProfileID)
         try container.encodeIfPresent(parentWebContentID, forKey: .parentWebContentID)
         try container.encodeIfPresent(parentWebContentVersionID, forKey: .parentWebContentVersionID)

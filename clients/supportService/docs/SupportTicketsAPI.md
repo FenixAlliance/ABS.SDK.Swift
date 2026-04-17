@@ -34,7 +34,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let supportTicketCreateDto = SupportTicketCreateDto(id: 123, timestamp: Date(), description: "description_example", accountHolderID: "accountHolderID_example", contactID: "contactID_example", businessID: "businessID_example", businessProfileRecordID: "businessProfileRecordID_example", supportTicketTypeID: "supportTicketTypeID_example", supportEntitlementID: "supportEntitlementID_example", supportPriorityID: "supportPriorityID_example") // SupportTicketCreateDto |  (optional)
+let supportTicketCreateDto = SupportTicketCreateDto(id: 123, timestamp: Date(), description: "description_example", contactID: "contactID_example", supportTicketTypeID: "supportTicketTypeID_example", supportEntitlementID: "supportEntitlementID_example", supportPriorityID: "supportPriorityID_example") // SupportTicketCreateDto |  (optional)
 
 // Create a new support ticket
 SupportTicketsAPI.createSupportTicketAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, supportTicketCreateDto: supportTicketCreateDto) { (response, error) in
@@ -603,7 +603,7 @@ let tenantId = 987 // UUID |
 let supportTicketId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let supportTicketUpdateDto = SupportTicketUpdateDto(description: "description_example", accountHolderID: "accountHolderID_example", contactID: "contactID_example", businessProfileRecordID: "businessProfileRecordID_example", supportTicketTypeID: "supportTicketTypeID_example", supportEntitlementID: "supportEntitlementID_example", supportPriorityID: "supportPriorityID_example") // SupportTicketUpdateDto |  (optional)
+let supportTicketUpdateDto = SupportTicketUpdateDto(description: "description_example", contactID: "contactID_example", supportTicketTypeID: "supportTicketTypeID_example", supportEntitlementID: "supportEntitlementID_example", supportPriorityID: "supportPriorityID_example") // SupportTicketUpdateDto |  (optional)
 
 // Update a support ticket
 SupportTicketsAPI.updateSupportTicketAsync(tenantId: tenantId, supportTicketId: supportTicketId, apiVersion: apiVersion, xApiVersion: xApiVersion, supportTicketUpdateDto: supportTicketUpdateDto) { (response, error) in

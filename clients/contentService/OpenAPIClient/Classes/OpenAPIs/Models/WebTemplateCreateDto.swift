@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct WebTemplateCreateDto: Codable, JSONEncodable, Hashable {
 
-    public var id: String?
+    public var id: UUID?
     public var timestamp: Date?
     public var slug: String?
     public var name: String?
@@ -26,7 +26,7 @@ public struct WebTemplateCreateDto: Codable, JSONEncodable, Hashable {
     public var highlightImage: String?
     public var order: Int?
 
-    public init(id: String? = nil, timestamp: Date? = nil, slug: String? = nil, name: String? = nil, title: String? = nil, description: String? = nil, content: String? = nil, htmlContent: String? = nil, cssContent: String? = nil, jsContent: String? = nil, razorContent: String? = nil, highlightImage: String? = nil, order: Int? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, slug: String? = nil, name: String? = nil, title: String? = nil, description: String? = nil, content: String? = nil, htmlContent: String? = nil, cssContent: String? = nil, jsContent: String? = nil, razorContent: String? = nil, highlightImage: String? = nil, order: Int? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.slug = slug

@@ -14,24 +14,18 @@ public struct ShareClassUpdateDto: Codable, JSONEncodable, Hashable {
 
     static let nameRule = StringRule(minLength: 0, maxLength: 50, pattern: nil)
     static let descriptionRule = StringRule(minLength: 0, maxLength: 150, pattern: nil)
-    static let tenantIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    static let enrollmentIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     public var name: String?
     public var value: Bool?
     public var description: String?
     public var forexRates: String?
     public var currencyId: String?
-    public var tenantId: String?
-    public var enrollmentId: String?
 
-    public init(name: String? = nil, value: Bool? = nil, description: String? = nil, forexRates: String? = nil, currencyId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
+    public init(name: String? = nil, value: Bool? = nil, description: String? = nil, forexRates: String? = nil, currencyId: String? = nil) {
         self.name = name
         self.value = value
         self.description = description
         self.forexRates = forexRates
         self.currencyId = currencyId
-        self.tenantId = tenantId
-        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -40,8 +34,6 @@ public struct ShareClassUpdateDto: Codable, JSONEncodable, Hashable {
         case description
         case forexRates
         case currencyId
-        case tenantId
-        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -53,8 +45,6 @@ public struct ShareClassUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(forexRates, forKey: .forexRates)
         try container.encodeIfPresent(currencyId, forKey: .currencyId)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

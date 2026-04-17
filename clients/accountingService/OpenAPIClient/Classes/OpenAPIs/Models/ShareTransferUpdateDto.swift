@@ -16,24 +16,18 @@ public struct ShareTransferUpdateDto: Codable, JSONEncodable, Hashable {
     static let newShareHolderIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let formerShareHolderIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let shareTransferReasonIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    static let enrollmentIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    static let tenantIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     public var description: String?
     public var value: Double?
     public var newShareHolderId: String?
     public var formerShareHolderId: String?
     public var shareTransferReasonId: String?
-    public var enrollmentId: String?
-    public var tenantId: String?
 
-    public init(description: String? = nil, value: Double? = nil, newShareHolderId: String? = nil, formerShareHolderId: String? = nil, shareTransferReasonId: String? = nil, enrollmentId: String? = nil, tenantId: String? = nil) {
+    public init(description: String? = nil, value: Double? = nil, newShareHolderId: String? = nil, formerShareHolderId: String? = nil, shareTransferReasonId: String? = nil) {
         self.description = description
         self.value = value
         self.newShareHolderId = newShareHolderId
         self.formerShareHolderId = formerShareHolderId
         self.shareTransferReasonId = shareTransferReasonId
-        self.enrollmentId = enrollmentId
-        self.tenantId = tenantId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -42,8 +36,6 @@ public struct ShareTransferUpdateDto: Codable, JSONEncodable, Hashable {
         case newShareHolderId
         case formerShareHolderId
         case shareTransferReasonId
-        case enrollmentId
-        case tenantId
     }
 
     // Encodable protocol methods
@@ -55,8 +47,6 @@ public struct ShareTransferUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(newShareHolderId, forKey: .newShareHolderId)
         try container.encodeIfPresent(formerShareHolderId, forKey: .formerShareHolderId)
         try container.encodeIfPresent(shareTransferReasonId, forKey: .shareTransferReasonId)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
     }
 }
 

@@ -13,22 +13,16 @@ import AnyCodable
 public struct AccountingPeriodCreateDto: Codable, JSONEncodable, Hashable {
 
     static let nameRule = StringRule(minLength: 0, maxLength: 50, pattern: nil)
-    static let tenantIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    static let enrollmentIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var name: String?
-    public var tenantId: String?
-    public var enrollmentId: String?
     public var dateStart: Date?
     public var dateEnd: Date?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil, dateStart: Date? = nil, dateEnd: Date? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil, dateStart: Date? = nil, dateEnd: Date? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
-        self.tenantId = tenantId
-        self.enrollmentId = enrollmentId
         self.dateStart = dateStart
         self.dateEnd = dateEnd
     }
@@ -37,8 +31,6 @@ public struct AccountingPeriodCreateDto: Codable, JSONEncodable, Hashable {
         case id
         case timestamp
         case name
-        case tenantId
-        case enrollmentId
         case dateStart
         case dateEnd
     }
@@ -50,8 +42,6 @@ public struct AccountingPeriodCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(name, forKey: .name)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(dateStart, forKey: .dateStart)
         try container.encodeIfPresent(dateEnd, forKey: .dateEnd)
     }

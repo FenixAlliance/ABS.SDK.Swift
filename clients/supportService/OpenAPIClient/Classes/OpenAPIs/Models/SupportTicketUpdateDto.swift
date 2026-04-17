@@ -13,18 +13,14 @@ import AnyCodable
 public struct SupportTicketUpdateDto: Codable, JSONEncodable, Hashable {
 
     public var description: String?
-    public var accountHolderID: String?
     public var contactID: String?
-    public var businessProfileRecordID: String?
     public var supportTicketTypeID: String?
     public var supportEntitlementID: String?
     public var supportPriorityID: String?
 
-    public init(description: String? = nil, accountHolderID: String? = nil, contactID: String? = nil, businessProfileRecordID: String? = nil, supportTicketTypeID: String? = nil, supportEntitlementID: String? = nil, supportPriorityID: String? = nil) {
+    public init(description: String? = nil, contactID: String? = nil, supportTicketTypeID: String? = nil, supportEntitlementID: String? = nil, supportPriorityID: String? = nil) {
         self.description = description
-        self.accountHolderID = accountHolderID
         self.contactID = contactID
-        self.businessProfileRecordID = businessProfileRecordID
         self.supportTicketTypeID = supportTicketTypeID
         self.supportEntitlementID = supportEntitlementID
         self.supportPriorityID = supportPriorityID
@@ -32,9 +28,7 @@ public struct SupportTicketUpdateDto: Codable, JSONEncodable, Hashable {
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case description
-        case accountHolderID
         case contactID
-        case businessProfileRecordID
         case supportTicketTypeID
         case supportEntitlementID
         case supportPriorityID
@@ -45,9 +39,7 @@ public struct SupportTicketUpdateDto: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(accountHolderID, forKey: .accountHolderID)
         try container.encodeIfPresent(contactID, forKey: .contactID)
-        try container.encodeIfPresent(businessProfileRecordID, forKey: .businessProfileRecordID)
         try container.encodeIfPresent(supportTicketTypeID, forKey: .supportTicketTypeID)
         try container.encodeIfPresent(supportEntitlementID, forKey: .supportEntitlementID)
         try container.encodeIfPresent(supportPriorityID, forKey: .supportPriorityID)

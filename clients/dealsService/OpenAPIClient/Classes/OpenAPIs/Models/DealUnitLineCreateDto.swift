@@ -20,14 +20,14 @@ public struct DealUnitLineCreateDto: Codable, JSONEncodable, Hashable {
         case automatic = "Automatic"
         case custom = "Custom"
     }
+    public var id: UUID?
+    public var timestamp: Date?
     public var closed: Bool?
     public var itemId: String?
     public var itemTitle: String?
     public var itemShortDescription: String?
     public var itemPrimaryImageUrl: String?
     public var shippingPolicyId: String?
-    public var tenantId: String?
-    public var enrollmentId: String?
     public var currencyId: String?
     public var description: String?
     public var quantity: Double?
@@ -84,14 +84,14 @@ public struct DealUnitLineCreateDto: Codable, JSONEncodable, Hashable {
     public var customGlobalDiscountsAmountCurrencyId: String?
     public var totalDetail: Double?
     public var totalDetailCurrencyId: String?
-    public var totalProfit: Double?
-    public var totalProfitCurrencyId: String?
     public var totalDiscounts: Double?
     public var totalDiscountsCurrencyId: String?
-    public var totalSurcharges: Double?
-    public var totalSurchargesCurrencyId: String?
     public var totalTaxBase: Double?
     public var totalTaxBaseCurrencyId: String?
+    public var totalSurcharges: Double?
+    public var totalSurchargesCurrencyId: String?
+    public var totalProfit: Double?
+    public var totalProfitCurrencyId: String?
     public var totalShippingCost: Double?
     public var totalShippingCostCurrencyId: String?
     public var totalShippingTax: Double?
@@ -113,19 +113,18 @@ public struct DealUnitLineCreateDto: Codable, JSONEncodable, Hashable {
     public var shippingLocationId: String?
     public var locationId: String?
     public var quoteItemRecordId: String?
-    public var businessProfileRecordId: String?
     public var parentBillingItemRecordId: String?
     public var dealUnitId: String?
 
-    public init(closed: Bool? = nil, itemId: String? = nil, itemTitle: String? = nil, itemShortDescription: String? = nil, itemPrimaryImageUrl: String? = nil, shippingPolicyId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil, currencyId: String? = nil, description: String? = nil, quantity: Double? = nil, free: Bool? = nil, freeReason: String? = nil, freeReasonCode: String? = nil, data: String? = nil, dataLabel: String? = nil, data1: String? = nil, data1Label: String? = nil, data2: String? = nil, data2Label: String? = nil, data3: String? = nil, data3Label: String? = nil, data4: String? = nil, data4Label: String? = nil, data5: String? = nil, data5Label: String? = nil, data6: String? = nil, data6Label: String? = nil, data7: String? = nil, data7Label: String? = nil, data8: String? = nil, data8Label: String? = nil, data9: String? = nil, data9Label: String? = nil, itemPriceId: String? = nil, priceListItemId: String? = nil, unitId: String? = nil, unitGroupId: String? = nil, taxCalculationMethod: TaxCalculationMethod? = nil, costCalculationMethod: CostCalculationMethod? = nil, forexRatesSnapshot: String? = nil, forexRate: Double? = nil, totalBaseAmountInUsd: Double? = nil, totalProfitInUsd: Double? = nil, totalDetailAmountInUsd: Double? = nil, totalTaxBaseInUsd: Double? = nil, totalDiscountsInUsd: Double? = nil, totalTaxesInUsd: Double? = nil, totalWithheldTaxesInUsd: Double? = nil, totalShippingCostInUsd: Double? = nil, totalShippingTaxesInUsd: Double? = nil, totalWarrantyCostInUsd: Double? = nil, totalReturnCostInUsd: Double? = nil, totalRefundCostInUsd: Double? = nil, totalSurchargesInUsd: Double? = nil, totalAmountInUsd: Double? = nil, totalGlobalDiscountsInUsd: Double? = nil, totalGlobalSurchargesInUsd: Double? = nil, customGlobalSurchargesAmount: Double? = nil, customGlobalSurchargesAmountCurrencyId: String? = nil, customGlobalDiscountsAmount: Double? = nil, customGlobalDiscountsAmountCurrencyId: String? = nil, totalDetail: Double? = nil, totalDetailCurrencyId: String? = nil, totalProfit: Double? = nil, totalProfitCurrencyId: String? = nil, totalDiscounts: Double? = nil, totalDiscountsCurrencyId: String? = nil, totalSurcharges: Double? = nil, totalSurchargesCurrencyId: String? = nil, totalTaxBase: Double? = nil, totalTaxBaseCurrencyId: String? = nil, totalShippingCost: Double? = nil, totalShippingCostCurrencyId: String? = nil, totalShippingTax: Double? = nil, totalShippingTaxCurrencyId: String? = nil, totalTaxes: Double? = nil, totalTaxesCurrencyId: String? = nil, totalWithheldTax: Double? = nil, totalWithheldTaxCurrencyId: String? = nil, totalGlobalDiscounts: Double? = nil, totalGlobalDiscountsCurrencyId: String? = nil, totalGlobalSurcharges: Double? = nil, totalGlobalSurchargesCurrencyId: String? = nil, total: Double? = nil, totalCurrencyId: String? = nil, returnPolicyId: String? = nil, refundPolicyId: String? = nil, warrantyPolicyId: String? = nil, shipmentPolicyId: String? = nil, shippingLocationId: String? = nil, locationId: String? = nil, quoteItemRecordId: String? = nil, businessProfileRecordId: String? = nil, parentBillingItemRecordId: String? = nil, dealUnitId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, closed: Bool? = nil, itemId: String? = nil, itemTitle: String? = nil, itemShortDescription: String? = nil, itemPrimaryImageUrl: String? = nil, shippingPolicyId: String? = nil, currencyId: String? = nil, description: String? = nil, quantity: Double? = nil, free: Bool? = nil, freeReason: String? = nil, freeReasonCode: String? = nil, data: String? = nil, dataLabel: String? = nil, data1: String? = nil, data1Label: String? = nil, data2: String? = nil, data2Label: String? = nil, data3: String? = nil, data3Label: String? = nil, data4: String? = nil, data4Label: String? = nil, data5: String? = nil, data5Label: String? = nil, data6: String? = nil, data6Label: String? = nil, data7: String? = nil, data7Label: String? = nil, data8: String? = nil, data8Label: String? = nil, data9: String? = nil, data9Label: String? = nil, itemPriceId: String? = nil, priceListItemId: String? = nil, unitId: String? = nil, unitGroupId: String? = nil, taxCalculationMethod: TaxCalculationMethod? = nil, costCalculationMethod: CostCalculationMethod? = nil, forexRatesSnapshot: String? = nil, forexRate: Double? = nil, totalBaseAmountInUsd: Double? = nil, totalProfitInUsd: Double? = nil, totalDetailAmountInUsd: Double? = nil, totalTaxBaseInUsd: Double? = nil, totalDiscountsInUsd: Double? = nil, totalTaxesInUsd: Double? = nil, totalWithheldTaxesInUsd: Double? = nil, totalShippingCostInUsd: Double? = nil, totalShippingTaxesInUsd: Double? = nil, totalWarrantyCostInUsd: Double? = nil, totalReturnCostInUsd: Double? = nil, totalRefundCostInUsd: Double? = nil, totalSurchargesInUsd: Double? = nil, totalAmountInUsd: Double? = nil, totalGlobalDiscountsInUsd: Double? = nil, totalGlobalSurchargesInUsd: Double? = nil, customGlobalSurchargesAmount: Double? = nil, customGlobalSurchargesAmountCurrencyId: String? = nil, customGlobalDiscountsAmount: Double? = nil, customGlobalDiscountsAmountCurrencyId: String? = nil, totalDetail: Double? = nil, totalDetailCurrencyId: String? = nil, totalDiscounts: Double? = nil, totalDiscountsCurrencyId: String? = nil, totalTaxBase: Double? = nil, totalTaxBaseCurrencyId: String? = nil, totalSurcharges: Double? = nil, totalSurchargesCurrencyId: String? = nil, totalProfit: Double? = nil, totalProfitCurrencyId: String? = nil, totalShippingCost: Double? = nil, totalShippingCostCurrencyId: String? = nil, totalShippingTax: Double? = nil, totalShippingTaxCurrencyId: String? = nil, totalTaxes: Double? = nil, totalTaxesCurrencyId: String? = nil, totalWithheldTax: Double? = nil, totalWithheldTaxCurrencyId: String? = nil, totalGlobalDiscounts: Double? = nil, totalGlobalDiscountsCurrencyId: String? = nil, totalGlobalSurcharges: Double? = nil, totalGlobalSurchargesCurrencyId: String? = nil, total: Double? = nil, totalCurrencyId: String? = nil, returnPolicyId: String? = nil, refundPolicyId: String? = nil, warrantyPolicyId: String? = nil, shipmentPolicyId: String? = nil, shippingLocationId: String? = nil, locationId: String? = nil, quoteItemRecordId: String? = nil, parentBillingItemRecordId: String? = nil, dealUnitId: String? = nil) {
+        self.id = id
+        self.timestamp = timestamp
         self.closed = closed
         self.itemId = itemId
         self.itemTitle = itemTitle
         self.itemShortDescription = itemShortDescription
         self.itemPrimaryImageUrl = itemPrimaryImageUrl
         self.shippingPolicyId = shippingPolicyId
-        self.tenantId = tenantId
-        self.enrollmentId = enrollmentId
         self.currencyId = currencyId
         self.description = description
         self.quantity = quantity
@@ -182,14 +181,14 @@ public struct DealUnitLineCreateDto: Codable, JSONEncodable, Hashable {
         self.customGlobalDiscountsAmountCurrencyId = customGlobalDiscountsAmountCurrencyId
         self.totalDetail = totalDetail
         self.totalDetailCurrencyId = totalDetailCurrencyId
-        self.totalProfit = totalProfit
-        self.totalProfitCurrencyId = totalProfitCurrencyId
         self.totalDiscounts = totalDiscounts
         self.totalDiscountsCurrencyId = totalDiscountsCurrencyId
-        self.totalSurcharges = totalSurcharges
-        self.totalSurchargesCurrencyId = totalSurchargesCurrencyId
         self.totalTaxBase = totalTaxBase
         self.totalTaxBaseCurrencyId = totalTaxBaseCurrencyId
+        self.totalSurcharges = totalSurcharges
+        self.totalSurchargesCurrencyId = totalSurchargesCurrencyId
+        self.totalProfit = totalProfit
+        self.totalProfitCurrencyId = totalProfitCurrencyId
         self.totalShippingCost = totalShippingCost
         self.totalShippingCostCurrencyId = totalShippingCostCurrencyId
         self.totalShippingTax = totalShippingTax
@@ -211,20 +210,19 @@ public struct DealUnitLineCreateDto: Codable, JSONEncodable, Hashable {
         self.shippingLocationId = shippingLocationId
         self.locationId = locationId
         self.quoteItemRecordId = quoteItemRecordId
-        self.businessProfileRecordId = businessProfileRecordId
         self.parentBillingItemRecordId = parentBillingItemRecordId
         self.dealUnitId = dealUnitId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case id
+        case timestamp
         case closed
         case itemId
         case itemTitle
         case itemShortDescription
         case itemPrimaryImageUrl
         case shippingPolicyId
-        case tenantId
-        case enrollmentId
         case currencyId
         case description
         case quantity
@@ -281,14 +279,14 @@ public struct DealUnitLineCreateDto: Codable, JSONEncodable, Hashable {
         case customGlobalDiscountsAmountCurrencyId
         case totalDetail
         case totalDetailCurrencyId
-        case totalProfit
-        case totalProfitCurrencyId
         case totalDiscounts
         case totalDiscountsCurrencyId
-        case totalSurcharges
-        case totalSurchargesCurrencyId
         case totalTaxBase
         case totalTaxBaseCurrencyId
+        case totalSurcharges
+        case totalSurchargesCurrencyId
+        case totalProfit
+        case totalProfitCurrencyId
         case totalShippingCost
         case totalShippingCostCurrencyId
         case totalShippingTax
@@ -310,7 +308,6 @@ public struct DealUnitLineCreateDto: Codable, JSONEncodable, Hashable {
         case shippingLocationId
         case locationId
         case quoteItemRecordId
-        case businessProfileRecordId
         case parentBillingItemRecordId
         case dealUnitId
     }
@@ -319,14 +316,14 @@ public struct DealUnitLineCreateDto: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(id, forKey: .id)
+        try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(closed, forKey: .closed)
         try container.encodeIfPresent(itemId, forKey: .itemId)
         try container.encodeIfPresent(itemTitle, forKey: .itemTitle)
         try container.encodeIfPresent(itemShortDescription, forKey: .itemShortDescription)
         try container.encodeIfPresent(itemPrimaryImageUrl, forKey: .itemPrimaryImageUrl)
         try container.encodeIfPresent(shippingPolicyId, forKey: .shippingPolicyId)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(currencyId, forKey: .currencyId)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(quantity, forKey: .quantity)
@@ -383,14 +380,14 @@ public struct DealUnitLineCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(customGlobalDiscountsAmountCurrencyId, forKey: .customGlobalDiscountsAmountCurrencyId)
         try container.encodeIfPresent(totalDetail, forKey: .totalDetail)
         try container.encodeIfPresent(totalDetailCurrencyId, forKey: .totalDetailCurrencyId)
-        try container.encodeIfPresent(totalProfit, forKey: .totalProfit)
-        try container.encodeIfPresent(totalProfitCurrencyId, forKey: .totalProfitCurrencyId)
         try container.encodeIfPresent(totalDiscounts, forKey: .totalDiscounts)
         try container.encodeIfPresent(totalDiscountsCurrencyId, forKey: .totalDiscountsCurrencyId)
-        try container.encodeIfPresent(totalSurcharges, forKey: .totalSurcharges)
-        try container.encodeIfPresent(totalSurchargesCurrencyId, forKey: .totalSurchargesCurrencyId)
         try container.encodeIfPresent(totalTaxBase, forKey: .totalTaxBase)
         try container.encodeIfPresent(totalTaxBaseCurrencyId, forKey: .totalTaxBaseCurrencyId)
+        try container.encodeIfPresent(totalSurcharges, forKey: .totalSurcharges)
+        try container.encodeIfPresent(totalSurchargesCurrencyId, forKey: .totalSurchargesCurrencyId)
+        try container.encodeIfPresent(totalProfit, forKey: .totalProfit)
+        try container.encodeIfPresent(totalProfitCurrencyId, forKey: .totalProfitCurrencyId)
         try container.encodeIfPresent(totalShippingCost, forKey: .totalShippingCost)
         try container.encodeIfPresent(totalShippingCostCurrencyId, forKey: .totalShippingCostCurrencyId)
         try container.encodeIfPresent(totalShippingTax, forKey: .totalShippingTax)
@@ -412,7 +409,6 @@ public struct DealUnitLineCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(shippingLocationId, forKey: .shippingLocationId)
         try container.encodeIfPresent(locationId, forKey: .locationId)
         try container.encodeIfPresent(quoteItemRecordId, forKey: .quoteItemRecordId)
-        try container.encodeIfPresent(businessProfileRecordId, forKey: .businessProfileRecordId)
         try container.encodeIfPresent(parentBillingItemRecordId, forKey: .parentBillingItemRecordId)
         try container.encodeIfPresent(dealUnitId, forKey: .dealUnitId)
     }

@@ -29,7 +29,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let supportTicketPriorityCreateDto = SupportTicketPriorityCreateDto(title: "title_example", description: "description_example", businessID: "businessID_example", supportEntitlementID: "supportEntitlementID_example") // SupportTicketPriorityCreateDto |  (optional)
+let supportTicketPriorityCreateDto = SupportTicketPriorityCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", supportEntitlementID: "supportEntitlementID_example") // SupportTicketPriorityCreateDto |  (optional)
 
 // Create a new support ticket priority
 SupportTicketPrioritiesAPI.createSupportTicketPriorityAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, supportTicketPriorityCreateDto: supportTicketPriorityCreateDto) { (response, error) in

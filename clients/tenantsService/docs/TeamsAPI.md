@@ -29,7 +29,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let tenantTeamCreateDto = TenantTeamCreateDto(id: 123, timestamp: Date(), businessID: "businessID_example", businessProfileRecordID: "businessProfileRecordID_example", name: "name_example", description: "description_example", avatarURL: "avatarURL_example", isPublic: false, businessUnitID: "businessUnitID_example", organizationProfileID: "organizationProfileID_example") // TenantTeamCreateDto |  (optional)
+let tenantTeamCreateDto = TenantTeamCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", avatarURL: "avatarURL_example", isPublic: false, businessUnitID: "businessUnitID_example", organizationProfileID: "organizationProfileID_example") // TenantTeamCreateDto |  (optional)
 
 // Create a new tenant team
 TeamsAPI.createTenantTeam(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, tenantTeamCreateDto: tenantTeamCreateDto) { (response, error) in
@@ -306,7 +306,7 @@ let tenantId = 987 // UUID |
 let tenantTeamId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let tenantTeamUpdateDto = TenantTeamUpdateDto(id: "id_example", timestamp: Date(), businessID: "businessID_example", businessProfileRecordID: "businessProfileRecordID_example", name: "name_example", description: "description_example", avatarURL: "avatarURL_example", isPublic: false, businessUnitID: "businessUnitID_example", organizationProfileID: "organizationProfileID_example") // TenantTeamUpdateDto |  (optional)
+let tenantTeamUpdateDto = TenantTeamUpdateDto(id: "id_example", timestamp: Date(), name: "name_example", description: "description_example", avatarURL: "avatarURL_example", isPublic: false, businessUnitID: "businessUnitID_example", organizationProfileID: "organizationProfileID_example") // TenantTeamUpdateDto |  (optional)
 
 // Update a tenant team
 TeamsAPI.updateTenantTeam(tenantId: tenantId, tenantTeamId: tenantTeamId, apiVersion: apiVersion, xApiVersion: xApiVersion, tenantTeamUpdateDto: tenantTeamUpdateDto) { (response, error) in

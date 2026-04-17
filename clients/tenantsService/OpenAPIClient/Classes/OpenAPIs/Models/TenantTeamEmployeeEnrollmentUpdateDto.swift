@@ -12,21 +12,15 @@ import AnyCodable
 
 public struct TenantTeamEmployeeEnrollmentUpdateDto: Codable, JSONEncodable, Hashable {
 
-    public var businessID: String?
-    public var businessProfileRecordID: String?
     public var businessTeamID: String?
     public var employeeProfileID: String?
 
-    public init(businessID: String? = nil, businessProfileRecordID: String? = nil, businessTeamID: String? = nil, employeeProfileID: String? = nil) {
-        self.businessID = businessID
-        self.businessProfileRecordID = businessProfileRecordID
+    public init(businessTeamID: String? = nil, employeeProfileID: String? = nil) {
         self.businessTeamID = businessTeamID
         self.employeeProfileID = employeeProfileID
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case businessID
-        case businessProfileRecordID
         case businessTeamID
         case employeeProfileID
     }
@@ -35,8 +29,6 @@ public struct TenantTeamEmployeeEnrollmentUpdateDto: Codable, JSONEncodable, Has
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(businessID, forKey: .businessID)
-        try container.encodeIfPresent(businessProfileRecordID, forKey: .businessProfileRecordID)
         try container.encodeIfPresent(businessTeamID, forKey: .businessTeamID)
         try container.encodeIfPresent(employeeProfileID, forKey: .employeeProfileID)
     }

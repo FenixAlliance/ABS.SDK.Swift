@@ -29,7 +29,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseWikiCreateDto = CourseWikiCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", courseID: "courseID_example", businessID: "businessID_example", courseUnitID: "courseUnitID_example", releaseDateTime: Date()) // CourseWikiCreateDto |  (optional)
+let courseWikiCreateDto = CourseWikiCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", courseID: "courseID_example", courseUnitID: "courseUnitID_example", releaseDateTime: Date()) // CourseWikiCreateDto |  (optional)
 
 // Create a new course wiki
 CourseWikisAPI.createCourseWikiAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseWikiCreateDto: courseWikiCreateDto) { (response, error) in

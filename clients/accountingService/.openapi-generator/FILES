@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .swiftformat
 Cartfile
 OpenAPIClient.podspec
@@ -181,7 +180,6 @@ OpenAPIClient/Classes/OpenAPIs/Models/GrantCreateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/GrantDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/GrantDtoEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/GrantDtoIReadOnlyListEnvelope.swift
-OpenAPIClient/Classes/OpenAPIs/Models/GrantUpdateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/HttpValidationProblemDetails.swift
 OpenAPIClient/Classes/OpenAPIs/Models/InfoRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/InfoResponse.swift
@@ -222,7 +220,6 @@ OpenAPIClient/Classes/OpenAPIs/Models/LoanApplicationCreateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/LoanApplicationDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/LoanApplicationDtoEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/LoanApplicationDtoIReadOnlyListEnvelope.swift
-OpenAPIClient/Classes/OpenAPIs/Models/LoanApplicationUpdateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/LoanCreateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/LoanDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/LoanDtoEnvelope.swift
@@ -452,7 +449,6 @@ docs/GrantCreateDto.md
 docs/GrantDto.md
 docs/GrantDtoEnvelope.md
 docs/GrantDtoIReadOnlyListEnvelope.md
-docs/GrantUpdateDto.md
 docs/GrantsAPI.md
 docs/HttpValidationProblemDetails.md
 docs/InfoRequest.md
@@ -499,7 +495,6 @@ docs/LoanApplicationCreateDto.md
 docs/LoanApplicationDto.md
 docs/LoanApplicationDtoEnvelope.md
 docs/LoanApplicationDtoIReadOnlyListEnvelope.md
-docs/LoanApplicationUpdateDto.md
 docs/LoanCreateDto.md
 docs/LoanDto.md
 docs/LoanDtoEnvelope.md

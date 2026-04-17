@@ -29,7 +29,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseUnitCreateDto = CourseUnitCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", content: "content_example", courseID: "courseID_example", courseSectionID: "courseSectionID_example", businessID: "businessID_example", courseContentGroupID: "courseContentGroupID_example", releaseDateTime: Date()) // CourseUnitCreateDto |  (optional)
+let courseUnitCreateDto = CourseUnitCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", content: "content_example", courseID: "courseID_example", courseSectionID: "courseSectionID_example", courseContentGroupID: "courseContentGroupID_example", releaseDateTime: Date()) // CourseUnitCreateDto |  (optional)
 
 // Create a new course unit
 CourseUnitsAPI.createCourseUnitAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseUnitCreateDto: courseUnitCreateDto) { (response, error) in

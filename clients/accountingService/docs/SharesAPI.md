@@ -47,7 +47,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let shareClassCreateDto = ShareClassCreateDto(id: 123, timestamp: Date(), name: "name_example", value: false, description: "description_example", forexRates: "forexRates_example", currencyId: "currencyId_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example") // ShareClassCreateDto |  (optional)
+let shareClassCreateDto = ShareClassCreateDto(id: 123, timestamp: Date(), name: "name_example", value: false, description: "description_example", forexRates: "forexRates_example", currencyId: "currencyId_example") // ShareClassCreateDto |  (optional)
 
 // Creates a new share class
 SharesAPI.createShareClass(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, shareClassCreateDto: shareClassCreateDto) { (response, error) in
@@ -103,7 +103,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let shareIssuanceCreateDto = ShareIssuanceCreateDto(id: 123, timestamp: Date(), tenantId: "tenantId_example", enrollmentId: "enrollmentId_example", unitPrice: 123, quantity: 123, currencyId: "currencyId_example") // ShareIssuanceCreateDto |  (optional)
+let shareIssuanceCreateDto = ShareIssuanceCreateDto(id: 123, timestamp: Date(), unitPrice: 123, quantity: 123, currencyId: "currencyId_example") // ShareIssuanceCreateDto |  (optional)
 
 // Creates a new share issuance
 SharesAPI.createShareIssuance(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, shareIssuanceCreateDto: shareIssuanceCreateDto) { (response, error) in
@@ -159,7 +159,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let shareTransferCreateDto = ShareTransferCreateDto(id: 123, timestamp: Date(), description: "description_example", value: 123, newShareHolderId: "newShareHolderId_example", formerShareHolderId: "formerShareHolderId_example", shareTransferReasonId: "shareTransferReasonId_example", enrollmentId: "enrollmentId_example", tenantId: "tenantId_example") // ShareTransferCreateDto |  (optional)
+let shareTransferCreateDto = ShareTransferCreateDto(id: 123, timestamp: Date(), description: "description_example", value: 123, newShareHolderId: "newShareHolderId_example", formerShareHolderId: "formerShareHolderId_example", shareTransferReasonId: "shareTransferReasonId_example") // ShareTransferCreateDto |  (optional)
 
 // Creates a new share transfer
 SharesAPI.createShareTransfer(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, shareTransferCreateDto: shareTransferCreateDto) { (response, error) in
@@ -215,7 +215,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let shareTransferReasonCreateDto = ShareTransferReasonCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", enrollmentId: "enrollmentId_example", tenantId: "tenantId_example") // ShareTransferReasonCreateDto |  (optional)
+let shareTransferReasonCreateDto = ShareTransferReasonCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example") // ShareTransferReasonCreateDto |  (optional)
 
 // Creates a new share transfer reason
 SharesAPI.createShareTransferReason(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, shareTransferReasonCreateDto: shareTransferReasonCreateDto) { (response, error) in
@@ -1152,7 +1152,7 @@ let tenantId = 987 // UUID |
 let shareClassId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let shareClassUpdateDto = ShareClassUpdateDto(name: "name_example", value: false, description: "description_example", forexRates: "forexRates_example", currencyId: "currencyId_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example") // ShareClassUpdateDto |  (optional)
+let shareClassUpdateDto = ShareClassUpdateDto(name: "name_example", value: false, description: "description_example", forexRates: "forexRates_example", currencyId: "currencyId_example") // ShareClassUpdateDto |  (optional)
 
 // Updates an existing share class
 SharesAPI.updateShareClass(tenantId: tenantId, shareClassId: shareClassId, apiVersion: apiVersion, xApiVersion: xApiVersion, shareClassUpdateDto: shareClassUpdateDto) { (response, error) in
@@ -1210,7 +1210,7 @@ let tenantId = 987 // UUID |
 let issuanceId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let shareIssuanceUpdateDto = ShareIssuanceUpdateDto(tenantId: "tenantId_example", enrollmentId: "enrollmentId_example", unitPrice: 123, quantity: 123, currencyId: "currencyId_example") // ShareIssuanceUpdateDto |  (optional)
+let shareIssuanceUpdateDto = ShareIssuanceUpdateDto(unitPrice: 123, quantity: 123, currencyId: "currencyId_example") // ShareIssuanceUpdateDto |  (optional)
 
 // Updates an existing share issuance
 SharesAPI.updateShareIssuance(tenantId: tenantId, issuanceId: issuanceId, apiVersion: apiVersion, xApiVersion: xApiVersion, shareIssuanceUpdateDto: shareIssuanceUpdateDto) { (response, error) in
@@ -1268,7 +1268,7 @@ let tenantId = 987 // UUID |
 let transferId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let shareTransferUpdateDto = ShareTransferUpdateDto(description: "description_example", value: 123, newShareHolderId: "newShareHolderId_example", formerShareHolderId: "formerShareHolderId_example", shareTransferReasonId: "shareTransferReasonId_example", enrollmentId: "enrollmentId_example", tenantId: "tenantId_example") // ShareTransferUpdateDto |  (optional)
+let shareTransferUpdateDto = ShareTransferUpdateDto(description: "description_example", value: 123, newShareHolderId: "newShareHolderId_example", formerShareHolderId: "formerShareHolderId_example", shareTransferReasonId: "shareTransferReasonId_example") // ShareTransferUpdateDto |  (optional)
 
 // Updates an existing share transfer
 SharesAPI.updateShareTransfer(tenantId: tenantId, transferId: transferId, apiVersion: apiVersion, xApiVersion: xApiVersion, shareTransferUpdateDto: shareTransferUpdateDto) { (response, error) in
@@ -1326,7 +1326,7 @@ let tenantId = 987 // UUID |
 let reasonId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let shareTransferReasonUpdateDto = ShareTransferReasonUpdateDto(name: "name_example", description: "description_example", enrollmentId: "enrollmentId_example", tenantId: "tenantId_example") // ShareTransferReasonUpdateDto |  (optional)
+let shareTransferReasonUpdateDto = ShareTransferReasonUpdateDto(name: "name_example", description: "description_example") // ShareTransferReasonUpdateDto |  (optional)
 
 // Updates an existing share transfer reason
 SharesAPI.updateShareTransferReason(tenantId: tenantId, reasonId: reasonId, apiVersion: apiVersion, xApiVersion: xApiVersion, shareTransferReasonUpdateDto: shareTransferReasonUpdateDto) { (response, error) in

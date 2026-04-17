@@ -14,22 +14,16 @@ public struct FiscalResponsibilityRecordCreateDto: Codable, JSONEncodable, Hasha
 
     static let fiscalResponsibilityIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let billingProfileIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    static let tenantIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    static let enrollmentIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var fiscalResponsibilityId: String?
     public var billingProfileId: String?
-    public var tenantId: String?
-    public var enrollmentId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, fiscalResponsibilityId: String? = nil, billingProfileId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, fiscalResponsibilityId: String? = nil, billingProfileId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.fiscalResponsibilityId = fiscalResponsibilityId
         self.billingProfileId = billingProfileId
-        self.tenantId = tenantId
-        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -37,8 +31,6 @@ public struct FiscalResponsibilityRecordCreateDto: Codable, JSONEncodable, Hasha
         case timestamp
         case fiscalResponsibilityId
         case billingProfileId
-        case tenantId
-        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -49,8 +41,6 @@ public struct FiscalResponsibilityRecordCreateDto: Codable, JSONEncodable, Hasha
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(fiscalResponsibilityId, forKey: .fiscalResponsibilityId)
         try container.encodeIfPresent(billingProfileId, forKey: .billingProfileId)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

@@ -29,7 +29,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseCohortCreateDto = CourseCohortCreateDto(id: 123, timestamp: Date(), name: "name_example", courseID: "courseID_example", businessID: "businessID_example", startDateTime: Date(), endDateTime: Date(), expectedStartDateTime: Date(), expectedEndDateTime: Date()) // CourseCohortCreateDto |  (optional)
+let courseCohortCreateDto = CourseCohortCreateDto(id: 123, timestamp: Date(), name: "name_example", courseID: "courseID_example", startDateTime: Date(), endDateTime: Date(), expectedStartDateTime: Date(), expectedEndDateTime: Date()) // CourseCohortCreateDto |  (optional)
 
 // Create a new course cohort
 CourseCohortsAPI.createCourseCohortAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseCohortCreateDto: courseCohortCreateDto) { (response, error) in

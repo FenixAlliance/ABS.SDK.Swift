@@ -13,23 +13,20 @@ import AnyCodable
 public struct CourseCategoryCreateDto: Codable, JSONEncodable, Hashable {
 
     static let titleRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    static let businessIDRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var title: String
     public var description: String?
     public var imageURL: String?
     public var isFeatured: Bool?
-    public var businessID: String
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, title: String, description: String? = nil, imageURL: String? = nil, isFeatured: Bool? = nil, businessID: String) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, title: String, description: String? = nil, imageURL: String? = nil, isFeatured: Bool? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
         self.description = description
         self.imageURL = imageURL
         self.isFeatured = isFeatured
-        self.businessID = businessID
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -39,7 +36,6 @@ public struct CourseCategoryCreateDto: Codable, JSONEncodable, Hashable {
         case description
         case imageURL
         case isFeatured
-        case businessID
     }
 
     // Encodable protocol methods
@@ -52,7 +48,6 @@ public struct CourseCategoryCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(imageURL, forKey: .imageURL)
         try container.encodeIfPresent(isFeatured, forKey: .isFeatured)
-        try container.encode(businessID, forKey: .businessID)
     }
 }
 

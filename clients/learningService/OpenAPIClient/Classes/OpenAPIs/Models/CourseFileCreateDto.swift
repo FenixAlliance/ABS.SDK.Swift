@@ -16,7 +16,6 @@ public struct CourseFileCreateDto: Codable, JSONEncodable, Hashable {
     static let fileNameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     static let fileUploadURLRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     static let courseIDRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    static let businessIDRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var title: String
@@ -25,9 +24,8 @@ public struct CourseFileCreateDto: Codable, JSONEncodable, Hashable {
     public var contentType: String?
     public var fileLength: Int64?
     public var courseID: String
-    public var businessID: String
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, title: String, fileName: String, fileUploadURL: String, contentType: String? = nil, fileLength: Int64? = nil, courseID: String, businessID: String) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, title: String, fileName: String, fileUploadURL: String, contentType: String? = nil, fileLength: Int64? = nil, courseID: String) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
@@ -36,7 +34,6 @@ public struct CourseFileCreateDto: Codable, JSONEncodable, Hashable {
         self.contentType = contentType
         self.fileLength = fileLength
         self.courseID = courseID
-        self.businessID = businessID
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -48,7 +45,6 @@ public struct CourseFileCreateDto: Codable, JSONEncodable, Hashable {
         case contentType
         case fileLength
         case courseID
-        case businessID
     }
 
     // Encodable protocol methods
@@ -63,7 +59,6 @@ public struct CourseFileCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(contentType, forKey: .contentType)
         try container.encodeIfPresent(fileLength, forKey: .fileLength)
         try container.encode(courseID, forKey: .courseID)
-        try container.encode(businessID, forKey: .businessID)
     }
 }
 

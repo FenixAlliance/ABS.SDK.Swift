@@ -15,8 +15,6 @@ public struct PaymentTermCreateDto: Codable, JSONEncodable, Hashable {
     static let nameRule = StringRule(minLength: 0, maxLength: 100, pattern: nil)
     static let descriptionRule = StringRule(minLength: 0, maxLength: 500, pattern: nil)
     static let paymentModeIDRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    static let tenantIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    static let enrollmentIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var name: String
@@ -28,10 +26,8 @@ public struct PaymentTermCreateDto: Codable, JSONEncodable, Hashable {
     public var creditMonths: Double?
     public var creditYears: Double?
     public var paymentModeID: String?
-    public var tenantId: String?
-    public var enrollmentId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, name: String, description: String? = nil, isTemplate: Bool? = nil, percentage: Double? = nil, creditDays: Double? = nil, creditWeeks: Double? = nil, creditMonths: Double? = nil, creditYears: Double? = nil, paymentModeID: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, name: String, description: String? = nil, isTemplate: Bool? = nil, percentage: Double? = nil, creditDays: Double? = nil, creditWeeks: Double? = nil, creditMonths: Double? = nil, creditYears: Double? = nil, paymentModeID: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
@@ -43,8 +39,6 @@ public struct PaymentTermCreateDto: Codable, JSONEncodable, Hashable {
         self.creditMonths = creditMonths
         self.creditYears = creditYears
         self.paymentModeID = paymentModeID
-        self.tenantId = tenantId
-        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -59,8 +53,6 @@ public struct PaymentTermCreateDto: Codable, JSONEncodable, Hashable {
         case creditMonths
         case creditYears
         case paymentModeID
-        case tenantId
-        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -78,8 +70,6 @@ public struct PaymentTermCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(creditMonths, forKey: .creditMonths)
         try container.encodeIfPresent(creditYears, forKey: .creditYears)
         try container.encodeIfPresent(paymentModeID, forKey: .paymentModeID)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

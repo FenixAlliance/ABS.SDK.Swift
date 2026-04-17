@@ -5,7 +5,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **UUID** |  | [optional] 
 **timestamp** | **Date** |  | [optional] 
-**tenantId** | **String** |  | 
 **type** | **String** |  | 
 **firstName** | **String** |  | 
 **lastName** | **String** |  | [optional] 

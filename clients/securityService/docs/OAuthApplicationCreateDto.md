@@ -3,6 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **UUID** |  | [optional] 
+**timestamp** | **Date** |  | [optional] 
 **displayName** | **String** |  | 
 **clientId** | **String** |  | [optional] 
 **clientSecret** | **String** |  | [optional] 
@@ -12,8 +14,6 @@ Name | Type | Description | Notes
 **redirectUris** | **String** |  | [optional] 
 **postLogoutRedirectUris** | **String** |  | [optional] 
 **logo** | **String** |  | [optional] 
-**businessID** | **String** |  | [optional] 
-**businessProfileRecordID** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

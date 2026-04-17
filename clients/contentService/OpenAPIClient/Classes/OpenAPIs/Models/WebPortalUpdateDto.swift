@@ -19,10 +19,9 @@ public struct WebPortalUpdateDto: Codable, JSONEncodable, Hashable {
     public var description: String?
     public var websiteThemeID: String?
     public var businessDomainID: String?
-    public var businessProfileRecordID: String?
     public var businessPortalApplicationID: String?
 
-    public init(root: Bool? = nil, title: String? = nil, domain: String? = nil, disabled: Bool? = nil, description: String? = nil, websiteThemeID: String? = nil, businessDomainID: String? = nil, businessProfileRecordID: String? = nil, businessPortalApplicationID: String? = nil) {
+    public init(root: Bool? = nil, title: String? = nil, domain: String? = nil, disabled: Bool? = nil, description: String? = nil, websiteThemeID: String? = nil, businessDomainID: String? = nil, businessPortalApplicationID: String? = nil) {
         self.root = root
         self.title = title
         self.domain = domain
@@ -30,7 +29,6 @@ public struct WebPortalUpdateDto: Codable, JSONEncodable, Hashable {
         self.description = description
         self.websiteThemeID = websiteThemeID
         self.businessDomainID = businessDomainID
-        self.businessProfileRecordID = businessProfileRecordID
         self.businessPortalApplicationID = businessPortalApplicationID
     }
 
@@ -42,7 +40,6 @@ public struct WebPortalUpdateDto: Codable, JSONEncodable, Hashable {
         case description
         case websiteThemeID
         case businessDomainID
-        case businessProfileRecordID
         case businessPortalApplicationID
     }
 
@@ -57,7 +54,6 @@ public struct WebPortalUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(websiteThemeID, forKey: .websiteThemeID)
         try container.encodeIfPresent(businessDomainID, forKey: .businessDomainID)
-        try container.encodeIfPresent(businessProfileRecordID, forKey: .businessProfileRecordID)
         try container.encodeIfPresent(businessPortalApplicationID, forKey: .businessPortalApplicationID)
     }
 }

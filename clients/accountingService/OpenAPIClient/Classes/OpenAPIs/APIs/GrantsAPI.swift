@@ -292,13 +292,13 @@ open class GrantsAPI {
      - parameter grantId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter grantUpdateDto: (body)  (optional)
+     - parameter body: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func updateGrantAsync(tenantId: UUID, grantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, grantUpdateDto: GrantUpdateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return updateGrantAsyncWithRequestBuilder(tenantId: tenantId, grantId: grantId, apiVersion: apiVersion, xApiVersion: xApiVersion, grantUpdateDto: grantUpdateDto).execute(apiResponseQueue) { result in
+    open class func updateGrantAsync(tenantId: UUID, grantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, body: AnyCodable? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return updateGrantAsyncWithRequestBuilder(tenantId: tenantId, grantId: grantId, apiVersion: apiVersion, xApiVersion: xApiVersion, body: body).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -316,16 +316,16 @@ open class GrantsAPI {
      - parameter grantId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter grantUpdateDto: (body)  (optional)
+     - parameter body: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func updateGrantAsyncWithRequestBuilder(tenantId: UUID, grantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, grantUpdateDto: GrantUpdateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func updateGrantAsyncWithRequestBuilder(tenantId: UUID, grantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, body: AnyCodable? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/Grants/{grantId}"
         let grantIdPreEscape = "\(APIHelper.mapValueToPathItem(grantId))"
         let grantIdPostEscape = grantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{grantId}", with: grantIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: grantUpdateDto)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

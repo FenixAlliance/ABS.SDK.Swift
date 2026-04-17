@@ -14,23 +14,17 @@ public struct NewsletterUpdateDto: Codable, JSONEncodable, Hashable {
 
     public var code: String?
     public var title: String?
-    public var tenantId: String?
-    public var enrollmentId: String?
     public var name: String?
 
-    public init(code: String? = nil, title: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil, name: String? = nil) {
+    public init(code: String? = nil, title: String? = nil, name: String? = nil) {
         self.code = code
         self.title = title
-        self.tenantId = tenantId
-        self.enrollmentId = enrollmentId
         self.name = name
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case code
         case title
-        case tenantId
-        case enrollmentId
         case name
     }
 
@@ -40,8 +34,6 @@ public struct NewsletterUpdateDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(code, forKey: .code)
         try container.encodeIfPresent(title, forKey: .title)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(name, forKey: .name)
     }
 }

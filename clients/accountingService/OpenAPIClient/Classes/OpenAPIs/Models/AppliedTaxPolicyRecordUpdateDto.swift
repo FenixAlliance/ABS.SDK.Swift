@@ -12,22 +12,16 @@ import AnyCodable
 
 public struct AppliedTaxPolicyRecordUpdateDto: Codable, JSONEncodable, Hashable {
 
-    static let tenantIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    static let enrollmentIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let taxPolicyIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let invoiceIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let itemIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    public var tenantId: String?
-    public var enrollmentId: String?
     public var taxPolicyId: String?
     public var invoiceId: String?
     public var itemId: String?
     public var taxAmountInUSD: Double?
     public var taxBaseAmountInUSD: Double?
 
-    public init(tenantId: String? = nil, enrollmentId: String? = nil, taxPolicyId: String? = nil, invoiceId: String? = nil, itemId: String? = nil, taxAmountInUSD: Double? = nil, taxBaseAmountInUSD: Double? = nil) {
-        self.tenantId = tenantId
-        self.enrollmentId = enrollmentId
+    public init(taxPolicyId: String? = nil, invoiceId: String? = nil, itemId: String? = nil, taxAmountInUSD: Double? = nil, taxBaseAmountInUSD: Double? = nil) {
         self.taxPolicyId = taxPolicyId
         self.invoiceId = invoiceId
         self.itemId = itemId
@@ -36,8 +30,6 @@ public struct AppliedTaxPolicyRecordUpdateDto: Codable, JSONEncodable, Hashable 
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case tenantId
-        case enrollmentId
         case taxPolicyId
         case invoiceId
         case itemId
@@ -49,8 +41,6 @@ public struct AppliedTaxPolicyRecordUpdateDto: Codable, JSONEncodable, Hashable 
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(taxPolicyId, forKey: .taxPolicyId)
         try container.encodeIfPresent(invoiceId, forKey: .invoiceId)
         try container.encodeIfPresent(itemId, forKey: .itemId)

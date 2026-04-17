@@ -33,7 +33,7 @@ Create a new location.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let locationCreateDto = LocationCreateDto(id: 123, timestamp: Date(), title: "title_example", email: "email_example", phone: "phone_example", fax: "fax_example", address1: "address1_example", address2: "address2_example", address3: "address3_example", unit: "unit_example", cityId: "cityId_example", stateId: "stateId_example", postalCode: "postalCode_example", countryId: "countryId_example", tenantId: "tenantId_example", longitude: 123, latitude: 123, isRoutable: false, isGlobalPrimary: false, isCountryPrimary: false, canGenerateLabels: false, isDefaultSenderAddress: false, isDefaultReturnAddress: false, isDefaultSuppingLocation: false) // LocationCreateDto |  (optional)
+let locationCreateDto = LocationCreateDto(id: 123, timestamp: Date(), title: "title_example", email: "email_example", phone: "phone_example", fax: "fax_example", address1: "address1_example", address2: "address2_example", address3: "address3_example", unit: "unit_example", cityId: "cityId_example", stateId: "stateId_example", postalCode: "postalCode_example", countryId: "countryId_example", longitude: 123, latitude: 123, isRoutable: false, isGlobalPrimary: false, isCountryPrimary: false, canGenerateLabels: false, isDefaultSenderAddress: false, isDefaultReturnAddress: false, isDefaultSuppingLocation: false) // LocationCreateDto |  (optional)
 
 // Create Location
 LocationsAPI.createLocationAsync(tenantId: tenantId, locationCreateDto: locationCreateDto) { (response, error) in
@@ -85,7 +85,7 @@ Create a new location for a specific wallet.
 import OpenAPIClient
 
 let walletId = 987 // UUID | 
-let locationCreateDto = LocationCreateDto(id: 123, timestamp: Date(), title: "title_example", email: "email_example", phone: "phone_example", fax: "fax_example", address1: "address1_example", address2: "address2_example", address3: "address3_example", unit: "unit_example", cityId: "cityId_example", stateId: "stateId_example", postalCode: "postalCode_example", countryId: "countryId_example", tenantId: "tenantId_example", longitude: 123, latitude: 123, isRoutable: false, isGlobalPrimary: false, isCountryPrimary: false, canGenerateLabels: false, isDefaultSenderAddress: false, isDefaultReturnAddress: false, isDefaultSuppingLocation: false) // LocationCreateDto |  (optional)
+let locationCreateDto = LocationCreateDto(id: 123, timestamp: Date(), title: "title_example", email: "email_example", phone: "phone_example", fax: "fax_example", address1: "address1_example", address2: "address2_example", address3: "address3_example", unit: "unit_example", cityId: "cityId_example", stateId: "stateId_example", postalCode: "postalCode_example", countryId: "countryId_example", longitude: 123, latitude: 123, isRoutable: false, isGlobalPrimary: false, isCountryPrimary: false, canGenerateLabels: false, isDefaultSenderAddress: false, isDefaultReturnAddress: false, isDefaultSuppingLocation: false) // LocationCreateDto |  (optional)
 
 // Create Wallet Location
 LocationsAPI.createWalletLocationAsync(walletId: walletId, locationCreateDto: locationCreateDto) { (response, error) in
@@ -546,7 +546,7 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let locationId = 987 // UUID | 
-let locationUpdateDto = LocationUpdateDto(title: "title_example", email: "email_example", phone: "phone_example", fax: "fax_example", address1: "address1_example", address2: "address2_example", address3: "address3_example", unit: "unit_example", cityId: "cityId_example", stateId: "stateId_example", postalCode: "postalCode_example", countryId: "countryId_example", tenantId: "tenantId_example", longitude: 123, latitude: 123, isRoutable: false, isGlobalPrimary: false, isCountryPrimary: false, canGenerateLabels: false, isDefaultSenderAddress: false, isDefaultReturnAddress: false, isDefaultSuppingLocation: false) // LocationUpdateDto |  (optional)
+let locationUpdateDto = LocationUpdateDto(title: "title_example", email: "email_example", phone: "phone_example", fax: "fax_example", address1: "address1_example", address2: "address2_example", address3: "address3_example", unit: "unit_example", cityId: "cityId_example", stateId: "stateId_example", postalCode: "postalCode_example", countryId: "countryId_example", longitude: 123, latitude: 123, isRoutable: false, isGlobalPrimary: false, isCountryPrimary: false, canGenerateLabels: false, isDefaultSenderAddress: false, isDefaultReturnAddress: false, isDefaultSuppingLocation: false) // LocationUpdateDto |  (optional)
 
 // Update Location
 LocationsAPI.updateLocationAsync(tenantId: tenantId, locationId: locationId, locationUpdateDto: locationUpdateDto) { (response, error) in
@@ -600,7 +600,7 @@ import OpenAPIClient
 
 let walletId = 987 // UUID | 
 let locationId = 987 // UUID | 
-let locationUpdateDto = LocationUpdateDto(title: "title_example", email: "email_example", phone: "phone_example", fax: "fax_example", address1: "address1_example", address2: "address2_example", address3: "address3_example", unit: "unit_example", cityId: "cityId_example", stateId: "stateId_example", postalCode: "postalCode_example", countryId: "countryId_example", tenantId: "tenantId_example", longitude: 123, latitude: 123, isRoutable: false, isGlobalPrimary: false, isCountryPrimary: false, canGenerateLabels: false, isDefaultSenderAddress: false, isDefaultReturnAddress: false, isDefaultSuppingLocation: false) // LocationUpdateDto |  (optional)
+let locationUpdateDto = LocationUpdateDto(title: "title_example", email: "email_example", phone: "phone_example", fax: "fax_example", address1: "address1_example", address2: "address2_example", address3: "address3_example", unit: "unit_example", cityId: "cityId_example", stateId: "stateId_example", postalCode: "postalCode_example", countryId: "countryId_example", longitude: 123, latitude: 123, isRoutable: false, isGlobalPrimary: false, isCountryPrimary: false, canGenerateLabels: false, isDefaultSenderAddress: false, isDefaultReturnAddress: false, isDefaultSuppingLocation: false) // LocationUpdateDto |  (optional)
 
 // Update Wallet Location
 LocationsAPI.updateWalletLocationAsync(walletId: walletId, locationId: locationId, locationUpdateDto: locationUpdateDto) { (response, error) in

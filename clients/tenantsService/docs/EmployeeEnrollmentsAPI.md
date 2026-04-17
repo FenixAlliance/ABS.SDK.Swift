@@ -29,7 +29,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let tenantTeamEmployeeEnrollmentCreateDto = TenantTeamEmployeeEnrollmentCreateDto(id: 123, timestamp: Date(), businessID: "businessID_example", businessProfileRecordID: "businessProfileRecordID_example", businessTeamID: "businessTeamID_example", employeeProfileID: "employeeProfileID_example") // TenantTeamEmployeeEnrollmentCreateDto |  (optional)
+let tenantTeamEmployeeEnrollmentCreateDto = TenantTeamEmployeeEnrollmentCreateDto(id: 123, timestamp: Date(), businessTeamID: "businessTeamID_example", employeeProfileID: "employeeProfileID_example") // TenantTeamEmployeeEnrollmentCreateDto |  (optional)
 
 // Create a new tenant employee enrollment
 EmployeeEnrollmentsAPI.createTenantEmployeeEnrollment(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, tenantTeamEmployeeEnrollmentCreateDto: tenantTeamEmployeeEnrollmentCreateDto) { (response, error) in
@@ -306,7 +306,7 @@ let tenantId = 987 // UUID |
 let tenantEmployeeEnrollmentId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let tenantTeamEmployeeEnrollmentUpdateDto = TenantTeamEmployeeEnrollmentUpdateDto(businessID: "businessID_example", businessProfileRecordID: "businessProfileRecordID_example", businessTeamID: "businessTeamID_example", employeeProfileID: "employeeProfileID_example") // TenantTeamEmployeeEnrollmentUpdateDto |  (optional)
+let tenantTeamEmployeeEnrollmentUpdateDto = TenantTeamEmployeeEnrollmentUpdateDto(businessTeamID: "businessTeamID_example", employeeProfileID: "employeeProfileID_example") // TenantTeamEmployeeEnrollmentUpdateDto |  (optional)
 
 // Update a tenant employee enrollment
 EmployeeEnrollmentsAPI.updateTenantEmployeeEnrollment(tenantId: tenantId, tenantEmployeeEnrollmentId: tenantEmployeeEnrollmentId, apiVersion: apiVersion, xApiVersion: xApiVersion, tenantTeamEmployeeEnrollmentUpdateDto: tenantTeamEmployeeEnrollmentUpdateDto) { (response, error) in

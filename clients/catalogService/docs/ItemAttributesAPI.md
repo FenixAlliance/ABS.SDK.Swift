@@ -83,7 +83,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let itemAttributeCreateDto = ItemAttributeCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", businessID: "businessID_example") // ItemAttributeCreateDto |  (optional)
+let itemAttributeCreateDto = ItemAttributeCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example") // ItemAttributeCreateDto |  (optional)
 
 // Create a new item attribute
 ItemAttributesAPI.createItemAttributeAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemAttributeCreateDto: itemAttributeCreateDto) { (response, error) in

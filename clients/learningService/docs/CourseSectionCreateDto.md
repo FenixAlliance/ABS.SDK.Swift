@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **icon** | **String** |  | [optional] 
 **description** | **String** |  | [optional] 
 **courseID** | **String** |  | 
-**businessID** | **String** |  | 
 **releaseDateTime** | **Date** |  | [optional] 
 **hideFromStudents** | **Bool** |  | [optional] 
 

@@ -104,7 +104,7 @@ let tenantId = 987 // UUID |
 let bankId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let bankAccountCreateDto = BankAccountCreateDto(id: 123, timestamp: Date(), group: false, frozen: false, name: "name_example", code: "code_example", path: "path_example", _prefix: "_prefix_example", tenantId: "tenantId_example", currencyId: "currencyId_example", enrollmentId: "enrollmentId_example", accountTypeId: "accountTypeId_example", parentAccountId: "parentAccountId_example", accountCategory: "accountCategory_example", iban: "iban_example", swift: "swift_example", branchCode: "branchCode_example", bankAccountNumber: "bankAccountNumber_example", qualifiedName: "qualifiedName_example", bankId: "bankId_example", bankProfileId: "bankProfileId_example") // BankAccountCreateDto |  (optional)
+let bankAccountCreateDto = BankAccountCreateDto(id: 123, timestamp: Date(), group: false, frozen: false, name: "name_example", code: "code_example", path: "path_example", _prefix: "_prefix_example", currencyId: "currencyId_example", accountTypeId: "accountTypeId_example", parentAccountId: "parentAccountId_example", accountCategory: "accountCategory_example", iban: "iban_example", swift: "swift_example", branchCode: "branchCode_example", bankAccountNumber: "bankAccountNumber_example", qualifiedName: "qualifiedName_example", bankId: "bankId_example", bankProfileId: "bankProfileId_example") // BankAccountCreateDto |  (optional)
 
 // Creates a new bank account
 BankingAPI.createBankAccount(tenantId: tenantId, bankId: bankId, apiVersion: apiVersion, xApiVersion: xApiVersion, bankAccountCreateDto: bankAccountCreateDto) { (response, error) in
@@ -162,7 +162,7 @@ let tenantId = 987 // UUID |
 let bankId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let bankGuaranteeCreateDto = BankGuaranteeCreateDto(id: 123, timestamp: Date(), margin: 123, charges: 123, beneficiaryName: "beneficiaryName_example", guaranteeNumber: "guaranteeNumber_example", guaranteeConditions: "guaranteeConditions_example", fixedDepositNumber: 123, startDate: Date(), endDate: Date(), validityInDays: 123, tenantId: "tenantId_example", bankGuaranteeType: "bankGuaranteeType_example", enrollmentId: "enrollmentId_example", contactId: "contactId_example", projectId: "projectId_example", orderId: "orderId_example", bankProfileId: "bankProfileId_example", bankAccountId: "bankAccountId_example", currencyId: "currencyId_example") // BankGuaranteeCreateDto |  (optional)
+let bankGuaranteeCreateDto = BankGuaranteeCreateDto(id: 123, timestamp: Date(), margin: 123, charges: 123, beneficiaryName: "beneficiaryName_example", guaranteeNumber: "guaranteeNumber_example", guaranteeConditions: "guaranteeConditions_example", fixedDepositNumber: 123, startDate: Date(), endDate: Date(), validityInDays: 123, bankGuaranteeType: "bankGuaranteeType_example", contactId: "contactId_example", projectId: "projectId_example", orderId: "orderId_example", bankProfileId: "bankProfileId_example", bankAccountId: "bankAccountId_example", currencyId: "currencyId_example") // BankGuaranteeCreateDto |  (optional)
 
 // Creates a new bank guarantee
 BankingAPI.createBankGuarantee(tenantId: tenantId, bankId: bankId, apiVersion: apiVersion, xApiVersion: xApiVersion, bankGuaranteeCreateDto: bankGuaranteeCreateDto) { (response, error) in
@@ -1301,7 +1301,7 @@ let bankId = 987 // UUID |
 let guaranteeId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let bankGuaranteeUpdateDto = BankGuaranteeUpdateDto(margin: 123, charges: 123, beneficiaryName: "beneficiaryName_example", guaranteeNumber: "guaranteeNumber_example", guaranteeConditions: "guaranteeConditions_example", fixedDepositNumber: 123, startDate: Date(), endDate: Date(), validityInDays: 123, tenantId: "tenantId_example", bankGuaranteeType: "bankGuaranteeType_example", enrollmentId: "enrollmentId_example", contactId: "contactId_example", projectId: "projectId_example", orderId: "orderId_example", bankProfileId: "bankProfileId_example", bankAccountId: "bankAccountId_example", currencyId: "currencyId_example") // BankGuaranteeUpdateDto |  (optional)
+let bankGuaranteeUpdateDto = BankGuaranteeUpdateDto(margin: 123, charges: 123, beneficiaryName: "beneficiaryName_example", guaranteeNumber: "guaranteeNumber_example", guaranteeConditions: "guaranteeConditions_example", fixedDepositNumber: 123, startDate: Date(), endDate: Date(), validityInDays: 123, bankGuaranteeType: "bankGuaranteeType_example", contactId: "contactId_example", projectId: "projectId_example", orderId: "orderId_example", bankProfileId: "bankProfileId_example", bankAccountId: "bankAccountId_example", currencyId: "currencyId_example") // BankGuaranteeUpdateDto |  (optional)
 
 // Updates a bank guarantee
 BankingAPI.updateBankGuarantee(tenantId: tenantId, bankId: bankId, guaranteeId: guaranteeId, apiVersion: apiVersion, xApiVersion: xApiVersion, bankGuaranteeUpdateDto: bankGuaranteeUpdateDto) { (response, error) in
@@ -1361,7 +1361,7 @@ let bankId = 987 // UUID |
 let transactionId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let bankTransactionUpdateDto = BankTransactionUpdateDto(description: "description_example", price: 123, quantity: 123, externalDescription: "externalDescription_example", basisQuantity: 123, basisAmount: 123, percent: 123, unitGroupId: "unitGroupId_example", unitId: "unitId_example", transactionCategoryId: "transactionCategoryId_example", currencyId: "currencyId_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example", bankProfileId: "bankProfileId_example", bankAccountId: "bankAccountId_example") // BankTransactionUpdateDto |  (optional)
+let bankTransactionUpdateDto = BankTransactionUpdateDto(description: "description_example", price: 123, quantity: 123, externalDescription: "externalDescription_example", basisQuantity: 123, basisAmount: 123, percent: 123, unitGroupId: "unitGroupId_example", unitId: "unitId_example", transactionCategoryId: "transactionCategoryId_example", currencyId: "currencyId_example", bankProfileId: "bankProfileId_example", bankAccountId: "bankAccountId_example") // BankTransactionUpdateDto |  (optional)
 
 // Updates a bank transaction
 BankingAPI.updateBankTransaction(tenantId: tenantId, bankId: bankId, transactionId: transactionId, apiVersion: apiVersion, xApiVersion: xApiVersion, bankTransactionUpdateDto: bankTransactionUpdateDto) { (response, error) in

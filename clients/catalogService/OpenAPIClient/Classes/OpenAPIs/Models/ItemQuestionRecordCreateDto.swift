@@ -15,23 +15,20 @@ public struct ItemQuestionRecordCreateDto: Codable, JSONEncodable, Hashable {
     static let titleRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     static let questionRule = StringRule(minLength: 0, maxLength: 1000, pattern: nil)
     static let socialProfileIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
-    static let businessIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var title: String
     public var needsRevision: Bool
     public var question: String
     public var socialProfileID: String?
-    public var businessID: String
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, title: String, needsRevision: Bool, question: String, socialProfileID: String? = nil, businessID: String) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, title: String, needsRevision: Bool, question: String, socialProfileID: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
         self.needsRevision = needsRevision
         self.question = question
         self.socialProfileID = socialProfileID
-        self.businessID = businessID
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -41,7 +38,6 @@ public struct ItemQuestionRecordCreateDto: Codable, JSONEncodable, Hashable {
         case needsRevision
         case question
         case socialProfileID
-        case businessID
     }
 
     // Encodable protocol methods
@@ -54,7 +50,6 @@ public struct ItemQuestionRecordCreateDto: Codable, JSONEncodable, Hashable {
         try container.encode(needsRevision, forKey: .needsRevision)
         try container.encode(question, forKey: .question)
         try container.encodeIfPresent(socialProfileID, forKey: .socialProfileID)
-        try container.encode(businessID, forKey: .businessID)
     }
 }
 

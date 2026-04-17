@@ -29,7 +29,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let accountGroupCreateDto = AccountGroupCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", parentAccountGroupId: "parentAccountGroupId_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example") // AccountGroupCreateDto |  (optional)
+let accountGroupCreateDto = AccountGroupCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", parentAccountGroupId: "parentAccountGroupId_example") // AccountGroupCreateDto |  (optional)
 
 // Creates a new account group
 AccountGroupsAPI.createAccountGroup(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountGroupCreateDto: accountGroupCreateDto) { (response, error) in
@@ -306,7 +306,7 @@ let tenantId = 987 // UUID |
 let accountGroupId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let accountGroupUpdateDto = AccountGroupUpdateDto(title: "title_example", description: "description_example", parentAccountGroupId: "parentAccountGroupId_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example") // AccountGroupUpdateDto |  (optional)
+let accountGroupUpdateDto = AccountGroupUpdateDto(title: "title_example", description: "description_example", parentAccountGroupId: "parentAccountGroupId_example") // AccountGroupUpdateDto |  (optional)
 
 // Updates an existing account group
 AccountGroupsAPI.updateAccountGroup(tenantId: tenantId, accountGroupId: accountGroupId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountGroupUpdateDto: accountGroupUpdateDto) { (response, error) in

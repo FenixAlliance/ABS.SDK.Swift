@@ -19,12 +19,10 @@ Name | Type | Description | Notes
 **cumulativeTransactionThreshold** | **Double** |  | [optional] 
 **fiscalAuthorityId** | **String** |  | [optional] 
 **fiscalYearId** | **String** |  | [optional] 
-**tenantId** | **String** |  | [optional] 
 **countryId** | **String** |  | [optional] 
 **taxClassId** | **String** |  | [optional] 
 **currencyId** | **String** |  | [optional] 
 **taxPolicyId** | **String** |  | [optional] 
-**enrollmentId** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

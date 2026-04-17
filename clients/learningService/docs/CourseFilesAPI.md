@@ -29,7 +29,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseFileCreateDto = CourseFileCreateDto(id: 123, timestamp: Date(), title: "title_example", fileName: "fileName_example", fileUploadURL: "fileUploadURL_example", contentType: "contentType_example", fileLength: 123, courseID: "courseID_example", businessID: "businessID_example") // CourseFileCreateDto |  (optional)
+let courseFileCreateDto = CourseFileCreateDto(id: 123, timestamp: Date(), title: "title_example", fileName: "fileName_example", fileUploadURL: "fileUploadURL_example", contentType: "contentType_example", fileLength: 123, courseID: "courseID_example") // CourseFileCreateDto |  (optional)
 
 // Create a new course file
 CourseFilesAPI.createCourseFileAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseFileCreateDto: courseFileCreateDto) { (response, error) in

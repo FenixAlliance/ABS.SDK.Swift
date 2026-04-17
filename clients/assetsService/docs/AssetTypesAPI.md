@@ -27,7 +27,7 @@ Creates a new asset type for the authenticated tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let assetTypeCreateDto = AssetTypeCreateDto(id: 123, timestamp: Date(), businessId: "businessId_example", businessProfileRecordId: "businessProfileRecordId_example", name: "name_example", description: "description_example") // AssetTypeCreateDto |  (optional)
+let assetTypeCreateDto = AssetTypeCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example") // AssetTypeCreateDto |  (optional)
 
 // Creates a new asset type
 AssetTypesAPI.createAssetType(tenantId: tenantId, assetTypeCreateDto: assetTypeCreateDto) { (response, error) in

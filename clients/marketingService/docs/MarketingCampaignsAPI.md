@@ -27,7 +27,7 @@ Creates a new marketing campaign for the specified tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let marketingCampaignCreateDto = MarketingCampaignCreateDto(id: 123, timestamp: Date(), name: "name_example", offer: "offer_example", active: false, proposedStart: Date(), proposedEnd: Date(), actualStart: Date(), actualEnd: Date(), code: "code_example", allocatedBudget: 123, activityCost: 123, miscCost: 123, expectedResponsePercent: 123, marketingAreaId: "marketingAreaId_example", currencyId: "currencyId_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example") // MarketingCampaignCreateDto | 
+let marketingCampaignCreateDto = MarketingCampaignCreateDto(id: 123, timestamp: Date(), name: "name_example", offer: "offer_example", active: false, proposedStart: Date(), proposedEnd: Date(), actualStart: Date(), actualEnd: Date(), code: "code_example", allocatedBudget: 123, activityCost: 123, miscCost: 123, expectedResponsePercent: 123, marketingAreaId: "marketingAreaId_example", currencyId: "currencyId_example") // MarketingCampaignCreateDto | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
@@ -304,7 +304,7 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let marketingcampaignId = 987 // UUID | 
-let marketingCampaignUpdateDto = MarketingCampaignUpdateDto(name: "name_example", offer: "offer_example", active: false, proposedStart: Date(), proposedEnd: Date(), actualStart: Date(), actualEnd: Date(), code: "code_example", allocatedBudget: 123, activityCost: 123, miscCost: 123, expectedResponsePercent: 123, marketingAreaId: "marketingAreaId_example", currencyId: "currencyId_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example") // MarketingCampaignUpdateDto | 
+let marketingCampaignUpdateDto = MarketingCampaignUpdateDto(name: "name_example", offer: "offer_example", active: false, proposedStart: Date(), proposedEnd: Date(), actualStart: Date(), actualEnd: Date(), code: "code_example", allocatedBudget: 123, activityCost: 123, miscCost: 123, expectedResponsePercent: 123, marketingAreaId: "marketingAreaId_example", currencyId: "currencyId_example") // MarketingCampaignUpdateDto | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 

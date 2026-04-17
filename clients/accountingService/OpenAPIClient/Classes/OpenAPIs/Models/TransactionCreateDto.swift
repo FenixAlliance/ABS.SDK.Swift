@@ -17,8 +17,6 @@ public struct TransactionCreateDto: Codable, JSONEncodable, Hashable {
     static let unitGroupIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let unitIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let transactionCategoryIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    static let tenantIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    static let enrollmentIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var description: String?
@@ -32,10 +30,8 @@ public struct TransactionCreateDto: Codable, JSONEncodable, Hashable {
     public var unitId: String?
     public var transactionCategoryId: String?
     public var currencyId: String?
-    public var tenantId: String?
-    public var enrollmentId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, description: String? = nil, price: Double? = nil, quantity: Double? = nil, externalDescription: String? = nil, basisQuantity: Double? = nil, basisAmount: Double? = nil, percent: Double? = nil, unitGroupId: String? = nil, unitId: String? = nil, transactionCategoryId: String? = nil, currencyId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, description: String? = nil, price: Double? = nil, quantity: Double? = nil, externalDescription: String? = nil, basisQuantity: Double? = nil, basisAmount: Double? = nil, percent: Double? = nil, unitGroupId: String? = nil, unitId: String? = nil, transactionCategoryId: String? = nil, currencyId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.description = description
@@ -49,8 +45,6 @@ public struct TransactionCreateDto: Codable, JSONEncodable, Hashable {
         self.unitId = unitId
         self.transactionCategoryId = transactionCategoryId
         self.currencyId = currencyId
-        self.tenantId = tenantId
-        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -67,8 +61,6 @@ public struct TransactionCreateDto: Codable, JSONEncodable, Hashable {
         case unitId
         case transactionCategoryId
         case currencyId
-        case tenantId
-        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -88,8 +80,6 @@ public struct TransactionCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(unitId, forKey: .unitId)
         try container.encodeIfPresent(transactionCategoryId, forKey: .transactionCategoryId)
         try container.encodeIfPresent(currencyId, forKey: .currencyId)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

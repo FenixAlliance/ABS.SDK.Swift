@@ -16,7 +16,6 @@ public struct ItemTypeCreateDto: Codable, JSONEncodable, Hashable {
     static let singularTitleRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     static let descriptionRule = StringRule(minLength: 0, maxLength: 1000, pattern: nil)
     static let googleCategoryTaxonomyRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
-    static let businessIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     static let itemCategoryIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     static let itemGoogleCategoryIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     public var id: UUID?
@@ -26,11 +25,10 @@ public struct ItemTypeCreateDto: Codable, JSONEncodable, Hashable {
     public var description: String?
     public var imageURL: String?
     public var googleCategoryTaxonomy: String?
-    public var businessID: String
     public var itemCategoryID: String
     public var itemGoogleCategoryID: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, pluralTitle: String? = nil, singularTitle: String? = nil, description: String? = nil, imageURL: String? = nil, googleCategoryTaxonomy: String? = nil, businessID: String, itemCategoryID: String, itemGoogleCategoryID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, pluralTitle: String? = nil, singularTitle: String? = nil, description: String? = nil, imageURL: String? = nil, googleCategoryTaxonomy: String? = nil, itemCategoryID: String, itemGoogleCategoryID: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.pluralTitle = pluralTitle
@@ -38,7 +36,6 @@ public struct ItemTypeCreateDto: Codable, JSONEncodable, Hashable {
         self.description = description
         self.imageURL = imageURL
         self.googleCategoryTaxonomy = googleCategoryTaxonomy
-        self.businessID = businessID
         self.itemCategoryID = itemCategoryID
         self.itemGoogleCategoryID = itemGoogleCategoryID
     }
@@ -51,7 +48,6 @@ public struct ItemTypeCreateDto: Codable, JSONEncodable, Hashable {
         case description
         case imageURL
         case googleCategoryTaxonomy
-        case businessID
         case itemCategoryID
         case itemGoogleCategoryID
     }
@@ -67,7 +63,6 @@ public struct ItemTypeCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(imageURL, forKey: .imageURL)
         try container.encodeIfPresent(googleCategoryTaxonomy, forKey: .googleCategoryTaxonomy)
-        try container.encode(businessID, forKey: .businessID)
         try container.encode(itemCategoryID, forKey: .itemCategoryID)
         try container.encodeIfPresent(itemGoogleCategoryID, forKey: .itemGoogleCategoryID)
     }

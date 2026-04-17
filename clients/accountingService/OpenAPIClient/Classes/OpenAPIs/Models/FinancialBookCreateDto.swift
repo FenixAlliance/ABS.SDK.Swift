@@ -14,19 +14,16 @@ public struct FinancialBookCreateDto: Codable, JSONEncodable, Hashable {
 
     static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     static let descriptionRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
-    static let tenantIDRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var name: String
     public var description: String?
-    public var tenantID: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, name: String, description: String? = nil, tenantID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, name: String, description: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
         self.description = description
-        self.tenantID = tenantID
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -34,7 +31,6 @@ public struct FinancialBookCreateDto: Codable, JSONEncodable, Hashable {
         case timestamp
         case name
         case description
-        case tenantID
     }
 
     // Encodable protocol methods
@@ -45,7 +41,6 @@ public struct FinancialBookCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encode(name, forKey: .name)
         try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(tenantID, forKey: .tenantID)
     }
 }
 

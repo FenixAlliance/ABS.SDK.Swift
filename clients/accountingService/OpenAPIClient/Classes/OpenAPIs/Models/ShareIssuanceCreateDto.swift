@@ -12,22 +12,16 @@ import AnyCodable
 
 public struct ShareIssuanceCreateDto: Codable, JSONEncodable, Hashable {
 
-    static let tenantIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    static let enrollmentIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let quantityRule = NumericRule<Int>(minimum: 1, exclusiveMinimum: false, maximum: 2147483647, exclusiveMaximum: false, multipleOf: nil)
     public var id: UUID?
     public var timestamp: Date?
-    public var tenantId: String?
-    public var enrollmentId: String?
     public var unitPrice: Int?
     public var quantity: Int?
     public var currencyId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, tenantId: String? = nil, enrollmentId: String? = nil, unitPrice: Int? = nil, quantity: Int? = nil, currencyId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, unitPrice: Int? = nil, quantity: Int? = nil, currencyId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
-        self.tenantId = tenantId
-        self.enrollmentId = enrollmentId
         self.unitPrice = unitPrice
         self.quantity = quantity
         self.currencyId = currencyId
@@ -36,8 +30,6 @@ public struct ShareIssuanceCreateDto: Codable, JSONEncodable, Hashable {
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
-        case tenantId
-        case enrollmentId
         case unitPrice
         case quantity
         case currencyId
@@ -49,8 +41,6 @@ public struct ShareIssuanceCreateDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(unitPrice, forKey: .unitPrice)
         try container.encodeIfPresent(quantity, forKey: .quantity)
         try container.encodeIfPresent(currencyId, forKey: .currencyId)

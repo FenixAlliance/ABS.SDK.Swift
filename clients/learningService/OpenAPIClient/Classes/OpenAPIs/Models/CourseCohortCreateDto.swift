@@ -14,23 +14,20 @@ public struct CourseCohortCreateDto: Codable, JSONEncodable, Hashable {
 
     static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     static let courseIDRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    static let businessIDRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var name: String
     public var courseID: String
-    public var businessID: String
     public var startDateTime: Date?
     public var endDateTime: Date?
     public var expectedStartDateTime: Date?
     public var expectedEndDateTime: Date?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, name: String, courseID: String, businessID: String, startDateTime: Date? = nil, endDateTime: Date? = nil, expectedStartDateTime: Date? = nil, expectedEndDateTime: Date? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, name: String, courseID: String, startDateTime: Date? = nil, endDateTime: Date? = nil, expectedStartDateTime: Date? = nil, expectedEndDateTime: Date? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
         self.courseID = courseID
-        self.businessID = businessID
         self.startDateTime = startDateTime
         self.endDateTime = endDateTime
         self.expectedStartDateTime = expectedStartDateTime
@@ -42,7 +39,6 @@ public struct CourseCohortCreateDto: Codable, JSONEncodable, Hashable {
         case timestamp
         case name
         case courseID
-        case businessID
         case startDateTime
         case endDateTime
         case expectedStartDateTime
@@ -57,7 +53,6 @@ public struct CourseCohortCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encode(name, forKey: .name)
         try container.encode(courseID, forKey: .courseID)
-        try container.encode(businessID, forKey: .businessID)
         try container.encodeIfPresent(startDateTime, forKey: .startDateTime)
         try container.encodeIfPresent(endDateTime, forKey: .endDateTime)
         try container.encodeIfPresent(expectedStartDateTime, forKey: .expectedStartDateTime)

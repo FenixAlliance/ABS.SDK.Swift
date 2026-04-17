@@ -13,7 +13,6 @@ import AnyCodable
 public struct BillingProfileUpdateDto: Codable, JSONEncodable, Hashable {
 
     public var contactId: String?
-    public var tenantId: String?
     public var taxId: String?
     public var phone: String?
     public var email: String?
@@ -34,9 +33,8 @@ public struct BillingProfileUpdateDto: Codable, JSONEncodable, Hashable {
     public var fiscalAuthorityId: String?
     public var fiscalRegimeId: String?
 
-    public init(contactId: String? = nil, tenantId: String? = nil, taxId: String? = nil, phone: String? = nil, email: String? = nil, address: String? = nil, address1: String? = nil, address2: String? = nil, postalCode: String? = nil, businessName: String? = nil, commercialName: String? = nil, ticker: String? = nil, duns: String? = nil, isPublicCompany: Bool? = nil, isFactaCustomer: Bool? = nil, countryId: String? = nil, stateId: String? = nil, cityId: String? = nil, fiscalIdentificationTypeId: String? = nil, fiscalAuthorityId: String? = nil, fiscalRegimeId: String? = nil) {
+    public init(contactId: String? = nil, taxId: String? = nil, phone: String? = nil, email: String? = nil, address: String? = nil, address1: String? = nil, address2: String? = nil, postalCode: String? = nil, businessName: String? = nil, commercialName: String? = nil, ticker: String? = nil, duns: String? = nil, isPublicCompany: Bool? = nil, isFactaCustomer: Bool? = nil, countryId: String? = nil, stateId: String? = nil, cityId: String? = nil, fiscalIdentificationTypeId: String? = nil, fiscalAuthorityId: String? = nil, fiscalRegimeId: String? = nil) {
         self.contactId = contactId
-        self.tenantId = tenantId
         self.taxId = taxId
         self.phone = phone
         self.email = email
@@ -60,7 +58,6 @@ public struct BillingProfileUpdateDto: Codable, JSONEncodable, Hashable {
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case contactId
-        case tenantId
         case taxId
         case phone
         case email
@@ -87,7 +84,6 @@ public struct BillingProfileUpdateDto: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(contactId, forKey: .contactId)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encodeIfPresent(taxId, forKey: .taxId)
         try container.encodeIfPresent(phone, forKey: .phone)
         try container.encodeIfPresent(email, forKey: .email)

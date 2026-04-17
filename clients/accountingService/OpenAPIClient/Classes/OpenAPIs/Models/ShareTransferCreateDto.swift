@@ -16,8 +16,6 @@ public struct ShareTransferCreateDto: Codable, JSONEncodable, Hashable {
     static let newShareHolderIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let formerShareHolderIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let shareTransferReasonIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    static let enrollmentIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    static let tenantIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var description: String?
@@ -25,10 +23,8 @@ public struct ShareTransferCreateDto: Codable, JSONEncodable, Hashable {
     public var newShareHolderId: String?
     public var formerShareHolderId: String?
     public var shareTransferReasonId: String?
-    public var enrollmentId: String?
-    public var tenantId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, description: String? = nil, value: Double? = nil, newShareHolderId: String? = nil, formerShareHolderId: String? = nil, shareTransferReasonId: String? = nil, enrollmentId: String? = nil, tenantId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, description: String? = nil, value: Double? = nil, newShareHolderId: String? = nil, formerShareHolderId: String? = nil, shareTransferReasonId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.description = description
@@ -36,8 +32,6 @@ public struct ShareTransferCreateDto: Codable, JSONEncodable, Hashable {
         self.newShareHolderId = newShareHolderId
         self.formerShareHolderId = formerShareHolderId
         self.shareTransferReasonId = shareTransferReasonId
-        self.enrollmentId = enrollmentId
-        self.tenantId = tenantId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -48,8 +42,6 @@ public struct ShareTransferCreateDto: Codable, JSONEncodable, Hashable {
         case newShareHolderId
         case formerShareHolderId
         case shareTransferReasonId
-        case enrollmentId
-        case tenantId
     }
 
     // Encodable protocol methods
@@ -63,8 +55,6 @@ public struct ShareTransferCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(newShareHolderId, forKey: .newShareHolderId)
         try container.encodeIfPresent(formerShareHolderId, forKey: .formerShareHolderId)
         try container.encodeIfPresent(shareTransferReasonId, forKey: .shareTransferReasonId)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
     }
 }
 

@@ -33,7 +33,7 @@ Creates a new commission.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let commissionCreateDto = CommissionCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", baseAmount: 123, addedPercent: 123, addedAmount: 123, taxComission: 123, tenantId: "tenantId_example", enrollmentId: "enrollmentId_example", salaryId: "salaryId_example", emisorWalletAccountId: "emisorWalletAccountId_example", receiverWalletAccountId: "receiverWalletAccountId_example", emisorContactId: "emisorContactId_example", receiverContactId: "receiverContactId_example") // CommissionCreateDto | 
+let commissionCreateDto = CommissionCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", baseAmount: 123, addedPercent: 123, addedAmount: 123, taxComission: 123, salaryId: "salaryId_example", emisorWalletAccountId: "emisorWalletAccountId_example", receiverWalletAccountId: "receiverWalletAccountId_example", emisorContactId: "emisorContactId_example", receiverContactId: "receiverContactId_example") // CommissionCreateDto | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
@@ -586,7 +586,7 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let commissionId = 987 // UUID | 
-let commissionUpdateDto = CommissionUpdateDto(title: "title_example", description: "description_example", baseAmount: 123, addedPercent: 123, addedAmount: 123, taxComission: 123, tenantId: "tenantId_example", enrollmentId: "enrollmentId_example", salaryId: "salaryId_example", emisorWalletAccountId: "emisorWalletAccountId_example", receiverWalletAccountId: "receiverWalletAccountId_example", emisorContactId: "emisorContactId_example", receiverContactId: "receiverContactId_example") // CommissionUpdateDto | 
+let commissionUpdateDto = CommissionUpdateDto(title: "title_example", description: "description_example", baseAmount: 123, addedPercent: 123, addedAmount: 123, taxComission: 123, salaryId: "salaryId_example", emisorWalletAccountId: "emisorWalletAccountId_example", receiverWalletAccountId: "receiverWalletAccountId_example", emisorContactId: "emisorContactId_example", receiverContactId: "receiverContactId_example") // CommissionUpdateDto | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
@@ -644,7 +644,7 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let paymentCommissionId = 987 // UUID | 
-let paymentCommissionUpdateDto = PaymentCommissionUpdateDto(title: "title_example", description: "description_example", baseAmount: 123, addedPercent: 123, addedAmount: 123, taxComission: 123, tenantId: "tenantId_example", enrollmentId: "enrollmentId_example", salaryId: "salaryId_example", emisorWalletAccountId: "emisorWalletAccountId_example", receiverWalletAccountId: "receiverWalletAccountId_example", emisorContactId: "emisorContactId_example", receiverContactId: "receiverContactId_example", paymentId: "paymentId_example") // PaymentCommissionUpdateDto | 
+let paymentCommissionUpdateDto = PaymentCommissionUpdateDto(title: "title_example", description: "description_example", baseAmount: 123, addedPercent: 123, addedAmount: 123, taxComission: 123, salaryId: "salaryId_example", emisorWalletAccountId: "emisorWalletAccountId_example", receiverWalletAccountId: "receiverWalletAccountId_example", emisorContactId: "emisorContactId_example", receiverContactId: "receiverContactId_example", paymentId: "paymentId_example") // PaymentCommissionUpdateDto | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 

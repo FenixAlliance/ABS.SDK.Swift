@@ -14,23 +14,20 @@ public struct CostCentreGroupCreateDto: Codable, JSONEncodable, Hashable {
 
     static let nameRule = StringRule(minLength: 0, maxLength: 50, pattern: nil)
     static let descriptionRule = StringRule(minLength: 0, maxLength: 250, pattern: nil)
-    static let tenantIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let parentCostCentresGroupIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var name: String?
     public var description: String?
     public var disabled: Bool?
-    public var tenantId: String?
     public var parentCostCentresGroupId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil, description: String? = nil, disabled: Bool? = nil, tenantId: String? = nil, parentCostCentresGroupId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil, description: String? = nil, disabled: Bool? = nil, parentCostCentresGroupId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
         self.description = description
         self.disabled = disabled
-        self.tenantId = tenantId
         self.parentCostCentresGroupId = parentCostCentresGroupId
     }
 
@@ -40,7 +37,6 @@ public struct CostCentreGroupCreateDto: Codable, JSONEncodable, Hashable {
         case name
         case description
         case disabled
-        case tenantId
         case parentCostCentresGroupId
     }
 
@@ -53,7 +49,6 @@ public struct CostCentreGroupCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(disabled, forKey: .disabled)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encodeIfPresent(parentCostCentresGroupId, forKey: .parentCostCentresGroupId)
     }
 }

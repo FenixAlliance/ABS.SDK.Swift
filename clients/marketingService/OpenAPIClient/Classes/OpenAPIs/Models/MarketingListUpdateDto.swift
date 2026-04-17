@@ -30,12 +30,10 @@ public struct MarketingListUpdateDto: Codable, JSONEncodable, Hashable {
     public var modifiedOn: Date?
     public var lastUsedOn: Date?
     public var currencyId: String?
-    public var tenantId: String?
-    public var enrollmentId: String?
     public var marketingListType: MarketingListType?
     public var marketingListTarget: MarketingListTarget?
 
-    public init(locked: Bool? = nil, name: String? = nil, purpose: String? = nil, description: String? = nil, source: String? = nil, cost: Double? = nil, modifiedOn: Date? = nil, lastUsedOn: Date? = nil, currencyId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil, marketingListType: MarketingListType? = nil, marketingListTarget: MarketingListTarget? = nil) {
+    public init(locked: Bool? = nil, name: String? = nil, purpose: String? = nil, description: String? = nil, source: String? = nil, cost: Double? = nil, modifiedOn: Date? = nil, lastUsedOn: Date? = nil, currencyId: String? = nil, marketingListType: MarketingListType? = nil, marketingListTarget: MarketingListTarget? = nil) {
         self.locked = locked
         self.name = name
         self.purpose = purpose
@@ -45,8 +43,6 @@ public struct MarketingListUpdateDto: Codable, JSONEncodable, Hashable {
         self.modifiedOn = modifiedOn
         self.lastUsedOn = lastUsedOn
         self.currencyId = currencyId
-        self.tenantId = tenantId
-        self.enrollmentId = enrollmentId
         self.marketingListType = marketingListType
         self.marketingListTarget = marketingListTarget
     }
@@ -61,8 +57,6 @@ public struct MarketingListUpdateDto: Codable, JSONEncodable, Hashable {
         case modifiedOn
         case lastUsedOn
         case currencyId
-        case tenantId
-        case enrollmentId
         case marketingListType
         case marketingListTarget
     }
@@ -80,8 +74,6 @@ public struct MarketingListUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(modifiedOn, forKey: .modifiedOn)
         try container.encodeIfPresent(lastUsedOn, forKey: .lastUsedOn)
         try container.encodeIfPresent(currencyId, forKey: .currencyId)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(marketingListType, forKey: .marketingListType)
         try container.encodeIfPresent(marketingListTarget, forKey: .marketingListTarget)
     }

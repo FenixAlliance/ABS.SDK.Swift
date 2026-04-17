@@ -17,13 +17,15 @@ public struct FiscalYearUpdateDto: Codable, JSONEncodable, Hashable {
     public var closed: Bool?
     public var endDate: Date?
     public var startDate: Date?
+    public var fiscalAuthorityId: String?
 
-    public init(name: String? = nil, description: String? = nil, closed: Bool? = nil, endDate: Date? = nil, startDate: Date? = nil) {
+    public init(name: String? = nil, description: String? = nil, closed: Bool? = nil, endDate: Date? = nil, startDate: Date? = nil, fiscalAuthorityId: String? = nil) {
         self.name = name
         self.description = description
         self.closed = closed
         self.endDate = endDate
         self.startDate = startDate
+        self.fiscalAuthorityId = fiscalAuthorityId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -32,6 +34,7 @@ public struct FiscalYearUpdateDto: Codable, JSONEncodable, Hashable {
         case closed
         case endDate
         case startDate
+        case fiscalAuthorityId
     }
 
     // Encodable protocol methods
@@ -43,6 +46,7 @@ public struct FiscalYearUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(closed, forKey: .closed)
         try container.encodeIfPresent(endDate, forKey: .endDate)
         try container.encodeIfPresent(startDate, forKey: .startDate)
+        try container.encodeIfPresent(fiscalAuthorityId, forKey: .fiscalAuthorityId)
     }
 }
 

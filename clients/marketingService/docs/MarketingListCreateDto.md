@@ -14,8 +14,6 @@ Name | Type | Description | Notes
 **modifiedOn** | **Date** |  | [optional] 
 **lastUsedOn** | **Date** |  | [optional] 
 **currencyId** | **String** |  | [optional] 
-**tenantId** | **String** |  | [optional] 
-**enrollmentId** | **String** |  | [optional] 
 **marketingListType** | **String** |  | [optional] 
 **marketingListTarget** | **String** |  | [optional] 
 

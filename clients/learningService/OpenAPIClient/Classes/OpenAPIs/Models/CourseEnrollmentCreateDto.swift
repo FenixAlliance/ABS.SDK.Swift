@@ -17,16 +17,14 @@ public struct CourseEnrollmentCreateDto: Codable, JSONEncodable, Hashable {
     public var courseID: String?
     public var courseCohortID: String?
     public var studentProfileID: String?
-    public var businessProfileRecordID: String?
     public var courseCompletionCertificateID: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, courseID: String? = nil, courseCohortID: String? = nil, studentProfileID: String? = nil, businessProfileRecordID: String? = nil, courseCompletionCertificateID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, courseID: String? = nil, courseCohortID: String? = nil, studentProfileID: String? = nil, courseCompletionCertificateID: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.courseID = courseID
         self.courseCohortID = courseCohortID
         self.studentProfileID = studentProfileID
-        self.businessProfileRecordID = businessProfileRecordID
         self.courseCompletionCertificateID = courseCompletionCertificateID
     }
 
@@ -36,7 +34,6 @@ public struct CourseEnrollmentCreateDto: Codable, JSONEncodable, Hashable {
         case courseID
         case courseCohortID
         case studentProfileID
-        case businessProfileRecordID
         case courseCompletionCertificateID
     }
 
@@ -49,7 +46,6 @@ public struct CourseEnrollmentCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(courseID, forKey: .courseID)
         try container.encodeIfPresent(courseCohortID, forKey: .courseCohortID)
         try container.encodeIfPresent(studentProfileID, forKey: .studentProfileID)
-        try container.encodeIfPresent(businessProfileRecordID, forKey: .businessProfileRecordID)
         try container.encodeIfPresent(courseCompletionCertificateID, forKey: .courseCompletionCertificateID)
     }
 }
