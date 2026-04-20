@@ -19,6 +19,7 @@ public struct BlogPostDto: Codable, JSONEncodable, Hashable {
         case liquid = "Liquid"
         case html5 = "Html5"
         case markdown = "Markdown"
+        case markup = "Markup"
     }
     public var id: String?
     public var timestamp: Date?
@@ -79,10 +80,10 @@ public struct BlogPostDto: Codable, JSONEncodable, Hashable {
     public var socialProfileId: String?
     public var parentWebContentId: String?
     public var parentWebContentVersionId: String?
-    public var blogPostCategoryID: String?
-    public var webTemplateID: String?
+    public var blogPostCategoryId: String?
+    public var webTemplateId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, codeType: CodeType? = nil, order: Int? = nil, slug: String? = nil, name: String? = nil, title: String? = nil, excerpt: String? = nil, password: String? = nil, description: String? = nil, highlightImage: String? = nil, canonicalUrl: String? = nil, emitResult: AnyCodable? = nil, seoTitle: String? = nil, seoKeyWords: String? = nil, seoKeyPhrases: String? = nil, metaDescription: String? = nil, twitterImage: String? = nil, twitterTitle: String? = nil, twitterDescription: String? = nil, facebookImage: String? = nil, facebookTitle: String? = nil, facebookDescription: String? = nil, featuredImageUrl: String? = nil, content: String? = nil, code: String? = nil, namespace: String? = nil, typeName: String? = nil, generatedCode: String? = nil, compilationPath: String? = nil, htmlContent: String? = nil, cSharpContent: String? = nil, razorContent: String? = nil, cssContent: String? = nil, jsContent: String? = nil, cssFiles: String? = nil, jsFiles: String? = nil, razorGeneratedCode: String? = nil, cSharpGeneratedCode: String? = nil, template: Bool? = nil, _default: Bool? = nil, enable: Bool? = nil, enableComments: Bool? = nil, displaySocialBox: Bool? = nil, published: Bool? = nil, inTrashCan: Bool? = nil, systemLocked: Bool? = nil, allowPingBacks: Bool? = nil, allowTrackbacks: Bool? = nil, cornerstoneContent: Bool? = nil, isEssentialContent: Bool? = nil, allowSearchEngineIndexing: Bool? = nil, tenantId: String? = nil, webPortalId: String? = nil, websiteThemeId: String? = nil, enrollmentId: String? = nil, socialProfileId: String? = nil, parentWebContentId: String? = nil, parentWebContentVersionId: String? = nil, blogPostCategoryID: String? = nil, webTemplateID: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, codeType: CodeType? = nil, order: Int? = nil, slug: String? = nil, name: String? = nil, title: String? = nil, excerpt: String? = nil, password: String? = nil, description: String? = nil, highlightImage: String? = nil, canonicalUrl: String? = nil, emitResult: AnyCodable? = nil, seoTitle: String? = nil, seoKeyWords: String? = nil, seoKeyPhrases: String? = nil, metaDescription: String? = nil, twitterImage: String? = nil, twitterTitle: String? = nil, twitterDescription: String? = nil, facebookImage: String? = nil, facebookTitle: String? = nil, facebookDescription: String? = nil, featuredImageUrl: String? = nil, content: String? = nil, code: String? = nil, namespace: String? = nil, typeName: String? = nil, generatedCode: String? = nil, compilationPath: String? = nil, htmlContent: String? = nil, cSharpContent: String? = nil, razorContent: String? = nil, cssContent: String? = nil, jsContent: String? = nil, cssFiles: String? = nil, jsFiles: String? = nil, razorGeneratedCode: String? = nil, cSharpGeneratedCode: String? = nil, template: Bool? = nil, _default: Bool? = nil, enable: Bool? = nil, enableComments: Bool? = nil, displaySocialBox: Bool? = nil, published: Bool? = nil, inTrashCan: Bool? = nil, systemLocked: Bool? = nil, allowPingBacks: Bool? = nil, allowTrackbacks: Bool? = nil, cornerstoneContent: Bool? = nil, isEssentialContent: Bool? = nil, allowSearchEngineIndexing: Bool? = nil, tenantId: String? = nil, webPortalId: String? = nil, websiteThemeId: String? = nil, enrollmentId: String? = nil, socialProfileId: String? = nil, parentWebContentId: String? = nil, parentWebContentVersionId: String? = nil, blogPostCategoryId: String? = nil, webTemplateId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.codeType = codeType
@@ -142,8 +143,8 @@ public struct BlogPostDto: Codable, JSONEncodable, Hashable {
         self.socialProfileId = socialProfileId
         self.parentWebContentId = parentWebContentId
         self.parentWebContentVersionId = parentWebContentVersionId
-        self.blogPostCategoryID = blogPostCategoryID
-        self.webTemplateID = webTemplateID
+        self.blogPostCategoryId = blogPostCategoryId
+        self.webTemplateId = webTemplateId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -206,8 +207,8 @@ public struct BlogPostDto: Codable, JSONEncodable, Hashable {
         case socialProfileId
         case parentWebContentId
         case parentWebContentVersionId
-        case blogPostCategoryID
-        case webTemplateID
+        case blogPostCategoryId
+        case webTemplateId
     }
 
     // Encodable protocol methods
@@ -273,8 +274,8 @@ public struct BlogPostDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(socialProfileId, forKey: .socialProfileId)
         try container.encodeIfPresent(parentWebContentId, forKey: .parentWebContentId)
         try container.encodeIfPresent(parentWebContentVersionId, forKey: .parentWebContentVersionId)
-        try container.encodeIfPresent(blogPostCategoryID, forKey: .blogPostCategoryID)
-        try container.encodeIfPresent(webTemplateID, forKey: .webTemplateID)
+        try container.encodeIfPresent(blogPostCategoryId, forKey: .blogPostCategoryId)
+        try container.encodeIfPresent(webTemplateId, forKey: .webTemplateId)
     }
 }
 

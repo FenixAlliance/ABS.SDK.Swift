@@ -5,15 +5,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **UUID** |  | [optional] 
 **timestamp** | **Date** |  | [optional] 
-**title** | **String** |  | [optional] 
-**code** | **String** |  | [optional] 
+**title** | **String** |  | 
 **published** | **Bool** |  | [optional] 
 **description** | **String** |  | [optional] 
-**htmlContent** | **String** |  | [optional] 
+**code** | **String** |  | [optional] 
+**markup** | **String** |  | [optional] 
 **featuredImageUrl** | **String** |  | [optional] 
 **codeType** | **String** |  | [optional] 
-**blogPostCategoryID** | **String** |  | [optional] 
-**webTemplateID** | **String** |  | [optional] 
+**blogPostCategoryId** | **String** |  | [optional] 
+**webTemplateId** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

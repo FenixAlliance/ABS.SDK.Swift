@@ -1,6 +1,6 @@
 # WebPagesAPI
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://absuite.net*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -91,7 +91,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let webPageCreateDto = WebPageCreateDto(id: 123, timestamp: Date(), title: "title_example", code: "code_example", published: false, description: "description_example", htmlContent: "htmlContent_example", featuredImageUrl: "featuredImageUrl_example", codeType: "codeType_example", webTemplateID: "webTemplateID_example") // WebPageCreateDto |  (optional)
+let webPageCreateDto = WebPageCreateDto(id: 123, timestamp: Date(), title: "title_example", published: false, description: "description_example", code: "code_example", markup: "markup_example", featuredImageUrl: "featuredImageUrl_example", codeType: "codeType_example", webTemplateID: "webTemplateID_example") // WebPageCreateDto |  (optional)
 
 // Create a web page
 WebPagesAPI.createWebPageAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, webPageCreateDto: webPageCreateDto) { (response, error) in

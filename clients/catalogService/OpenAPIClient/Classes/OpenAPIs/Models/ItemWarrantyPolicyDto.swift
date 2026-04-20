@@ -20,7 +20,7 @@ public struct ItemWarrantyPolicyDto: Codable, JSONEncodable, Hashable {
     static let weeksRule = NumericRule<Int>(minimum: 0, exclusiveMinimum: false, maximum: 2147483647, exclusiveMaximum: false, multipleOf: nil)
     static let monthsRule = NumericRule<Int>(minimum: 0, exclusiveMinimum: false, maximum: 2147483647, exclusiveMaximum: false, multipleOf: nil)
     static let yearsRule = NumericRule<Int>(minimum: 0, exclusiveMinimum: false, maximum: 2147483647, exclusiveMaximum: false, multipleOf: nil)
-    static let valueRule = NumericRule<Double>(minimum: 0, exclusiveMinimum: false, maximum: 1.7976931348623157E+308, exclusiveMaximum: false, multipleOf: nil)
+    static let valueRule = NumericRule<Double>(minimum: 0, exclusiveMinimum: false, maximum: 999999999999999, exclusiveMaximum: false, multipleOf: nil)
     static let percentageRule = NumericRule<Double>(minimum: 0, exclusiveMinimum: false, maximum: 100, exclusiveMaximum: false, multipleOf: nil)
     static let currencyIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     static let countryIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)

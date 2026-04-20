@@ -11,10 +11,10 @@ Name | Type | Description | Notes
 **disabled** | **Bool** |  | [optional] 
 **tenantId** | **String** |  | [optional] 
 **description** | **String** |  | [optional] 
-**websiteThemeID** | **String** |  | [optional] 
-**businessDomainID** | **String** |  | [optional] 
-**businessProfileRecordID** | **String** |  | [optional] 
-**businessPortalApplicationID** | **String** |  | [optional] 
+**enrollmentId** | **String** |  | [optional] 
+**websiteThemeId** | **String** |  | [optional] 
+**businessDomainId** | **String** |  | [optional] 
+**businessPortalApplicationId** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

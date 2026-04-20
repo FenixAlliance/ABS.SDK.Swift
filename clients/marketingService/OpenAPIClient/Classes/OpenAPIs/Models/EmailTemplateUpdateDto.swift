@@ -19,6 +19,7 @@ public struct EmailTemplateUpdateDto: Codable, JSONEncodable, Hashable {
         case liquid = "Liquid"
         case html5 = "Html5"
         case markdown = "Markdown"
+        case markup = "Markup"
     }
     static let marketingCampaignIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     public var order: Int?

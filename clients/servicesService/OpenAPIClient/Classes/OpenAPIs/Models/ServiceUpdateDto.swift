@@ -12,12 +12,12 @@ import AnyCodable
 
 public struct ServiceUpdateDto: Codable, JSONEncodable, Hashable {
 
-    static let estimatedWitholdingTaxesInUsdRule = NumericRule<Double>(minimum: 0, exclusiveMinimum: false, maximum: 1.7976931348623157E+308, exclusiveMaximum: false, multipleOf: nil)
-    static let estimatedPaymentCostInUsdRule = NumericRule<Double>(minimum: 0, exclusiveMinimum: false, maximum: 1.7976931348623157E+308, exclusiveMaximum: false, multipleOf: nil)
-    static let estimatedPaymentTaxInUsdRule = NumericRule<Double>(minimum: 0, exclusiveMinimum: false, maximum: 1.7976931348623157E+308, exclusiveMaximum: false, multipleOf: nil)
-    static let estimatedDefaultShippingCostInUsdRule = NumericRule<Double>(minimum: 0, exclusiveMinimum: false, maximum: 1.7976931348623157E+308, exclusiveMaximum: false, multipleOf: nil)
-    static let estimatedDefaultShippingTaxInUsdRule = NumericRule<Double>(minimum: 0, exclusiveMinimum: false, maximum: 1.7976931348623157E+308, exclusiveMaximum: false, multipleOf: nil)
-    static let estimatedTotalPriceInUsdRule = NumericRule<Double>(minimum: 0, exclusiveMinimum: false, maximum: 1.7976931348623157E+308, exclusiveMaximum: false, multipleOf: nil)
+    static let estimatedWitholdingTaxesInUsdRule = NumericRule<Double>(minimum: 0, exclusiveMinimum: false, maximum: 999999999999999, exclusiveMaximum: false, multipleOf: nil)
+    static let estimatedPaymentCostInUsdRule = NumericRule<Double>(minimum: 0, exclusiveMinimum: false, maximum: 999999999999999, exclusiveMaximum: false, multipleOf: nil)
+    static let estimatedPaymentTaxInUsdRule = NumericRule<Double>(minimum: 0, exclusiveMinimum: false, maximum: 999999999999999, exclusiveMaximum: false, multipleOf: nil)
+    static let estimatedDefaultShippingCostInUsdRule = NumericRule<Double>(minimum: 0, exclusiveMinimum: false, maximum: 999999999999999, exclusiveMaximum: false, multipleOf: nil)
+    static let estimatedDefaultShippingTaxInUsdRule = NumericRule<Double>(minimum: 0, exclusiveMinimum: false, maximum: 999999999999999, exclusiveMaximum: false, multipleOf: nil)
+    static let estimatedTotalPriceInUsdRule = NumericRule<Double>(minimum: 0, exclusiveMinimum: false, maximum: 999999999999999, exclusiveMaximum: false, multipleOf: nil)
     public var hot: Bool?
     public var sku: String?
     public var upc: String?

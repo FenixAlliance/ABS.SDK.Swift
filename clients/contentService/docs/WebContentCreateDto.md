@@ -5,11 +5,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **UUID** |  | [optional] 
 **timestamp** | **Date** |  | [optional] 
-**title** | **String** |  | [optional] 
-**code** | **String** |  | [optional] 
+**title** | **String** |  | 
 **published** | **Bool** |  | [optional] 
 **description** | **String** |  | [optional] 
-**htmlContent** | **String** |  | [optional] 
+**code** | **String** |  | [optional] 
+**markup** | **String** |  | [optional] 
 **featuredImageUrl** | **String** |  | [optional] 
 **codeType** | **String** |  | [optional] 
 

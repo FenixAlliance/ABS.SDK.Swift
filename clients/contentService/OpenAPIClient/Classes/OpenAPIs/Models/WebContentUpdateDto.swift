@@ -19,6 +19,7 @@ public struct WebContentUpdateDto: Codable, JSONEncodable, Hashable {
         case liquid = "Liquid"
         case html5 = "Html5"
         case markdown = "Markdown"
+        case markup = "Markup"
     }
     public var order: Int?
     public var slug: String?

@@ -20,12 +20,12 @@ public struct WebPortalDto: Codable, JSONEncodable, Hashable {
     public var disabled: Bool?
     public var tenantId: String?
     public var description: String?
-    public var websiteThemeID: String?
-    public var businessDomainID: String?
-    public var businessProfileRecordID: String?
-    public var businessPortalApplicationID: String?
+    public var enrollmentId: String?
+    public var websiteThemeId: String?
+    public var businessDomainId: String?
+    public var businessPortalApplicationId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, root: Bool? = nil, title: String? = nil, domain: String? = nil, disabled: Bool? = nil, tenantId: String? = nil, description: String? = nil, websiteThemeID: String? = nil, businessDomainID: String? = nil, businessProfileRecordID: String? = nil, businessPortalApplicationID: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, root: Bool? = nil, title: String? = nil, domain: String? = nil, disabled: Bool? = nil, tenantId: String? = nil, description: String? = nil, enrollmentId: String? = nil, websiteThemeId: String? = nil, businessDomainId: String? = nil, businessPortalApplicationId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.root = root
@@ -34,10 +34,10 @@ public struct WebPortalDto: Codable, JSONEncodable, Hashable {
         self.disabled = disabled
         self.tenantId = tenantId
         self.description = description
-        self.websiteThemeID = websiteThemeID
-        self.businessDomainID = businessDomainID
-        self.businessProfileRecordID = businessProfileRecordID
-        self.businessPortalApplicationID = businessPortalApplicationID
+        self.enrollmentId = enrollmentId
+        self.websiteThemeId = websiteThemeId
+        self.businessDomainId = businessDomainId
+        self.businessPortalApplicationId = businessPortalApplicationId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -49,10 +49,10 @@ public struct WebPortalDto: Codable, JSONEncodable, Hashable {
         case disabled
         case tenantId
         case description
-        case websiteThemeID
-        case businessDomainID
-        case businessProfileRecordID
-        case businessPortalApplicationID
+        case enrollmentId
+        case websiteThemeId
+        case businessDomainId
+        case businessPortalApplicationId
     }
 
     // Encodable protocol methods
@@ -67,10 +67,10 @@ public struct WebPortalDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(disabled, forKey: .disabled)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(websiteThemeID, forKey: .websiteThemeID)
-        try container.encodeIfPresent(businessDomainID, forKey: .businessDomainID)
-        try container.encodeIfPresent(businessProfileRecordID, forKey: .businessProfileRecordID)
-        try container.encodeIfPresent(businessPortalApplicationID, forKey: .businessPortalApplicationID)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
+        try container.encodeIfPresent(websiteThemeId, forKey: .websiteThemeId)
+        try container.encodeIfPresent(businessDomainId, forKey: .businessDomainId)
+        try container.encodeIfPresent(businessPortalApplicationId, forKey: .businessPortalApplicationId)
     }
 }
 

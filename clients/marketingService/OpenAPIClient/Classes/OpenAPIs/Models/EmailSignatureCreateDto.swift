@@ -19,25 +19,27 @@ public struct EmailSignatureCreateDto: Codable, JSONEncodable, Hashable {
         case liquid = "Liquid"
         case html5 = "Html5"
         case markdown = "Markdown"
+        case markup = "Markup"
     }
+    static let titleRule = StringRule(minLength: 3, maxLength: 100, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
-    public var title: String?
-    public var code: String?
+    public var title: String
     public var published: Bool?
     public var description: String?
-    public var htmlContent: String?
+    public var code: String?
+    public var markup: String?
     public var featuredImageUrl: String?
     public var codeType: CodeType?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, title: String? = nil, code: String? = nil, published: Bool? = nil, description: String? = nil, htmlContent: String? = nil, featuredImageUrl: String? = nil, codeType: CodeType? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, title: String, published: Bool? = nil, description: String? = nil, code: String? = nil, markup: String? = nil, featuredImageUrl: String? = nil, codeType: CodeType? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
-        self.code = code
         self.published = published
         self.description = description
-        self.htmlContent = htmlContent
+        self.code = code
+        self.markup = markup
         self.featuredImageUrl = featuredImageUrl
         self.codeType = codeType
     }
@@ -46,10 +48,10 @@ public struct EmailSignatureCreateDto: Codable, JSONEncodable, Hashable {
         case id
         case timestamp
         case title
-        case code
         case published
         case description
-        case htmlContent
+        case code
+        case markup
         case featuredImageUrl
         case codeType
     }
@@ -60,11 +62,11 @@ public struct EmailSignatureCreateDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
-        try container.encodeIfPresent(title, forKey: .title)
-        try container.encodeIfPresent(code, forKey: .code)
+        try container.encode(title, forKey: .title)
         try container.encodeIfPresent(published, forKey: .published)
         try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(htmlContent, forKey: .htmlContent)
+        try container.encodeIfPresent(code, forKey: .code)
+        try container.encodeIfPresent(markup, forKey: .markup)
         try container.encodeIfPresent(featuredImageUrl, forKey: .featuredImageUrl)
         try container.encodeIfPresent(codeType, forKey: .codeType)
     }

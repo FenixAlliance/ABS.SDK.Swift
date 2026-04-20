@@ -19,6 +19,7 @@ public struct EmailSignatureDto: Codable, JSONEncodable, Hashable {
         case liquid = "Liquid"
         case html5 = "Html5"
         case markdown = "Markdown"
+        case markup = "Markup"
     }
     public var id: String?
     public var timestamp: Date?

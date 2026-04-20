@@ -18,7 +18,7 @@ public struct BudgetAccountEntryUpdateDto: Codable, JSONEncodable, Hashable {
         case credit = "Credit"
     }
     static let descriptionRule = StringRule(minLength: 1, maxLength: 1000, pattern: nil)
-    static let amountRule = NumericRule<Double>(minimum: 0.01, exclusiveMinimum: false, maximum: 1.7976931348623157E+308, exclusiveMaximum: false, multipleOf: nil)
+    static let amountRule = NumericRule<Double>(minimum: 0.01, exclusiveMinimum: false, maximum: 999999999999999, exclusiveMaximum: false, multipleOf: nil)
     static let creditAccountIdRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     static let journalEntryIdRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     static let budgetIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)

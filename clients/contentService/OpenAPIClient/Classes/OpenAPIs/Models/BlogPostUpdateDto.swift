@@ -19,6 +19,7 @@ public struct BlogPostUpdateDto: Codable, JSONEncodable, Hashable {
         case liquid = "Liquid"
         case html5 = "Html5"
         case markdown = "Markdown"
+        case markup = "Markup"
     }
     public var order: Int?
     public var slug: String?
@@ -74,8 +75,10 @@ public struct BlogPostUpdateDto: Codable, JSONEncodable, Hashable {
     public var cornerstoneContent: Bool?
     public var isEssentialContent: Bool?
     public var allowSearchEngineIndexing: Bool?
+    public var blogPostCategoryId: String?
+    public var webTemplateId: String?
 
-    public init(order: Int? = nil, slug: String? = nil, name: String? = nil, title: String? = nil, excerpt: String? = nil, password: String? = nil, description: String? = nil, highlightImage: String? = nil, canonicalUrl: String? = nil, seoTitle: String? = nil, seoKeyWords: String? = nil, seoKeyPhrases: String? = nil, metaDescription: String? = nil, twitterImage: String? = nil, twitterTitle: String? = nil, twitterDescription: String? = nil, facebookImage: String? = nil, facebookTitle: String? = nil, facebookDescription: String? = nil, featuredImageUrl: String? = nil, content: String? = nil, code: String? = nil, namespace: String? = nil, typeName: String? = nil, generatedCode: String? = nil, compilationPath: String? = nil, htmlContent: String? = nil, codeType: CodeType? = nil, cSharpContent: String? = nil, razorContent: String? = nil, cssContent: String? = nil, jsContent: String? = nil, cssFiles: String? = nil, jsFiles: String? = nil, razorGeneratedCode: String? = nil, cSharpGeneratedCode: String? = nil, precompiledLogicSize: Int? = nil, precompiledLogicSizeLong: Int64? = nil, precompiledViewSize: Int? = nil, precompiledViewSizeLong: Int64? = nil, precompiledLogicViewSize: Int? = nil, template: Bool? = nil, _default: Bool? = nil, enable: Bool? = nil, enableComments: Bool? = nil, displaySocialBox: Bool? = nil, published: Bool? = nil, inTrashCan: Bool? = nil, systemLocked: Bool? = nil, allowPingbacks: Bool? = nil, allowTrackbacks: Bool? = nil, cornerstoneContent: Bool? = nil, isEssentialContent: Bool? = nil, allowSearchEngineIndexing: Bool? = nil) {
+    public init(order: Int? = nil, slug: String? = nil, name: String? = nil, title: String? = nil, excerpt: String? = nil, password: String? = nil, description: String? = nil, highlightImage: String? = nil, canonicalUrl: String? = nil, seoTitle: String? = nil, seoKeyWords: String? = nil, seoKeyPhrases: String? = nil, metaDescription: String? = nil, twitterImage: String? = nil, twitterTitle: String? = nil, twitterDescription: String? = nil, facebookImage: String? = nil, facebookTitle: String? = nil, facebookDescription: String? = nil, featuredImageUrl: String? = nil, content: String? = nil, code: String? = nil, namespace: String? = nil, typeName: String? = nil, generatedCode: String? = nil, compilationPath: String? = nil, htmlContent: String? = nil, codeType: CodeType? = nil, cSharpContent: String? = nil, razorContent: String? = nil, cssContent: String? = nil, jsContent: String? = nil, cssFiles: String? = nil, jsFiles: String? = nil, razorGeneratedCode: String? = nil, cSharpGeneratedCode: String? = nil, precompiledLogicSize: Int? = nil, precompiledLogicSizeLong: Int64? = nil, precompiledViewSize: Int? = nil, precompiledViewSizeLong: Int64? = nil, precompiledLogicViewSize: Int? = nil, template: Bool? = nil, _default: Bool? = nil, enable: Bool? = nil, enableComments: Bool? = nil, displaySocialBox: Bool? = nil, published: Bool? = nil, inTrashCan: Bool? = nil, systemLocked: Bool? = nil, allowPingbacks: Bool? = nil, allowTrackbacks: Bool? = nil, cornerstoneContent: Bool? = nil, isEssentialContent: Bool? = nil, allowSearchEngineIndexing: Bool? = nil, blogPostCategoryId: String? = nil, webTemplateId: String? = nil) {
         self.order = order
         self.slug = slug
         self.name = name
@@ -130,6 +133,8 @@ public struct BlogPostUpdateDto: Codable, JSONEncodable, Hashable {
         self.cornerstoneContent = cornerstoneContent
         self.isEssentialContent = isEssentialContent
         self.allowSearchEngineIndexing = allowSearchEngineIndexing
+        self.blogPostCategoryId = blogPostCategoryId
+        self.webTemplateId = webTemplateId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -187,6 +192,8 @@ public struct BlogPostUpdateDto: Codable, JSONEncodable, Hashable {
         case cornerstoneContent
         case isEssentialContent
         case allowSearchEngineIndexing
+        case blogPostCategoryId
+        case webTemplateId
     }
 
     // Encodable protocol methods
@@ -247,6 +254,8 @@ public struct BlogPostUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(cornerstoneContent, forKey: .cornerstoneContent)
         try container.encodeIfPresent(isEssentialContent, forKey: .isEssentialContent)
         try container.encodeIfPresent(allowSearchEngineIndexing, forKey: .allowSearchEngineIndexing)
+        try container.encodeIfPresent(blogPostCategoryId, forKey: .blogPostCategoryId)
+        try container.encodeIfPresent(webTemplateId, forKey: .webTemplateId)
     }
 }
 

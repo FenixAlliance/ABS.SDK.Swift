@@ -57,6 +57,8 @@ Name | Type | Description | Notes
 **cornerstoneContent** | **Bool** |  | [optional] 
 **isEssentialContent** | **Bool** |  | [optional] 
 **allowSearchEngineIndexing** | **Bool** |  | [optional] 
+**blogPostCategoryId** | **String** |  | [optional] 
+**webTemplateId** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

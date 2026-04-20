@@ -14,7 +14,7 @@ public struct ItemGoogleCategoryDto: Codable, JSONEncodable, Hashable {
 
     static let pathRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
-    static let startingAtAmountInUsdRule = NumericRule<Double>(minimum: 0, exclusiveMinimum: false, maximum: 1.7976931348623157E+308, exclusiveMaximum: false, multipleOf: nil)
+    static let startingAtAmountInUsdRule = NumericRule<Double>(minimum: 0, exclusiveMinimum: false, maximum: 999999999999999, exclusiveMaximum: false, multipleOf: nil)
     public var id: String?
     public var timestamp: Date?
     public var path: String

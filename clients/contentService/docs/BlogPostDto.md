@@ -62,8 +62,8 @@ Name | Type | Description | Notes
 **socialProfileId** | **String** |  | [optional] 
 **parentWebContentId** | **String** |  | [optional] 
 **parentWebContentVersionId** | **String** |  | [optional] 
-**blogPostCategoryID** | **String** |  | [optional] 
-**webTemplateID** | **String** |  | [optional] 
+**blogPostCategoryId** | **String** |  | [optional] 
+**webTemplateId** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
