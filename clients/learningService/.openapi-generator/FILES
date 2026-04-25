@@ -22,7 +22,7 @@ OpenAPIClient/Classes/OpenAPIs/APIs/CourseUnitsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/CourseUpdatesAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/CourseWikisAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/CoursesAPI.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/FenixAllianceABPWebAPI.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/FenixAllianceABSWebAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/InstructorProfilesAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/StudentProfilesAPI.swift
 OpenAPIClient/Classes/OpenAPIs/CodableHelper.swift
@@ -192,7 +192,7 @@ docs/CourseWikiUpdateDto.md
 docs/CourseWikisAPI.md
 docs/CoursesAPI.md
 docs/ErrorEnvelope.md
-docs/FenixAllianceABPWebAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/ForgotPasswordRequest.md
 docs/HttpValidationProblemDetails.md
 docs/InfoRequest.md

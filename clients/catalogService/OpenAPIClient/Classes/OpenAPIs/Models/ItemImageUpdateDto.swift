@@ -23,7 +23,7 @@ public struct ItemImageUpdateDto: Codable, JSONEncodable, Hashable {
     static let keyWordsRule = StringRule(minLength: 0, maxLength: 500, pattern: nil)
     static let notesRule = StringRule(minLength: 0, maxLength: 1000, pattern: nil)
     static let contentTypeRule = StringRule(minLength: 0, maxLength: 100, pattern: nil)
-    static let fileLengthRule = NumericRule<Int64>(minimum: 0, exclusiveMinimum: false, maximum: nil, exclusiveMaximum: false, multipleOf: nil)
+    static let fileLengthRule = NumericRule<Int64>(minimum: 0, exclusiveMinimum: false, maximum: -9223372036854775616, exclusiveMaximum: false, multipleOf: nil)
     static let parentFileUploadIDRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     public var itemID: String
     public var isItemMozaicBG: Bool?

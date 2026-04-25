@@ -7,7 +7,7 @@ OpenAPIClient/Classes/OpenAPIs/APIs.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/DepartmentsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/EmployeeEnrollmentsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/EnrollmentsAPI.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/FenixAllianceABPWebAPI.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/FenixAllianceABSWebAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/IndustriesAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/InvitationsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/OptionsAPI.swift
@@ -182,7 +182,7 @@ docs/ExtendedTenantDto.md
 docs/ExtendedTenantDtoEnvelope.md
 docs/ExtendedTenantEnrollmentDto.md
 docs/ExtendedTenantEnrollmentDtoEnvelope.md
-docs/FenixAllianceABPWebAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/ForgotPasswordRequest.md
 docs/HttpValidationProblemDetails.md
 docs/IndustriesAPI.md

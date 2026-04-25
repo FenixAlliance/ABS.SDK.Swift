@@ -6,7 +6,7 @@ OpenAPIClient/Classes/OpenAPIs/APIHelper.swift
 OpenAPIClient/Classes/OpenAPIs/APIs.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/EmployeesAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/EmployersAPI.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/FenixAllianceABPWebAPI.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/FenixAllianceABSWebAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/GigsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/JobOffersAPI.swift
 OpenAPIClient/Classes/OpenAPIs/CodableHelper.swift
@@ -66,7 +66,7 @@ docs/EmployerProfileDtoListEnvelope.md
 docs/EmployersAPI.md
 docs/EmptyEnvelope.md
 docs/ErrorEnvelope.md
-docs/FenixAllianceABPWebAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/ForgotPasswordRequest.md
 docs/GigCreateDto.md
 docs/GigDto.md

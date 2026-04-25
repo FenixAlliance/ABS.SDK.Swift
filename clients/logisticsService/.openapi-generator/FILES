@@ -4,7 +4,7 @@ Cartfile
 OpenAPIClient.podspec
 OpenAPIClient/Classes/OpenAPIs/APIHelper.swift
 OpenAPIClient/Classes/OpenAPIs/APIs.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/FenixAllianceABPWebAPI.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/FenixAllianceABSWebAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/StockAPI.swift
 OpenAPIClient/Classes/OpenAPIs/CodableHelper.swift
 OpenAPIClient/Classes/OpenAPIs/Configuration.swift
@@ -37,7 +37,7 @@ docs/AccessTokenResponse.md
 docs/ContactDto.md
 docs/ContactDtoListEnvelope.md
 docs/ErrorEnvelope.md
-docs/FenixAllianceABPWebAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/ForgotPasswordRequest.md
 docs/HttpValidationProblemDetails.md
 docs/InfoRequest.md

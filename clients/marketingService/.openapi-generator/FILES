@@ -7,7 +7,7 @@ OpenAPIClient/Classes/OpenAPIs/APIs.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/EmailGroupsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/EmailSignaturesAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/EmailTemplatesAPI.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/FenixAllianceABPWebAPI.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/FenixAllianceABSWebAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/MarketingCampaignsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/MarketingListsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/NewslettersAPI.swift
@@ -102,7 +102,7 @@ docs/EmailTemplateUpdateDto.md
 docs/EmailTemplatesAPI.md
 docs/EmptyEnvelope.md
 docs/ErrorEnvelope.md
-docs/FenixAllianceABPWebAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/ForgotPasswordRequest.md
 docs/HttpValidationProblemDetails.md
 docs/InfoRequest.md

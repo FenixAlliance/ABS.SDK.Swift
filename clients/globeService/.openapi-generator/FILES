@@ -6,7 +6,7 @@ OpenAPIClient/Classes/OpenAPIs/APIHelper.swift
 OpenAPIClient/Classes/OpenAPIs/APIs.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/CountriesAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/CurrenciesAPI.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/FenixAllianceABPWebAPI.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/FenixAllianceABSWebAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/LanguagesAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/TimezonesAPI.swift
 OpenAPIClient/Classes/OpenAPIs/CodableHelper.swift
@@ -78,7 +78,7 @@ docs/CurrencyDto.md
 docs/CurrencyDtoEnvelope.md
 docs/CurrencyDtoListEnvelope.md
 docs/ErrorEnvelope.md
-docs/FenixAllianceABPWebAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/ForgotPasswordRequest.md
 docs/HttpValidationProblemDetails.md
 docs/InfoRequest.md

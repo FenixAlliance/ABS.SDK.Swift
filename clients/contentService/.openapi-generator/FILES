@@ -9,7 +9,7 @@ OpenAPIClient/Classes/OpenAPIs/APIs/BlogPostCategoriesAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/BlogPostTagsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/BlogPostsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/BusinessDomainsAPI.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/FenixAllianceABPWebAPI.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/FenixAllianceABSWebAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/PortalsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/ThemesAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/WebContentsAPI.swift
@@ -234,7 +234,7 @@ docs/EmptyEnvelope.md
 docs/ErrorEnvelope.md
 docs/FacebookIntegrationOptions.md
 docs/Favicons.md
-docs/FenixAllianceABPWebAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/FenixAllianceIntegrationsOptions.md
 docs/FooterOptions.md
 docs/ForgotPasswordRequest.md

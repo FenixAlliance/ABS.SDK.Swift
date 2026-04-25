@@ -12,7 +12,7 @@ OpenAPIClient/Classes/OpenAPIs/APIs/BillingProfilesAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/BudgetsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/CommissionsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/CostCentresAPI.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/FenixAllianceABPWebAPI.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/FenixAllianceABSWebAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/FinancialBooksAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/FiscalAuthoritiesAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/FiscalAuthorityYearsAPI.swift
@@ -392,7 +392,7 @@ docs/CreateLedgerDto.md
 docs/CurrencyId.md
 docs/EmptyEnvelope.md
 docs/ErrorEnvelope.md
-docs/FenixAllianceABPWebAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/FinancialBookCreateDto.md
 docs/FinancialBookDto.md
 docs/FinancialBookDtoEnvelope.md

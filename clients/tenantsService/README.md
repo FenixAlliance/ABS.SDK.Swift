@@ -47,19 +47,23 @@ Class | Method | HTTP request | Description
 *EnrollmentsAPI* | [**getTenantEnrollments**](docs/EnrollmentsAPI.md#gettenantenrollments) | **GET** /api/v2/TenantsService/Enrollments | Retrieve a list of tenant enrollments
 *EnrollmentsAPI* | [**getTenantEnrollmentsCount**](docs/EnrollmentsAPI.md#gettenantenrollmentscount) | **GET** /api/v2/TenantsService/Enrollments/Count | Get the count of tenant enrollments
 *EnrollmentsAPI* | [**updateTenantEnrollment**](docs/EnrollmentsAPI.md#updatetenantenrollment) | **PUT** /api/v2/TenantsService/Enrollments/{enrollmentId} | Update a tenant enrollment
-*FenixAllianceABPWebAPI* | [**forgotPasswordPost**](docs/FenixAllianceABPWebAPI.md#forgotpasswordpost) | **POST** /forgotPassword | 
-*FenixAllianceABPWebAPI* | [**healthGet**](docs/FenixAllianceABPWebAPI.md#healthget) | **GET** /health | 
-*FenixAllianceABPWebAPI* | [**helloGet**](docs/FenixAllianceABPWebAPI.md#helloget) | **GET** /hello | 
-*FenixAllianceABPWebAPI* | [**loginPost**](docs/FenixAllianceABPWebAPI.md#loginpost) | **POST** /login | 
-*FenixAllianceABPWebAPI* | [**manage2faPost**](docs/FenixAllianceABPWebAPI.md#manage2fapost) | **POST** /manage/2fa | 
-*FenixAllianceABPWebAPI* | [**manageInfoGet**](docs/FenixAllianceABPWebAPI.md#manageinfoget) | **GET** /manage/info | 
-*FenixAllianceABPWebAPI* | [**manageInfoPost**](docs/FenixAllianceABPWebAPI.md#manageinfopost) | **POST** /manage/info | 
-*FenixAllianceABPWebAPI* | [**mapIdentityApiConfirmEmail**](docs/FenixAllianceABPWebAPI.md#mapidentityapiconfirmemail) | **GET** /confirmEmail | 
-*FenixAllianceABPWebAPI* | [**refreshPost**](docs/FenixAllianceABPWebAPI.md#refreshpost) | **POST** /refresh | 
-*FenixAllianceABPWebAPI* | [**registerPost**](docs/FenixAllianceABPWebAPI.md#registerpost) | **POST** /register | 
-*FenixAllianceABPWebAPI* | [**resendConfirmationEmailPost**](docs/FenixAllianceABPWebAPI.md#resendconfirmationemailpost) | **POST** /resendConfirmationEmail | 
-*FenixAllianceABPWebAPI* | [**resetPasswordPost**](docs/FenixAllianceABPWebAPI.md#resetpasswordpost) | **POST** /resetPassword | 
-*FenixAllianceABPWebAPI* | [**versionGet**](docs/FenixAllianceABPWebAPI.md#versionget) | **GET** /version | 
+*FenixAllianceABSWebAPI* | [**accountLogoutPost**](docs/FenixAllianceABSWebAPI.md#accountlogoutpost) | **POST** /Account/Logout | 
+*FenixAllianceABSWebAPI* | [**accountManageDownloadPersonalDataPost**](docs/FenixAllianceABSWebAPI.md#accountmanagedownloadpersonaldatapost) | **POST** /Account/Manage/DownloadPersonalData | 
+*FenixAllianceABSWebAPI* | [**accountManageLinkExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#accountmanagelinkexternalloginpost) | **POST** /Account/Manage/LinkExternalLogin | 
+*FenixAllianceABSWebAPI* | [**accountPerformExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#accountperformexternalloginpost) | **POST** /Account/PerformExternalLogin | 
+*FenixAllianceABSWebAPI* | [**forgotPasswordPost**](docs/FenixAllianceABSWebAPI.md#forgotpasswordpost) | **POST** /forgotPassword | 
+*FenixAllianceABSWebAPI* | [**healthGet**](docs/FenixAllianceABSWebAPI.md#healthget) | **GET** /health | 
+*FenixAllianceABSWebAPI* | [**helloGet**](docs/FenixAllianceABSWebAPI.md#helloget) | **GET** /hello | 
+*FenixAllianceABSWebAPI* | [**loginPost**](docs/FenixAllianceABSWebAPI.md#loginpost) | **POST** /login | 
+*FenixAllianceABSWebAPI* | [**manage2faPost**](docs/FenixAllianceABSWebAPI.md#manage2fapost) | **POST** /manage/2fa | 
+*FenixAllianceABSWebAPI* | [**manageInfoGet**](docs/FenixAllianceABSWebAPI.md#manageinfoget) | **GET** /manage/info | 
+*FenixAllianceABSWebAPI* | [**manageInfoPost**](docs/FenixAllianceABSWebAPI.md#manageinfopost) | **POST** /manage/info | 
+*FenixAllianceABSWebAPI* | [**mapIdentityApiConfirmEmail**](docs/FenixAllianceABSWebAPI.md#mapidentityapiconfirmemail) | **GET** /confirmEmail | 
+*FenixAllianceABSWebAPI* | [**refreshPost**](docs/FenixAllianceABSWebAPI.md#refreshpost) | **POST** /refresh | 
+*FenixAllianceABSWebAPI* | [**registerPost**](docs/FenixAllianceABSWebAPI.md#registerpost) | **POST** /register | 
+*FenixAllianceABSWebAPI* | [**resendConfirmationEmailPost**](docs/FenixAllianceABSWebAPI.md#resendconfirmationemailpost) | **POST** /resendConfirmationEmail | 
+*FenixAllianceABSWebAPI* | [**resetPasswordPost**](docs/FenixAllianceABSWebAPI.md#resetpasswordpost) | **POST** /resetPassword | 
+*FenixAllianceABSWebAPI* | [**versionGet**](docs/FenixAllianceABSWebAPI.md#versionget) | **GET** /version | 
 *IndustriesAPI* | [**createTenantIndustry**](docs/IndustriesAPI.md#createtenantindustry) | **POST** /api/v2/TenantsService/Industries | Create a new tenant industry
 *IndustriesAPI* | [**deleteTenantIndustry**](docs/IndustriesAPI.md#deletetenantindustry) | **DELETE** /api/v2/TenantsService/Industries/{tenantIndustryId} | Delete a tenant industry
 *IndustriesAPI* | [**getTenantIndustries**](docs/IndustriesAPI.md#gettenantindustries) | **GET** /api/v2/TenantsService/Industries | Retrieve a list of tenant industries

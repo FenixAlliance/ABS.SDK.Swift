@@ -6,7 +6,7 @@ OpenAPIClient/Classes/OpenAPIs/APIHelper.swift
 OpenAPIClient/Classes/OpenAPIs/APIs.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/ApplicationsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/CheckerAPI.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/FenixAllianceABPWebAPI.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/FenixAllianceABSWebAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/OAuthAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/ResourceAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/UserInfoAPI.swift
@@ -57,7 +57,7 @@ docs/AuthorizationResult.md
 docs/AuthorizationResultEnvelope.md
 docs/CheckerAPI.md
 docs/ErrorEnvelope.md
-docs/FenixAllianceABPWebAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/ForgotPasswordRequest.md
 docs/HttpValidationProblemDetails.md
 docs/InfoRequest.md

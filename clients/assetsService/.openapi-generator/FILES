@@ -8,7 +8,7 @@ OpenAPIClient/Classes/OpenAPIs/APIs/AssetCategoriesAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/AssetTransfersAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/AssetTypesAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/AssetsAPI.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/FenixAllianceABPWebAPI.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/FenixAllianceABSWebAPI.swift
 OpenAPIClient/Classes/OpenAPIs/CodableHelper.swift
 OpenAPIClient/Classes/OpenAPIs/Configuration.swift
 OpenAPIClient/Classes/OpenAPIs/Extensions.swift
@@ -113,7 +113,7 @@ docs/AssetValueAmendUpdateDto.md
 docs/AssetsAPI.md
 docs/EmptyEnvelope.md
 docs/ErrorEnvelope.md
-docs/FenixAllianceABPWebAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/ForgotPasswordRequest.md
 docs/HttpValidationProblemDetails.md
 docs/InfoRequest.md

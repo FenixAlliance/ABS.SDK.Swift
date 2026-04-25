@@ -6,7 +6,7 @@ OpenAPIClient/Classes/OpenAPIs/APIHelper.swift
 OpenAPIClient/Classes/OpenAPIs/APIs.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/AntiforgeryAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/EmailsAPI.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/FenixAllianceABPWebAPI.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/FenixAllianceABSWebAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/LicensingAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/MigrationsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/ModulesAPI.swift
@@ -97,7 +97,7 @@ docs/ExtendedTenantDtoListEnvelope.md
 docs/ExtendedUserDto.md
 docs/ExtendedUserDtoEnvelope.md
 docs/ExtendedUserDtoListEnvelope.md
-docs/FenixAllianceABPWebAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/ForgotPasswordRequest.md
 docs/HttpValidationProblemDetails.md
 docs/ISwaggerContact.md

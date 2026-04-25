@@ -6,7 +6,7 @@ OpenAPIClient/Classes/OpenAPIs/APIHelper.swift
 OpenAPIClient/Classes/OpenAPIs/APIs.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/ExchangeAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/ExchangeVAPI.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/FenixAllianceABPWebAPI.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/FenixAllianceABSWebAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/RatesAPI.swift
 OpenAPIClient/Classes/OpenAPIs/CodableHelper.swift
 OpenAPIClient/Classes/OpenAPIs/Configuration.swift
@@ -47,7 +47,7 @@ docs/ExchangeAPI.md
 docs/ExchangeRate.md
 docs/ExchangeRateEnvelope.md
 docs/ExchangeVAPI.md
-docs/FenixAllianceABPWebAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/ForexRatesDto.md
 docs/ForexRatesDtoEnvelope.md
 docs/ForgotPasswordRequest.md

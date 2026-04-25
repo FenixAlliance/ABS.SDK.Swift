@@ -45,19 +45,23 @@ Class | Method | HTTP request | Description
 *EmailTemplatesAPI* | [**getEmailTemplatesCountAsync**](docs/EmailTemplatesAPI.md#getemailtemplatescountasync) | **GET** /api/v2/MarketingService/EmailTemplates/Count | Get email templates count
 *EmailTemplatesAPI* | [**getEmailTemplatesODataAsync**](docs/EmailTemplatesAPI.md#getemailtemplatesodataasync) | **GET** /api/v2/MarketingService/EmailTemplates | Get email templates
 *EmailTemplatesAPI* | [**updateEmailTemplateAsync**](docs/EmailTemplatesAPI.md#updateemailtemplateasync) | **PUT** /api/v2/MarketingService/EmailTemplates/{emailTemplateId} | Update an email template
-*FenixAllianceABPWebAPI* | [**forgotPasswordPost**](docs/FenixAllianceABPWebAPI.md#forgotpasswordpost) | **POST** /forgotPassword | 
-*FenixAllianceABPWebAPI* | [**healthGet**](docs/FenixAllianceABPWebAPI.md#healthget) | **GET** /health | 
-*FenixAllianceABPWebAPI* | [**helloGet**](docs/FenixAllianceABPWebAPI.md#helloget) | **GET** /hello | 
-*FenixAllianceABPWebAPI* | [**loginPost**](docs/FenixAllianceABPWebAPI.md#loginpost) | **POST** /login | 
-*FenixAllianceABPWebAPI* | [**manage2faPost**](docs/FenixAllianceABPWebAPI.md#manage2fapost) | **POST** /manage/2fa | 
-*FenixAllianceABPWebAPI* | [**manageInfoGet**](docs/FenixAllianceABPWebAPI.md#manageinfoget) | **GET** /manage/info | 
-*FenixAllianceABPWebAPI* | [**manageInfoPost**](docs/FenixAllianceABPWebAPI.md#manageinfopost) | **POST** /manage/info | 
-*FenixAllianceABPWebAPI* | [**mapIdentityApiConfirmEmail**](docs/FenixAllianceABPWebAPI.md#mapidentityapiconfirmemail) | **GET** /confirmEmail | 
-*FenixAllianceABPWebAPI* | [**refreshPost**](docs/FenixAllianceABPWebAPI.md#refreshpost) | **POST** /refresh | 
-*FenixAllianceABPWebAPI* | [**registerPost**](docs/FenixAllianceABPWebAPI.md#registerpost) | **POST** /register | 
-*FenixAllianceABPWebAPI* | [**resendConfirmationEmailPost**](docs/FenixAllianceABPWebAPI.md#resendconfirmationemailpost) | **POST** /resendConfirmationEmail | 
-*FenixAllianceABPWebAPI* | [**resetPasswordPost**](docs/FenixAllianceABPWebAPI.md#resetpasswordpost) | **POST** /resetPassword | 
-*FenixAllianceABPWebAPI* | [**versionGet**](docs/FenixAllianceABPWebAPI.md#versionget) | **GET** /version | 
+*FenixAllianceABSWebAPI* | [**accountLogoutPost**](docs/FenixAllianceABSWebAPI.md#accountlogoutpost) | **POST** /Account/Logout | 
+*FenixAllianceABSWebAPI* | [**accountManageDownloadPersonalDataPost**](docs/FenixAllianceABSWebAPI.md#accountmanagedownloadpersonaldatapost) | **POST** /Account/Manage/DownloadPersonalData | 
+*FenixAllianceABSWebAPI* | [**accountManageLinkExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#accountmanagelinkexternalloginpost) | **POST** /Account/Manage/LinkExternalLogin | 
+*FenixAllianceABSWebAPI* | [**accountPerformExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#accountperformexternalloginpost) | **POST** /Account/PerformExternalLogin | 
+*FenixAllianceABSWebAPI* | [**forgotPasswordPost**](docs/FenixAllianceABSWebAPI.md#forgotpasswordpost) | **POST** /forgotPassword | 
+*FenixAllianceABSWebAPI* | [**healthGet**](docs/FenixAllianceABSWebAPI.md#healthget) | **GET** /health | 
+*FenixAllianceABSWebAPI* | [**helloGet**](docs/FenixAllianceABSWebAPI.md#helloget) | **GET** /hello | 
+*FenixAllianceABSWebAPI* | [**loginPost**](docs/FenixAllianceABSWebAPI.md#loginpost) | **POST** /login | 
+*FenixAllianceABSWebAPI* | [**manage2faPost**](docs/FenixAllianceABSWebAPI.md#manage2fapost) | **POST** /manage/2fa | 
+*FenixAllianceABSWebAPI* | [**manageInfoGet**](docs/FenixAllianceABSWebAPI.md#manageinfoget) | **GET** /manage/info | 
+*FenixAllianceABSWebAPI* | [**manageInfoPost**](docs/FenixAllianceABSWebAPI.md#manageinfopost) | **POST** /manage/info | 
+*FenixAllianceABSWebAPI* | [**mapIdentityApiConfirmEmail**](docs/FenixAllianceABSWebAPI.md#mapidentityapiconfirmemail) | **GET** /confirmEmail | 
+*FenixAllianceABSWebAPI* | [**refreshPost**](docs/FenixAllianceABSWebAPI.md#refreshpost) | **POST** /refresh | 
+*FenixAllianceABSWebAPI* | [**registerPost**](docs/FenixAllianceABSWebAPI.md#registerpost) | **POST** /register | 
+*FenixAllianceABSWebAPI* | [**resendConfirmationEmailPost**](docs/FenixAllianceABSWebAPI.md#resendconfirmationemailpost) | **POST** /resendConfirmationEmail | 
+*FenixAllianceABSWebAPI* | [**resetPasswordPost**](docs/FenixAllianceABSWebAPI.md#resetpasswordpost) | **POST** /resetPassword | 
+*FenixAllianceABSWebAPI* | [**versionGet**](docs/FenixAllianceABSWebAPI.md#versionget) | **GET** /version | 
 *MarketingCampaignsAPI* | [**createMarketingCampaignAsync**](docs/MarketingCampaignsAPI.md#createmarketingcampaignasync) | **POST** /api/v2/MarketingService/MarketingCampaigns | Create a marketing campaign
 *MarketingCampaignsAPI* | [**deleteMarketingCampaignAsync**](docs/MarketingCampaignsAPI.md#deletemarketingcampaignasync) | **DELETE** /api/v2/MarketingService/MarketingCampaigns/{marketingcampaignId} | Delete a marketing campaign
 *MarketingCampaignsAPI* | [**getMarketingCampaignDetailsAsync**](docs/MarketingCampaignsAPI.md#getmarketingcampaigndetailsasync) | **GET** /api/v2/MarketingService/MarketingCampaigns/{marketingcampaignId} | Get marketing campaign by ID
