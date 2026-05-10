@@ -29,6 +29,7 @@ Name | Type | Description | Notes
 **customerNotes** | **String** |  | [optional] 
 **taxCalculationMethod** | **String** |  | [optional] 
 **forexRate** | **Double** |  | [optional] 
+**forexRatesSnapshot** | **String** |  | [optional] 
 **currencyId** | **String** |  | [optional] 
 **totalDetail** | **Double** |  | [optional] 
 **totalDetailCurrencyId** | **String** |  | [optional] 

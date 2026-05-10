@@ -23,7 +23,7 @@ open class FiscalIdentificationTypesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func createFiscalIdentificationType(tenantId: AnyCodable, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalIdentificationTypeCreateDto: FiscalIdentificationTypeCreateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func createFiscalIdentificationType(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalIdentificationTypeCreateDto: FiscalIdentificationTypeCreateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
         return createFiscalIdentificationTypeWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, fiscalIdentificationTypeCreateDto: fiscalIdentificationTypeCreateDto).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -44,7 +44,7 @@ open class FiscalIdentificationTypesAPI {
      - parameter fiscalIdentificationTypeCreateDto: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func createFiscalIdentificationTypeWithRequestBuilder(tenantId: AnyCodable, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalIdentificationTypeCreateDto: FiscalIdentificationTypeCreateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func createFiscalIdentificationTypeWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalIdentificationTypeCreateDto: FiscalIdentificationTypeCreateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
         let localVariablePath = "/api/v2/AccountingService/Fiscals/Authorities/IdentificationTypes"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: fiscalIdentificationTypeCreateDto)
@@ -78,7 +78,7 @@ open class FiscalIdentificationTypesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func deleteFiscalIdentificationType(tenantId: AnyCodable, identificationTypeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func deleteFiscalIdentificationType(tenantId: UUID, identificationTypeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
         return deleteFiscalIdentificationTypeWithRequestBuilder(tenantId: tenantId, identificationTypeId: identificationTypeId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -99,7 +99,7 @@ open class FiscalIdentificationTypesAPI {
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func deleteFiscalIdentificationTypeWithRequestBuilder(tenantId: AnyCodable, identificationTypeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func deleteFiscalIdentificationTypeWithRequestBuilder(tenantId: UUID, identificationTypeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/Fiscals/Authorities/IdentificationTypes/{identificationTypeId}"
         let identificationTypeIdPreEscape = "\(APIHelper.mapValueToPathItem(identificationTypeId))"
         let identificationTypeIdPostEscape = identificationTypeIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -136,7 +136,7 @@ open class FiscalIdentificationTypesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getFiscalIdentificationType(tenantId: AnyCodable, fiscalAuthorityId: UUID, identificationTypeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: FiscalIdentificationTypeDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getFiscalIdentificationType(tenantId: UUID, fiscalAuthorityId: UUID, identificationTypeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: FiscalIdentificationTypeDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
         return getFiscalIdentificationTypeWithRequestBuilder(tenantId: tenantId, fiscalAuthorityId: fiscalAuthorityId, identificationTypeId: identificationTypeId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -158,7 +158,7 @@ open class FiscalIdentificationTypesAPI {
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<FiscalIdentificationTypeDtoEnvelope> 
      */
-    open class func getFiscalIdentificationTypeWithRequestBuilder(tenantId: AnyCodable, fiscalAuthorityId: UUID, identificationTypeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<FiscalIdentificationTypeDtoEnvelope> {
+    open class func getFiscalIdentificationTypeWithRequestBuilder(tenantId: UUID, fiscalAuthorityId: UUID, identificationTypeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<FiscalIdentificationTypeDtoEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/Fiscals/Authorities/{fiscalAuthorityId}/IdentificationTypes/{identificationTypeId}"
         let fiscalAuthorityIdPreEscape = "\(APIHelper.mapValueToPathItem(fiscalAuthorityId))"
         let fiscalAuthorityIdPostEscape = fiscalAuthorityIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -306,7 +306,7 @@ open class FiscalIdentificationTypesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func updateFiscalIdentificationType(tenantId: AnyCodable, identificationTypeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalIdentificationTypeUpdateDto: FiscalIdentificationTypeUpdateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func updateFiscalIdentificationType(tenantId: UUID, identificationTypeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalIdentificationTypeUpdateDto: FiscalIdentificationTypeUpdateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
         return updateFiscalIdentificationTypeWithRequestBuilder(tenantId: tenantId, identificationTypeId: identificationTypeId, apiVersion: apiVersion, xApiVersion: xApiVersion, fiscalIdentificationTypeUpdateDto: fiscalIdentificationTypeUpdateDto).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -328,7 +328,7 @@ open class FiscalIdentificationTypesAPI {
      - parameter fiscalIdentificationTypeUpdateDto: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func updateFiscalIdentificationTypeWithRequestBuilder(tenantId: AnyCodable, identificationTypeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalIdentificationTypeUpdateDto: FiscalIdentificationTypeUpdateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func updateFiscalIdentificationTypeWithRequestBuilder(tenantId: UUID, identificationTypeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalIdentificationTypeUpdateDto: FiscalIdentificationTypeUpdateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/Fiscals/Authorities/IdentificationTypes/{identificationTypeId}"
         let identificationTypeIdPreEscape = "\(APIHelper.mapValueToPathItem(identificationTypeId))"
         let identificationTypeIdPostEscape = identificationTypeIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""

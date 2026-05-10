@@ -23,7 +23,7 @@ open class FiscalResponsibilityRecordsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func createFiscalResponsibilityRecord(tenantId: AnyCodable, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalResponsibilityRecordCreateDto: FiscalResponsibilityRecordCreateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func createFiscalResponsibilityRecord(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalResponsibilityRecordCreateDto: FiscalResponsibilityRecordCreateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
         return createFiscalResponsibilityRecordWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, fiscalResponsibilityRecordCreateDto: fiscalResponsibilityRecordCreateDto).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -44,7 +44,7 @@ open class FiscalResponsibilityRecordsAPI {
      - parameter fiscalResponsibilityRecordCreateDto: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func createFiscalResponsibilityRecordWithRequestBuilder(tenantId: AnyCodable, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalResponsibilityRecordCreateDto: FiscalResponsibilityRecordCreateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func createFiscalResponsibilityRecordWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalResponsibilityRecordCreateDto: FiscalResponsibilityRecordCreateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
         let localVariablePath = "/api/v2/AccountingService/Fiscals/Authorities/FiscalResponsibilityRecords"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: fiscalResponsibilityRecordCreateDto)
@@ -78,7 +78,7 @@ open class FiscalResponsibilityRecordsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func deleteFiscalResponsibilityRecord(tenantId: AnyCodable, fiscalResponsibilityRecordId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func deleteFiscalResponsibilityRecord(tenantId: UUID, fiscalResponsibilityRecordId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
         return deleteFiscalResponsibilityRecordWithRequestBuilder(tenantId: tenantId, fiscalResponsibilityRecordId: fiscalResponsibilityRecordId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -99,7 +99,7 @@ open class FiscalResponsibilityRecordsAPI {
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func deleteFiscalResponsibilityRecordWithRequestBuilder(tenantId: AnyCodable, fiscalResponsibilityRecordId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func deleteFiscalResponsibilityRecordWithRequestBuilder(tenantId: UUID, fiscalResponsibilityRecordId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/Fiscals/Authorities/FiscalResponsibilityRecords/{fiscalResponsibilityRecordId}"
         let fiscalResponsibilityRecordIdPreEscape = "\(APIHelper.mapValueToPathItem(fiscalResponsibilityRecordId))"
         let fiscalResponsibilityRecordIdPostEscape = fiscalResponsibilityRecordIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -137,7 +137,7 @@ open class FiscalResponsibilityRecordsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getFiscalResponsibilityRecord(tenantId: AnyCodable, fiscalAuthorityId: UUID, fiscalResponsibilityId: UUID, fiscalResponsibilityRecordId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: FiscalResponsibilityRecordDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getFiscalResponsibilityRecord(tenantId: UUID, fiscalAuthorityId: UUID, fiscalResponsibilityId: UUID, fiscalResponsibilityRecordId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: FiscalResponsibilityRecordDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
         return getFiscalResponsibilityRecordWithRequestBuilder(tenantId: tenantId, fiscalAuthorityId: fiscalAuthorityId, fiscalResponsibilityId: fiscalResponsibilityId, fiscalResponsibilityRecordId: fiscalResponsibilityRecordId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -160,7 +160,7 @@ open class FiscalResponsibilityRecordsAPI {
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<FiscalResponsibilityRecordDtoEnvelope> 
      */
-    open class func getFiscalResponsibilityRecordWithRequestBuilder(tenantId: AnyCodable, fiscalAuthorityId: UUID, fiscalResponsibilityId: UUID, fiscalResponsibilityRecordId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<FiscalResponsibilityRecordDtoEnvelope> {
+    open class func getFiscalResponsibilityRecordWithRequestBuilder(tenantId: UUID, fiscalAuthorityId: UUID, fiscalResponsibilityId: UUID, fiscalResponsibilityRecordId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<FiscalResponsibilityRecordDtoEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/Fiscals/Authorities/{fiscalAuthorityId}/FiscalResponsibilities/{fiscalResponsibilityId}/FiscalResponsibilityRecords/{fiscalResponsibilityRecordId}"
         let fiscalAuthorityIdPreEscape = "\(APIHelper.mapValueToPathItem(fiscalAuthorityId))"
         let fiscalAuthorityIdPostEscape = fiscalAuthorityIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -203,7 +203,7 @@ open class FiscalResponsibilityRecordsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getFiscalResponsibilityRecords(tenantId: AnyCodable, fiscalAuthorityId: UUID, fiscalResponsibilityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: FiscalResponsibilityRecordDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getFiscalResponsibilityRecords(tenantId: UUID, fiscalAuthorityId: UUID, fiscalResponsibilityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: FiscalResponsibilityRecordDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
         return getFiscalResponsibilityRecordsWithRequestBuilder(tenantId: tenantId, fiscalAuthorityId: fiscalAuthorityId, fiscalResponsibilityId: fiscalResponsibilityId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -225,7 +225,7 @@ open class FiscalResponsibilityRecordsAPI {
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<FiscalResponsibilityRecordDtoListEnvelope> 
      */
-    open class func getFiscalResponsibilityRecordsWithRequestBuilder(tenantId: AnyCodable, fiscalAuthorityId: UUID, fiscalResponsibilityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<FiscalResponsibilityRecordDtoListEnvelope> {
+    open class func getFiscalResponsibilityRecordsWithRequestBuilder(tenantId: UUID, fiscalAuthorityId: UUID, fiscalResponsibilityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<FiscalResponsibilityRecordDtoListEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/Fiscals/Authorities/{fiscalAuthorityId}/FiscalResponsibilities/{fiscalResponsibilityId}/FiscalResponsibilityRecords"
         let fiscalAuthorityIdPreEscape = "\(APIHelper.mapValueToPathItem(fiscalAuthorityId))"
         let fiscalAuthorityIdPostEscape = fiscalAuthorityIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -265,7 +265,7 @@ open class FiscalResponsibilityRecordsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getFiscalResponsibilityRecordsCount(tenantId: AnyCodable, fiscalAuthorityId: UUID, fiscalResponsibilityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getFiscalResponsibilityRecordsCount(tenantId: UUID, fiscalAuthorityId: UUID, fiscalResponsibilityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
         return getFiscalResponsibilityRecordsCountWithRequestBuilder(tenantId: tenantId, fiscalAuthorityId: fiscalAuthorityId, fiscalResponsibilityId: fiscalResponsibilityId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -287,7 +287,7 @@ open class FiscalResponsibilityRecordsAPI {
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getFiscalResponsibilityRecordsCountWithRequestBuilder(tenantId: AnyCodable, fiscalAuthorityId: UUID, fiscalResponsibilityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getFiscalResponsibilityRecordsCountWithRequestBuilder(tenantId: UUID, fiscalAuthorityId: UUID, fiscalResponsibilityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/AccountingService/Fiscals/Authorities/{fiscalAuthorityId}/FiscalResponsibilities/{fiscalResponsibilityId}/FiscalResponsibilityRecords/Count"
         let fiscalAuthorityIdPreEscape = "\(APIHelper.mapValueToPathItem(fiscalAuthorityId))"
         let fiscalAuthorityIdPostEscape = fiscalAuthorityIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -327,7 +327,7 @@ open class FiscalResponsibilityRecordsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func updateFiscalResponsibilityRecord(tenantId: AnyCodable, fiscalResponsibilityRecordId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalResponsibilityRecordUpdateDto: FiscalResponsibilityRecordUpdateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func updateFiscalResponsibilityRecord(tenantId: UUID, fiscalResponsibilityRecordId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalResponsibilityRecordUpdateDto: FiscalResponsibilityRecordUpdateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
         return updateFiscalResponsibilityRecordWithRequestBuilder(tenantId: tenantId, fiscalResponsibilityRecordId: fiscalResponsibilityRecordId, apiVersion: apiVersion, xApiVersion: xApiVersion, fiscalResponsibilityRecordUpdateDto: fiscalResponsibilityRecordUpdateDto).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -349,7 +349,7 @@ open class FiscalResponsibilityRecordsAPI {
      - parameter fiscalResponsibilityRecordUpdateDto: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func updateFiscalResponsibilityRecordWithRequestBuilder(tenantId: AnyCodable, fiscalResponsibilityRecordId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalResponsibilityRecordUpdateDto: FiscalResponsibilityRecordUpdateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func updateFiscalResponsibilityRecordWithRequestBuilder(tenantId: UUID, fiscalResponsibilityRecordId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalResponsibilityRecordUpdateDto: FiscalResponsibilityRecordUpdateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/Fiscals/Authorities/FiscalResponsibilityRecords/{fiscalResponsibilityRecordId}"
         let fiscalResponsibilityRecordIdPreEscape = "\(APIHelper.mapValueToPathItem(fiscalResponsibilityRecordId))"
         let fiscalResponsibilityRecordIdPostEscape = fiscalResponsibilityRecordIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""

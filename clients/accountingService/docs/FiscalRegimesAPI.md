@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 # **createFiscalRegime**
 ```swift
-    open class func createFiscalRegime(tenantId: AnyCodable, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalRegimeCreateDto: FiscalRegimeCreateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func createFiscalRegime(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalRegimeCreateDto: FiscalRegimeCreateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Create a fiscal regime
@@ -26,7 +26,7 @@ Creates a new fiscal regime for a fiscal authority.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let tenantId = "TODO" // AnyCodable | 
+let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 let fiscalRegimeCreateDto = FiscalRegimeCreateDto(id: 123, timestamp: Date(), code: "code_example", name: "name_example", fiscalAuthorityId: "fiscalAuthorityId_example") // FiscalRegimeCreateDto |  (optional)
@@ -48,7 +48,7 @@ FiscalRegimesAPI.createFiscalRegime(tenantId: tenantId, apiVersion: apiVersion, 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenantId** | [**AnyCodable**](.md) |  | 
+ **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
  **fiscalRegimeCreateDto** | [**FiscalRegimeCreateDto**](FiscalRegimeCreateDto.md) |  | [optional] 
@@ -70,7 +70,7 @@ No authorization required
 
 # **deleteFiscalRegime**
 ```swift
-    open class func deleteFiscalRegime(tenantId: AnyCodable, regimeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func deleteFiscalRegime(tenantId: UUID, regimeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Delete a fiscal regime
@@ -82,7 +82,7 @@ Deletes a fiscal regime identified by its unique identifier.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let tenantId = "TODO" // AnyCodable | 
+let tenantId = 987 // UUID | 
 let regimeId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
@@ -104,7 +104,7 @@ FiscalRegimesAPI.deleteFiscalRegime(tenantId: tenantId, regimeId: regimeId, apiV
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenantId** | [**AnyCodable**](.md) |  | 
+ **tenantId** | **UUID** |  | 
  **regimeId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
@@ -126,7 +126,7 @@ No authorization required
 
 # **getFiscalRegime**
 ```swift
-    open class func getFiscalRegime(tenantId: AnyCodable, fiscalAuthorityId: UUID, regimeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: FiscalRegimeDtoEnvelope?, _ error: Error?) -> Void)
+    open class func getFiscalRegime(tenantId: UUID, fiscalAuthorityId: UUID, regimeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: FiscalRegimeDtoEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get fiscal regime by ID
@@ -138,7 +138,7 @@ Retrieves a specific fiscal regime by its unique identifier.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let tenantId = "TODO" // AnyCodable | 
+let tenantId = 987 // UUID | 
 let fiscalAuthorityId = 987 // UUID | 
 let regimeId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
@@ -161,7 +161,7 @@ FiscalRegimesAPI.getFiscalRegime(tenantId: tenantId, fiscalAuthorityId: fiscalAu
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenantId** | [**AnyCodable**](.md) |  | 
+ **tenantId** | **UUID** |  | 
  **fiscalAuthorityId** | **UUID** |  | 
  **regimeId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
@@ -294,7 +294,7 @@ No authorization required
 
 # **updateFiscalRegime**
 ```swift
-    open class func updateFiscalRegime(tenantId: AnyCodable, regimeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalRegimeUpdateDto: FiscalRegimeUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func updateFiscalRegime(tenantId: UUID, regimeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalRegimeUpdateDto: FiscalRegimeUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Update a fiscal regime
@@ -306,7 +306,7 @@ Updates an existing fiscal regime identified by its unique identifier.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let tenantId = "TODO" // AnyCodable | 
+let tenantId = 987 // UUID | 
 let regimeId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
@@ -329,7 +329,7 @@ FiscalRegimesAPI.updateFiscalRegime(tenantId: tenantId, regimeId: regimeId, apiV
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenantId** | [**AnyCodable**](.md) |  | 
+ **tenantId** | **UUID** |  | 
  **regimeId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 

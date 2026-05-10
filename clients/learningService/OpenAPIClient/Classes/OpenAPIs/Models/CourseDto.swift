@@ -175,8 +175,22 @@ public struct CourseDto: Codable, JSONEncodable, Hashable {
     public var selectedShipmentPolicies: [String]?
     public var selectedAttributesOptions: [String]?
     public var selectedSellingMarginPolicies: [String]?
+    public var code: String?
+    public var version: String?
+    public var courseCategoryID: String?
+    public var courseCategoryName: String?
+    public var instructorProfileID: String?
+    public var instructorProfileName: String?
+    public var maxCourseEnrollments: Int?
+    public var totalEffortInWeeks: Int?
+    public var totalHoursPerWeek: Int?
+    public var totalEffortInHours: Int?
+    public var startDateTime: Date?
+    public var endDateTime: Date?
+    public var inscriptionsStartDateTime: Date?
+    public var inscriptionsEndDateTime: Date?
 
-    public init(id: String? = nil, timestamp: Date? = nil, sku: String? = nil, upc: String? = nil, ean: String? = nil, mpn: String? = nil, skUs: String? = nil, isbn: String? = nil, upCs: String? = nil, eaNs: String? = nil, asin: String? = nil, gtin: String? = nil, mpNs: String? = nil, part: String? = nil, name: String? = nil, isbNs: String? = nil, asiNs: String? = nil, gtiNs: String? = nil, model: String? = nil, title: String? = nil, color: String? = nil, isbN13: String? = nil, unspsc: String? = nil, unitId: String? = nil, series: String? = nil, barcode: String? = nil, unspsCs: String? = nil, pattern: String? = nil, summary: String? = nil, brandId: String? = nil, features: String? = nil, material: String? = nil, tenantId: String? = nil, permalink: String? = nil, brandName: String? = nil, languageId: String? = nil, itemTypeId: String? = nil, categoryId: String? = nil, currencyId: String? = nil, unitGroupId: String? = nil, description: String? = nil, ingredients: String? = nil, releaseDate: String? = nil, enrollmentId: String? = nil, supplierCode: String? = nil, shipsToRules: String? = nil, purchaseNote: String? = nil, parentItemId: String? = nil, itemTypeName: String? = nil, discriminator: String? = nil, tariffHeading: String? = nil, nutritionFacts: String? = nil, mozaicCoverUrl: String? = nil, packageContent: String? = nil, youtubeVideoId: String? = nil, primaryImageUrl: String? = nil, longDescription: String? = nil, measurementUnit: String? = nil, shortDescription: String? = nil, googleCategories: String? = nil, supplierProfileId: String? = nil, shippingCountryId: String? = nil, systemRequirements: String? = nil, customTaxDescription: String? = nil, officialDescriptionUrl: String? = nil, energyEfficiencyRating: String? = nil, pageCoverBackgroundUrl: String? = nil, primaryGoogleCategoryId: String? = nil, operatingSystemSupported: String? = nil, supportedOperatingSystem: String? = nil, primaryGoogleCategoryName: String? = nil, hot: Bool? = nil, onSale: Bool? = nil, auction: Bool? = nil, deleted: Bool? = nil, digital: Bool? = nil, preSale: Bool? = nil, taxable: Bool? = nil, inStock: Bool? = nil, featured: Bool? = nil, trending: Bool? = nil, lowStock: Bool? = nil, published: Bool? = nil, byRequest: Bool? = nil, onDiscount: Bool? = nil, isDailyDeal: Bool? = nil, isNewArrival: Bool? = nil, isWeeklyDeal: Bool? = nil, isBestSeller: Bool? = nil, isMonthlyDeal: Bool? = nil, hasVariations: Bool? = nil, isFixedDiscount: Bool? = nil, isDealersChoice: Bool? = nil, manageInventory: Bool? = nil, isOfficialChoice: Bool? = nil, validPrimaryImage: Bool? = nil, isDeadlineDiscount: Bool? = nil, displayShowcaseTab: Bool? = nil, taxIncludedInPrice: Bool? = nil, isProductOfTheWeek: Bool? = nil, isProductOfTheMonth: Bool? = nil, isPercentageDiscount: Bool? = nil, displayOnGlobalMozaic: Bool? = nil, displayOnBrandsMozaic: Bool? = nil, disableDefaultPolicies: Bool? = nil, displayOnCategoryMozaic: Bool? = nil, displayDescriptionEditor: Bool? = nil, displayShortDescriptionEditor: Bool? = nil, displayOnBannerMarketingRotation: Bool? = nil, auctionEnd: Date? = nil, auctionStart: Date? = nil, publishedDate: Date? = nil, deadlineDiscountFromDate: Date? = nil, deadlineDiscountDueDate: Date? = nil, lastFixedPricesUpdateDateTime: Date? = nil, images: [String]? = nil, viewsCount: Int? = nil, reviewsCount: Int? = nil, questionsCount: Int? = nil, packagedQuantity: Int? = nil, reviewsAvg: Double? = nil, recurrency: Double? = nil, currentStock: Double? = nil, width: Double? = nil, weight: Double? = nil, length: Double? = nil, height: Double? = nil, regularPrice: Double? = nil, discountPrice: Double? = nil, customTaxValue: Double? = nil, discountAmount: Double? = nil, inCartQuantity: Double? = nil, customTaxAmount: Double? = nil, discountPercentage: Double? = nil, customTaxPercentage: Double? = nil, estimatedTaxesInUsd: Double? = nil, estimatedProfitInUsd: Double? = nil, estimatedBasePriceInUsd: Double? = nil, estimatedDiscountsInUsd: Double? = nil, estimatedSurchargesInUsd: Double? = nil, estimatedPaymentTaxInUsd: Double? = nil, estimatedTotalPriceInUsd: Double? = nil, estimatedPaymentCostInUsd: Double? = nil, estimatedDealSavingsInUsd: Double? = nil, estimatedRegularPriceInUsd: Double? = nil, estimatedTaxBasePriceInUsd: Double? = nil, estimatedWithholdingTaxesInUsd: Double? = nil, estimatedDefaultShippingTaxInUsd: Double? = nil, estimatedDefaultShippingCostInUsd: Double? = nil, selectedTags: [String]? = nil, selectedTypes: [String]? = nil, selectedBrands: [String]? = nil, selectedCategories: [String]? = nil, selectedTaxPolicies: [String]? = nil, selectedPricingRules: [String]? = nil, selectedRefundPolicies: [String]? = nil, selectedReturnPolicies: [String]? = nil, selectedPricingPolicies: [String]? = nil, selectedGoogleCategories: [String]? = nil, selectedWarrantyPolicies: [String]? = nil, selectedShipmentPolicies: [String]? = nil, selectedAttributesOptions: [String]? = nil, selectedSellingMarginPolicies: [String]? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, sku: String? = nil, upc: String? = nil, ean: String? = nil, mpn: String? = nil, skUs: String? = nil, isbn: String? = nil, upCs: String? = nil, eaNs: String? = nil, asin: String? = nil, gtin: String? = nil, mpNs: String? = nil, part: String? = nil, name: String? = nil, isbNs: String? = nil, asiNs: String? = nil, gtiNs: String? = nil, model: String? = nil, title: String? = nil, color: String? = nil, isbN13: String? = nil, unspsc: String? = nil, unitId: String? = nil, series: String? = nil, barcode: String? = nil, unspsCs: String? = nil, pattern: String? = nil, summary: String? = nil, brandId: String? = nil, features: String? = nil, material: String? = nil, tenantId: String? = nil, permalink: String? = nil, brandName: String? = nil, languageId: String? = nil, itemTypeId: String? = nil, categoryId: String? = nil, currencyId: String? = nil, unitGroupId: String? = nil, description: String? = nil, ingredients: String? = nil, releaseDate: String? = nil, enrollmentId: String? = nil, supplierCode: String? = nil, shipsToRules: String? = nil, purchaseNote: String? = nil, parentItemId: String? = nil, itemTypeName: String? = nil, discriminator: String? = nil, tariffHeading: String? = nil, nutritionFacts: String? = nil, mozaicCoverUrl: String? = nil, packageContent: String? = nil, youtubeVideoId: String? = nil, primaryImageUrl: String? = nil, longDescription: String? = nil, measurementUnit: String? = nil, shortDescription: String? = nil, googleCategories: String? = nil, supplierProfileId: String? = nil, shippingCountryId: String? = nil, systemRequirements: String? = nil, customTaxDescription: String? = nil, officialDescriptionUrl: String? = nil, energyEfficiencyRating: String? = nil, pageCoverBackgroundUrl: String? = nil, primaryGoogleCategoryId: String? = nil, operatingSystemSupported: String? = nil, supportedOperatingSystem: String? = nil, primaryGoogleCategoryName: String? = nil, hot: Bool? = nil, onSale: Bool? = nil, auction: Bool? = nil, deleted: Bool? = nil, digital: Bool? = nil, preSale: Bool? = nil, taxable: Bool? = nil, inStock: Bool? = nil, featured: Bool? = nil, trending: Bool? = nil, lowStock: Bool? = nil, published: Bool? = nil, byRequest: Bool? = nil, onDiscount: Bool? = nil, isDailyDeal: Bool? = nil, isNewArrival: Bool? = nil, isWeeklyDeal: Bool? = nil, isBestSeller: Bool? = nil, isMonthlyDeal: Bool? = nil, hasVariations: Bool? = nil, isFixedDiscount: Bool? = nil, isDealersChoice: Bool? = nil, manageInventory: Bool? = nil, isOfficialChoice: Bool? = nil, validPrimaryImage: Bool? = nil, isDeadlineDiscount: Bool? = nil, displayShowcaseTab: Bool? = nil, taxIncludedInPrice: Bool? = nil, isProductOfTheWeek: Bool? = nil, isProductOfTheMonth: Bool? = nil, isPercentageDiscount: Bool? = nil, displayOnGlobalMozaic: Bool? = nil, displayOnBrandsMozaic: Bool? = nil, disableDefaultPolicies: Bool? = nil, displayOnCategoryMozaic: Bool? = nil, displayDescriptionEditor: Bool? = nil, displayShortDescriptionEditor: Bool? = nil, displayOnBannerMarketingRotation: Bool? = nil, auctionEnd: Date? = nil, auctionStart: Date? = nil, publishedDate: Date? = nil, deadlineDiscountFromDate: Date? = nil, deadlineDiscountDueDate: Date? = nil, lastFixedPricesUpdateDateTime: Date? = nil, images: [String]? = nil, viewsCount: Int? = nil, reviewsCount: Int? = nil, questionsCount: Int? = nil, packagedQuantity: Int? = nil, reviewsAvg: Double? = nil, recurrency: Double? = nil, currentStock: Double? = nil, width: Double? = nil, weight: Double? = nil, length: Double? = nil, height: Double? = nil, regularPrice: Double? = nil, discountPrice: Double? = nil, customTaxValue: Double? = nil, discountAmount: Double? = nil, inCartQuantity: Double? = nil, customTaxAmount: Double? = nil, discountPercentage: Double? = nil, customTaxPercentage: Double? = nil, estimatedTaxesInUsd: Double? = nil, estimatedProfitInUsd: Double? = nil, estimatedBasePriceInUsd: Double? = nil, estimatedDiscountsInUsd: Double? = nil, estimatedSurchargesInUsd: Double? = nil, estimatedPaymentTaxInUsd: Double? = nil, estimatedTotalPriceInUsd: Double? = nil, estimatedPaymentCostInUsd: Double? = nil, estimatedDealSavingsInUsd: Double? = nil, estimatedRegularPriceInUsd: Double? = nil, estimatedTaxBasePriceInUsd: Double? = nil, estimatedWithholdingTaxesInUsd: Double? = nil, estimatedDefaultShippingTaxInUsd: Double? = nil, estimatedDefaultShippingCostInUsd: Double? = nil, selectedTags: [String]? = nil, selectedTypes: [String]? = nil, selectedBrands: [String]? = nil, selectedCategories: [String]? = nil, selectedTaxPolicies: [String]? = nil, selectedPricingRules: [String]? = nil, selectedRefundPolicies: [String]? = nil, selectedReturnPolicies: [String]? = nil, selectedPricingPolicies: [String]? = nil, selectedGoogleCategories: [String]? = nil, selectedWarrantyPolicies: [String]? = nil, selectedShipmentPolicies: [String]? = nil, selectedAttributesOptions: [String]? = nil, selectedSellingMarginPolicies: [String]? = nil, code: String? = nil, version: String? = nil, courseCategoryID: String? = nil, courseCategoryName: String? = nil, instructorProfileID: String? = nil, instructorProfileName: String? = nil, maxCourseEnrollments: Int? = nil, totalEffortInWeeks: Int? = nil, totalHoursPerWeek: Int? = nil, totalEffortInHours: Int? = nil, startDateTime: Date? = nil, endDateTime: Date? = nil, inscriptionsStartDateTime: Date? = nil, inscriptionsEndDateTime: Date? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.sku = sku
@@ -340,6 +354,20 @@ public struct CourseDto: Codable, JSONEncodable, Hashable {
         self.selectedShipmentPolicies = selectedShipmentPolicies
         self.selectedAttributesOptions = selectedAttributesOptions
         self.selectedSellingMarginPolicies = selectedSellingMarginPolicies
+        self.code = code
+        self.version = version
+        self.courseCategoryID = courseCategoryID
+        self.courseCategoryName = courseCategoryName
+        self.instructorProfileID = instructorProfileID
+        self.instructorProfileName = instructorProfileName
+        self.maxCourseEnrollments = maxCourseEnrollments
+        self.totalEffortInWeeks = totalEffortInWeeks
+        self.totalHoursPerWeek = totalHoursPerWeek
+        self.totalEffortInHours = totalEffortInHours
+        self.startDateTime = startDateTime
+        self.endDateTime = endDateTime
+        self.inscriptionsStartDateTime = inscriptionsStartDateTime
+        self.inscriptionsEndDateTime = inscriptionsEndDateTime
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -506,6 +534,20 @@ public struct CourseDto: Codable, JSONEncodable, Hashable {
         case selectedShipmentPolicies
         case selectedAttributesOptions
         case selectedSellingMarginPolicies
+        case code
+        case version
+        case courseCategoryID
+        case courseCategoryName
+        case instructorProfileID
+        case instructorProfileName
+        case maxCourseEnrollments
+        case totalEffortInWeeks
+        case totalHoursPerWeek
+        case totalEffortInHours
+        case startDateTime
+        case endDateTime
+        case inscriptionsStartDateTime
+        case inscriptionsEndDateTime
     }
 
     // Encodable protocol methods
@@ -675,6 +717,20 @@ public struct CourseDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(selectedShipmentPolicies, forKey: .selectedShipmentPolicies)
         try container.encodeIfPresent(selectedAttributesOptions, forKey: .selectedAttributesOptions)
         try container.encodeIfPresent(selectedSellingMarginPolicies, forKey: .selectedSellingMarginPolicies)
+        try container.encodeIfPresent(code, forKey: .code)
+        try container.encodeIfPresent(version, forKey: .version)
+        try container.encodeIfPresent(courseCategoryID, forKey: .courseCategoryID)
+        try container.encodeIfPresent(courseCategoryName, forKey: .courseCategoryName)
+        try container.encodeIfPresent(instructorProfileID, forKey: .instructorProfileID)
+        try container.encodeIfPresent(instructorProfileName, forKey: .instructorProfileName)
+        try container.encodeIfPresent(maxCourseEnrollments, forKey: .maxCourseEnrollments)
+        try container.encodeIfPresent(totalEffortInWeeks, forKey: .totalEffortInWeeks)
+        try container.encodeIfPresent(totalHoursPerWeek, forKey: .totalHoursPerWeek)
+        try container.encodeIfPresent(totalEffortInHours, forKey: .totalEffortInHours)
+        try container.encodeIfPresent(startDateTime, forKey: .startDateTime)
+        try container.encodeIfPresent(endDateTime, forKey: .endDateTime)
+        try container.encodeIfPresent(inscriptionsStartDateTime, forKey: .inscriptionsStartDateTime)
+        try container.encodeIfPresent(inscriptionsEndDateTime, forKey: .inscriptionsEndDateTime)
     }
 }
 

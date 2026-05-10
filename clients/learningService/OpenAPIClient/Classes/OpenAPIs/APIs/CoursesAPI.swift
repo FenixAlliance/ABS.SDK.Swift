@@ -353,16 +353,16 @@ open class CoursesAPI {
     /**
      Get course by ID
      
-     - parameter tenantId: (query)  
      - parameter courseId: (path)  
+     - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCourseByIdAsync(tenantId: UUID, courseId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CourseDto?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCourseByIdAsyncWithRequestBuilder(tenantId: tenantId, courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCourseByIdAsync(courseId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CourseDto?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCourseByIdAsyncWithRequestBuilder(courseId: courseId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -376,13 +376,13 @@ open class CoursesAPI {
      Get course by ID
      - GET /api/v2/LearningService/Courses/{courseId}
      - Retrieves a specific course by its ID.
-     - parameter tenantId: (query)  
      - parameter courseId: (path)  
+     - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<CourseDto> 
      */
-    open class func getCourseByIdAsyncWithRequestBuilder(tenantId: UUID, courseId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<CourseDto> {
+    open class func getCourseByIdAsyncWithRequestBuilder(courseId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<CourseDto> {
         var localVariablePath = "/api/v2/LearningService/Courses/{courseId}"
         let courseIdPreEscape = "\(APIHelper.mapValueToPathItem(courseId))"
         let courseIdPostEscape = courseIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -392,7 +392,7 @@ open class CoursesAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 

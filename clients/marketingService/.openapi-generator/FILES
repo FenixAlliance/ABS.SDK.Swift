@@ -9,6 +9,7 @@ OpenAPIClient/Classes/OpenAPIs/APIs/EmailSignaturesAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/EmailTemplatesAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/FenixAllianceABSWebAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/MarketingCampaignsAPI.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/MarketingLeadsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/MarketingListsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/NewslettersAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/SocialMediaPostsAPI.swift
@@ -48,6 +49,11 @@ OpenAPIClient/Classes/OpenAPIs/Models/MarketingCampaignCreateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/MarketingCampaignDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/MarketingCampaignDtoEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/MarketingCampaignUpdateDto.swift
+OpenAPIClient/Classes/OpenAPIs/Models/MarketingLeadCreateDto.swift
+OpenAPIClient/Classes/OpenAPIs/Models/MarketingLeadDto.swift
+OpenAPIClient/Classes/OpenAPIs/Models/MarketingLeadDtoEnvelope.swift
+OpenAPIClient/Classes/OpenAPIs/Models/MarketingLeadDtoListEnvelope.swift
+OpenAPIClient/Classes/OpenAPIs/Models/MarketingLeadUpdateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/MarketingListCreateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/MarketingListDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/MarketingListDtoEnvelope.swift
@@ -114,6 +120,12 @@ docs/MarketingCampaignDto.md
 docs/MarketingCampaignDtoEnvelope.md
 docs/MarketingCampaignUpdateDto.md
 docs/MarketingCampaignsAPI.md
+docs/MarketingLeadCreateDto.md
+docs/MarketingLeadDto.md
+docs/MarketingLeadDtoEnvelope.md
+docs/MarketingLeadDtoListEnvelope.md
+docs/MarketingLeadUpdateDto.md
+docs/MarketingLeadsAPI.md
 docs/MarketingListCreateDto.md
 docs/MarketingListDto.md
 docs/MarketingListDtoEnvelope.md

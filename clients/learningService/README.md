@@ -33,6 +33,18 @@ Class | Method | HTTP request | Description
 *CourseArticlesAPI* | [**getCourseArticlesAsync**](docs/CourseArticlesAPI.md#getcoursearticlesasync) | **GET** /api/v2/LearningService/CourseArticles | Get all course articles
 *CourseArticlesAPI* | [**getCourseArticlesCountAsync**](docs/CourseArticlesAPI.md#getcoursearticlescountasync) | **GET** /api/v2/LearningService/CourseArticles/Count | Get course articles count
 *CourseArticlesAPI* | [**updateCourseArticleAsync**](docs/CourseArticlesAPI.md#updatecoursearticleasync) | **PUT** /api/v2/LearningService/CourseArticles/{articleId} | Update a course article
+*CourseAssignmentComponentsAPI* | [**createCourseAssignmentComponentAsync**](docs/CourseAssignmentComponentsAPI.md#createcourseassignmentcomponentasync) | **POST** /api/v2/LearningService/CourseAssignmentComponents | Create a course assignment component
+*CourseAssignmentComponentsAPI* | [**deleteCourseAssignmentComponentAsync**](docs/CourseAssignmentComponentsAPI.md#deletecourseassignmentcomponentasync) | **DELETE** /api/v2/LearningService/CourseAssignmentComponents/{componentId} | Delete a course assignment component
+*CourseAssignmentComponentsAPI* | [**getCourseAssignmentComponentByIdAsync**](docs/CourseAssignmentComponentsAPI.md#getcourseassignmentcomponentbyidasync) | **GET** /api/v2/LearningService/CourseAssignmentComponents/{componentId} | Get course assignment component by ID
+*CourseAssignmentComponentsAPI* | [**getCourseAssignmentComponentsAsync**](docs/CourseAssignmentComponentsAPI.md#getcourseassignmentcomponentsasync) | **GET** /api/v2/LearningService/CourseAssignmentComponents | Get all course assignment components
+*CourseAssignmentComponentsAPI* | [**getCourseAssignmentComponentsCountAsync**](docs/CourseAssignmentComponentsAPI.md#getcourseassignmentcomponentscountasync) | **GET** /api/v2/LearningService/CourseAssignmentComponents/Count | Get course assignment components count
+*CourseAssignmentComponentsAPI* | [**updateCourseAssignmentComponentAsync**](docs/CourseAssignmentComponentsAPI.md#updatecourseassignmentcomponentasync) | **PUT** /api/v2/LearningService/CourseAssignmentComponents/{componentId} | Update a course assignment component
+*CourseAssignmentTypesAPI* | [**createCourseAssignmentTypeAsync**](docs/CourseAssignmentTypesAPI.md#createcourseassignmenttypeasync) | **POST** /api/v2/LearningService/CourseAssignmentTypes | Create a course assignment type
+*CourseAssignmentTypesAPI* | [**deleteCourseAssignmentTypeAsync**](docs/CourseAssignmentTypesAPI.md#deletecourseassignmenttypeasync) | **DELETE** /api/v2/LearningService/CourseAssignmentTypes/{assignmentTypeId} | Delete a course assignment type
+*CourseAssignmentTypesAPI* | [**getCourseAssignmentTypeByIdAsync**](docs/CourseAssignmentTypesAPI.md#getcourseassignmenttypebyidasync) | **GET** /api/v2/LearningService/CourseAssignmentTypes/{assignmentTypeId} | Get course assignment type by ID
+*CourseAssignmentTypesAPI* | [**getCourseAssignmentTypesAsync**](docs/CourseAssignmentTypesAPI.md#getcourseassignmenttypesasync) | **GET** /api/v2/LearningService/CourseAssignmentTypes | Get all course assignment types
+*CourseAssignmentTypesAPI* | [**getCourseAssignmentTypesCountAsync**](docs/CourseAssignmentTypesAPI.md#getcourseassignmenttypescountasync) | **GET** /api/v2/LearningService/CourseAssignmentTypes/Count | Get course assignment types count
+*CourseAssignmentTypesAPI* | [**updateCourseAssignmentTypeAsync**](docs/CourseAssignmentTypesAPI.md#updatecourseassignmenttypeasync) | **PUT** /api/v2/LearningService/CourseAssignmentTypes/{assignmentTypeId} | Update a course assignment type
 *CourseAssignmentsAPI* | [**createCourseAssignmentAsync**](docs/CourseAssignmentsAPI.md#createcourseassignmentasync) | **POST** /api/v2/LearningService/CourseAssignments | Create a new course assignment
 *CourseAssignmentsAPI* | [**deleteCourseAssignmentAsync**](docs/CourseAssignmentsAPI.md#deletecourseassignmentasync) | **DELETE** /api/v2/LearningService/CourseAssignments/{assignmentId} | Delete a course assignment
 *CourseAssignmentsAPI* | [**getCourseAssignmentByIdAsync**](docs/CourseAssignmentsAPI.md#getcourseassignmentbyidasync) | **GET** /api/v2/LearningService/CourseAssignments/{assignmentId} | Get course assignment by ID
@@ -61,6 +73,14 @@ Class | Method | HTTP request | Description
 *CourseCohortsAPI* | [**getCourseCohortsAsync**](docs/CourseCohortsAPI.md#getcoursecohortsasync) | **GET** /api/v2/LearningService/CourseCohorts | Get all course cohorts
 *CourseCohortsAPI* | [**getCourseCohortsCountAsync**](docs/CourseCohortsAPI.md#getcoursecohortscountasync) | **GET** /api/v2/LearningService/CourseCohorts/Count | Get course cohorts count
 *CourseCohortsAPI* | [**updateCourseCohortAsync**](docs/CourseCohortsAPI.md#updatecoursecohortasync) | **PUT** /api/v2/LearningService/CourseCohorts/{cohortId} | Update a course cohort
+*CourseContentGroupsAPI* | [**createCourseContentGroupAsync**](docs/CourseContentGroupsAPI.md#createcoursecontentgroupasync) | **POST** /api/v2/LearningService/CourseContentGroups | Create a new course content group
+*CourseContentGroupsAPI* | [**deleteCourseContentGroupAsync**](docs/CourseContentGroupsAPI.md#deletecoursecontentgroupasync) | **DELETE** /api/v2/LearningService/CourseContentGroups/{groupId} | Delete a course content group
+*CourseContentGroupsAPI* | [**getCourseContentGroupByIdAsync**](docs/CourseContentGroupsAPI.md#getcoursecontentgroupbyidasync) | **GET** /api/v2/LearningService/CourseContentGroups/{groupId} | Get course content group by ID
+*CourseContentGroupsAPI* | [**getCourseContentGroupsAsync**](docs/CourseContentGroupsAPI.md#getcoursecontentgroupsasync) | **GET** /api/v2/LearningService/CourseContentGroups | Get all course content groups
+*CourseContentGroupsAPI* | [**getCourseContentGroupsByCourseAsync**](docs/CourseContentGroupsAPI.md#getcoursecontentgroupsbycourseasync) | **GET** /api/v2/LearningService/Courses/{courseId}/ContentGroups | Get course content groups by course
+*CourseContentGroupsAPI* | [**getCourseContentGroupsByCourseCountAsync**](docs/CourseContentGroupsAPI.md#getcoursecontentgroupsbycoursecountasync) | **GET** /api/v2/LearningService/Courses/{courseId}/ContentGroups/Count | Get course content groups count by course
+*CourseContentGroupsAPI* | [**getCourseContentGroupsCountAsync**](docs/CourseContentGroupsAPI.md#getcoursecontentgroupscountasync) | **GET** /api/v2/LearningService/CourseContentGroups/Count | Get course content groups count
+*CourseContentGroupsAPI* | [**updateCourseContentGroupAsync**](docs/CourseContentGroupsAPI.md#updatecoursecontentgroupasync) | **PUT** /api/v2/LearningService/CourseContentGroups/{groupId} | Update a course content group
 *CourseEnrollmentsAPI* | [**createCourseEnrollmentAsync**](docs/CourseEnrollmentsAPI.md#createcourseenrollmentasync) | **POST** /api/v2/LearningService/CourseEnrollments | Create a new course enrollment
 *CourseEnrollmentsAPI* | [**deleteCourseEnrollmentAsync**](docs/CourseEnrollmentsAPI.md#deletecourseenrollmentasync) | **DELETE** /api/v2/LearningService/CourseEnrollments/{courseEnrollmentId} | Delete a course enrollment
 *CourseEnrollmentsAPI* | [**getCourseEnrollmentAsync**](docs/CourseEnrollmentsAPI.md#getcourseenrollmentasync) | **GET** /api/v2/LearningService/CourseEnrollments/{courseEnrollmentId} | Get course enrollment by ID
@@ -80,6 +100,12 @@ Class | Method | HTTP request | Description
 *CourseForumsAPI* | [**getCourseForumsAsync**](docs/CourseForumsAPI.md#getcourseforumsasync) | **GET** /api/v2/LearningService/CourseForums | Get all course forums
 *CourseForumsAPI* | [**getCourseForumsCountAsync**](docs/CourseForumsAPI.md#getcourseforumscountasync) | **GET** /api/v2/LearningService/CourseForums/Count | Get course forums count
 *CourseForumsAPI* | [**updateCourseForumAsync**](docs/CourseForumsAPI.md#updatecourseforumasync) | **PUT** /api/v2/LearningService/CourseForums/{forumId} | Update a course forum
+*CourseGradingRubricsAPI* | [**createCourseGradingRubricAsync**](docs/CourseGradingRubricsAPI.md#createcoursegradingrubricasync) | **POST** /api/v2/LearningService/CourseGradingRubrics | Create a course grading rubric
+*CourseGradingRubricsAPI* | [**deleteCourseGradingRubricAsync**](docs/CourseGradingRubricsAPI.md#deletecoursegradingrubricasync) | **DELETE** /api/v2/LearningService/CourseGradingRubrics/{rubricId} | Delete a course grading rubric
+*CourseGradingRubricsAPI* | [**getCourseGradingRubricByIdAsync**](docs/CourseGradingRubricsAPI.md#getcoursegradingrubricbyidasync) | **GET** /api/v2/LearningService/CourseGradingRubrics/{rubricId} | Get course grading rubric by ID
+*CourseGradingRubricsAPI* | [**getCourseGradingRubricsAsync**](docs/CourseGradingRubricsAPI.md#getcoursegradingrubricsasync) | **GET** /api/v2/LearningService/CourseGradingRubrics | Get all course grading rubrics
+*CourseGradingRubricsAPI* | [**getCourseGradingRubricsCountAsync**](docs/CourseGradingRubricsAPI.md#getcoursegradingrubricscountasync) | **GET** /api/v2/LearningService/CourseGradingRubrics/Count | Get course grading rubrics count
+*CourseGradingRubricsAPI* | [**updateCourseGradingRubricAsync**](docs/CourseGradingRubricsAPI.md#updatecoursegradingrubricasync) | **PUT** /api/v2/LearningService/CourseGradingRubrics/{rubricId} | Update a course grading rubric
 *CourseHandoutsAPI* | [**createCourseHandoutAsync**](docs/CourseHandoutsAPI.md#createcoursehandoutasync) | **POST** /api/v2/LearningService/CourseHandouts | Create a course handout
 *CourseHandoutsAPI* | [**deleteCourseHandoutAsync**](docs/CourseHandoutsAPI.md#deletecoursehandoutasync) | **DELETE** /api/v2/LearningService/CourseHandouts/{handoutId} | Delete a course handout
 *CourseHandoutsAPI* | [**getCourseHandoutByIdAsync**](docs/CourseHandoutsAPI.md#getcoursehandoutbyidasync) | **GET** /api/v2/LearningService/CourseHandouts/{handoutId} | Get course handout by ID
@@ -110,6 +136,12 @@ Class | Method | HTTP request | Description
 *CourseSectionsAPI* | [**getCourseSectionsAsync**](docs/CourseSectionsAPI.md#getcoursesectionsasync) | **GET** /api/v2/LearningService/CourseSections | Get all course sections
 *CourseSectionsAPI* | [**getCourseSectionsCountAsync**](docs/CourseSectionsAPI.md#getcoursesectionscountasync) | **GET** /api/v2/LearningService/CourseSections/Count | Get course sections count
 *CourseSectionsAPI* | [**updateCourseSectionAsync**](docs/CourseSectionsAPI.md#updatecoursesectionasync) | **PUT** /api/v2/LearningService/CourseSections/{sectionId} | Update a course section
+*CourseTeamMembershipsAPI* | [**createCourseTeamMembershipAsync**](docs/CourseTeamMembershipsAPI.md#createcourseteammembershipasync) | **POST** /api/v2/LearningService/CourseTeamMemberships | Create a course team membership
+*CourseTeamMembershipsAPI* | [**deleteCourseTeamMembershipAsync**](docs/CourseTeamMembershipsAPI.md#deletecourseteammembershipasync) | **DELETE** /api/v2/LearningService/CourseTeamMemberships/{membershipId} | Delete a course team membership
+*CourseTeamMembershipsAPI* | [**getCourseTeamMembershipByIdAsync**](docs/CourseTeamMembershipsAPI.md#getcourseteammembershipbyidasync) | **GET** /api/v2/LearningService/CourseTeamMemberships/{membershipId} | Get course team membership by ID
+*CourseTeamMembershipsAPI* | [**getCourseTeamMembershipsAsync**](docs/CourseTeamMembershipsAPI.md#getcourseteammembershipsasync) | **GET** /api/v2/LearningService/CourseTeamMemberships | Get all course team memberships
+*CourseTeamMembershipsAPI* | [**getCourseTeamMembershipsCountAsync**](docs/CourseTeamMembershipsAPI.md#getcourseteammembershipscountasync) | **GET** /api/v2/LearningService/CourseTeamMemberships/Count | Get course team memberships count
+*CourseTeamMembershipsAPI* | [**updateCourseTeamMembershipAsync**](docs/CourseTeamMembershipsAPI.md#updatecourseteammembershipasync) | **PUT** /api/v2/LearningService/CourseTeamMemberships/{membershipId} | Update a course team membership
 *CourseUnitComponentsAPI* | [**createCourseUnitComponentAsync**](docs/CourseUnitComponentsAPI.md#createcourseunitcomponentasync) | **POST** /api/v2/LearningService/CourseUnitComponents | Create a new course unit component
 *CourseUnitComponentsAPI* | [**deleteCourseUnitComponentAsync**](docs/CourseUnitComponentsAPI.md#deletecourseunitcomponentasync) | **DELETE** /api/v2/LearningService/CourseUnitComponents/{componentId} | Delete a course unit component
 *CourseUnitComponentsAPI* | [**getCourseUnitComponentByIdAsync**](docs/CourseUnitComponentsAPI.md#getcourseunitcomponentbyidasync) | **GET** /api/v2/LearningService/CourseUnitComponents/{componentId} | Get course unit component by ID
@@ -198,6 +230,21 @@ Class | Method | HTTP request | Description
 *InstructorProfilesAPI* | [**apiV2LearningServiceInstructorProfilesInstructorProfileIdGet**](docs/InstructorProfilesAPI.md#apiv2learningserviceinstructorprofilesinstructorprofileidget) | **GET** /api/v2/LearningService/InstructorProfiles/{instructorProfileId} | 
 *InstructorProfilesAPI* | [**apiV2LearningServiceInstructorProfilesInstructorProfileIdPut**](docs/InstructorProfilesAPI.md#apiv2learningserviceinstructorprofilesinstructorprofileidput) | **PUT** /api/v2/LearningService/InstructorProfiles/{instructorProfileId} | 
 *InstructorProfilesAPI* | [**apiV2LearningServiceInstructorProfilesPost**](docs/InstructorProfilesAPI.md#apiv2learningserviceinstructorprofilespost) | **POST** /api/v2/LearningService/InstructorProfiles | 
+*MeAPI* | [**getMyAverageScoreAsync**](docs/MeAPI.md#getmyaveragescoreasync) | **GET** /api/v2/LearningService/Me/AverageScore | Get current user&#39;s average score
+*MeAPI* | [**getMyCertificatesAsync**](docs/MeAPI.md#getmycertificatesasync) | **GET** /api/v2/LearningService/Me/Certificates | Get current user&#39;s completion certificates
+*MeAPI* | [**getMyCertificatesCountAsync**](docs/MeAPI.md#getmycertificatescountasync) | **GET** /api/v2/LearningService/Me/Certificates/Count | Get current user&#39;s certificates count
+*MeAPI* | [**getMyEnrollmentsAsync**](docs/MeAPI.md#getmyenrollmentsasync) | **GET** /api/v2/LearningService/Me/Enrollments | Get current user&#39;s course enrollments
+*MeAPI* | [**getMyEnrollmentsCountAsync**](docs/MeAPI.md#getmyenrollmentscountasync) | **GET** /api/v2/LearningService/Me/Enrollments/Count | Get current user&#39;s enrollment count
+*MeAPI* | [**getMyHoursCompletedAsync**](docs/MeAPI.md#getmyhourscompletedasync) | **GET** /api/v2/LearningService/Me/HoursCompleted | Get current user&#39;s completed hours
+*MeAPI* | [**getMyInstructorCoursesAsync**](docs/MeAPI.md#getmyinstructorcoursesasync) | **GET** /api/v2/LearningService/Me/InstructorCourses | Get current user&#39;s instructor courses
+*MeAPI* | [**getMyInstructorCoursesCountAsync**](docs/MeAPI.md#getmyinstructorcoursescountasync) | **GET** /api/v2/LearningService/Me/InstructorCourses/Count | Get current user&#39;s instructor courses count
+*MeAPI* | [**getMyInstructorProfilesAsync**](docs/MeAPI.md#getmyinstructorprofilesasync) | **GET** /api/v2/LearningService/Me/InstructorProfiles | Get current user&#39;s instructor profiles
+*MeAPI* | [**getMyInstructorProfilesCountAsync**](docs/MeAPI.md#getmyinstructorprofilescountasync) | **GET** /api/v2/LearningService/Me/InstructorProfiles/Count | Get current user&#39;s instructor profiles count
+*MeAPI* | [**getMyPendingTaskCountAsync**](docs/MeAPI.md#getmypendingtaskcountasync) | **GET** /api/v2/LearningService/Me/PendingTasks | Get current user&#39;s pending task count
+*MeAPI* | [**getMyStudentCoursesAsync**](docs/MeAPI.md#getmystudentcoursesasync) | **GET** /api/v2/LearningService/Me/Courses | Get current user&#39;s enrolled courses
+*MeAPI* | [**getMyStudentCoursesCountAsync**](docs/MeAPI.md#getmystudentcoursescountasync) | **GET** /api/v2/LearningService/Me/Courses/Count | Get current user&#39;s enrolled courses count
+*MeAPI* | [**getMyStudentProfilesAsync**](docs/MeAPI.md#getmystudentprofilesasync) | **GET** /api/v2/LearningService/Me/StudentProfiles | Get current user&#39;s student profiles
+*MeAPI* | [**getMyStudentProfilesCountAsync**](docs/MeAPI.md#getmystudentprofilescountasync) | **GET** /api/v2/LearningService/Me/StudentProfiles/Count | Get current user&#39;s student profiles count
 *StudentProfilesAPI* | [**apiV2LearningServiceStudentProfilesCountGet**](docs/StudentProfilesAPI.md#apiv2learningservicestudentprofilescountget) | **GET** /api/v2/LearningService/StudentProfiles/Count | 
 *StudentProfilesAPI* | [**apiV2LearningServiceStudentProfilesGet**](docs/StudentProfilesAPI.md#apiv2learningservicestudentprofilesget) | **GET** /api/v2/LearningService/StudentProfiles | 
 *StudentProfilesAPI* | [**apiV2LearningServiceStudentProfilesPost**](docs/StudentProfilesAPI.md#apiv2learningservicestudentprofilespost) | **POST** /api/v2/LearningService/StudentProfiles | 
@@ -212,12 +259,20 @@ Class | Method | HTTP request | Description
 
  - [AccessTokenResponse](docs/AccessTokenResponse.md)
  - [AverageDto](docs/AverageDto.md)
+ - [AverageDtoEnvelope](docs/AverageDtoEnvelope.md)
  - [CountDto](docs/CountDto.md)
+ - [CountDtoEnvelope](docs/CountDtoEnvelope.md)
  - [CourseArticleCreateDto](docs/CourseArticleCreateDto.md)
  - [CourseArticleDto](docs/CourseArticleDto.md)
  - [CourseArticleUpdateDto](docs/CourseArticleUpdateDto.md)
+ - [CourseAssignmentComponentCreateDto](docs/CourseAssignmentComponentCreateDto.md)
+ - [CourseAssignmentComponentDto](docs/CourseAssignmentComponentDto.md)
+ - [CourseAssignmentComponentUpdateDto](docs/CourseAssignmentComponentUpdateDto.md)
  - [CourseAssignmentCreateDto](docs/CourseAssignmentCreateDto.md)
  - [CourseAssignmentDto](docs/CourseAssignmentDto.md)
+ - [CourseAssignmentTypeCreateDto](docs/CourseAssignmentTypeCreateDto.md)
+ - [CourseAssignmentTypeDto](docs/CourseAssignmentTypeDto.md)
+ - [CourseAssignmentTypeUpdateDto](docs/CourseAssignmentTypeUpdateDto.md)
  - [CourseAssignmentUpdateDto](docs/CourseAssignmentUpdateDto.md)
  - [CourseCategoryCreateDto](docs/CourseCategoryCreateDto.md)
  - [CourseCategoryDto](docs/CourseCategoryDto.md)
@@ -229,11 +284,17 @@ Class | Method | HTTP request | Description
  - [CourseCohortUpdateDto](docs/CourseCohortUpdateDto.md)
  - [CourseCompletionCertificateCreateDto](docs/CourseCompletionCertificateCreateDto.md)
  - [CourseCompletionCertificateDto](docs/CourseCompletionCertificateDto.md)
+ - [CourseCompletionCertificateDtoIReadOnlyListEnvelope](docs/CourseCompletionCertificateDtoIReadOnlyListEnvelope.md)
  - [CourseCompletionCertificateUpdateDto](docs/CourseCompletionCertificateUpdateDto.md)
+ - [CourseContentGroupCreateDto](docs/CourseContentGroupCreateDto.md)
+ - [CourseContentGroupDto](docs/CourseContentGroupDto.md)
+ - [CourseContentGroupUpdateDto](docs/CourseContentGroupUpdateDto.md)
  - [CourseCreateDto](docs/CourseCreateDto.md)
  - [CourseDto](docs/CourseDto.md)
+ - [CourseDtoIReadOnlyListEnvelope](docs/CourseDtoIReadOnlyListEnvelope.md)
  - [CourseEnrollmentCreateDto](docs/CourseEnrollmentCreateDto.md)
  - [CourseEnrollmentDto](docs/CourseEnrollmentDto.md)
+ - [CourseEnrollmentDtoIReadOnlyListEnvelope](docs/CourseEnrollmentDtoIReadOnlyListEnvelope.md)
  - [CourseEnrollmentUpdateDto](docs/CourseEnrollmentUpdateDto.md)
  - [CourseFileCreateDto](docs/CourseFileCreateDto.md)
  - [CourseFileDto](docs/CourseFileDto.md)
@@ -241,6 +302,9 @@ Class | Method | HTTP request | Description
  - [CourseForumCreateDto](docs/CourseForumCreateDto.md)
  - [CourseForumDto](docs/CourseForumDto.md)
  - [CourseForumUpdateDto](docs/CourseForumUpdateDto.md)
+ - [CourseGradingRubricCreateDto](docs/CourseGradingRubricCreateDto.md)
+ - [CourseGradingRubricDto](docs/CourseGradingRubricDto.md)
+ - [CourseGradingRubricUpdateDto](docs/CourseGradingRubricUpdateDto.md)
  - [CourseHandoutCreateDto](docs/CourseHandoutCreateDto.md)
  - [CourseHandoutDto](docs/CourseHandoutDto.md)
  - [CourseHandoutUpdateDto](docs/CourseHandoutUpdateDto.md)
@@ -259,6 +323,9 @@ Class | Method | HTTP request | Description
  - [CourseSectionCreateDto](docs/CourseSectionCreateDto.md)
  - [CourseSectionDto](docs/CourseSectionDto.md)
  - [CourseSectionUpdateDto](docs/CourseSectionUpdateDto.md)
+ - [CourseTeamMembershipCreateDto](docs/CourseTeamMembershipCreateDto.md)
+ - [CourseTeamMembershipDto](docs/CourseTeamMembershipDto.md)
+ - [CourseTeamMembershipUpdateDto](docs/CourseTeamMembershipUpdateDto.md)
  - [CourseUnitComponentCreateDto](docs/CourseUnitComponentCreateDto.md)
  - [CourseUnitComponentDto](docs/CourseUnitComponentDto.md)
  - [CourseUnitComponentUpdateDto](docs/CourseUnitComponentUpdateDto.md)
@@ -276,6 +343,7 @@ Class | Method | HTTP request | Description
  - [InfoResponse](docs/InfoResponse.md)
  - [InstructorProfileCreateDto](docs/InstructorProfileCreateDto.md)
  - [InstructorProfileDto](docs/InstructorProfileDto.md)
+ - [InstructorProfileDtoIReadOnlyListEnvelope](docs/InstructorProfileDtoIReadOnlyListEnvelope.md)
  - [InstructorProfileUpdateDto](docs/InstructorProfileUpdateDto.md)
  - [LoginRequest](docs/LoginRequest.md)
  - [RefreshRequest](docs/RefreshRequest.md)
@@ -284,6 +352,7 @@ Class | Method | HTTP request | Description
  - [ResetPasswordRequest](docs/ResetPasswordRequest.md)
  - [StudentProfileCreateDto](docs/StudentProfileCreateDto.md)
  - [StudentProfileDto](docs/StudentProfileDto.md)
+ - [StudentProfileDtoIReadOnlyListEnvelope](docs/StudentProfileDtoIReadOnlyListEnvelope.md)
  - [StudentProfileUpdateDto](docs/StudentProfileUpdateDto.md)
  - [TwoFactorRequest](docs/TwoFactorRequest.md)
  - [TwoFactorResponse](docs/TwoFactorResponse.md)

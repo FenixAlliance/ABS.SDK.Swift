@@ -20,6 +20,15 @@ public struct OrderUpdateDto: Codable, JSONEncodable, Hashable {
         case included = "Included"
         case excluded = "Excluded"
     }
+    public var closed: Bool?
+    public var title: String?
+    public var userId: String?
+    public var priceListId: String?
+    public var description: String?
+    public var individualId: String?
+    public var paymentTermId: String?
+    public var organizationId: String?
+    public var receiverTenantId: String?
     public var firstName: String?
     public var lastName: String?
     public var companyName: String?
@@ -33,6 +42,8 @@ public struct OrderUpdateDto: Codable, JSONEncodable, Hashable {
     public var billingLocationId: String?
     public var shippingLocationId: String?
     public var shippingMethodId: String?
+    public var forexRate: Double?
+    public var currencyId: String?
     public var totalDetail: Double?
     public var totalDetailCurrencyId: String?
     public var totalProfit: Double?
@@ -60,24 +71,22 @@ public struct OrderUpdateDto: Codable, JSONEncodable, Hashable {
     public var costCalculationMethod: CostCalculationMethod?
     public var taxCalculationMethod: TaxCalculationMethod?
     public var cartId: String?
-    public var userId: String?
-    public var forexRate: Double?
-    public var currencyId: String?
-    public var individualId: String?
-    public var organizationId: String?
     public var totalAmountInUsd: Double?
     public var totalTaxesInUsd: Double?
-    public var receiverTenantId: String?
-    public var closed: Bool?
-    public var priceListId: String?
-    public var paymentTermId: String?
     public var quoteStatus: String?
     public var effectiveTo: Date?
     public var effectiveFrom: Date?
-    public var description: String?
-    public var title: String?
 
-    public init(firstName: String? = nil, lastName: String? = nil, companyName: String? = nil, billingEmail: String? = nil, addressLine1: String? = nil, addressLine2: String? = nil, postalCode: String? = nil, countryId: String? = nil, stateId: String? = nil, cityId: String? = nil, billingLocationId: String? = nil, shippingLocationId: String? = nil, shippingMethodId: String? = nil, totalDetail: Double? = nil, totalDetailCurrencyId: String? = nil, totalProfit: Double? = nil, totalProfitCurrencyId: String? = nil, totalDiscounts: Double? = nil, totalDiscountsCurrencyId: String? = nil, totalSurcharges: Double? = nil, totalSurchargesCurrencyId: String? = nil, totalShippingTax: Double? = nil, totalShippingTaxCurrencyId: String? = nil, totalShippingCost: Double? = nil, totalShippingCostCurrencyId: String? = nil, totalGlobalDiscounts: Double? = nil, totalGlobalDiscountsCurrencyId: String? = nil, totalGlobalSurcharges: Double? = nil, totalGlobalSurchargesCurrencyId: String? = nil, totalWithheldTax: Double? = nil, totalWithheldTaxCurrencyId: String? = nil, totalTaxBase: Double? = nil, totalTaxBaseCurrencyId: String? = nil, totalTaxes: Double? = nil, totalTaxesCurrencyId: String? = nil, total: Double? = nil, totalCurrencyId: String? = nil, costCalculationMethod: CostCalculationMethod? = nil, taxCalculationMethod: TaxCalculationMethod? = nil, cartId: String? = nil, userId: String? = nil, forexRate: Double? = nil, currencyId: String? = nil, individualId: String? = nil, organizationId: String? = nil, totalAmountInUsd: Double? = nil, totalTaxesInUsd: Double? = nil, receiverTenantId: String? = nil, closed: Bool? = nil, priceListId: String? = nil, paymentTermId: String? = nil, quoteStatus: String? = nil, effectiveTo: Date? = nil, effectiveFrom: Date? = nil, description: String? = nil, title: String? = nil) {
+    public init(closed: Bool? = nil, title: String? = nil, userId: String? = nil, priceListId: String? = nil, description: String? = nil, individualId: String? = nil, paymentTermId: String? = nil, organizationId: String? = nil, receiverTenantId: String? = nil, firstName: String? = nil, lastName: String? = nil, companyName: String? = nil, billingEmail: String? = nil, addressLine1: String? = nil, addressLine2: String? = nil, postalCode: String? = nil, countryId: String? = nil, stateId: String? = nil, cityId: String? = nil, billingLocationId: String? = nil, shippingLocationId: String? = nil, shippingMethodId: String? = nil, forexRate: Double? = nil, currencyId: String? = nil, totalDetail: Double? = nil, totalDetailCurrencyId: String? = nil, totalProfit: Double? = nil, totalProfitCurrencyId: String? = nil, totalDiscounts: Double? = nil, totalDiscountsCurrencyId: String? = nil, totalSurcharges: Double? = nil, totalSurchargesCurrencyId: String? = nil, totalShippingTax: Double? = nil, totalShippingTaxCurrencyId: String? = nil, totalShippingCost: Double? = nil, totalShippingCostCurrencyId: String? = nil, totalGlobalDiscounts: Double? = nil, totalGlobalDiscountsCurrencyId: String? = nil, totalGlobalSurcharges: Double? = nil, totalGlobalSurchargesCurrencyId: String? = nil, totalWithheldTax: Double? = nil, totalWithheldTaxCurrencyId: String? = nil, totalTaxBase: Double? = nil, totalTaxBaseCurrencyId: String? = nil, totalTaxes: Double? = nil, totalTaxesCurrencyId: String? = nil, total: Double? = nil, totalCurrencyId: String? = nil, costCalculationMethod: CostCalculationMethod? = nil, taxCalculationMethod: TaxCalculationMethod? = nil, cartId: String? = nil, totalAmountInUsd: Double? = nil, totalTaxesInUsd: Double? = nil, quoteStatus: String? = nil, effectiveTo: Date? = nil, effectiveFrom: Date? = nil) {
+        self.closed = closed
+        self.title = title
+        self.userId = userId
+        self.priceListId = priceListId
+        self.description = description
+        self.individualId = individualId
+        self.paymentTermId = paymentTermId
+        self.organizationId = organizationId
+        self.receiverTenantId = receiverTenantId
         self.firstName = firstName
         self.lastName = lastName
         self.companyName = companyName
@@ -91,6 +100,8 @@ public struct OrderUpdateDto: Codable, JSONEncodable, Hashable {
         self.billingLocationId = billingLocationId
         self.shippingLocationId = shippingLocationId
         self.shippingMethodId = shippingMethodId
+        self.forexRate = forexRate
+        self.currencyId = currencyId
         self.totalDetail = totalDetail
         self.totalDetailCurrencyId = totalDetailCurrencyId
         self.totalProfit = totalProfit
@@ -118,25 +129,23 @@ public struct OrderUpdateDto: Codable, JSONEncodable, Hashable {
         self.costCalculationMethod = costCalculationMethod
         self.taxCalculationMethod = taxCalculationMethod
         self.cartId = cartId
-        self.userId = userId
-        self.forexRate = forexRate
-        self.currencyId = currencyId
-        self.individualId = individualId
-        self.organizationId = organizationId
         self.totalAmountInUsd = totalAmountInUsd
         self.totalTaxesInUsd = totalTaxesInUsd
-        self.receiverTenantId = receiverTenantId
-        self.closed = closed
-        self.priceListId = priceListId
-        self.paymentTermId = paymentTermId
         self.quoteStatus = quoteStatus
         self.effectiveTo = effectiveTo
         self.effectiveFrom = effectiveFrom
-        self.description = description
-        self.title = title
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case closed
+        case title
+        case userId
+        case priceListId
+        case description
+        case individualId
+        case paymentTermId
+        case organizationId
+        case receiverTenantId
         case firstName
         case lastName
         case companyName
@@ -150,6 +159,8 @@ public struct OrderUpdateDto: Codable, JSONEncodable, Hashable {
         case billingLocationId
         case shippingLocationId
         case shippingMethodId
+        case forexRate
+        case currencyId
         case totalDetail
         case totalDetailCurrencyId
         case totalProfit
@@ -177,28 +188,26 @@ public struct OrderUpdateDto: Codable, JSONEncodable, Hashable {
         case costCalculationMethod
         case taxCalculationMethod
         case cartId
-        case userId
-        case forexRate
-        case currencyId
-        case individualId
-        case organizationId
         case totalAmountInUsd
         case totalTaxesInUsd
-        case receiverTenantId
-        case closed
-        case priceListId
-        case paymentTermId
         case quoteStatus
         case effectiveTo
         case effectiveFrom
-        case description
-        case title
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(closed, forKey: .closed)
+        try container.encodeIfPresent(title, forKey: .title)
+        try container.encodeIfPresent(userId, forKey: .userId)
+        try container.encodeIfPresent(priceListId, forKey: .priceListId)
+        try container.encodeIfPresent(description, forKey: .description)
+        try container.encodeIfPresent(individualId, forKey: .individualId)
+        try container.encodeIfPresent(paymentTermId, forKey: .paymentTermId)
+        try container.encodeIfPresent(organizationId, forKey: .organizationId)
+        try container.encodeIfPresent(receiverTenantId, forKey: .receiverTenantId)
         try container.encodeIfPresent(firstName, forKey: .firstName)
         try container.encodeIfPresent(lastName, forKey: .lastName)
         try container.encodeIfPresent(companyName, forKey: .companyName)
@@ -212,6 +221,8 @@ public struct OrderUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(billingLocationId, forKey: .billingLocationId)
         try container.encodeIfPresent(shippingLocationId, forKey: .shippingLocationId)
         try container.encodeIfPresent(shippingMethodId, forKey: .shippingMethodId)
+        try container.encodeIfPresent(forexRate, forKey: .forexRate)
+        try container.encodeIfPresent(currencyId, forKey: .currencyId)
         try container.encodeIfPresent(totalDetail, forKey: .totalDetail)
         try container.encodeIfPresent(totalDetailCurrencyId, forKey: .totalDetailCurrencyId)
         try container.encodeIfPresent(totalProfit, forKey: .totalProfit)
@@ -239,22 +250,11 @@ public struct OrderUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(costCalculationMethod, forKey: .costCalculationMethod)
         try container.encodeIfPresent(taxCalculationMethod, forKey: .taxCalculationMethod)
         try container.encodeIfPresent(cartId, forKey: .cartId)
-        try container.encodeIfPresent(userId, forKey: .userId)
-        try container.encodeIfPresent(forexRate, forKey: .forexRate)
-        try container.encodeIfPresent(currencyId, forKey: .currencyId)
-        try container.encodeIfPresent(individualId, forKey: .individualId)
-        try container.encodeIfPresent(organizationId, forKey: .organizationId)
         try container.encodeIfPresent(totalAmountInUsd, forKey: .totalAmountInUsd)
         try container.encodeIfPresent(totalTaxesInUsd, forKey: .totalTaxesInUsd)
-        try container.encodeIfPresent(receiverTenantId, forKey: .receiverTenantId)
-        try container.encodeIfPresent(closed, forKey: .closed)
-        try container.encodeIfPresent(priceListId, forKey: .priceListId)
-        try container.encodeIfPresent(paymentTermId, forKey: .paymentTermId)
         try container.encodeIfPresent(quoteStatus, forKey: .quoteStatus)
         try container.encodeIfPresent(effectiveTo, forKey: .effectiveTo)
         try container.encodeIfPresent(effectiveFrom, forKey: .effectiveFrom)
-        try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(title, forKey: .title)
     }
 }
 

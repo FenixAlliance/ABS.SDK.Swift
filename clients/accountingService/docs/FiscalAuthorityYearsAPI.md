@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 # **createFiscalYear**
 ```swift
-    open class func createFiscalYear(tenantId: AnyCodable, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalYearCreateDto: FiscalYearCreateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func createFiscalYear(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalYearCreateDto: FiscalYearCreateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Create a fiscal year
@@ -26,7 +26,7 @@ Creates a new fiscal year associated with a fiscal authority.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let tenantId = "TODO" // AnyCodable | 
+let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 let fiscalYearCreateDto = FiscalYearCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", closed: false, endDate: Date(), startDate: Date(), fiscalAuthorityId: "fiscalAuthorityId_example") // FiscalYearCreateDto |  (optional)
@@ -48,7 +48,7 @@ FiscalAuthorityYearsAPI.createFiscalYear(tenantId: tenantId, apiVersion: apiVers
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenantId** | [**AnyCodable**](.md) |  | 
+ **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
  **fiscalYearCreateDto** | [**FiscalYearCreateDto**](FiscalYearCreateDto.md) |  | [optional] 
@@ -70,7 +70,7 @@ No authorization required
 
 # **deleteFiscalYear**
 ```swift
-    open class func deleteFiscalYear(tenantId: AnyCodable, fiscalYearId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func deleteFiscalYear(tenantId: UUID, fiscalYearId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Delete a fiscal year
@@ -82,7 +82,7 @@ Deletes a fiscal year identified by its unique identifier.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let tenantId = "TODO" // AnyCodable | 
+let tenantId = 987 // UUID | 
 let fiscalYearId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
@@ -104,7 +104,7 @@ FiscalAuthorityYearsAPI.deleteFiscalYear(tenantId: tenantId, fiscalYearId: fisca
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenantId** | [**AnyCodable**](.md) |  | 
+ **tenantId** | **UUID** |  | 
  **fiscalYearId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
@@ -126,7 +126,7 @@ No authorization required
 
 # **getFiscalYear**
 ```swift
-    open class func getFiscalYear(tenantId: AnyCodable, fiscalAuthorityId: UUID, fiscalYearId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: FiscalYearDtoEnvelope?, _ error: Error?) -> Void)
+    open class func getFiscalYear(tenantId: UUID, fiscalAuthorityId: UUID, fiscalYearId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: FiscalYearDtoEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get fiscal year by ID for an authority
@@ -138,7 +138,7 @@ Retrieves a specific fiscal year by its unique identifier within a fiscal author
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let tenantId = "TODO" // AnyCodable | 
+let tenantId = 987 // UUID | 
 let fiscalAuthorityId = 987 // UUID | 
 let fiscalYearId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
@@ -161,7 +161,7 @@ FiscalAuthorityYearsAPI.getFiscalYear(tenantId: tenantId, fiscalAuthorityId: fis
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenantId** | [**AnyCodable**](.md) |  | 
+ **tenantId** | **UUID** |  | 
  **fiscalAuthorityId** | **UUID** |  | 
  **fiscalYearId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
@@ -184,7 +184,7 @@ No authorization required
 
 # **getFiscalYears**
 ```swift
-    open class func getFiscalYears(tenantId: AnyCodable, fiscalAuthorityId: UUID, authorityId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: FiscalYearDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getFiscalYears(tenantId: UUID, fiscalAuthorityId: UUID, authorityId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: FiscalYearDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get fiscal years for an authority
@@ -196,7 +196,7 @@ Retrieves all fiscal years associated with the specified fiscal authority.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let tenantId = "TODO" // AnyCodable | 
+let tenantId = 987 // UUID | 
 let fiscalAuthorityId = 987 // UUID | 
 let authorityId = "authorityId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
@@ -219,7 +219,7 @@ FiscalAuthorityYearsAPI.getFiscalYears(tenantId: tenantId, fiscalAuthorityId: fi
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenantId** | [**AnyCodable**](.md) |  | 
+ **tenantId** | **UUID** |  | 
  **fiscalAuthorityId** | **UUID** |  | 
  **authorityId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
@@ -242,7 +242,7 @@ No authorization required
 
 # **getFiscalYearsCount**
 ```swift
-    open class func getFiscalYearsCount(tenantId: AnyCodable, fiscalAuthorityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getFiscalYearsCount(tenantId: UUID, fiscalAuthorityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get fiscal years count for an authority
@@ -254,7 +254,7 @@ Returns the total count of fiscal years for the specified fiscal authority.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let tenantId = "TODO" // AnyCodable | 
+let tenantId = 987 // UUID | 
 let fiscalAuthorityId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
@@ -276,7 +276,7 @@ FiscalAuthorityYearsAPI.getFiscalYearsCount(tenantId: tenantId, fiscalAuthorityI
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenantId** | [**AnyCodable**](.md) |  | 
+ **tenantId** | **UUID** |  | 
  **fiscalAuthorityId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
@@ -298,7 +298,7 @@ No authorization required
 
 # **updateFiscalYear**
 ```swift
-    open class func updateFiscalYear(tenantId: AnyCodable, fiscalYearId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalYearUpdateDto: FiscalYearUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func updateFiscalYear(tenantId: UUID, fiscalYearId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalYearUpdateDto: FiscalYearUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Update a fiscal year
@@ -310,7 +310,7 @@ Updates an existing fiscal year identified by its unique identifier.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let tenantId = "TODO" // AnyCodable | 
+let tenantId = 987 // UUID | 
 let fiscalYearId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
@@ -333,7 +333,7 @@ FiscalAuthorityYearsAPI.updateFiscalYear(tenantId: tenantId, fiscalYearId: fisca
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenantId** | [**AnyCodable**](.md) |  | 
+ **tenantId** | **UUID** |  | 
  **fiscalYearId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 

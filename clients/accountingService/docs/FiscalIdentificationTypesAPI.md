@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 # **createFiscalIdentificationType**
 ```swift
-    open class func createFiscalIdentificationType(tenantId: AnyCodable, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalIdentificationTypeCreateDto: FiscalIdentificationTypeCreateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func createFiscalIdentificationType(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalIdentificationTypeCreateDto: FiscalIdentificationTypeCreateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Create a fiscal identification type
@@ -26,7 +26,7 @@ Creates a new fiscal identification type for a fiscal authority.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let tenantId = "TODO" // AnyCodable | 
+let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 let fiscalIdentificationTypeCreateDto = FiscalIdentificationTypeCreateDto(id: 123, timestamp: Date(), code: "code_example", name: "name_example", fiscalAuthorityId: "fiscalAuthorityId_example") // FiscalIdentificationTypeCreateDto |  (optional)
@@ -48,7 +48,7 @@ FiscalIdentificationTypesAPI.createFiscalIdentificationType(tenantId: tenantId, 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenantId** | [**AnyCodable**](.md) |  | 
+ **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
  **fiscalIdentificationTypeCreateDto** | [**FiscalIdentificationTypeCreateDto**](FiscalIdentificationTypeCreateDto.md) |  | [optional] 
@@ -70,7 +70,7 @@ No authorization required
 
 # **deleteFiscalIdentificationType**
 ```swift
-    open class func deleteFiscalIdentificationType(tenantId: AnyCodable, identificationTypeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func deleteFiscalIdentificationType(tenantId: UUID, identificationTypeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Delete a fiscal identification type
@@ -82,7 +82,7 @@ Deletes a fiscal identification type identified by its unique identifier.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let tenantId = "TODO" // AnyCodable | 
+let tenantId = 987 // UUID | 
 let identificationTypeId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
@@ -104,7 +104,7 @@ FiscalIdentificationTypesAPI.deleteFiscalIdentificationType(tenantId: tenantId, 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenantId** | [**AnyCodable**](.md) |  | 
+ **tenantId** | **UUID** |  | 
  **identificationTypeId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
@@ -126,7 +126,7 @@ No authorization required
 
 # **getFiscalIdentificationType**
 ```swift
-    open class func getFiscalIdentificationType(tenantId: AnyCodable, fiscalAuthorityId: UUID, identificationTypeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: FiscalIdentificationTypeDtoEnvelope?, _ error: Error?) -> Void)
+    open class func getFiscalIdentificationType(tenantId: UUID, fiscalAuthorityId: UUID, identificationTypeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: FiscalIdentificationTypeDtoEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get fiscal identification type by ID
@@ -138,7 +138,7 @@ Retrieves a specific fiscal identification type by its unique identifier.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let tenantId = "TODO" // AnyCodable | 
+let tenantId = 987 // UUID | 
 let fiscalAuthorityId = 987 // UUID | 
 let identificationTypeId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
@@ -161,7 +161,7 @@ FiscalIdentificationTypesAPI.getFiscalIdentificationType(tenantId: tenantId, fis
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenantId** | [**AnyCodable**](.md) |  | 
+ **tenantId** | **UUID** |  | 
  **fiscalAuthorityId** | **UUID** |  | 
  **identificationTypeId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
@@ -292,7 +292,7 @@ No authorization required
 
 # **updateFiscalIdentificationType**
 ```swift
-    open class func updateFiscalIdentificationType(tenantId: AnyCodable, identificationTypeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalIdentificationTypeUpdateDto: FiscalIdentificationTypeUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func updateFiscalIdentificationType(tenantId: UUID, identificationTypeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalIdentificationTypeUpdateDto: FiscalIdentificationTypeUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Update a fiscal identification type
@@ -304,7 +304,7 @@ Updates an existing fiscal identification type identified by its unique identifi
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let tenantId = "TODO" // AnyCodable | 
+let tenantId = 987 // UUID | 
 let identificationTypeId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
@@ -327,7 +327,7 @@ FiscalIdentificationTypesAPI.updateFiscalIdentificationType(tenantId: tenantId, 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenantId** | [**AnyCodable**](.md) |  | 
+ **tenantId** | **UUID** |  | 
  **identificationTypeId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 

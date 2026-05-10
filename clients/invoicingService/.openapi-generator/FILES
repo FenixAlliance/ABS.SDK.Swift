@@ -20,7 +20,6 @@ OpenAPIClient/Classes/OpenAPIs/Models/Envelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ErrorEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ExtendedInvoiceDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ExtendedInvoiceDtoListEnvelope.swift
-OpenAPIClient/Classes/OpenAPIs/Models/ForexRates.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ForgotPasswordRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/HttpValidationProblemDetails.swift
 OpenAPIClient/Classes/OpenAPIs/Models/InfoRequest.swift
@@ -81,7 +80,6 @@ docs/ErrorEnvelope.md
 docs/ExtendedInvoiceDto.md
 docs/ExtendedInvoiceDtoListEnvelope.md
 docs/FenixAllianceABSWebAPI.md
-docs/ForexRates.md
 docs/ForgotPasswordRequest.md
 docs/HttpValidationProblemDetails.md
 docs/InfoRequest.md

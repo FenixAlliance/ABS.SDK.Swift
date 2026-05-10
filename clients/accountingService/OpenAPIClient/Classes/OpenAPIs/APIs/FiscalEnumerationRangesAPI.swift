@@ -23,7 +23,7 @@ open class FiscalEnumerationRangesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func createInvoiceEnumerationRange(tenantId: AnyCodable, apiVersion: String? = nil, xApiVersion: String? = nil, invoiceEnumerationRangeCreateDto: InvoiceEnumerationRangeCreateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func createInvoiceEnumerationRange(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, invoiceEnumerationRangeCreateDto: InvoiceEnumerationRangeCreateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
         return createInvoiceEnumerationRangeWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, invoiceEnumerationRangeCreateDto: invoiceEnumerationRangeCreateDto).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -44,7 +44,7 @@ open class FiscalEnumerationRangesAPI {
      - parameter invoiceEnumerationRangeCreateDto: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func createInvoiceEnumerationRangeWithRequestBuilder(tenantId: AnyCodable, apiVersion: String? = nil, xApiVersion: String? = nil, invoiceEnumerationRangeCreateDto: InvoiceEnumerationRangeCreateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func createInvoiceEnumerationRangeWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, invoiceEnumerationRangeCreateDto: InvoiceEnumerationRangeCreateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
         let localVariablePath = "/api/v2/AccountingService/Fiscals/Authorities/EnumerationRanges"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: invoiceEnumerationRangeCreateDto)
@@ -78,7 +78,7 @@ open class FiscalEnumerationRangesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func deleteInvoiceEnumerationRange(tenantId: AnyCodable, enumerationRangeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func deleteInvoiceEnumerationRange(tenantId: UUID, enumerationRangeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
         return deleteInvoiceEnumerationRangeWithRequestBuilder(tenantId: tenantId, enumerationRangeId: enumerationRangeId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -99,7 +99,7 @@ open class FiscalEnumerationRangesAPI {
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func deleteInvoiceEnumerationRangeWithRequestBuilder(tenantId: AnyCodable, enumerationRangeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func deleteInvoiceEnumerationRangeWithRequestBuilder(tenantId: UUID, enumerationRangeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/Fiscals/Authorities/EnumerationRanges/{enumerationRangeId}"
         let enumerationRangeIdPreEscape = "\(APIHelper.mapValueToPathItem(enumerationRangeId))"
         let enumerationRangeIdPostEscape = enumerationRangeIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -136,7 +136,7 @@ open class FiscalEnumerationRangesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getInvoiceEnumerationRange(tenantId: AnyCodable, fiscalAuthorityId: UUID, enumerationRangeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: InvoiceEnumerationRangeDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getInvoiceEnumerationRange(tenantId: UUID, fiscalAuthorityId: UUID, enumerationRangeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: InvoiceEnumerationRangeDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
         return getInvoiceEnumerationRangeWithRequestBuilder(tenantId: tenantId, fiscalAuthorityId: fiscalAuthorityId, enumerationRangeId: enumerationRangeId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -158,7 +158,7 @@ open class FiscalEnumerationRangesAPI {
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<InvoiceEnumerationRangeDtoEnvelope> 
      */
-    open class func getInvoiceEnumerationRangeWithRequestBuilder(tenantId: AnyCodable, fiscalAuthorityId: UUID, enumerationRangeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<InvoiceEnumerationRangeDtoEnvelope> {
+    open class func getInvoiceEnumerationRangeWithRequestBuilder(tenantId: UUID, fiscalAuthorityId: UUID, enumerationRangeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<InvoiceEnumerationRangeDtoEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/Fiscals/Authorities/{fiscalAuthorityId}/EnumerationRanges/{enumerationRangeId}"
         let fiscalAuthorityIdPreEscape = "\(APIHelper.mapValueToPathItem(fiscalAuthorityId))"
         let fiscalAuthorityIdPostEscape = fiscalAuthorityIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -309,7 +309,7 @@ open class FiscalEnumerationRangesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func updateInvoiceEnumerationRange(tenantId: AnyCodable, enumerationRangeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, invoiceEnumerationRangeUpdateDto: InvoiceEnumerationRangeUpdateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func updateInvoiceEnumerationRange(tenantId: UUID, enumerationRangeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, invoiceEnumerationRangeUpdateDto: InvoiceEnumerationRangeUpdateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
         return updateInvoiceEnumerationRangeWithRequestBuilder(tenantId: tenantId, enumerationRangeId: enumerationRangeId, apiVersion: apiVersion, xApiVersion: xApiVersion, invoiceEnumerationRangeUpdateDto: invoiceEnumerationRangeUpdateDto).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -331,7 +331,7 @@ open class FiscalEnumerationRangesAPI {
      - parameter invoiceEnumerationRangeUpdateDto: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func updateInvoiceEnumerationRangeWithRequestBuilder(tenantId: AnyCodable, enumerationRangeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, invoiceEnumerationRangeUpdateDto: InvoiceEnumerationRangeUpdateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func updateInvoiceEnumerationRangeWithRequestBuilder(tenantId: UUID, enumerationRangeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, invoiceEnumerationRangeUpdateDto: InvoiceEnumerationRangeUpdateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/Fiscals/Authorities/EnumerationRanges/{enumerationRangeId}"
         let enumerationRangeIdPreEscape = "\(APIHelper.mapValueToPathItem(enumerationRangeId))"
         let enumerationRangeIdPostEscape = enumerationRangeIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""

@@ -99,7 +99,6 @@ Class | Method | HTTP request | Description
  - [ErrorEnvelope](docs/ErrorEnvelope.md)
  - [ExtendedInvoiceDto](docs/ExtendedInvoiceDto.md)
  - [ExtendedInvoiceDtoListEnvelope](docs/ExtendedInvoiceDtoListEnvelope.md)
- - [ForexRates](docs/ForexRates.md)
  - [ForgotPasswordRequest](docs/ForgotPasswordRequest.md)
  - [HttpValidationProblemDetails](docs/HttpValidationProblemDetails.md)
  - [InfoRequest](docs/InfoRequest.md)

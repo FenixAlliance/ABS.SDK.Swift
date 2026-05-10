@@ -12,32 +12,64 @@ import AnyCodable
 
 public struct ShipmentDto: Codable, JSONEncodable, Hashable {
 
+    public enum ShippingTerms: String, Codable, CaseIterable {
+        case nc = "NC"
+        case exw = "EXW"
+        case fca = "FCA"
+        case fob = "FOB"
+        case fas = "FAS"
+        case cfr = "CFR"
+        case cif = "CIF"
+        case cpt = "CPT"
+        case cip = "CIP"
+        case ddp = "DDP"
+        case dap = "DAP"
+        case dpu = "DPU"
+    }
     public var id: String?
+    public var timestamp: Date?
     public var trackingCode: String?
     public var isInternational: Bool?
+    public var shipped: Bool?
+    public var delivered: Bool?
     public var shipmentTimestamp: Date?
     public var deliveryTimestamp: Date?
     public var expectedShippingDate: Date?
     public var expectedDeliveryDate: Date?
+    public var shippingTerms: ShippingTerms?
+    public var orderID: String?
+    public var businessID: String?
 
-    public init(id: String? = nil, trackingCode: String? = nil, isInternational: Bool? = nil, shipmentTimestamp: Date? = nil, deliveryTimestamp: Date? = nil, expectedShippingDate: Date? = nil, expectedDeliveryDate: Date? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, trackingCode: String? = nil, isInternational: Bool? = nil, shipped: Bool? = nil, delivered: Bool? = nil, shipmentTimestamp: Date? = nil, deliveryTimestamp: Date? = nil, expectedShippingDate: Date? = nil, expectedDeliveryDate: Date? = nil, shippingTerms: ShippingTerms? = nil, orderID: String? = nil, businessID: String? = nil) {
         self.id = id
+        self.timestamp = timestamp
         self.trackingCode = trackingCode
         self.isInternational = isInternational
+        self.shipped = shipped
+        self.delivered = delivered
         self.shipmentTimestamp = shipmentTimestamp
         self.deliveryTimestamp = deliveryTimestamp
         self.expectedShippingDate = expectedShippingDate
         self.expectedDeliveryDate = expectedDeliveryDate
+        self.shippingTerms = shippingTerms
+        self.orderID = orderID
+        self.businessID = businessID
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
+        case timestamp
         case trackingCode
         case isInternational
+        case shipped
+        case delivered
         case shipmentTimestamp
         case deliveryTimestamp
         case expectedShippingDate
         case expectedDeliveryDate
+        case shippingTerms
+        case orderID
+        case businessID
     }
 
     // Encodable protocol methods
@@ -45,12 +77,18 @@ public struct ShipmentDto: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
+        try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(trackingCode, forKey: .trackingCode)
         try container.encodeIfPresent(isInternational, forKey: .isInternational)
+        try container.encodeIfPresent(shipped, forKey: .shipped)
+        try container.encodeIfPresent(delivered, forKey: .delivered)
         try container.encodeIfPresent(shipmentTimestamp, forKey: .shipmentTimestamp)
         try container.encodeIfPresent(deliveryTimestamp, forKey: .deliveryTimestamp)
         try container.encodeIfPresent(expectedShippingDate, forKey: .expectedShippingDate)
         try container.encodeIfPresent(expectedDeliveryDate, forKey: .expectedDeliveryDate)
+        try container.encodeIfPresent(shippingTerms, forKey: .shippingTerms)
+        try container.encodeIfPresent(orderID, forKey: .orderID)
+        try container.encodeIfPresent(businessID, forKey: .businessID)
     }
 }
 

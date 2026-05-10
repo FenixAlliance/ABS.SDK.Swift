@@ -104,7 +104,7 @@ let tenantId = 987 // UUID |
 let bankId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let bankAccountCreateDto = BankAccountCreateDto(id: 123, timestamp: Date(), group: false, frozen: false, name: "name_example", code: "code_example", path: "path_example", _prefix: "_prefix_example", currencyId: "currencyId_example", accountTypeId: "accountTypeId_example", parentAccountId: "parentAccountId_example", accountCategory: "accountCategory_example", iban: "iban_example", swift: "swift_example", branchCode: "branchCode_example", bankAccountNumber: "bankAccountNumber_example", qualifiedName: "qualifiedName_example", bankId: "bankId_example", bankProfileId: "bankProfileId_example") // BankAccountCreateDto |  (optional)
+let bankAccountCreateDto = BankAccountCreateDto(id: 123, timestamp: Date(), name: "name_example", iban: "iban_example", swift: "swift_example", branchCode: "branchCode_example", bankAccountNumber: "bankAccountNumber_example", qualifiedName: "qualifiedName_example", bankId: "bankId_example", bankProfileId: "bankProfileId_example") // BankAccountCreateDto |  (optional)
 
 // Creates a new bank account
 BankingAPI.createBankAccount(tenantId: tenantId, bankId: bankId, apiVersion: apiVersion, xApiVersion: xApiVersion, bankAccountCreateDto: bankAccountCreateDto) { (response, error) in
@@ -1241,7 +1241,7 @@ let bankId = 987 // UUID |
 let accountId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let bankAccountUpdateDto = BankAccountUpdateDto(group: false, frozen: false, name: "name_example", code: "code_example", path: "path_example", _prefix: "_prefix_example", currencyId: "currencyId_example", accountTypeId: "accountTypeId_example", parentAccountId: "parentAccountId_example", accountCategory: "accountCategory_example", iban: "iban_example", swift: "swift_example", branchCode: "branchCode_example", bankAccountNumber: "bankAccountNumber_example", qualifiedName: "qualifiedName_example", bankId: "bankId_example", bankProfileId: "bankProfileId_example") // BankAccountUpdateDto |  (optional)
+let bankAccountUpdateDto = BankAccountUpdateDto(name: "name_example", iban: "iban_example", swift: "swift_example", branchCode: "branchCode_example", bankAccountNumber: "bankAccountNumber_example", qualifiedName: "qualifiedName_example", bankId: "bankId_example", bankProfileId: "bankProfileId_example") // BankAccountUpdateDto |  (optional)
 
 // Updates a bank account
 BankingAPI.updateBankAccount(tenantId: tenantId, bankId: bankId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, bankAccountUpdateDto: bankAccountUpdateDto) { (response, error) in

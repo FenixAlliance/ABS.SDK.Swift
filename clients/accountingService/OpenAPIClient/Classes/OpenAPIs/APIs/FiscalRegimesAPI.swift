@@ -23,7 +23,7 @@ open class FiscalRegimesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func createFiscalRegime(tenantId: AnyCodable, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalRegimeCreateDto: FiscalRegimeCreateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func createFiscalRegime(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalRegimeCreateDto: FiscalRegimeCreateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
         return createFiscalRegimeWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, fiscalRegimeCreateDto: fiscalRegimeCreateDto).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -44,7 +44,7 @@ open class FiscalRegimesAPI {
      - parameter fiscalRegimeCreateDto: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func createFiscalRegimeWithRequestBuilder(tenantId: AnyCodable, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalRegimeCreateDto: FiscalRegimeCreateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func createFiscalRegimeWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalRegimeCreateDto: FiscalRegimeCreateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
         let localVariablePath = "/api/v2/AccountingService/Fiscals/Authorities/FiscalRegimes"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: fiscalRegimeCreateDto)
@@ -78,7 +78,7 @@ open class FiscalRegimesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func deleteFiscalRegime(tenantId: AnyCodable, regimeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func deleteFiscalRegime(tenantId: UUID, regimeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
         return deleteFiscalRegimeWithRequestBuilder(tenantId: tenantId, regimeId: regimeId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -99,7 +99,7 @@ open class FiscalRegimesAPI {
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func deleteFiscalRegimeWithRequestBuilder(tenantId: AnyCodable, regimeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func deleteFiscalRegimeWithRequestBuilder(tenantId: UUID, regimeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/Fiscals/Authorities/FiscalRegimes/{regimeId}"
         let regimeIdPreEscape = "\(APIHelper.mapValueToPathItem(regimeId))"
         let regimeIdPostEscape = regimeIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -136,7 +136,7 @@ open class FiscalRegimesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getFiscalRegime(tenantId: AnyCodable, fiscalAuthorityId: UUID, regimeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: FiscalRegimeDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getFiscalRegime(tenantId: UUID, fiscalAuthorityId: UUID, regimeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: FiscalRegimeDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
         return getFiscalRegimeWithRequestBuilder(tenantId: tenantId, fiscalAuthorityId: fiscalAuthorityId, regimeId: regimeId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -158,7 +158,7 @@ open class FiscalRegimesAPI {
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<FiscalRegimeDtoEnvelope> 
      */
-    open class func getFiscalRegimeWithRequestBuilder(tenantId: AnyCodable, fiscalAuthorityId: UUID, regimeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<FiscalRegimeDtoEnvelope> {
+    open class func getFiscalRegimeWithRequestBuilder(tenantId: UUID, fiscalAuthorityId: UUID, regimeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<FiscalRegimeDtoEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/Fiscals/Authorities/{fiscalAuthorityId}/FiscalRegimes/{regimeId}"
         let fiscalAuthorityIdPreEscape = "\(APIHelper.mapValueToPathItem(fiscalAuthorityId))"
         let fiscalAuthorityIdPostEscape = fiscalAuthorityIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -309,7 +309,7 @@ open class FiscalRegimesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func updateFiscalRegime(tenantId: AnyCodable, regimeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalRegimeUpdateDto: FiscalRegimeUpdateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func updateFiscalRegime(tenantId: UUID, regimeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalRegimeUpdateDto: FiscalRegimeUpdateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
         return updateFiscalRegimeWithRequestBuilder(tenantId: tenantId, regimeId: regimeId, apiVersion: apiVersion, xApiVersion: xApiVersion, fiscalRegimeUpdateDto: fiscalRegimeUpdateDto).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -331,7 +331,7 @@ open class FiscalRegimesAPI {
      - parameter fiscalRegimeUpdateDto: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func updateFiscalRegimeWithRequestBuilder(tenantId: AnyCodable, regimeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalRegimeUpdateDto: FiscalRegimeUpdateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func updateFiscalRegimeWithRequestBuilder(tenantId: UUID, regimeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalRegimeUpdateDto: FiscalRegimeUpdateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/Fiscals/Authorities/FiscalRegimes/{regimeId}"
         let regimeIdPreEscape = "\(APIHelper.mapValueToPathItem(regimeId))"
         let regimeIdPostEscape = regimeIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""

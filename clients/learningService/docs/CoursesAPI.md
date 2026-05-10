@@ -64,7 +64,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseCreateDto = CourseCreateDto(id: 123, timestamp: Date(), title: "title_example") // CourseCreateDto |  (optional)
+let courseCreateDto = CourseCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", sku: "sku_example", summary: "summary_example", code: "code_example", version: "version_example", courseCategoryID: "courseCategoryID_example", instructorProfileID: "instructorProfileID_example", currencyID: "currencyID_example", regularPrice: 123, maxCourseEnrollments: 123, totalEffortInWeeks: 123, totalHoursPerWeek: 123, totalEffortInHours: 123, startDateTime: Date(), endDateTime: Date(), inscriptionsStartDateTime: Date(), inscriptionsEndDateTime: Date()) // CourseCreateDto |  (optional)
 
 // Create a new course
 CoursesAPI.createCourseAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseCreateDto: courseCreateDto) { (response, error) in
@@ -381,7 +381,7 @@ No authorization required
 
 # **getCourseByIdAsync**
 ```swift
-    open class func getCourseByIdAsync(tenantId: UUID, courseId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: CourseDto?, _ error: Error?) -> Void)
+    open class func getCourseByIdAsync(courseId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: CourseDto?, _ error: Error?) -> Void)
 ```
 
 Get course by ID
@@ -393,13 +393,13 @@ Retrieves a specific course by its ID.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let tenantId = 987 // UUID | 
 let courseId = 987 // UUID | 
+let tenantId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Get course by ID
-CoursesAPI.getCourseByIdAsync(tenantId: tenantId, courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CoursesAPI.getCourseByIdAsync(courseId: courseId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -415,8 +415,8 @@ CoursesAPI.getCourseByIdAsync(tenantId: tenantId, courseId: courseId, apiVersion
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenantId** | **UUID** |  | 
  **courseId** | **UUID** |  | 
+ **tenantId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 
@@ -2241,7 +2241,7 @@ let tenantId = 987 // UUID |
 let courseId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseUpdateDto = CourseUpdateDto(title: "title_example") // CourseUpdateDto |  (optional)
+let courseUpdateDto = CourseUpdateDto(title: "title_example", description: "description_example", sku: "sku_example", summary: "summary_example", code: "code_example", version: "version_example", courseCategoryID: "courseCategoryID_example", instructorProfileID: "instructorProfileID_example", currencyID: "currencyID_example", regularPrice: 123, maxCourseEnrollments: 123, totalEffortInWeeks: 123, totalHoursPerWeek: 123, totalEffortInHours: 123, startDateTime: Date(), endDateTime: Date(), inscriptionsStartDateTime: Date(), inscriptionsEndDateTime: Date(), published: false) // CourseUpdateDto |  (optional)
 
 // Update a course
 CoursesAPI.updateCourseAsync(tenantId: tenantId, courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseUpdateDto: courseUpdateDto) { (response, error) in

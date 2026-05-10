@@ -8,6 +8,7 @@ OpenAPIClient/Classes/OpenAPIs/APIs/AccountGroupsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/AccountingPeriodsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/AccountsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/BankingAPI.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/BillableLineTaxesAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/BillingProfilesAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/BudgetsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/CommissionsAPI.swift
@@ -70,6 +71,10 @@ OpenAPIClient/Classes/OpenAPIs/Models/AccountingPeriodDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/AccountingPeriodDtoEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/AccountingPeriodDtoListEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/AccountingPeriodUpdateDto.swift
+OpenAPIClient/Classes/OpenAPIs/Models/AppliedItemTaxRecordCreateDto.swift
+OpenAPIClient/Classes/OpenAPIs/Models/AppliedItemTaxRecordDto.swift
+OpenAPIClient/Classes/OpenAPIs/Models/AppliedItemTaxRecordDtoIReadOnlyListEnvelope.swift
+OpenAPIClient/Classes/OpenAPIs/Models/AppliedItemTaxRecordUpdateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/AppliedTaxPolicyRecordCreateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/AppliedTaxPolicyRecordDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/AppliedTaxPolicyRecordDtoEnvelope.swift
@@ -323,6 +328,10 @@ docs/AccountingPeriodDtoListEnvelope.md
 docs/AccountingPeriodUpdateDto.md
 docs/AccountingPeriodsAPI.md
 docs/AccountsAPI.md
+docs/AppliedItemTaxRecordCreateDto.md
+docs/AppliedItemTaxRecordDto.md
+docs/AppliedItemTaxRecordDtoIReadOnlyListEnvelope.md
+docs/AppliedItemTaxRecordUpdateDto.md
 docs/AppliedTaxPolicyRecordCreateDto.md
 docs/AppliedTaxPolicyRecordDto.md
 docs/AppliedTaxPolicyRecordDtoEnvelope.md
@@ -349,6 +358,7 @@ docs/BankTransactionDtoListEnvelope.md
 docs/BankTransactionUpdateDto.md
 docs/BankUpdateDto.md
 docs/BankingAPI.md
+docs/BillableLineTaxesAPI.md
 docs/BillingProfileCreateDto.md
 docs/BillingProfileDto.md
 docs/BillingProfileDtoEnvelope.md

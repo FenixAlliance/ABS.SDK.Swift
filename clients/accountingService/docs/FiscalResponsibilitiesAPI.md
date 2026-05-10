@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 # **createFiscalResponsibility**
 ```swift
-    open class func createFiscalResponsibility(tenantId: AnyCodable, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalResponsibilityCreateDto: FiscalResponsibilityCreateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func createFiscalResponsibility(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalResponsibilityCreateDto: FiscalResponsibilityCreateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Create a fiscal responsibility
@@ -26,7 +26,7 @@ Creates a new fiscal responsibility for a fiscal authority.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let tenantId = "TODO" // AnyCodable | 
+let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 let fiscalResponsibilityCreateDto = FiscalResponsibilityCreateDto(id: 123, timestamp: Date(), code: "code_example", name: "name_example", fiscalAuthorityId: "fiscalAuthorityId_example") // FiscalResponsibilityCreateDto |  (optional)
@@ -48,7 +48,7 @@ FiscalResponsibilitiesAPI.createFiscalResponsibility(tenantId: tenantId, apiVers
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenantId** | [**AnyCodable**](.md) |  | 
+ **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
  **fiscalResponsibilityCreateDto** | [**FiscalResponsibilityCreateDto**](FiscalResponsibilityCreateDto.md) |  | [optional] 
@@ -70,7 +70,7 @@ No authorization required
 
 # **deleteFiscalResponsibility**
 ```swift
-    open class func deleteFiscalResponsibility(tenantId: AnyCodable, fiscalResponsibilityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func deleteFiscalResponsibility(tenantId: UUID, fiscalResponsibilityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Delete a fiscal responsibility
@@ -82,7 +82,7 @@ Deletes a fiscal responsibility identified by its unique identifier.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let tenantId = "TODO" // AnyCodable | 
+let tenantId = 987 // UUID | 
 let fiscalResponsibilityId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
@@ -104,7 +104,7 @@ FiscalResponsibilitiesAPI.deleteFiscalResponsibility(tenantId: tenantId, fiscalR
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenantId** | [**AnyCodable**](.md) |  | 
+ **tenantId** | **UUID** |  | 
  **fiscalResponsibilityId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
@@ -236,7 +236,7 @@ No authorization required
 
 # **getFiscalResponsibility**
 ```swift
-    open class func getFiscalResponsibility(tenantId: AnyCodable, fiscalAuthorityId: UUID, fiscalResponsibilityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: FiscalResponsibilityDtoEnvelope?, _ error: Error?) -> Void)
+    open class func getFiscalResponsibility(tenantId: UUID, fiscalAuthorityId: UUID, fiscalResponsibilityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: FiscalResponsibilityDtoEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get fiscal responsibility by ID
@@ -248,7 +248,7 @@ Retrieves a specific fiscal responsibility by its unique identifier.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let tenantId = "TODO" // AnyCodable | 
+let tenantId = 987 // UUID | 
 let fiscalAuthorityId = 987 // UUID | 
 let fiscalResponsibilityId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
@@ -271,7 +271,7 @@ FiscalResponsibilitiesAPI.getFiscalResponsibility(tenantId: tenantId, fiscalAuth
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenantId** | [**AnyCodable**](.md) |  | 
+ **tenantId** | **UUID** |  | 
  **fiscalAuthorityId** | **UUID** |  | 
  **fiscalResponsibilityId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
@@ -294,7 +294,7 @@ No authorization required
 
 # **updateFiscalResponsibility**
 ```swift
-    open class func updateFiscalResponsibility(tenantId: AnyCodable, fiscalResponsibilityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalResponsibilityUpdateDto: FiscalResponsibilityUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func updateFiscalResponsibility(tenantId: UUID, fiscalResponsibilityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalResponsibilityUpdateDto: FiscalResponsibilityUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Update a fiscal responsibility
@@ -306,7 +306,7 @@ Updates an existing fiscal responsibility identified by its unique identifier.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let tenantId = "TODO" // AnyCodable | 
+let tenantId = 987 // UUID | 
 let fiscalResponsibilityId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
@@ -329,7 +329,7 @@ FiscalResponsibilitiesAPI.updateFiscalResponsibility(tenantId: tenantId, fiscalR
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenantId** | [**AnyCodable**](.md) |  | 
+ **tenantId** | **UUID** |  | 
  **fiscalResponsibilityId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 

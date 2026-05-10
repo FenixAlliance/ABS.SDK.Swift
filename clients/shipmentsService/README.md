@@ -44,7 +44,54 @@ Class | Method | HTTP request | Description
 *FenixAllianceABSWebAPI* | [**resendConfirmationEmailPost**](docs/FenixAllianceABSWebAPI.md#resendconfirmationemailpost) | **POST** /resendConfirmationEmail | 
 *FenixAllianceABSWebAPI* | [**resetPasswordPost**](docs/FenixAllianceABSWebAPI.md#resetpasswordpost) | **POST** /resetPassword | 
 *FenixAllianceABSWebAPI* | [**versionGet**](docs/FenixAllianceABSWebAPI.md#versionget) | **GET** /version | 
-*ShipmentsAPI* | [**getShipmentsAsync**](docs/ShipmentsAPI.md#getshipmentsasync) | **GET** /api/v2/ShipmentsService/Shipments | Retrieve a list of shipments
+*ItemShippingPoliciesAPI* | [**createItemShippingPolicyAsync**](docs/ItemShippingPoliciesAPI.md#createitemshippingpolicyasync) | **POST** /api/v2/ShipmentsService/ItemShippingPolicies | Create an item shipping policy
+*ItemShippingPoliciesAPI* | [**deleteItemShippingPolicyAsync**](docs/ItemShippingPoliciesAPI.md#deleteitemshippingpolicyasync) | **DELETE** /api/v2/ShipmentsService/ItemShippingPolicies/{policyId} | Delete an item shipping policy
+*ItemShippingPoliciesAPI* | [**getItemShippingPoliciesAsync**](docs/ItemShippingPoliciesAPI.md#getitemshippingpoliciesasync) | **GET** /api/v2/ShipmentsService/ItemShippingPolicies | Get all item shipping policies
+*ItemShippingPoliciesAPI* | [**getItemShippingPoliciesCountAsync**](docs/ItemShippingPoliciesAPI.md#getitemshippingpoliciescountasync) | **GET** /api/v2/ShipmentsService/ItemShippingPolicies/Count | Get item shipping policies count
+*ItemShippingPoliciesAPI* | [**getItemShippingPolicyByIdAsync**](docs/ItemShippingPoliciesAPI.md#getitemshippingpolicybyidasync) | **GET** /api/v2/ShipmentsService/ItemShippingPolicies/{policyId} | Get item shipping policy by ID
+*ItemShippingPoliciesAPI* | [**updateItemShippingPolicyAsync**](docs/ItemShippingPoliciesAPI.md#updateitemshippingpolicyasync) | **PUT** /api/v2/ShipmentsService/ItemShippingPolicies/{policyId} | Update an item shipping policy
+*ShipmentsAPI* | [**createShipmentAsync**](docs/ShipmentsAPI.md#createshipmentasync) | **POST** /api/v2/ShipmentsService/Shipments | Create a shipment
+*ShipmentsAPI* | [**deleteShipmentAsync**](docs/ShipmentsAPI.md#deleteshipmentasync) | **DELETE** /api/v2/ShipmentsService/Shipments/{shipmentId} | Delete a shipment
+*ShipmentsAPI* | [**getShipmentByIdAsync**](docs/ShipmentsAPI.md#getshipmentbyidasync) | **GET** /api/v2/ShipmentsService/Shipments/{shipmentId} | Get shipment by ID
+*ShipmentsAPI* | [**getShipmentsAsync**](docs/ShipmentsAPI.md#getshipmentsasync) | **GET** /api/v2/ShipmentsService/Shipments | Get all shipments
+*ShipmentsAPI* | [**getShipmentsCountAsync**](docs/ShipmentsAPI.md#getshipmentscountasync) | **GET** /api/v2/ShipmentsService/Shipments/Count | Get shipments count
+*ShipmentsAPI* | [**updateShipmentAsync**](docs/ShipmentsAPI.md#updateshipmentasync) | **PUT** /api/v2/ShipmentsService/Shipments/{shipmentId} | Update a shipment
+*ShippingClassesAPI* | [**createShippingClassAsync**](docs/ShippingClassesAPI.md#createshippingclassasync) | **POST** /api/v2/ShipmentsService/ShippingClasses | Create a shipping class
+*ShippingClassesAPI* | [**deleteShippingClassAsync**](docs/ShippingClassesAPI.md#deleteshippingclassasync) | **DELETE** /api/v2/ShipmentsService/ShippingClasses/{classId} | Delete a shipping class
+*ShippingClassesAPI* | [**getShippingClassByIdAsync**](docs/ShippingClassesAPI.md#getshippingclassbyidasync) | **GET** /api/v2/ShipmentsService/ShippingClasses/{classId} | Get shipping class by ID
+*ShippingClassesAPI* | [**getShippingClassesAsync**](docs/ShippingClassesAPI.md#getshippingclassesasync) | **GET** /api/v2/ShipmentsService/ShippingClasses | Get all shipping classes
+*ShippingClassesAPI* | [**getShippingClassesCountAsync**](docs/ShippingClassesAPI.md#getshippingclassescountasync) | **GET** /api/v2/ShipmentsService/ShippingClasses/Count | Get shipping classes count
+*ShippingClassesAPI* | [**updateShippingClassAsync**](docs/ShippingClassesAPI.md#updateshippingclassasync) | **PUT** /api/v2/ShipmentsService/ShippingClasses/{classId} | Update a shipping class
+*ShippingCouriersAPI* | [**createShippingCourierAsync**](docs/ShippingCouriersAPI.md#createshippingcourierasync) | **POST** /api/v2/ShipmentsService/ShippingCouriers | Create a shipping courier
+*ShippingCouriersAPI* | [**deleteShippingCourierAsync**](docs/ShippingCouriersAPI.md#deleteshippingcourierasync) | **DELETE** /api/v2/ShipmentsService/ShippingCouriers/{courierId} | Delete a shipping courier
+*ShippingCouriersAPI* | [**getShippingCourierByIdAsync**](docs/ShippingCouriersAPI.md#getshippingcourierbyidasync) | **GET** /api/v2/ShipmentsService/ShippingCouriers/{courierId} | Get shipping courier by ID
+*ShippingCouriersAPI* | [**getShippingCouriersAsync**](docs/ShippingCouriersAPI.md#getshippingcouriersasync) | **GET** /api/v2/ShipmentsService/ShippingCouriers | Get all shipping couriers
+*ShippingCouriersAPI* | [**getShippingCouriersCountAsync**](docs/ShippingCouriersAPI.md#getshippingcourierscountasync) | **GET** /api/v2/ShipmentsService/ShippingCouriers/Count | Get shipping couriers count
+*ShippingCouriersAPI* | [**updateShippingCourierAsync**](docs/ShippingCouriersAPI.md#updateshippingcourierasync) | **PUT** /api/v2/ShipmentsService/ShippingCouriers/{courierId} | Update a shipping courier
+*ShippingLabelsAPI* | [**createShippingLabelAsync**](docs/ShippingLabelsAPI.md#createshippinglabelasync) | **POST** /api/v2/ShipmentsService/ShippingLabels | Create a shipping label
+*ShippingLabelsAPI* | [**deleteShippingLabelAsync**](docs/ShippingLabelsAPI.md#deleteshippinglabelasync) | **DELETE** /api/v2/ShipmentsService/ShippingLabels/{labelId} | Delete a shipping label
+*ShippingLabelsAPI* | [**getShippingLabelByIdAsync**](docs/ShippingLabelsAPI.md#getshippinglabelbyidasync) | **GET** /api/v2/ShipmentsService/ShippingLabels/{labelId} | Get shipping label by ID
+*ShippingLabelsAPI* | [**getShippingLabelsAsync**](docs/ShippingLabelsAPI.md#getshippinglabelsasync) | **GET** /api/v2/ShipmentsService/ShippingLabels | Get all shipping labels
+*ShippingLabelsAPI* | [**getShippingLabelsCountAsync**](docs/ShippingLabelsAPI.md#getshippinglabelscountasync) | **GET** /api/v2/ShipmentsService/ShippingLabels/Count | Get shipping labels count
+*ShippingLabelsAPI* | [**updateShippingLabelAsync**](docs/ShippingLabelsAPI.md#updateshippinglabelasync) | **PUT** /api/v2/ShipmentsService/ShippingLabels/{labelId} | Update a shipping label
+*ShippingMethodsAPI* | [**createShippingMethodAsync**](docs/ShippingMethodsAPI.md#createshippingmethodasync) | **POST** /api/v2/ShipmentsService/ShippingMethods | Create a shipping method
+*ShippingMethodsAPI* | [**deleteShippingMethodAsync**](docs/ShippingMethodsAPI.md#deleteshippingmethodasync) | **DELETE** /api/v2/ShipmentsService/ShippingMethods/{methodId} | Delete a shipping method
+*ShippingMethodsAPI* | [**getShippingMethodByIdAsync**](docs/ShippingMethodsAPI.md#getshippingmethodbyidasync) | **GET** /api/v2/ShipmentsService/ShippingMethods/{methodId} | Get shipping method by ID
+*ShippingMethodsAPI* | [**getShippingMethodsAsync**](docs/ShippingMethodsAPI.md#getshippingmethodsasync) | **GET** /api/v2/ShipmentsService/ShippingMethods | Get all shipping methods
+*ShippingMethodsAPI* | [**getShippingMethodsCountAsync**](docs/ShippingMethodsAPI.md#getshippingmethodscountasync) | **GET** /api/v2/ShipmentsService/ShippingMethods/Count | Get shipping methods count
+*ShippingMethodsAPI* | [**updateShippingMethodAsync**](docs/ShippingMethodsAPI.md#updateshippingmethodasync) | **PUT** /api/v2/ShipmentsService/ShippingMethods/{methodId} | Update a shipping method
+*ShippingRegionsAPI* | [**createShippingRegionAsync**](docs/ShippingRegionsAPI.md#createshippingregionasync) | **POST** /api/v2/ShipmentsService/ShippingRegions | Create a shipping region
+*ShippingRegionsAPI* | [**deleteShippingRegionAsync**](docs/ShippingRegionsAPI.md#deleteshippingregionasync) | **DELETE** /api/v2/ShipmentsService/ShippingRegions/{regionId} | Delete a shipping region
+*ShippingRegionsAPI* | [**getShippingRegionByIdAsync**](docs/ShippingRegionsAPI.md#getshippingregionbyidasync) | **GET** /api/v2/ShipmentsService/ShippingRegions/{regionId} | Get shipping region by ID
+*ShippingRegionsAPI* | [**getShippingRegionsAsync**](docs/ShippingRegionsAPI.md#getshippingregionsasync) | **GET** /api/v2/ShipmentsService/ShippingRegions | Get all shipping regions
+*ShippingRegionsAPI* | [**getShippingRegionsCountAsync**](docs/ShippingRegionsAPI.md#getshippingregionscountasync) | **GET** /api/v2/ShipmentsService/ShippingRegions/Count | Get shipping regions count
+*ShippingRegionsAPI* | [**updateShippingRegionAsync**](docs/ShippingRegionsAPI.md#updateshippingregionasync) | **PUT** /api/v2/ShipmentsService/ShippingRegions/{regionId} | Update a shipping region
+*ShippingZonesAPI* | [**createShippingZoneAsync**](docs/ShippingZonesAPI.md#createshippingzoneasync) | **POST** /api/v2/ShipmentsService/ShippingZones | Create a shipping zone
+*ShippingZonesAPI* | [**deleteShippingZoneAsync**](docs/ShippingZonesAPI.md#deleteshippingzoneasync) | **DELETE** /api/v2/ShipmentsService/ShippingZones/{zoneId} | Delete a shipping zone
+*ShippingZonesAPI* | [**getShippingZoneByIdAsync**](docs/ShippingZonesAPI.md#getshippingzonebyidasync) | **GET** /api/v2/ShipmentsService/ShippingZones/{zoneId} | Get shipping zone by ID
+*ShippingZonesAPI* | [**getShippingZonesAsync**](docs/ShippingZonesAPI.md#getshippingzonesasync) | **GET** /api/v2/ShipmentsService/ShippingZones | Get all shipping zones
+*ShippingZonesAPI* | [**getShippingZonesCountAsync**](docs/ShippingZonesAPI.md#getshippingzonescountasync) | **GET** /api/v2/ShipmentsService/ShippingZones/Count | Get shipping zones count
+*ShippingZonesAPI* | [**updateShippingZoneAsync**](docs/ShippingZonesAPI.md#updateshippingzoneasync) | **PUT** /api/v2/ShipmentsService/ShippingZones/{zoneId} | Update a shipping zone
 
 
 ## Documentation For Models
@@ -55,13 +102,52 @@ Class | Method | HTTP request | Description
  - [HttpValidationProblemDetails](docs/HttpValidationProblemDetails.md)
  - [InfoRequest](docs/InfoRequest.md)
  - [InfoResponse](docs/InfoResponse.md)
+ - [Int32Envelope](docs/Int32Envelope.md)
+ - [ItemShippingPolicyCreateDto](docs/ItemShippingPolicyCreateDto.md)
+ - [ItemShippingPolicyDto](docs/ItemShippingPolicyDto.md)
+ - [ItemShippingPolicyDtoEnvelope](docs/ItemShippingPolicyDtoEnvelope.md)
+ - [ItemShippingPolicyDtoListEnvelope](docs/ItemShippingPolicyDtoListEnvelope.md)
+ - [ItemShippingPolicyUpdateDto](docs/ItemShippingPolicyUpdateDto.md)
  - [LoginRequest](docs/LoginRequest.md)
  - [RefreshRequest](docs/RefreshRequest.md)
  - [RegisterRequest](docs/RegisterRequest.md)
  - [ResendConfirmationEmailRequest](docs/ResendConfirmationEmailRequest.md)
  - [ResetPasswordRequest](docs/ResetPasswordRequest.md)
+ - [ShipmentCreateDto](docs/ShipmentCreateDto.md)
  - [ShipmentDto](docs/ShipmentDto.md)
+ - [ShipmentDtoEnvelope](docs/ShipmentDtoEnvelope.md)
  - [ShipmentDtoListEnvelope](docs/ShipmentDtoListEnvelope.md)
+ - [ShipmentUpdateDto](docs/ShipmentUpdateDto.md)
+ - [ShippingClassCreateDto](docs/ShippingClassCreateDto.md)
+ - [ShippingClassDto](docs/ShippingClassDto.md)
+ - [ShippingClassDtoEnvelope](docs/ShippingClassDtoEnvelope.md)
+ - [ShippingClassDtoListEnvelope](docs/ShippingClassDtoListEnvelope.md)
+ - [ShippingClassUpdateDto](docs/ShippingClassUpdateDto.md)
+ - [ShippingCourierCreateDto](docs/ShippingCourierCreateDto.md)
+ - [ShippingCourierDto](docs/ShippingCourierDto.md)
+ - [ShippingCourierDtoEnvelope](docs/ShippingCourierDtoEnvelope.md)
+ - [ShippingCourierDtoListEnvelope](docs/ShippingCourierDtoListEnvelope.md)
+ - [ShippingCourierUpdateDto](docs/ShippingCourierUpdateDto.md)
+ - [ShippingLabelCreateDto](docs/ShippingLabelCreateDto.md)
+ - [ShippingLabelDto](docs/ShippingLabelDto.md)
+ - [ShippingLabelDtoEnvelope](docs/ShippingLabelDtoEnvelope.md)
+ - [ShippingLabelDtoListEnvelope](docs/ShippingLabelDtoListEnvelope.md)
+ - [ShippingLabelUpdateDto](docs/ShippingLabelUpdateDto.md)
+ - [ShippingMethodCreateDto](docs/ShippingMethodCreateDto.md)
+ - [ShippingMethodDto](docs/ShippingMethodDto.md)
+ - [ShippingMethodDtoEnvelope](docs/ShippingMethodDtoEnvelope.md)
+ - [ShippingMethodDtoListEnvelope](docs/ShippingMethodDtoListEnvelope.md)
+ - [ShippingMethodUpdateDto](docs/ShippingMethodUpdateDto.md)
+ - [ShippingRegionCreateDto](docs/ShippingRegionCreateDto.md)
+ - [ShippingRegionDto](docs/ShippingRegionDto.md)
+ - [ShippingRegionDtoEnvelope](docs/ShippingRegionDtoEnvelope.md)
+ - [ShippingRegionDtoListEnvelope](docs/ShippingRegionDtoListEnvelope.md)
+ - [ShippingRegionUpdateDto](docs/ShippingRegionUpdateDto.md)
+ - [ShippingZoneCreateDto](docs/ShippingZoneCreateDto.md)
+ - [ShippingZoneDto](docs/ShippingZoneDto.md)
+ - [ShippingZoneDtoEnvelope](docs/ShippingZoneDtoEnvelope.md)
+ - [ShippingZoneDtoListEnvelope](docs/ShippingZoneDtoListEnvelope.md)
+ - [ShippingZoneUpdateDto](docs/ShippingZoneUpdateDto.md)
  - [TwoFactorRequest](docs/TwoFactorRequest.md)
  - [TwoFactorResponse](docs/TwoFactorResponse.md)
 

@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 # **createFiscalPeriod**
 ```swift
-    open class func createFiscalPeriod(tenantId: AnyCodable, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalPeriodCreateDto: FiscalPeriodCreateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func createFiscalPeriod(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalPeriodCreateDto: FiscalPeriodCreateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Create a fiscal period
@@ -26,7 +26,7 @@ Creates a new fiscal period associated with a fiscal year.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let tenantId = "TODO" // AnyCodable | 
+let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 let fiscalPeriodCreateDto = FiscalPeriodCreateDto(id: 123, timestamp: Date(), name: "name_example", fromDate: Date(), toDate: Date(), fiscalYearId: "fiscalYearId_example") // FiscalPeriodCreateDto |  (optional)
@@ -48,7 +48,7 @@ FiscalPeriodsAPI.createFiscalPeriod(tenantId: tenantId, apiVersion: apiVersion, 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenantId** | [**AnyCodable**](.md) |  | 
+ **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
  **fiscalPeriodCreateDto** | [**FiscalPeriodCreateDto**](FiscalPeriodCreateDto.md) |  | [optional] 
@@ -70,7 +70,7 @@ No authorization required
 
 # **deleteFiscalPeriod**
 ```swift
-    open class func deleteFiscalPeriod(tenantId: AnyCodable, fiscalPeriodId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func deleteFiscalPeriod(tenantId: UUID, fiscalPeriodId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Delete a fiscal period
@@ -82,7 +82,7 @@ Deletes a fiscal period identified by its unique identifier.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let tenantId = "TODO" // AnyCodable | 
+let tenantId = 987 // UUID | 
 let fiscalPeriodId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
@@ -104,7 +104,7 @@ FiscalPeriodsAPI.deleteFiscalPeriod(tenantId: tenantId, fiscalPeriodId: fiscalPe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenantId** | [**AnyCodable**](.md) |  | 
+ **tenantId** | **UUID** |  | 
  **fiscalPeriodId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
@@ -126,7 +126,7 @@ No authorization required
 
 # **getFiscalPeriod**
 ```swift
-    open class func getFiscalPeriod(tenantId: AnyCodable, fiscalAuthorityId: UUID, fiscalYearId: UUID, fiscalPeriodId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: FiscalPeriodDtoEnvelope?, _ error: Error?) -> Void)
+    open class func getFiscalPeriod(tenantId: UUID, fiscalAuthorityId: UUID, fiscalYearId: UUID, fiscalPeriodId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: FiscalPeriodDtoEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get fiscal period by ID
@@ -138,7 +138,7 @@ Retrieves a specific fiscal period by its unique identifier within a fiscal year
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let tenantId = "TODO" // AnyCodable | 
+let tenantId = 987 // UUID | 
 let fiscalAuthorityId = 987 // UUID | 
 let fiscalYearId = 987 // UUID | 
 let fiscalPeriodId = 987 // UUID | 
@@ -162,7 +162,7 @@ FiscalPeriodsAPI.getFiscalPeriod(tenantId: tenantId, fiscalAuthorityId: fiscalAu
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenantId** | [**AnyCodable**](.md) |  | 
+ **tenantId** | **UUID** |  | 
  **fiscalAuthorityId** | **UUID** |  | 
  **fiscalYearId** | **UUID** |  | 
  **fiscalPeriodId** | **UUID** |  | 
@@ -186,7 +186,7 @@ No authorization required
 
 # **getFiscalPeriods**
 ```swift
-    open class func getFiscalPeriods(tenantId: AnyCodable, fiscalAuthorityId: UUID, fiscalYearId: UUID, authorityId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: FiscalPeriodDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getFiscalPeriods(tenantId: UUID, fiscalAuthorityId: UUID, fiscalYearId: UUID, authorityId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: FiscalPeriodDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get fiscal periods for a fiscal year
@@ -198,7 +198,7 @@ Retrieves all fiscal periods for the specified fiscal year within a fiscal autho
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let tenantId = "TODO" // AnyCodable | 
+let tenantId = 987 // UUID | 
 let fiscalAuthorityId = 987 // UUID | 
 let fiscalYearId = 987 // UUID | 
 let authorityId = "authorityId_example" // String | 
@@ -222,7 +222,7 @@ FiscalPeriodsAPI.getFiscalPeriods(tenantId: tenantId, fiscalAuthorityId: fiscalA
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenantId** | [**AnyCodable**](.md) |  | 
+ **tenantId** | **UUID** |  | 
  **fiscalAuthorityId** | **UUID** |  | 
  **fiscalYearId** | **UUID** |  | 
  **authorityId** | **String** |  | 
@@ -246,7 +246,7 @@ No authorization required
 
 # **getFiscalPeriodsCount**
 ```swift
-    open class func getFiscalPeriodsCount(tenantId: AnyCodable, fiscalAuthorityId: UUID, fiscalYearId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getFiscalPeriodsCount(tenantId: UUID, fiscalAuthorityId: UUID, fiscalYearId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get fiscal periods count
@@ -258,7 +258,7 @@ Returns the total count of fiscal periods for the specified fiscal year.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let tenantId = "TODO" // AnyCodable | 
+let tenantId = 987 // UUID | 
 let fiscalAuthorityId = 987 // UUID | 
 let fiscalYearId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
@@ -281,7 +281,7 @@ FiscalPeriodsAPI.getFiscalPeriodsCount(tenantId: tenantId, fiscalAuthorityId: fi
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenantId** | [**AnyCodable**](.md) |  | 
+ **tenantId** | **UUID** |  | 
  **fiscalAuthorityId** | **UUID** |  | 
  **fiscalYearId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
@@ -304,7 +304,7 @@ No authorization required
 
 # **updateFiscalPeriod**
 ```swift
-    open class func updateFiscalPeriod(tenantId: AnyCodable, fiscalPeriodId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalPeriodUpdateDto: FiscalPeriodUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func updateFiscalPeriod(tenantId: UUID, fiscalPeriodId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalPeriodUpdateDto: FiscalPeriodUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Update a fiscal period
@@ -316,7 +316,7 @@ Updates an existing fiscal period identified by its unique identifier.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let tenantId = "TODO" // AnyCodable | 
+let tenantId = 987 // UUID | 
 let fiscalPeriodId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
@@ -339,7 +339,7 @@ FiscalPeriodsAPI.updateFiscalPeriod(tenantId: tenantId, fiscalPeriodId: fiscalPe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenantId** | [**AnyCodable**](.md) |  | 
+ **tenantId** | **UUID** |  | 
  **fiscalPeriodId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 

@@ -65,6 +65,7 @@ public struct ExtendedInvoiceDto: Codable, JSONEncodable, Hashable {
     public var taxCalculationMethod: TaxCalculationMethod?
     public var costCalculationMethod: CostCalculationMethod?
     public var forexRate: Double?
+    public var forexRatesSnapshot: String?
     public var currencyId: String?
     public var totalDetail: Double?
     public var totalDetailCurrencyId: String?
@@ -125,7 +126,7 @@ public struct ExtendedInvoiceDto: Codable, JSONEncodable, Hashable {
     public var enrollment: SimpleTenantEnrollmentDto?
     public var invoiceLines: [InvoiceLineDto]?
 
-    public init(id: String? = nil, timestamp: Date? = nil, closed: Bool? = nil, type: String? = nil, title: String? = nil, userId: String? = nil, tenantId: String? = nil, description: String? = nil, priceListId: String? = nil, enrollmentId: String? = nil, individualId: String? = nil, organizationId: String? = nil, receiverTenantId: String? = nil, firstName: String? = nil, lastName: String? = nil, companyName: String? = nil, billingEmail: String? = nil, addressLine1: String? = nil, addressLine2: String? = nil, postalCode: String? = nil, countryId: String? = nil, stateId: String? = nil, cityId: String? = nil, customerNotes: String? = nil, taxCalculationMethod: TaxCalculationMethod? = nil, costCalculationMethod: CostCalculationMethod? = nil, forexRate: Double? = nil, currencyId: String? = nil, totalDetail: Double? = nil, totalDetailCurrencyId: String? = nil, totalProfit: Double? = nil, totalProfitCurrencyId: String? = nil, totalDiscounts: Double? = nil, totalDiscountsCurrencyId: String? = nil, totalSurcharges: Double? = nil, totalSurchargesCurrencyId: String? = nil, totalTaxBase: Double? = nil, totalTaxBaseCurrencyId: String? = nil, totalTaxes: Double? = nil, totalTaxesCurrencyId: String? = nil, totalShippingCost: Double? = nil, totalShippingCostCurrencyId: String? = nil, totalShippingTax: Double? = nil, totalShippingTaxCurrencyId: String? = nil, totalWithheldTax: Double? = nil, totalWithheldTaxCurrencyId: String? = nil, totalGlobalDiscounts: Double? = nil, totalGlobalDiscountsCurrencyId: String? = nil, totalGlobalSurcharges: Double? = nil, totalGlobalSurchargesCurrencyId: String? = nil, total: Double? = nil, totalCurrencyId: String? = nil, totalDetailInUsd: Double? = nil, totalProfitInUsd: Double? = nil, totalDiscountsInUsd: Double? = nil, totalSurchargesInUsd: Double? = nil, totalTaxBaseInUsd: Double? = nil, totalTaxesInUsd: Double? = nil, totalWithheldTaxesInUsd: Double? = nil, totalShippingCostInUsd: Double? = nil, totalShippingTaxesInUsd: Double? = nil, totalGlobalDiscountsInUsd: Double? = nil, totalGlobalSurchargesInUsd: Double? = nil, totalInUsd: Double? = nil, paid: Bool? = nil, number: Int64? = nil, notes: String? = nil, orderId: String? = nil, enumeration: String? = nil, paymentModeId: String? = nil, enumerationRangeId: String? = nil, emisorBillingProfileId: String? = nil, receiverBillingProfileId: String? = nil, emisorWalletAccountId: String? = nil, receiverWalletAccountId: String? = nil, paymentDue: Date? = nil, invoiceType: InvoiceType? = nil, documentType: DocumentType? = nil, invoiceStatus: InvoiceStatus? = nil, tenant: TenantDto? = nil, user: SimpleUserDto? = nil, receiverTenant: TenantDto? = nil, individual: SimpleContactDto? = nil, organization: SimpleContactDto? = nil, enrollment: SimpleTenantEnrollmentDto? = nil, invoiceLines: [InvoiceLineDto]? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, closed: Bool? = nil, type: String? = nil, title: String? = nil, userId: String? = nil, tenantId: String? = nil, description: String? = nil, priceListId: String? = nil, enrollmentId: String? = nil, individualId: String? = nil, organizationId: String? = nil, receiverTenantId: String? = nil, firstName: String? = nil, lastName: String? = nil, companyName: String? = nil, billingEmail: String? = nil, addressLine1: String? = nil, addressLine2: String? = nil, postalCode: String? = nil, countryId: String? = nil, stateId: String? = nil, cityId: String? = nil, customerNotes: String? = nil, taxCalculationMethod: TaxCalculationMethod? = nil, costCalculationMethod: CostCalculationMethod? = nil, forexRate: Double? = nil, forexRatesSnapshot: String? = nil, currencyId: String? = nil, totalDetail: Double? = nil, totalDetailCurrencyId: String? = nil, totalProfit: Double? = nil, totalProfitCurrencyId: String? = nil, totalDiscounts: Double? = nil, totalDiscountsCurrencyId: String? = nil, totalSurcharges: Double? = nil, totalSurchargesCurrencyId: String? = nil, totalTaxBase: Double? = nil, totalTaxBaseCurrencyId: String? = nil, totalTaxes: Double? = nil, totalTaxesCurrencyId: String? = nil, totalShippingCost: Double? = nil, totalShippingCostCurrencyId: String? = nil, totalShippingTax: Double? = nil, totalShippingTaxCurrencyId: String? = nil, totalWithheldTax: Double? = nil, totalWithheldTaxCurrencyId: String? = nil, totalGlobalDiscounts: Double? = nil, totalGlobalDiscountsCurrencyId: String? = nil, totalGlobalSurcharges: Double? = nil, totalGlobalSurchargesCurrencyId: String? = nil, total: Double? = nil, totalCurrencyId: String? = nil, totalDetailInUsd: Double? = nil, totalProfitInUsd: Double? = nil, totalDiscountsInUsd: Double? = nil, totalSurchargesInUsd: Double? = nil, totalTaxBaseInUsd: Double? = nil, totalTaxesInUsd: Double? = nil, totalWithheldTaxesInUsd: Double? = nil, totalShippingCostInUsd: Double? = nil, totalShippingTaxesInUsd: Double? = nil, totalGlobalDiscountsInUsd: Double? = nil, totalGlobalSurchargesInUsd: Double? = nil, totalInUsd: Double? = nil, paid: Bool? = nil, number: Int64? = nil, notes: String? = nil, orderId: String? = nil, enumeration: String? = nil, paymentModeId: String? = nil, enumerationRangeId: String? = nil, emisorBillingProfileId: String? = nil, receiverBillingProfileId: String? = nil, emisorWalletAccountId: String? = nil, receiverWalletAccountId: String? = nil, paymentDue: Date? = nil, invoiceType: InvoiceType? = nil, documentType: DocumentType? = nil, invoiceStatus: InvoiceStatus? = nil, tenant: TenantDto? = nil, user: SimpleUserDto? = nil, receiverTenant: TenantDto? = nil, individual: SimpleContactDto? = nil, organization: SimpleContactDto? = nil, enrollment: SimpleTenantEnrollmentDto? = nil, invoiceLines: [InvoiceLineDto]? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.closed = closed
@@ -153,6 +154,7 @@ public struct ExtendedInvoiceDto: Codable, JSONEncodable, Hashable {
         self.taxCalculationMethod = taxCalculationMethod
         self.costCalculationMethod = costCalculationMethod
         self.forexRate = forexRate
+        self.forexRatesSnapshot = forexRatesSnapshot
         self.currencyId = currencyId
         self.totalDetail = totalDetail
         self.totalDetailCurrencyId = totalDetailCurrencyId
@@ -242,6 +244,7 @@ public struct ExtendedInvoiceDto: Codable, JSONEncodable, Hashable {
         case taxCalculationMethod
         case costCalculationMethod
         case forexRate
+        case forexRatesSnapshot
         case currencyId
         case totalDetail
         case totalDetailCurrencyId
@@ -334,6 +337,7 @@ public struct ExtendedInvoiceDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(taxCalculationMethod, forKey: .taxCalculationMethod)
         try container.encodeIfPresent(costCalculationMethod, forKey: .costCalculationMethod)
         try container.encodeIfPresent(forexRate, forKey: .forexRate)
+        try container.encodeIfPresent(forexRatesSnapshot, forKey: .forexRatesSnapshot)
         try container.encodeIfPresent(currencyId, forKey: .currencyId)
         try container.encodeIfPresent(totalDetail, forKey: .totalDetail)
         try container.encodeIfPresent(totalDetailCurrencyId, forKey: .totalDetailCurrencyId)

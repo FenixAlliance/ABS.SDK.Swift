@@ -13,13 +13,67 @@ import AnyCodable
 public struct CourseUpdateDto: Codable, JSONEncodable, Hashable {
 
     public var title: String?
+    public var description: String?
+    public var sku: String?
+    public var summary: String?
+    public var code: String?
+    public var version: String?
+    public var courseCategoryID: String?
+    public var instructorProfileID: String?
+    public var currencyID: String?
+    public var regularPrice: Double?
+    public var maxCourseEnrollments: Int?
+    public var totalEffortInWeeks: Int?
+    public var totalHoursPerWeek: Int?
+    public var totalEffortInHours: Int?
+    public var startDateTime: Date?
+    public var endDateTime: Date?
+    public var inscriptionsStartDateTime: Date?
+    public var inscriptionsEndDateTime: Date?
+    public var published: Bool?
 
-    public init(title: String? = nil) {
+    public init(title: String? = nil, description: String? = nil, sku: String? = nil, summary: String? = nil, code: String? = nil, version: String? = nil, courseCategoryID: String? = nil, instructorProfileID: String? = nil, currencyID: String? = nil, regularPrice: Double? = nil, maxCourseEnrollments: Int? = nil, totalEffortInWeeks: Int? = nil, totalHoursPerWeek: Int? = nil, totalEffortInHours: Int? = nil, startDateTime: Date? = nil, endDateTime: Date? = nil, inscriptionsStartDateTime: Date? = nil, inscriptionsEndDateTime: Date? = nil, published: Bool? = nil) {
         self.title = title
+        self.description = description
+        self.sku = sku
+        self.summary = summary
+        self.code = code
+        self.version = version
+        self.courseCategoryID = courseCategoryID
+        self.instructorProfileID = instructorProfileID
+        self.currencyID = currencyID
+        self.regularPrice = regularPrice
+        self.maxCourseEnrollments = maxCourseEnrollments
+        self.totalEffortInWeeks = totalEffortInWeeks
+        self.totalHoursPerWeek = totalHoursPerWeek
+        self.totalEffortInHours = totalEffortInHours
+        self.startDateTime = startDateTime
+        self.endDateTime = endDateTime
+        self.inscriptionsStartDateTime = inscriptionsStartDateTime
+        self.inscriptionsEndDateTime = inscriptionsEndDateTime
+        self.published = published
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case title
+        case description
+        case sku
+        case summary
+        case code
+        case version
+        case courseCategoryID
+        case instructorProfileID
+        case currencyID
+        case regularPrice
+        case maxCourseEnrollments
+        case totalEffortInWeeks
+        case totalHoursPerWeek
+        case totalEffortInHours
+        case startDateTime
+        case endDateTime
+        case inscriptionsStartDateTime
+        case inscriptionsEndDateTime
+        case published
     }
 
     // Encodable protocol methods
@@ -27,6 +81,24 @@ public struct CourseUpdateDto: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(title, forKey: .title)
+        try container.encodeIfPresent(description, forKey: .description)
+        try container.encodeIfPresent(sku, forKey: .sku)
+        try container.encodeIfPresent(summary, forKey: .summary)
+        try container.encodeIfPresent(code, forKey: .code)
+        try container.encodeIfPresent(version, forKey: .version)
+        try container.encodeIfPresent(courseCategoryID, forKey: .courseCategoryID)
+        try container.encodeIfPresent(instructorProfileID, forKey: .instructorProfileID)
+        try container.encodeIfPresent(currencyID, forKey: .currencyID)
+        try container.encodeIfPresent(regularPrice, forKey: .regularPrice)
+        try container.encodeIfPresent(maxCourseEnrollments, forKey: .maxCourseEnrollments)
+        try container.encodeIfPresent(totalEffortInWeeks, forKey: .totalEffortInWeeks)
+        try container.encodeIfPresent(totalHoursPerWeek, forKey: .totalHoursPerWeek)
+        try container.encodeIfPresent(totalEffortInHours, forKey: .totalEffortInHours)
+        try container.encodeIfPresent(startDateTime, forKey: .startDateTime)
+        try container.encodeIfPresent(endDateTime, forKey: .endDateTime)
+        try container.encodeIfPresent(inscriptionsStartDateTime, forKey: .inscriptionsStartDateTime)
+        try container.encodeIfPresent(inscriptionsEndDateTime, forKey: .inscriptionsEndDateTime)
+        try container.encodeIfPresent(published, forKey: .published)
     }
 }
 

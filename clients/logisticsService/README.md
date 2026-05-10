@@ -45,6 +45,54 @@ Class | Method | HTTP request | Description
 *FenixAllianceABSWebAPI* | [**resetPasswordPost**](docs/FenixAllianceABSWebAPI.md#resetpasswordpost) | **POST** /resetPassword | 
 *FenixAllianceABSWebAPI* | [**versionGet**](docs/FenixAllianceABSWebAPI.md#versionget) | **GET** /version | 
 *StockAPI* | [**getContactsAsync**](docs/StockAPI.md#getcontactsasync) | **GET** /api/v2/LogisticsService/Stock | Get all stock-related contacts
+*WarehousingAPI* | [**createItemPackingSlipAsync**](docs/WarehousingAPI.md#createitempackingslipasync) | **POST** /api/v2/LogisticsService/ItemPackingSlips | Create an item packing slip
+*WarehousingAPI* | [**createItemPackingSlipEntryAsync**](docs/WarehousingAPI.md#createitempackingslipentryasync) | **POST** /api/v2/LogisticsService/ItemPackingSlips/{packingSlipId}/Entries | Create a packing slip entry
+*WarehousingAPI* | [**createItemPickListAsync**](docs/WarehousingAPI.md#createitempicklistasync) | **POST** /api/v2/LogisticsService/ItemPickLists | Create an item pick list
+*WarehousingAPI* | [**createItemPickListEntryAsync**](docs/WarehousingAPI.md#createitempicklistentryasync) | **POST** /api/v2/LogisticsService/ItemPickLists/{pickListId}/Entries | Create a pick list entry
+*WarehousingAPI* | [**createItemRestockAsync**](docs/WarehousingAPI.md#createitemrestockasync) | **POST** /api/v2/LogisticsService/ItemRestocks | Create an item restock
+*WarehousingAPI* | [**createItemRestockEntryAsync**](docs/WarehousingAPI.md#createitemrestockentryasync) | **POST** /api/v2/LogisticsService/ItemRestocks/{restockId}/Entries | Create a restock entry
+*WarehousingAPI* | [**createItemRetainSampleAsync**](docs/WarehousingAPI.md#createitemretainsampleasync) | **POST** /api/v2/LogisticsService/ItemRetainSamples | Create an item retain sample
+*WarehousingAPI* | [**createWarehouseAsync**](docs/WarehousingAPI.md#createwarehouseasync) | **POST** /api/v2/LogisticsService/Warehouses | Create a warehouse
+*WarehousingAPI* | [**deleteItemPackingSlipAsync**](docs/WarehousingAPI.md#deleteitempackingslipasync) | **DELETE** /api/v2/LogisticsService/ItemPackingSlips/{packingSlipId} | Delete an item packing slip
+*WarehousingAPI* | [**deleteItemPackingSlipEntryAsync**](docs/WarehousingAPI.md#deleteitempackingslipentryasync) | **DELETE** /api/v2/LogisticsService/ItemPackingSlips/{packingSlipId}/Entries/{entryId} | Delete a packing slip entry
+*WarehousingAPI* | [**deleteItemPickListAsync**](docs/WarehousingAPI.md#deleteitempicklistasync) | **DELETE** /api/v2/LogisticsService/ItemPickLists/{pickListId} | Delete an item pick list
+*WarehousingAPI* | [**deleteItemPickListEntryAsync**](docs/WarehousingAPI.md#deleteitempicklistentryasync) | **DELETE** /api/v2/LogisticsService/ItemPickLists/{pickListId}/Entries/{entryId} | Delete a pick list entry
+*WarehousingAPI* | [**deleteItemRestockAsync**](docs/WarehousingAPI.md#deleteitemrestockasync) | **DELETE** /api/v2/LogisticsService/ItemRestocks/{restockId} | Delete an item restock
+*WarehousingAPI* | [**deleteItemRestockEntryAsync**](docs/WarehousingAPI.md#deleteitemrestockentryasync) | **DELETE** /api/v2/LogisticsService/ItemRestocks/{restockId}/Entries/{entryId} | Delete a restock entry
+*WarehousingAPI* | [**deleteItemRetainSampleAsync**](docs/WarehousingAPI.md#deleteitemretainsampleasync) | **DELETE** /api/v2/LogisticsService/ItemRetainSamples/{retainSampleId} | Delete an item retain sample
+*WarehousingAPI* | [**deleteWarehouseAsync**](docs/WarehousingAPI.md#deletewarehouseasync) | **DELETE** /api/v2/LogisticsService/Warehouses/{warehouseId} | Delete a warehouse
+*WarehousingAPI* | [**getItemPackingSlipByIdAsync**](docs/WarehousingAPI.md#getitempackingslipbyidasync) | **GET** /api/v2/LogisticsService/ItemPackingSlips/{packingSlipId} | Get item packing slip by ID
+*WarehousingAPI* | [**getItemPackingSlipEntriesAsync**](docs/WarehousingAPI.md#getitempackingslipentriesasync) | **GET** /api/v2/LogisticsService/ItemPackingSlips/{packingSlipId}/Entries | Get packing slip entries
+*WarehousingAPI* | [**getItemPackingSlipEntriesCountAsync**](docs/WarehousingAPI.md#getitempackingslipentriescountasync) | **GET** /api/v2/LogisticsService/ItemPackingSlips/{packingSlipId}/Entries/Count | Get packing slip entries count
+*WarehousingAPI* | [**getItemPackingSlipEntryByIdAsync**](docs/WarehousingAPI.md#getitempackingslipentrybyidasync) | **GET** /api/v2/LogisticsService/ItemPackingSlips/{packingSlipId}/Entries/{entryId} | Get packing slip entry by ID
+*WarehousingAPI* | [**getItemPackingSlipsAsync**](docs/WarehousingAPI.md#getitempackingslipsasync) | **GET** /api/v2/LogisticsService/ItemPackingSlips | Get all item packing slips
+*WarehousingAPI* | [**getItemPackingSlipsCountAsync**](docs/WarehousingAPI.md#getitempackingslipscountasync) | **GET** /api/v2/LogisticsService/ItemPackingSlips/Count | Get item packing slips count
+*WarehousingAPI* | [**getItemPickListByIdAsync**](docs/WarehousingAPI.md#getitempicklistbyidasync) | **GET** /api/v2/LogisticsService/ItemPickLists/{pickListId} | Get item pick list by ID
+*WarehousingAPI* | [**getItemPickListEntriesAsync**](docs/WarehousingAPI.md#getitempicklistentriesasync) | **GET** /api/v2/LogisticsService/ItemPickLists/{pickListId}/Entries | Get pick list entries
+*WarehousingAPI* | [**getItemPickListEntriesCountAsync**](docs/WarehousingAPI.md#getitempicklistentriescountasync) | **GET** /api/v2/LogisticsService/ItemPickLists/{pickListId}/Entries/Count | Get pick list entries count
+*WarehousingAPI* | [**getItemPickListEntryByIdAsync**](docs/WarehousingAPI.md#getitempicklistentrybyidasync) | **GET** /api/v2/LogisticsService/ItemPickLists/{pickListId}/Entries/{entryId} | Get pick list entry by ID
+*WarehousingAPI* | [**getItemPickListsAsync**](docs/WarehousingAPI.md#getitempicklistsasync) | **GET** /api/v2/LogisticsService/ItemPickLists | Get all item pick lists
+*WarehousingAPI* | [**getItemPickListsCountAsync**](docs/WarehousingAPI.md#getitempicklistscountasync) | **GET** /api/v2/LogisticsService/ItemPickLists/Count | Get item pick lists count
+*WarehousingAPI* | [**getItemRestockByIdAsync**](docs/WarehousingAPI.md#getitemrestockbyidasync) | **GET** /api/v2/LogisticsService/ItemRestocks/{restockId} | Get item restock by ID
+*WarehousingAPI* | [**getItemRestockEntriesAsync**](docs/WarehousingAPI.md#getitemrestockentriesasync) | **GET** /api/v2/LogisticsService/ItemRestocks/{restockId}/Entries | Get restock entries
+*WarehousingAPI* | [**getItemRestockEntriesCountAsync**](docs/WarehousingAPI.md#getitemrestockentriescountasync) | **GET** /api/v2/LogisticsService/ItemRestocks/{restockId}/Entries/Count | Get restock entries count
+*WarehousingAPI* | [**getItemRestockEntryByIdAsync**](docs/WarehousingAPI.md#getitemrestockentrybyidasync) | **GET** /api/v2/LogisticsService/ItemRestocks/{restockId}/Entries/{entryId} | Get restock entry by ID
+*WarehousingAPI* | [**getItemRestocksAsync**](docs/WarehousingAPI.md#getitemrestocksasync) | **GET** /api/v2/LogisticsService/ItemRestocks | Get all item restocks
+*WarehousingAPI* | [**getItemRestocksCountAsync**](docs/WarehousingAPI.md#getitemrestockscountasync) | **GET** /api/v2/LogisticsService/ItemRestocks/Count | Get item restocks count
+*WarehousingAPI* | [**getItemRetainSampleByIdAsync**](docs/WarehousingAPI.md#getitemretainsamplebyidasync) | **GET** /api/v2/LogisticsService/ItemRetainSamples/{retainSampleId} | Get item retain sample by ID
+*WarehousingAPI* | [**getItemRetainSamplesAsync**](docs/WarehousingAPI.md#getitemretainsamplesasync) | **GET** /api/v2/LogisticsService/ItemRetainSamples | Get all item retain samples
+*WarehousingAPI* | [**getItemRetainSamplesCountAsync**](docs/WarehousingAPI.md#getitemretainsamplescountasync) | **GET** /api/v2/LogisticsService/ItemRetainSamples/Count | Get item retain samples count
+*WarehousingAPI* | [**getWarehouseByIdAsync**](docs/WarehousingAPI.md#getwarehousebyidasync) | **GET** /api/v2/LogisticsService/Warehouses/{warehouseId} | Get warehouse by ID
+*WarehousingAPI* | [**getWarehousesAsync**](docs/WarehousingAPI.md#getwarehousesasync) | **GET** /api/v2/LogisticsService/Warehouses | Get all warehouses
+*WarehousingAPI* | [**getWarehousesCountAsync**](docs/WarehousingAPI.md#getwarehousescountasync) | **GET** /api/v2/LogisticsService/Warehouses/Count | Get warehouses count
+*WarehousingAPI* | [**updateItemPackingSlipAsync**](docs/WarehousingAPI.md#updateitempackingslipasync) | **PUT** /api/v2/LogisticsService/ItemPackingSlips/{packingSlipId} | Update an item packing slip
+*WarehousingAPI* | [**updateItemPackingSlipEntryAsync**](docs/WarehousingAPI.md#updateitempackingslipentryasync) | **PUT** /api/v2/LogisticsService/ItemPackingSlips/{packingSlipId}/Entries/{entryId} | Update a packing slip entry
+*WarehousingAPI* | [**updateItemPickListAsync**](docs/WarehousingAPI.md#updateitempicklistasync) | **PUT** /api/v2/LogisticsService/ItemPickLists/{pickListId} | Update an item pick list
+*WarehousingAPI* | [**updateItemPickListEntryAsync**](docs/WarehousingAPI.md#updateitempicklistentryasync) | **PUT** /api/v2/LogisticsService/ItemPickLists/{pickListId}/Entries/{entryId} | Update a pick list entry
+*WarehousingAPI* | [**updateItemRestockAsync**](docs/WarehousingAPI.md#updateitemrestockasync) | **PUT** /api/v2/LogisticsService/ItemRestocks/{restockId} | Update an item restock
+*WarehousingAPI* | [**updateItemRestockEntryAsync**](docs/WarehousingAPI.md#updateitemrestockentryasync) | **PUT** /api/v2/LogisticsService/ItemRestocks/{restockId}/Entries/{entryId} | Update a restock entry
+*WarehousingAPI* | [**updateItemRetainSampleAsync**](docs/WarehousingAPI.md#updateitemretainsampleasync) | **PUT** /api/v2/LogisticsService/ItemRetainSamples/{retainSampleId} | Update an item retain sample
+*WarehousingAPI* | [**updateWarehouseAsync**](docs/WarehousingAPI.md#updatewarehouseasync) | **PUT** /api/v2/LogisticsService/Warehouses/{warehouseId} | Update a warehouse
 
 
 ## Documentation For Models
@@ -52,11 +100,48 @@ Class | Method | HTTP request | Description
  - [AccessTokenResponse](docs/AccessTokenResponse.md)
  - [ContactDto](docs/ContactDto.md)
  - [ContactDtoListEnvelope](docs/ContactDtoListEnvelope.md)
+ - [EmptyEnvelope](docs/EmptyEnvelope.md)
  - [ErrorEnvelope](docs/ErrorEnvelope.md)
  - [ForgotPasswordRequest](docs/ForgotPasswordRequest.md)
  - [HttpValidationProblemDetails](docs/HttpValidationProblemDetails.md)
  - [InfoRequest](docs/InfoRequest.md)
  - [InfoResponse](docs/InfoResponse.md)
+ - [Int32Envelope](docs/Int32Envelope.md)
+ - [ItemPackingSlipCreateDto](docs/ItemPackingSlipCreateDto.md)
+ - [ItemPackingSlipDto](docs/ItemPackingSlipDto.md)
+ - [ItemPackingSlipDtoEnvelope](docs/ItemPackingSlipDtoEnvelope.md)
+ - [ItemPackingSlipDtoListEnvelope](docs/ItemPackingSlipDtoListEnvelope.md)
+ - [ItemPackingSlipEntryCreateDto](docs/ItemPackingSlipEntryCreateDto.md)
+ - [ItemPackingSlipEntryDto](docs/ItemPackingSlipEntryDto.md)
+ - [ItemPackingSlipEntryDtoEnvelope](docs/ItemPackingSlipEntryDtoEnvelope.md)
+ - [ItemPackingSlipEntryDtoListEnvelope](docs/ItemPackingSlipEntryDtoListEnvelope.md)
+ - [ItemPackingSlipEntryUpdateDto](docs/ItemPackingSlipEntryUpdateDto.md)
+ - [ItemPackingSlipUpdateDto](docs/ItemPackingSlipUpdateDto.md)
+ - [ItemPickListCreateDto](docs/ItemPickListCreateDto.md)
+ - [ItemPickListDto](docs/ItemPickListDto.md)
+ - [ItemPickListDtoEnvelope](docs/ItemPickListDtoEnvelope.md)
+ - [ItemPickListDtoListEnvelope](docs/ItemPickListDtoListEnvelope.md)
+ - [ItemPickListEntryCreateDto](docs/ItemPickListEntryCreateDto.md)
+ - [ItemPickListEntryDto](docs/ItemPickListEntryDto.md)
+ - [ItemPickListEntryDtoEnvelope](docs/ItemPickListEntryDtoEnvelope.md)
+ - [ItemPickListEntryDtoListEnvelope](docs/ItemPickListEntryDtoListEnvelope.md)
+ - [ItemPickListEntryUpdateDto](docs/ItemPickListEntryUpdateDto.md)
+ - [ItemPickListUpdateDto](docs/ItemPickListUpdateDto.md)
+ - [ItemRestockCreateDto](docs/ItemRestockCreateDto.md)
+ - [ItemRestockDto](docs/ItemRestockDto.md)
+ - [ItemRestockDtoEnvelope](docs/ItemRestockDtoEnvelope.md)
+ - [ItemRestockDtoListEnvelope](docs/ItemRestockDtoListEnvelope.md)
+ - [ItemRestockEntryCreateDto](docs/ItemRestockEntryCreateDto.md)
+ - [ItemRestockEntryDto](docs/ItemRestockEntryDto.md)
+ - [ItemRestockEntryDtoEnvelope](docs/ItemRestockEntryDtoEnvelope.md)
+ - [ItemRestockEntryDtoListEnvelope](docs/ItemRestockEntryDtoListEnvelope.md)
+ - [ItemRestockEntryUpdateDto](docs/ItemRestockEntryUpdateDto.md)
+ - [ItemRestockUpdateDto](docs/ItemRestockUpdateDto.md)
+ - [ItemRetainSampleCreateDto](docs/ItemRetainSampleCreateDto.md)
+ - [ItemRetainSampleDto](docs/ItemRetainSampleDto.md)
+ - [ItemRetainSampleDtoEnvelope](docs/ItemRetainSampleDtoEnvelope.md)
+ - [ItemRetainSampleDtoListEnvelope](docs/ItemRetainSampleDtoListEnvelope.md)
+ - [ItemRetainSampleUpdateDto](docs/ItemRetainSampleUpdateDto.md)
  - [LoginRequest](docs/LoginRequest.md)
  - [RefreshRequest](docs/RefreshRequest.md)
  - [RegisterRequest](docs/RegisterRequest.md)
@@ -64,6 +149,11 @@ Class | Method | HTTP request | Description
  - [ResetPasswordRequest](docs/ResetPasswordRequest.md)
  - [TwoFactorRequest](docs/TwoFactorRequest.md)
  - [TwoFactorResponse](docs/TwoFactorResponse.md)
+ - [WarehouseCreateDto](docs/WarehouseCreateDto.md)
+ - [WarehouseDto](docs/WarehouseDto.md)
+ - [WarehouseDtoEnvelope](docs/WarehouseDtoEnvelope.md)
+ - [WarehouseDtoListEnvelope](docs/WarehouseDtoListEnvelope.md)
+ - [WarehouseUpdateDto](docs/WarehouseUpdateDto.md)
 
 
 <a id="documentation-for-authorization"></a>
