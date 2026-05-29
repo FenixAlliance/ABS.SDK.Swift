@@ -17,7 +17,7 @@ OpenAPIClient/Classes/OpenAPIs/JSONDataEncoding.swift
 OpenAPIClient/Classes/OpenAPIs/JSONEncodingHelper.swift
 OpenAPIClient/Classes/OpenAPIs/Models.swift
 OpenAPIClient/Classes/OpenAPIs/Models/AccessTokenResponse.swift
-OpenAPIClient/Classes/OpenAPIs/Models/AuthorizationResult.swift
+OpenAPIClient/Classes/OpenAPIs/Models/AuthResult.swift
 OpenAPIClient/Classes/OpenAPIs/Models/AuthorizationResultEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ErrorEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ForgotPasswordRequest.swift
@@ -53,7 +53,7 @@ Package.swift
 README.md
 docs/AccessTokenResponse.md
 docs/ApplicationsAPI.md
-docs/AuthorizationResult.md
+docs/AuthResult.md
 docs/AuthorizationResultEnvelope.md
 docs/CheckerAPI.md
 docs/ErrorEnvelope.md

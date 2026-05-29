@@ -17,9 +17,9 @@ public struct AuthorizationResultEnvelope: Codable, JSONEncodable, Hashable {
     public var correlationId: String?
     public var timestamp: Date?
     public var activityId: String?
-    public var result: AuthorizationResult?
+    public var result: AuthResult?
 
-    public init(isSuccess: Bool? = nil, errorMessage: String? = nil, correlationId: String? = nil, timestamp: Date? = nil, activityId: String? = nil, result: AuthorizationResult? = nil) {
+    public init(isSuccess: Bool? = nil, errorMessage: String? = nil, correlationId: String? = nil, timestamp: Date? = nil, activityId: String? = nil, result: AuthResult? = nil) {
         self.isSuccess = isSuccess
         self.errorMessage = errorMessage
         self.correlationId = correlationId

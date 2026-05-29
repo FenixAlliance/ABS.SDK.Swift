@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **correlationId** | **String** |  | [optional] 
 **timestamp** | **Date** |  | [optional] [readonly] 
 **activityId** | **String** |  | [optional] [readonly] 
-**result** | [**AuthorizationResult**](AuthorizationResult.md) |  | [optional] 
+**result** | [**AuthResult**](AuthResult.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
