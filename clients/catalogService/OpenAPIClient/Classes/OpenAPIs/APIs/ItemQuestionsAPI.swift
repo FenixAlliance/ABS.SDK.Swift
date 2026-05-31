@@ -128,14 +128,15 @@ open class ItemQuestionsAPI {
      Get item question by ID
      
      - parameter itemQuestionId: (path)  
+     - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getItemQuestionByIdAsync(itemQuestionId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemQuestionDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getItemQuestionByIdAsyncWithRequestBuilder(itemQuestionId: itemQuestionId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getItemQuestionByIdAsync(itemQuestionId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemQuestionDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getItemQuestionByIdAsyncWithRequestBuilder(itemQuestionId: itemQuestionId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -150,11 +151,12 @@ open class ItemQuestionsAPI {
      - GET /api/v2/CatalogService/ItemQuestions/{itemQuestionId}
      - Retrieves a specific item question by its ID.
      - parameter itemQuestionId: (path)  
+     - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<ItemQuestionDtoEnvelope> 
      */
-    open class func getItemQuestionByIdAsyncWithRequestBuilder(itemQuestionId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemQuestionDtoEnvelope> {
+    open class func getItemQuestionByIdAsyncWithRequestBuilder(itemQuestionId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemQuestionDtoEnvelope> {
         var localVariablePath = "/api/v2/CatalogService/ItemQuestions/{itemQuestionId}"
         let itemQuestionIdPreEscape = "\(APIHelper.mapValueToPathItem(itemQuestionId))"
         let itemQuestionIdPostEscape = itemQuestionIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -164,6 +166,7 @@ open class ItemQuestionsAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 
@@ -181,14 +184,14 @@ open class ItemQuestionsAPI {
     /**
      Get all item questions
      
-     - parameter tenantId: (query)  
+     - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getItemQuestionsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemQuestionDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getItemQuestionsAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemQuestionDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
         return getItemQuestionsAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -203,19 +206,19 @@ open class ItemQuestionsAPI {
      Get all item questions
      - GET /api/v2/CatalogService/ItemQuestions
      - Retrieves all item questions for the specified tenant using OData query options.
-     - parameter tenantId: (query)  
+     - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<ItemQuestionDtoListEnvelope> 
      */
-    open class func getItemQuestionsAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemQuestionDtoListEnvelope> {
+    open class func getItemQuestionsAsyncWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemQuestionDtoListEnvelope> {
         let localVariablePath = "/api/v2/CatalogService/ItemQuestions"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 

@@ -1,6 +1,6 @@
 # FiscalResponsibilitiesAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -126,7 +126,7 @@ No authorization required
 
 # **getFiscalResponsibilities**
 ```swift
-    open class func getFiscalResponsibilities(fiscalAuthorityId: UUID, authorityId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: FiscalResponsibilityDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getFiscalResponsibilities(tenantId: UUID, fiscalAuthorityId: UUID, authorityId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: FiscalResponsibilityDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get fiscal responsibilities for an authority
@@ -138,13 +138,14 @@ Retrieves all fiscal responsibilities for the specified fiscal authority.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
+let tenantId = 987 // UUID | 
 let fiscalAuthorityId = 987 // UUID | 
 let authorityId = "authorityId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Get fiscal responsibilities for an authority
-FiscalResponsibilitiesAPI.getFiscalResponsibilities(fiscalAuthorityId: fiscalAuthorityId, authorityId: authorityId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+FiscalResponsibilitiesAPI.getFiscalResponsibilities(tenantId: tenantId, fiscalAuthorityId: fiscalAuthorityId, authorityId: authorityId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -160,6 +161,7 @@ FiscalResponsibilitiesAPI.getFiscalResponsibilities(fiscalAuthorityId: fiscalAut
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
  **fiscalAuthorityId** | **UUID** |  | 
  **authorityId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
@@ -182,7 +184,7 @@ No authorization required
 
 # **getFiscalResponsibilitiesCount**
 ```swift
-    open class func getFiscalResponsibilitiesCount(fiscalAuthorityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getFiscalResponsibilitiesCount(tenantId: UUID, fiscalAuthorityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get fiscal responsibilities count
@@ -194,12 +196,13 @@ Returns the total count of fiscal responsibilities for the specified fiscal auth
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
+let tenantId = 987 // UUID | 
 let fiscalAuthorityId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Get fiscal responsibilities count
-FiscalResponsibilitiesAPI.getFiscalResponsibilitiesCount(fiscalAuthorityId: fiscalAuthorityId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+FiscalResponsibilitiesAPI.getFiscalResponsibilitiesCount(tenantId: tenantId, fiscalAuthorityId: fiscalAuthorityId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -215,6 +218,7 @@ FiscalResponsibilitiesAPI.getFiscalResponsibilitiesCount(fiscalAuthorityId: fisc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
  **fiscalAuthorityId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 

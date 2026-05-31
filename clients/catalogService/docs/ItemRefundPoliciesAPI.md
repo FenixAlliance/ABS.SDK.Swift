@@ -1,6 +1,6 @@
 # ItemRefundPoliciesAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 # **countItemRefundPoliciesAsync**
 ```swift
-    open class func countItemRefundPoliciesAsync(itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countItemRefundPoliciesAsync(tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count item refund policies
@@ -25,12 +25,13 @@ Counts all refund policies for a specific item.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
+let tenantId = 987 // UUID |  (optional)
 let itemId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Count item refund policies
-ItemRefundPoliciesAPI.countItemRefundPoliciesAsync(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemRefundPoliciesAPI.countItemRefundPoliciesAsync(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -46,6 +47,7 @@ ItemRefundPoliciesAPI.countItemRefundPoliciesAsync(itemId: itemId, apiVersion: a
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | [optional] 
  **itemId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
@@ -67,7 +69,7 @@ No authorization required
 
 # **getItemRefundPoliciesAsync**
 ```swift
-    open class func getItemRefundPoliciesAsync(itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemRefundPolicyDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getItemRefundPoliciesAsync(tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemRefundPolicyDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get item refund policies
@@ -79,12 +81,13 @@ Retrieves all refund policies for a specific item.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
+let tenantId = 987 // UUID |  (optional)
 let itemId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Get item refund policies
-ItemRefundPoliciesAPI.getItemRefundPoliciesAsync(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemRefundPoliciesAPI.getItemRefundPoliciesAsync(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -100,6 +103,7 @@ ItemRefundPoliciesAPI.getItemRefundPoliciesAsync(itemId: itemId, apiVersion: api
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | [optional] 
  **itemId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
@@ -121,7 +125,7 @@ No authorization required
 
 # **getItemRefundPolicyByIdAsync**
 ```swift
-    open class func getItemRefundPolicyByIdAsync(itemRefundPolicyId: UUID, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemRefundPolicyDtoEnvelope?, _ error: Error?) -> Void)
+    open class func getItemRefundPolicyByIdAsync(itemRefundPolicyId: UUID, tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemRefundPolicyDtoEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get item refund policy by ID
@@ -134,12 +138,13 @@ Retrieves a specific refund policy for an item.
 import OpenAPIClient
 
 let itemRefundPolicyId = 987 // UUID | 
+let tenantId = 987 // UUID |  (optional)
 let itemId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Get item refund policy by ID
-ItemRefundPoliciesAPI.getItemRefundPolicyByIdAsync(itemRefundPolicyId: itemRefundPolicyId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemRefundPoliciesAPI.getItemRefundPolicyByIdAsync(itemRefundPolicyId: itemRefundPolicyId, tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -156,6 +161,7 @@ ItemRefundPoliciesAPI.getItemRefundPolicyByIdAsync(itemRefundPolicyId: itemRefun
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **itemRefundPolicyId** | **UUID** |  | 
+ **tenantId** | **UUID** |  | [optional] 
  **itemId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 

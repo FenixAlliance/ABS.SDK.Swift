@@ -1,6 +1,6 @@
 # ItemAttributesAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 # **countItemAttributesAsync**
 ```swift
-    open class func countItemAttributesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countItemAttributesAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count item attributes
@@ -26,7 +26,7 @@ Counts all item attributes for the specified tenant.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let tenantId = 987 // UUID | 
+let tenantId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
@@ -47,7 +47,7 @@ ItemAttributesAPI.countItemAttributesAsync(tenantId: tenantId, apiVersion: apiVe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenantId** | **UUID** |  | 
+ **tenantId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 
@@ -180,7 +180,7 @@ No authorization required
 
 # **getItemAttributeByIdAsync**
 ```swift
-    open class func getItemAttributeByIdAsync(itemAttributeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemAttributeDtoEnvelope?, _ error: Error?) -> Void)
+    open class func getItemAttributeByIdAsync(itemAttributeId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemAttributeDtoEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get item attribute by ID
@@ -193,11 +193,12 @@ Retrieves a specific item attribute by its ID.
 import OpenAPIClient
 
 let itemAttributeId = 987 // UUID | 
+let tenantId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Get item attribute by ID
-ItemAttributesAPI.getItemAttributeByIdAsync(itemAttributeId: itemAttributeId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemAttributesAPI.getItemAttributeByIdAsync(itemAttributeId: itemAttributeId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -214,6 +215,7 @@ ItemAttributesAPI.getItemAttributeByIdAsync(itemAttributeId: itemAttributeId, ap
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **itemAttributeId** | **UUID** |  | 
+ **tenantId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 
@@ -234,7 +236,7 @@ No authorization required
 
 # **getItemAttributesAsync**
 ```swift
-    open class func getItemAttributesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemAttributeDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getItemAttributesAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemAttributeDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all item attributes
@@ -246,7 +248,7 @@ Retrieves all item attributes for the specified tenant using OData query options
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let tenantId = 987 // UUID | 
+let tenantId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
@@ -267,7 +269,7 @@ ItemAttributesAPI.getItemAttributesAsync(tenantId: tenantId, apiVersion: apiVers
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenantId** | **UUID** |  | 
+ **tenantId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 

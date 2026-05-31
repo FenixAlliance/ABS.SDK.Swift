@@ -19,6 +19,10 @@ Name | Type | Description | Notes
 **accountTypeId** | **String** |  | [optional] 
 **debitsBalance** | **Double** |  | [optional] 
 **creditsBalance** | **Double** |  | [optional] 
+**balanceInUsd** | **Double** |  | [optional] 
+**debitsBalanceInUsd** | **Double** |  | [optional] 
+**creditsBalanceInUsd** | **Double** |  | [optional] 
+**forexRate** | **Double** |  | [optional] 
 **parentAccountId** | **String** |  | [optional] 
 **tenantId** | **String** |  | [optional] 
 **enrollmentId** | **String** |  | [optional] 
@@ -27,6 +31,9 @@ Name | Type | Description | Notes
 **balanceAmount** | [**Money**](Money.md) |  | [optional] 
 **creditsBalanceAmount** | [**Money**](Money.md) |  | [optional] 
 **debitsBalanceAmount** | [**Money**](Money.md) |  | [optional] 
+**balanceAmountInUsd** | [**Money**](Money.md) |  | [optional] 
+**debitsBalanceAmountInUsd** | [**Money**](Money.md) |  | [optional] 
+**creditsBalanceAmountInUsd** | [**Money**](Money.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

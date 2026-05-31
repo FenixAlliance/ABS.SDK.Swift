@@ -1,0 +1,336 @@
+# ReturnPoliciesAPI
+
+All URIs are relative to *http://localhost*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**createReturnPolicyAsync**](ReturnPoliciesAPI.md#createreturnpolicyasync) | **POST** /api/v2/SupportService/ReturnPolicies | Create a new return policy
+[**deleteReturnPolicyAsync**](ReturnPoliciesAPI.md#deletereturnpolicyasync) | **DELETE** /api/v2/SupportService/ReturnPolicies/{returnPolicyId} | Delete a return policy
+[**getReturnPoliciesAsync**](ReturnPoliciesAPI.md#getreturnpoliciesasync) | **GET** /api/v2/SupportService/ReturnPolicies | Retrieve a list of return policies
+[**getReturnPoliciesCountAsync**](ReturnPoliciesAPI.md#getreturnpoliciescountasync) | **GET** /api/v2/SupportService/ReturnPolicies/Count | Get the count of return policies
+[**getReturnPolicyAsync**](ReturnPoliciesAPI.md#getreturnpolicyasync) | **GET** /api/v2/SupportService/ReturnPolicies/{returnPolicyId} | Retrieve a return policy by ID
+[**updateReturnPolicyAsync**](ReturnPoliciesAPI.md#updatereturnpolicyasync) | **PUT** /api/v2/SupportService/ReturnPolicies/{returnPolicyId} | Update a return policy
+
+
+# **createReturnPolicyAsync**
+```swift
+    open class func createReturnPolicyAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemReturnPolicyCreateDto: ItemReturnPolicyCreateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Create a new return policy
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let itemReturnPolicyCreateDto = ItemReturnPolicyCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", shippingCourierID: "shippingCourierID_example", isFree: false, reduce: false, isEnabled: false, isDefault: false, allowInternational: false, hours: 123, days: 123, weeks: 123, months: 123, years: 123, value: 123, percentage: 123, currencyID: "currencyID_example", countryID: "countryID_example", countryStateID: "countryStateID_example", customState: "customState_example", customCity: "customCity_example", cityID: "cityID_example") // ItemReturnPolicyCreateDto |  (optional)
+
+// Create a new return policy
+ReturnPoliciesAPI.createReturnPolicyAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemReturnPolicyCreateDto: itemReturnPolicyCreateDto) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **itemReturnPolicyCreateDto** | [**ItemReturnPolicyCreateDto**](ItemReturnPolicyCreateDto.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deleteReturnPolicyAsync**
+```swift
+    open class func deleteReturnPolicyAsync(tenantId: UUID, returnPolicyId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Delete a return policy
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let returnPolicyId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Delete a return policy
+ReturnPoliciesAPI.deleteReturnPolicyAsync(tenantId: tenantId, returnPolicyId: returnPolicyId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **returnPolicyId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getReturnPoliciesAsync**
+```swift
+    open class func getReturnPoliciesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemReturnPolicyDtoListEnvelope?, _ error: Error?) -> Void)
+```
+
+Retrieve a list of return policies
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Retrieve a list of return policies
+ReturnPoliciesAPI.getReturnPoliciesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**ItemReturnPolicyDtoListEnvelope**](ItemReturnPolicyDtoListEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getReturnPoliciesCountAsync**
+```swift
+    open class func getReturnPoliciesCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+```
+
+Get the count of return policies
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Get the count of return policies
+ReturnPoliciesAPI.getReturnPoliciesCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**Int32Envelope**](Int32Envelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getReturnPolicyAsync**
+```swift
+    open class func getReturnPolicyAsync(tenantId: UUID, returnPolicyId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemReturnPolicyDtoEnvelope?, _ error: Error?) -> Void)
+```
+
+Retrieve a return policy by ID
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let returnPolicyId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Retrieve a return policy by ID
+ReturnPoliciesAPI.getReturnPolicyAsync(tenantId: tenantId, returnPolicyId: returnPolicyId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **returnPolicyId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**ItemReturnPolicyDtoEnvelope**](ItemReturnPolicyDtoEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **updateReturnPolicyAsync**
+```swift
+    open class func updateReturnPolicyAsync(tenantId: UUID, returnPolicyId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemReturnPolicyUpdateDto: ItemReturnPolicyUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Update a return policy
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let returnPolicyId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let itemReturnPolicyUpdateDto = ItemReturnPolicyUpdateDto(title: "title_example", description: "description_example", shippingCourierID: "shippingCourierID_example", isFree: false, reduce: false, isEnabled: false, isDefault: false, allowInternational: false, hours: 123, days: 123, weeks: 123, months: 123, years: 123, value: 123, percentage: 123, currencyID: "currencyID_example", countryID: "countryID_example", countryStateID: "countryStateID_example", customState: "customState_example", customCity: "customCity_example", cityID: "cityID_example") // ItemReturnPolicyUpdateDto |  (optional)
+
+// Update a return policy
+ReturnPoliciesAPI.updateReturnPolicyAsync(tenantId: tenantId, returnPolicyId: returnPolicyId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemReturnPolicyUpdateDto: itemReturnPolicyUpdateDto) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **returnPolicyId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **itemReturnPolicyUpdateDto** | [**ItemReturnPolicyUpdateDto**](ItemReturnPolicyUpdateDto.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

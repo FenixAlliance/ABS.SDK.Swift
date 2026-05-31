@@ -13,6 +13,7 @@ import AnyCodable
 public struct OAuthApplicationDto: Codable, JSONEncodable, Hashable {
 
     public var id: String?
+    public var timestamp: Date?
     public var applicationType: String?
     public var clientId: String?
     public var concurrencyToken: String?
@@ -33,8 +34,9 @@ public struct OAuthApplicationDto: Codable, JSONEncodable, Hashable {
     public var authorizationsCount: Int?
     public var tokensCount: Int?
 
-    public init(id: String? = nil, applicationType: String? = nil, clientId: String? = nil, concurrencyToken: String? = nil, consentType: String? = nil, displayName: String? = nil, displayNames: String? = nil, permissions: String? = nil, postLogoutRedirectUris: String? = nil, properties: String? = nil, redirectUris: String? = nil, requirements: String? = nil, settings: String? = nil, type: String? = nil, logo: String? = nil, businessID: String? = nil, businessProfileRecordID: String? = nil, businessApplicationID: String? = nil, authorizationsCount: Int? = nil, tokensCount: Int? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, applicationType: String? = nil, clientId: String? = nil, concurrencyToken: String? = nil, consentType: String? = nil, displayName: String? = nil, displayNames: String? = nil, permissions: String? = nil, postLogoutRedirectUris: String? = nil, properties: String? = nil, redirectUris: String? = nil, requirements: String? = nil, settings: String? = nil, type: String? = nil, logo: String? = nil, businessID: String? = nil, businessProfileRecordID: String? = nil, businessApplicationID: String? = nil, authorizationsCount: Int? = nil, tokensCount: Int? = nil) {
         self.id = id
+        self.timestamp = timestamp
         self.applicationType = applicationType
         self.clientId = clientId
         self.concurrencyToken = concurrencyToken
@@ -58,6 +60,7 @@ public struct OAuthApplicationDto: Codable, JSONEncodable, Hashable {
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
+        case timestamp
         case applicationType
         case clientId
         case concurrencyToken
@@ -84,6 +87,7 @@ public struct OAuthApplicationDto: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
+        try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(applicationType, forKey: .applicationType)
         try container.encodeIfPresent(clientId, forKey: .clientId)
         try container.encodeIfPresent(concurrencyToken, forKey: .concurrencyToken)

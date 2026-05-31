@@ -4,6 +4,7 @@ Cartfile
 OpenAPIClient.podspec
 OpenAPIClient/Classes/OpenAPIs/APIHelper.swift
 OpenAPIClient/Classes/OpenAPIs/APIs.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/CompletionsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/CourseArticlesAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/CourseAssignmentComponentsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/CourseAssignmentTypesAPI.swift
@@ -27,7 +28,7 @@ OpenAPIClient/Classes/OpenAPIs/APIs/CourseUnitsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/CourseUpdatesAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/CourseWikisAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/CoursesAPI.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/FenixAllianceABSWebAPI.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/FenixAlliancePortalsWebsiteAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/InstructorProfilesAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/MeAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/StudentProfilesAPI.swift
@@ -40,6 +41,7 @@ OpenAPIClient/Classes/OpenAPIs/Models.swift
 OpenAPIClient/Classes/OpenAPIs/Models/AccessTokenResponse.swift
 OpenAPIClient/Classes/OpenAPIs/Models/AverageDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/AverageDtoEnvelope.swift
+OpenAPIClient/Classes/OpenAPIs/Models/ContactDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/CountDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/CountDtoEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/CourseArticleCreateDto.swift
@@ -59,6 +61,7 @@ OpenAPIClient/Classes/OpenAPIs/Models/CourseCategoryDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/CourseCategoryUpdateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/CourseCertificateTemplateCreateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/CourseCertificateTemplateDto.swift
+OpenAPIClient/Classes/OpenAPIs/Models/CourseCertificateTemplateUpdateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/CourseCohortCreateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/CourseCohortDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/CourseCohortUpdateDto.swift
@@ -145,6 +148,8 @@ README.md
 docs/AccessTokenResponse.md
 docs/AverageDto.md
 docs/AverageDtoEnvelope.md
+docs/CompletionsAPI.md
+docs/ContactDto.md
 docs/CountDto.md
 docs/CountDtoEnvelope.md
 docs/CourseArticleCreateDto.md
@@ -169,6 +174,7 @@ docs/CourseCategoryDto.md
 docs/CourseCategoryUpdateDto.md
 docs/CourseCertificateTemplateCreateDto.md
 docs/CourseCertificateTemplateDto.md
+docs/CourseCertificateTemplateUpdateDto.md
 docs/CourseCertificatesAPI.md
 docs/CourseCohortCreateDto.md
 docs/CourseCohortDto.md
@@ -245,7 +251,7 @@ docs/CourseWikiUpdateDto.md
 docs/CourseWikisAPI.md
 docs/CoursesAPI.md
 docs/ErrorEnvelope.md
-docs/FenixAllianceABSWebAPI.md
+docs/FenixAlliancePortalsWebsiteAPI.md
 docs/ForgotPasswordRequest.md
 docs/HttpValidationProblemDetails.md
 docs/InfoRequest.md

@@ -1,6 +1,6 @@
 # ApplicationsAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -9,6 +9,8 @@ Method | HTTP request | Description
 [**getBusinessApplicationByIdAsync**](ApplicationsAPI.md#getbusinessapplicationbyidasync) | **GET** /api/v2/SecurityService/Applications/{applicationId} | Get business application by ID
 [**getBusinessApplicationsAsync**](ApplicationsAPI.md#getbusinessapplicationsasync) | **GET** /api/v2/SecurityService/Applications | Get all business applications
 [**getBusinessApplicationsCountAsync**](ApplicationsAPI.md#getbusinessapplicationscountasync) | **GET** /api/v2/SecurityService/Applications/Count | Get business applications count
+[**getPermissionsByApplicationAsync**](ApplicationsAPI.md#getpermissionsbyapplicationasync) | **GET** /api/v2/SecurityService/Applications/{applicationId}/Permissions | Get permissions by application
+[**getRolesByApplicationAsync**](ApplicationsAPI.md#getrolesbyapplicationasync) | **GET** /api/v2/SecurityService/Applications/{applicationId}/Roles | Get roles by application
 [**updateBusinessApplicationAsync**](ApplicationsAPI.md#updatebusinessapplicationasync) | **PUT** /api/v2/SecurityService/Applications/{applicationId} | Update an existing business application
 
 
@@ -276,6 +278,118 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Int32Envelope**](Int32Envelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getPermissionsByApplicationAsync**
+```swift
+    open class func getPermissionsByApplicationAsync(tenantId: UUID, applicationId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: SecurityPermissionDtoListEnvelope?, _ error: Error?) -> Void)
+```
+
+Get permissions by application
+
+Retrieves all security permissions granted to a specific business application.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let applicationId = "applicationId_example" // String | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Get permissions by application
+ApplicationsAPI.getPermissionsByApplicationAsync(tenantId: tenantId, applicationId: applicationId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **applicationId** | **String** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**SecurityPermissionDtoListEnvelope**](SecurityPermissionDtoListEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getRolesByApplicationAsync**
+```swift
+    open class func getRolesByApplicationAsync(tenantId: UUID, applicationId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: SecurityRoleDtoListEnvelope?, _ error: Error?) -> Void)
+```
+
+Get roles by application
+
+Retrieves all security roles granted to a specific business application.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let applicationId = "applicationId_example" // String | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Get roles by application
+ApplicationsAPI.getRolesByApplicationAsync(tenantId: tenantId, applicationId: applicationId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **applicationId** | **String** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**SecurityRoleDtoListEnvelope**](SecurityRoleDtoListEnvelope.md)
 
 ### Authorization
 

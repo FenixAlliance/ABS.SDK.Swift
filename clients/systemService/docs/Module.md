@@ -29,6 +29,7 @@ Name | Type | Description | Notes
 **swaggerSpecs** | [ISwaggerSpec] |  | [optional] 
 **url** | **String** |  | [optional] 
 **assemblyPaths** | **[String]** |  | [optional] 
+**requiredPermissions** | **[String]** |  | [optional] [readonly] 
 **markedForDeletion** | **Bool** |  | [optional] 
 **version** | **String** |  | [optional] 
 

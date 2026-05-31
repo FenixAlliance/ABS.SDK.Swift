@@ -15,16 +15,16 @@ open class LicensingAPI {
     /**
      Retrieve license assignments
      
-     - parameter licenseId: (path)  
      - parameter tenantId: (query)  
+     - parameter licenseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getLicenseAssignmentsAsync(licenseId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SuiteLicenseAssignmentDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getLicenseAssignmentsAsyncWithRequestBuilder(licenseId: licenseId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getLicenseAssignmentsAsync(tenantId: UUID, licenseId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SuiteLicenseAssignmentDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getLicenseAssignmentsAsyncWithRequestBuilder(tenantId: tenantId, licenseId: licenseId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -38,13 +38,13 @@ open class LicensingAPI {
      Retrieve license assignments
      - GET /api/v2/SystemService/Licensing/Licenses/{licenseId}/Assignments
      - Retrieves all license assignments for a given license.
-     - parameter licenseId: (path)  
      - parameter tenantId: (query)  
+     - parameter licenseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<SuiteLicenseAssignmentDtoListEnvelope> 
      */
-    open class func getLicenseAssignmentsAsyncWithRequestBuilder(licenseId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SuiteLicenseAssignmentDtoListEnvelope> {
+    open class func getLicenseAssignmentsAsyncWithRequestBuilder(tenantId: UUID, licenseId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SuiteLicenseAssignmentDtoListEnvelope> {
         var localVariablePath = "/api/v2/SystemService/Licensing/Licenses/{licenseId}/Assignments"
         let licenseIdPreEscape = "\(APIHelper.mapValueToPathItem(licenseId))"
         let licenseIdPostEscape = licenseIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -72,16 +72,16 @@ open class LicensingAPI {
     /**
      Retrieve license attributes
      
-     - parameter licenseId: (path)  
      - parameter tenantId: (query)  
+     - parameter licenseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getLicenseAttributesAsync(licenseId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SuiteLicenseAssignmentDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getLicenseAttributesAsyncWithRequestBuilder(licenseId: licenseId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getLicenseAttributesAsync(tenantId: UUID, licenseId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SuiteLicenseAssignmentDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getLicenseAttributesAsyncWithRequestBuilder(tenantId: tenantId, licenseId: licenseId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -95,13 +95,13 @@ open class LicensingAPI {
      Retrieve license attributes
      - GET /api/v2/SystemService/Licensing/Licenses/{licenseId}/Attributes
      - Retrieves all additional attributes for a given license.
-     - parameter licenseId: (path)  
      - parameter tenantId: (query)  
+     - parameter licenseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<SuiteLicenseAssignmentDtoListEnvelope> 
      */
-    open class func getLicenseAttributesAsyncWithRequestBuilder(licenseId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SuiteLicenseAssignmentDtoListEnvelope> {
+    open class func getLicenseAttributesAsyncWithRequestBuilder(tenantId: UUID, licenseId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SuiteLicenseAssignmentDtoListEnvelope> {
         var localVariablePath = "/api/v2/SystemService/Licensing/Licenses/{licenseId}/Attributes"
         let licenseIdPreEscape = "\(APIHelper.mapValueToPathItem(licenseId))"
         let licenseIdPostEscape = licenseIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -129,6 +129,7 @@ open class LicensingAPI {
     /**
      Retrieve a license by ID
      
+     - parameter tenantId: (query)  
      - parameter licenseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -136,8 +137,8 @@ open class LicensingAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getLicenseByIdAsync(licenseId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SuiteLicenseDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getLicenseByIdAsyncWithRequestBuilder(licenseId: licenseId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getLicenseByIdAsync(tenantId: UUID, licenseId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SuiteLicenseDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getLicenseByIdAsyncWithRequestBuilder(tenantId: tenantId, licenseId: licenseId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -151,12 +152,13 @@ open class LicensingAPI {
      Retrieve a license by ID
      - GET /api/v2/SystemService/Licensing/Licenses/{licenseId}
      - Retrieves a single suite license by its unique identifier.
+     - parameter tenantId: (query)  
      - parameter licenseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<SuiteLicenseDtoEnvelope> 
      */
-    open class func getLicenseByIdAsyncWithRequestBuilder(licenseId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SuiteLicenseDtoEnvelope> {
+    open class func getLicenseByIdAsyncWithRequestBuilder(tenantId: UUID, licenseId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SuiteLicenseDtoEnvelope> {
         var localVariablePath = "/api/v2/SystemService/Licensing/Licenses/{licenseId}"
         let licenseIdPreEscape = "\(APIHelper.mapValueToPathItem(licenseId))"
         let licenseIdPostEscape = licenseIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -166,6 +168,7 @@ open class LicensingAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 
@@ -183,16 +186,16 @@ open class LicensingAPI {
     /**
      Retrieve license features
      
-     - parameter licenseId: (path)  
      - parameter tenantId: (query)  
+     - parameter licenseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getLicenseFeaturesAsync(licenseId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SuiteLicenseAssignmentDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getLicenseFeaturesAsyncWithRequestBuilder(licenseId: licenseId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getLicenseFeaturesAsync(tenantId: UUID, licenseId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SuiteLicenseAssignmentDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getLicenseFeaturesAsyncWithRequestBuilder(tenantId: tenantId, licenseId: licenseId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -206,13 +209,13 @@ open class LicensingAPI {
      Retrieve license features
      - GET /api/v2/SystemService/Licensing/Licenses/{licenseId}/Features
      - Retrieves all features for a given license.
-     - parameter licenseId: (path)  
      - parameter tenantId: (query)  
+     - parameter licenseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<SuiteLicenseAssignmentDtoListEnvelope> 
      */
-    open class func getLicenseFeaturesAsyncWithRequestBuilder(licenseId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SuiteLicenseAssignmentDtoListEnvelope> {
+    open class func getLicenseFeaturesAsyncWithRequestBuilder(tenantId: UUID, licenseId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SuiteLicenseAssignmentDtoListEnvelope> {
         var localVariablePath = "/api/v2/SystemService/Licensing/Licenses/{licenseId}/Features"
         let licenseIdPreEscape = "\(APIHelper.mapValueToPathItem(licenseId))"
         let licenseIdPostEscape = licenseIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -240,16 +243,16 @@ open class LicensingAPI {
     /**
      Retrieve license record quota
      
-     - parameter licenseId: (path)  
      - parameter tenantId: (query)  
+     - parameter licenseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getLicenseRecordsQuotaAsync(licenseId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SuiteLicenseAssignmentDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getLicenseRecordsQuotaAsyncWithRequestBuilder(licenseId: licenseId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getLicenseRecordsQuotaAsync(tenantId: UUID, licenseId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SuiteLicenseAssignmentDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getLicenseRecordsQuotaAsyncWithRequestBuilder(tenantId: tenantId, licenseId: licenseId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -263,13 +266,13 @@ open class LicensingAPI {
      Retrieve license record quota
      - GET /api/v2/SystemService/Licensing/Licenses/{licenseId}/Quota
      - Retrieves the record quota for a given license.
-     - parameter licenseId: (path)  
      - parameter tenantId: (query)  
+     - parameter licenseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<SuiteLicenseAssignmentDtoListEnvelope> 
      */
-    open class func getLicenseRecordsQuotaAsyncWithRequestBuilder(licenseId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SuiteLicenseAssignmentDtoListEnvelope> {
+    open class func getLicenseRecordsQuotaAsyncWithRequestBuilder(tenantId: UUID, licenseId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SuiteLicenseAssignmentDtoListEnvelope> {
         var localVariablePath = "/api/v2/SystemService/Licensing/Licenses/{licenseId}/Quota"
         let licenseIdPreEscape = "\(APIHelper.mapValueToPathItem(licenseId))"
         let licenseIdPostEscape = licenseIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""

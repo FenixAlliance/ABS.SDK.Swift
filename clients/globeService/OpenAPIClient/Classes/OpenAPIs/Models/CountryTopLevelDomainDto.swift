@@ -13,17 +13,20 @@ import AnyCodable
 public struct CountryTopLevelDomainDto: Codable, JSONEncodable, Hashable {
 
     public var id: String?
+    public var timestamp: Date?
     public var domain: String?
     public var countryID: String?
 
-    public init(id: String? = nil, domain: String? = nil, countryID: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, domain: String? = nil, countryID: String? = nil) {
         self.id = id
+        self.timestamp = timestamp
         self.domain = domain
         self.countryID = countryID
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
+        case timestamp
         case domain
         case countryID
     }
@@ -33,6 +36,7 @@ public struct CountryTopLevelDomainDto: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
+        try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(domain, forKey: .domain)
         try container.encodeIfPresent(countryID, forKey: .countryID)
     }

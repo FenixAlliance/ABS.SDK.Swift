@@ -1,6 +1,6 @@
 # BudgetsAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**getBudgetAccountEntryAsync**](BudgetsAPI.md#getbudgetaccountentryasync) | **GET** /api/v2/AccountingService/Budgets/{budgetId}/AccountEntries/{entryId} | Gets a budget account entry by id
 [**getBudgetDetailsAsync**](BudgetsAPI.md#getbudgetdetailsasync) | **GET** /api/v2/AccountingService/Budgets/{budgetId} | Gets a budget by id
 [**getBudgetsAsync**](BudgetsAPI.md#getbudgetsasync) | **GET** /api/v2/AccountingService/Budgets | Gets all budgets
+[**getBudgetsCountAsync**](BudgetsAPI.md#getbudgetscountasync) | **GET** /api/v2/AccountingService/Budgets/Count | Get the count of budgets
 [**updateBudgetAccountEntryAsync**](BudgetsAPI.md#updatebudgetaccountentryasync) | **PUT** /api/v2/AccountingService/Budgets/{budgetId}/AccountEntries/{entryId} | Updates a budget account entry
 [**updateBudgetAsync**](BudgetsAPI.md#updatebudgetasync) | **PUT** /api/v2/AccountingService/Budgets/{budgetId} | Updates a budget
 
@@ -456,6 +457,60 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**BudgetDtoIReadOnlyListEnvelope**](BudgetDtoIReadOnlyListEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getBudgetsCountAsync**
+```swift
+    open class func getBudgetsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+```
+
+Get the count of budgets
+
+Get the count of budgets.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Get the count of budgets
+BudgetsAPI.getBudgetsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**Int32Envelope**](Int32Envelope.md)
 
 ### Authorization
 

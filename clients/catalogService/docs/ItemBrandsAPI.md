@@ -1,6 +1,6 @@
 # ItemBrandsAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -125,7 +125,7 @@ No authorization required
 
 # **getItemBrandByIdAsync**
 ```swift
-    open class func getItemBrandByIdAsync(itemBrandId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemBrandDtoEnvelope?, _ error: Error?) -> Void)
+    open class func getItemBrandByIdAsync(itemBrandId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemBrandDtoEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get item brand by ID
@@ -138,11 +138,12 @@ Retrieves a specific item brand by its ID.
 import OpenAPIClient
 
 let itemBrandId = 987 // UUID | 
+let tenantId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Get item brand by ID
-ItemBrandsAPI.getItemBrandByIdAsync(itemBrandId: itemBrandId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemBrandsAPI.getItemBrandByIdAsync(itemBrandId: itemBrandId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -159,6 +160,7 @@ ItemBrandsAPI.getItemBrandByIdAsync(itemBrandId: itemBrandId, apiVersion: apiVer
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **itemBrandId** | **UUID** |  | 
+ **tenantId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 
@@ -179,7 +181,7 @@ No authorization required
 
 # **getItemBrandsAsync**
 ```swift
-    open class func getItemBrandsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemBrandDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getItemBrandsAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemBrandDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all item brands
@@ -191,7 +193,7 @@ Retrieves all item brands for the specified tenant using OData query options.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let tenantId = 987 // UUID | 
+let tenantId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
@@ -212,7 +214,7 @@ ItemBrandsAPI.getItemBrandsAsync(tenantId: tenantId, apiVersion: apiVersion, xAp
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenantId** | **UUID** |  | 
+ **tenantId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 

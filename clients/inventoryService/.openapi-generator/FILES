@@ -4,7 +4,8 @@ Cartfile
 OpenAPIClient.podspec
 OpenAPIClient/Classes/OpenAPIs/APIHelper.swift
 OpenAPIClient/Classes/OpenAPIs/APIs.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/FenixAllianceABSWebAPI.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/CompletionsAPI.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/FenixAlliancePortalsWebsiteAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/InventoryAPI.swift
 OpenAPIClient/Classes/OpenAPIs/CodableHelper.swift
 OpenAPIClient/Classes/OpenAPIs/Configuration.swift
@@ -13,6 +14,7 @@ OpenAPIClient/Classes/OpenAPIs/JSONDataEncoding.swift
 OpenAPIClient/Classes/OpenAPIs/JSONEncodingHelper.swift
 OpenAPIClient/Classes/OpenAPIs/Models.swift
 OpenAPIClient/Classes/OpenAPIs/Models/AccessTokenResponse.swift
+OpenAPIClient/Classes/OpenAPIs/Models/ErrorEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ForgotPasswordRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/HttpValidationProblemDetails.swift
 OpenAPIClient/Classes/OpenAPIs/Models/InfoRequest.swift
@@ -31,7 +33,9 @@ OpenAPIClient/Classes/OpenAPIs/Validation.swift
 Package.swift
 README.md
 docs/AccessTokenResponse.md
-docs/FenixAllianceABSWebAPI.md
+docs/CompletionsAPI.md
+docs/ErrorEnvelope.md
+docs/FenixAlliancePortalsWebsiteAPI.md
 docs/ForgotPasswordRequest.md
 docs/HttpValidationProblemDetails.md
 docs/InfoRequest.md

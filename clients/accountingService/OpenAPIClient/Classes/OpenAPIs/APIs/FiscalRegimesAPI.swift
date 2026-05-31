@@ -189,6 +189,7 @@ open class FiscalRegimesAPI {
     /**
      Get fiscal regimes for an authority
      
+     - parameter tenantId: (query)  
      - parameter fiscalAuthorityId: (query)  
      - parameter authorityId: (path)  
      - parameter apiVersion: (query)  (optional)
@@ -197,8 +198,8 @@ open class FiscalRegimesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getFiscalRegimes(fiscalAuthorityId: UUID, authorityId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: FiscalRegimeDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getFiscalRegimesWithRequestBuilder(fiscalAuthorityId: fiscalAuthorityId, authorityId: authorityId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getFiscalRegimes(tenantId: UUID, fiscalAuthorityId: UUID, authorityId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: FiscalRegimeDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getFiscalRegimesWithRequestBuilder(tenantId: tenantId, fiscalAuthorityId: fiscalAuthorityId, authorityId: authorityId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -212,13 +213,14 @@ open class FiscalRegimesAPI {
      Get fiscal regimes for an authority
      - GET /api/v2/AccountingService/Fiscals/Authorities/{authorityId}/FiscalRegimes
      - Retrieves all fiscal regimes for the specified fiscal authority.
+     - parameter tenantId: (query)  
      - parameter fiscalAuthorityId: (query)  
      - parameter authorityId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<FiscalRegimeDtoListEnvelope> 
      */
-    open class func getFiscalRegimesWithRequestBuilder(fiscalAuthorityId: UUID, authorityId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<FiscalRegimeDtoListEnvelope> {
+    open class func getFiscalRegimesWithRequestBuilder(tenantId: UUID, fiscalAuthorityId: UUID, authorityId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<FiscalRegimeDtoListEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/Fiscals/Authorities/{authorityId}/FiscalRegimes"
         let authorityIdPreEscape = "\(APIHelper.mapValueToPathItem(authorityId))"
         let authorityIdPostEscape = authorityIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -228,6 +230,7 @@ open class FiscalRegimesAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
             "fiscalAuthorityId": (wrappedValue: fiscalAuthorityId.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
@@ -246,6 +249,7 @@ open class FiscalRegimesAPI {
     /**
      Get fiscal regimes count
      
+     - parameter tenantId: (query)  
      - parameter fiscalAuthorityId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -253,8 +257,8 @@ open class FiscalRegimesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getFiscalRegimesCount(fiscalAuthorityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getFiscalRegimesCountWithRequestBuilder(fiscalAuthorityId: fiscalAuthorityId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getFiscalRegimesCount(tenantId: UUID, fiscalAuthorityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getFiscalRegimesCountWithRequestBuilder(tenantId: tenantId, fiscalAuthorityId: fiscalAuthorityId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -268,12 +272,13 @@ open class FiscalRegimesAPI {
      Get fiscal regimes count
      - GET /api/v2/AccountingService/Fiscals/Authorities/{fiscalAuthorityId}/FiscalRegimes/Count
      - Returns the total count of fiscal regimes for the specified fiscal authority.
+     - parameter tenantId: (query)  
      - parameter fiscalAuthorityId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getFiscalRegimesCountWithRequestBuilder(fiscalAuthorityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getFiscalRegimesCountWithRequestBuilder(tenantId: UUID, fiscalAuthorityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/AccountingService/Fiscals/Authorities/{fiscalAuthorityId}/FiscalRegimes/Count"
         let fiscalAuthorityIdPreEscape = "\(APIHelper.mapValueToPathItem(fiscalAuthorityId))"
         let fiscalAuthorityIdPostEscape = fiscalAuthorityIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -283,6 +288,7 @@ open class FiscalRegimesAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 

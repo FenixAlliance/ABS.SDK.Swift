@@ -1,6 +1,6 @@
 # ItemTaxPoliciesAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 # **countItemTaxPoliciesAsync**
 ```swift
-    open class func countItemTaxPoliciesAsync(itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countItemTaxPoliciesAsync(tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count item tax policies
@@ -25,12 +25,13 @@ Counts all tax policies for a specific item.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
+let tenantId = 987 // UUID |  (optional)
 let itemId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Count item tax policies
-ItemTaxPoliciesAPI.countItemTaxPoliciesAsync(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemTaxPoliciesAPI.countItemTaxPoliciesAsync(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -46,6 +47,7 @@ ItemTaxPoliciesAPI.countItemTaxPoliciesAsync(itemId: itemId, apiVersion: apiVers
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | [optional] 
  **itemId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
@@ -67,7 +69,7 @@ No authorization required
 
 # **getItemTaxPoliciesAsync**
 ```swift
-    open class func getItemTaxPoliciesAsync(itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemTaxPolicyDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getItemTaxPoliciesAsync(tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemTaxPolicyDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get item tax policies
@@ -79,12 +81,13 @@ Retrieves all tax policies for a specific item.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
+let tenantId = 987 // UUID |  (optional)
 let itemId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Get item tax policies
-ItemTaxPoliciesAPI.getItemTaxPoliciesAsync(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemTaxPoliciesAPI.getItemTaxPoliciesAsync(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -100,6 +103,7 @@ ItemTaxPoliciesAPI.getItemTaxPoliciesAsync(itemId: itemId, apiVersion: apiVersio
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | [optional] 
  **itemId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
@@ -121,7 +125,7 @@ No authorization required
 
 # **getItemTaxPolicyByIdAsync**
 ```swift
-    open class func getItemTaxPolicyByIdAsync(itemTaxPolicyId: UUID, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemTaxPolicyDtoEnvelope?, _ error: Error?) -> Void)
+    open class func getItemTaxPolicyByIdAsync(itemTaxPolicyId: UUID, tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemTaxPolicyDtoEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get item tax policy by ID
@@ -134,12 +138,13 @@ Retrieves a specific tax policy for an item.
 import OpenAPIClient
 
 let itemTaxPolicyId = 987 // UUID | 
+let tenantId = 987 // UUID |  (optional)
 let itemId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Get item tax policy by ID
-ItemTaxPoliciesAPI.getItemTaxPolicyByIdAsync(itemTaxPolicyId: itemTaxPolicyId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemTaxPoliciesAPI.getItemTaxPolicyByIdAsync(itemTaxPolicyId: itemTaxPolicyId, tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -156,6 +161,7 @@ ItemTaxPoliciesAPI.getItemTaxPolicyByIdAsync(itemTaxPolicyId: itemTaxPolicyId, i
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **itemTaxPolicyId** | **UUID** |  | 
+ **tenantId** | **UUID** |  | [optional] 
  **itemId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 

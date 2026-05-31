@@ -22,7 +22,7 @@ open class OAuthAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func callGet(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AuthorizationResultEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func callGet(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AuthResultEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
         return callGetWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -40,9 +40,9 @@ open class OAuthAPI {
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - returns: RequestBuilder<AuthorizationResultEnvelope> 
+     - returns: RequestBuilder<AuthResultEnvelope> 
      */
-    open class func callGetWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<AuthorizationResultEnvelope> {
+    open class func callGetWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<AuthResultEnvelope> {
         let localVariablePath = "/api/v2/OAuth/WhoAmI"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -59,7 +59,7 @@ open class OAuthAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AuthorizationResultEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<AuthResultEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }

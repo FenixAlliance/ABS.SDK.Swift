@@ -1,6 +1,6 @@
 # EmployersAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -29,7 +29,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let employerProfileCreateDto = EmployerProfileCreateDto(id: 123, timestamp: Date()) // EmployerProfileCreateDto |  (optional)
+let employerProfileCreateDto = EmployerProfileCreateDto(id: 123, timestamp: Date(), type: "type_example", contactId: "contactId_example", about: "about_example", avatarUrl: "avatarUrl_example", data: "data_example", dataLabel: "dataLabel_example", data1: "data1_example", data1Label: "data1Label_example", data2: "data2_example", data2Label: "data2Label_example", data3: "data3_example", data3Label: "data3Label_example", data4: "data4_example", data4Label: "data4Label_example", data5: "data5_example", data5Label: "data5Label_example", data6: "data6_example", data6Label: "data6Label_example", data7: "data7_example", data7Label: "data7Label_example", data8: "data8_example", data8Label: "data8Label_example", data9: "data9_example", data9Label: "data9Label_example") // EmployerProfileCreateDto |  (optional)
 
 // Create an employer
 EmployersAPI.createEmployerAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, employerProfileCreateDto: employerProfileCreateDto) { (response, error) in
@@ -290,7 +290,7 @@ No authorization required
 
 # **updateEmployerAsync**
 ```swift
-    open class func updateEmployerAsync(tenantId: UUID, employerId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, body: AnyCodable? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func updateEmployerAsync(tenantId: UUID, employerId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, employerProfileUpdateDto: EmployerProfileUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Update an employer
@@ -306,10 +306,10 @@ let tenantId = 987 // UUID |
 let employerId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let body = "TODO" // AnyCodable |  (optional)
+let employerProfileUpdateDto = EmployerProfileUpdateDto(type: "type_example", contactId: "contactId_example", about: "about_example", avatarUrl: "avatarUrl_example", data: "data_example", dataLabel: "dataLabel_example", data1: "data1_example", data1Label: "data1Label_example", data2: "data2_example", data2Label: "data2Label_example", data3: "data3_example", data3Label: "data3Label_example", data4: "data4_example", data4Label: "data4Label_example", data5: "data5_example", data5Label: "data5Label_example", data6: "data6_example", data6Label: "data6Label_example", data7: "data7_example", data7Label: "data7Label_example", data8: "data8_example", data8Label: "data8Label_example", data9: "data9_example", data9Label: "data9Label_example") // EmployerProfileUpdateDto |  (optional)
 
 // Update an employer
-EmployersAPI.updateEmployerAsync(tenantId: tenantId, employerId: employerId, apiVersion: apiVersion, xApiVersion: xApiVersion, body: body) { (response, error) in
+EmployersAPI.updateEmployerAsync(tenantId: tenantId, employerId: employerId, apiVersion: apiVersion, xApiVersion: xApiVersion, employerProfileUpdateDto: employerProfileUpdateDto) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -329,7 +329,7 @@ Name | Type | Description  | Notes
  **employerId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **body** | **AnyCodable** |  | [optional] 
+ **employerProfileUpdateDto** | [**EmployerProfileUpdateDto**](EmployerProfileUpdateDto.md) |  | [optional] 
 
 ### Return type
 

@@ -1,6 +1,6 @@
 # SocialProfilesAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -23,6 +23,7 @@ Method | HTTP request | Description
 [**getFollowersAsync**](SocialProfilesAPI.md#getfollowersasync) | **GET** /api/v2/SocialService/SocialProfiles/{socialProfileId}/Followers | Get Followers
 [**getFollowsAsync**](SocialProfilesAPI.md#getfollowsasync) | **GET** /api/v2/SocialService/SocialProfiles/{socialProfileId}/Follows | Get Follows
 [**getMessagesAsync**](SocialProfilesAPI.md#getmessagesasync) | **GET** /api/v2/SocialService/SocialProfiles/{conversationId}/Messages | Get Messages
+[**getNotificationByIdAsync**](SocialProfilesAPI.md#getnotificationbyidasync) | **GET** /api/v2/SocialService/SocialProfiles/{socialProfileId}/Notifications/{notificationId} | Get Notification
 [**getNotificationsAsync**](SocialProfilesAPI.md#getnotificationsasync) | **GET** /api/v2/SocialService/SocialProfiles/{socialProfileId}/Notifications | Get Notifications
 [**getSocialProfileAsync**](SocialProfilesAPI.md#getsocialprofileasync) | **GET** /api/v2/SocialService/SocialProfiles/{socialProfileId} | Get Social Profile
 [**getSocialProfilesAsync**](SocialProfilesAPI.md#getsocialprofilesasync) | **GET** /api/v2/SocialService/SocialProfiles | Get Social Profiles
@@ -302,7 +303,7 @@ No authorization required
 
 # **countMessagesAsync**
 ```swift
-    open class func countMessagesAsync(conversationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countMessagesAsync(socialProfileId: UUID, conversationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count Messages
@@ -314,12 +315,13 @@ Count messages for a conversation.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
+let socialProfileId = 987 // UUID | 
 let conversationId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Count Messages
-SocialProfilesAPI.countMessagesAsync(conversationId: conversationId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SocialProfilesAPI.countMessagesAsync(socialProfileId: socialProfileId, conversationId: conversationId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -335,6 +337,7 @@ SocialProfilesAPI.countMessagesAsync(conversationId: conversationId, apiVersion:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **socialProfileId** | **UUID** |  | 
  **conversationId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
@@ -1016,7 +1019,7 @@ No authorization required
 
 # **getMessagesAsync**
 ```swift
-    open class func getMessagesAsync(conversationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: PrivateMessageDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getMessagesAsync(socialProfileId: UUID, conversationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: PrivateMessageDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get Messages
@@ -1028,12 +1031,13 @@ Get a list of messages for a conversation.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
+let socialProfileId = 987 // UUID | 
 let conversationId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Get Messages
-SocialProfilesAPI.getMessagesAsync(conversationId: conversationId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SocialProfilesAPI.getMessagesAsync(socialProfileId: socialProfileId, conversationId: conversationId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1049,6 +1053,7 @@ SocialProfilesAPI.getMessagesAsync(conversationId: conversationId, apiVersion: a
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **socialProfileId** | **UUID** |  | 
  **conversationId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
@@ -1056,6 +1061,62 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**PrivateMessageDtoListEnvelope**](PrivateMessageDtoListEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getNotificationByIdAsync**
+```swift
+    open class func getNotificationByIdAsync(socialProfileId: UUID, notificationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: NotificationDtoEnvelope?, _ error: Error?) -> Void)
+```
+
+Get Notification
+
+Get a notification by ID for a social profile.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let socialProfileId = 987 // UUID | 
+let notificationId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Get Notification
+SocialProfilesAPI.getNotificationByIdAsync(socialProfileId: socialProfileId, notificationId: notificationId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **socialProfileId** | **UUID** |  | 
+ **notificationId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**NotificationDtoEnvelope**](NotificationDtoEnvelope.md)
 
 ### Authorization
 

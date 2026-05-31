@@ -1,6 +1,6 @@
 # EmailsAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -64,7 +64,7 @@ No authorization required
 
 # **adminSendBasicEmail**
 ```swift
-    open class func adminSendBasicEmail(apiVersion: String? = nil, xApiVersion: String? = nil, objectEmailDispatchRequest: ObjectEmailDispatchRequest? = nil, completion: @escaping (_ data: TenantDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func adminSendBasicEmail(apiVersion: String? = nil, xApiVersion: String? = nil, objectEmailDispatchRequest: ObjectEmailDispatchRequest? = nil, completion: @escaping (_ data: Envelope?, _ error: Error?) -> Void)
 ```
 
 Send a basic transactional email to recipients.
@@ -103,7 +103,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TenantDtoListEnvelope**](TenantDtoListEnvelope.md)
+[**Envelope**](Envelope.md)
 
 ### Authorization
 

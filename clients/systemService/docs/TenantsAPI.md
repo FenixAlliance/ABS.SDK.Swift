@@ -1,11 +1,11 @@
 # TenantsAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**adminPreviewTenantEmail**](TenantsAPI.md#adminpreviewtenantemail) | **POST** /api/v2/SystemService/Tenants/{tenantId}/Emails/Preview | Preview the rendered email for a user.
-[**adminSendTenantEmail**](TenantsAPI.md#adminsendtenantemail) | **POST** /api/v2/SystemService/Tenants/{tenantId}/Emails/Send | Send an email to a user.
+[**adminPreviewTenantEmail**](TenantsAPI.md#adminpreviewtenantemail) | **POST** /api/v2/SystemService/Tenants/{tenantId}/Emails/Preview | Preview the rendered email for a tenant.
+[**adminSendTenantEmail**](TenantsAPI.md#adminsendtenantemail) | **POST** /api/v2/SystemService/Tenants/{tenantId}/Emails/Send | Send an email to a tenant.
 [**createTenant**](TenantsAPI.md#createtenant) | **POST** /api/v2/SystemService/Tenants | Create a new tenant.
 [**deleteTenant**](TenantsAPI.md#deletetenant) | **DELETE** /api/v2/SystemService/Tenants/{tenantId} | Delete a specific tenant by ID.
 [**getAllExtendedTenants**](TenantsAPI.md#getallextendedtenants) | **GET** /api/v2/SystemService/Tenants/Extended | Get all extended tenants available on this suite server instance.
@@ -21,9 +21,9 @@ Method | HTTP request | Description
     open class func adminPreviewTenantEmail(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, emailDispatchRequest: EmailDispatchRequest? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
-Preview the rendered email for a user.
+Preview the rendered email for a tenant.
 
-This action is only available for users with the 'business_owner' role (global administrators).
+This action is only available for global administrators.
 
 ### Example
 ```swift
@@ -35,7 +35,7 @@ let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 let emailDispatchRequest = EmailDispatchRequest(title: "title_example", message: "message_example", buttonLink: "buttonLink_example", buttonText: "buttonText_example", alertMessage: "alertMessage_example", alertType: "alertType_example", culture: "culture_example", uiCulture: "uiCulture_example", recipients: ["recipients_example"], contactIds: ["contactIds_example"], tenantIds: ["tenantIds_example"], userIds: ["userIds_example"], templateUrl: "templateUrl_example", emailTemplateId: "emailTemplateId_example") // EmailDispatchRequest |  (optional)
 
-// Preview the rendered email for a user.
+// Preview the rendered email for a tenant.
 TenantsAPI.adminPreviewTenantEmail(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, emailDispatchRequest: emailDispatchRequest) { (response, error) in
     guard error == nil else {
         print(error)
@@ -77,9 +77,9 @@ No authorization required
     open class func adminSendTenantEmail(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, emailDispatchRequest: EmailDispatchRequest? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
-Send an email to a user.
+Send an email to a tenant.
 
-This action is only available for users with the 'business_owner' role (global administrators).
+This action is only available for global administrators.
 
 ### Example
 ```swift
@@ -91,7 +91,7 @@ let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 let emailDispatchRequest = EmailDispatchRequest(title: "title_example", message: "message_example", buttonLink: "buttonLink_example", buttonText: "buttonText_example", alertMessage: "alertMessage_example", alertType: "alertType_example", culture: "culture_example", uiCulture: "uiCulture_example", recipients: ["recipients_example"], contactIds: ["contactIds_example"], tenantIds: ["tenantIds_example"], userIds: ["userIds_example"], templateUrl: "templateUrl_example", emailTemplateId: "emailTemplateId_example") // EmailDispatchRequest |  (optional)
 
-// Send an email to a user.
+// Send an email to a tenant.
 TenantsAPI.adminSendTenantEmail(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, emailDispatchRequest: emailDispatchRequest) { (response, error) in
     guard error == nil else {
         print(error)

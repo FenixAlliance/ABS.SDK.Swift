@@ -1,6 +1,6 @@
 # PaymentsAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -118,7 +118,7 @@ No authorization required
 
 # **getPaymentAsync**
 ```swift
-    open class func getPaymentAsync(paymentId: UUID, completion: @escaping (_ data: PaymentDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getPaymentAsync(tenantId: UUID, paymentId: UUID, completion: @escaping (_ data: PaymentDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Gets a payment by ID (deprecated)
@@ -130,10 +130,11 @@ Retrieves a payment using the deprecated /Details route. Use GET {paymentId} ins
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
+let tenantId = 987 // UUID | 
 let paymentId = 987 // UUID | 
 
 // Gets a payment by ID (deprecated)
-PaymentsAPI.getPaymentAsync(paymentId: paymentId) { (response, error) in
+PaymentsAPI.getPaymentAsync(tenantId: tenantId, paymentId: paymentId) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -149,6 +150,7 @@ PaymentsAPI.getPaymentAsync(paymentId: paymentId) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
  **paymentId** | **UUID** |  | 
 
 ### Return type
@@ -168,7 +170,7 @@ No authorization required
 
 # **getPaymentAsyncV2**
 ```swift
-    open class func getPaymentAsyncV2(paymentId: UUID, completion: @escaping (_ data: PaymentDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getPaymentAsyncV2(tenantId: UUID, paymentId: UUID, completion: @escaping (_ data: PaymentDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Gets a payment by ID
@@ -180,10 +182,11 @@ Retrieves the details of a payment using its unique identifier.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
+let tenantId = 987 // UUID | 
 let paymentId = 987 // UUID | 
 
 // Gets a payment by ID
-PaymentsAPI.getPaymentAsyncV2(paymentId: paymentId) { (response, error) in
+PaymentsAPI.getPaymentAsyncV2(tenantId: tenantId, paymentId: paymentId) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -199,6 +202,7 @@ PaymentsAPI.getPaymentAsyncV2(paymentId: paymentId) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
  **paymentId** | **UUID** |  | 
 
 ### Return type

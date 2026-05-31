@@ -1,10 +1,15 @@
 # CountriesAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**countCallingCodesByCountryAsync**](CountriesAPI.md#countcallingcodesbycountryasync) | **GET** /api/v2/GlobeService/Countries/{countryId}/CallingCodes/Count | Count calling codes for a country
+[**countCitiesByStateAsync**](CountriesAPI.md#countcitiesbystateasync) | **GET** /api/v2/GlobeService/Countries/{countryId}/States/{countryStateId}/Cities/Count | Count cities for a state
 [**countCountries**](CountriesAPI.md#countcountries) | **GET** /api/v2/GlobeService/Countries/Count | Count countries
+[**countCountryStatesAsync**](CountriesAPI.md#countcountrystatesasync) | **GET** /api/v2/GlobeService/Countries/{countryId}/States/Count | Count states for a country
+[**countTimezonesByCountryAsync**](CountriesAPI.md#counttimezonesbycountryasync) | **GET** /api/v2/GlobeService/Countries/{countryId}/Timezones/Count | Count timezones for a country
+[**countTopLevelDomainsByCountryAsync**](CountriesAPI.md#counttopleveldomainsbycountryasync) | **GET** /api/v2/GlobeService/Countries/{countryId}/TopLevelDomains/Count | Count top-level domains for a country
 [**getAllCountries**](CountriesAPI.md#getallcountries) | **GET** /api/v2/GlobeService/Countries | Get all countries
 [**getCallingCodesByCountryIdAsync**](CountriesAPI.md#getcallingcodesbycountryidasync) | **GET** /api/v2/GlobeService/Countries/{countryId}/CallingCodes | Get calling codes for a country
 [**getCitiesByCountryStateIdAsync**](CountriesAPI.md#getcitiesbycountrystateidasync) | **GET** /api/v2/GlobeService/Countries/{countryId}/States/{countryStateId}/Cities | Get cities for a state
@@ -16,6 +21,116 @@ Method | HTTP request | Description
 [**getTopLevelDomainsByCountryIdAsync**](CountriesAPI.md#gettopleveldomainsbycountryidasync) | **GET** /api/v2/GlobeService/Countries/{countryId}/TopLevelDomains | Get top-level domains for a country
 [**searchCountriesByNameAsync**](CountriesAPI.md#searchcountriesbynameasync) | **GET** /api/v2/GlobeService/Countries/Search | Search countries by name
 
+
+# **countCallingCodesByCountryAsync**
+```swift
+    open class func countCallingCodesByCountryAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+```
+
+Count calling codes for a country
+
+Returns the total number of calling codes for the specified country, with optional OData filtering.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let countryId = "countryId_example" // String | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Count calling codes for a country
+CountriesAPI.countCallingCodesByCountryAsync(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **countryId** | **String** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**Int32Envelope**](Int32Envelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **countCitiesByStateAsync**
+```swift
+    open class func countCitiesByStateAsync(countryStateId: String, countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+```
+
+Count cities for a state
+
+Returns the total number of cities for the specified state, with optional OData filtering.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let countryStateId = "countryStateId_example" // String | 
+let countryId = "countryId_example" // String | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Count cities for a state
+CountriesAPI.countCitiesByStateAsync(countryStateId: countryStateId, countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **countryStateId** | **String** |  | 
+ **countryId** | **String** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**Int32Envelope**](Int32Envelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **countCountries**
 ```swift
@@ -51,6 +166,168 @@ CountriesAPI.countCountries(apiVersion: apiVersion, xApiVersion: xApiVersion) { 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**Int32Envelope**](Int32Envelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **countCountryStatesAsync**
+```swift
+    open class func countCountryStatesAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+```
+
+Count states for a country
+
+Returns the total number of states or provinces for the specified country, with optional OData filtering.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let countryId = "countryId_example" // String | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Count states for a country
+CountriesAPI.countCountryStatesAsync(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **countryId** | **String** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**Int32Envelope**](Int32Envelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **countTimezonesByCountryAsync**
+```swift
+    open class func countTimezonesByCountryAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+```
+
+Count timezones for a country
+
+Returns the total number of timezones for the specified country, with optional OData filtering.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let countryId = "countryId_example" // String | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Count timezones for a country
+CountriesAPI.countTimezonesByCountryAsync(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **countryId** | **String** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**Int32Envelope**](Int32Envelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **countTopLevelDomainsByCountryAsync**
+```swift
+    open class func countTopLevelDomainsByCountryAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+```
+
+Count top-level domains for a country
+
+Returns the total number of top-level domains for the specified country, with optional OData filtering.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let countryId = "countryId_example" // String | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Count top-level domains for a country
+CountriesAPI.countTopLevelDomainsByCountryAsync(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **countryId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 

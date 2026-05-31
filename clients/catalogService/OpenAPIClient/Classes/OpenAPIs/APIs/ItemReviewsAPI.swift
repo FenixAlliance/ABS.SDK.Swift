@@ -128,14 +128,15 @@ open class ItemReviewsAPI {
      Get item review by ID
      
      - parameter itemReviewId: (path)  
+     - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getItemReviewByIdAsync(itemReviewId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemReviewDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getItemReviewByIdAsyncWithRequestBuilder(itemReviewId: itemReviewId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getItemReviewByIdAsync(itemReviewId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemReviewDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getItemReviewByIdAsyncWithRequestBuilder(itemReviewId: itemReviewId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -150,11 +151,12 @@ open class ItemReviewsAPI {
      - GET /api/v2/CatalogService/ItemReviews/{itemReviewId}
      - Retrieves a specific item review by its ID.
      - parameter itemReviewId: (path)  
+     - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<ItemReviewDtoEnvelope> 
      */
-    open class func getItemReviewByIdAsyncWithRequestBuilder(itemReviewId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemReviewDtoEnvelope> {
+    open class func getItemReviewByIdAsyncWithRequestBuilder(itemReviewId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemReviewDtoEnvelope> {
         var localVariablePath = "/api/v2/CatalogService/ItemReviews/{itemReviewId}"
         let itemReviewIdPreEscape = "\(APIHelper.mapValueToPathItem(itemReviewId))"
         let itemReviewIdPostEscape = itemReviewIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -164,6 +166,7 @@ open class ItemReviewsAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 

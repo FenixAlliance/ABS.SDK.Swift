@@ -1,6 +1,6 @@
 # EmployeesAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -29,7 +29,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let employeeProfileCreateDto = EmployeeProfileCreateDto(id: 123, timestamp: Date()) // EmployeeProfileCreateDto |  (optional)
+let employeeProfileCreateDto = EmployeeProfileCreateDto(id: 123, timestamp: Date(), type: "type_example", contactId: "contactId_example", about: "about_example", avatarUrl: "avatarUrl_example", data: "data_example", dataLabel: "dataLabel_example", data1: "data1_example", data1Label: "data1Label_example", data2: "data2_example", data2Label: "data2Label_example", data3: "data3_example", data3Label: "data3Label_example", data4: "data4_example", data4Label: "data4Label_example", data5: "data5_example", data5Label: "data5Label_example", data6: "data6_example", data6Label: "data6Label_example", data7: "data7_example", data7Label: "data7Label_example", data8: "data8_example", data8Label: "data8Label_example", data9: "data9_example", data9Label: "data9Label_example", grossPay: 123, netSalary: 123, payrollCurrency: "payrollCurrency_example", maxWorkHoursPerDay: 123, jobTitleId: "jobTitleId_example", employeeTypeId: "employeeTypeId_example") // EmployeeProfileCreateDto |  (optional)
 
 // Create an employee
 EmployeesAPI.createEmployeeAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, employeeProfileCreateDto: employeeProfileCreateDto) { (response, error) in
@@ -290,7 +290,7 @@ No authorization required
 
 # **updateEmployeeAsync**
 ```swift
-    open class func updateEmployeeAsync(tenantId: UUID, employeeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, body: AnyCodable? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func updateEmployeeAsync(tenantId: UUID, employeeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, employeeProfileUpdateDto: EmployeeProfileUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Update an employee
@@ -306,10 +306,10 @@ let tenantId = 987 // UUID |
 let employeeId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let body = "TODO" // AnyCodable |  (optional)
+let employeeProfileUpdateDto = EmployeeProfileUpdateDto(type: "type_example", contactId: "contactId_example", about: "about_example", avatarUrl: "avatarUrl_example", data: "data_example", dataLabel: "dataLabel_example", data1: "data1_example", data1Label: "data1Label_example", data2: "data2_example", data2Label: "data2Label_example", data3: "data3_example", data3Label: "data3Label_example", data4: "data4_example", data4Label: "data4Label_example", data5: "data5_example", data5Label: "data5Label_example", data6: "data6_example", data6Label: "data6Label_example", data7: "data7_example", data7Label: "data7Label_example", data8: "data8_example", data8Label: "data8Label_example", data9: "data9_example", data9Label: "data9Label_example", grossPay: 123, netSalary: 123, payrollCurrency: "payrollCurrency_example", maxWorkHoursPerDay: 123, jobTitleId: "jobTitleId_example", employeeTypeId: "employeeTypeId_example") // EmployeeProfileUpdateDto |  (optional)
 
 // Update an employee
-EmployeesAPI.updateEmployeeAsync(tenantId: tenantId, employeeId: employeeId, apiVersion: apiVersion, xApiVersion: xApiVersion, body: body) { (response, error) in
+EmployeesAPI.updateEmployeeAsync(tenantId: tenantId, employeeId: employeeId, apiVersion: apiVersion, xApiVersion: xApiVersion, employeeProfileUpdateDto: employeeProfileUpdateDto) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -329,7 +329,7 @@ Name | Type | Description  | Notes
  **employeeId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **body** | **AnyCodable** |  | [optional] 
+ **employeeProfileUpdateDto** | [**EmployeeProfileUpdateDto**](EmployeeProfileUpdateDto.md) |  | [optional] 
 
 ### Return type
 

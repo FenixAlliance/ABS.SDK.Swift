@@ -1,6 +1,6 @@
 # SocialGroupsAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -68,7 +68,7 @@ No authorization required
 
 # **createSocialGroupAsync**
 ```swift
-    open class func createSocialGroupAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialGroupCreateDto: SocialGroupCreateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func createSocialGroupAsync(tenantId: UUID, socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialGroupCreateDto: SocialGroupCreateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Create a social group
@@ -81,12 +81,13 @@ Creates a new social group for the specified tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
+let socialProfileId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 let socialGroupCreateDto = SocialGroupCreateDto(id: 123, timestamp: Date(), name: "name_example", title: "title_example", avatarURL: "avatarURL_example", socialProfileID: "socialProfileID_example") // SocialGroupCreateDto |  (optional)
 
 // Create a social group
-SocialGroupsAPI.createSocialGroupAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialGroupCreateDto: socialGroupCreateDto) { (response, error) in
+SocialGroupsAPI.createSocialGroupAsync(tenantId: tenantId, socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialGroupCreateDto: socialGroupCreateDto) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -103,6 +104,7 @@ SocialGroupsAPI.createSocialGroupAsync(tenantId: tenantId, apiVersion: apiVersio
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
+ **socialProfileId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
  **socialGroupCreateDto** | [**SocialGroupCreateDto**](SocialGroupCreateDto.md) |  | [optional] 
@@ -124,7 +126,7 @@ No authorization required
 
 # **deleteSocialGroupAsync**
 ```swift
-    open class func deleteSocialGroupAsync(tenantId: UUID, socialGroupId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func deleteSocialGroupAsync(tenantId: UUID, socialProfileId: UUID, socialGroupId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Delete a social group
@@ -137,12 +139,13 @@ Deletes a social group for the specified tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
+let socialProfileId = 987 // UUID | 
 let socialGroupId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Delete a social group
-SocialGroupsAPI.deleteSocialGroupAsync(tenantId: tenantId, socialGroupId: socialGroupId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SocialGroupsAPI.deleteSocialGroupAsync(tenantId: tenantId, socialProfileId: socialProfileId, socialGroupId: socialGroupId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -159,6 +162,7 @@ SocialGroupsAPI.deleteSocialGroupAsync(tenantId: tenantId, socialGroupId: social
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
+ **socialProfileId** | **UUID** |  | 
  **socialGroupId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
@@ -290,7 +294,7 @@ No authorization required
 
 # **updateSocialGroupAsync**
 ```swift
-    open class func updateSocialGroupAsync(tenantId: UUID, socialGroupId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialGroupUpdateDto: SocialGroupUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func updateSocialGroupAsync(tenantId: UUID, socialProfileId: UUID, socialGroupId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialGroupUpdateDto: SocialGroupUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Update a social group
@@ -303,13 +307,14 @@ Updates an existing social group for the specified tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
+let socialProfileId = 987 // UUID | 
 let socialGroupId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 let socialGroupUpdateDto = SocialGroupUpdateDto(name: "name_example", title: "title_example", avatarURL: "avatarURL_example") // SocialGroupUpdateDto |  (optional)
 
 // Update a social group
-SocialGroupsAPI.updateSocialGroupAsync(tenantId: tenantId, socialGroupId: socialGroupId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialGroupUpdateDto: socialGroupUpdateDto) { (response, error) in
+SocialGroupsAPI.updateSocialGroupAsync(tenantId: tenantId, socialProfileId: socialProfileId, socialGroupId: socialGroupId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialGroupUpdateDto: socialGroupUpdateDto) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -326,6 +331,7 @@ SocialGroupsAPI.updateSocialGroupAsync(tenantId: tenantId, socialGroupId: social
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
+ **socialProfileId** | **UUID** |  | 
  **socialGroupId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 

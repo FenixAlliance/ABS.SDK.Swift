@@ -15,6 +15,7 @@ open class ItemWarrantyPoliciesAPI {
     /**
      Count item warranty policies
      
+     - parameter tenantId: (query)  (optional)
      - parameter itemId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -22,8 +23,8 @@ open class ItemWarrantyPoliciesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func countItemWarrantyPoliciesAsync(itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return countItemWarrantyPoliciesAsyncWithRequestBuilder(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func countItemWarrantyPoliciesAsync(tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return countItemWarrantyPoliciesAsyncWithRequestBuilder(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -37,18 +38,20 @@ open class ItemWarrantyPoliciesAPI {
      Count item warranty policies
      - GET /api/v2/CatalogService/ItemWarrantyPolicies/Count
      - Counts all warranty policies for a specific item.
+     - parameter tenantId: (query)  (optional)
      - parameter itemId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func countItemWarrantyPoliciesAsyncWithRequestBuilder(itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func countItemWarrantyPoliciesAsyncWithRequestBuilder(tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/CatalogService/ItemWarrantyPolicies/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
             "itemId": (wrappedValue: itemId?.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
@@ -67,6 +70,7 @@ open class ItemWarrantyPoliciesAPI {
     /**
      Get item warranty policies
      
+     - parameter tenantId: (query)  (optional)
      - parameter itemId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -74,8 +78,8 @@ open class ItemWarrantyPoliciesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getItemWarrantyPoliciesAsync(itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemWarrantyPolicyDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getItemWarrantyPoliciesAsyncWithRequestBuilder(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getItemWarrantyPoliciesAsync(tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemWarrantyPolicyDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getItemWarrantyPoliciesAsyncWithRequestBuilder(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -89,18 +93,20 @@ open class ItemWarrantyPoliciesAPI {
      Get item warranty policies
      - GET /api/v2/CatalogService/ItemWarrantyPolicies
      - Retrieves all warranty policies for a specific item.
+     - parameter tenantId: (query)  (optional)
      - parameter itemId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<ItemWarrantyPolicyDtoListEnvelope> 
      */
-    open class func getItemWarrantyPoliciesAsyncWithRequestBuilder(itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemWarrantyPolicyDtoListEnvelope> {
+    open class func getItemWarrantyPoliciesAsyncWithRequestBuilder(tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemWarrantyPolicyDtoListEnvelope> {
         let localVariablePath = "/api/v2/CatalogService/ItemWarrantyPolicies"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
             "itemId": (wrappedValue: itemId?.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
@@ -120,6 +126,7 @@ open class ItemWarrantyPoliciesAPI {
      Get item warranty policy by ID
      
      - parameter itemWarrantyPolicyId: (path)  
+     - parameter tenantId: (query)  (optional)
      - parameter itemId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -127,8 +134,8 @@ open class ItemWarrantyPoliciesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getItemWarrantyPolicyByIdAsync(itemWarrantyPolicyId: UUID, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemWarrantyPolicyDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getItemWarrantyPolicyByIdAsyncWithRequestBuilder(itemWarrantyPolicyId: itemWarrantyPolicyId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getItemWarrantyPolicyByIdAsync(itemWarrantyPolicyId: UUID, tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemWarrantyPolicyDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getItemWarrantyPolicyByIdAsyncWithRequestBuilder(itemWarrantyPolicyId: itemWarrantyPolicyId, tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -143,12 +150,13 @@ open class ItemWarrantyPoliciesAPI {
      - GET /api/v2/CatalogService/ItemWarrantyPolicies/{itemWarrantyPolicyId}
      - Retrieves a specific warranty policy for an item.
      - parameter itemWarrantyPolicyId: (path)  
+     - parameter tenantId: (query)  (optional)
      - parameter itemId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<ItemWarrantyPolicyDtoEnvelope> 
      */
-    open class func getItemWarrantyPolicyByIdAsyncWithRequestBuilder(itemWarrantyPolicyId: UUID, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemWarrantyPolicyDtoEnvelope> {
+    open class func getItemWarrantyPolicyByIdAsyncWithRequestBuilder(itemWarrantyPolicyId: UUID, tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemWarrantyPolicyDtoEnvelope> {
         var localVariablePath = "/api/v2/CatalogService/ItemWarrantyPolicies/{itemWarrantyPolicyId}"
         let itemWarrantyPolicyIdPreEscape = "\(APIHelper.mapValueToPathItem(itemWarrantyPolicyId))"
         let itemWarrantyPolicyIdPostEscape = itemWarrantyPolicyIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -158,6 +166,7 @@ open class ItemWarrantyPoliciesAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
             "itemId": (wrappedValue: itemId?.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])

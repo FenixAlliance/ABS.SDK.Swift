@@ -74,7 +74,7 @@ open class EmailsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func adminSendBasicEmail(apiVersion: String? = nil, xApiVersion: String? = nil, objectEmailDispatchRequest: ObjectEmailDispatchRequest? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TenantDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func adminSendBasicEmail(apiVersion: String? = nil, xApiVersion: String? = nil, objectEmailDispatchRequest: ObjectEmailDispatchRequest? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Envelope?, _ error: Error?) -> Void)) -> RequestTask {
         return adminSendBasicEmailWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion, objectEmailDispatchRequest: objectEmailDispatchRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -92,9 +92,9 @@ open class EmailsAPI {
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter objectEmailDispatchRequest: (body)  (optional)
-     - returns: RequestBuilder<TenantDtoListEnvelope> 
+     - returns: RequestBuilder<Envelope> 
      */
-    open class func adminSendBasicEmailWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil, objectEmailDispatchRequest: ObjectEmailDispatchRequest? = nil) -> RequestBuilder<TenantDtoListEnvelope> {
+    open class func adminSendBasicEmailWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil, objectEmailDispatchRequest: ObjectEmailDispatchRequest? = nil) -> RequestBuilder<Envelope> {
         let localVariablePath = "/api/v2/SystemService/Emails/SendBasic"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: objectEmailDispatchRequest)
@@ -111,7 +111,7 @@ open class EmailsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<TenantDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }

@@ -13,6 +13,126 @@ import AnyCodable
 open class JournalsAPI {
 
     /**
+     Aggregate journal entry credits
+     
+     - parameter tenantId: (query)  
+     - parameter journalId: (path)  
+     - parameter currencyId: (query)  (optional)
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func aggregateJournalEntryCreditsAsync(tenantId: UUID, journalId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MoneyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return aggregateJournalEntryCreditsAsyncWithRequestBuilder(tenantId: tenantId, journalId: journalId, currencyId: currencyId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Aggregate journal entry credits
+     - GET /api/v2/AccountingService/Journals/{journalId}/Entries/Aggregate/Credits
+     - Returns the sum of all credit amounts for entries in the specified journal, normalized to the target currency.
+     - parameter tenantId: (query)  
+     - parameter journalId: (path)  
+     - parameter currencyId: (query)  (optional)
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<MoneyEnvelope> 
+     */
+    open class func aggregateJournalEntryCreditsAsyncWithRequestBuilder(tenantId: UUID, journalId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<MoneyEnvelope> {
+        var localVariablePath = "/api/v2/AccountingService/Journals/{journalId}/Entries/Aggregate/Credits"
+        let journalIdPreEscape = "\(APIHelper.mapValueToPathItem(journalId))"
+        let journalIdPostEscape = journalIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{journalId}", with: journalIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "currencyId": (wrappedValue: currencyId?.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<MoneyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Aggregate journal entry debits
+     
+     - parameter tenantId: (query)  
+     - parameter journalId: (path)  
+     - parameter currencyId: (query)  (optional)
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func aggregateJournalEntryDebitsAsync(tenantId: UUID, journalId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MoneyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return aggregateJournalEntryDebitsAsyncWithRequestBuilder(tenantId: tenantId, journalId: journalId, currencyId: currencyId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Aggregate journal entry debits
+     - GET /api/v2/AccountingService/Journals/{journalId}/Entries/Aggregate/Debits
+     - Returns the sum of all debit amounts for entries in the specified journal, normalized to the target currency.
+     - parameter tenantId: (query)  
+     - parameter journalId: (path)  
+     - parameter currencyId: (query)  (optional)
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<MoneyEnvelope> 
+     */
+    open class func aggregateJournalEntryDebitsAsyncWithRequestBuilder(tenantId: UUID, journalId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<MoneyEnvelope> {
+        var localVariablePath = "/api/v2/AccountingService/Journals/{journalId}/Entries/Aggregate/Debits"
+        let journalIdPreEscape = "\(APIHelper.mapValueToPathItem(journalId))"
+        let journalIdPostEscape = journalIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{journalId}", with: journalIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "currencyId": (wrappedValue: currencyId?.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<MoneyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
      Count journals
      
      - parameter tenantId: (query)  

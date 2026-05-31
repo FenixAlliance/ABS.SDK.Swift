@@ -1,6 +1,6 @@
 # ItemTagsAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -125,7 +125,7 @@ No authorization required
 
 # **getItemTagByIdAsync**
 ```swift
-    open class func getItemTagByIdAsync(itemTagId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemTagDtoEnvelope?, _ error: Error?) -> Void)
+    open class func getItemTagByIdAsync(itemTagId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemTagDtoEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get item tag by ID
@@ -138,11 +138,12 @@ Retrieves a specific item tag by its ID.
 import OpenAPIClient
 
 let itemTagId = 987 // UUID | 
+let tenantId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Get item tag by ID
-ItemTagsAPI.getItemTagByIdAsync(itemTagId: itemTagId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemTagsAPI.getItemTagByIdAsync(itemTagId: itemTagId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -159,6 +160,7 @@ ItemTagsAPI.getItemTagByIdAsync(itemTagId: itemTagId, apiVersion: apiVersion, xA
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **itemTagId** | **UUID** |  | 
+ **tenantId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 
@@ -179,7 +181,7 @@ No authorization required
 
 # **getItemTagsAsync**
 ```swift
-    open class func getItemTagsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemTagDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getItemTagsAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemTagDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all item tags
@@ -191,7 +193,7 @@ Retrieves all item tags for the specified tenant using OData query options.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let tenantId = 987 // UUID | 
+let tenantId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
@@ -212,7 +214,7 @@ ItemTagsAPI.getItemTagsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVer
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenantId** | **UUID** |  | 
+ **tenantId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 

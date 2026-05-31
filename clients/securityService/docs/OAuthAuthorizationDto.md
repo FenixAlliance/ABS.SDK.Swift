@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | [optional] 
+**timestamp** | **Date** |  | [optional] 
 **concurrencyToken** | **String** |  | [optional] 
 **creationDate** | **Date** |  | [optional] 
 **properties** | **String** |  | [optional] 

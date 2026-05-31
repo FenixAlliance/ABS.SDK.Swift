@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | [optional] 
+**timestamp** | **Date** |  | [optional] 
 **applicationType** | **String** |  | [optional] 
 **clientId** | **String** |  | [optional] 
 **concurrencyToken** | **String** |  | [optional] 

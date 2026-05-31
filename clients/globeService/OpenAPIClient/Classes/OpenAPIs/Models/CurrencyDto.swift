@@ -13,13 +13,15 @@ import AnyCodable
 public struct CurrencyDto: Codable, JSONEncodable, Hashable {
 
     public var id: String?
+    public var timestamp: Date?
     public var code: String?
     public var name: String?
     public var symbol: String?
     public var country: CountryDto?
 
-    public init(id: String? = nil, code: String? = nil, name: String? = nil, symbol: String? = nil, country: CountryDto? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, code: String? = nil, name: String? = nil, symbol: String? = nil, country: CountryDto? = nil) {
         self.id = id
+        self.timestamp = timestamp
         self.code = code
         self.name = name
         self.symbol = symbol
@@ -28,6 +30,7 @@ public struct CurrencyDto: Codable, JSONEncodable, Hashable {
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
+        case timestamp
         case code
         case name
         case symbol
@@ -39,6 +42,7 @@ public struct CurrencyDto: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
+        try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(code, forKey: .code)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(symbol, forKey: .symbol)

@@ -3,14 +3,10 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **UUID** |  | [optional] 
-**timestamp** | **Date** |  | [optional] 
+**type** | **String** |  | [optional] 
+**contactId** | **String** |  | [optional] 
 **about** | **String** |  | [optional] 
-**verified** | **Bool** |  | [optional] 
-**submitted** | **Bool** |  | [optional] 
 **avatarUrl** | **String** |  | [optional] 
-**qualifiedName** | **String** |  | [optional] 
-**verificationTimestamp** | **Date** |  | [optional] 
 **data** | **String** |  | [optional] 
 **dataLabel** | **String** |  | [optional] 
 **data1** | **String** |  | [optional] 

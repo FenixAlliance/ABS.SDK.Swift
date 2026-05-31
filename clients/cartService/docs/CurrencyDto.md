@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | [optional] 
+**timestamp** | **Date** |  | [optional] 
 **code** | **String** |  | [optional] 
 **name** | **String** |  | [optional] 
 **symbol** | **String** |  | [optional] 

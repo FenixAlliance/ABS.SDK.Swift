@@ -1,6 +1,6 @@
 # FiscalIdentificationTypesAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -184,7 +184,7 @@ No authorization required
 
 # **getFiscalIdentificationTypes**
 ```swift
-    open class func getFiscalIdentificationTypes(authorityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: FiscalIdentificationTypeDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getFiscalIdentificationTypes(tenantId: UUID, authorityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: FiscalIdentificationTypeDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get fiscal identification types for an authority
@@ -196,12 +196,13 @@ Retrieves all fiscal identification types for the specified fiscal authority.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
+let tenantId = 987 // UUID | 
 let authorityId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Get fiscal identification types for an authority
-FiscalIdentificationTypesAPI.getFiscalIdentificationTypes(authorityId: authorityId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+FiscalIdentificationTypesAPI.getFiscalIdentificationTypes(tenantId: tenantId, authorityId: authorityId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -217,6 +218,7 @@ FiscalIdentificationTypesAPI.getFiscalIdentificationTypes(authorityId: authority
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
  **authorityId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
@@ -238,7 +240,7 @@ No authorization required
 
 # **getFiscalIdentificationTypesCount**
 ```swift
-    open class func getFiscalIdentificationTypesCount(authorityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getFiscalIdentificationTypesCount(tenantId: UUID, authorityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get fiscal identification types count
@@ -250,12 +252,13 @@ Returns the total count of fiscal identification types for the specified fiscal 
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
+let tenantId = 987 // UUID | 
 let authorityId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Get fiscal identification types count
-FiscalIdentificationTypesAPI.getFiscalIdentificationTypesCount(authorityId: authorityId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+FiscalIdentificationTypesAPI.getFiscalIdentificationTypesCount(tenantId: tenantId, authorityId: authorityId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -271,6 +274,7 @@ FiscalIdentificationTypesAPI.getFiscalIdentificationTypesCount(authorityId: auth
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
  **authorityId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 

@@ -15,14 +15,15 @@ open class InvoicesAPI {
     /**
      Aggregate invoice discounts.
      
+     - parameter tenantId: (query)  
      - parameter requestBody: (body)  
      - parameter currencyId: (query)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func aggregateInvoiceDiscounts(requestBody: [UUID], currencyId: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MoneyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return aggregateInvoiceDiscountsWithRequestBuilder(requestBody: requestBody, currencyId: currencyId).execute(apiResponseQueue) { result in
+    open class func aggregateInvoiceDiscounts(tenantId: UUID, requestBody: [UUID], currencyId: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MoneyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return aggregateInvoiceDiscountsWithRequestBuilder(tenantId: tenantId, requestBody: requestBody, currencyId: currencyId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -36,17 +37,19 @@ open class InvoicesAPI {
      Aggregate invoice discounts.
      - POST /api/v2/InvoicingService/Invoices/DiscountsAggregate
      - Aggregates the discounts for the specified invoices.
+     - parameter tenantId: (query)  
      - parameter requestBody: (body)  
      - parameter currencyId: (query)  (optional)
      - returns: RequestBuilder<MoneyEnvelope> 
      */
-    open class func aggregateInvoiceDiscountsWithRequestBuilder(requestBody: [UUID], currencyId: String? = nil) -> RequestBuilder<MoneyEnvelope> {
+    open class func aggregateInvoiceDiscountsWithRequestBuilder(tenantId: UUID, requestBody: [UUID], currencyId: String? = nil) -> RequestBuilder<MoneyEnvelope> {
         let localVariablePath = "/api/v2/InvoicingService/Invoices/DiscountsAggregate"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: requestBody)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
             "currencyId": (wrappedValue: currencyId?.encodeToJSON(), isExplode: true),
         ])
 
@@ -64,14 +67,15 @@ open class InvoicesAPI {
     /**
      Aggregate invoice global surcharges.
      
+     - parameter tenantId: (query)  
      - parameter requestBody: (body)  
      - parameter currencyId: (query)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func aggregateInvoiceGlobalSurcharges(requestBody: [UUID], currencyId: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MoneyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return aggregateInvoiceGlobalSurchargesWithRequestBuilder(requestBody: requestBody, currencyId: currencyId).execute(apiResponseQueue) { result in
+    open class func aggregateInvoiceGlobalSurcharges(tenantId: UUID, requestBody: [UUID], currencyId: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MoneyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return aggregateInvoiceGlobalSurchargesWithRequestBuilder(tenantId: tenantId, requestBody: requestBody, currencyId: currencyId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -85,17 +89,19 @@ open class InvoicesAPI {
      Aggregate invoice global surcharges.
      - POST /api/v2/InvoicingService/Invoices/GlobalSurchargesAggregate
      - Aggregates the global surcharges for the specified invoices.
+     - parameter tenantId: (query)  
      - parameter requestBody: (body)  
      - parameter currencyId: (query)  (optional)
      - returns: RequestBuilder<MoneyEnvelope> 
      */
-    open class func aggregateInvoiceGlobalSurchargesWithRequestBuilder(requestBody: [UUID], currencyId: String? = nil) -> RequestBuilder<MoneyEnvelope> {
+    open class func aggregateInvoiceGlobalSurchargesWithRequestBuilder(tenantId: UUID, requestBody: [UUID], currencyId: String? = nil) -> RequestBuilder<MoneyEnvelope> {
         let localVariablePath = "/api/v2/InvoicingService/Invoices/GlobalSurchargesAggregate"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: requestBody)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
             "currencyId": (wrappedValue: currencyId?.encodeToJSON(), isExplode: true),
         ])
 
@@ -113,14 +119,15 @@ open class InvoicesAPI {
     /**
      Aggregate invoice tax bases.
      
+     - parameter tenantId: (query)  
      - parameter requestBody: (body)  
      - parameter currencyId: (query)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func aggregateInvoiceTaxBases(requestBody: [UUID], currencyId: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MoneyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return aggregateInvoiceTaxBasesWithRequestBuilder(requestBody: requestBody, currencyId: currencyId).execute(apiResponseQueue) { result in
+    open class func aggregateInvoiceTaxBases(tenantId: UUID, requestBody: [UUID], currencyId: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MoneyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return aggregateInvoiceTaxBasesWithRequestBuilder(tenantId: tenantId, requestBody: requestBody, currencyId: currencyId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -134,17 +141,19 @@ open class InvoicesAPI {
      Aggregate invoice tax bases.
      - POST /api/v2/InvoicingService/Invoices/TaxBasesAggregate
      - Aggregates the tax bases for the specified invoices.
+     - parameter tenantId: (query)  
      - parameter requestBody: (body)  
      - parameter currencyId: (query)  (optional)
      - returns: RequestBuilder<MoneyEnvelope> 
      */
-    open class func aggregateInvoiceTaxBasesWithRequestBuilder(requestBody: [UUID], currencyId: String? = nil) -> RequestBuilder<MoneyEnvelope> {
+    open class func aggregateInvoiceTaxBasesWithRequestBuilder(tenantId: UUID, requestBody: [UUID], currencyId: String? = nil) -> RequestBuilder<MoneyEnvelope> {
         let localVariablePath = "/api/v2/InvoicingService/Invoices/TaxBasesAggregate"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: requestBody)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
             "currencyId": (wrappedValue: currencyId?.encodeToJSON(), isExplode: true),
         ])
 
@@ -162,14 +171,15 @@ open class InvoicesAPI {
     /**
      Aggregate invoice taxes.
      
+     - parameter tenantId: (query)  
      - parameter requestBody: (body)  
      - parameter currencyId: (query)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func aggregateInvoiceTaxes(requestBody: [UUID], currencyId: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MoneyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return aggregateInvoiceTaxesWithRequestBuilder(requestBody: requestBody, currencyId: currencyId).execute(apiResponseQueue) { result in
+    open class func aggregateInvoiceTaxes(tenantId: UUID, requestBody: [UUID], currencyId: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MoneyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return aggregateInvoiceTaxesWithRequestBuilder(tenantId: tenantId, requestBody: requestBody, currencyId: currencyId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -183,17 +193,19 @@ open class InvoicesAPI {
      Aggregate invoice taxes.
      - POST /api/v2/InvoicingService/Invoices/TaxesAggregate
      - Aggregates the taxes for the specified invoices.
+     - parameter tenantId: (query)  
      - parameter requestBody: (body)  
      - parameter currencyId: (query)  (optional)
      - returns: RequestBuilder<MoneyEnvelope> 
      */
-    open class func aggregateInvoiceTaxesWithRequestBuilder(requestBody: [UUID], currencyId: String? = nil) -> RequestBuilder<MoneyEnvelope> {
+    open class func aggregateInvoiceTaxesWithRequestBuilder(tenantId: UUID, requestBody: [UUID], currencyId: String? = nil) -> RequestBuilder<MoneyEnvelope> {
         let localVariablePath = "/api/v2/InvoicingService/Invoices/TaxesAggregate"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: requestBody)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
             "currencyId": (wrappedValue: currencyId?.encodeToJSON(), isExplode: true),
         ])
 
@@ -211,14 +223,15 @@ open class InvoicesAPI {
     /**
      Aggregate invoice totals.
      
+     - parameter tenantId: (query)  
      - parameter requestBody: (body)  
      - parameter currencyId: (query)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func aggregateInvoiceTotals(requestBody: [UUID], currencyId: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MoneyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return aggregateInvoiceTotalsWithRequestBuilder(requestBody: requestBody, currencyId: currencyId).execute(apiResponseQueue) { result in
+    open class func aggregateInvoiceTotals(tenantId: UUID, requestBody: [UUID], currencyId: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MoneyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return aggregateInvoiceTotalsWithRequestBuilder(tenantId: tenantId, requestBody: requestBody, currencyId: currencyId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -232,17 +245,19 @@ open class InvoicesAPI {
      Aggregate invoice totals.
      - POST /api/v2/InvoicingService/Invoices/TotalsAggregate
      - Aggregates the totals for the specified invoices.
+     - parameter tenantId: (query)  
      - parameter requestBody: (body)  
      - parameter currencyId: (query)  (optional)
      - returns: RequestBuilder<MoneyEnvelope> 
      */
-    open class func aggregateInvoiceTotalsWithRequestBuilder(requestBody: [UUID], currencyId: String? = nil) -> RequestBuilder<MoneyEnvelope> {
+    open class func aggregateInvoiceTotalsWithRequestBuilder(tenantId: UUID, requestBody: [UUID], currencyId: String? = nil) -> RequestBuilder<MoneyEnvelope> {
         let localVariablePath = "/api/v2/InvoicingService/Invoices/TotalsAggregate"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: requestBody)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
             "currencyId": (wrappedValue: currencyId?.encodeToJSON(), isExplode: true),
         ])
 
@@ -1561,13 +1576,14 @@ open class InvoicesAPI {
     /**
      Get payments for an invoice.
      
+     - parameter tenantId: (query)  
      - parameter invoiceId: (path)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getInvoicePayments(invoiceId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: PaymentDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getInvoicePaymentsWithRequestBuilder(invoiceId: invoiceId).execute(apiResponseQueue) { result in
+    open class func getInvoicePayments(tenantId: UUID, invoiceId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: PaymentDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getInvoicePaymentsWithRequestBuilder(tenantId: tenantId, invoiceId: invoiceId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1581,10 +1597,11 @@ open class InvoicesAPI {
      Get payments for an invoice.
      - GET /api/v2/InvoicingService/Invoices/{invoiceId}/Payments
      - Retrieves the list of payments related to the specified invoice.
+     - parameter tenantId: (query)  
      - parameter invoiceId: (path)  
      - returns: RequestBuilder<PaymentDtoIReadOnlyListEnvelope> 
      */
-    open class func getInvoicePaymentsWithRequestBuilder(invoiceId: UUID) -> RequestBuilder<PaymentDtoIReadOnlyListEnvelope> {
+    open class func getInvoicePaymentsWithRequestBuilder(tenantId: UUID, invoiceId: UUID) -> RequestBuilder<PaymentDtoIReadOnlyListEnvelope> {
         var localVariablePath = "/api/v2/InvoicingService/Invoices/{invoiceId}/Payments"
         let invoiceIdPreEscape = "\(APIHelper.mapValueToPathItem(invoiceId))"
         let invoiceIdPostEscape = invoiceIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -1592,7 +1609,10 @@ open class InvoicesAPI {
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
-        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
 
         let localVariableNillableHeaders: [String: Any?] = [
             :
@@ -1608,13 +1628,14 @@ open class InvoicesAPI {
     /**
      Get the count of payments for an invoice.
      
+     - parameter tenantId: (query)  
      - parameter invoiceId: (path)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getInvoicePaymentsCount(invoiceId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getInvoicePaymentsCountWithRequestBuilder(invoiceId: invoiceId).execute(apiResponseQueue) { result in
+    open class func getInvoicePaymentsCount(tenantId: UUID, invoiceId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getInvoicePaymentsCountWithRequestBuilder(tenantId: tenantId, invoiceId: invoiceId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1628,10 +1649,11 @@ open class InvoicesAPI {
      Get the count of payments for an invoice.
      - GET /api/v2/InvoicingService/Invoices/{invoiceId}/Payments/Count
      - Retrieves the total count of payments for the specified invoice.
+     - parameter tenantId: (query)  
      - parameter invoiceId: (path)  
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getInvoicePaymentsCountWithRequestBuilder(invoiceId: UUID) -> RequestBuilder<Int32Envelope> {
+    open class func getInvoicePaymentsCountWithRequestBuilder(tenantId: UUID, invoiceId: UUID) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/InvoicingService/Invoices/{invoiceId}/Payments/Count"
         let invoiceIdPreEscape = "\(APIHelper.mapValueToPathItem(invoiceId))"
         let invoiceIdPostEscape = invoiceIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -1639,7 +1661,10 @@ open class InvoicesAPI {
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
-        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
 
         let localVariableNillableHeaders: [String: Any?] = [
             :

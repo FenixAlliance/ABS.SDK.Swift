@@ -1,6 +1,6 @@
 # FiscalRegimesAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -184,7 +184,7 @@ No authorization required
 
 # **getFiscalRegimes**
 ```swift
-    open class func getFiscalRegimes(fiscalAuthorityId: UUID, authorityId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: FiscalRegimeDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getFiscalRegimes(tenantId: UUID, fiscalAuthorityId: UUID, authorityId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: FiscalRegimeDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get fiscal regimes for an authority
@@ -196,13 +196,14 @@ Retrieves all fiscal regimes for the specified fiscal authority.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
+let tenantId = 987 // UUID | 
 let fiscalAuthorityId = 987 // UUID | 
 let authorityId = "authorityId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Get fiscal regimes for an authority
-FiscalRegimesAPI.getFiscalRegimes(fiscalAuthorityId: fiscalAuthorityId, authorityId: authorityId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+FiscalRegimesAPI.getFiscalRegimes(tenantId: tenantId, fiscalAuthorityId: fiscalAuthorityId, authorityId: authorityId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -218,6 +219,7 @@ FiscalRegimesAPI.getFiscalRegimes(fiscalAuthorityId: fiscalAuthorityId, authorit
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
  **fiscalAuthorityId** | **UUID** |  | 
  **authorityId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
@@ -240,7 +242,7 @@ No authorization required
 
 # **getFiscalRegimesCount**
 ```swift
-    open class func getFiscalRegimesCount(fiscalAuthorityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getFiscalRegimesCount(tenantId: UUID, fiscalAuthorityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get fiscal regimes count
@@ -252,12 +254,13 @@ Returns the total count of fiscal regimes for the specified fiscal authority.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
+let tenantId = 987 // UUID | 
 let fiscalAuthorityId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Get fiscal regimes count
-FiscalRegimesAPI.getFiscalRegimesCount(fiscalAuthorityId: fiscalAuthorityId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+FiscalRegimesAPI.getFiscalRegimesCount(tenantId: tenantId, fiscalAuthorityId: fiscalAuthorityId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -273,6 +276,7 @@ FiscalRegimesAPI.getFiscalRegimesCount(fiscalAuthorityId: fiscalAuthorityId, api
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
  **fiscalAuthorityId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 

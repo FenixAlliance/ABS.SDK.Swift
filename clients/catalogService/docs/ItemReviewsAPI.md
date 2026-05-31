@@ -1,6 +1,6 @@
 # ItemReviewsAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -125,7 +125,7 @@ No authorization required
 
 # **getItemReviewByIdAsync**
 ```swift
-    open class func getItemReviewByIdAsync(itemReviewId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemReviewDtoEnvelope?, _ error: Error?) -> Void)
+    open class func getItemReviewByIdAsync(itemReviewId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemReviewDtoEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get item review by ID
@@ -138,11 +138,12 @@ Retrieves a specific item review by its ID.
 import OpenAPIClient
 
 let itemReviewId = 987 // UUID | 
+let tenantId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Get item review by ID
-ItemReviewsAPI.getItemReviewByIdAsync(itemReviewId: itemReviewId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemReviewsAPI.getItemReviewByIdAsync(itemReviewId: itemReviewId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -159,6 +160,7 @@ ItemReviewsAPI.getItemReviewByIdAsync(itemReviewId: itemReviewId, apiVersion: ap
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **itemReviewId** | **UUID** |  | 
+ **tenantId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 

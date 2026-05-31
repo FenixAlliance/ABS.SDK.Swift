@@ -15,14 +15,14 @@ open class ItemCategoriesAPI {
     /**
      Count item categories
      
-     - parameter tenantId: (query)  
+     - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func countItemCategoriesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func countItemCategoriesAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
         return countItemCategoriesAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -37,19 +37,19 @@ open class ItemCategoriesAPI {
      Count item categories
      - GET /api/v2/CatalogService/ItemCategories/Count
      - Counts all item categories for the specified tenant.
-     - parameter tenantId: (query)  
+     - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func countItemCategoriesAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func countItemCategoriesAsyncWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/CatalogService/ItemCategories/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 
@@ -179,14 +179,14 @@ open class ItemCategoriesAPI {
     /**
      Get all item categories
      
-     - parameter tenantId: (query)  
+     - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getItemCategoriesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemCategoryDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getItemCategoriesAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemCategoryDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
         return getItemCategoriesAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -201,19 +201,19 @@ open class ItemCategoriesAPI {
      Get all item categories
      - GET /api/v2/CatalogService/ItemCategories
      - Retrieves all item categories for the specified tenant using OData query options.
-     - parameter tenantId: (query)  
+     - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<ItemCategoryDtoListEnvelope> 
      */
-    open class func getItemCategoriesAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemCategoryDtoListEnvelope> {
+    open class func getItemCategoriesAsyncWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemCategoryDtoListEnvelope> {
         let localVariablePath = "/api/v2/CatalogService/ItemCategories"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 
@@ -232,14 +232,15 @@ open class ItemCategoriesAPI {
      Get item category by ID
      
      - parameter itemCategoryId: (path)  
+     - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getItemCategoryByIdAsync(itemCategoryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemCategoryDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getItemCategoryByIdAsyncWithRequestBuilder(itemCategoryId: itemCategoryId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getItemCategoryByIdAsync(itemCategoryId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemCategoryDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getItemCategoryByIdAsyncWithRequestBuilder(itemCategoryId: itemCategoryId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -254,11 +255,12 @@ open class ItemCategoriesAPI {
      - GET /api/v2/CatalogService/ItemCategories/{itemCategoryId}
      - Retrieves a specific item category by its ID.
      - parameter itemCategoryId: (path)  
+     - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<ItemCategoryDtoEnvelope> 
      */
-    open class func getItemCategoryByIdAsyncWithRequestBuilder(itemCategoryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemCategoryDtoEnvelope> {
+    open class func getItemCategoryByIdAsyncWithRequestBuilder(itemCategoryId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemCategoryDtoEnvelope> {
         var localVariablePath = "/api/v2/CatalogService/ItemCategories/{itemCategoryId}"
         let itemCategoryIdPreEscape = "\(APIHelper.mapValueToPathItem(itemCategoryId))"
         let itemCategoryIdPostEscape = itemCategoryIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -268,6 +270,7 @@ open class ItemCategoriesAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 

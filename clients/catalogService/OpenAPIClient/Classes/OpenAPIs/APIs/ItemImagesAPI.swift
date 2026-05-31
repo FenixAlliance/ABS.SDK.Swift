@@ -128,14 +128,15 @@ open class ItemImagesAPI {
      Get item image by ID
      
      - parameter itemImageId: (path)  
+     - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getItemImageByIdAsync(itemImageId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemImageDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getItemImageByIdAsyncWithRequestBuilder(itemImageId: itemImageId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getItemImageByIdAsync(itemImageId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemImageDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getItemImageByIdAsyncWithRequestBuilder(itemImageId: itemImageId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -150,11 +151,12 @@ open class ItemImagesAPI {
      - GET /api/v2/CatalogService/ItemImages/{itemImageId}
      - Retrieves a specific item image by its ID.
      - parameter itemImageId: (path)  
+     - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<ItemImageDtoEnvelope> 
      */
-    open class func getItemImageByIdAsyncWithRequestBuilder(itemImageId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemImageDtoEnvelope> {
+    open class func getItemImageByIdAsyncWithRequestBuilder(itemImageId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemImageDtoEnvelope> {
         var localVariablePath = "/api/v2/CatalogService/ItemImages/{itemImageId}"
         let itemImageIdPreEscape = "\(APIHelper.mapValueToPathItem(itemImageId))"
         let itemImageIdPostEscape = itemImageIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -164,6 +166,7 @@ open class ItemImagesAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 
@@ -181,14 +184,14 @@ open class ItemImagesAPI {
     /**
      Get all item images
      
-     - parameter tenantId: (query)  
+     - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getItemImagesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemImageDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getItemImagesAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemImageDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
         return getItemImagesAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -203,19 +206,19 @@ open class ItemImagesAPI {
      Get all item images
      - GET /api/v2/CatalogService/ItemImages
      - Retrieves all item images for the specified tenant using OData query options.
-     - parameter tenantId: (query)  
+     - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<ItemImageDtoListEnvelope> 
      */
-    open class func getItemImagesAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemImageDtoListEnvelope> {
+    open class func getItemImagesAsyncWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemImageDtoListEnvelope> {
         let localVariablePath = "/api/v2/CatalogService/ItemImages"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 

@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**timestamp** | **Date** |  | [optional] 
 **id** | **String** |  | [optional] 
+**timestamp** | **Date** |  | [optional] 
 **name** | **String** |  | [optional] 
 **code** | **String** |  | [optional] 
 **countryID** | **String** |  | [optional] 

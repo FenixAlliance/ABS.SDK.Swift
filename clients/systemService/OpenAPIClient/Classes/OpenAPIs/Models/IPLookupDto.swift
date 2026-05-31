@@ -13,12 +13,14 @@ import AnyCodable
 public struct IPLookupDto: Codable, JSONEncodable, Hashable {
 
     public var id: String?
+    public var timestamp: Date?
     public var ip: String?
     public var ua: String?
     public var city: String?
 
-    public init(id: String? = nil, ip: String? = nil, ua: String? = nil, city: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, ip: String? = nil, ua: String? = nil, city: String? = nil) {
         self.id = id
+        self.timestamp = timestamp
         self.ip = ip
         self.ua = ua
         self.city = city
@@ -26,6 +28,7 @@ public struct IPLookupDto: Codable, JSONEncodable, Hashable {
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
+        case timestamp
         case ip
         case ua
         case city
@@ -36,6 +39,7 @@ public struct IPLookupDto: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
+        try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(ip, forKey: .ip)
         try container.encodeIfPresent(ua, forKey: .ua)
         try container.encodeIfPresent(city, forKey: .city)

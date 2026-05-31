@@ -1,6 +1,6 @@
 # UsersAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -24,7 +24,7 @@ Method | HTTP request | Description
 
 Preview the rendered email for a user.
 
-This action is only available for users with the 'business_owner' role (global administrators).
+This action is only available for global administrators.
 
 ### Example
 ```swift
@@ -80,7 +80,7 @@ No authorization required
 
 Send an email to a user.
 
-This action is only available for users with the 'business_owner' role (global administrators).
+This action is only available for global administrators.
 
 ### Example
 ```swift
@@ -136,7 +136,7 @@ No authorization required
 
 Create a new user
 
-This action is only available for users with the 'business_owner' role (global administrators).
+This action is only available for global administrators.
 
 ### Example
 ```swift
@@ -190,7 +190,7 @@ No authorization required
 
 Delete a user
 
-This action is only available for users with the 'business_owner' role (global administrators).
+This action is only available for global administrators.
 
 ### Example
 ```swift
@@ -244,7 +244,7 @@ No authorization required
 
 Retrieve an extended user by ID
 
-This action is only available for users with the 'business_owner' role (global administrators).
+This action is only available for global administrators.
 
 ### Example
 ```swift
@@ -298,7 +298,7 @@ No authorization required
 
 Retrieve a list of extended users
 
-This action is only available for users with the 'business_owner' role (global administrators).
+This action is only available for global administrators.
 
 ### Example
 ```swift
@@ -350,7 +350,7 @@ No authorization required
 
 Get the count of extended users
 
-This action is only available for users with the 'business_owner' role (global administrators).
+This action is only available for global administrators.
 
 ### Example
 ```swift
@@ -402,7 +402,7 @@ No authorization required
 
 Retrieve a user by ID
 
-This action is only available for users with the 'business_owner' role (global administrators).
+This action is only available for global administrators.
 
 ### Example
 ```swift
@@ -456,7 +456,7 @@ No authorization required
 
 Retrieve a list of users
 
-This action is only available for users with the 'business_owner' role (global administrators).
+This action is only available for global administrators.
 
 ### Example
 ```swift
@@ -508,7 +508,7 @@ No authorization required
 
 Get the count of users
 
-This action is only available for users with the 'business_owner' role (global administrators).
+This action is only available for global administrators.
 
 ### Example
 ```swift
@@ -560,7 +560,7 @@ No authorization required
 
 Update a user
 
-This action is only available for users with the 'business_owner' role (global administrators).
+This action is only available for global administrators.
 
 ### Example
 ```swift

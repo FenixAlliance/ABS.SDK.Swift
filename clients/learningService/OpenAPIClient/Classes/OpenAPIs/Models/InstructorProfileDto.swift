@@ -14,11 +14,15 @@ public struct InstructorProfileDto: Codable, JSONEncodable, Hashable {
 
     public var id: String?
     public var timestamp: Date?
-    public var authorized: Bool?
+    public var contactId: String?
+    public var tenantId: String?
+    public var type: String?
+    public var enrollmentId: String?
     public var about: String?
     public var verified: Bool?
     public var submitted: Bool?
     public var avatarUrl: String?
+    public var contact: ContactDto?
     public var qualifiedName: String?
     public var verificationTimestamp: Date?
     public var data: String?
@@ -41,18 +45,23 @@ public struct InstructorProfileDto: Codable, JSONEncodable, Hashable {
     public var data8Label: String?
     public var data9: String?
     public var data9Label: String?
+    public var authorized: Bool?
     public var businessID: String?
     public var contactID: String?
     public var businessProfileRecordID: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, authorized: Bool? = nil, about: String? = nil, verified: Bool? = nil, submitted: Bool? = nil, avatarUrl: String? = nil, qualifiedName: String? = nil, verificationTimestamp: Date? = nil, data: String? = nil, dataLabel: String? = nil, data1: String? = nil, data1Label: String? = nil, data2: String? = nil, data2Label: String? = nil, data3: String? = nil, data3Label: String? = nil, data4: String? = nil, data4Label: String? = nil, data5: String? = nil, data5Label: String? = nil, data6: String? = nil, data6Label: String? = nil, data7: String? = nil, data7Label: String? = nil, data8: String? = nil, data8Label: String? = nil, data9: String? = nil, data9Label: String? = nil, businessID: String? = nil, contactID: String? = nil, businessProfileRecordID: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, contactId: String? = nil, tenantId: String? = nil, type: String? = nil, enrollmentId: String? = nil, about: String? = nil, verified: Bool? = nil, submitted: Bool? = nil, avatarUrl: String? = nil, contact: ContactDto? = nil, qualifiedName: String? = nil, verificationTimestamp: Date? = nil, data: String? = nil, dataLabel: String? = nil, data1: String? = nil, data1Label: String? = nil, data2: String? = nil, data2Label: String? = nil, data3: String? = nil, data3Label: String? = nil, data4: String? = nil, data4Label: String? = nil, data5: String? = nil, data5Label: String? = nil, data6: String? = nil, data6Label: String? = nil, data7: String? = nil, data7Label: String? = nil, data8: String? = nil, data8Label: String? = nil, data9: String? = nil, data9Label: String? = nil, authorized: Bool? = nil, businessID: String? = nil, contactID: String? = nil, businessProfileRecordID: String? = nil) {
         self.id = id
         self.timestamp = timestamp
-        self.authorized = authorized
+        self.contactId = contactId
+        self.tenantId = tenantId
+        self.type = type
+        self.enrollmentId = enrollmentId
         self.about = about
         self.verified = verified
         self.submitted = submitted
         self.avatarUrl = avatarUrl
+        self.contact = contact
         self.qualifiedName = qualifiedName
         self.verificationTimestamp = verificationTimestamp
         self.data = data
@@ -75,6 +84,7 @@ public struct InstructorProfileDto: Codable, JSONEncodable, Hashable {
         self.data8Label = data8Label
         self.data9 = data9
         self.data9Label = data9Label
+        self.authorized = authorized
         self.businessID = businessID
         self.contactID = contactID
         self.businessProfileRecordID = businessProfileRecordID
@@ -83,11 +93,15 @@ public struct InstructorProfileDto: Codable, JSONEncodable, Hashable {
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
-        case authorized
+        case contactId
+        case tenantId
+        case type
+        case enrollmentId
         case about
         case verified
         case submitted
         case avatarUrl
+        case contact
         case qualifiedName
         case verificationTimestamp
         case data
@@ -110,6 +124,7 @@ public struct InstructorProfileDto: Codable, JSONEncodable, Hashable {
         case data8Label
         case data9
         case data9Label
+        case authorized
         case businessID
         case contactID
         case businessProfileRecordID
@@ -121,11 +136,15 @@ public struct InstructorProfileDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
-        try container.encodeIfPresent(authorized, forKey: .authorized)
+        try container.encodeIfPresent(contactId, forKey: .contactId)
+        try container.encodeIfPresent(tenantId, forKey: .tenantId)
+        try container.encodeIfPresent(type, forKey: .type)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(about, forKey: .about)
         try container.encodeIfPresent(verified, forKey: .verified)
         try container.encodeIfPresent(submitted, forKey: .submitted)
         try container.encodeIfPresent(avatarUrl, forKey: .avatarUrl)
+        try container.encodeIfPresent(contact, forKey: .contact)
         try container.encodeIfPresent(qualifiedName, forKey: .qualifiedName)
         try container.encodeIfPresent(verificationTimestamp, forKey: .verificationTimestamp)
         try container.encodeIfPresent(data, forKey: .data)
@@ -148,6 +167,7 @@ public struct InstructorProfileDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(data8Label, forKey: .data8Label)
         try container.encodeIfPresent(data9, forKey: .data9)
         try container.encodeIfPresent(data9Label, forKey: .data9Label)
+        try container.encodeIfPresent(authorized, forKey: .authorized)
         try container.encodeIfPresent(businessID, forKey: .businessID)
         try container.encodeIfPresent(contactID, forKey: .contactID)
         try container.encodeIfPresent(businessProfileRecordID, forKey: .businessProfileRecordID)

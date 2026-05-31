@@ -403,6 +403,58 @@ open class CourseCertificatesAPI {
     }
 
     /**
+     Get certificate templates count
+     
+     - parameter tenantId: (query)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getCourseCertificateTemplatesCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCourseCertificateTemplatesCountAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get certificate templates count
+     - GET /api/v2/LearningService/CourseCertificates/Template/Count
+     - Returns the count of course certificate templates for the specified tenant.
+     - parameter tenantId: (query)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<Int> 
+     */
+    open class func getCourseCertificateTemplatesCountAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int> {
+        let localVariablePath = "/api/v2/LearningService/CourseCertificates/Template/Count"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Int>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
      Get all course certificates
      
      - parameter tenantId: (query)  
@@ -547,6 +599,66 @@ open class CourseCertificatesAPI {
         localVariablePath = localVariablePath.replacingOccurrences(of: "{courseCertificateId}", with: courseCertificateIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseCompletionCertificateUpdateDto)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Update a certificate template
+     
+     - parameter tenantId: (query)  
+     - parameter courseCertificateTemplateId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter courseCertificateTemplateUpdateDto: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func updateCourseCertificateTemplateAsync(tenantId: UUID, courseCertificateTemplateId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, courseCertificateTemplateUpdateDto: CourseCertificateTemplateUpdateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return updateCourseCertificateTemplateAsyncWithRequestBuilder(tenantId: tenantId, courseCertificateTemplateId: courseCertificateTemplateId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseCertificateTemplateUpdateDto: courseCertificateTemplateUpdateDto).execute(apiResponseQueue) { result in
+            switch result {
+            case .success:
+                completion((), nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Update a certificate template
+     - PUT /api/v2/LearningService/CourseCertificates/Template/{courseCertificateTemplateId}
+     - Updates an existing course certificate template for the specified tenant.
+     - parameter tenantId: (query)  
+     - parameter courseCertificateTemplateId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter courseCertificateTemplateUpdateDto: (body)  (optional)
+     - returns: RequestBuilder<Void> 
+     */
+    open class func updateCourseCertificateTemplateAsyncWithRequestBuilder(tenantId: UUID, courseCertificateTemplateId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, courseCertificateTemplateUpdateDto: CourseCertificateTemplateUpdateDto? = nil) -> RequestBuilder<Void> {
+        var localVariablePath = "/api/v2/LearningService/CourseCertificates/Template/{courseCertificateTemplateId}"
+        let courseCertificateTemplateIdPreEscape = "\(APIHelper.mapValueToPathItem(courseCertificateTemplateId))"
+        let courseCertificateTemplateIdPostEscape = courseCertificateTemplateIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{courseCertificateTemplateId}", with: courseCertificateTemplateIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseCertificateTemplateUpdateDto)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

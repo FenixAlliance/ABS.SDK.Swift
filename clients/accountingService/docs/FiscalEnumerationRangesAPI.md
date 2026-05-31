@@ -1,6 +1,6 @@
 # FiscalEnumerationRangesAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -184,7 +184,7 @@ No authorization required
 
 # **getInvoiceEnumerationRanges**
 ```swift
-    open class func getInvoiceEnumerationRanges(fiscalAuthorityId: UUID, authorityId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: InvoiceEnumerationRangeDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getInvoiceEnumerationRanges(tenantId: UUID, fiscalAuthorityId: UUID, authorityId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: InvoiceEnumerationRangeDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get invoice enumeration ranges for an authority
@@ -196,13 +196,14 @@ Retrieves all invoice enumeration ranges for the specified fiscal authority.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
+let tenantId = 987 // UUID | 
 let fiscalAuthorityId = 987 // UUID | 
 let authorityId = "authorityId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Get invoice enumeration ranges for an authority
-FiscalEnumerationRangesAPI.getInvoiceEnumerationRanges(fiscalAuthorityId: fiscalAuthorityId, authorityId: authorityId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+FiscalEnumerationRangesAPI.getInvoiceEnumerationRanges(tenantId: tenantId, fiscalAuthorityId: fiscalAuthorityId, authorityId: authorityId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -218,6 +219,7 @@ FiscalEnumerationRangesAPI.getInvoiceEnumerationRanges(fiscalAuthorityId: fiscal
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
  **fiscalAuthorityId** | **UUID** |  | 
  **authorityId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
@@ -240,7 +242,7 @@ No authorization required
 
 # **getInvoiceEnumerationRangesCount**
 ```swift
-    open class func getInvoiceEnumerationRangesCount(fiscalAuthorityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getInvoiceEnumerationRangesCount(tenantId: UUID, fiscalAuthorityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get invoice enumeration ranges count
@@ -252,12 +254,13 @@ Returns the total count of invoice enumeration ranges for the specified fiscal a
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
+let tenantId = 987 // UUID | 
 let fiscalAuthorityId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Get invoice enumeration ranges count
-FiscalEnumerationRangesAPI.getInvoiceEnumerationRangesCount(fiscalAuthorityId: fiscalAuthorityId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+FiscalEnumerationRangesAPI.getInvoiceEnumerationRangesCount(tenantId: tenantId, fiscalAuthorityId: fiscalAuthorityId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -273,6 +276,7 @@ FiscalEnumerationRangesAPI.getInvoiceEnumerationRangesCount(fiscalAuthorityId: f
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
  **fiscalAuthorityId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 

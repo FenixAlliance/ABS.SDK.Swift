@@ -15,14 +15,14 @@ open class ItemAttributesAPI {
     /**
      Count item attributes
      
-     - parameter tenantId: (query)  
+     - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func countItemAttributesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func countItemAttributesAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
         return countItemAttributesAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -37,19 +37,19 @@ open class ItemAttributesAPI {
      Count item attributes
      - GET /api/v2/CatalogService/ItemAttributes/Count
      - Counts all item attributes for the specified tenant.
-     - parameter tenantId: (query)  
+     - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func countItemAttributesAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func countItemAttributesAsyncWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/CatalogService/ItemAttributes/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 
@@ -180,14 +180,15 @@ open class ItemAttributesAPI {
      Get item attribute by ID
      
      - parameter itemAttributeId: (path)  
+     - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getItemAttributeByIdAsync(itemAttributeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemAttributeDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getItemAttributeByIdAsyncWithRequestBuilder(itemAttributeId: itemAttributeId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getItemAttributeByIdAsync(itemAttributeId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemAttributeDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getItemAttributeByIdAsyncWithRequestBuilder(itemAttributeId: itemAttributeId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -202,11 +203,12 @@ open class ItemAttributesAPI {
      - GET /api/v2/CatalogService/ItemAttributes/{itemAttributeId}
      - Retrieves a specific item attribute by its ID.
      - parameter itemAttributeId: (path)  
+     - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<ItemAttributeDtoEnvelope> 
      */
-    open class func getItemAttributeByIdAsyncWithRequestBuilder(itemAttributeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemAttributeDtoEnvelope> {
+    open class func getItemAttributeByIdAsyncWithRequestBuilder(itemAttributeId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemAttributeDtoEnvelope> {
         var localVariablePath = "/api/v2/CatalogService/ItemAttributes/{itemAttributeId}"
         let itemAttributeIdPreEscape = "\(APIHelper.mapValueToPathItem(itemAttributeId))"
         let itemAttributeIdPostEscape = itemAttributeIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -216,6 +218,7 @@ open class ItemAttributesAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 
@@ -233,14 +236,14 @@ open class ItemAttributesAPI {
     /**
      Get all item attributes
      
-     - parameter tenantId: (query)  
+     - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getItemAttributesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemAttributeDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getItemAttributesAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemAttributeDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
         return getItemAttributesAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -255,19 +258,19 @@ open class ItemAttributesAPI {
      Get all item attributes
      - GET /api/v2/CatalogService/ItemAttributes
      - Retrieves all item attributes for the specified tenant using OData query options.
-     - parameter tenantId: (query)  
+     - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<ItemAttributeDtoListEnvelope> 
      */
-    open class func getItemAttributesAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemAttributeDtoListEnvelope> {
+    open class func getItemAttributesAsyncWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemAttributeDtoListEnvelope> {
         let localVariablePath = "/api/v2/CatalogService/ItemAttributes"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 

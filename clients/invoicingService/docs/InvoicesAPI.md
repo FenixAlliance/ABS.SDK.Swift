@@ -1,6 +1,6 @@
 # InvoicesAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -51,7 +51,7 @@ Method | HTTP request | Description
 
 # **aggregateInvoiceDiscounts**
 ```swift
-    open class func aggregateInvoiceDiscounts(requestBody: [UUID], currencyId: String? = nil, completion: @escaping (_ data: MoneyEnvelope?, _ error: Error?) -> Void)
+    open class func aggregateInvoiceDiscounts(tenantId: UUID, requestBody: [UUID], currencyId: String? = nil, completion: @escaping (_ data: MoneyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Aggregate invoice discounts.
@@ -63,11 +63,12 @@ Aggregates the discounts for the specified invoices.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
+let tenantId = 987 // UUID | 
 let requestBody = [123] // [UUID] | 
 let currencyId = "currencyId_example" // String |  (optional)
 
 // Aggregate invoice discounts.
-InvoicesAPI.aggregateInvoiceDiscounts(requestBody: requestBody, currencyId: currencyId) { (response, error) in
+InvoicesAPI.aggregateInvoiceDiscounts(tenantId: tenantId, requestBody: requestBody, currencyId: currencyId) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -83,6 +84,7 @@ InvoicesAPI.aggregateInvoiceDiscounts(requestBody: requestBody, currencyId: curr
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
  **requestBody** | [**[UUID]**](UUID.md) |  | 
  **currencyId** | **String** |  | [optional] 
 
@@ -103,7 +105,7 @@ No authorization required
 
 # **aggregateInvoiceGlobalSurcharges**
 ```swift
-    open class func aggregateInvoiceGlobalSurcharges(requestBody: [UUID], currencyId: String? = nil, completion: @escaping (_ data: MoneyEnvelope?, _ error: Error?) -> Void)
+    open class func aggregateInvoiceGlobalSurcharges(tenantId: UUID, requestBody: [UUID], currencyId: String? = nil, completion: @escaping (_ data: MoneyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Aggregate invoice global surcharges.
@@ -115,11 +117,12 @@ Aggregates the global surcharges for the specified invoices.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
+let tenantId = 987 // UUID | 
 let requestBody = [123] // [UUID] | 
 let currencyId = "currencyId_example" // String |  (optional)
 
 // Aggregate invoice global surcharges.
-InvoicesAPI.aggregateInvoiceGlobalSurcharges(requestBody: requestBody, currencyId: currencyId) { (response, error) in
+InvoicesAPI.aggregateInvoiceGlobalSurcharges(tenantId: tenantId, requestBody: requestBody, currencyId: currencyId) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -135,6 +138,7 @@ InvoicesAPI.aggregateInvoiceGlobalSurcharges(requestBody: requestBody, currencyI
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
  **requestBody** | [**[UUID]**](UUID.md) |  | 
  **currencyId** | **String** |  | [optional] 
 
@@ -155,7 +159,7 @@ No authorization required
 
 # **aggregateInvoiceTaxBases**
 ```swift
-    open class func aggregateInvoiceTaxBases(requestBody: [UUID], currencyId: String? = nil, completion: @escaping (_ data: MoneyEnvelope?, _ error: Error?) -> Void)
+    open class func aggregateInvoiceTaxBases(tenantId: UUID, requestBody: [UUID], currencyId: String? = nil, completion: @escaping (_ data: MoneyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Aggregate invoice tax bases.
@@ -167,11 +171,12 @@ Aggregates the tax bases for the specified invoices.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
+let tenantId = 987 // UUID | 
 let requestBody = [123] // [UUID] | 
 let currencyId = "currencyId_example" // String |  (optional)
 
 // Aggregate invoice tax bases.
-InvoicesAPI.aggregateInvoiceTaxBases(requestBody: requestBody, currencyId: currencyId) { (response, error) in
+InvoicesAPI.aggregateInvoiceTaxBases(tenantId: tenantId, requestBody: requestBody, currencyId: currencyId) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -187,6 +192,7 @@ InvoicesAPI.aggregateInvoiceTaxBases(requestBody: requestBody, currencyId: curre
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
  **requestBody** | [**[UUID]**](UUID.md) |  | 
  **currencyId** | **String** |  | [optional] 
 
@@ -207,7 +213,7 @@ No authorization required
 
 # **aggregateInvoiceTaxes**
 ```swift
-    open class func aggregateInvoiceTaxes(requestBody: [UUID], currencyId: String? = nil, completion: @escaping (_ data: MoneyEnvelope?, _ error: Error?) -> Void)
+    open class func aggregateInvoiceTaxes(tenantId: UUID, requestBody: [UUID], currencyId: String? = nil, completion: @escaping (_ data: MoneyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Aggregate invoice taxes.
@@ -219,11 +225,12 @@ Aggregates the taxes for the specified invoices.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
+let tenantId = 987 // UUID | 
 let requestBody = [123] // [UUID] | 
 let currencyId = "currencyId_example" // String |  (optional)
 
 // Aggregate invoice taxes.
-InvoicesAPI.aggregateInvoiceTaxes(requestBody: requestBody, currencyId: currencyId) { (response, error) in
+InvoicesAPI.aggregateInvoiceTaxes(tenantId: tenantId, requestBody: requestBody, currencyId: currencyId) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -239,6 +246,7 @@ InvoicesAPI.aggregateInvoiceTaxes(requestBody: requestBody, currencyId: currency
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
  **requestBody** | [**[UUID]**](UUID.md) |  | 
  **currencyId** | **String** |  | [optional] 
 
@@ -259,7 +267,7 @@ No authorization required
 
 # **aggregateInvoiceTotals**
 ```swift
-    open class func aggregateInvoiceTotals(requestBody: [UUID], currencyId: String? = nil, completion: @escaping (_ data: MoneyEnvelope?, _ error: Error?) -> Void)
+    open class func aggregateInvoiceTotals(tenantId: UUID, requestBody: [UUID], currencyId: String? = nil, completion: @escaping (_ data: MoneyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Aggregate invoice totals.
@@ -271,11 +279,12 @@ Aggregates the totals for the specified invoices.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
+let tenantId = 987 // UUID | 
 let requestBody = [123] // [UUID] | 
 let currencyId = "currencyId_example" // String |  (optional)
 
 // Aggregate invoice totals.
-InvoicesAPI.aggregateInvoiceTotals(requestBody: requestBody, currencyId: currencyId) { (response, error) in
+InvoicesAPI.aggregateInvoiceTotals(tenantId: tenantId, requestBody: requestBody, currencyId: currencyId) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -291,6 +300,7 @@ InvoicesAPI.aggregateInvoiceTotals(requestBody: requestBody, currencyId: currenc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
  **requestBody** | [**[UUID]**](UUID.md) |  | 
  **currencyId** | **String** |  | [optional] 
 
@@ -1587,7 +1597,7 @@ No authorization required
 
 # **getInvoicePayments**
 ```swift
-    open class func getInvoicePayments(invoiceId: UUID, completion: @escaping (_ data: PaymentDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
+    open class func getInvoicePayments(tenantId: UUID, invoiceId: UUID, completion: @escaping (_ data: PaymentDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get payments for an invoice.
@@ -1599,10 +1609,11 @@ Retrieves the list of payments related to the specified invoice.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
+let tenantId = 987 // UUID | 
 let invoiceId = 987 // UUID | 
 
 // Get payments for an invoice.
-InvoicesAPI.getInvoicePayments(invoiceId: invoiceId) { (response, error) in
+InvoicesAPI.getInvoicePayments(tenantId: tenantId, invoiceId: invoiceId) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1618,6 +1629,7 @@ InvoicesAPI.getInvoicePayments(invoiceId: invoiceId) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
  **invoiceId** | **UUID** |  | 
 
 ### Return type
@@ -1637,7 +1649,7 @@ No authorization required
 
 # **getInvoicePaymentsCount**
 ```swift
-    open class func getInvoicePaymentsCount(invoiceId: UUID, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getInvoicePaymentsCount(tenantId: UUID, invoiceId: UUID, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get the count of payments for an invoice.
@@ -1649,10 +1661,11 @@ Retrieves the total count of payments for the specified invoice.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
+let tenantId = 987 // UUID | 
 let invoiceId = 987 // UUID | 
 
 // Get the count of payments for an invoice.
-InvoicesAPI.getInvoicePaymentsCount(invoiceId: invoiceId) { (response, error) in
+InvoicesAPI.getInvoicePaymentsCount(tenantId: tenantId, invoiceId: invoiceId) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1668,6 +1681,7 @@ InvoicesAPI.getInvoicePaymentsCount(invoiceId: invoiceId) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
  **invoiceId** | **UUID** |  | 
 
 ### Return type

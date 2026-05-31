@@ -1,6 +1,6 @@
 # ItemsAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -84,7 +84,7 @@ Method | HTTP request | Description
 
 # **countStockItemTagsByItemId**
 ```swift
-    open class func countStockItemTagsByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countStockItemTagsByItemId(tenantId: UUID, itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count tags for a stock item
@@ -96,12 +96,13 @@ Counts the number of tags associated with a specific stock item.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
+let tenantId = 987 // UUID | 
 let itemId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Count tags for a stock item
-ItemsAPI.countStockItemTagsByItemId(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemsAPI.countStockItemTagsByItemId(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -117,6 +118,7 @@ ItemsAPI.countStockItemTagsByItemId(itemId: itemId, apiVersion: apiVersion, xApi
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
  **itemId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
@@ -1786,7 +1788,7 @@ No authorization required
 
 # **getStockItemTagById**
 ```swift
-    open class func getStockItemTagById(itemId: UUID, itemTagId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemTagDtoEnvelope?, _ error: Error?) -> Void)
+    open class func getStockItemTagById(tenantId: UUID, itemId: UUID, itemTagId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemTagDtoEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get tag by ID for a stock item
@@ -1798,13 +1800,14 @@ Retrieves a specific tag by ID for a stock item.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
+let tenantId = 987 // UUID | 
 let itemId = 987 // UUID | 
 let itemTagId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Get tag by ID for a stock item
-ItemsAPI.getStockItemTagById(itemId: itemId, itemTagId: itemTagId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemsAPI.getStockItemTagById(tenantId: tenantId, itemId: itemId, itemTagId: itemTagId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1820,6 +1823,7 @@ ItemsAPI.getStockItemTagById(itemId: itemId, itemTagId: itemTagId, apiVersion: a
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
  **itemId** | **UUID** |  | 
  **itemTagId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
@@ -1842,7 +1846,7 @@ No authorization required
 
 # **getStockItemTagsByItemId**
 ```swift
-    open class func getStockItemTagsByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemTagDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getStockItemTagsByItemId(tenantId: UUID, itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemTagDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get tags for a stock item
@@ -1854,12 +1858,13 @@ Retrieves all tags associated with a specific stock item.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
+let tenantId = 987 // UUID | 
 let itemId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Get tags for a stock item
-ItemsAPI.getStockItemTagsByItemId(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemsAPI.getStockItemTagsByItemId(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1875,6 +1880,7 @@ ItemsAPI.getStockItemTagsByItemId(itemId: itemId, apiVersion: apiVersion, xApiVe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
  **itemId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
@@ -2006,7 +2012,7 @@ No authorization required
 
 # **getStockItemTypeById**
 ```swift
-    open class func getStockItemTypeById(itemId: UUID, itemTypeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemTypeDtoEnvelope?, _ error: Error?) -> Void)
+    open class func getStockItemTypeById(tenantId: UUID, itemId: UUID, itemTypeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemTypeDtoEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get type by ID for a stock item
@@ -2018,13 +2024,14 @@ Retrieves a specific type by ID for a stock item.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
+let tenantId = 987 // UUID | 
 let itemId = 987 // UUID | 
 let itemTypeId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Get type by ID for a stock item
-ItemsAPI.getStockItemTypeById(itemId: itemId, itemTypeId: itemTypeId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemsAPI.getStockItemTypeById(tenantId: tenantId, itemId: itemId, itemTypeId: itemTypeId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2040,6 +2047,7 @@ ItemsAPI.getStockItemTypeById(itemId: itemId, itemTypeId: itemTypeId, apiVersion
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
  **itemId** | **UUID** |  | 
  **itemTypeId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
@@ -2062,7 +2070,7 @@ No authorization required
 
 # **getStockItemTypesByItemId**
 ```swift
-    open class func getStockItemTypesByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemTypeDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getStockItemTypesByItemId(tenantId: UUID, itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemTypeDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get types for a stock item
@@ -2074,12 +2082,13 @@ Retrieves all types associated with a specific stock item.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
+let tenantId = 987 // UUID | 
 let itemId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Get types for a stock item
-ItemsAPI.getStockItemTypesByItemId(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemsAPI.getStockItemTypesByItemId(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2095,6 +2104,7 @@ ItemsAPI.getStockItemTypesByItemId(itemId: itemId, apiVersion: apiVersion, xApiV
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
  **itemId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 

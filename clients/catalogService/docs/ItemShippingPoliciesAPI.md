@@ -1,6 +1,6 @@
 # ItemShippingPoliciesAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 # **countItemShippingPoliciesAsync**
 ```swift
-    open class func countItemShippingPoliciesAsync(itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countItemShippingPoliciesAsync(tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count item shipping policies
@@ -25,12 +25,13 @@ Counts all shipping policies for a specific item.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
+let tenantId = 987 // UUID |  (optional)
 let itemId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Count item shipping policies
-ItemShippingPoliciesAPI.countItemShippingPoliciesAsync(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemShippingPoliciesAPI.countItemShippingPoliciesAsync(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -46,6 +47,7 @@ ItemShippingPoliciesAPI.countItemShippingPoliciesAsync(itemId: itemId, apiVersio
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | [optional] 
  **itemId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
@@ -67,7 +69,7 @@ No authorization required
 
 # **getItemShippingPoliciesAsync**
 ```swift
-    open class func getItemShippingPoliciesAsync(itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemShippingPolicyDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getItemShippingPoliciesAsync(tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemShippingPolicyDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get item shipping policies
@@ -79,12 +81,13 @@ Retrieves all shipping policies for a specific item.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
+let tenantId = 987 // UUID |  (optional)
 let itemId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Get item shipping policies
-ItemShippingPoliciesAPI.getItemShippingPoliciesAsync(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemShippingPoliciesAPI.getItemShippingPoliciesAsync(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -100,6 +103,7 @@ ItemShippingPoliciesAPI.getItemShippingPoliciesAsync(itemId: itemId, apiVersion:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | [optional] 
  **itemId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
@@ -121,7 +125,7 @@ No authorization required
 
 # **getItemShippingPolicyByIdAsync**
 ```swift
-    open class func getItemShippingPolicyByIdAsync(itemShippingPolicyId: UUID, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemShippingPolicyDtoEnvelope?, _ error: Error?) -> Void)
+    open class func getItemShippingPolicyByIdAsync(itemShippingPolicyId: UUID, tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemShippingPolicyDtoEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get item shipping policy by ID
@@ -134,12 +138,13 @@ Retrieves a specific shipping policy for an item.
 import OpenAPIClient
 
 let itemShippingPolicyId = 987 // UUID | 
+let tenantId = 987 // UUID |  (optional)
 let itemId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Get item shipping policy by ID
-ItemShippingPoliciesAPI.getItemShippingPolicyByIdAsync(itemShippingPolicyId: itemShippingPolicyId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemShippingPoliciesAPI.getItemShippingPolicyByIdAsync(itemShippingPolicyId: itemShippingPolicyId, tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -156,6 +161,7 @@ ItemShippingPoliciesAPI.getItemShippingPolicyByIdAsync(itemShippingPolicyId: ite
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **itemShippingPolicyId** | **UUID** |  | 
+ **tenantId** | **UUID** |  | [optional] 
  **itemId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 

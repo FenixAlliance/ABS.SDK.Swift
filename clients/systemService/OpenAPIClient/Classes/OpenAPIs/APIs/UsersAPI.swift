@@ -37,7 +37,7 @@ open class UsersAPI {
     /**
      Preview the rendered email for a user.
      - POST /api/v2/SystemService/Users/{userId}/Emails/Preview
-     - This action is only available for users with the 'business_owner' role (global administrators).
+     - This action is only available for global administrators.
      - parameter userId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -94,7 +94,7 @@ open class UsersAPI {
     /**
      Send an email to a user.
      - POST /api/v2/SystemService/Users/{userId}/Emails/Send
-     - This action is only available for users with the 'business_owner' role (global administrators).
+     - This action is only available for global administrators.
      - parameter userId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -150,7 +150,7 @@ open class UsersAPI {
     /**
      Create a new user
      - POST /api/v2/SystemService/Users
-     - This action is only available for users with the 'business_owner' role (global administrators).
+     - This action is only available for global administrators.
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter userCreateDto: (body)  (optional)
@@ -202,7 +202,7 @@ open class UsersAPI {
     /**
      Delete a user
      - DELETE /api/v2/SystemService/Users/{userId}
-     - This action is only available for users with the 'business_owner' role (global administrators).
+     - This action is only available for global administrators.
      - parameter userId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -256,7 +256,7 @@ open class UsersAPI {
     /**
      Retrieve an extended user by ID
      - GET /api/v2/SystemService/Users/{userId}/Extended
-     - This action is only available for users with the 'business_owner' role (global administrators).
+     - This action is only available for global administrators.
      - parameter userId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -309,7 +309,7 @@ open class UsersAPI {
     /**
      Retrieve a list of extended users
      - GET /api/v2/SystemService/Users/Extended
-     - This action is only available for users with the 'business_owner' role (global administrators).
+     - This action is only available for global administrators.
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<ExtendedUserDtoListEnvelope> 
@@ -358,7 +358,7 @@ open class UsersAPI {
     /**
      Get the count of extended users
      - GET /api/v2/SystemService/Users/Extended/Count
-     - This action is only available for users with the 'business_owner' role (global administrators).
+     - This action is only available for global administrators.
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
@@ -408,7 +408,7 @@ open class UsersAPI {
     /**
      Retrieve a user by ID
      - GET /api/v2/SystemService/Users/{userId}
-     - This action is only available for users with the 'business_owner' role (global administrators).
+     - This action is only available for global administrators.
      - parameter userId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -461,7 +461,7 @@ open class UsersAPI {
     /**
      Retrieve a list of users
      - GET /api/v2/SystemService/Users
-     - This action is only available for users with the 'business_owner' role (global administrators).
+     - This action is only available for global administrators.
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<UserDtoListEnvelope> 
@@ -510,7 +510,7 @@ open class UsersAPI {
     /**
      Get the count of users
      - GET /api/v2/SystemService/Users/Count
-     - This action is only available for users with the 'business_owner' role (global administrators).
+     - This action is only available for global administrators.
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
@@ -561,7 +561,7 @@ open class UsersAPI {
     /**
      Update a user
      - PUT /api/v2/SystemService/Users/{userId}
-     - This action is only available for users with the 'business_owner' role (global administrators).
+     - This action is only available for global administrators.
      - parameter userId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)

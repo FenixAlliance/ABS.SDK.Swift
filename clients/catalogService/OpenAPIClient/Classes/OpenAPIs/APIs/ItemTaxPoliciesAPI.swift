@@ -15,6 +15,7 @@ open class ItemTaxPoliciesAPI {
     /**
      Count item tax policies
      
+     - parameter tenantId: (query)  (optional)
      - parameter itemId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -22,8 +23,8 @@ open class ItemTaxPoliciesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func countItemTaxPoliciesAsync(itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return countItemTaxPoliciesAsyncWithRequestBuilder(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func countItemTaxPoliciesAsync(tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return countItemTaxPoliciesAsyncWithRequestBuilder(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -37,18 +38,20 @@ open class ItemTaxPoliciesAPI {
      Count item tax policies
      - GET /api/v2/CatalogService/ItemTaxPolicies/Count
      - Counts all tax policies for a specific item.
+     - parameter tenantId: (query)  (optional)
      - parameter itemId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func countItemTaxPoliciesAsyncWithRequestBuilder(itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func countItemTaxPoliciesAsyncWithRequestBuilder(tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/CatalogService/ItemTaxPolicies/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
             "itemId": (wrappedValue: itemId?.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
@@ -67,6 +70,7 @@ open class ItemTaxPoliciesAPI {
     /**
      Get item tax policies
      
+     - parameter tenantId: (query)  (optional)
      - parameter itemId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -74,8 +78,8 @@ open class ItemTaxPoliciesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getItemTaxPoliciesAsync(itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemTaxPolicyDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getItemTaxPoliciesAsyncWithRequestBuilder(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getItemTaxPoliciesAsync(tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemTaxPolicyDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getItemTaxPoliciesAsyncWithRequestBuilder(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -89,18 +93,20 @@ open class ItemTaxPoliciesAPI {
      Get item tax policies
      - GET /api/v2/CatalogService/ItemTaxPolicies
      - Retrieves all tax policies for a specific item.
+     - parameter tenantId: (query)  (optional)
      - parameter itemId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<ItemTaxPolicyDtoListEnvelope> 
      */
-    open class func getItemTaxPoliciesAsyncWithRequestBuilder(itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemTaxPolicyDtoListEnvelope> {
+    open class func getItemTaxPoliciesAsyncWithRequestBuilder(tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemTaxPolicyDtoListEnvelope> {
         let localVariablePath = "/api/v2/CatalogService/ItemTaxPolicies"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
             "itemId": (wrappedValue: itemId?.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
@@ -120,6 +126,7 @@ open class ItemTaxPoliciesAPI {
      Get item tax policy by ID
      
      - parameter itemTaxPolicyId: (path)  
+     - parameter tenantId: (query)  (optional)
      - parameter itemId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -127,8 +134,8 @@ open class ItemTaxPoliciesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getItemTaxPolicyByIdAsync(itemTaxPolicyId: UUID, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemTaxPolicyDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getItemTaxPolicyByIdAsyncWithRequestBuilder(itemTaxPolicyId: itemTaxPolicyId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getItemTaxPolicyByIdAsync(itemTaxPolicyId: UUID, tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemTaxPolicyDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getItemTaxPolicyByIdAsyncWithRequestBuilder(itemTaxPolicyId: itemTaxPolicyId, tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -143,12 +150,13 @@ open class ItemTaxPoliciesAPI {
      - GET /api/v2/CatalogService/ItemTaxPolicies/{itemTaxPolicyId}
      - Retrieves a specific tax policy for an item.
      - parameter itemTaxPolicyId: (path)  
+     - parameter tenantId: (query)  (optional)
      - parameter itemId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<ItemTaxPolicyDtoEnvelope> 
      */
-    open class func getItemTaxPolicyByIdAsyncWithRequestBuilder(itemTaxPolicyId: UUID, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemTaxPolicyDtoEnvelope> {
+    open class func getItemTaxPolicyByIdAsyncWithRequestBuilder(itemTaxPolicyId: UUID, tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemTaxPolicyDtoEnvelope> {
         var localVariablePath = "/api/v2/CatalogService/ItemTaxPolicies/{itemTaxPolicyId}"
         let itemTaxPolicyIdPreEscape = "\(APIHelper.mapValueToPathItem(itemTaxPolicyId))"
         let itemTaxPolicyIdPostEscape = itemTaxPolicyIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -158,6 +166,7 @@ open class ItemTaxPoliciesAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
             "itemId": (wrappedValue: itemId?.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])

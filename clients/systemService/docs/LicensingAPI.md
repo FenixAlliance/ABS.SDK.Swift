@@ -1,6 +1,6 @@
 # LicensingAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 # **getLicenseAssignmentsAsync**
 ```swift
-    open class func getLicenseAssignmentsAsync(licenseId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: SuiteLicenseAssignmentDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getLicenseAssignmentsAsync(tenantId: UUID, licenseId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: SuiteLicenseAssignmentDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Retrieve license assignments
@@ -28,13 +28,13 @@ Retrieves all license assignments for a given license.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let licenseId = 987 // UUID | 
 let tenantId = 987 // UUID | 
+let licenseId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Retrieve license assignments
-LicensingAPI.getLicenseAssignmentsAsync(licenseId: licenseId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+LicensingAPI.getLicenseAssignmentsAsync(tenantId: tenantId, licenseId: licenseId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -50,8 +50,8 @@ LicensingAPI.getLicenseAssignmentsAsync(licenseId: licenseId, tenantId: tenantId
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **licenseId** | **UUID** |  | 
  **tenantId** | **UUID** |  | 
+ **licenseId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 
@@ -72,7 +72,7 @@ No authorization required
 
 # **getLicenseAttributesAsync**
 ```swift
-    open class func getLicenseAttributesAsync(licenseId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: SuiteLicenseAssignmentDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getLicenseAttributesAsync(tenantId: UUID, licenseId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: SuiteLicenseAssignmentDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Retrieve license attributes
@@ -84,13 +84,13 @@ Retrieves all additional attributes for a given license.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let licenseId = 987 // UUID | 
 let tenantId = 987 // UUID | 
+let licenseId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Retrieve license attributes
-LicensingAPI.getLicenseAttributesAsync(licenseId: licenseId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+LicensingAPI.getLicenseAttributesAsync(tenantId: tenantId, licenseId: licenseId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -106,8 +106,8 @@ LicensingAPI.getLicenseAttributesAsync(licenseId: licenseId, tenantId: tenantId,
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **licenseId** | **UUID** |  | 
  **tenantId** | **UUID** |  | 
+ **licenseId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 
@@ -128,7 +128,7 @@ No authorization required
 
 # **getLicenseByIdAsync**
 ```swift
-    open class func getLicenseByIdAsync(licenseId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: SuiteLicenseDtoEnvelope?, _ error: Error?) -> Void)
+    open class func getLicenseByIdAsync(tenantId: UUID, licenseId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: SuiteLicenseDtoEnvelope?, _ error: Error?) -> Void)
 ```
 
 Retrieve a license by ID
@@ -140,12 +140,13 @@ Retrieves a single suite license by its unique identifier.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
+let tenantId = 987 // UUID | 
 let licenseId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Retrieve a license by ID
-LicensingAPI.getLicenseByIdAsync(licenseId: licenseId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+LicensingAPI.getLicenseByIdAsync(tenantId: tenantId, licenseId: licenseId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -161,6 +162,7 @@ LicensingAPI.getLicenseByIdAsync(licenseId: licenseId, apiVersion: apiVersion, x
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
  **licenseId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
@@ -182,7 +184,7 @@ No authorization required
 
 # **getLicenseFeaturesAsync**
 ```swift
-    open class func getLicenseFeaturesAsync(licenseId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: SuiteLicenseAssignmentDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getLicenseFeaturesAsync(tenantId: UUID, licenseId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: SuiteLicenseAssignmentDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Retrieve license features
@@ -194,13 +196,13 @@ Retrieves all features for a given license.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let licenseId = 987 // UUID | 
 let tenantId = 987 // UUID | 
+let licenseId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Retrieve license features
-LicensingAPI.getLicenseFeaturesAsync(licenseId: licenseId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+LicensingAPI.getLicenseFeaturesAsync(tenantId: tenantId, licenseId: licenseId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -216,8 +218,8 @@ LicensingAPI.getLicenseFeaturesAsync(licenseId: licenseId, tenantId: tenantId, a
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **licenseId** | **UUID** |  | 
  **tenantId** | **UUID** |  | 
+ **licenseId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 
@@ -238,7 +240,7 @@ No authorization required
 
 # **getLicenseRecordsQuotaAsync**
 ```swift
-    open class func getLicenseRecordsQuotaAsync(licenseId: UUID, tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: SuiteLicenseAssignmentDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getLicenseRecordsQuotaAsync(tenantId: UUID, licenseId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: SuiteLicenseAssignmentDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Retrieve license record quota
@@ -250,13 +252,13 @@ Retrieves the record quota for a given license.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let licenseId = 987 // UUID | 
 let tenantId = 987 // UUID | 
+let licenseId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Retrieve license record quota
-LicensingAPI.getLicenseRecordsQuotaAsync(licenseId: licenseId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+LicensingAPI.getLicenseRecordsQuotaAsync(tenantId: tenantId, licenseId: licenseId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -272,8 +274,8 @@ LicensingAPI.getLicenseRecordsQuotaAsync(licenseId: licenseId, tenantId: tenantI
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **licenseId** | **UUID** |  | 
  **tenantId** | **UUID** |  | 
+ **licenseId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 

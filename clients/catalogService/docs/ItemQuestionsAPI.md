@@ -1,6 +1,6 @@
 # ItemQuestionsAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -125,7 +125,7 @@ No authorization required
 
 # **getItemQuestionByIdAsync**
 ```swift
-    open class func getItemQuestionByIdAsync(itemQuestionId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemQuestionDtoEnvelope?, _ error: Error?) -> Void)
+    open class func getItemQuestionByIdAsync(itemQuestionId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemQuestionDtoEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get item question by ID
@@ -138,11 +138,12 @@ Retrieves a specific item question by its ID.
 import OpenAPIClient
 
 let itemQuestionId = 987 // UUID | 
+let tenantId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Get item question by ID
-ItemQuestionsAPI.getItemQuestionByIdAsync(itemQuestionId: itemQuestionId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemQuestionsAPI.getItemQuestionByIdAsync(itemQuestionId: itemQuestionId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -159,6 +160,7 @@ ItemQuestionsAPI.getItemQuestionByIdAsync(itemQuestionId: itemQuestionId, apiVer
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **itemQuestionId** | **UUID** |  | 
+ **tenantId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 
@@ -179,7 +181,7 @@ No authorization required
 
 # **getItemQuestionsAsync**
 ```swift
-    open class func getItemQuestionsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemQuestionDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getItemQuestionsAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemQuestionDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all item questions
@@ -191,7 +193,7 @@ Retrieves all item questions for the specified tenant using OData query options.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let tenantId = 987 // UUID | 
+let tenantId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
@@ -212,7 +214,7 @@ ItemQuestionsAPI.getItemQuestionsAsync(tenantId: tenantId, apiVersion: apiVersio
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenantId** | **UUID** |  | 
+ **tenantId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 

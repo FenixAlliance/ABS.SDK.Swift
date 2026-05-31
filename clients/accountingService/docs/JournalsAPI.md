@@ -1,9 +1,11 @@
 # JournalsAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**aggregateJournalEntryCreditsAsync**](JournalsAPI.md#aggregatejournalentrycreditsasync) | **GET** /api/v2/AccountingService/Journals/{journalId}/Entries/Aggregate/Credits | Aggregate journal entry credits
+[**aggregateJournalEntryDebitsAsync**](JournalsAPI.md#aggregatejournalentrydebitsasync) | **GET** /api/v2/AccountingService/Journals/{journalId}/Entries/Aggregate/Debits | Aggregate journal entry debits
 [**countJournalsAsync**](JournalsAPI.md#countjournalsasync) | **GET** /api/v2/AccountingService/Journals/Count | Count journals
 [**createJournalAsync**](JournalsAPI.md#createjournalasync) | **POST** /api/v2/AccountingService/Journals | Create journal
 [**createJournalEntryAsync**](JournalsAPI.md#createjournalentryasync) | **POST** /api/v2/AccountingService/Journals/{journalId}/Entries | Create journal entry
@@ -16,6 +18,122 @@ Method | HTTP request | Description
 [**updateJournalAsync**](JournalsAPI.md#updatejournalasync) | **PUT** /api/v2/AccountingService/Journals/{journalId} | Update journal
 [**updateJournalEntryAsync**](JournalsAPI.md#updatejournalentryasync) | **PUT** /api/v2/AccountingService/Journals/{journalId}/Entries/{entryId} | Update journal entry
 
+
+# **aggregateJournalEntryCreditsAsync**
+```swift
+    open class func aggregateJournalEntryCreditsAsync(tenantId: UUID, journalId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: MoneyEnvelope?, _ error: Error?) -> Void)
+```
+
+Aggregate journal entry credits
+
+Returns the sum of all credit amounts for entries in the specified journal, normalized to the target currency.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let journalId = 987 // UUID | 
+let currencyId = "currencyId_example" // String |  (optional)
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Aggregate journal entry credits
+JournalsAPI.aggregateJournalEntryCreditsAsync(tenantId: tenantId, journalId: journalId, currencyId: currencyId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **journalId** | **UUID** |  | 
+ **currencyId** | **String** |  | [optional] 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**MoneyEnvelope**](MoneyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **aggregateJournalEntryDebitsAsync**
+```swift
+    open class func aggregateJournalEntryDebitsAsync(tenantId: UUID, journalId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: MoneyEnvelope?, _ error: Error?) -> Void)
+```
+
+Aggregate journal entry debits
+
+Returns the sum of all debit amounts for entries in the specified journal, normalized to the target currency.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let journalId = 987 // UUID | 
+let currencyId = "currencyId_example" // String |  (optional)
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Aggregate journal entry debits
+JournalsAPI.aggregateJournalEntryDebitsAsync(tenantId: tenantId, journalId: journalId, currencyId: currencyId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **journalId** | **UUID** |  | 
+ **currencyId** | **String** |  | [optional] 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**MoneyEnvelope**](MoneyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **countJournalsAsync**
 ```swift

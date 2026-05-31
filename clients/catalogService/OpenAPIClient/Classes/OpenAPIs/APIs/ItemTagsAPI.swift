@@ -128,14 +128,15 @@ open class ItemTagsAPI {
      Get item tag by ID
      
      - parameter itemTagId: (path)  
+     - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getItemTagByIdAsync(itemTagId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemTagDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getItemTagByIdAsyncWithRequestBuilder(itemTagId: itemTagId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getItemTagByIdAsync(itemTagId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemTagDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getItemTagByIdAsyncWithRequestBuilder(itemTagId: itemTagId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -150,11 +151,12 @@ open class ItemTagsAPI {
      - GET /api/v2/CatalogService/ItemTags/{itemTagId}
      - Retrieves a specific item tag by its ID.
      - parameter itemTagId: (path)  
+     - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<ItemTagDtoEnvelope> 
      */
-    open class func getItemTagByIdAsyncWithRequestBuilder(itemTagId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemTagDtoEnvelope> {
+    open class func getItemTagByIdAsyncWithRequestBuilder(itemTagId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemTagDtoEnvelope> {
         var localVariablePath = "/api/v2/CatalogService/ItemTags/{itemTagId}"
         let itemTagIdPreEscape = "\(APIHelper.mapValueToPathItem(itemTagId))"
         let itemTagIdPostEscape = itemTagIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -164,6 +166,7 @@ open class ItemTagsAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 
@@ -181,14 +184,14 @@ open class ItemTagsAPI {
     /**
      Get all item tags
      
-     - parameter tenantId: (query)  
+     - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getItemTagsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemTagDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getItemTagsAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemTagDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
         return getItemTagsAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -203,19 +206,19 @@ open class ItemTagsAPI {
      Get all item tags
      - GET /api/v2/CatalogService/ItemTags
      - Retrieves all item tags for the specified tenant using OData query options.
-     - parameter tenantId: (query)  
+     - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<ItemTagDtoListEnvelope> 
      */
-    open class func getItemTagsAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemTagDtoListEnvelope> {
+    open class func getItemTagsAsyncWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemTagDtoListEnvelope> {
         let localVariablePath = "/api/v2/CatalogService/ItemTags"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 

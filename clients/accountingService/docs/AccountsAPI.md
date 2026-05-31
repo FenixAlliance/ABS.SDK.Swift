@@ -1,9 +1,10 @@
 # AccountsAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**aggregateAccountsBalanceAsync**](AccountsAPI.md#aggregateaccountsbalanceasync) | **GET** /api/v2/AccountingService/Accounts/Aggregate/Balance | Aggregate accounts balance
 [**balanceAccountAsync**](AccountsAPI.md#balanceaccountasync) | **POST** /api/v2/AccountingService/Accounts/{accountId}/Balance | Balance account
 [**balanceRootAccountAsync**](AccountsAPI.md#balancerootaccountasync) | **POST** /api/v2/AccountingService/Accounts/Root/Balance | Balance root account
 [**createAccountAsync**](AccountsAPI.md#createaccountasync) | **POST** /api/v2/AccountingService/Accounts | Get root accounts
@@ -26,20 +27,79 @@ Method | HTTP request | Description
 [**getAccountEntryAsync**](AccountsAPI.md#getaccountentryasync) | **GET** /api/v2/AccountingService/Accounts/{accountId}/Entries/{entryId} | Get account entry
 [**getAccountRelationsAsync**](AccountsAPI.md#getaccountrelationsasync) | **GET** /api/v2/AccountingService/Accounts/Relations | Get account relations
 [**getAccountRelationsCountAsync**](AccountsAPI.md#getaccountrelationscountasync) | **GET** /api/v2/AccountingService/Accounts/Relations/Count | Get account relations count
+[**getAccountTypeByIdAsync**](AccountsAPI.md#getaccounttypebyidasync) | **GET** /api/v2/AccountingService/Accounts/Types/{accountTypeId} | Get account type by ID
 [**getAccountTypesAsync**](AccountsAPI.md#getaccounttypesasync) | **GET** /api/v2/AccountingService/Accounts/Types | Get account types
 [**getAccountTypesCountAsync**](AccountsAPI.md#getaccounttypescountasync) | **GET** /api/v2/AccountingService/Accounts/Types/Count | Get account types count
 [**getAccountsAsync**](AccountsAPI.md#getaccountsasync) | **GET** /api/v2/AccountingService/Accounts | Creates a new account
 [**getAccountsCountAsync**](AccountsAPI.md#getaccountscountasync) | **GET** /api/v2/AccountingService/Accounts/Count | Get the number of accounts
+[**getChartsOfAccountsAsync**](AccountsAPI.md#getchartsofaccountsasync) | **GET** /api/v2/AccountingService/Accounts/ChartsOfAccounts | Get charts of accounts
 [**getChildAccountsAsync**](AccountsAPI.md#getchildaccountsasync) | **GET** /api/v2/AccountingService/Accounts/{accountId}/Children | Get child accounts
 [**getCreditAccountEntriesAsync**](AccountsAPI.md#getcreditaccountentriesasync) | **GET** /api/v2/AccountingService/Accounts/{accountId}/Entries/Credit | Get credit account entries
 [**getDebitAccountEntriesAsync**](AccountsAPI.md#getdebitaccountentriesasync) | **GET** /api/v2/AccountingService/Accounts/{accountId}/Entries/Debit | Get debit account entries
 [**getRootAccountsAsync**](AccountsAPI.md#getrootaccountsasync) | **GET** /api/v2/AccountingService/Accounts/Root | Get root accounts
 [**patchAccountAsync**](AccountsAPI.md#patchaccountasync) | **PATCH** /api/v2/AccountingService/Accounts/{accountId} | Patch an account
+[**seedChartOfAccountsAsync**](AccountsAPI.md#seedchartofaccountsasync) | **POST** /api/v2/AccountingService/Accounts/ChartsOfAccounts/Seed | Seed chart of accounts
 [**updateAccountAsync**](AccountsAPI.md#updateaccountasync) | **PUT** /api/v2/AccountingService/Accounts/{accountId} | Update an account
 [**updateAccountEntryAsync**](AccountsAPI.md#updateaccountentryasync) | **PUT** /api/v2/AccountingService/Accounts/{accountId}/Entries/{entryId} | Update account entry
 [**updateAccountRelationAsync**](AccountsAPI.md#updateaccountrelationasync) | **PUT** /api/v2/AccountingService/Accounts/Relations/{accountRelationId} | Update account relation
 [**updateAccountTypeAsync**](AccountsAPI.md#updateaccounttypeasync) | **PUT** /api/v2/AccountingService/Accounts/Types/{accountTypeId} | Update account type
 
+
+# **aggregateAccountsBalanceAsync**
+```swift
+    open class func aggregateAccountsBalanceAsync(tenantId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: MoneyEnvelope?, _ error: Error?) -> Void)
+```
+
+Aggregate accounts balance
+
+Returns the sum of all account balances matching OData filters, normalized to the target currency using stored USD values.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let currencyId = "currencyId_example" // String |  (optional)
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Aggregate accounts balance
+AccountsAPI.aggregateAccountsBalanceAsync(tenantId: tenantId, currencyId: currencyId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **currencyId** | **String** |  | [optional] 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**MoneyEnvelope**](MoneyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **balanceAccountAsync**
 ```swift
@@ -441,7 +501,7 @@ No authorization required
 
 # **createAccountTypeAsync**
 ```swift
-    open class func createAccountTypeAsync(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountTypeCreateDto: AccountTypeCreateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func createAccountTypeAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountTypeCreateDto: AccountTypeCreateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Create account type
@@ -454,13 +514,12 @@ Create account type.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let accountId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 let accountTypeCreateDto = AccountTypeCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example") // AccountTypeCreateDto |  (optional)
 
 // Create account type
-AccountsAPI.createAccountTypeAsync(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountTypeCreateDto: accountTypeCreateDto) { (response, error) in
+AccountsAPI.createAccountTypeAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountTypeCreateDto: accountTypeCreateDto) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -477,7 +536,6 @@ AccountsAPI.createAccountTypeAsync(tenantId: tenantId, accountId: accountId, api
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
- **accountId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
  **accountTypeCreateDto** | [**AccountTypeCreateDto**](AccountTypeCreateDto.md) |  | [optional] 
@@ -671,7 +729,7 @@ No authorization required
 
 # **deleteAccountTypeAsync**
 ```swift
-    open class func deleteAccountTypeAsync(tenantId: UUID, accountTypeId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func deleteAccountTypeAsync(tenantId: UUID, accountTypeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Delete account type
@@ -685,12 +743,11 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let accountTypeId = 987 // UUID | 
-let accountId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Delete account type
-AccountsAPI.deleteAccountTypeAsync(tenantId: tenantId, accountTypeId: accountTypeId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+AccountsAPI.deleteAccountTypeAsync(tenantId: tenantId, accountTypeId: accountTypeId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -708,7 +765,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **accountTypeId** | **UUID** |  | 
- **accountId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 
@@ -745,7 +801,7 @@ let tenantId = 987 // UUID |
 let currencyId = "currencyId_example" // String |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let accountDto = [AccountDto(id: "id_example", timestamp: Date(), group: false, frozen: false, name: "name_example", code: "code_example", path: "path_example", title: "title_example", _prefix: "_prefix_example", balance: 123, currencyId: "currencyId_example", accountType: "accountType_example", qualifiedName: "qualifiedName_example", accountTypeId: "accountTypeId_example", debitsBalance: 123, creditsBalance: 123, parentAccountId: "parentAccountId_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example", childrenAccountsCount: 123, accountCategory: "accountCategory_example", balanceAmount: Money(amount: 123, currency: CurrencyId(value: "value_example", code: "code_example", country: "country_example")), creditsBalanceAmount: nil, debitsBalanceAmount: nil)] // [AccountDto] |  (optional)
+let accountDto = [AccountDto(id: "id_example", timestamp: Date(), group: false, frozen: false, name: "name_example", code: "code_example", path: "path_example", title: "title_example", _prefix: "_prefix_example", balance: 123, currencyId: "currencyId_example", accountType: "accountType_example", qualifiedName: "qualifiedName_example", accountTypeId: "accountTypeId_example", debitsBalance: 123, creditsBalance: 123, balanceInUsd: 123, debitsBalanceInUsd: 123, creditsBalanceInUsd: 123, forexRate: 123, parentAccountId: "parentAccountId_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example", childrenAccountsCount: 123, accountCategory: "accountCategory_example", balanceAmount: Money(amount: 123, currency: CurrencyId(value: "value_example", code: "code_example", country: "country_example")), creditsBalanceAmount: nil, debitsBalanceAmount: nil, balanceAmountInUsd: nil, debitsBalanceAmountInUsd: nil, creditsBalanceAmountInUsd: nil)] // [AccountDto] |  (optional)
 
 // Get account aggregate
 AccountsAPI.getAccountAggregateAsync(tenantId: tenantId, currencyId: currencyId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountDto: accountDto) { (response, error) in
@@ -1291,14 +1347,14 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getAccountTypesAsync**
+# **getAccountTypeByIdAsync**
 ```swift
-    open class func getAccountTypesAsync(tenantId: UUID, accountTypeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: AccountTypeDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getAccountTypeByIdAsync(tenantId: UUID, accountTypeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: AccountTypeDtoEnvelope?, _ error: Error?) -> Void)
 ```
 
-Get account types
+Get account type by ID
 
-Get account types.
+Get account type by ID.
 
 ### Example
 ```swift
@@ -1310,8 +1366,8 @@ let accountTypeId = 987 // UUID |
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
-// Get account types
-AccountsAPI.getAccountTypesAsync(tenantId: tenantId, accountTypeId: accountTypeId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Get account type by ID
+AccountsAPI.getAccountTypeByIdAsync(tenantId: tenantId, accountTypeId: accountTypeId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1334,7 +1390,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountTypeDtoListEnvelope**](AccountTypeDtoListEnvelope.md)
+[**AccountTypeDtoEnvelope**](AccountTypeDtoEnvelope.md)
 
 ### Authorization
 
@@ -1347,14 +1403,14 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getAccountTypesCountAsync**
+# **getAccountTypesAsync**
 ```swift
-    open class func getAccountTypesCountAsync(tenantId: UUID, accountTypeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getAccountTypesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: AccountTypeDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
-Get account types count
+Get account types
 
-Get account types count.
+Get account types.
 
 ### Example
 ```swift
@@ -1362,12 +1418,11 @@ Get account types count.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let accountTypeId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
-// Get account types count
-AccountsAPI.getAccountTypesCountAsync(tenantId: tenantId, accountTypeId: accountTypeId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Get account types
+AccountsAPI.getAccountTypesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1384,7 +1439,60 @@ AccountsAPI.getAccountTypesCountAsync(tenantId: tenantId, accountTypeId: account
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
- **accountTypeId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**AccountTypeDtoListEnvelope**](AccountTypeDtoListEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getAccountTypesCountAsync**
+```swift
+    open class func getAccountTypesCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+```
+
+Get account types count
+
+Get account types count.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Get account types count
+AccountsAPI.getAccountTypesCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 
@@ -1499,6 +1607,58 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Int32Envelope**](Int32Envelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getChartsOfAccountsAsync**
+```swift
+    open class func getChartsOfAccountsAsync(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ChartOfAccountsListEnvelope?, _ error: Error?) -> Void)
+```
+
+Get charts of accounts
+
+Get available charts of accounts.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Get charts of accounts
+AccountsAPI.getChartsOfAccountsAsync(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**ChartOfAccountsListEnvelope**](ChartOfAccountsListEnvelope.md)
 
 ### Authorization
 
@@ -1791,6 +1951,62 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **seedChartOfAccountsAsync**
+```swift
+    open class func seedChartOfAccountsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, seedChartOfAccountsRequest: SeedChartOfAccountsRequest? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Seed chart of accounts
+
+Seed a chart of accounts from a file URL.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let seedChartOfAccountsRequest = SeedChartOfAccountsRequest(fileUrl: "fileUrl_example") // SeedChartOfAccountsRequest |  (optional)
+
+// Seed chart of accounts
+AccountsAPI.seedChartOfAccountsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, seedChartOfAccountsRequest: seedChartOfAccountsRequest) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **seedChartOfAccountsRequest** | [**SeedChartOfAccountsRequest**](SeedChartOfAccountsRequest.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateAccountAsync**
 ```swift
     open class func updateAccountAsync(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountUpdateDto: AccountUpdateDto? = nil, completion: @escaping (_ data: AccountDtoEnvelope?, _ error: Error?) -> Void)
@@ -1971,7 +2187,7 @@ No authorization required
 
 # **updateAccountTypeAsync**
 ```swift
-    open class func updateAccountTypeAsync(tenantId: UUID, accountTypeId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountTypeUpdateDto: AccountTypeUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func updateAccountTypeAsync(tenantId: UUID, accountTypeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountTypeUpdateDto: AccountTypeUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Update account type
@@ -1985,13 +2201,12 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let accountTypeId = 987 // UUID | 
-let accountId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 let accountTypeUpdateDto = AccountTypeUpdateDto(name: "name_example", description: "description_example") // AccountTypeUpdateDto |  (optional)
 
 // Update account type
-AccountsAPI.updateAccountTypeAsync(tenantId: tenantId, accountTypeId: accountTypeId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountTypeUpdateDto: accountTypeUpdateDto) { (response, error) in
+AccountsAPI.updateAccountTypeAsync(tenantId: tenantId, accountTypeId: accountTypeId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountTypeUpdateDto: accountTypeUpdateDto) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2009,7 +2224,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **accountTypeId** | **UUID** |  | 
- **accountId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
  **accountTypeUpdateDto** | [**AccountTypeUpdateDto**](AccountTypeUpdateDto.md) |  | [optional] 

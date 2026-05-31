@@ -128,14 +128,15 @@ open class ItemAttachmentsAPI {
      Get item attachment by ID
      
      - parameter itemAttachmentId: (path)  
+     - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getItemAttachmentByIdAsync(itemAttachmentId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemAttachmentDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getItemAttachmentByIdAsyncWithRequestBuilder(itemAttachmentId: itemAttachmentId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getItemAttachmentByIdAsync(itemAttachmentId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemAttachmentDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getItemAttachmentByIdAsyncWithRequestBuilder(itemAttachmentId: itemAttachmentId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -150,11 +151,12 @@ open class ItemAttachmentsAPI {
      - GET /api/v2/CatalogService/ItemAttachments/{itemAttachmentId}
      - Retrieves a specific item attachment by its ID.
      - parameter itemAttachmentId: (path)  
+     - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<ItemAttachmentDtoEnvelope> 
      */
-    open class func getItemAttachmentByIdAsyncWithRequestBuilder(itemAttachmentId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemAttachmentDtoEnvelope> {
+    open class func getItemAttachmentByIdAsyncWithRequestBuilder(itemAttachmentId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemAttachmentDtoEnvelope> {
         var localVariablePath = "/api/v2/CatalogService/ItemAttachments/{itemAttachmentId}"
         let itemAttachmentIdPreEscape = "\(APIHelper.mapValueToPathItem(itemAttachmentId))"
         let itemAttachmentIdPostEscape = itemAttachmentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -164,6 +166,7 @@ open class ItemAttachmentsAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 
@@ -181,14 +184,14 @@ open class ItemAttachmentsAPI {
     /**
      Get all item attachments
      
-     - parameter tenantId: (query)  
+     - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getItemAttachmentsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemAttachmentDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getItemAttachmentsAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemAttachmentDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
         return getItemAttachmentsAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -203,19 +206,19 @@ open class ItemAttachmentsAPI {
      Get all item attachments
      - GET /api/v2/CatalogService/ItemAttachments
      - Retrieves all item attachments for the specified tenant using OData query options.
-     - parameter tenantId: (query)  
+     - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<ItemAttachmentDtoListEnvelope> 
      */
-    open class func getItemAttachmentsAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemAttachmentDtoListEnvelope> {
+    open class func getItemAttachmentsAsyncWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemAttachmentDtoListEnvelope> {
         let localVariablePath = "/api/v2/CatalogService/ItemAttachments"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 

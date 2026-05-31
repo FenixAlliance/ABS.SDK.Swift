@@ -22,6 +22,8 @@ public struct JournalEntryDto: Codable, JSONEncodable, Hashable {
     public var forexRate: Double?
     public var credit: Double?
     public var debit: Double?
+    public var creditInUsd: Double?
+    public var debitInUsd: Double?
     public var currencyId: String?
     public var tenantId: String?
     public var enrollmentId: String?
@@ -36,8 +38,10 @@ public struct JournalEntryDto: Codable, JSONEncodable, Hashable {
     public var parentJournalEntryId: String?
     public var creditAmount: Money?
     public var debitAmount: Money?
+    public var creditAmountInUsd: Money?
+    public var debitAmountInUsd: Money?
 
-    public init(id: String? = nil, timestamp: Date? = nil, group: Bool? = nil, opening: Bool? = nil, description: String? = nil, date: Date? = nil, forexRatesSnapshot: String? = nil, forexRate: Double? = nil, credit: Double? = nil, debit: Double? = nil, currencyId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil, journalId: String? = nil, journalName: String? = nil, journalCode: String? = nil, creditAccountId: String? = nil, creditAccountName: String? = nil, debitAccountId: String? = nil, debitAccountName: String? = nil, invoiceCode: String? = nil, parentJournalEntryId: String? = nil, creditAmount: Money? = nil, debitAmount: Money? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, group: Bool? = nil, opening: Bool? = nil, description: String? = nil, date: Date? = nil, forexRatesSnapshot: String? = nil, forexRate: Double? = nil, credit: Double? = nil, debit: Double? = nil, creditInUsd: Double? = nil, debitInUsd: Double? = nil, currencyId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil, journalId: String? = nil, journalName: String? = nil, journalCode: String? = nil, creditAccountId: String? = nil, creditAccountName: String? = nil, debitAccountId: String? = nil, debitAccountName: String? = nil, invoiceCode: String? = nil, parentJournalEntryId: String? = nil, creditAmount: Money? = nil, debitAmount: Money? = nil, creditAmountInUsd: Money? = nil, debitAmountInUsd: Money? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.group = group
@@ -48,6 +52,8 @@ public struct JournalEntryDto: Codable, JSONEncodable, Hashable {
         self.forexRate = forexRate
         self.credit = credit
         self.debit = debit
+        self.creditInUsd = creditInUsd
+        self.debitInUsd = debitInUsd
         self.currencyId = currencyId
         self.tenantId = tenantId
         self.enrollmentId = enrollmentId
@@ -62,6 +68,8 @@ public struct JournalEntryDto: Codable, JSONEncodable, Hashable {
         self.parentJournalEntryId = parentJournalEntryId
         self.creditAmount = creditAmount
         self.debitAmount = debitAmount
+        self.creditAmountInUsd = creditAmountInUsd
+        self.debitAmountInUsd = debitAmountInUsd
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -75,6 +83,8 @@ public struct JournalEntryDto: Codable, JSONEncodable, Hashable {
         case forexRate
         case credit
         case debit
+        case creditInUsd
+        case debitInUsd
         case currencyId
         case tenantId
         case enrollmentId
@@ -89,6 +99,8 @@ public struct JournalEntryDto: Codable, JSONEncodable, Hashable {
         case parentJournalEntryId
         case creditAmount
         case debitAmount
+        case creditAmountInUsd
+        case debitAmountInUsd
     }
 
     // Encodable protocol methods
@@ -105,6 +117,8 @@ public struct JournalEntryDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(forexRate, forKey: .forexRate)
         try container.encodeIfPresent(credit, forKey: .credit)
         try container.encodeIfPresent(debit, forKey: .debit)
+        try container.encodeIfPresent(creditInUsd, forKey: .creditInUsd)
+        try container.encodeIfPresent(debitInUsd, forKey: .debitInUsd)
         try container.encodeIfPresent(currencyId, forKey: .currencyId)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
@@ -119,6 +133,8 @@ public struct JournalEntryDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(parentJournalEntryId, forKey: .parentJournalEntryId)
         try container.encodeIfPresent(creditAmount, forKey: .creditAmount)
         try container.encodeIfPresent(debitAmount, forKey: .debitAmount)
+        try container.encodeIfPresent(creditAmountInUsd, forKey: .creditAmountInUsd)
+        try container.encodeIfPresent(debitAmountInUsd, forKey: .debitAmountInUsd)
     }
 }
 

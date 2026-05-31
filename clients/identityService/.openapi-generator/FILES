@@ -6,7 +6,8 @@ OpenAPIClient/Classes/OpenAPIs/APIHelper.swift
 OpenAPIClient/Classes/OpenAPIs/APIs.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/ApplicationsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/CheckerAPI.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/FenixAllianceABSWebAPI.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/CompletionsAPI.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/FenixAlliancePortalsWebsiteAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/OAuthAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/ResourceAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/UserInfoAPI.swift
@@ -18,7 +19,7 @@ OpenAPIClient/Classes/OpenAPIs/JSONEncodingHelper.swift
 OpenAPIClient/Classes/OpenAPIs/Models.swift
 OpenAPIClient/Classes/OpenAPIs/Models/AccessTokenResponse.swift
 OpenAPIClient/Classes/OpenAPIs/Models/AuthResult.swift
-OpenAPIClient/Classes/OpenAPIs/Models/AuthorizationResultEnvelope.swift
+OpenAPIClient/Classes/OpenAPIs/Models/AuthResultEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ErrorEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ForgotPasswordRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/HttpValidationProblemDetails.swift
@@ -54,10 +55,11 @@ README.md
 docs/AccessTokenResponse.md
 docs/ApplicationsAPI.md
 docs/AuthResult.md
-docs/AuthorizationResultEnvelope.md
+docs/AuthResultEnvelope.md
 docs/CheckerAPI.md
+docs/CompletionsAPI.md
 docs/ErrorEnvelope.md
-docs/FenixAllianceABSWebAPI.md
+docs/FenixAlliancePortalsWebsiteAPI.md
 docs/ForgotPasswordRequest.md
 docs/HttpValidationProblemDetails.md
 docs/InfoRequest.md

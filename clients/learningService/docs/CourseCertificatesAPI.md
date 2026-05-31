@@ -1,6 +1,6 @@
 # CourseCertificatesAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -11,9 +11,11 @@ Method | HTTP request | Description
 [**getCourseCertificateAsync**](CourseCertificatesAPI.md#getcoursecertificateasync) | **GET** /api/v2/LearningService/CourseCertificates/{courseCertificateId} | Get course certificate by ID
 [**getCourseCertificateTemplateAsync**](CourseCertificatesAPI.md#getcoursecertificatetemplateasync) | **GET** /api/v2/LearningService/CourseCertificates/Template/{courseCertificateTemplateId} | Get certificate template by ID
 [**getCourseCertificateTemplatesAsync**](CourseCertificatesAPI.md#getcoursecertificatetemplatesasync) | **GET** /api/v2/LearningService/CourseCertificates/Template | Get all certificate templates
+[**getCourseCertificateTemplatesCountAsync**](CourseCertificatesAPI.md#getcoursecertificatetemplatescountasync) | **GET** /api/v2/LearningService/CourseCertificates/Template/Count | Get certificate templates count
 [**getCourseCertificatesAsync**](CourseCertificatesAPI.md#getcoursecertificatesasync) | **GET** /api/v2/LearningService/CourseCertificates | Get all course certificates
 [**getCourseCertificatesCountAsync**](CourseCertificatesAPI.md#getcoursecertificatescountasync) | **GET** /api/v2/LearningService/CourseCertificates/Count | Get course certificates count
 [**updateCourseCertificateAsync**](CourseCertificatesAPI.md#updatecoursecertificateasync) | **PUT** /api/v2/LearningService/CourseCertificates/{courseCertificateId} | Update a course certificate
+[**updateCourseCertificateTemplateAsync**](CourseCertificatesAPI.md#updatecoursecertificatetemplateasync) | **PUT** /api/v2/LearningService/CourseCertificates/Template/{courseCertificateTemplateId} | Update a certificate template
 
 
 # **createCourseCertificateAsync**
@@ -406,6 +408,60 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **getCourseCertificateTemplatesCountAsync**
+```swift
+    open class func getCourseCertificateTemplatesCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
+```
+
+Get certificate templates count
+
+Returns the count of course certificate templates for the specified tenant.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Get certificate templates count
+CourseCertificatesAPI.getCourseCertificateTemplatesCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+**Int**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **getCourseCertificatesAsync**
 ```swift
     open class func getCourseCertificatesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: [CourseCompletionCertificateDto]?, _ error: Error?) -> Void)
@@ -556,6 +612,64 @@ Name | Type | Description  | Notes
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
  **courseCompletionCertificateUpdateDto** | [**CourseCompletionCertificateUpdateDto**](CourseCompletionCertificateUpdateDto.md) |  | [optional] 
+
+### Return type
+
+Void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **updateCourseCertificateTemplateAsync**
+```swift
+    open class func updateCourseCertificateTemplateAsync(tenantId: UUID, courseCertificateTemplateId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, courseCertificateTemplateUpdateDto: CourseCertificateTemplateUpdateDto? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+```
+
+Update a certificate template
+
+Updates an existing course certificate template for the specified tenant.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let courseCertificateTemplateId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseCertificateTemplateUpdateDto = CourseCertificateTemplateUpdateDto(webPortalID: "webPortalID_example", websiteThemeID: "websiteThemeID_example", socialProfileID: "socialProfileID_example", parentWebContentID: "parentWebContentID_example", parentWebContentVersionID: "parentWebContentVersionID_example") // CourseCertificateTemplateUpdateDto |  (optional)
+
+// Update a certificate template
+CourseCertificatesAPI.updateCourseCertificateTemplateAsync(tenantId: tenantId, courseCertificateTemplateId: courseCertificateTemplateId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseCertificateTemplateUpdateDto: courseCertificateTemplateUpdateDto) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **courseCertificateTemplateId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **courseCertificateTemplateUpdateDto** | [**CourseCertificateTemplateUpdateDto**](CourseCertificateTemplateUpdateDto.md) |  | [optional] 
 
 ### Return type
 

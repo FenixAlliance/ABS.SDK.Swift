@@ -15,6 +15,7 @@ open class ItemShippingPoliciesAPI {
     /**
      Count item shipping policies
      
+     - parameter tenantId: (query)  (optional)
      - parameter itemId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -22,8 +23,8 @@ open class ItemShippingPoliciesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func countItemShippingPoliciesAsync(itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return countItemShippingPoliciesAsyncWithRequestBuilder(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func countItemShippingPoliciesAsync(tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return countItemShippingPoliciesAsyncWithRequestBuilder(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -37,18 +38,20 @@ open class ItemShippingPoliciesAPI {
      Count item shipping policies
      - GET /api/v2/CatalogService/ItemShippingPolicies/Count
      - Counts all shipping policies for a specific item.
+     - parameter tenantId: (query)  (optional)
      - parameter itemId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func countItemShippingPoliciesAsyncWithRequestBuilder(itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func countItemShippingPoliciesAsyncWithRequestBuilder(tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/CatalogService/ItemShippingPolicies/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
             "itemId": (wrappedValue: itemId?.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
@@ -67,6 +70,7 @@ open class ItemShippingPoliciesAPI {
     /**
      Get item shipping policies
      
+     - parameter tenantId: (query)  (optional)
      - parameter itemId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -74,8 +78,8 @@ open class ItemShippingPoliciesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getItemShippingPoliciesAsync(itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemShippingPolicyDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getItemShippingPoliciesAsyncWithRequestBuilder(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getItemShippingPoliciesAsync(tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemShippingPolicyDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getItemShippingPoliciesAsyncWithRequestBuilder(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -89,18 +93,20 @@ open class ItemShippingPoliciesAPI {
      Get item shipping policies
      - GET /api/v2/CatalogService/ItemShippingPolicies
      - Retrieves all shipping policies for a specific item.
+     - parameter tenantId: (query)  (optional)
      - parameter itemId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<ItemShippingPolicyDtoListEnvelope> 
      */
-    open class func getItemShippingPoliciesAsyncWithRequestBuilder(itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemShippingPolicyDtoListEnvelope> {
+    open class func getItemShippingPoliciesAsyncWithRequestBuilder(tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemShippingPolicyDtoListEnvelope> {
         let localVariablePath = "/api/v2/CatalogService/ItemShippingPolicies"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
             "itemId": (wrappedValue: itemId?.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
@@ -120,6 +126,7 @@ open class ItemShippingPoliciesAPI {
      Get item shipping policy by ID
      
      - parameter itemShippingPolicyId: (path)  
+     - parameter tenantId: (query)  (optional)
      - parameter itemId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -127,8 +134,8 @@ open class ItemShippingPoliciesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getItemShippingPolicyByIdAsync(itemShippingPolicyId: UUID, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemShippingPolicyDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getItemShippingPolicyByIdAsyncWithRequestBuilder(itemShippingPolicyId: itemShippingPolicyId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getItemShippingPolicyByIdAsync(itemShippingPolicyId: UUID, tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemShippingPolicyDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getItemShippingPolicyByIdAsyncWithRequestBuilder(itemShippingPolicyId: itemShippingPolicyId, tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -143,12 +150,13 @@ open class ItemShippingPoliciesAPI {
      - GET /api/v2/CatalogService/ItemShippingPolicies/{itemShippingPolicyId}
      - Retrieves a specific shipping policy for an item.
      - parameter itemShippingPolicyId: (path)  
+     - parameter tenantId: (query)  (optional)
      - parameter itemId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<ItemShippingPolicyDtoEnvelope> 
      */
-    open class func getItemShippingPolicyByIdAsyncWithRequestBuilder(itemShippingPolicyId: UUID, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemShippingPolicyDtoEnvelope> {
+    open class func getItemShippingPolicyByIdAsyncWithRequestBuilder(itemShippingPolicyId: UUID, tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemShippingPolicyDtoEnvelope> {
         var localVariablePath = "/api/v2/CatalogService/ItemShippingPolicies/{itemShippingPolicyId}"
         let itemShippingPolicyIdPreEscape = "\(APIHelper.mapValueToPathItem(itemShippingPolicyId))"
         let itemShippingPolicyIdPostEscape = itemShippingPolicyIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -158,6 +166,7 @@ open class ItemShippingPoliciesAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
             "itemId": (wrappedValue: itemId?.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])

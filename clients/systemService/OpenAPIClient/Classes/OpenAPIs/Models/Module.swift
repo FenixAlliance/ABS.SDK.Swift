@@ -44,10 +44,11 @@ public struct Module: Codable, JSONEncodable, Hashable {
     public var swaggerSpecs: [ISwaggerSpec]?
     public var url: String?
     public var assemblyPaths: [String]?
+    public var requiredPermissions: [String]?
     public var markedForDeletion: Bool?
     public var version: String?
 
-    public init(enable: Bool? = nil, active: Bool? = nil, order: Int? = nil, id: String? = nil, name: String? = nil, fullName: String? = nil, description: String? = nil, type: ModelType? = nil, configuration: String? = nil, author: String? = nil, authorUrl: String? = nil, license: String? = nil, requireLicenseAcceptance: Bool? = nil, repository: String? = nil, path: String? = nil, icon: String? = nil, image: String? = nil, nuSpecPath: String? = nil, manifest: String? = nil, documentation: String? = nil, website: String? = nil, logo: String? = nil, swaggerSpec: ISwaggerSpec? = nil, swaggerSpecs: [ISwaggerSpec]? = nil, url: String? = nil, assemblyPaths: [String]? = nil, markedForDeletion: Bool? = nil, version: String? = nil) {
+    public init(enable: Bool? = nil, active: Bool? = nil, order: Int? = nil, id: String? = nil, name: String? = nil, fullName: String? = nil, description: String? = nil, type: ModelType? = nil, configuration: String? = nil, author: String? = nil, authorUrl: String? = nil, license: String? = nil, requireLicenseAcceptance: Bool? = nil, repository: String? = nil, path: String? = nil, icon: String? = nil, image: String? = nil, nuSpecPath: String? = nil, manifest: String? = nil, documentation: String? = nil, website: String? = nil, logo: String? = nil, swaggerSpec: ISwaggerSpec? = nil, swaggerSpecs: [ISwaggerSpec]? = nil, url: String? = nil, assemblyPaths: [String]? = nil, requiredPermissions: [String]? = nil, markedForDeletion: Bool? = nil, version: String? = nil) {
         self.enable = enable
         self.active = active
         self.order = order
@@ -74,6 +75,7 @@ public struct Module: Codable, JSONEncodable, Hashable {
         self.swaggerSpecs = swaggerSpecs
         self.url = url
         self.assemblyPaths = assemblyPaths
+        self.requiredPermissions = requiredPermissions
         self.markedForDeletion = markedForDeletion
         self.version = version
     }
@@ -105,6 +107,7 @@ public struct Module: Codable, JSONEncodable, Hashable {
         case swaggerSpecs
         case url
         case assemblyPaths
+        case requiredPermissions
         case markedForDeletion
         case version
     }
@@ -139,6 +142,7 @@ public struct Module: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(swaggerSpecs, forKey: .swaggerSpecs)
         try container.encodeIfPresent(url, forKey: .url)
         try container.encodeIfPresent(assemblyPaths, forKey: .assemblyPaths)
+        try container.encodeIfPresent(requiredPermissions, forKey: .requiredPermissions)
         try container.encodeIfPresent(markedForDeletion, forKey: .markedForDeletion)
         try container.encodeIfPresent(version, forKey: .version)
     }

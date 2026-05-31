@@ -13,6 +13,7 @@ import AnyCodable
 public struct CartDto: Codable, JSONEncodable, Hashable {
 
     public var id: String?
+    public var timestamp: Date?
     public var ip: String?
     public var type: String?
     public var total: Double?
@@ -24,8 +25,9 @@ public struct CartDto: Codable, JSONEncodable, Hashable {
     public var itemCartRecordsCount: Int?
     public var itemToCompareRecordsCount: Int?
 
-    public init(id: String? = nil, ip: String? = nil, type: String? = nil, total: Double? = nil, taxes: Double? = nil, freight: Double? = nil, subTotal: Double? = nil, currencyId: String? = nil, countryId: String? = nil, itemCartRecordsCount: Int? = nil, itemToCompareRecordsCount: Int? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, ip: String? = nil, type: String? = nil, total: Double? = nil, taxes: Double? = nil, freight: Double? = nil, subTotal: Double? = nil, currencyId: String? = nil, countryId: String? = nil, itemCartRecordsCount: Int? = nil, itemToCompareRecordsCount: Int? = nil) {
         self.id = id
+        self.timestamp = timestamp
         self.ip = ip
         self.type = type
         self.total = total
@@ -40,6 +42,7 @@ public struct CartDto: Codable, JSONEncodable, Hashable {
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
+        case timestamp
         case ip
         case type
         case total
@@ -57,6 +60,7 @@ public struct CartDto: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
+        try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(ip, forKey: .ip)
         try container.encodeIfPresent(type, forKey: .type)
         try container.encodeIfPresent(total, forKey: .total)

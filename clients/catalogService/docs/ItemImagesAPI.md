@@ -1,6 +1,6 @@
 # ItemImagesAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -125,7 +125,7 @@ No authorization required
 
 # **getItemImageByIdAsync**
 ```swift
-    open class func getItemImageByIdAsync(itemImageId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemImageDtoEnvelope?, _ error: Error?) -> Void)
+    open class func getItemImageByIdAsync(itemImageId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemImageDtoEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get item image by ID
@@ -138,11 +138,12 @@ Retrieves a specific item image by its ID.
 import OpenAPIClient
 
 let itemImageId = 987 // UUID | 
+let tenantId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Get item image by ID
-ItemImagesAPI.getItemImageByIdAsync(itemImageId: itemImageId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemImagesAPI.getItemImageByIdAsync(itemImageId: itemImageId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -159,6 +160,7 @@ ItemImagesAPI.getItemImageByIdAsync(itemImageId: itemImageId, apiVersion: apiVer
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **itemImageId** | **UUID** |  | 
+ **tenantId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 
@@ -179,7 +181,7 @@ No authorization required
 
 # **getItemImagesAsync**
 ```swift
-    open class func getItemImagesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemImageDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getItemImagesAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemImageDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all item images
@@ -191,7 +193,7 @@ Retrieves all item images for the specified tenant using OData query options.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let tenantId = 987 // UUID | 
+let tenantId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
@@ -212,7 +214,7 @@ ItemImagesAPI.getItemImagesAsync(tenantId: tenantId, apiVersion: apiVersion, xAp
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenantId** | **UUID** |  | 
+ **tenantId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 

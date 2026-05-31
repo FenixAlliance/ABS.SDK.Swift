@@ -4,10 +4,10 @@ Cartfile
 OpenAPIClient.podspec
 OpenAPIClient/Classes/OpenAPIs/APIHelper.swift
 OpenAPIClient/Classes/OpenAPIs/APIs.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/CompletionsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/DealUnitFlowsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/DealUnitsAPI.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/FenixAllianceABSWebAPI.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/SalesLiteraturesAPI.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/FenixAlliancePortalsWebsiteAPI.swift
 OpenAPIClient/Classes/OpenAPIs/CodableHelper.swift
 OpenAPIClient/Classes/OpenAPIs/Configuration.swift
 OpenAPIClient/Classes/OpenAPIs/Extensions.swift
@@ -41,8 +41,6 @@ OpenAPIClient/Classes/OpenAPIs/Models/ErrorEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ExtendedDealUnitDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ExtendedDealUnitDtoEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ExtendedDealUnitDtoListEnvelope.swift
-OpenAPIClient/Classes/OpenAPIs/Models/ExtendedSalesLiteratureDto.swift
-OpenAPIClient/Classes/OpenAPIs/Models/ExtendedSalesLiteratureDtoListEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ForgotPasswordRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/HttpValidationProblemDetails.swift
 OpenAPIClient/Classes/OpenAPIs/Models/InfoRequest.swift
@@ -53,12 +51,6 @@ OpenAPIClient/Classes/OpenAPIs/Models/RefreshRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/RegisterRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ResendConfirmationEmailRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ResetPasswordRequest.swift
-OpenAPIClient/Classes/OpenAPIs/Models/SalesLiteratureCreateDto.swift
-OpenAPIClient/Classes/OpenAPIs/Models/SalesLiteratureDto.swift
-OpenAPIClient/Classes/OpenAPIs/Models/SalesLiteratureDtoEnvelope.swift
-OpenAPIClient/Classes/OpenAPIs/Models/SalesLiteratureDtoListEnvelope.swift
-OpenAPIClient/Classes/OpenAPIs/Models/SalesLiteratureTypeDto.swift
-OpenAPIClient/Classes/OpenAPIs/Models/SalesLiteratureUpdateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/TenantDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/TenantEnrollmentDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/TwoFactorRequest.swift
@@ -71,6 +63,7 @@ OpenAPIClient/Classes/OpenAPIs/Validation.swift
 Package.swift
 README.md
 docs/AccessTokenResponse.md
+docs/CompletionsAPI.md
 docs/ContactDto.md
 docs/DealUnitCreateDto.md
 docs/DealUnitDto.md
@@ -99,9 +92,7 @@ docs/ErrorEnvelope.md
 docs/ExtendedDealUnitDto.md
 docs/ExtendedDealUnitDtoEnvelope.md
 docs/ExtendedDealUnitDtoListEnvelope.md
-docs/ExtendedSalesLiteratureDto.md
-docs/ExtendedSalesLiteratureDtoListEnvelope.md
-docs/FenixAllianceABSWebAPI.md
+docs/FenixAlliancePortalsWebsiteAPI.md
 docs/ForgotPasswordRequest.md
 docs/HttpValidationProblemDetails.md
 docs/InfoRequest.md
@@ -112,13 +103,6 @@ docs/RefreshRequest.md
 docs/RegisterRequest.md
 docs/ResendConfirmationEmailRequest.md
 docs/ResetPasswordRequest.md
-docs/SalesLiteratureCreateDto.md
-docs/SalesLiteratureDto.md
-docs/SalesLiteratureDtoEnvelope.md
-docs/SalesLiteratureDtoListEnvelope.md
-docs/SalesLiteratureTypeDto.md
-docs/SalesLiteratureUpdateDto.md
-docs/SalesLiteraturesAPI.md
 docs/TenantDto.md
 docs/TenantEnrollmentDto.md
 docs/TwoFactorRequest.md

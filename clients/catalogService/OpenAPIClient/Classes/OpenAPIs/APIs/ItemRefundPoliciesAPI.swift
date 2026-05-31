@@ -15,6 +15,7 @@ open class ItemRefundPoliciesAPI {
     /**
      Count item refund policies
      
+     - parameter tenantId: (query)  (optional)
      - parameter itemId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -22,8 +23,8 @@ open class ItemRefundPoliciesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func countItemRefundPoliciesAsync(itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return countItemRefundPoliciesAsyncWithRequestBuilder(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func countItemRefundPoliciesAsync(tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return countItemRefundPoliciesAsyncWithRequestBuilder(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -37,18 +38,20 @@ open class ItemRefundPoliciesAPI {
      Count item refund policies
      - GET /api/v2/CatalogService/ItemRefundPolicies/Count
      - Counts all refund policies for a specific item.
+     - parameter tenantId: (query)  (optional)
      - parameter itemId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func countItemRefundPoliciesAsyncWithRequestBuilder(itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func countItemRefundPoliciesAsyncWithRequestBuilder(tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/CatalogService/ItemRefundPolicies/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
             "itemId": (wrappedValue: itemId?.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
@@ -67,6 +70,7 @@ open class ItemRefundPoliciesAPI {
     /**
      Get item refund policies
      
+     - parameter tenantId: (query)  (optional)
      - parameter itemId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -74,8 +78,8 @@ open class ItemRefundPoliciesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getItemRefundPoliciesAsync(itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemRefundPolicyDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getItemRefundPoliciesAsyncWithRequestBuilder(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getItemRefundPoliciesAsync(tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemRefundPolicyDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getItemRefundPoliciesAsyncWithRequestBuilder(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -89,18 +93,20 @@ open class ItemRefundPoliciesAPI {
      Get item refund policies
      - GET /api/v2/CatalogService/ItemRefundPolicies
      - Retrieves all refund policies for a specific item.
+     - parameter tenantId: (query)  (optional)
      - parameter itemId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<ItemRefundPolicyDtoListEnvelope> 
      */
-    open class func getItemRefundPoliciesAsyncWithRequestBuilder(itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemRefundPolicyDtoListEnvelope> {
+    open class func getItemRefundPoliciesAsyncWithRequestBuilder(tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemRefundPolicyDtoListEnvelope> {
         let localVariablePath = "/api/v2/CatalogService/ItemRefundPolicies"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
             "itemId": (wrappedValue: itemId?.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
@@ -120,6 +126,7 @@ open class ItemRefundPoliciesAPI {
      Get item refund policy by ID
      
      - parameter itemRefundPolicyId: (path)  
+     - parameter tenantId: (query)  (optional)
      - parameter itemId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -127,8 +134,8 @@ open class ItemRefundPoliciesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getItemRefundPolicyByIdAsync(itemRefundPolicyId: UUID, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemRefundPolicyDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getItemRefundPolicyByIdAsyncWithRequestBuilder(itemRefundPolicyId: itemRefundPolicyId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getItemRefundPolicyByIdAsync(itemRefundPolicyId: UUID, tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemRefundPolicyDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getItemRefundPolicyByIdAsyncWithRequestBuilder(itemRefundPolicyId: itemRefundPolicyId, tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -143,12 +150,13 @@ open class ItemRefundPoliciesAPI {
      - GET /api/v2/CatalogService/ItemRefundPolicies/{itemRefundPolicyId}
      - Retrieves a specific refund policy for an item.
      - parameter itemRefundPolicyId: (path)  
+     - parameter tenantId: (query)  (optional)
      - parameter itemId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<ItemRefundPolicyDtoEnvelope> 
      */
-    open class func getItemRefundPolicyByIdAsyncWithRequestBuilder(itemRefundPolicyId: UUID, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemRefundPolicyDtoEnvelope> {
+    open class func getItemRefundPolicyByIdAsyncWithRequestBuilder(itemRefundPolicyId: UUID, tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemRefundPolicyDtoEnvelope> {
         var localVariablePath = "/api/v2/CatalogService/ItemRefundPolicies/{itemRefundPolicyId}"
         let itemRefundPolicyIdPreEscape = "\(APIHelper.mapValueToPathItem(itemRefundPolicyId))"
         let itemRefundPolicyIdPostEscape = itemRefundPolicyIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -158,6 +166,7 @@ open class ItemRefundPoliciesAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
             "itemId": (wrappedValue: itemId?.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])

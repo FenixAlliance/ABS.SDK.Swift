@@ -189,6 +189,7 @@ open class FiscalEnumerationRangesAPI {
     /**
      Get invoice enumeration ranges for an authority
      
+     - parameter tenantId: (query)  
      - parameter fiscalAuthorityId: (query)  
      - parameter authorityId: (path)  
      - parameter apiVersion: (query)  (optional)
@@ -197,8 +198,8 @@ open class FiscalEnumerationRangesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getInvoiceEnumerationRanges(fiscalAuthorityId: UUID, authorityId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: InvoiceEnumerationRangeDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getInvoiceEnumerationRangesWithRequestBuilder(fiscalAuthorityId: fiscalAuthorityId, authorityId: authorityId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getInvoiceEnumerationRanges(tenantId: UUID, fiscalAuthorityId: UUID, authorityId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: InvoiceEnumerationRangeDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getInvoiceEnumerationRangesWithRequestBuilder(tenantId: tenantId, fiscalAuthorityId: fiscalAuthorityId, authorityId: authorityId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -212,13 +213,14 @@ open class FiscalEnumerationRangesAPI {
      Get invoice enumeration ranges for an authority
      - GET /api/v2/AccountingService/Fiscals/Authorities/{authorityId}/EnumerationRanges
      - Retrieves all invoice enumeration ranges for the specified fiscal authority.
+     - parameter tenantId: (query)  
      - parameter fiscalAuthorityId: (query)  
      - parameter authorityId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<InvoiceEnumerationRangeDtoListEnvelope> 
      */
-    open class func getInvoiceEnumerationRangesWithRequestBuilder(fiscalAuthorityId: UUID, authorityId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<InvoiceEnumerationRangeDtoListEnvelope> {
+    open class func getInvoiceEnumerationRangesWithRequestBuilder(tenantId: UUID, fiscalAuthorityId: UUID, authorityId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<InvoiceEnumerationRangeDtoListEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/Fiscals/Authorities/{authorityId}/EnumerationRanges"
         let authorityIdPreEscape = "\(APIHelper.mapValueToPathItem(authorityId))"
         let authorityIdPostEscape = authorityIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -228,6 +230,7 @@ open class FiscalEnumerationRangesAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
             "fiscalAuthorityId": (wrappedValue: fiscalAuthorityId.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
@@ -246,6 +249,7 @@ open class FiscalEnumerationRangesAPI {
     /**
      Get invoice enumeration ranges count
      
+     - parameter tenantId: (query)  
      - parameter fiscalAuthorityId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -253,8 +257,8 @@ open class FiscalEnumerationRangesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getInvoiceEnumerationRangesCount(fiscalAuthorityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getInvoiceEnumerationRangesCountWithRequestBuilder(fiscalAuthorityId: fiscalAuthorityId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getInvoiceEnumerationRangesCount(tenantId: UUID, fiscalAuthorityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getInvoiceEnumerationRangesCountWithRequestBuilder(tenantId: tenantId, fiscalAuthorityId: fiscalAuthorityId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -268,12 +272,13 @@ open class FiscalEnumerationRangesAPI {
      Get invoice enumeration ranges count
      - GET /api/v2/AccountingService/Fiscals/Authorities/{fiscalAuthorityId}/EnumerationRanges/Count
      - Returns the total count of invoice enumeration ranges for the specified fiscal authority.
+     - parameter tenantId: (query)  
      - parameter fiscalAuthorityId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getInvoiceEnumerationRangesCountWithRequestBuilder(fiscalAuthorityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getInvoiceEnumerationRangesCountWithRequestBuilder(tenantId: UUID, fiscalAuthorityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/AccountingService/Fiscals/Authorities/{fiscalAuthorityId}/EnumerationRanges/Count"
         let fiscalAuthorityIdPreEscape = "\(APIHelper.mapValueToPathItem(fiscalAuthorityId))"
         let fiscalAuthorityIdPostEscape = fiscalAuthorityIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -283,6 +288,7 @@ open class FiscalEnumerationRangesAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 

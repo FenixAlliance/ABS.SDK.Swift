@@ -35,6 +35,10 @@ public struct AccountDto: Codable, JSONEncodable, Hashable {
     public var accountTypeId: String?
     public var debitsBalance: Double?
     public var creditsBalance: Double?
+    public var balanceInUsd: Double?
+    public var debitsBalanceInUsd: Double?
+    public var creditsBalanceInUsd: Double?
+    public var forexRate: Double?
     public var parentAccountId: String?
     public var tenantId: String?
     public var enrollmentId: String?
@@ -43,8 +47,11 @@ public struct AccountDto: Codable, JSONEncodable, Hashable {
     public var balanceAmount: Money?
     public var creditsBalanceAmount: Money?
     public var debitsBalanceAmount: Money?
+    public var balanceAmountInUsd: Money?
+    public var debitsBalanceAmountInUsd: Money?
+    public var creditsBalanceAmountInUsd: Money?
 
-    public init(id: String? = nil, timestamp: Date? = nil, group: Bool? = nil, frozen: Bool? = nil, name: String? = nil, code: String? = nil, path: String? = nil, title: String? = nil, _prefix: String? = nil, balance: Double? = nil, currencyId: String? = nil, accountType: String? = nil, qualifiedName: String? = nil, accountTypeId: String? = nil, debitsBalance: Double? = nil, creditsBalance: Double? = nil, parentAccountId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil, childrenAccountsCount: Int? = nil, accountCategory: AccountCategory? = nil, balanceAmount: Money? = nil, creditsBalanceAmount: Money? = nil, debitsBalanceAmount: Money? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, group: Bool? = nil, frozen: Bool? = nil, name: String? = nil, code: String? = nil, path: String? = nil, title: String? = nil, _prefix: String? = nil, balance: Double? = nil, currencyId: String? = nil, accountType: String? = nil, qualifiedName: String? = nil, accountTypeId: String? = nil, debitsBalance: Double? = nil, creditsBalance: Double? = nil, balanceInUsd: Double? = nil, debitsBalanceInUsd: Double? = nil, creditsBalanceInUsd: Double? = nil, forexRate: Double? = nil, parentAccountId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil, childrenAccountsCount: Int? = nil, accountCategory: AccountCategory? = nil, balanceAmount: Money? = nil, creditsBalanceAmount: Money? = nil, debitsBalanceAmount: Money? = nil, balanceAmountInUsd: Money? = nil, debitsBalanceAmountInUsd: Money? = nil, creditsBalanceAmountInUsd: Money? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.group = group
@@ -61,6 +68,10 @@ public struct AccountDto: Codable, JSONEncodable, Hashable {
         self.accountTypeId = accountTypeId
         self.debitsBalance = debitsBalance
         self.creditsBalance = creditsBalance
+        self.balanceInUsd = balanceInUsd
+        self.debitsBalanceInUsd = debitsBalanceInUsd
+        self.creditsBalanceInUsd = creditsBalanceInUsd
+        self.forexRate = forexRate
         self.parentAccountId = parentAccountId
         self.tenantId = tenantId
         self.enrollmentId = enrollmentId
@@ -69,6 +80,9 @@ public struct AccountDto: Codable, JSONEncodable, Hashable {
         self.balanceAmount = balanceAmount
         self.creditsBalanceAmount = creditsBalanceAmount
         self.debitsBalanceAmount = debitsBalanceAmount
+        self.balanceAmountInUsd = balanceAmountInUsd
+        self.debitsBalanceAmountInUsd = debitsBalanceAmountInUsd
+        self.creditsBalanceAmountInUsd = creditsBalanceAmountInUsd
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -88,6 +102,10 @@ public struct AccountDto: Codable, JSONEncodable, Hashable {
         case accountTypeId
         case debitsBalance
         case creditsBalance
+        case balanceInUsd
+        case debitsBalanceInUsd
+        case creditsBalanceInUsd
+        case forexRate
         case parentAccountId
         case tenantId
         case enrollmentId
@@ -96,6 +114,9 @@ public struct AccountDto: Codable, JSONEncodable, Hashable {
         case balanceAmount
         case creditsBalanceAmount
         case debitsBalanceAmount
+        case balanceAmountInUsd
+        case debitsBalanceAmountInUsd
+        case creditsBalanceAmountInUsd
     }
 
     // Encodable protocol methods
@@ -118,6 +139,10 @@ public struct AccountDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(accountTypeId, forKey: .accountTypeId)
         try container.encodeIfPresent(debitsBalance, forKey: .debitsBalance)
         try container.encodeIfPresent(creditsBalance, forKey: .creditsBalance)
+        try container.encodeIfPresent(balanceInUsd, forKey: .balanceInUsd)
+        try container.encodeIfPresent(debitsBalanceInUsd, forKey: .debitsBalanceInUsd)
+        try container.encodeIfPresent(creditsBalanceInUsd, forKey: .creditsBalanceInUsd)
+        try container.encodeIfPresent(forexRate, forKey: .forexRate)
         try container.encodeIfPresent(parentAccountId, forKey: .parentAccountId)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
@@ -126,6 +151,9 @@ public struct AccountDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(balanceAmount, forKey: .balanceAmount)
         try container.encodeIfPresent(creditsBalanceAmount, forKey: .creditsBalanceAmount)
         try container.encodeIfPresent(debitsBalanceAmount, forKey: .debitsBalanceAmount)
+        try container.encodeIfPresent(balanceAmountInUsd, forKey: .balanceAmountInUsd)
+        try container.encodeIfPresent(debitsBalanceAmountInUsd, forKey: .debitsBalanceAmountInUsd)
+        try container.encodeIfPresent(creditsBalanceAmountInUsd, forKey: .creditsBalanceAmountInUsd)
     }
 }
 

@@ -1,6 +1,6 @@
 # ItemWarrantyPoliciesAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 # **countItemWarrantyPoliciesAsync**
 ```swift
-    open class func countItemWarrantyPoliciesAsync(itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countItemWarrantyPoliciesAsync(tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count item warranty policies
@@ -25,12 +25,13 @@ Counts all warranty policies for a specific item.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
+let tenantId = 987 // UUID |  (optional)
 let itemId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Count item warranty policies
-ItemWarrantyPoliciesAPI.countItemWarrantyPoliciesAsync(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemWarrantyPoliciesAPI.countItemWarrantyPoliciesAsync(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -46,6 +47,7 @@ ItemWarrantyPoliciesAPI.countItemWarrantyPoliciesAsync(itemId: itemId, apiVersio
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | [optional] 
  **itemId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
@@ -67,7 +69,7 @@ No authorization required
 
 # **getItemWarrantyPoliciesAsync**
 ```swift
-    open class func getItemWarrantyPoliciesAsync(itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemWarrantyPolicyDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getItemWarrantyPoliciesAsync(tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemWarrantyPolicyDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get item warranty policies
@@ -79,12 +81,13 @@ Retrieves all warranty policies for a specific item.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
+let tenantId = 987 // UUID |  (optional)
 let itemId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Get item warranty policies
-ItemWarrantyPoliciesAPI.getItemWarrantyPoliciesAsync(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemWarrantyPoliciesAPI.getItemWarrantyPoliciesAsync(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -100,6 +103,7 @@ ItemWarrantyPoliciesAPI.getItemWarrantyPoliciesAsync(itemId: itemId, apiVersion:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | [optional] 
  **itemId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
@@ -121,7 +125,7 @@ No authorization required
 
 # **getItemWarrantyPolicyByIdAsync**
 ```swift
-    open class func getItemWarrantyPolicyByIdAsync(itemWarrantyPolicyId: UUID, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemWarrantyPolicyDtoEnvelope?, _ error: Error?) -> Void)
+    open class func getItemWarrantyPolicyByIdAsync(itemWarrantyPolicyId: UUID, tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemWarrantyPolicyDtoEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get item warranty policy by ID
@@ -134,12 +138,13 @@ Retrieves a specific warranty policy for an item.
 import OpenAPIClient
 
 let itemWarrantyPolicyId = 987 // UUID | 
+let tenantId = 987 // UUID |  (optional)
 let itemId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Get item warranty policy by ID
-ItemWarrantyPoliciesAPI.getItemWarrantyPolicyByIdAsync(itemWarrantyPolicyId: itemWarrantyPolicyId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemWarrantyPoliciesAPI.getItemWarrantyPolicyByIdAsync(itemWarrantyPolicyId: itemWarrantyPolicyId, tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -156,6 +161,7 @@ ItemWarrantyPoliciesAPI.getItemWarrantyPolicyByIdAsync(itemWarrantyPolicyId: ite
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **itemWarrantyPolicyId** | **UUID** |  | 
+ **tenantId** | **UUID** |  | [optional] 
  **itemId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 

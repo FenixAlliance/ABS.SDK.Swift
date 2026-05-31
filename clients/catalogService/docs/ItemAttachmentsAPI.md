@@ -1,6 +1,6 @@
 # ItemAttachmentsAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -125,7 +125,7 @@ No authorization required
 
 # **getItemAttachmentByIdAsync**
 ```swift
-    open class func getItemAttachmentByIdAsync(itemAttachmentId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemAttachmentDtoEnvelope?, _ error: Error?) -> Void)
+    open class func getItemAttachmentByIdAsync(itemAttachmentId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemAttachmentDtoEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get item attachment by ID
@@ -138,11 +138,12 @@ Retrieves a specific item attachment by its ID.
 import OpenAPIClient
 
 let itemAttachmentId = 987 // UUID | 
+let tenantId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Get item attachment by ID
-ItemAttachmentsAPI.getItemAttachmentByIdAsync(itemAttachmentId: itemAttachmentId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemAttachmentsAPI.getItemAttachmentByIdAsync(itemAttachmentId: itemAttachmentId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -159,6 +160,7 @@ ItemAttachmentsAPI.getItemAttachmentByIdAsync(itemAttachmentId: itemAttachmentId
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **itemAttachmentId** | **UUID** |  | 
+ **tenantId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 
@@ -179,7 +181,7 @@ No authorization required
 
 # **getItemAttachmentsAsync**
 ```swift
-    open class func getItemAttachmentsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemAttachmentDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getItemAttachmentsAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemAttachmentDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all item attachments
@@ -191,7 +193,7 @@ Retrieves all item attachments for the specified tenant using OData query option
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let tenantId = 987 // UUID | 
+let tenantId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
@@ -212,7 +214,7 @@ ItemAttachmentsAPI.getItemAttachmentsAsync(tenantId: tenantId, apiVersion: apiVe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenantId** | **UUID** |  | 
+ **tenantId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 

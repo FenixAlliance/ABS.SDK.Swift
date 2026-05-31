@@ -13,7 +13,7 @@ import AnyCodable
 open class TenantsAPI {
 
     /**
-     Preview the rendered email for a user.
+     Preview the rendered email for a tenant.
      
      - parameter tenantId: (path)  
      - parameter apiVersion: (query)  (optional)
@@ -35,9 +35,9 @@ open class TenantsAPI {
     }
 
     /**
-     Preview the rendered email for a user.
+     Preview the rendered email for a tenant.
      - POST /api/v2/SystemService/Tenants/{tenantId}/Emails/Preview
-     - This action is only available for users with the 'business_owner' role (global administrators).
+     - This action is only available for global administrators.
      - parameter tenantId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -70,7 +70,7 @@ open class TenantsAPI {
     }
 
     /**
-     Send an email to a user.
+     Send an email to a tenant.
      
      - parameter tenantId: (path)  
      - parameter apiVersion: (query)  (optional)
@@ -92,9 +92,9 @@ open class TenantsAPI {
     }
 
     /**
-     Send an email to a user.
+     Send an email to a tenant.
      - POST /api/v2/SystemService/Tenants/{tenantId}/Emails/Send
-     - This action is only available for users with the 'business_owner' role (global administrators).
+     - This action is only available for global administrators.
      - parameter tenantId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)

@@ -5,13 +5,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **UUID** |  | [optional] 
 **timestamp** | **Date** |  | [optional] 
-**authorized** | **Bool** |  | [optional] 
+**type** | **String** |  | [optional] 
+**contactId** | **String** |  | [optional] 
 **about** | **String** |  | [optional] 
-**verified** | **Bool** |  | [optional] 
-**submitted** | **Bool** |  | [optional] 
 **avatarUrl** | **String** |  | [optional] 
-**qualifiedName** | **String** |  | [optional] 
-**verificationTimestamp** | **Date** |  | [optional] 
 **data** | **String** |  | [optional] 
 **dataLabel** | **String** |  | [optional] 
 **data1** | **String** |  | [optional] 
@@ -32,6 +29,7 @@ Name | Type | Description | Notes
 **data8Label** | **String** |  | [optional] 
 **data9** | **String** |  | [optional] 
 **data9Label** | **String** |  | [optional] 
+**authorized** | **Bool** |  | [optional] 
 **contactID** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

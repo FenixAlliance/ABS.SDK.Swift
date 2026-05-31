@@ -15,6 +15,7 @@ open class ItemReturnPoliciesAPI {
     /**
      Count item return policies
      
+     - parameter tenantId: (query)  (optional)
      - parameter itemId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -22,8 +23,8 @@ open class ItemReturnPoliciesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func countItemReturnPoliciesAsync(itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return countItemReturnPoliciesAsyncWithRequestBuilder(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func countItemReturnPoliciesAsync(tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return countItemReturnPoliciesAsyncWithRequestBuilder(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -37,18 +38,20 @@ open class ItemReturnPoliciesAPI {
      Count item return policies
      - GET /api/v2/CatalogService/ItemReturnPolicies/Count
      - Counts all return policies for a specific item.
+     - parameter tenantId: (query)  (optional)
      - parameter itemId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func countItemReturnPoliciesAsyncWithRequestBuilder(itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func countItemReturnPoliciesAsyncWithRequestBuilder(tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/CatalogService/ItemReturnPolicies/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
             "itemId": (wrappedValue: itemId?.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
@@ -67,6 +70,7 @@ open class ItemReturnPoliciesAPI {
     /**
      Get item return policies
      
+     - parameter tenantId: (query)  (optional)
      - parameter itemId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -74,8 +78,8 @@ open class ItemReturnPoliciesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getItemReturnPoliciesAsync(itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemReturnPolicyDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getItemReturnPoliciesAsyncWithRequestBuilder(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getItemReturnPoliciesAsync(tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemReturnPolicyDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getItemReturnPoliciesAsyncWithRequestBuilder(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -89,18 +93,20 @@ open class ItemReturnPoliciesAPI {
      Get item return policies
      - GET /api/v2/CatalogService/ItemReturnPolicies
      - Retrieves all return policies for a specific item.
+     - parameter tenantId: (query)  (optional)
      - parameter itemId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<ItemReturnPolicyDtoListEnvelope> 
      */
-    open class func getItemReturnPoliciesAsyncWithRequestBuilder(itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemReturnPolicyDtoListEnvelope> {
+    open class func getItemReturnPoliciesAsyncWithRequestBuilder(tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemReturnPolicyDtoListEnvelope> {
         let localVariablePath = "/api/v2/CatalogService/ItemReturnPolicies"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
             "itemId": (wrappedValue: itemId?.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
@@ -120,6 +126,7 @@ open class ItemReturnPoliciesAPI {
      Get item return policy by ID
      
      - parameter itemReturnPolicyId: (path)  
+     - parameter tenantId: (query)  (optional)
      - parameter itemId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -127,8 +134,8 @@ open class ItemReturnPoliciesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getItemReturnPolicyByIdAsync(itemReturnPolicyId: UUID, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemReturnPolicyDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getItemReturnPolicyByIdAsyncWithRequestBuilder(itemReturnPolicyId: itemReturnPolicyId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getItemReturnPolicyByIdAsync(itemReturnPolicyId: UUID, tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemReturnPolicyDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getItemReturnPolicyByIdAsyncWithRequestBuilder(itemReturnPolicyId: itemReturnPolicyId, tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -143,12 +150,13 @@ open class ItemReturnPoliciesAPI {
      - GET /api/v2/CatalogService/ItemReturnPolicies/{itemReturnPolicyId}
      - Retrieves a specific return policy for an item.
      - parameter itemReturnPolicyId: (path)  
+     - parameter tenantId: (query)  (optional)
      - parameter itemId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<ItemReturnPolicyDtoEnvelope> 
      */
-    open class func getItemReturnPolicyByIdAsyncWithRequestBuilder(itemReturnPolicyId: UUID, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemReturnPolicyDtoEnvelope> {
+    open class func getItemReturnPolicyByIdAsyncWithRequestBuilder(itemReturnPolicyId: UUID, tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemReturnPolicyDtoEnvelope> {
         var localVariablePath = "/api/v2/CatalogService/ItemReturnPolicies/{itemReturnPolicyId}"
         let itemReturnPolicyIdPreEscape = "\(APIHelper.mapValueToPathItem(itemReturnPolicyId))"
         let itemReturnPolicyIdPostEscape = itemReturnPolicyIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -158,6 +166,7 @@ open class ItemReturnPoliciesAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
             "itemId": (wrappedValue: itemId?.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])

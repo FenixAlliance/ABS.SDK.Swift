@@ -13,13 +13,15 @@ import AnyCodable
 public struct FollowRecordDto: Codable, JSONEncodable, Hashable {
 
     public var id: String?
+    public var timestamp: Date?
     public var type: String?
     public var followerId: String?
     public var followedId: String?
     public var alerts: Bool?
 
-    public init(id: String? = nil, type: String? = nil, followerId: String? = nil, followedId: String? = nil, alerts: Bool? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, type: String? = nil, followerId: String? = nil, followedId: String? = nil, alerts: Bool? = nil) {
         self.id = id
+        self.timestamp = timestamp
         self.type = type
         self.followerId = followerId
         self.followedId = followedId
@@ -28,6 +30,7 @@ public struct FollowRecordDto: Codable, JSONEncodable, Hashable {
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
+        case timestamp
         case type
         case followerId
         case followedId
@@ -39,6 +42,7 @@ public struct FollowRecordDto: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
+        try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(type, forKey: .type)
         try container.encodeIfPresent(followerId, forKey: .followerId)
         try container.encodeIfPresent(followedId, forKey: .followedId)

@@ -21,13 +21,15 @@ public struct BillingProfileDto: Codable, JSONEncodable, Hashable {
     static let countryIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     public var id: String?
     public var timestamp: Date?
-    public var tenantId: String?
     public var contactId: String?
+    public var tenantId: String?
+    public var type: String?
     public var enrollmentId: String?
     public var about: String?
     public var verified: Bool?
     public var submitted: Bool?
     public var avatarUrl: String?
+    public var contact: ContactDto?
     public var qualifiedName: String?
     public var verificationTimestamp: Date?
     public var data: String?
@@ -74,16 +76,18 @@ public struct BillingProfileDto: Codable, JSONEncodable, Hashable {
     public var fiscalAuthorityName: String?
     public var countryName: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, tenantId: String? = nil, contactId: String? = nil, enrollmentId: String? = nil, about: String? = nil, verified: Bool? = nil, submitted: Bool? = nil, avatarUrl: String? = nil, qualifiedName: String? = nil, verificationTimestamp: Date? = nil, data: String? = nil, dataLabel: String? = nil, data1: String? = nil, data1Label: String? = nil, data2: String? = nil, data2Label: String? = nil, data3: String? = nil, data3Label: String? = nil, data4: String? = nil, data4Label: String? = nil, data5: String? = nil, data5Label: String? = nil, data6: String? = nil, data6Label: String? = nil, data7: String? = nil, data7Label: String? = nil, data8: String? = nil, data8Label: String? = nil, data9: String? = nil, data9Label: String? = nil, taxId: String, email: String, phone: String? = nil, address: String? = nil, address1: String? = nil, address2: String? = nil, postalCode: String? = nil, businessName: String? = nil, commercialName: String? = nil, ticker: String? = nil, duns: String? = nil, isPublicCompany: Bool? = nil, isFactaCustomer: Bool? = nil, taxPayerType: TaxPayerType? = nil, countryId: String, stateId: String? = nil, cityId: String? = nil, fiscalIdentificationTypeId: String? = nil, fiscalAuthorityId: String? = nil, fiscalRegimeId: String? = nil, contactName: String? = nil, fiscalAuthorityName: String? = nil, countryName: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, contactId: String? = nil, tenantId: String? = nil, type: String? = nil, enrollmentId: String? = nil, about: String? = nil, verified: Bool? = nil, submitted: Bool? = nil, avatarUrl: String? = nil, contact: ContactDto? = nil, qualifiedName: String? = nil, verificationTimestamp: Date? = nil, data: String? = nil, dataLabel: String? = nil, data1: String? = nil, data1Label: String? = nil, data2: String? = nil, data2Label: String? = nil, data3: String? = nil, data3Label: String? = nil, data4: String? = nil, data4Label: String? = nil, data5: String? = nil, data5Label: String? = nil, data6: String? = nil, data6Label: String? = nil, data7: String? = nil, data7Label: String? = nil, data8: String? = nil, data8Label: String? = nil, data9: String? = nil, data9Label: String? = nil, taxId: String, email: String, phone: String? = nil, address: String? = nil, address1: String? = nil, address2: String? = nil, postalCode: String? = nil, businessName: String? = nil, commercialName: String? = nil, ticker: String? = nil, duns: String? = nil, isPublicCompany: Bool? = nil, isFactaCustomer: Bool? = nil, taxPayerType: TaxPayerType? = nil, countryId: String, stateId: String? = nil, cityId: String? = nil, fiscalIdentificationTypeId: String? = nil, fiscalAuthorityId: String? = nil, fiscalRegimeId: String? = nil, contactName: String? = nil, fiscalAuthorityName: String? = nil, countryName: String? = nil) {
         self.id = id
         self.timestamp = timestamp
-        self.tenantId = tenantId
         self.contactId = contactId
+        self.tenantId = tenantId
+        self.type = type
         self.enrollmentId = enrollmentId
         self.about = about
         self.verified = verified
         self.submitted = submitted
         self.avatarUrl = avatarUrl
+        self.contact = contact
         self.qualifiedName = qualifiedName
         self.verificationTimestamp = verificationTimestamp
         self.data = data
@@ -134,13 +138,15 @@ public struct BillingProfileDto: Codable, JSONEncodable, Hashable {
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
-        case tenantId
         case contactId
+        case tenantId
+        case type
         case enrollmentId
         case about
         case verified
         case submitted
         case avatarUrl
+        case contact
         case qualifiedName
         case verificationTimestamp
         case data
@@ -194,13 +200,15 @@ public struct BillingProfileDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encodeIfPresent(contactId, forKey: .contactId)
+        try container.encodeIfPresent(tenantId, forKey: .tenantId)
+        try container.encodeIfPresent(type, forKey: .type)
         try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(about, forKey: .about)
         try container.encodeIfPresent(verified, forKey: .verified)
         try container.encodeIfPresent(submitted, forKey: .submitted)
         try container.encodeIfPresent(avatarUrl, forKey: .avatarUrl)
+        try container.encodeIfPresent(contact, forKey: .contact)
         try container.encodeIfPresent(qualifiedName, forKey: .qualifiedName)
         try container.encodeIfPresent(verificationTimestamp, forKey: .verificationTimestamp)
         try container.encodeIfPresent(data, forKey: .data)

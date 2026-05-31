@@ -13,6 +13,7 @@ import AnyCodable
 public struct OAuthAuthorizationDto: Codable, JSONEncodable, Hashable {
 
     public var id: String?
+    public var timestamp: Date?
     public var concurrencyToken: String?
     public var creationDate: Date?
     public var properties: String?
@@ -23,8 +24,9 @@ public struct OAuthAuthorizationDto: Codable, JSONEncodable, Hashable {
     public var applicationId: String?
     public var tokensCount: Int?
 
-    public init(id: String? = nil, concurrencyToken: String? = nil, creationDate: Date? = nil, properties: String? = nil, scopes: String? = nil, status: String? = nil, subject: String? = nil, type: String? = nil, applicationId: String? = nil, tokensCount: Int? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, concurrencyToken: String? = nil, creationDate: Date? = nil, properties: String? = nil, scopes: String? = nil, status: String? = nil, subject: String? = nil, type: String? = nil, applicationId: String? = nil, tokensCount: Int? = nil) {
         self.id = id
+        self.timestamp = timestamp
         self.concurrencyToken = concurrencyToken
         self.creationDate = creationDate
         self.properties = properties
@@ -38,6 +40,7 @@ public struct OAuthAuthorizationDto: Codable, JSONEncodable, Hashable {
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
+        case timestamp
         case concurrencyToken
         case creationDate
         case properties
@@ -54,6 +57,7 @@ public struct OAuthAuthorizationDto: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
+        try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(concurrencyToken, forKey: .concurrencyToken)
         try container.encodeIfPresent(creationDate, forKey: .creationDate)
         try container.encodeIfPresent(properties, forKey: .properties)

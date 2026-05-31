@@ -1,21 +1,27 @@
 # LoansAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createLoanApplicationAsync**](LoansAPI.md#createloanapplicationasync) | **POST** /api/v2/AccountingService/Loans/Applications | Creates a loan application
 [**createLoanAsync**](LoansAPI.md#createloanasync) | **POST** /api/v2/AccountingService/Loans | Creates a new loan
+[**createLoanTypeAsync**](LoansAPI.md#createloantypeasync) | **POST** /api/v2/AccountingService/Loans/Types | Creates a loan type
 [**deleteLoanApplicationAsync**](LoansAPI.md#deleteloanapplicationasync) | **DELETE** /api/v2/AccountingService/Loans/Applications/{applicationId} | Deletes a loan application
 [**deleteLoanAsync**](LoansAPI.md#deleteloanasync) | **DELETE** /api/v2/AccountingService/Loans/{loanId} | Deletes a loan
+[**deleteLoanTypeAsync**](LoansAPI.md#deleteloantypeasync) | **DELETE** /api/v2/AccountingService/Loans/Types/{loanTypeId} | Deletes a loan type
 [**getLoanApplicationDetailsAsync**](LoansAPI.md#getloanapplicationdetailsasync) | **GET** /api/v2/AccountingService/Loans/Applications/{applicationId} | Gets a loan application by ID
 [**getLoanApplicationsAsync**](LoansAPI.md#getloanapplicationsasync) | **GET** /api/v2/AccountingService/Loans/Applications | Gets all loan applications
 [**getLoanApplicationsCountAsync**](LoansAPI.md#getloanapplicationscountasync) | **GET** /api/v2/AccountingService/Loans/Applications/Count | Counts loan applications
 [**getLoanDetailsAsync**](LoansAPI.md#getloandetailsasync) | **GET** /api/v2/AccountingService/Loans/{loanId} | Gets a loan by ID
+[**getLoanTypeByIdAsync**](LoansAPI.md#getloantypebyidasync) | **GET** /api/v2/AccountingService/Loans/Types/{loanTypeId} | Gets a loan type by ID
+[**getLoanTypesAsync**](LoansAPI.md#getloantypesasync) | **GET** /api/v2/AccountingService/Loans/Types | Gets all loan types
+[**getLoanTypesCountAsync**](LoansAPI.md#getloantypescountasync) | **GET** /api/v2/AccountingService/Loans/Types/Count | Counts loan types
 [**getLoansAsync**](LoansAPI.md#getloansasync) | **GET** /api/v2/AccountingService/Loans | Gets all loans
 [**getLoansCountAsync**](LoansAPI.md#getloanscountasync) | **GET** /api/v2/AccountingService/Loans/Count | Counts loans
 [**updateLoanApplicationAsync**](LoansAPI.md#updateloanapplicationasync) | **PUT** /api/v2/AccountingService/Loans/Applications/{applicationId} | Updates a loan application
 [**updateLoanAsync**](LoansAPI.md#updateloanasync) | **PUT** /api/v2/AccountingService/Loans/{loanId} | Updates a loan
+[**updateLoanTypeAsync**](LoansAPI.md#updateloantypeasync) | **PUT** /api/v2/AccountingService/Loans/Types/{loanTypeId} | Updates a loan type
 
 
 # **createLoanApplicationAsync**
@@ -130,6 +136,62 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **createLoanTypeAsync**
+```swift
+    open class func createLoanTypeAsync(tenantId: UUID, loanTypeCreateDto: LoanTypeCreateDto, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Creates a loan type
+
+Creates a new loan type for the current tenant.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let loanTypeCreateDto = LoanTypeCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example") // LoanTypeCreateDto | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Creates a loan type
+LoansAPI.createLoanTypeAsync(tenantId: tenantId, loanTypeCreateDto: loanTypeCreateDto, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **loanTypeCreateDto** | [**LoanTypeCreateDto**](LoanTypeCreateDto.md) |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **deleteLoanApplicationAsync**
 ```swift
     open class func deleteLoanApplicationAsync(tenantId: UUID, applicationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
@@ -224,6 +286,62 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **loanId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deleteLoanTypeAsync**
+```swift
+    open class func deleteLoanTypeAsync(tenantId: UUID, loanTypeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Deletes a loan type
+
+Deletes the specified loan type.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let loanTypeId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Deletes a loan type
+LoansAPI.deleteLoanTypeAsync(tenantId: tenantId, loanTypeId: loanTypeId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **loanTypeId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 
@@ -462,6 +580,170 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **getLoanTypeByIdAsync**
+```swift
+    open class func getLoanTypeByIdAsync(tenantId: UUID, loanTypeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: LoanTypeDtoEnvelope?, _ error: Error?) -> Void)
+```
+
+Gets a loan type by ID
+
+Retrieves the details of a loan type using its unique ID.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let loanTypeId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Gets a loan type by ID
+LoansAPI.getLoanTypeByIdAsync(tenantId: tenantId, loanTypeId: loanTypeId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **loanTypeId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**LoanTypeDtoEnvelope**](LoanTypeDtoEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getLoanTypesAsync**
+```swift
+    open class func getLoanTypesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: LoanTypeDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
+```
+
+Gets all loan types
+
+Retrieves all loan types for the current tenant with OData support.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Gets all loan types
+LoansAPI.getLoanTypesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**LoanTypeDtoIReadOnlyListEnvelope**](LoanTypeDtoIReadOnlyListEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getLoanTypesCountAsync**
+```swift
+    open class func getLoanTypesCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+```
+
+Counts loan types
+
+Gets the count of loan types for the current tenant.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Counts loan types
+LoansAPI.getLoanTypesCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**Int32Envelope**](Int32Envelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **getLoansAsync**
 ```swift
     open class func getLoansAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: LoanDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
@@ -668,6 +950,64 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **loanId** | **UUID** |  | 
  **loanUpdateDto** | [**LoanUpdateDto**](LoanUpdateDto.md) |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **updateLoanTypeAsync**
+```swift
+    open class func updateLoanTypeAsync(tenantId: UUID, loanTypeId: UUID, loanTypeUpdateDto: LoanTypeUpdateDto, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Updates a loan type
+
+Updates the specified loan type.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let loanTypeId = 987 // UUID | 
+let loanTypeUpdateDto = LoanTypeUpdateDto(name: "name_example", description: "description_example") // LoanTypeUpdateDto | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Updates a loan type
+LoansAPI.updateLoanTypeAsync(tenantId: tenantId, loanTypeId: loanTypeId, loanTypeUpdateDto: loanTypeUpdateDto, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **loanTypeId** | **UUID** |  | 
+ **loanTypeUpdateDto** | [**LoanTypeUpdateDto**](LoanTypeUpdateDto.md) |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 

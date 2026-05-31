@@ -1,6 +1,6 @@
 # ItemTypesAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 # **countItemTypesAsync**
 ```swift
-    open class func countItemTypesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countItemTypesAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count item types
@@ -26,7 +26,7 @@ Counts all item types for the specified tenant.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let tenantId = 987 // UUID | 
+let tenantId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
@@ -47,7 +47,7 @@ ItemTypesAPI.countItemTypesAsync(tenantId: tenantId, apiVersion: apiVersion, xAp
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenantId** | **UUID** |  | 
+ **tenantId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 
@@ -180,7 +180,7 @@ No authorization required
 
 # **getItemTypeByIdAsync**
 ```swift
-    open class func getItemTypeByIdAsync(itemTypeID: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemTypeDtoEnvelope?, _ error: Error?) -> Void)
+    open class func getItemTypeByIdAsync(itemTypeID: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemTypeDtoEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get item type by ID
@@ -193,11 +193,12 @@ Retrieves a specific item type by its ID.
 import OpenAPIClient
 
 let itemTypeID = 987 // UUID | 
+let tenantId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Get item type by ID
-ItemTypesAPI.getItemTypeByIdAsync(itemTypeID: itemTypeID, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemTypesAPI.getItemTypeByIdAsync(itemTypeID: itemTypeID, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -214,6 +215,7 @@ ItemTypesAPI.getItemTypeByIdAsync(itemTypeID: itemTypeID, apiVersion: apiVersion
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **itemTypeID** | **UUID** |  | 
+ **tenantId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 
@@ -234,7 +236,7 @@ No authorization required
 
 # **getItemTypesAsync**
 ```swift
-    open class func getItemTypesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemTypeDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getItemTypesAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemTypeDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all item types
@@ -246,7 +248,7 @@ Retrieves all item types for the specified tenant using OData query options.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let tenantId = 987 // UUID | 
+let tenantId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
@@ -267,7 +269,7 @@ ItemTypesAPI.getItemTypesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiV
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenantId** | **UUID** |  | 
+ **tenantId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 

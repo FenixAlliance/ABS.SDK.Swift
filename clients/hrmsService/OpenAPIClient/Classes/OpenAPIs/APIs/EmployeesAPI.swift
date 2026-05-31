@@ -292,13 +292,13 @@ open class EmployeesAPI {
      - parameter employeeId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter body: (body)  (optional)
+     - parameter employeeProfileUpdateDto: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func updateEmployeeAsync(tenantId: UUID, employeeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, body: AnyCodable? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return updateEmployeeAsyncWithRequestBuilder(tenantId: tenantId, employeeId: employeeId, apiVersion: apiVersion, xApiVersion: xApiVersion, body: body).execute(apiResponseQueue) { result in
+    open class func updateEmployeeAsync(tenantId: UUID, employeeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, employeeProfileUpdateDto: EmployeeProfileUpdateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return updateEmployeeAsyncWithRequestBuilder(tenantId: tenantId, employeeId: employeeId, apiVersion: apiVersion, xApiVersion: xApiVersion, employeeProfileUpdateDto: employeeProfileUpdateDto).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -316,16 +316,16 @@ open class EmployeesAPI {
      - parameter employeeId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter body: (body)  (optional)
+     - parameter employeeProfileUpdateDto: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func updateEmployeeAsyncWithRequestBuilder(tenantId: UUID, employeeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, body: AnyCodable? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func updateEmployeeAsyncWithRequestBuilder(tenantId: UUID, employeeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, employeeProfileUpdateDto: EmployeeProfileUpdateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/HrmsService/Employees/{employeeId}"
         let employeeIdPreEscape = "\(APIHelper.mapValueToPathItem(employeeId))"
         let employeeIdPostEscape = employeeIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{employeeId}", with: employeeIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: employeeProfileUpdateDto)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

@@ -68,6 +68,7 @@ open class SocialGroupsAPI {
      Create a social group
      
      - parameter tenantId: (query)  
+     - parameter socialProfileId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter socialGroupCreateDto: (body)  (optional)
@@ -75,8 +76,8 @@ open class SocialGroupsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func createSocialGroupAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialGroupCreateDto: SocialGroupCreateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return createSocialGroupAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialGroupCreateDto: socialGroupCreateDto).execute(apiResponseQueue) { result in
+    open class func createSocialGroupAsync(tenantId: UUID, socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialGroupCreateDto: SocialGroupCreateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return createSocialGroupAsyncWithRequestBuilder(tenantId: tenantId, socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialGroupCreateDto: socialGroupCreateDto).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -91,12 +92,13 @@ open class SocialGroupsAPI {
      - POST /api/v2/SocialService/SocialGroups
      - Creates a new social group for the specified tenant.
      - parameter tenantId: (query)  
+     - parameter socialProfileId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter socialGroupCreateDto: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func createSocialGroupAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialGroupCreateDto: SocialGroupCreateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func createSocialGroupAsyncWithRequestBuilder(tenantId: UUID, socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialGroupCreateDto: SocialGroupCreateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
         let localVariablePath = "/api/v2/SocialService/SocialGroups"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: socialGroupCreateDto)
@@ -104,6 +106,7 @@ open class SocialGroupsAPI {
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "socialProfileId": (wrappedValue: socialProfileId.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 
@@ -123,6 +126,7 @@ open class SocialGroupsAPI {
      Delete a social group
      
      - parameter tenantId: (query)  
+     - parameter socialProfileId: (query)  
      - parameter socialGroupId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -130,8 +134,8 @@ open class SocialGroupsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func deleteSocialGroupAsync(tenantId: UUID, socialGroupId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return deleteSocialGroupAsyncWithRequestBuilder(tenantId: tenantId, socialGroupId: socialGroupId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func deleteSocialGroupAsync(tenantId: UUID, socialProfileId: UUID, socialGroupId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return deleteSocialGroupAsyncWithRequestBuilder(tenantId: tenantId, socialProfileId: socialProfileId, socialGroupId: socialGroupId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -146,12 +150,13 @@ open class SocialGroupsAPI {
      - DELETE /api/v2/SocialService/SocialGroups/{socialGroupId}
      - Deletes a social group for the specified tenant.
      - parameter tenantId: (query)  
+     - parameter socialProfileId: (query)  
      - parameter socialGroupId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func deleteSocialGroupAsyncWithRequestBuilder(tenantId: UUID, socialGroupId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func deleteSocialGroupAsyncWithRequestBuilder(tenantId: UUID, socialProfileId: UUID, socialGroupId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/SocialService/SocialGroups/{socialGroupId}"
         let socialGroupIdPreEscape = "\(APIHelper.mapValueToPathItem(socialGroupId))"
         let socialGroupIdPostEscape = socialGroupIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -162,6 +167,7 @@ open class SocialGroupsAPI {
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "socialProfileId": (wrappedValue: socialProfileId.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 
@@ -289,6 +295,7 @@ open class SocialGroupsAPI {
      Update a social group
      
      - parameter tenantId: (query)  
+     - parameter socialProfileId: (query)  
      - parameter socialGroupId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -297,8 +304,8 @@ open class SocialGroupsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func updateSocialGroupAsync(tenantId: UUID, socialGroupId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialGroupUpdateDto: SocialGroupUpdateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return updateSocialGroupAsyncWithRequestBuilder(tenantId: tenantId, socialGroupId: socialGroupId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialGroupUpdateDto: socialGroupUpdateDto).execute(apiResponseQueue) { result in
+    open class func updateSocialGroupAsync(tenantId: UUID, socialProfileId: UUID, socialGroupId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialGroupUpdateDto: SocialGroupUpdateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return updateSocialGroupAsyncWithRequestBuilder(tenantId: tenantId, socialProfileId: socialProfileId, socialGroupId: socialGroupId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialGroupUpdateDto: socialGroupUpdateDto).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -313,13 +320,14 @@ open class SocialGroupsAPI {
      - PUT /api/v2/SocialService/SocialGroups/{socialGroupId}
      - Updates an existing social group for the specified tenant.
      - parameter tenantId: (query)  
+     - parameter socialProfileId: (query)  
      - parameter socialGroupId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter socialGroupUpdateDto: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func updateSocialGroupAsyncWithRequestBuilder(tenantId: UUID, socialGroupId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialGroupUpdateDto: SocialGroupUpdateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func updateSocialGroupAsyncWithRequestBuilder(tenantId: UUID, socialProfileId: UUID, socialGroupId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialGroupUpdateDto: SocialGroupUpdateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/SocialService/SocialGroups/{socialGroupId}"
         let socialGroupIdPreEscape = "\(APIHelper.mapValueToPathItem(socialGroupId))"
         let socialGroupIdPostEscape = socialGroupIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -330,6 +338,7 @@ open class SocialGroupsAPI {
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "socialProfileId": (wrappedValue: socialProfileId.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 

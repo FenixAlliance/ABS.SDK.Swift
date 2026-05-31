@@ -1,6 +1,6 @@
 # ItemCategoriesAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 # **countItemCategoriesAsync**
 ```swift
-    open class func countItemCategoriesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countItemCategoriesAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count item categories
@@ -26,7 +26,7 @@ Counts all item categories for the specified tenant.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let tenantId = 987 // UUID | 
+let tenantId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
@@ -47,7 +47,7 @@ ItemCategoriesAPI.countItemCategoriesAsync(tenantId: tenantId, apiVersion: apiVe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenantId** | **UUID** |  | 
+ **tenantId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 
@@ -180,7 +180,7 @@ No authorization required
 
 # **getItemCategoriesAsync**
 ```swift
-    open class func getItemCategoriesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemCategoryDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getItemCategoriesAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemCategoryDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all item categories
@@ -192,7 +192,7 @@ Retrieves all item categories for the specified tenant using OData query options
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let tenantId = 987 // UUID | 
+let tenantId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
@@ -213,7 +213,7 @@ ItemCategoriesAPI.getItemCategoriesAsync(tenantId: tenantId, apiVersion: apiVers
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenantId** | **UUID** |  | 
+ **tenantId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 
@@ -234,7 +234,7 @@ No authorization required
 
 # **getItemCategoryByIdAsync**
 ```swift
-    open class func getItemCategoryByIdAsync(itemCategoryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemCategoryDtoEnvelope?, _ error: Error?) -> Void)
+    open class func getItemCategoryByIdAsync(itemCategoryId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemCategoryDtoEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get item category by ID
@@ -247,11 +247,12 @@ Retrieves a specific item category by its ID.
 import OpenAPIClient
 
 let itemCategoryId = 987 // UUID | 
+let tenantId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Get item category by ID
-ItemCategoriesAPI.getItemCategoryByIdAsync(itemCategoryId: itemCategoryId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemCategoriesAPI.getItemCategoryByIdAsync(itemCategoryId: itemCategoryId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -268,6 +269,7 @@ ItemCategoriesAPI.getItemCategoryByIdAsync(itemCategoryId: itemCategoryId, apiVe
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **itemCategoryId** | **UUID** |  | 
+ **tenantId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 

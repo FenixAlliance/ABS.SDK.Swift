@@ -16,13 +16,15 @@ public struct ItemAttributeOptionDto: Codable, JSONEncodable, Hashable {
     public var timestamp: Date?
     public var name: String?
     public var description: String?
+    public var itemAttributeId: String?
     public var businessID: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, description: String? = nil, businessID: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, description: String? = nil, itemAttributeId: String? = nil, businessID: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
         self.description = description
+        self.itemAttributeId = itemAttributeId
         self.businessID = businessID
     }
 
@@ -31,6 +33,7 @@ public struct ItemAttributeOptionDto: Codable, JSONEncodable, Hashable {
         case timestamp
         case name
         case description
+        case itemAttributeId
         case businessID
     }
 
@@ -42,6 +45,7 @@ public struct ItemAttributeOptionDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(description, forKey: .description)
+        try container.encodeIfPresent(itemAttributeId, forKey: .itemAttributeId)
         try container.encodeIfPresent(businessID, forKey: .businessID)
     }
 }

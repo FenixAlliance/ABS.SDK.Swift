@@ -1,6 +1,6 @@
 # OAuthAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 # **callGet**
 ```swift
-    open class func callGet(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: AuthorizationResultEnvelope?, _ error: Error?) -> Void)
+    open class func callGet(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: AuthResultEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get current user identity
@@ -54,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AuthorizationResultEnvelope**](AuthorizationResultEnvelope.md)
+[**AuthResultEnvelope**](AuthResultEnvelope.md)
 
 ### Authorization
 

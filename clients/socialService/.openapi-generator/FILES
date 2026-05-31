@@ -4,7 +4,8 @@ Cartfile
 OpenAPIClient.podspec
 OpenAPIClient/Classes/OpenAPIs/APIHelper.swift
 OpenAPIClient/Classes/OpenAPIs/APIs.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/FenixAllianceABSWebAPI.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/CompletionsAPI.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/FenixAlliancePortalsWebsiteAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/SocialFeedsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/SocialGroupsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/SocialPostsAPI.swift
@@ -31,6 +32,7 @@ OpenAPIClient/Classes/OpenAPIs/Models/InfoResponse.swift
 OpenAPIClient/Classes/OpenAPIs/Models/Int32Envelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/LoginRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/NotificationDto.swift
+OpenAPIClient/Classes/OpenAPIs/Models/NotificationDtoEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/NotificationDtoListEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/PrivateMessageCreateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/PrivateMessageDto.swift
@@ -86,12 +88,13 @@ Package.swift
 README.md
 docs/AccessTokenResponse.md
 docs/BooleanEnvelope.md
+docs/CompletionsAPI.md
 docs/ConversationCreateDto.md
 docs/ConversationDto.md
 docs/ConversationDtoListEnvelope.md
 docs/EmptyEnvelope.md
 docs/ErrorEnvelope.md
-docs/FenixAllianceABSWebAPI.md
+docs/FenixAlliancePortalsWebsiteAPI.md
 docs/FollowRecordDto.md
 docs/FollowRecordDtoListEnvelope.md
 docs/ForgotPasswordRequest.md
@@ -101,6 +104,7 @@ docs/InfoResponse.md
 docs/Int32Envelope.md
 docs/LoginRequest.md
 docs/NotificationDto.md
+docs/NotificationDtoEnvelope.md
 docs/NotificationDtoListEnvelope.md
 docs/PrivateMessageCreateDto.md
 docs/PrivateMessageDto.md
