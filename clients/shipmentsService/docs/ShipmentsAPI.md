@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getShipmentByIdAsync**](ShipmentsAPI.md#getshipmentbyidasync) | **GET** /api/v2/ShipmentsService/Shipments/{shipmentId} | Get shipment by ID
 [**getShipmentsAsync**](ShipmentsAPI.md#getshipmentsasync) | **GET** /api/v2/ShipmentsService/Shipments | Get all shipments
 [**getShipmentsCountAsync**](ShipmentsAPI.md#getshipmentscountasync) | **GET** /api/v2/ShipmentsService/Shipments/Count | Get shipments count
+[**patchShipmentAsync**](ShipmentsAPI.md#patchshipmentasync) | **PATCH** /api/v2/ShipmentsService/Shipments/{shipmentId} | Patch a shipment
 [**updateShipmentAsync**](ShipmentsAPI.md#updateshipmentasync) | **PUT** /api/v2/ShipmentsService/Shipments/{shipmentId} | Update a shipment
 
 
@@ -29,7 +30,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let shipmentCreateDto = ShipmentCreateDto(id: 123, timestamp: Date(), trackingCode: "trackingCode_example", isInternational: false, expectedShippingDate: Date(), expectedDeliveryDate: Date(), shippingTerms: "shippingTerms_example", orderID: "orderID_example") // ShipmentCreateDto |  (optional)
+let shipmentCreateDto = ShipmentCreateDto(id: 123, timestamp: Date(), trackingCode: "trackingCode_example", isInternational: false, expectedShippingDate: Date(), expectedDeliveryDate: Date(), shippingTerms: "shippingTerms_example", orderId: "orderId_example") // ShipmentCreateDto |  (optional)
 
 // Create a shipment
 ShipmentsAPI.createShipmentAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, shipmentCreateDto: shipmentCreateDto) { (response, error) in
@@ -288,6 +289,64 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchShipmentAsync**
+```swift
+    open class func patchShipmentAsync(tenantId: UUID, shipmentId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a shipment
+
+Partially updates an existing shipment using JSON Patch.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let shipmentId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a shipment
+ShipmentsAPI.patchShipmentAsync(tenantId: tenantId, shipmentId: shipmentId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **shipmentId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateShipmentAsync**
 ```swift
     open class func updateShipmentAsync(tenantId: UUID, shipmentId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, shipmentUpdateDto: ShipmentUpdateDto? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
@@ -306,7 +365,7 @@ let tenantId = 987 // UUID |
 let shipmentId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let shipmentUpdateDto = ShipmentUpdateDto(trackingCode: "trackingCode_example", isInternational: false, shipped: false, delivered: false, shipmentTimestamp: Date(), deliveryTimestamp: Date(), expectedShippingDate: Date(), expectedDeliveryDate: Date(), shippingTerms: "shippingTerms_example", orderID: "orderID_example") // ShipmentUpdateDto |  (optional)
+let shipmentUpdateDto = ShipmentUpdateDto(trackingCode: "trackingCode_example", isInternational: false, shipped: false, delivered: false, shipmentTimestamp: Date(), deliveryTimestamp: Date(), expectedShippingDate: Date(), expectedDeliveryDate: Date(), shippingTerms: "shippingTerms_example", orderId: "orderId_example") // ShipmentUpdateDto |  (optional)
 
 // Update a shipment
 ShipmentsAPI.updateShipmentAsync(tenantId: tenantId, shipmentId: shipmentId, apiVersion: apiVersion, xApiVersion: xApiVersion, shipmentUpdateDto: shipmentUpdateDto) { (response, error) in

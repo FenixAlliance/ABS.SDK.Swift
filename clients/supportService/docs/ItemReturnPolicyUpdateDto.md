@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **title** | **String** |  | [optional] 
 **description** | **String** |  | [optional] 
-**shippingCourierID** | **String** |  | [optional] 
+**shippingCourierId** | **String** |  | [optional] 
 **isFree** | **Bool** |  | [optional] 
 **reduce** | **Bool** |  | [optional] 
 **isEnabled** | **Bool** |  | [optional] 
@@ -18,12 +18,12 @@ Name | Type | Description | Notes
 **years** | **Int** |  | [optional] 
 **value** | **Double** |  | [optional] 
 **percentage** | **Double** |  | [optional] 
-**currencyID** | **String** |  | [optional] 
-**countryID** | **String** |  | [optional] 
-**countryStateID** | **String** |  | [optional] 
+**currencyId** | **String** |  | [optional] 
+**countryId** | **String** |  | [optional] 
+**countryStateId** | **String** |  | [optional] 
 **customState** | **String** |  | [optional] 
 **customCity** | **String** |  | [optional] 
-**cityID** | **String** |  | [optional] 
+**cityId** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

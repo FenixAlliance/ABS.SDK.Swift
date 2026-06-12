@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getSystemPortalById**](PortalsAPI.md#getsystemportalbyid) | **GET** /api/v2/SystemService/Portals/{portalId} | Retrieve a single system portal by its ID
 [**getSystemPortals**](PortalsAPI.md#getsystemportals) | **GET** /api/v2/SystemService/Portals | Retrieve a list of system portals
 [**getSystemPortalsCount**](PortalsAPI.md#getsystemportalscount) | **GET** /api/v2/SystemService/Portals/Count | Get the count of system portals
+[**patchSystemPortal**](PortalsAPI.md#patchsystemportal) | **PATCH** /api/v2/SystemService/Portals/{portalId} | Partially update a system portal
 [**updateSystemPortal**](PortalsAPI.md#updatesystemportal) | **PUT** /api/v2/SystemService/Portals/{portalId} | Update a system portal
 
 
@@ -28,7 +29,7 @@ import OpenAPIClient
 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let webPortalCreateDto = WebPortalCreateDto(id: 123, timestamp: Date(), root: false, title: "title_example", domain: "domain_example", disabled: false, description: "description_example", websiteThemeID: "websiteThemeID_example", businessDomainID: "businessDomainID_example", businessPortalApplicationID: "businessPortalApplicationID_example") // WebPortalCreateDto |  (optional)
+let webPortalCreateDto = WebPortalCreateDto(id: 123, timestamp: Date(), root: false, title: "title_example", domain: "domain_example", disabled: false, description: "description_example", websiteThemeId: "websiteThemeId_example", businessDomainId: "businessDomainId_example", businessPortalApplicationId: "businessPortalApplicationId_example") // WebPortalCreateDto |  (optional)
 
 // Create a new system portal
 PortalsAPI.createSystemPortal(apiVersion: apiVersion, xApiVersion: xApiVersion, webPortalCreateDto: webPortalCreateDto) { (response, error) in
@@ -278,6 +279,62 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchSystemPortal**
+```swift
+    open class func patchSystemPortal(portalId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Partially update a system portal
+
+Partially update an existing web portal in the system using a JSON Patch document
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let portalId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Partially update a system portal
+PortalsAPI.patchSystemPortal(portalId: portalId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **portalId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateSystemPortal**
 ```swift
     open class func updateSystemPortal(portalId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, webPortalUpdateDto: WebPortalUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
@@ -295,7 +352,7 @@ import OpenAPIClient
 let portalId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let webPortalUpdateDto = WebPortalUpdateDto(root: false, title: "title_example", domain: "domain_example", disabled: false, description: "description_example", websiteThemeID: "websiteThemeID_example", businessDomainID: "businessDomainID_example", businessPortalApplicationID: "businessPortalApplicationID_example") // WebPortalUpdateDto |  (optional)
+let webPortalUpdateDto = WebPortalUpdateDto(root: false, title: "title_example", domain: "domain_example", disabled: false, description: "description_example", websiteThemeId: "websiteThemeId_example", businessDomainId: "businessDomainId_example", businessPortalApplicationId: "businessPortalApplicationId_example") // WebPortalUpdateDto |  (optional)
 
 // Update a system portal
 PortalsAPI.updateSystemPortal(portalId: portalId, apiVersion: apiVersion, xApiVersion: xApiVersion, webPortalUpdateDto: webPortalUpdateDto) { (response, error) in

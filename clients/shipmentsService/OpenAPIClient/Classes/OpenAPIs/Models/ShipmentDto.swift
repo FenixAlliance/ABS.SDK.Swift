@@ -37,10 +37,10 @@ public struct ShipmentDto: Codable, JSONEncodable, Hashable {
     public var expectedShippingDate: Date?
     public var expectedDeliveryDate: Date?
     public var shippingTerms: ShippingTerms?
-    public var orderID: String?
-    public var businessID: String?
+    public var orderId: String?
+    public var tenantId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, trackingCode: String? = nil, isInternational: Bool? = nil, shipped: Bool? = nil, delivered: Bool? = nil, shipmentTimestamp: Date? = nil, deliveryTimestamp: Date? = nil, expectedShippingDate: Date? = nil, expectedDeliveryDate: Date? = nil, shippingTerms: ShippingTerms? = nil, orderID: String? = nil, businessID: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, trackingCode: String? = nil, isInternational: Bool? = nil, shipped: Bool? = nil, delivered: Bool? = nil, shipmentTimestamp: Date? = nil, deliveryTimestamp: Date? = nil, expectedShippingDate: Date? = nil, expectedDeliveryDate: Date? = nil, shippingTerms: ShippingTerms? = nil, orderId: String? = nil, tenantId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.trackingCode = trackingCode
@@ -52,8 +52,8 @@ public struct ShipmentDto: Codable, JSONEncodable, Hashable {
         self.expectedShippingDate = expectedShippingDate
         self.expectedDeliveryDate = expectedDeliveryDate
         self.shippingTerms = shippingTerms
-        self.orderID = orderID
-        self.businessID = businessID
+        self.orderId = orderId
+        self.tenantId = tenantId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -68,8 +68,8 @@ public struct ShipmentDto: Codable, JSONEncodable, Hashable {
         case expectedShippingDate
         case expectedDeliveryDate
         case shippingTerms
-        case orderID
-        case businessID
+        case orderId
+        case tenantId
     }
 
     // Encodable protocol methods
@@ -87,8 +87,8 @@ public struct ShipmentDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(expectedShippingDate, forKey: .expectedShippingDate)
         try container.encodeIfPresent(expectedDeliveryDate, forKey: .expectedDeliveryDate)
         try container.encodeIfPresent(shippingTerms, forKey: .shippingTerms)
-        try container.encodeIfPresent(orderID, forKey: .orderID)
-        try container.encodeIfPresent(businessID, forKey: .businessID)
+        try container.encodeIfPresent(orderId, forKey: .orderId)
+        try container.encodeIfPresent(tenantId, forKey: .tenantId)
     }
 }
 

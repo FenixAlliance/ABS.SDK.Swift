@@ -22,14 +22,12 @@ public struct ItemWarrantyPolicyDto: Codable, JSONEncodable, Hashable {
     static let yearsRule = NumericRule<Int>(minimum: 0, exclusiveMinimum: false, maximum: 2147483647, exclusiveMaximum: false, multipleOf: nil)
     static let valueRule = NumericRule<Double>(minimum: 0, exclusiveMinimum: false, maximum: 999999999999999, exclusiveMaximum: false, multipleOf: nil)
     static let percentageRule = NumericRule<Double>(minimum: 0, exclusiveMinimum: false, maximum: 100, exclusiveMaximum: false, multipleOf: nil)
-    static let currencyIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
-    static let countryIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
-    static let countryStateIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
+    static let currencyIdRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
+    static let countryIdRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
+    static let countryStateIdRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     static let customStateRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     static let customCityRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
-    static let cityIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
-    static let businessIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
-    static let businessProfileRecordIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
+    static let cityIdRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     public var id: String?
     public var timestamp: Date?
     public var isExtendedWarranty: Bool?
@@ -48,16 +46,16 @@ public struct ItemWarrantyPolicyDto: Codable, JSONEncodable, Hashable {
     public var years: Int?
     public var value: Double?
     public var percentage: Double?
-    public var currencyID: String?
-    public var countryID: String?
-    public var countryStateID: String?
+    public var currencyId: String?
+    public var countryId: String?
+    public var countryStateId: String?
     public var customState: String?
     public var customCity: String?
-    public var cityID: String?
-    public var businessID: String
-    public var businessProfileRecordID: String?
+    public var cityId: String?
+    public var tenantId: String?
+    public var enrollmentId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, isExtendedWarranty: Bool? = nil, code: String, title: String, description: String? = nil, isFree: Bool? = nil, reduce: Bool? = nil, isEnabled: Bool? = nil, isDefault: Bool? = nil, allowInternational: Bool? = nil, hours: Int? = nil, days: Int? = nil, weeks: Int? = nil, months: Int? = nil, years: Int? = nil, value: Double? = nil, percentage: Double? = nil, currencyID: String? = nil, countryID: String? = nil, countryStateID: String? = nil, customState: String? = nil, customCity: String? = nil, cityID: String? = nil, businessID: String, businessProfileRecordID: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, isExtendedWarranty: Bool? = nil, code: String, title: String, description: String? = nil, isFree: Bool? = nil, reduce: Bool? = nil, isEnabled: Bool? = nil, isDefault: Bool? = nil, allowInternational: Bool? = nil, hours: Int? = nil, days: Int? = nil, weeks: Int? = nil, months: Int? = nil, years: Int? = nil, value: Double? = nil, percentage: Double? = nil, currencyId: String? = nil, countryId: String? = nil, countryStateId: String? = nil, customState: String? = nil, customCity: String? = nil, cityId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.isExtendedWarranty = isExtendedWarranty
@@ -76,14 +74,14 @@ public struct ItemWarrantyPolicyDto: Codable, JSONEncodable, Hashable {
         self.years = years
         self.value = value
         self.percentage = percentage
-        self.currencyID = currencyID
-        self.countryID = countryID
-        self.countryStateID = countryStateID
+        self.currencyId = currencyId
+        self.countryId = countryId
+        self.countryStateId = countryStateId
         self.customState = customState
         self.customCity = customCity
-        self.cityID = cityID
-        self.businessID = businessID
-        self.businessProfileRecordID = businessProfileRecordID
+        self.cityId = cityId
+        self.tenantId = tenantId
+        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -105,14 +103,14 @@ public struct ItemWarrantyPolicyDto: Codable, JSONEncodable, Hashable {
         case years
         case value
         case percentage
-        case currencyID
-        case countryID
-        case countryStateID
+        case currencyId
+        case countryId
+        case countryStateId
         case customState
         case customCity
-        case cityID
-        case businessID
-        case businessProfileRecordID
+        case cityId
+        case tenantId
+        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -137,14 +135,14 @@ public struct ItemWarrantyPolicyDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(years, forKey: .years)
         try container.encodeIfPresent(value, forKey: .value)
         try container.encodeIfPresent(percentage, forKey: .percentage)
-        try container.encodeIfPresent(currencyID, forKey: .currencyID)
-        try container.encodeIfPresent(countryID, forKey: .countryID)
-        try container.encodeIfPresent(countryStateID, forKey: .countryStateID)
+        try container.encodeIfPresent(currencyId, forKey: .currencyId)
+        try container.encodeIfPresent(countryId, forKey: .countryId)
+        try container.encodeIfPresent(countryStateId, forKey: .countryStateId)
         try container.encodeIfPresent(customState, forKey: .customState)
         try container.encodeIfPresent(customCity, forKey: .customCity)
-        try container.encodeIfPresent(cityID, forKey: .cityID)
-        try container.encode(businessID, forKey: .businessID)
-        try container.encodeIfPresent(businessProfileRecordID, forKey: .businessProfileRecordID)
+        try container.encodeIfPresent(cityId, forKey: .cityId)
+        try container.encodeIfPresent(tenantId, forKey: .tenantId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

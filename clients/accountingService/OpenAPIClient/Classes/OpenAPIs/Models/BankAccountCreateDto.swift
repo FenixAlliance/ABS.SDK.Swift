@@ -14,6 +14,7 @@ public struct BankAccountCreateDto: Codable, JSONEncodable, Hashable {
 
     static let bankIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let bankProfileIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
+    static let walletIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var name: String?
@@ -21,11 +22,11 @@ public struct BankAccountCreateDto: Codable, JSONEncodable, Hashable {
     public var swift: String?
     public var branchCode: String?
     public var bankAccountNumber: String?
-    public var qualifiedName: String?
     public var bankId: String?
     public var bankProfileId: String?
+    public var walletId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil, iban: String? = nil, swift: String? = nil, branchCode: String? = nil, bankAccountNumber: String? = nil, qualifiedName: String? = nil, bankId: String? = nil, bankProfileId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil, iban: String? = nil, swift: String? = nil, branchCode: String? = nil, bankAccountNumber: String? = nil, bankId: String? = nil, bankProfileId: String? = nil, walletId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
@@ -33,9 +34,9 @@ public struct BankAccountCreateDto: Codable, JSONEncodable, Hashable {
         self.swift = swift
         self.branchCode = branchCode
         self.bankAccountNumber = bankAccountNumber
-        self.qualifiedName = qualifiedName
         self.bankId = bankId
         self.bankProfileId = bankProfileId
+        self.walletId = walletId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -46,9 +47,9 @@ public struct BankAccountCreateDto: Codable, JSONEncodable, Hashable {
         case swift
         case branchCode
         case bankAccountNumber
-        case qualifiedName
         case bankId
         case bankProfileId
+        case walletId
     }
 
     // Encodable protocol methods
@@ -62,9 +63,9 @@ public struct BankAccountCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(swift, forKey: .swift)
         try container.encodeIfPresent(branchCode, forKey: .branchCode)
         try container.encodeIfPresent(bankAccountNumber, forKey: .bankAccountNumber)
-        try container.encodeIfPresent(qualifiedName, forKey: .qualifiedName)
         try container.encodeIfPresent(bankId, forKey: .bankId)
         try container.encodeIfPresent(bankProfileId, forKey: .bankProfileId)
+        try container.encodeIfPresent(walletId, forKey: .walletId)
     }
 }
 

@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**deleteLoyaltyProgramAsync**](LoyaltyProgramsAPI.md#deleteloyaltyprogramasync) | **DELETE** /api/v2/SalesService/LoyaltyPrograms/{loyaltyProgramId} | Delete a loyalty program
 [**getLoyaltyProgramAsync**](LoyaltyProgramsAPI.md#getloyaltyprogramasync) | **GET** /api/v2/SalesService/LoyaltyPrograms/{loyaltyProgramId} | Get loyalty program by ID
 [**getLoyaltyProgramsAsync**](LoyaltyProgramsAPI.md#getloyaltyprogramsasync) | **GET** /api/v2/SalesService/LoyaltyPrograms | Get loyalty programs
+[**patchLoyaltyProgramAsync**](LoyaltyProgramsAPI.md#patchloyaltyprogramasync) | **PATCH** /api/v2/SalesService/LoyaltyPrograms/{loyaltyProgramId} | Patch a loyalty program
 [**updateLoyaltyProgramAsync**](LoyaltyProgramsAPI.md#updateloyaltyprogramasync) | **PUT** /api/v2/SalesService/LoyaltyPrograms/{loyaltyProgramId} | Update a loyalty program
 
 
@@ -264,6 +265,60 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchLoyaltyProgramAsync**
+```swift
+    open class func patchLoyaltyProgramAsync(tenantId: UUID, loyaltyProgramId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a loyalty program
+
+Partially updates an existing loyalty program using a JSON Patch document.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let loyaltyProgramId = 987 // UUID | 
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a loyalty program
+LoyaltyProgramsAPI.patchLoyaltyProgramAsync(tenantId: tenantId, loyaltyProgramId: loyaltyProgramId, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **loyaltyProgramId** | **UUID** |  | 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -25,11 +25,11 @@ public struct InquiryRequestDto: Codable, JSONEncodable, Hashable {
     public var phone: String?
     public var message: String?
     public var tenantId: String?
-    public var businessProfileRecordId: String?
-    public var accountHolderId: String?
+    public var enrollmentId: String?
+    public var userId: String?
     public var socialProfileId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, type: String? = nil, name: String? = nil, lastName: String? = nil, email: String? = nil, organizationName: String? = nil, jobRole: String? = nil, organizationDomain: String? = nil, countryId: String? = nil, phone: String? = nil, message: String? = nil, tenantId: String? = nil, businessProfileRecordId: String? = nil, accountHolderId: String? = nil, socialProfileId: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, type: String? = nil, name: String? = nil, lastName: String? = nil, email: String? = nil, organizationName: String? = nil, jobRole: String? = nil, organizationDomain: String? = nil, countryId: String? = nil, phone: String? = nil, message: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil, userId: String? = nil, socialProfileId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.type = type
@@ -43,8 +43,8 @@ public struct InquiryRequestDto: Codable, JSONEncodable, Hashable {
         self.phone = phone
         self.message = message
         self.tenantId = tenantId
-        self.businessProfileRecordId = businessProfileRecordId
-        self.accountHolderId = accountHolderId
+        self.enrollmentId = enrollmentId
+        self.userId = userId
         self.socialProfileId = socialProfileId
     }
 
@@ -62,8 +62,8 @@ public struct InquiryRequestDto: Codable, JSONEncodable, Hashable {
         case phone
         case message
         case tenantId
-        case businessProfileRecordId
-        case accountHolderId
+        case enrollmentId
+        case userId
         case socialProfileId
     }
 
@@ -84,8 +84,8 @@ public struct InquiryRequestDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(phone, forKey: .phone)
         try container.encodeIfPresent(message, forKey: .message)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(businessProfileRecordId, forKey: .businessProfileRecordId)
-        try container.encodeIfPresent(accountHolderId, forKey: .accountHolderId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
+        try container.encodeIfPresent(userId, forKey: .userId)
         try container.encodeIfPresent(socialProfileId, forKey: .socialProfileId)
     }
 }

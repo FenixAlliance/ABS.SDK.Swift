@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getShippingMethodByIdAsync**](ShippingMethodsAPI.md#getshippingmethodbyidasync) | **GET** /api/v2/ShipmentsService/ShippingMethods/{methodId} | Get shipping method by ID
 [**getShippingMethodsAsync**](ShippingMethodsAPI.md#getshippingmethodsasync) | **GET** /api/v2/ShipmentsService/ShippingMethods | Get all shipping methods
 [**getShippingMethodsCountAsync**](ShippingMethodsAPI.md#getshippingmethodscountasync) | **GET** /api/v2/ShipmentsService/ShippingMethods/Count | Get shipping methods count
+[**patchShippingMethodAsync**](ShippingMethodsAPI.md#patchshippingmethodasync) | **PATCH** /api/v2/ShipmentsService/ShippingMethods/{methodId} | Patch a shipping method
 [**updateShippingMethodAsync**](ShippingMethodsAPI.md#updateshippingmethodasync) | **PUT** /api/v2/ShipmentsService/ShippingMethods/{methodId} | Update a shipping method
 
 
@@ -29,7 +30,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let shippingMethodCreateDto = ShippingMethodCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", cost: 123, taxable: false, taxIncluded: false, currencyID: "currencyID_example", shippingClassCalculationType: "shippingClassCalculationType_example") // ShippingMethodCreateDto |  (optional)
+let shippingMethodCreateDto = ShippingMethodCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", cost: 123, taxable: false, taxIncluded: false, currencyId: "currencyId_example", shippingClassCalculationType: "shippingClassCalculationType_example") // ShippingMethodCreateDto |  (optional)
 
 // Create a shipping method
 ShippingMethodsAPI.createShippingMethodAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, shippingMethodCreateDto: shippingMethodCreateDto) { (response, error) in
@@ -288,6 +289,64 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchShippingMethodAsync**
+```swift
+    open class func patchShippingMethodAsync(tenantId: UUID, methodId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a shipping method
+
+Partially updates an existing shipping method using JSON Patch.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let methodId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a shipping method
+ShippingMethodsAPI.patchShippingMethodAsync(tenantId: tenantId, methodId: methodId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **methodId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateShippingMethodAsync**
 ```swift
     open class func updateShippingMethodAsync(tenantId: UUID, methodId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, shippingMethodUpdateDto: ShippingMethodUpdateDto? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
@@ -306,7 +365,7 @@ let tenantId = 987 // UUID |
 let methodId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let shippingMethodUpdateDto = ShippingMethodUpdateDto(name: "name_example", description: "description_example", cost: 123, taxable: false, taxIncluded: false, currencyID: "currencyID_example", shippingClassCalculationType: "shippingClassCalculationType_example") // ShippingMethodUpdateDto |  (optional)
+let shippingMethodUpdateDto = ShippingMethodUpdateDto(name: "name_example", description: "description_example", cost: 123, taxable: false, taxIncluded: false, currencyId: "currencyId_example", shippingClassCalculationType: "shippingClassCalculationType_example") // ShippingMethodUpdateDto |  (optional)
 
 // Update a shipping method
 ShippingMethodsAPI.updateShippingMethodAsync(tenantId: tenantId, methodId: methodId, apiVersion: apiVersion, xApiVersion: xApiVersion, shippingMethodUpdateDto: shippingMethodUpdateDto) { (response, error) in

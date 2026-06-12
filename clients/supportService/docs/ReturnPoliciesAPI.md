@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getReturnPoliciesAsync**](ReturnPoliciesAPI.md#getreturnpoliciesasync) | **GET** /api/v2/SupportService/ReturnPolicies | Retrieve a list of return policies
 [**getReturnPoliciesCountAsync**](ReturnPoliciesAPI.md#getreturnpoliciescountasync) | **GET** /api/v2/SupportService/ReturnPolicies/Count | Get the count of return policies
 [**getReturnPolicyAsync**](ReturnPoliciesAPI.md#getreturnpolicyasync) | **GET** /api/v2/SupportService/ReturnPolicies/{returnPolicyId} | Retrieve a return policy by ID
+[**patchReturnPolicyAsync**](ReturnPoliciesAPI.md#patchreturnpolicyasync) | **PATCH** /api/v2/SupportService/ReturnPolicies/{returnPolicyId} | Patch a return policy
 [**updateReturnPolicyAsync**](ReturnPoliciesAPI.md#updatereturnpolicyasync) | **PUT** /api/v2/SupportService/ReturnPolicies/{returnPolicyId} | Update a return policy
 
 
@@ -27,7 +28,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let itemReturnPolicyCreateDto = ItemReturnPolicyCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", shippingCourierID: "shippingCourierID_example", isFree: false, reduce: false, isEnabled: false, isDefault: false, allowInternational: false, hours: 123, days: 123, weeks: 123, months: 123, years: 123, value: 123, percentage: 123, currencyID: "currencyID_example", countryID: "countryID_example", countryStateID: "countryStateID_example", customState: "customState_example", customCity: "customCity_example", cityID: "cityID_example") // ItemReturnPolicyCreateDto |  (optional)
+let itemReturnPolicyCreateDto = ItemReturnPolicyCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", shippingCourierId: "shippingCourierId_example", isFree: false, reduce: false, isEnabled: false, isDefault: false, allowInternational: false, hours: 123, days: 123, weeks: 123, months: 123, years: 123, value: 123, percentage: 123, currencyId: "currencyId_example", countryId: "countryId_example", countryStateId: "countryStateId_example", customState: "customState_example", customCity: "customCity_example", cityId: "cityId_example") // ItemReturnPolicyCreateDto |  (optional)
 
 // Create a new return policy
 ReturnPoliciesAPI.createReturnPolicyAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemReturnPolicyCreateDto: itemReturnPolicyCreateDto) { (response, error) in
@@ -278,6 +279,64 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchReturnPolicyAsync**
+```swift
+    open class func patchReturnPolicyAsync(tenantId: UUID, returnPolicyId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a return policy
+
+Partially updates an existing return policy by its unique identifier.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let returnPolicyId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a return policy
+ReturnPoliciesAPI.patchReturnPolicyAsync(tenantId: tenantId, returnPolicyId: returnPolicyId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **returnPolicyId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateReturnPolicyAsync**
 ```swift
     open class func updateReturnPolicyAsync(tenantId: UUID, returnPolicyId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemReturnPolicyUpdateDto: ItemReturnPolicyUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
@@ -294,7 +353,7 @@ let tenantId = 987 // UUID |
 let returnPolicyId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let itemReturnPolicyUpdateDto = ItemReturnPolicyUpdateDto(title: "title_example", description: "description_example", shippingCourierID: "shippingCourierID_example", isFree: false, reduce: false, isEnabled: false, isDefault: false, allowInternational: false, hours: 123, days: 123, weeks: 123, months: 123, years: 123, value: 123, percentage: 123, currencyID: "currencyID_example", countryID: "countryID_example", countryStateID: "countryStateID_example", customState: "customState_example", customCity: "customCity_example", cityID: "cityID_example") // ItemReturnPolicyUpdateDto |  (optional)
+let itemReturnPolicyUpdateDto = ItemReturnPolicyUpdateDto(title: "title_example", description: "description_example", shippingCourierId: "shippingCourierId_example", isFree: false, reduce: false, isEnabled: false, isDefault: false, allowInternational: false, hours: 123, days: 123, weeks: 123, months: 123, years: 123, value: 123, percentage: 123, currencyId: "currencyId_example", countryId: "countryId_example", countryStateId: "countryStateId_example", customState: "customState_example", customCity: "customCity_example", cityId: "cityId_example") // ItemReturnPolicyUpdateDto |  (optional)
 
 // Update a return policy
 ReturnPoliciesAPI.updateReturnPolicyAsync(tenantId: tenantId, returnPolicyId: returnPolicyId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemReturnPolicyUpdateDto: itemReturnPolicyUpdateDto) { (response, error) in

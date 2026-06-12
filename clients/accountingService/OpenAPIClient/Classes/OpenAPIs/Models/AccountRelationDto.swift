@@ -15,13 +15,15 @@ public struct AccountRelationDto: Codable, JSONEncodable, Hashable {
     public var id: String?
     public var timestamp: Date?
     public var accountId: String?
+    public var type: String?
     public var tenantId: String?
     public var enrollmentId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, accountId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, accountId: String? = nil, type: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.accountId = accountId
+        self.type = type
         self.tenantId = tenantId
         self.enrollmentId = enrollmentId
     }
@@ -30,6 +32,7 @@ public struct AccountRelationDto: Codable, JSONEncodable, Hashable {
         case id
         case timestamp
         case accountId
+        case type
         case tenantId
         case enrollmentId
     }
@@ -41,6 +44,7 @@ public struct AccountRelationDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(accountId, forKey: .accountId)
+        try container.encodeIfPresent(type, forKey: .type)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }

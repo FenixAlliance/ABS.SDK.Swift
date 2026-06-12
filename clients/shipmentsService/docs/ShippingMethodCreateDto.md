@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **cost** | **Double** |  | [optional] 
 **taxable** | **Bool** |  | [optional] 
 **taxIncluded** | **Bool** |  | [optional] 
-**currencyID** | **String** |  | [optional] 
+**currencyId** | **String** |  | [optional] 
 **shippingClassCalculationType** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

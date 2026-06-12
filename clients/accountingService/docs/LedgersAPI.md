@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getLedgerDetailsAsync**](LedgersAPI.md#getledgerdetailsasync) | **GET** /api/v2/AccountingService/Ledgers/{ledgerId} | Gets a ledger by ID
 [**getLedgersAsync**](LedgersAPI.md#getledgersasync) | **GET** /api/v2/AccountingService/Ledgers | Retrieves all ledgers
 [**getLedgersCountAsync**](LedgersAPI.md#getledgerscountasync) | **GET** /api/v2/AccountingService/Ledgers/Count | Counts ledgers
+[**patchLedgerAsync**](LedgersAPI.md#patchledgerasync) | **PATCH** /api/v2/AccountingService/Ledgers/{ledgerId} | Patches a ledger
 [**updateLedgerAsync**](LedgersAPI.md#updateledgerasync) | **PUT** /api/v2/AccountingService/Ledgers/{ledgerId} | Updates a ledger
 
 
@@ -29,7 +30,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let createLedgerDto = CreateLedgerDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", dateTime: Date(), tenantId: "tenantId_example", enrollmentId: "enrollmentId_example", ledgerTypeId: "ledgerTypeId_example") // CreateLedgerDto |  (optional)
+let createLedgerDto = CreateLedgerDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", dateTime: Date(), ledgerTypeId: "ledgerTypeId_example") // CreateLedgerDto |  (optional)
 
 // Creates a new ledger
 LedgersAPI.createLedgerAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, createLedgerDto: createLedgerDto) { (response, error) in
@@ -288,6 +289,64 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchLedgerAsync**
+```swift
+    open class func patchLedgerAsync(tenantId: UUID, ledgerId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patches a ledger
+
+Patches the specified ledger.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let ledgerId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patches a ledger
+LedgersAPI.patchLedgerAsync(tenantId: tenantId, ledgerId: ledgerId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **ledgerId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateLedgerAsync**
 ```swift
     open class func updateLedgerAsync(tenantId: UUID, ledgerId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, updateLedgerDto: UpdateLedgerDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
@@ -306,7 +365,7 @@ let tenantId = 987 // UUID |
 let ledgerId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let updateLedgerDto = UpdateLedgerDto(name: "name_example", description: "description_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example", ledgerTypeId: "ledgerTypeId_example") // UpdateLedgerDto |  (optional)
+let updateLedgerDto = UpdateLedgerDto(name: "name_example", description: "description_example", ledgerTypeId: "ledgerTypeId_example") // UpdateLedgerDto |  (optional)
 
 // Updates a ledger
 LedgersAPI.updateLedgerAsync(tenantId: tenantId, ledgerId: ledgerId, apiVersion: apiVersion, xApiVersion: xApiVersion, updateLedgerDto: updateLedgerDto) { (response, error) in

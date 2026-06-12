@@ -16,7 +16,7 @@ public struct ItemReturnPolicyUpdateDto: Codable, JSONEncodable, Hashable {
     static let descriptionRule = StringRule(minLength: 0, maxLength: 1000, pattern: nil)
     public var title: String?
     public var description: String?
-    public var shippingCourierID: String?
+    public var shippingCourierId: String?
     public var isFree: Bool?
     public var reduce: Bool?
     public var isEnabled: Bool?
@@ -29,17 +29,17 @@ public struct ItemReturnPolicyUpdateDto: Codable, JSONEncodable, Hashable {
     public var years: Int?
     public var value: Double?
     public var percentage: Double?
-    public var currencyID: String?
-    public var countryID: String?
-    public var countryStateID: String?
+    public var currencyId: String?
+    public var countryId: String?
+    public var countryStateId: String?
     public var customState: String?
     public var customCity: String?
-    public var cityID: String?
+    public var cityId: String?
 
-    public init(title: String? = nil, description: String? = nil, shippingCourierID: String? = nil, isFree: Bool? = nil, reduce: Bool? = nil, isEnabled: Bool? = nil, isDefault: Bool? = nil, allowInternational: Bool? = nil, hours: Int? = nil, days: Int? = nil, weeks: Int? = nil, months: Int? = nil, years: Int? = nil, value: Double? = nil, percentage: Double? = nil, currencyID: String? = nil, countryID: String? = nil, countryStateID: String? = nil, customState: String? = nil, customCity: String? = nil, cityID: String? = nil) {
+    public init(title: String? = nil, description: String? = nil, shippingCourierId: String? = nil, isFree: Bool? = nil, reduce: Bool? = nil, isEnabled: Bool? = nil, isDefault: Bool? = nil, allowInternational: Bool? = nil, hours: Int? = nil, days: Int? = nil, weeks: Int? = nil, months: Int? = nil, years: Int? = nil, value: Double? = nil, percentage: Double? = nil, currencyId: String? = nil, countryId: String? = nil, countryStateId: String? = nil, customState: String? = nil, customCity: String? = nil, cityId: String? = nil) {
         self.title = title
         self.description = description
-        self.shippingCourierID = shippingCourierID
+        self.shippingCourierId = shippingCourierId
         self.isFree = isFree
         self.reduce = reduce
         self.isEnabled = isEnabled
@@ -52,18 +52,18 @@ public struct ItemReturnPolicyUpdateDto: Codable, JSONEncodable, Hashable {
         self.years = years
         self.value = value
         self.percentage = percentage
-        self.currencyID = currencyID
-        self.countryID = countryID
-        self.countryStateID = countryStateID
+        self.currencyId = currencyId
+        self.countryId = countryId
+        self.countryStateId = countryStateId
         self.customState = customState
         self.customCity = customCity
-        self.cityID = cityID
+        self.cityId = cityId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case title
         case description
-        case shippingCourierID
+        case shippingCourierId
         case isFree
         case reduce
         case isEnabled
@@ -76,12 +76,12 @@ public struct ItemReturnPolicyUpdateDto: Codable, JSONEncodable, Hashable {
         case years
         case value
         case percentage
-        case currencyID
-        case countryID
-        case countryStateID
+        case currencyId
+        case countryId
+        case countryStateId
         case customState
         case customCity
-        case cityID
+        case cityId
     }
 
     // Encodable protocol methods
@@ -90,7 +90,7 @@ public struct ItemReturnPolicyUpdateDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(shippingCourierID, forKey: .shippingCourierID)
+        try container.encodeIfPresent(shippingCourierId, forKey: .shippingCourierId)
         try container.encodeIfPresent(isFree, forKey: .isFree)
         try container.encodeIfPresent(reduce, forKey: .reduce)
         try container.encodeIfPresent(isEnabled, forKey: .isEnabled)
@@ -103,12 +103,12 @@ public struct ItemReturnPolicyUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(years, forKey: .years)
         try container.encodeIfPresent(value, forKey: .value)
         try container.encodeIfPresent(percentage, forKey: .percentage)
-        try container.encodeIfPresent(currencyID, forKey: .currencyID)
-        try container.encodeIfPresent(countryID, forKey: .countryID)
-        try container.encodeIfPresent(countryStateID, forKey: .countryStateID)
+        try container.encodeIfPresent(currencyId, forKey: .currencyId)
+        try container.encodeIfPresent(countryId, forKey: .countryId)
+        try container.encodeIfPresent(countryStateId, forKey: .countryStateId)
         try container.encodeIfPresent(customState, forKey: .customState)
         try container.encodeIfPresent(customCity, forKey: .customCity)
-        try container.encodeIfPresent(cityID, forKey: .cityID)
+        try container.encodeIfPresent(cityId, forKey: .cityId)
     }
 }
 

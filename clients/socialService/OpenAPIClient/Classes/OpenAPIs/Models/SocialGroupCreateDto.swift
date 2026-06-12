@@ -17,15 +17,15 @@ public struct SocialGroupCreateDto: Codable, JSONEncodable, Hashable {
     public var name: String?
     public var title: String?
     public var avatarURL: String?
-    public var socialProfileID: String?
+    public var socialProfileId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil, title: String? = nil, avatarURL: String? = nil, socialProfileID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil, title: String? = nil, avatarURL: String? = nil, socialProfileId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
         self.title = title
         self.avatarURL = avatarURL
-        self.socialProfileID = socialProfileID
+        self.socialProfileId = socialProfileId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -34,7 +34,7 @@ public struct SocialGroupCreateDto: Codable, JSONEncodable, Hashable {
         case name
         case title
         case avatarURL
-        case socialProfileID
+        case socialProfileId
     }
 
     // Encodable protocol methods
@@ -46,7 +46,7 @@ public struct SocialGroupCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(avatarURL, forKey: .avatarURL)
-        try container.encodeIfPresent(socialProfileID, forKey: .socialProfileID)
+        try container.encodeIfPresent(socialProfileId, forKey: .socialProfileId)
     }
 }
 

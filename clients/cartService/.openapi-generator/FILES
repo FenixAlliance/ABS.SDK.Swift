@@ -44,6 +44,7 @@ OpenAPIClient/Classes/OpenAPIs/Models/ItemToCompareCartRecordDtoEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ItemToCompareCartRecordDtoListEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/LoginRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/NewWishListRequest.swift
+OpenAPIClient/Classes/OpenAPIs/Models/Operation.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ProductToWishListRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/RefreshRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/RegisterRequest.swift
@@ -93,6 +94,7 @@ docs/ItemToCompareCartRecordDtoEnvelope.md
 docs/ItemToCompareCartRecordDtoListEnvelope.md
 docs/LoginRequest.md
 docs/NewWishListRequest.md
+docs/Operation.md
 docs/ProductToWishListRequest.md
 docs/RecordsAPI.md
 docs/RefreshRequest.md

@@ -10,10 +10,10 @@ Name | Type | Description | Notes
 **approved** | **Bool** |  | [optional] 
 **approvedTimestamp** | **Date** |  | [optional] 
 **tenantId** | **String** |  | [optional] 
-**businessProfileRecordId** | **String** |  | [optional] 
+**enrollmentId** | **String** |  | [optional] 
 **supportEntitlementId** | **String** |  | [optional] 
 **contactId** | **String** |  | [optional] 
-**accountHolderId** | **String** |  | [optional] 
+**userId** | **String** |  | [optional] 
 **refundPolicyId** | **String** |  | [optional] 
 **paymentId** | **String** |  | [optional] 
 

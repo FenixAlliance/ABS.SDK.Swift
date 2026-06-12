@@ -34,6 +34,7 @@ OpenAPIClient/Classes/OpenAPIs/Models/LoginRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/NotificationDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/NotificationDtoEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/NotificationDtoListEnvelope.swift
+OpenAPIClient/Classes/OpenAPIs/Models/Operation.swift
 OpenAPIClient/Classes/OpenAPIs/Models/PrivateMessageCreateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/PrivateMessageDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/PrivateMessageDtoListEnvelope.swift
@@ -106,6 +107,7 @@ docs/LoginRequest.md
 docs/NotificationDto.md
 docs/NotificationDtoEnvelope.md
 docs/NotificationDtoListEnvelope.md
+docs/Operation.md
 docs/PrivateMessageCreateDto.md
 docs/PrivateMessageDto.md
 docs/PrivateMessageDtoListEnvelope.md

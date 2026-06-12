@@ -23,11 +23,11 @@ public struct ShippingMethodDto: Codable, JSONEncodable, Hashable {
     public var cost: Double?
     public var taxable: Bool?
     public var taxIncluded: Bool?
-    public var currencyID: String?
-    public var businessID: String?
+    public var currencyId: String?
+    public var tenantId: String?
     public var shippingClassCalculationType: ShippingClassCalculationType?
 
-    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, description: String? = nil, cost: Double? = nil, taxable: Bool? = nil, taxIncluded: Bool? = nil, currencyID: String? = nil, businessID: String? = nil, shippingClassCalculationType: ShippingClassCalculationType? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, description: String? = nil, cost: Double? = nil, taxable: Bool? = nil, taxIncluded: Bool? = nil, currencyId: String? = nil, tenantId: String? = nil, shippingClassCalculationType: ShippingClassCalculationType? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
@@ -35,8 +35,8 @@ public struct ShippingMethodDto: Codable, JSONEncodable, Hashable {
         self.cost = cost
         self.taxable = taxable
         self.taxIncluded = taxIncluded
-        self.currencyID = currencyID
-        self.businessID = businessID
+        self.currencyId = currencyId
+        self.tenantId = tenantId
         self.shippingClassCalculationType = shippingClassCalculationType
     }
 
@@ -48,8 +48,8 @@ public struct ShippingMethodDto: Codable, JSONEncodable, Hashable {
         case cost
         case taxable
         case taxIncluded
-        case currencyID
-        case businessID
+        case currencyId
+        case tenantId
         case shippingClassCalculationType
     }
 
@@ -64,8 +64,8 @@ public struct ShippingMethodDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(cost, forKey: .cost)
         try container.encodeIfPresent(taxable, forKey: .taxable)
         try container.encodeIfPresent(taxIncluded, forKey: .taxIncluded)
-        try container.encodeIfPresent(currencyID, forKey: .currencyID)
-        try container.encodeIfPresent(businessID, forKey: .businessID)
+        try container.encodeIfPresent(currencyId, forKey: .currencyId)
+        try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encodeIfPresent(shippingClassCalculationType, forKey: .shippingClassCalculationType)
     }
 }

@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getSupportTicketPrioritiesAsync**](SupportTicketPrioritiesAPI.md#getsupportticketprioritiesasync) | **GET** /api/v2/SupportService/SupportTicketPriorities | Retrieve a list of support ticket priorities
 [**getSupportTicketPrioritiesCountAsync**](SupportTicketPrioritiesAPI.md#getsupportticketprioritiescountasync) | **GET** /api/v2/SupportService/SupportTicketPriorities/Count | Get the count of support ticket priorities
 [**getSupportTicketPriorityAsync**](SupportTicketPrioritiesAPI.md#getsupportticketpriorityasync) | **GET** /api/v2/SupportService/SupportTicketPriorities/{supportTicketPriorityId} | Retrieve a support ticket priority by ID
+[**patchSupportTicketPriorityAsync**](SupportTicketPrioritiesAPI.md#patchsupportticketpriorityasync) | **PATCH** /api/v2/SupportService/SupportTicketPriorities/{supportTicketPriorityId} | Patch a support ticket priority
 [**updateSupportTicketPriorityAsync**](SupportTicketPrioritiesAPI.md#updatesupportticketpriorityasync) | **PUT** /api/v2/SupportService/SupportTicketPriorities/{supportTicketPriorityId} | Update a support ticket priority
 
 
@@ -29,7 +30,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let supportTicketPriorityCreateDto = SupportTicketPriorityCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", supportEntitlementID: "supportEntitlementID_example") // SupportTicketPriorityCreateDto |  (optional)
+let supportTicketPriorityCreateDto = SupportTicketPriorityCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", supportEntitlementId: "supportEntitlementId_example") // SupportTicketPriorityCreateDto |  (optional)
 
 // Create a new support ticket priority
 SupportTicketPrioritiesAPI.createSupportTicketPriorityAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, supportTicketPriorityCreateDto: supportTicketPriorityCreateDto) { (response, error) in
@@ -288,6 +289,64 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchSupportTicketPriorityAsync**
+```swift
+    open class func patchSupportTicketPriorityAsync(tenantId: UUID, supportTicketPriorityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a support ticket priority
+
+Partially updates an existing support ticket priority by its unique identifier.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let supportTicketPriorityId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a support ticket priority
+SupportTicketPrioritiesAPI.patchSupportTicketPriorityAsync(tenantId: tenantId, supportTicketPriorityId: supportTicketPriorityId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **supportTicketPriorityId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateSupportTicketPriorityAsync**
 ```swift
     open class func updateSupportTicketPriorityAsync(tenantId: UUID, supportTicketPriorityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, supportTicketPriorityUpdateDto: SupportTicketPriorityUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
@@ -306,7 +365,7 @@ let tenantId = 987 // UUID |
 let supportTicketPriorityId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let supportTicketPriorityUpdateDto = SupportTicketPriorityUpdateDto(title: "title_example", description: "description_example") // SupportTicketPriorityUpdateDto |  (optional)
+let supportTicketPriorityUpdateDto = SupportTicketPriorityUpdateDto(title: "title_example", description: "description_example", supportEntitlementId: "supportEntitlementId_example") // SupportTicketPriorityUpdateDto |  (optional)
 
 // Update a support ticket priority
 SupportTicketPrioritiesAPI.updateSupportTicketPriorityAsync(tenantId: tenantId, supportTicketPriorityId: supportTicketPriorityId, apiVersion: apiVersion, xApiVersion: xApiVersion, supportTicketPriorityUpdateDto: supportTicketPriorityUpdateDto) { (response, error) in

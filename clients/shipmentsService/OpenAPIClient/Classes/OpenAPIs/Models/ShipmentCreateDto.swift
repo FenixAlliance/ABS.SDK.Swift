@@ -33,9 +33,9 @@ public struct ShipmentCreateDto: Codable, JSONEncodable, Hashable {
     public var expectedShippingDate: Date?
     public var expectedDeliveryDate: Date?
     public var shippingTerms: ShippingTerms?
-    public var orderID: String?
+    public var orderId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, trackingCode: String? = nil, isInternational: Bool? = nil, expectedShippingDate: Date? = nil, expectedDeliveryDate: Date? = nil, shippingTerms: ShippingTerms? = nil, orderID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, trackingCode: String? = nil, isInternational: Bool? = nil, expectedShippingDate: Date? = nil, expectedDeliveryDate: Date? = nil, shippingTerms: ShippingTerms? = nil, orderId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.trackingCode = trackingCode
@@ -43,7 +43,7 @@ public struct ShipmentCreateDto: Codable, JSONEncodable, Hashable {
         self.expectedShippingDate = expectedShippingDate
         self.expectedDeliveryDate = expectedDeliveryDate
         self.shippingTerms = shippingTerms
-        self.orderID = orderID
+        self.orderId = orderId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -54,7 +54,7 @@ public struct ShipmentCreateDto: Codable, JSONEncodable, Hashable {
         case expectedShippingDate
         case expectedDeliveryDate
         case shippingTerms
-        case orderID
+        case orderId
     }
 
     // Encodable protocol methods
@@ -68,7 +68,7 @@ public struct ShipmentCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(expectedShippingDate, forKey: .expectedShippingDate)
         try container.encodeIfPresent(expectedDeliveryDate, forKey: .expectedDeliveryDate)
         try container.encodeIfPresent(shippingTerms, forKey: .shippingTerms)
-        try container.encodeIfPresent(orderID, forKey: .orderID)
+        try container.encodeIfPresent(orderId, forKey: .orderId)
     }
 }
 

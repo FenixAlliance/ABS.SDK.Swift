@@ -16,17 +16,20 @@ public struct AccountRelationCreateDto: Codable, JSONEncodable, Hashable {
     public var id: UUID?
     public var timestamp: Date?
     public var accountId: String?
+    public var type: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, accountId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, accountId: String? = nil, type: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.accountId = accountId
+        self.type = type
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
         case accountId
+        case type
     }
 
     // Encodable protocol methods
@@ -36,6 +39,7 @@ public struct AccountRelationCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(accountId, forKey: .accountId)
+        try container.encodeIfPresent(type, forKey: .type)
     }
 }
 

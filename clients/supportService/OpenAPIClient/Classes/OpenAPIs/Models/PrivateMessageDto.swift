@@ -19,12 +19,12 @@ public struct PrivateMessageDto: Codable, JSONEncodable, Hashable {
     public var message: String?
     public var conversationId: String?
     public var senderSocialProfileId: String?
-    public var receiverSocialProfileID: String?
+    public var receiverSocialProfileId: String?
     public var sentTimestamp: Date?
     public var readTimestamp: Date?
     public var receivedTimestamp: Date?
 
-    public init(id: String? = nil, timestamp: Date? = nil, read: Bool? = nil, title: String? = nil, message: String? = nil, conversationId: String? = nil, senderSocialProfileId: String? = nil, receiverSocialProfileID: String? = nil, sentTimestamp: Date? = nil, readTimestamp: Date? = nil, receivedTimestamp: Date? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, read: Bool? = nil, title: String? = nil, message: String? = nil, conversationId: String? = nil, senderSocialProfileId: String? = nil, receiverSocialProfileId: String? = nil, sentTimestamp: Date? = nil, readTimestamp: Date? = nil, receivedTimestamp: Date? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.read = read
@@ -32,7 +32,7 @@ public struct PrivateMessageDto: Codable, JSONEncodable, Hashable {
         self.message = message
         self.conversationId = conversationId
         self.senderSocialProfileId = senderSocialProfileId
-        self.receiverSocialProfileID = receiverSocialProfileID
+        self.receiverSocialProfileId = receiverSocialProfileId
         self.sentTimestamp = sentTimestamp
         self.readTimestamp = readTimestamp
         self.receivedTimestamp = receivedTimestamp
@@ -46,7 +46,7 @@ public struct PrivateMessageDto: Codable, JSONEncodable, Hashable {
         case message
         case conversationId
         case senderSocialProfileId
-        case receiverSocialProfileID
+        case receiverSocialProfileId
         case sentTimestamp
         case readTimestamp
         case receivedTimestamp
@@ -63,7 +63,7 @@ public struct PrivateMessageDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(message, forKey: .message)
         try container.encodeIfPresent(conversationId, forKey: .conversationId)
         try container.encodeIfPresent(senderSocialProfileId, forKey: .senderSocialProfileId)
-        try container.encodeIfPresent(receiverSocialProfileID, forKey: .receiverSocialProfileID)
+        try container.encodeIfPresent(receiverSocialProfileId, forKey: .receiverSocialProfileId)
         try container.encodeIfPresent(sentTimestamp, forKey: .sentTimestamp)
         try container.encodeIfPresent(readTimestamp, forKey: .readTimestamp)
         try container.encodeIfPresent(receivedTimestamp, forKey: .receivedTimestamp)

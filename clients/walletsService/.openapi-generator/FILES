@@ -37,6 +37,7 @@ OpenAPIClient/Classes/OpenAPIs/Models/LocationDtoEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/LocationDtoListEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/LocationUpdateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/LoginRequest.swift
+OpenAPIClient/Classes/OpenAPIs/Models/Operation.swift
 OpenAPIClient/Classes/OpenAPIs/Models/OrderDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/OrderDtoListEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/PaymentChargebackDto.swift
@@ -101,6 +102,7 @@ docs/LocationDtoEnvelope.md
 docs/LocationDtoListEnvelope.md
 docs/LocationUpdateDto.md
 docs/LoginRequest.md
+docs/Operation.md
 docs/OrderDto.md
 docs/OrderDtoListEnvelope.md
 docs/PaymentChargebackDto.md

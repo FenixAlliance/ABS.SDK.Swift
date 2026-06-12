@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**getSupportRequestTicketsAsync**](SupportRequestsAPI.md#getsupportrequestticketsasync) | **GET** /api/v2/SupportService/SupportRequests/{supportRequestId}/Tickets | Retrieve tickets for a support request
 [**getSupportRequestsAsync**](SupportRequestsAPI.md#getsupportrequestsasync) | **GET** /api/v2/SupportService/SupportRequests | Retrieve a list of support requests
 [**getSupportRequestsCountAsync**](SupportRequestsAPI.md#getsupportrequestscountasync) | **GET** /api/v2/SupportService/SupportRequests/Count | Get the count of support requests
+[**patchSupportRequestAsync**](SupportRequestsAPI.md#patchsupportrequestasync) | **PATCH** /api/v2/SupportService/SupportRequests/{supportRequestId} | Patch a support request
 [**relateSupportRequestToAttachmentAsync**](SupportRequestsAPI.md#relatesupportrequesttoattachmentasync) | **POST** /api/v2/SupportService/SupportRequests/{supportRequestId}/Attachments | Add an attachment to a support request
 [**updateSupportRequestAsync**](SupportRequestsAPI.md#updatesupportrequestasync) | **PUT** /api/v2/SupportService/SupportRequests/{supportRequestId} | Update a support request
 
@@ -34,7 +35,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let supportRequestCreateDto = SupportRequestCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", approved: false, approvedTimestamp: Date(), supportEntitlementID: "supportEntitlementID_example", contactID: "contactID_example") // SupportRequestCreateDto |  (optional)
+let supportRequestCreateDto = SupportRequestCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", approved: false, approvedTimestamp: Date(), supportEntitlementId: "supportEntitlementId_example", contactId: "contactId_example") // SupportRequestCreateDto |  (optional)
 
 // Create a new support request
 SupportRequestsAPI.createSupportRequestAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, supportRequestCreateDto: supportRequestCreateDto) { (response, error) in
@@ -519,6 +520,64 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchSupportRequestAsync**
+```swift
+    open class func patchSupportRequestAsync(tenantId: UUID, supportRequestId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a support request
+
+Partially updates an existing support request by its unique identifier.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let supportRequestId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a support request
+SupportRequestsAPI.patchSupportRequestAsync(tenantId: tenantId, supportRequestId: supportRequestId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **supportRequestId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **relateSupportRequestToAttachmentAsync**
 ```swift
     open class func relateSupportRequestToAttachmentAsync(tenantId: UUID, supportRequestId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, supportRequestAttachmentCreateDto: SupportRequestAttachmentCreateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
@@ -537,7 +596,7 @@ let tenantId = 987 // UUID |
 let supportRequestId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let supportRequestAttachmentCreateDto = SupportRequestAttachmentCreateDto(id: 123, timestamp: Date(), notes: "notes_example", title: "title_example", author: "author_example", isFolder: false, fileName: "fileName_example", abstract: "abstract_example", keyWords: "keyWords_example", validResponse: false, parentFileUploadId: "parentFileUploadId_example", filePath: "filePath_example", metadata: "metadata_example", supportRequestID: "supportRequestID_example") // SupportRequestAttachmentCreateDto |  (optional)
+let supportRequestAttachmentCreateDto = SupportRequestAttachmentCreateDto(id: 123, timestamp: Date(), notes: "notes_example", title: "title_example", author: "author_example", isFolder: false, fileName: "fileName_example", abstract: "abstract_example", keyWords: "keyWords_example", validResponse: false, parentFileUploadId: "parentFileUploadId_example", filePath: "filePath_example", metadata: "metadata_example", supportRequestId: "supportRequestId_example") // SupportRequestAttachmentCreateDto |  (optional)
 
 // Add an attachment to a support request
 SupportRequestsAPI.relateSupportRequestToAttachmentAsync(tenantId: tenantId, supportRequestId: supportRequestId, apiVersion: apiVersion, xApiVersion: xApiVersion, supportRequestAttachmentCreateDto: supportRequestAttachmentCreateDto) { (response, error) in
@@ -595,7 +654,7 @@ let tenantId = 987 // UUID |
 let supportRequestId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let supportRequestUpdateDto = SupportRequestUpdateDto(title: "title_example", description: "description_example", approved: false, approvedTimestamp: Date(), supportEntitlementID: "supportEntitlementID_example") // SupportRequestUpdateDto |  (optional)
+let supportRequestUpdateDto = SupportRequestUpdateDto(title: "title_example", description: "description_example", approved: false, approvedTimestamp: Date(), supportEntitlementId: "supportEntitlementId_example") // SupportRequestUpdateDto |  (optional)
 
 // Update a support request
 SupportRequestsAPI.updateSupportRequestAsync(tenantId: tenantId, supportRequestId: supportRequestId, apiVersion: apiVersion, xApiVersion: xApiVersion, supportRequestUpdateDto: supportRequestUpdateDto) { (response, error) in

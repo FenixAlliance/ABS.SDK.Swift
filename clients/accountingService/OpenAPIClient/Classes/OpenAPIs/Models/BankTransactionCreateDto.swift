@@ -12,16 +12,43 @@ import AnyCodable
 
 public struct BankTransactionCreateDto: Codable, JSONEncodable, Hashable {
 
+    static let descriptionRule = StringRule(minLength: 0, maxLength: 150, pattern: nil)
+    static let externalDescriptionRule = StringRule(minLength: 0, maxLength: 150, pattern: nil)
+    static let unitGroupIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
+    static let unitIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
+    static let transactionCategoryIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let bankProfileIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let bankAccountIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
+    public var description: String?
+    public var price: Double?
+    public var quantity: Double?
+    public var externalDescription: String?
+    public var basisQuantity: Double?
+    public var basisAmount: Double?
+    public var percent: Double?
+    public var unitGroupId: String?
+    public var unitId: String?
+    public var transactionCategoryId: String?
+    public var currencyId: String?
     public var bankProfileId: String?
     public var bankAccountId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, bankProfileId: String? = nil, bankAccountId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, description: String? = nil, price: Double? = nil, quantity: Double? = nil, externalDescription: String? = nil, basisQuantity: Double? = nil, basisAmount: Double? = nil, percent: Double? = nil, unitGroupId: String? = nil, unitId: String? = nil, transactionCategoryId: String? = nil, currencyId: String? = nil, bankProfileId: String? = nil, bankAccountId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
+        self.description = description
+        self.price = price
+        self.quantity = quantity
+        self.externalDescription = externalDescription
+        self.basisQuantity = basisQuantity
+        self.basisAmount = basisAmount
+        self.percent = percent
+        self.unitGroupId = unitGroupId
+        self.unitId = unitId
+        self.transactionCategoryId = transactionCategoryId
+        self.currencyId = currencyId
         self.bankProfileId = bankProfileId
         self.bankAccountId = bankAccountId
     }
@@ -29,6 +56,17 @@ public struct BankTransactionCreateDto: Codable, JSONEncodable, Hashable {
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
+        case description
+        case price
+        case quantity
+        case externalDescription
+        case basisQuantity
+        case basisAmount
+        case percent
+        case unitGroupId
+        case unitId
+        case transactionCategoryId
+        case currencyId
         case bankProfileId
         case bankAccountId
     }
@@ -39,6 +77,17 @@ public struct BankTransactionCreateDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
+        try container.encodeIfPresent(description, forKey: .description)
+        try container.encodeIfPresent(price, forKey: .price)
+        try container.encodeIfPresent(quantity, forKey: .quantity)
+        try container.encodeIfPresent(externalDescription, forKey: .externalDescription)
+        try container.encodeIfPresent(basisQuantity, forKey: .basisQuantity)
+        try container.encodeIfPresent(basisAmount, forKey: .basisAmount)
+        try container.encodeIfPresent(percent, forKey: .percent)
+        try container.encodeIfPresent(unitGroupId, forKey: .unitGroupId)
+        try container.encodeIfPresent(unitId, forKey: .unitId)
+        try container.encodeIfPresent(transactionCategoryId, forKey: .transactionCategoryId)
+        try container.encodeIfPresent(currencyId, forKey: .currencyId)
         try container.encodeIfPresent(bankProfileId, forKey: .bankProfileId)
         try container.encodeIfPresent(bankAccountId, forKey: .bankAccountId)
     }

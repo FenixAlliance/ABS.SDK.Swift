@@ -14,13 +14,16 @@ public struct AccountRelationUpdateDto: Codable, JSONEncodable, Hashable {
 
     static let accountIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     public var accountId: String?
+    public var type: String?
 
-    public init(accountId: String? = nil) {
+    public init(accountId: String? = nil, type: String? = nil) {
         self.accountId = accountId
+        self.type = type
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case accountId
+        case type
     }
 
     // Encodable protocol methods
@@ -28,6 +31,7 @@ public struct AccountRelationUpdateDto: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(accountId, forKey: .accountId)
+        try container.encodeIfPresent(type, forKey: .type)
     }
 }
 

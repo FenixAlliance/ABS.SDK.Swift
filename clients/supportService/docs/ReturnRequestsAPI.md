@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getReturnRequestAsync**](ReturnRequestsAPI.md#getreturnrequestasync) | **GET** /api/v2/SupportService/ReturnRequests/{returnRequestId} | Retrieve a return request by ID
 [**getReturnRequestsAsync**](ReturnRequestsAPI.md#getreturnrequestsasync) | **GET** /api/v2/SupportService/ReturnRequests | Retrieve return requests
 [**getReturnRequestsCountAsync**](ReturnRequestsAPI.md#getreturnrequestscountasync) | **GET** /api/v2/SupportService/ReturnRequests/Count | Get return requests count
+[**patchReturnRequestAsync**](ReturnRequestsAPI.md#patchreturnrequestasync) | **PATCH** /api/v2/SupportService/ReturnRequests/{returnRequestId} | Patch a return request
 [**updateReturnRequestAsync**](ReturnRequestsAPI.md#updatereturnrequestasync) | **PUT** /api/v2/SupportService/ReturnRequests/{returnRequestId} | Update a return request
 
 
@@ -274,6 +275,64 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchReturnRequestAsync**
+```swift
+    open class func patchReturnRequestAsync(tenantId: UUID, returnRequestId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a return request
+
+Partially updates an existing return request by its unique identifier.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let returnRequestId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a return request
+ReturnRequestsAPI.patchReturnRequestAsync(tenantId: tenantId, returnRequestId: returnRequestId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **returnRequestId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

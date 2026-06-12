@@ -30,6 +30,7 @@ public struct AccountDto: Codable, JSONEncodable, Hashable {
     public var _prefix: String?
     public var balance: Double?
     public var currencyId: String?
+    public var contactId: String?
     public var accountType: String?
     public var qualifiedName: String?
     public var accountTypeId: String?
@@ -51,7 +52,7 @@ public struct AccountDto: Codable, JSONEncodable, Hashable {
     public var debitsBalanceAmountInUsd: Money?
     public var creditsBalanceAmountInUsd: Money?
 
-    public init(id: String? = nil, timestamp: Date? = nil, group: Bool? = nil, frozen: Bool? = nil, name: String? = nil, code: String? = nil, path: String? = nil, title: String? = nil, _prefix: String? = nil, balance: Double? = nil, currencyId: String? = nil, accountType: String? = nil, qualifiedName: String? = nil, accountTypeId: String? = nil, debitsBalance: Double? = nil, creditsBalance: Double? = nil, balanceInUsd: Double? = nil, debitsBalanceInUsd: Double? = nil, creditsBalanceInUsd: Double? = nil, forexRate: Double? = nil, parentAccountId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil, childrenAccountsCount: Int? = nil, accountCategory: AccountCategory? = nil, balanceAmount: Money? = nil, creditsBalanceAmount: Money? = nil, debitsBalanceAmount: Money? = nil, balanceAmountInUsd: Money? = nil, debitsBalanceAmountInUsd: Money? = nil, creditsBalanceAmountInUsd: Money? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, group: Bool? = nil, frozen: Bool? = nil, name: String? = nil, code: String? = nil, path: String? = nil, title: String? = nil, _prefix: String? = nil, balance: Double? = nil, currencyId: String? = nil, contactId: String? = nil, accountType: String? = nil, qualifiedName: String? = nil, accountTypeId: String? = nil, debitsBalance: Double? = nil, creditsBalance: Double? = nil, balanceInUsd: Double? = nil, debitsBalanceInUsd: Double? = nil, creditsBalanceInUsd: Double? = nil, forexRate: Double? = nil, parentAccountId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil, childrenAccountsCount: Int? = nil, accountCategory: AccountCategory? = nil, balanceAmount: Money? = nil, creditsBalanceAmount: Money? = nil, debitsBalanceAmount: Money? = nil, balanceAmountInUsd: Money? = nil, debitsBalanceAmountInUsd: Money? = nil, creditsBalanceAmountInUsd: Money? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.group = group
@@ -63,6 +64,7 @@ public struct AccountDto: Codable, JSONEncodable, Hashable {
         self._prefix = _prefix
         self.balance = balance
         self.currencyId = currencyId
+        self.contactId = contactId
         self.accountType = accountType
         self.qualifiedName = qualifiedName
         self.accountTypeId = accountTypeId
@@ -97,6 +99,7 @@ public struct AccountDto: Codable, JSONEncodable, Hashable {
         case _prefix = "prefix"
         case balance
         case currencyId
+        case contactId
         case accountType
         case qualifiedName
         case accountTypeId
@@ -134,6 +137,7 @@ public struct AccountDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(_prefix, forKey: ._prefix)
         try container.encodeIfPresent(balance, forKey: .balance)
         try container.encodeIfPresent(currencyId, forKey: .currencyId)
+        try container.encodeIfPresent(contactId, forKey: .contactId)
         try container.encodeIfPresent(accountType, forKey: .accountType)
         try container.encodeIfPresent(qualifiedName, forKey: .qualifiedName)
         try container.encodeIfPresent(accountTypeId, forKey: .accountTypeId)

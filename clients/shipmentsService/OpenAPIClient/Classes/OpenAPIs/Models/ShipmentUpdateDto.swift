@@ -35,9 +35,9 @@ public struct ShipmentUpdateDto: Codable, JSONEncodable, Hashable {
     public var expectedShippingDate: Date?
     public var expectedDeliveryDate: Date?
     public var shippingTerms: ShippingTerms?
-    public var orderID: String?
+    public var orderId: String?
 
-    public init(trackingCode: String? = nil, isInternational: Bool? = nil, shipped: Bool? = nil, delivered: Bool? = nil, shipmentTimestamp: Date? = nil, deliveryTimestamp: Date? = nil, expectedShippingDate: Date? = nil, expectedDeliveryDate: Date? = nil, shippingTerms: ShippingTerms? = nil, orderID: String? = nil) {
+    public init(trackingCode: String? = nil, isInternational: Bool? = nil, shipped: Bool? = nil, delivered: Bool? = nil, shipmentTimestamp: Date? = nil, deliveryTimestamp: Date? = nil, expectedShippingDate: Date? = nil, expectedDeliveryDate: Date? = nil, shippingTerms: ShippingTerms? = nil, orderId: String? = nil) {
         self.trackingCode = trackingCode
         self.isInternational = isInternational
         self.shipped = shipped
@@ -47,7 +47,7 @@ public struct ShipmentUpdateDto: Codable, JSONEncodable, Hashable {
         self.expectedShippingDate = expectedShippingDate
         self.expectedDeliveryDate = expectedDeliveryDate
         self.shippingTerms = shippingTerms
-        self.orderID = orderID
+        self.orderId = orderId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -60,7 +60,7 @@ public struct ShipmentUpdateDto: Codable, JSONEncodable, Hashable {
         case expectedShippingDate
         case expectedDeliveryDate
         case shippingTerms
-        case orderID
+        case orderId
     }
 
     // Encodable protocol methods
@@ -76,7 +76,7 @@ public struct ShipmentUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(expectedShippingDate, forKey: .expectedShippingDate)
         try container.encodeIfPresent(expectedDeliveryDate, forKey: .expectedDeliveryDate)
         try container.encodeIfPresent(shippingTerms, forKey: .shippingTerms)
-        try container.encodeIfPresent(orderID, forKey: .orderID)
+        try container.encodeIfPresent(orderId, forKey: .orderId)
     }
 }
 

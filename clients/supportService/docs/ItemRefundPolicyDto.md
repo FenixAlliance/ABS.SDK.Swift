@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | [optional] 
 **timestamp** | **Date** |  | [optional] 
-**shippingCourierID** | **String** |  | [optional] 
+**shippingCourierId** | **String** |  | [optional] 
 **type** | **String** |  | [optional] 
 **code** | **String** |  | [optional] 
 **title** | **String** |  | [optional] 
@@ -22,14 +22,14 @@ Name | Type | Description | Notes
 **years** | **Int** |  | [optional] 
 **value** | **Double** |  | [optional] 
 **percentage** | **Double** |  | [optional] 
-**currencyID** | **String** |  | [optional] 
-**countryID** | **String** |  | [optional] 
-**countryStateID** | **String** |  | [optional] 
+**currencyId** | **String** |  | [optional] 
+**countryId** | **String** |  | [optional] 
+**countryStateId** | **String** |  | [optional] 
 **customState** | **String** |  | [optional] 
 **customCity** | **String** |  | [optional] 
-**cityID** | **String** |  | [optional] 
-**businessID** | **String** |  | [optional] 
-**businessProfileRecordID** | **String** |  | [optional] 
+**cityId** | **String** |  | [optional] 
+**tenantId** | **String** |  | [optional] 
+**enrollmentId** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

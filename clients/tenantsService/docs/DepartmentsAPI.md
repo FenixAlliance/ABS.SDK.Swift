@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getTenantDepartmentById**](DepartmentsAPI.md#gettenantdepartmentbyid) | **GET** /api/v2/TenantsService/Departments/{tenantDepartmentId} | Retrieve a single tenant department by its ID
 [**getTenantDepartments**](DepartmentsAPI.md#gettenantdepartments) | **GET** /api/v2/TenantsService/Departments | Retrieve a list of tenant departments
 [**getTenantDepartmentsCount**](DepartmentsAPI.md#gettenantdepartmentscount) | **GET** /api/v2/TenantsService/Departments/Count | Get the count of tenant departments
+[**patchTenantDepartmentAsync**](DepartmentsAPI.md#patchtenantdepartmentasync) | **PATCH** /api/v2/TenantsService/Departments/{tenantDepartmentId} | Patch a tenant department
 [**updateTenantDepartment**](DepartmentsAPI.md#updatetenantdepartment) | **PUT** /api/v2/TenantsService/Departments/{tenantDepartmentId} | Update a tenant department
 
 
@@ -29,7 +30,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let tenantDepartmentCreateDto = TenantDepartmentCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", disabled: false, organizationProfileID: "organizationProfileID_example", parentDepartmentID: "parentDepartmentID_example") // TenantDepartmentCreateDto |  (optional)
+let tenantDepartmentCreateDto = TenantDepartmentCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", disabled: false, organizationProfileId: "organizationProfileId_example", parentDepartmentId: "parentDepartmentId_example") // TenantDepartmentCreateDto |  (optional)
 
 // Create a new tenant department
 DepartmentsAPI.createTenantDepartment(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, tenantDepartmentCreateDto: tenantDepartmentCreateDto) { (response, error) in
@@ -288,6 +289,64 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchTenantDepartmentAsync**
+```swift
+    open class func patchTenantDepartmentAsync(tenantId: UUID, tenantDepartmentId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a tenant department
+
+Patch a tenant department
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let tenantDepartmentId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a tenant department
+DepartmentsAPI.patchTenantDepartmentAsync(tenantId: tenantId, tenantDepartmentId: tenantDepartmentId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **tenantDepartmentId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateTenantDepartment**
 ```swift
     open class func updateTenantDepartment(tenantId: UUID, tenantDepartmentId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, tenantDepartmentUpdateDto: TenantDepartmentUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
@@ -306,7 +365,7 @@ let tenantId = 987 // UUID |
 let tenantDepartmentId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let tenantDepartmentUpdateDto = TenantDepartmentUpdateDto(name: "name_example", description: "description_example", disabled: false, organizationProfileID: "organizationProfileID_example", parentDepartmentID: "parentDepartmentID_example") // TenantDepartmentUpdateDto |  (optional)
+let tenantDepartmentUpdateDto = TenantDepartmentUpdateDto(name: "name_example", description: "description_example", disabled: false, organizationProfileId: "organizationProfileId_example", parentDepartmentId: "parentDepartmentId_example") // TenantDepartmentUpdateDto |  (optional)
 
 // Update a tenant department
 DepartmentsAPI.updateTenantDepartment(tenantId: tenantId, tenantDepartmentId: tenantDepartmentId, apiVersion: apiVersion, xApiVersion: xApiVersion, tenantDepartmentUpdateDto: tenantDepartmentUpdateDto) { (response, error) in

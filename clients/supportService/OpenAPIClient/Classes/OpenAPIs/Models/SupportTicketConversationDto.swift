@@ -14,30 +14,30 @@ public struct SupportTicketConversationDto: Codable, JSONEncodable, Hashable {
 
     public var id: String?
     public var timestamp: Date?
-    public var supportTicketID: String?
+    public var supportTicketId: String?
     public var topic: String?
     public var closed: Bool?
     public var closedTimestamp: Date?
-    public var socialProfileID: String?
+    public var socialProfileId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, supportTicketID: String? = nil, topic: String? = nil, closed: Bool? = nil, closedTimestamp: Date? = nil, socialProfileID: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, supportTicketId: String? = nil, topic: String? = nil, closed: Bool? = nil, closedTimestamp: Date? = nil, socialProfileId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
-        self.supportTicketID = supportTicketID
+        self.supportTicketId = supportTicketId
         self.topic = topic
         self.closed = closed
         self.closedTimestamp = closedTimestamp
-        self.socialProfileID = socialProfileID
+        self.socialProfileId = socialProfileId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
-        case supportTicketID
+        case supportTicketId
         case topic
         case closed
         case closedTimestamp
-        case socialProfileID
+        case socialProfileId
     }
 
     // Encodable protocol methods
@@ -46,11 +46,11 @@ public struct SupportTicketConversationDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
-        try container.encodeIfPresent(supportTicketID, forKey: .supportTicketID)
+        try container.encodeIfPresent(supportTicketId, forKey: .supportTicketId)
         try container.encodeIfPresent(topic, forKey: .topic)
         try container.encodeIfPresent(closed, forKey: .closed)
         try container.encodeIfPresent(closedTimestamp, forKey: .closedTimestamp)
-        try container.encodeIfPresent(socialProfileID, forKey: .socialProfileID)
+        try container.encodeIfPresent(socialProfileId, forKey: .socialProfileId)
     }
 }
 

@@ -5,6 +5,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | [optional] 
 **timestamp** | **Date** |  | [optional] 
+**tenantId** | **String** |  | [optional] 
+**enrollmentId** | **String** |  | [optional] 
 **taxPolicyId** | **String** |  | [optional] 
 **itemPriceId** | **String** |  | [optional] 
 **itemId** | **String** |  | [optional] 

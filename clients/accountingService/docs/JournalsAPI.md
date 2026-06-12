@@ -15,6 +15,8 @@ Method | HTTP request | Description
 [**getJournalEntriesAsync**](JournalsAPI.md#getjournalentriesasync) | **GET** /api/v2/AccountingService/Journals/{journalId}/Entries | Get journal entries
 [**getJournalEntriesCountAsync**](JournalsAPI.md#getjournalentriescountasync) | **GET** /api/v2/AccountingService/Journals/{journalId}/Entries/Count | Count journal entries
 [**getJournalsAsync**](JournalsAPI.md#getjournalsasync) | **GET** /api/v2/AccountingService/Journals | Get all journals
+[**patchJournalAsync**](JournalsAPI.md#patchjournalasync) | **PATCH** /api/v2/AccountingService/Journals/{journalId} | Patch a journal
+[**patchJournalEntryAsync**](JournalsAPI.md#patchjournalentryasync) | **PATCH** /api/v2/AccountingService/Journals/{journalId}/Entries/{entryId} | Patch a journal entry
 [**updateJournalAsync**](JournalsAPI.md#updatejournalasync) | **PUT** /api/v2/AccountingService/Journals/{journalId} | Update journal
 [**updateJournalEntryAsync**](JournalsAPI.md#updatejournalentryasync) | **PUT** /api/v2/AccountingService/Journals/{journalId}/Entries/{entryId} | Update journal entry
 
@@ -206,7 +208,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let journalCreateDto = JournalCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", dateTime: Date(), parentJournalID: "parentJournalID_example", journalTypeID: "journalTypeID_example", ledgerID: "ledgerID_example") // JournalCreateDto |  (optional)
+let journalCreateDto = JournalCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", dateTime: Date(), parentJournalId: "parentJournalId_example", journalTypeId: "journalTypeId_example", ledgerId: "ledgerId_example") // JournalCreateDto |  (optional)
 
 // Create journal
 JournalsAPI.createJournalAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, journalCreateDto: journalCreateDto) { (response, error) in
@@ -639,6 +641,124 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchJournalAsync**
+```swift
+    open class func patchJournalAsync(tenantId: UUID, journalId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a journal
+
+Partially updates a journal.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let journalId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a journal
+JournalsAPI.patchJournalAsync(tenantId: tenantId, journalId: journalId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **journalId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchJournalEntryAsync**
+```swift
+    open class func patchJournalEntryAsync(tenantId: UUID, journalId: UUID, entryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a journal entry
+
+Partially updates a journal entry.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let journalId = 987 // UUID | 
+let entryId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a journal entry
+JournalsAPI.patchJournalEntryAsync(tenantId: tenantId, journalId: journalId, entryId: entryId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **journalId** | **UUID** |  | 
+ **entryId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateJournalAsync**
 ```swift
     open class func updateJournalAsync(tenantId: UUID, journalId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, journalUpdateDto: JournalUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
@@ -657,7 +777,7 @@ let tenantId = 987 // UUID |
 let journalId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let journalUpdateDto = JournalUpdateDto(name: "name_example", description: "description_example", dateTime: Date(), parentJournalID: "parentJournalID_example", journalTypeID: "journalTypeID_example", ledgerID: "ledgerID_example") // JournalUpdateDto |  (optional)
+let journalUpdateDto = JournalUpdateDto(name: "name_example", description: "description_example", dateTime: Date(), parentJournalId: "parentJournalId_example", journalTypeId: "journalTypeId_example", ledgerId: "ledgerId_example") // JournalUpdateDto |  (optional)
 
 // Update journal
 JournalsAPI.updateJournalAsync(tenantId: tenantId, journalId: journalId, apiVersion: apiVersion, xApiVersion: xApiVersion, journalUpdateDto: journalUpdateDto) { (response, error) in

@@ -14,13 +14,15 @@ public struct TenantSegmentDto: Codable, JSONEncodable, Hashable {
 
     public var id: String?
     public var timestamp: Date?
+    public var tenantId: String?
     public var revenue: String?
     public var minEmployees: Double?
     public var maxEmployees: Double?
 
-    public init(id: String? = nil, timestamp: Date? = nil, revenue: String? = nil, minEmployees: Double? = nil, maxEmployees: Double? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, tenantId: String? = nil, revenue: String? = nil, minEmployees: Double? = nil, maxEmployees: Double? = nil) {
         self.id = id
         self.timestamp = timestamp
+        self.tenantId = tenantId
         self.revenue = revenue
         self.minEmployees = minEmployees
         self.maxEmployees = maxEmployees
@@ -29,6 +31,7 @@ public struct TenantSegmentDto: Codable, JSONEncodable, Hashable {
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
+        case tenantId
         case revenue
         case minEmployees
         case maxEmployees
@@ -40,6 +43,7 @@ public struct TenantSegmentDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
+        try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encodeIfPresent(revenue, forKey: .revenue)
         try container.encodeIfPresent(minEmployees, forKey: .minEmployees)
         try container.encodeIfPresent(maxEmployees, forKey: .maxEmployees)

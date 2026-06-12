@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getSubscriptionPlanByIdAsync**](SubscriptionPlansAPI.md#getsubscriptionplanbyidasync) | **GET** /api/v2/SubscriptionsService/SubscriptionPlans/{planId} | Get a subscription plan by ID
 [**getSubscriptionPlansAsync**](SubscriptionPlansAPI.md#getsubscriptionplansasync) | **GET** /api/v2/SubscriptionsService/SubscriptionPlans | Get all subscription plans
 [**getSubscriptionPlansCountAsync**](SubscriptionPlansAPI.md#getsubscriptionplanscountasync) | **GET** /api/v2/SubscriptionsService/SubscriptionPlans/Count | Get subscription plans count
+[**patchSubscriptionPlanAsync**](SubscriptionPlansAPI.md#patchsubscriptionplanasync) | **PATCH** /api/v2/SubscriptionsService/SubscriptionPlans/{planId} | Patch a subscription plan
 [**updateSubscriptionPlanAsync**](SubscriptionPlansAPI.md#updatesubscriptionplanasync) | **PUT** /api/v2/SubscriptionsService/SubscriptionPlans/{planId} | Update a subscription plan
 
 
@@ -284,6 +285,64 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchSubscriptionPlanAsync**
+```swift
+    open class func patchSubscriptionPlanAsync(tenantId: UUID, planId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a subscription plan
+
+Patch a subscription plan
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let planId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a subscription plan
+SubscriptionPlansAPI.patchSubscriptionPlanAsync(tenantId: tenantId, planId: planId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **planId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

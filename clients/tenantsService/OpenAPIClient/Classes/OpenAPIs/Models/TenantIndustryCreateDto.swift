@@ -15,20 +15,20 @@ public struct TenantIndustryCreateDto: Codable, JSONEncodable, Hashable {
     public var id: UUID?
     public var timestamp: Date?
     public var name: String?
-    public var parentBusinessIndustryID: String?
+    public var parentBusinessIndustryId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil, parentBusinessIndustryID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil, parentBusinessIndustryId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
-        self.parentBusinessIndustryID = parentBusinessIndustryID
+        self.parentBusinessIndustryId = parentBusinessIndustryId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
         case name
-        case parentBusinessIndustryID
+        case parentBusinessIndustryId
     }
 
     // Encodable protocol methods
@@ -38,7 +38,7 @@ public struct TenantIndustryCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(name, forKey: .name)
-        try container.encodeIfPresent(parentBusinessIndustryID, forKey: .parentBusinessIndustryID)
+        try container.encodeIfPresent(parentBusinessIndustryId, forKey: .parentBusinessIndustryId)
     }
 }
 

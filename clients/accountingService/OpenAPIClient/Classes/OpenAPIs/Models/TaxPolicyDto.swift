@@ -40,9 +40,9 @@ public struct TaxPolicyDto: Codable, JSONEncodable, Hashable {
     public var zero: Bool?
     public var reduced: Bool?
     public var withholding: Bool?
-    public var fiscalAuthorityID: String?
+    public var fiscalAuthorityId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, code: String? = nil, title: String? = nil, description: String? = nil, isFree: Bool? = nil, reduce: Bool? = nil, isEnabled: Bool? = nil, isDefault: Bool? = nil, allowInternational: Bool? = nil, hours: Int? = nil, days: Int? = nil, weeks: Int? = nil, months: Int? = nil, years: Int? = nil, value: Double? = nil, percentage: Double? = nil, currencyId: String? = nil, countryId: String? = nil, countryStateId: String? = nil, customState: String? = nil, customCity: String? = nil, cityId: String? = nil, enrollmentId: String? = nil, tenantId: String? = nil, zero: Bool? = nil, reduced: Bool? = nil, withholding: Bool? = nil, fiscalAuthorityID: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, code: String? = nil, title: String? = nil, description: String? = nil, isFree: Bool? = nil, reduce: Bool? = nil, isEnabled: Bool? = nil, isDefault: Bool? = nil, allowInternational: Bool? = nil, hours: Int? = nil, days: Int? = nil, weeks: Int? = nil, months: Int? = nil, years: Int? = nil, value: Double? = nil, percentage: Double? = nil, currencyId: String? = nil, countryId: String? = nil, countryStateId: String? = nil, customState: String? = nil, customCity: String? = nil, cityId: String? = nil, enrollmentId: String? = nil, tenantId: String? = nil, zero: Bool? = nil, reduced: Bool? = nil, withholding: Bool? = nil, fiscalAuthorityId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.code = code
@@ -71,7 +71,7 @@ public struct TaxPolicyDto: Codable, JSONEncodable, Hashable {
         self.zero = zero
         self.reduced = reduced
         self.withholding = withholding
-        self.fiscalAuthorityID = fiscalAuthorityID
+        self.fiscalAuthorityId = fiscalAuthorityId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -103,7 +103,7 @@ public struct TaxPolicyDto: Codable, JSONEncodable, Hashable {
         case zero
         case reduced
         case withholding
-        case fiscalAuthorityID
+        case fiscalAuthorityId
     }
 
     // Encodable protocol methods
@@ -138,7 +138,7 @@ public struct TaxPolicyDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(zero, forKey: .zero)
         try container.encodeIfPresent(reduced, forKey: .reduced)
         try container.encodeIfPresent(withholding, forKey: .withholding)
-        try container.encodeIfPresent(fiscalAuthorityID, forKey: .fiscalAuthorityID)
+        try container.encodeIfPresent(fiscalAuthorityId, forKey: .fiscalAuthorityId)
     }
 }
 

@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**getServiceLevelByIdAsync**](ServiceLevelsAPI.md#getservicelevelbyidasync) | **GET** /api/v2/ServicesService/Services/{serviceId}/ServiceLevels/{serviceLevelId} | Get a service level by ID
 [**getServiceLevelsAsync**](ServiceLevelsAPI.md#getservicelevelsasync) | **GET** /api/v2/ServicesService/Services/{serviceId}/ServiceLevels | Get all service levels
 [**getServiceLevelsCountAsync**](ServiceLevelsAPI.md#getservicelevelscountasync) | **GET** /api/v2/ServicesService/Services/{serviceId}/ServiceLevels/Count | Get service levels count
+[**patchServiceLevelAsync**](ServiceLevelsAPI.md#patchservicelevelasync) | **PATCH** /api/v2/ServicesService/Services/{serviceId}/ServiceLevels/{serviceLevelId} | Patch a service level
 [**updateServiceLevelAsync**](ServiceLevelsAPI.md#updateservicelevelasync) | **PUT** /api/v2/ServicesService/Services/{serviceId}/ServiceLevels/{serviceLevelId} | Update a service level
 
 
@@ -404,6 +405,66 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchServiceLevelAsync**
+```swift
+    open class func patchServiceLevelAsync(tenantId: UUID, serviceId: UUID, serviceLevelId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: Envelope?, _ error: Error?) -> Void)
+```
+
+Patch a service level
+
+Partially updates an existing service level using a JSON Patch document.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let serviceId = 987 // UUID | 
+let serviceLevelId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a service level
+ServiceLevelsAPI.patchServiceLevelAsync(tenantId: tenantId, serviceId: serviceId, serviceLevelId: serviceLevelId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **serviceId** | **UUID** |  | 
+ **serviceLevelId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**Envelope**](Envelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

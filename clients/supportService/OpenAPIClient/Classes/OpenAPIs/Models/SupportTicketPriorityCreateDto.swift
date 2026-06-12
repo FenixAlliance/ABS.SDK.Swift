@@ -14,19 +14,19 @@ public struct SupportTicketPriorityCreateDto: Codable, JSONEncodable, Hashable {
 
     static let titleRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     static let descriptionRule = StringRule(minLength: 0, maxLength: 1000, pattern: nil)
-    static let supportEntitlementIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
+    static let supportEntitlementIdRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var title: String?
     public var description: String?
-    public var supportEntitlementID: String?
+    public var supportEntitlementId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil, supportEntitlementID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil, supportEntitlementId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
         self.description = description
-        self.supportEntitlementID = supportEntitlementID
+        self.supportEntitlementId = supportEntitlementId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -34,7 +34,7 @@ public struct SupportTicketPriorityCreateDto: Codable, JSONEncodable, Hashable {
         case timestamp
         case title
         case description
-        case supportEntitlementID
+        case supportEntitlementId
     }
 
     // Encodable protocol methods
@@ -45,7 +45,7 @@ public struct SupportTicketPriorityCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(supportEntitlementID, forKey: .supportEntitlementID)
+        try container.encodeIfPresent(supportEntitlementId, forKey: .supportEntitlementId)
     }
 }
 

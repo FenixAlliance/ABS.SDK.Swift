@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getTenantSizeById**](SizesAPI.md#gettenantsizebyid) | **GET** /api/v2/TenantsService/Sizes/{tenantSizeId} | Retrieve a single tenant size by its ID
 [**getTenantSizes**](SizesAPI.md#gettenantsizes) | **GET** /api/v2/TenantsService/Sizes | Retrieve a list of tenant sizes
 [**getTenantSizesCount**](SizesAPI.md#gettenantsizescount) | **GET** /api/v2/TenantsService/Sizes/Count | Get the count of tenant sizes
+[**patchTenantSize**](SizesAPI.md#patchtenantsize) | **PATCH** /api/v2/TenantsService/Sizes/{tenantSizeId} | Patch a tenant size
 [**updateTenantSize**](SizesAPI.md#updatetenantsize) | **PUT** /api/v2/TenantsService/Sizes/{tenantSizeId} | Update a tenant size
 
 
@@ -29,7 +30,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let tenantSizeCreateDto = TenantSizeCreateDto(id: 123, timestamp: Date(), name: "name_example", employeeLowRangeValue: 123, employeeHighRangeValue: 123) // TenantSizeCreateDto |  (optional)
+let tenantSizeCreateDto = TenantSizeCreateDto(id: 123, timestamp: Date(), employeeLowRangeValue: 123, employeeHighRangeValue: 123) // TenantSizeCreateDto |  (optional)
 
 // Create a new tenant size
 SizesAPI.createTenantSize(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, tenantSizeCreateDto: tenantSizeCreateDto) { (response, error) in
@@ -288,6 +289,64 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchTenantSize**
+```swift
+    open class func patchTenantSize(tenantId: UUID, tenantSizeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a tenant size
+
+Patch a tenant size
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let tenantSizeId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a tenant size
+SizesAPI.patchTenantSize(tenantId: tenantId, tenantSizeId: tenantSizeId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **tenantSizeId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateTenantSize**
 ```swift
     open class func updateTenantSize(tenantId: UUID, tenantSizeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, tenantSizeUpdateDto: TenantSizeUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
@@ -306,7 +365,7 @@ let tenantId = 987 // UUID |
 let tenantSizeId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let tenantSizeUpdateDto = TenantSizeUpdateDto(name: "name_example", employeeLowRangeValue: 123, employeeHighRangeValue: 123) // TenantSizeUpdateDto |  (optional)
+let tenantSizeUpdateDto = TenantSizeUpdateDto(employeeLowRangeValue: 123, employeeHighRangeValue: 123) // TenantSizeUpdateDto |  (optional)
 
 // Update a tenant size
 SizesAPI.updateTenantSize(tenantId: tenantId, tenantSizeId: tenantSizeId, apiVersion: apiVersion, xApiVersion: xApiVersion, tenantSizeUpdateDto: tenantSizeUpdateDto) { (response, error) in

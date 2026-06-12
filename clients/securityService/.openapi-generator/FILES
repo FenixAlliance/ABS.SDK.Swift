@@ -48,6 +48,7 @@ OpenAPIClient/Classes/OpenAPIs/Models/OAuthApplicationUpdateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/OAuthAuthorizationDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/OAuthAuthorizationDtoEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/OAuthAuthorizationDtoListEnvelope.swift
+OpenAPIClient/Classes/OpenAPIs/Models/Operation.swift
 OpenAPIClient/Classes/OpenAPIs/Models/RefreshRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/RegisterRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ResendConfirmationEmailRequest.swift
@@ -109,6 +110,7 @@ docs/OAuthApplicationsAPI.md
 docs/OAuthAuthorizationDto.md
 docs/OAuthAuthorizationDtoEnvelope.md
 docs/OAuthAuthorizationDtoListEnvelope.md
+docs/Operation.md
 docs/PermissionsAPI.md
 docs/RefreshRequest.md
 docs/RegisterRequest.md

@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getFiscalAuthorities**](FiscalAuthoritiesAPI.md#getfiscalauthorities) | **GET** /api/v2/AccountingService/Fiscals/Authorities | Get fiscal authorities
 [**getFiscalAuthoritiesCount**](FiscalAuthoritiesAPI.md#getfiscalauthoritiescount) | **GET** /api/v2/AccountingService/Fiscals/Authorities/Count | Get fiscal authorities count
 [**getFiscalAuthority**](FiscalAuthoritiesAPI.md#getfiscalauthority) | **GET** /api/v2/AccountingService/Fiscals/Authorities/{authorityId} | Get fiscal authority by ID
+[**patchFiscalAuthorityAsync**](FiscalAuthoritiesAPI.md#patchfiscalauthorityasync) | **PATCH** /api/v2/AccountingService/Fiscals/Authorities/{authorityId} | Patch a fiscal authority
 [**updateFiscalAuthority**](FiscalAuthoritiesAPI.md#updatefiscalauthority) | **PUT** /api/v2/AccountingService/Fiscals/Authorities/{authorityId} | Update a fiscal authority
 
 
@@ -284,6 +285,64 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchFiscalAuthorityAsync**
+```swift
+    open class func patchFiscalAuthorityAsync(tenantId: UUID, authorityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a fiscal authority
+
+Partially updates a fiscal authority.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let authorityId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a fiscal authority
+FiscalAuthoritiesAPI.patchFiscalAuthorityAsync(tenantId: tenantId, authorityId: authorityId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **authorityId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

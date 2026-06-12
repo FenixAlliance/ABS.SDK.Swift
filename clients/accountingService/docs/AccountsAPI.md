@@ -38,6 +38,9 @@ Method | HTTP request | Description
 [**getDebitAccountEntriesAsync**](AccountsAPI.md#getdebitaccountentriesasync) | **GET** /api/v2/AccountingService/Accounts/{accountId}/Entries/Debit | Get debit account entries
 [**getRootAccountsAsync**](AccountsAPI.md#getrootaccountsasync) | **GET** /api/v2/AccountingService/Accounts/Root | Get root accounts
 [**patchAccountAsync**](AccountsAPI.md#patchaccountasync) | **PATCH** /api/v2/AccountingService/Accounts/{accountId} | Patch an account
+[**patchAccountEntryAsync**](AccountsAPI.md#patchaccountentryasync) | **PATCH** /api/v2/AccountingService/Accounts/{accountId}/Entries/{entryId} | Patch account entry
+[**patchAccountRelationAsync**](AccountsAPI.md#patchaccountrelationasync) | **PATCH** /api/v2/AccountingService/Accounts/Relations/{accountRelationId} | Patch account relation
+[**patchAccountTypeAsync**](AccountsAPI.md#patchaccounttypeasync) | **PATCH** /api/v2/AccountingService/Accounts/Types/{accountTypeId} | Patch account type
 [**seedChartOfAccountsAsync**](AccountsAPI.md#seedchartofaccountsasync) | **POST** /api/v2/AccountingService/Accounts/ChartsOfAccounts/Seed | Seed chart of accounts
 [**updateAccountAsync**](AccountsAPI.md#updateaccountasync) | **PUT** /api/v2/AccountingService/Accounts/{accountId} | Update an account
 [**updateAccountEntryAsync**](AccountsAPI.md#updateaccountentryasync) | **PUT** /api/v2/AccountingService/Accounts/{accountId}/Entries/{entryId} | Update account entry
@@ -228,7 +231,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let accountCreateDto = AccountCreateDto(id: 123, timestamp: Date(), group: false, frozen: false, name: "name_example", code: "code_example", path: "path_example", _prefix: "_prefix_example", currencyId: "currencyId_example", accountTypeId: "accountTypeId_example", parentAccountId: "parentAccountId_example", accountCategory: "accountCategory_example") // AccountCreateDto |  (optional)
+let accountCreateDto = AccountCreateDto(id: 123, timestamp: Date(), group: false, frozen: false, name: "name_example", code: "code_example", path: "path_example", _prefix: "_prefix_example", currencyId: "currencyId_example", contactId: "contactId_example", accountTypeId: "accountTypeId_example", parentAccountId: "parentAccountId_example", accountCategory: "accountCategory_example") // AccountCreateDto |  (optional)
 
 // Get root accounts
 AccountsAPI.createAccountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountCreateDto: accountCreateDto) { (response, error) in
@@ -459,7 +462,7 @@ let tenantId = 987 // UUID |
 let accountId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let accountRelationCreateDto = AccountRelationCreateDto(id: 123, timestamp: Date(), accountId: "accountId_example") // AccountRelationCreateDto |  (optional)
+let accountRelationCreateDto = AccountRelationCreateDto(id: 123, timestamp: Date(), accountId: "accountId_example", type: "type_example") // AccountRelationCreateDto |  (optional)
 
 // Create account relation
 AccountsAPI.createAccountRelationAsync(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountRelationCreateDto: accountRelationCreateDto) { (response, error) in
@@ -801,7 +804,7 @@ let tenantId = 987 // UUID |
 let currencyId = "currencyId_example" // String |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let accountDto = [AccountDto(id: "id_example", timestamp: Date(), group: false, frozen: false, name: "name_example", code: "code_example", path: "path_example", title: "title_example", _prefix: "_prefix_example", balance: 123, currencyId: "currencyId_example", accountType: "accountType_example", qualifiedName: "qualifiedName_example", accountTypeId: "accountTypeId_example", debitsBalance: 123, creditsBalance: 123, balanceInUsd: 123, debitsBalanceInUsd: 123, creditsBalanceInUsd: 123, forexRate: 123, parentAccountId: "parentAccountId_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example", childrenAccountsCount: 123, accountCategory: "accountCategory_example", balanceAmount: Money(amount: 123, currency: CurrencyId(value: "value_example", code: "code_example", country: "country_example")), creditsBalanceAmount: nil, debitsBalanceAmount: nil, balanceAmountInUsd: nil, debitsBalanceAmountInUsd: nil, creditsBalanceAmountInUsd: nil)] // [AccountDto] |  (optional)
+let accountDto = [AccountDto(id: "id_example", timestamp: Date(), group: false, frozen: false, name: "name_example", code: "code_example", path: "path_example", title: "title_example", _prefix: "_prefix_example", balance: 123, currencyId: "currencyId_example", contactId: "contactId_example", accountType: "accountType_example", qualifiedName: "qualifiedName_example", accountTypeId: "accountTypeId_example", debitsBalance: 123, creditsBalance: 123, balanceInUsd: 123, debitsBalanceInUsd: 123, creditsBalanceInUsd: 123, forexRate: 123, parentAccountId: "parentAccountId_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example", childrenAccountsCount: 123, accountCategory: "accountCategory_example", balanceAmount: Money(amount: 123, currency: CurrencyId(value: "value_example", code: "code_example", country: "country_example")), creditsBalanceAmount: nil, debitsBalanceAmount: nil, balanceAmountInUsd: nil, debitsBalanceAmountInUsd: nil, creditsBalanceAmountInUsd: nil)] // [AccountDto] |  (optional)
 
 // Get account aggregate
 AccountsAPI.getAccountAggregateAsync(tenantId: tenantId, currencyId: currencyId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountDto: accountDto) { (response, error) in
@@ -1951,6 +1954,184 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchAccountEntryAsync**
+```swift
+    open class func patchAccountEntryAsync(tenantId: UUID, accountId: UUID, entryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch account entry
+
+Patch account entry.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let accountId = 987 // UUID | 
+let entryId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch account entry
+AccountsAPI.patchAccountEntryAsync(tenantId: tenantId, accountId: accountId, entryId: entryId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **accountId** | **UUID** |  | 
+ **entryId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchAccountRelationAsync**
+```swift
+    open class func patchAccountRelationAsync(tenantId: UUID, accountRelationId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch account relation
+
+Patch account relation.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let accountRelationId = 987 // UUID | 
+let accountId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch account relation
+AccountsAPI.patchAccountRelationAsync(tenantId: tenantId, accountRelationId: accountRelationId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **accountRelationId** | **UUID** |  | 
+ **accountId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchAccountTypeAsync**
+```swift
+    open class func patchAccountTypeAsync(tenantId: UUID, accountTypeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch account type
+
+Patch account type.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let accountTypeId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch account type
+AccountsAPI.patchAccountTypeAsync(tenantId: tenantId, accountTypeId: accountTypeId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **accountTypeId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **seedChartOfAccountsAsync**
 ```swift
     open class func seedChartOfAccountsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, seedChartOfAccountsRequest: SeedChartOfAccountsRequest? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
@@ -2025,7 +2206,7 @@ let tenantId = 987 // UUID |
 let accountId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let accountUpdateDto = AccountUpdateDto(group: false, frozen: false, name: "name_example", code: "code_example", path: "path_example", _prefix: "_prefix_example", currencyId: "currencyId_example", accountTypeId: "accountTypeId_example", parentAccountId: "parentAccountId_example", accountCategory: "accountCategory_example") // AccountUpdateDto |  (optional)
+let accountUpdateDto = AccountUpdateDto(group: false, frozen: false, name: "name_example", code: "code_example", path: "path_example", _prefix: "_prefix_example", currencyId: "currencyId_example", contactId: "contactId_example", accountTypeId: "accountTypeId_example", parentAccountId: "parentAccountId_example", accountCategory: "accountCategory_example") // AccountUpdateDto |  (optional)
 
 // Update an account
 AccountsAPI.updateAccountAsync(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountUpdateDto: accountUpdateDto) { (response, error) in
@@ -2144,7 +2325,7 @@ let accountRelationId = 987 // UUID |
 let accountId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let accountRelationUpdateDto = AccountRelationUpdateDto(accountId: "accountId_example") // AccountRelationUpdateDto |  (optional)
+let accountRelationUpdateDto = AccountRelationUpdateDto(accountId: "accountId_example", type: "type_example") // AccountRelationUpdateDto |  (optional)
 
 // Update account relation
 AccountsAPI.updateAccountRelationAsync(tenantId: tenantId, accountRelationId: accountRelationId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountRelationUpdateDto: accountRelationUpdateDto) { (response, error) in

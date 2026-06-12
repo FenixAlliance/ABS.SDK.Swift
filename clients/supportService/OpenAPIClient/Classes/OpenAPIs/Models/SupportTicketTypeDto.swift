@@ -16,14 +16,14 @@ public struct SupportTicketTypeDto: Codable, JSONEncodable, Hashable {
     public var timestamp: Date?
     public var title: String?
     public var description: String?
-    public var businessID: String?
+    public var tenantId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil, businessID: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil, tenantId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
         self.description = description
-        self.businessID = businessID
+        self.tenantId = tenantId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -31,7 +31,7 @@ public struct SupportTicketTypeDto: Codable, JSONEncodable, Hashable {
         case timestamp
         case title
         case description
-        case businessID
+        case tenantId
     }
 
     // Encodable protocol methods
@@ -42,7 +42,7 @@ public struct SupportTicketTypeDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(businessID, forKey: .businessID)
+        try container.encodeIfPresent(tenantId, forKey: .tenantId)
     }
 }
 

@@ -16,14 +16,14 @@ public struct ShippingClassDto: Codable, JSONEncodable, Hashable {
     public var timestamp: Date?
     public var name: String?
     public var slug: String?
-    public var businessID: String?
+    public var tenantId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, slug: String? = nil, businessID: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, slug: String? = nil, tenantId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
         self.slug = slug
-        self.businessID = businessID
+        self.tenantId = tenantId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -31,7 +31,7 @@ public struct ShippingClassDto: Codable, JSONEncodable, Hashable {
         case timestamp
         case name
         case slug
-        case businessID
+        case tenantId
     }
 
     // Encodable protocol methods
@@ -42,7 +42,7 @@ public struct ShippingClassDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(slug, forKey: .slug)
-        try container.encodeIfPresent(businessID, forKey: .businessID)
+        try container.encodeIfPresent(tenantId, forKey: .tenantId)
     }
 }
 

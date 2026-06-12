@@ -28,11 +28,12 @@ public struct AccountUpdateDto: Codable, JSONEncodable, Hashable {
     public var path: String?
     public var _prefix: String?
     public var currencyId: String
+    public var contactId: String?
     public var accountTypeId: String?
     public var parentAccountId: String?
     public var accountCategory: AccountCategory?
 
-    public init(group: Bool? = nil, frozen: Bool? = nil, name: String, code: String? = nil, path: String? = nil, _prefix: String? = nil, currencyId: String, accountTypeId: String? = nil, parentAccountId: String? = nil, accountCategory: AccountCategory? = nil) {
+    public init(group: Bool? = nil, frozen: Bool? = nil, name: String, code: String? = nil, path: String? = nil, _prefix: String? = nil, currencyId: String, contactId: String? = nil, accountTypeId: String? = nil, parentAccountId: String? = nil, accountCategory: AccountCategory? = nil) {
         self.group = group
         self.frozen = frozen
         self.name = name
@@ -40,6 +41,7 @@ public struct AccountUpdateDto: Codable, JSONEncodable, Hashable {
         self.path = path
         self._prefix = _prefix
         self.currencyId = currencyId
+        self.contactId = contactId
         self.accountTypeId = accountTypeId
         self.parentAccountId = parentAccountId
         self.accountCategory = accountCategory
@@ -53,6 +55,7 @@ public struct AccountUpdateDto: Codable, JSONEncodable, Hashable {
         case path
         case _prefix = "prefix"
         case currencyId
+        case contactId
         case accountTypeId
         case parentAccountId
         case accountCategory
@@ -69,6 +72,7 @@ public struct AccountUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(path, forKey: .path)
         try container.encodeIfPresent(_prefix, forKey: ._prefix)
         try container.encode(currencyId, forKey: .currencyId)
+        try container.encodeIfPresent(contactId, forKey: .contactId)
         try container.encodeIfPresent(accountTypeId, forKey: .accountTypeId)
         try container.encodeIfPresent(parentAccountId, forKey: .parentAccountId)
         try container.encodeIfPresent(accountCategory, forKey: .accountCategory)

@@ -10,9 +10,9 @@ Name | Type | Description | Notes
 **swift** | **String** |  | [optional] 
 **branchCode** | **String** |  | [optional] 
 **bankAccountNumber** | **String** |  | [optional] 
-**qualifiedName** | **String** |  | [optional] 
 **bankId** | **String** |  | [optional] 
 **bankProfileId** | **String** |  | [optional] 
+**walletId** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

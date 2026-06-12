@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**deleteStoreAsync**](StoresAPI.md#deletestoreasync) | **DELETE** /api/v2/SalesService/Stores/{storeId} | Delete a store
 [**getStoreAsync**](StoresAPI.md#getstoreasync) | **GET** /api/v2/SalesService/Stores/{storeId} | Get store by ID
 [**getStoresAsync**](StoresAPI.md#getstoresasync) | **GET** /api/v2/SalesService/Stores | Get stores
+[**patchStoreAsync**](StoresAPI.md#patchstoreasync) | **PATCH** /api/v2/SalesService/Stores/{storeId} | Patch a store
 [**updateStoreAsync**](StoresAPI.md#updatestoreasync) | **PUT** /api/v2/SalesService/Stores/{storeId} | Update a store
 
 
@@ -264,6 +265,60 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchStoreAsync**
+```swift
+    open class func patchStoreAsync(tenantId: UUID, storeId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a store
+
+Partially updates an existing store using a JSON Patch document.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let storeId = 987 // UUID | 
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a store
+StoresAPI.patchStoreAsync(tenantId: tenantId, storeId: storeId, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **storeId** | **UUID** |  | 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

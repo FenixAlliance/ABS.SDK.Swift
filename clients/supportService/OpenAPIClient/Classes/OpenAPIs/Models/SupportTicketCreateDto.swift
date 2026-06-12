@@ -12,37 +12,50 @@ import AnyCodable
 
 public struct SupportTicketCreateDto: Codable, JSONEncodable, Hashable {
 
+    public enum SupportTicketStatus: String, Codable, CaseIterable {
+        case new = "New"
+        case openAndWaitingForAgent = "OpenAndWaitingForAgent"
+        case openAndWaitingForCustomer = "OpenAndWaitingForCustomer"
+        case closed = "Closed"
+    }
+    static let titleRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     static let descriptionRule = StringRule(minLength: 0, maxLength: 1000, pattern: nil)
-    static let contactIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
-    static let supportTicketTypeIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
-    static let supportEntitlementIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
-    static let supportPriorityIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
+    static let contactIdRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
+    static let supportTicketTypeIdRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
+    static let supportEntitlementIdRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
+    static let supportPriorityIdRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
+    public var title: String?
     public var description: String?
-    public var contactID: String?
-    public var supportTicketTypeID: String?
-    public var supportEntitlementID: String?
-    public var supportPriorityID: String?
+    public var supportTicketStatus: SupportTicketStatus?
+    public var contactId: String?
+    public var supportTicketTypeId: String?
+    public var supportEntitlementId: String?
+    public var supportPriorityId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, description: String? = nil, contactID: String? = nil, supportTicketTypeID: String? = nil, supportEntitlementID: String? = nil, supportPriorityID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil, supportTicketStatus: SupportTicketStatus? = nil, contactId: String? = nil, supportTicketTypeId: String? = nil, supportEntitlementId: String? = nil, supportPriorityId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
+        self.title = title
         self.description = description
-        self.contactID = contactID
-        self.supportTicketTypeID = supportTicketTypeID
-        self.supportEntitlementID = supportEntitlementID
-        self.supportPriorityID = supportPriorityID
+        self.supportTicketStatus = supportTicketStatus
+        self.contactId = contactId
+        self.supportTicketTypeId = supportTicketTypeId
+        self.supportEntitlementId = supportEntitlementId
+        self.supportPriorityId = supportPriorityId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
+        case title
         case description
-        case contactID
-        case supportTicketTypeID
-        case supportEntitlementID
-        case supportPriorityID
+        case supportTicketStatus
+        case contactId
+        case supportTicketTypeId
+        case supportEntitlementId
+        case supportPriorityId
     }
 
     // Encodable protocol methods
@@ -51,11 +64,13 @@ public struct SupportTicketCreateDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
+        try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(contactID, forKey: .contactID)
-        try container.encodeIfPresent(supportTicketTypeID, forKey: .supportTicketTypeID)
-        try container.encodeIfPresent(supportEntitlementID, forKey: .supportEntitlementID)
-        try container.encodeIfPresent(supportPriorityID, forKey: .supportPriorityID)
+        try container.encodeIfPresent(supportTicketStatus, forKey: .supportTicketStatus)
+        try container.encodeIfPresent(contactId, forKey: .contactId)
+        try container.encodeIfPresent(supportTicketTypeId, forKey: .supportTicketTypeId)
+        try container.encodeIfPresent(supportEntitlementId, forKey: .supportEntitlementId)
+        try container.encodeIfPresent(supportPriorityId, forKey: .supportPriorityId)
     }
 }
 

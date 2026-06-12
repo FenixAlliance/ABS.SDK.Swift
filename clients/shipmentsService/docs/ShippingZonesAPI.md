@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getShippingZoneByIdAsync**](ShippingZonesAPI.md#getshippingzonebyidasync) | **GET** /api/v2/ShipmentsService/ShippingZones/{zoneId} | Get shipping zone by ID
 [**getShippingZonesAsync**](ShippingZonesAPI.md#getshippingzonesasync) | **GET** /api/v2/ShipmentsService/ShippingZones | Get all shipping zones
 [**getShippingZonesCountAsync**](ShippingZonesAPI.md#getshippingzonescountasync) | **GET** /api/v2/ShipmentsService/ShippingZones/Count | Get shipping zones count
+[**patchShippingZoneAsync**](ShippingZonesAPI.md#patchshippingzoneasync) | **PATCH** /api/v2/ShipmentsService/ShippingZones/{zoneId} | Patch a shipping zone
 [**updateShippingZoneAsync**](ShippingZonesAPI.md#updateshippingzoneasync) | **PUT** /api/v2/ShipmentsService/ShippingZones/{zoneId} | Update a shipping zone
 
 
@@ -284,6 +285,64 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchShippingZoneAsync**
+```swift
+    open class func patchShippingZoneAsync(tenantId: UUID, zoneId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a shipping zone
+
+Partially updates an existing shipping zone using JSON Patch.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let zoneId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a shipping zone
+ShippingZonesAPI.patchShippingZoneAsync(tenantId: tenantId, zoneId: zoneId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **zoneId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

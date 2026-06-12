@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getReceiptDetailsAsync**](ReceiptsAPI.md#getreceiptdetailsasync) | **GET** /api/v2/AccountingService/Receipts/{receiptId} | Gets details of a receipt
 [**getReceiptsAsync**](ReceiptsAPI.md#getreceiptsasync) | **GET** /api/v2/AccountingService/Receipts | Retrieves tenant receipts
 [**getReceiptsCountAsync**](ReceiptsAPI.md#getreceiptscountasync) | **GET** /api/v2/AccountingService/Receipts/Count | Gets count of tenant receipts
+[**patchReceiptAsync**](ReceiptsAPI.md#patchreceiptasync) | **PATCH** /api/v2/AccountingService/Receipts/{receiptId} | Patches a receipt
 [**updateReceiptAsync**](ReceiptsAPI.md#updatereceiptasync) | **PUT** /api/v2/AccountingService/Receipts/{receiptId} | Updates a receipt
 
 
@@ -264,6 +265,60 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchReceiptAsync**
+```swift
+    open class func patchReceiptAsync(tenantId: UUID, receiptId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patches a receipt
+
+Partially updates the specified receipt using a JSON Patch document.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let receiptId = 987 // UUID | 
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patches a receipt
+ReceiptsAPI.patchReceiptAsync(tenantId: tenantId, receiptId: receiptId, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **receiptId** | **UUID** |  | 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

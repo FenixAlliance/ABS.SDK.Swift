@@ -17,21 +17,19 @@ public struct TenantUnitCreateDto: Codable, JSONEncodable, Hashable {
     public var name: String?
     public var description: String?
     public var disabled: Bool?
-    public var businessUnitQualifiedName: String?
-    public var countryID: String?
-    public var organizationProfileID: String?
-    public var parentBusinessUnitID: String?
+    public var countryId: String?
+    public var organizationProfileId: String?
+    public var parentBusinessUnitId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil, description: String? = nil, disabled: Bool? = nil, businessUnitQualifiedName: String? = nil, countryID: String? = nil, organizationProfileID: String? = nil, parentBusinessUnitID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil, description: String? = nil, disabled: Bool? = nil, countryId: String? = nil, organizationProfileId: String? = nil, parentBusinessUnitId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
         self.description = description
         self.disabled = disabled
-        self.businessUnitQualifiedName = businessUnitQualifiedName
-        self.countryID = countryID
-        self.organizationProfileID = organizationProfileID
-        self.parentBusinessUnitID = parentBusinessUnitID
+        self.countryId = countryId
+        self.organizationProfileId = organizationProfileId
+        self.parentBusinessUnitId = parentBusinessUnitId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -40,10 +38,9 @@ public struct TenantUnitCreateDto: Codable, JSONEncodable, Hashable {
         case name
         case description
         case disabled
-        case businessUnitQualifiedName
-        case countryID
-        case organizationProfileID
-        case parentBusinessUnitID
+        case countryId
+        case organizationProfileId
+        case parentBusinessUnitId
     }
 
     // Encodable protocol methods
@@ -55,10 +52,9 @@ public struct TenantUnitCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(disabled, forKey: .disabled)
-        try container.encodeIfPresent(businessUnitQualifiedName, forKey: .businessUnitQualifiedName)
-        try container.encodeIfPresent(countryID, forKey: .countryID)
-        try container.encodeIfPresent(organizationProfileID, forKey: .organizationProfileID)
-        try container.encodeIfPresent(parentBusinessUnitID, forKey: .parentBusinessUnitID)
+        try container.encodeIfPresent(countryId, forKey: .countryId)
+        try container.encodeIfPresent(organizationProfileId, forKey: .organizationProfileId)
+        try container.encodeIfPresent(parentBusinessUnitId, forKey: .parentBusinessUnitId)
     }
 }
 

@@ -19,14 +19,14 @@ public struct RefundRequestDto: Codable, JSONEncodable, Hashable {
     public var approved: Bool?
     public var approvedTimestamp: Date?
     public var tenantId: String?
-    public var businessProfileRecordId: String?
+    public var enrollmentId: String?
     public var supportEntitlementId: String?
     public var contactId: String?
-    public var accountHolderId: String?
+    public var userId: String?
     public var refundPolicyId: String?
     public var paymentId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil, approved: Bool? = nil, approvedTimestamp: Date? = nil, tenantId: String? = nil, businessProfileRecordId: String? = nil, supportEntitlementId: String? = nil, contactId: String? = nil, accountHolderId: String? = nil, refundPolicyId: String? = nil, paymentId: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil, approved: Bool? = nil, approvedTimestamp: Date? = nil, tenantId: String? = nil, enrollmentId: String? = nil, supportEntitlementId: String? = nil, contactId: String? = nil, userId: String? = nil, refundPolicyId: String? = nil, paymentId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
@@ -34,10 +34,10 @@ public struct RefundRequestDto: Codable, JSONEncodable, Hashable {
         self.approved = approved
         self.approvedTimestamp = approvedTimestamp
         self.tenantId = tenantId
-        self.businessProfileRecordId = businessProfileRecordId
+        self.enrollmentId = enrollmentId
         self.supportEntitlementId = supportEntitlementId
         self.contactId = contactId
-        self.accountHolderId = accountHolderId
+        self.userId = userId
         self.refundPolicyId = refundPolicyId
         self.paymentId = paymentId
     }
@@ -50,10 +50,10 @@ public struct RefundRequestDto: Codable, JSONEncodable, Hashable {
         case approved
         case approvedTimestamp
         case tenantId
-        case businessProfileRecordId
+        case enrollmentId
         case supportEntitlementId
         case contactId
-        case accountHolderId
+        case userId
         case refundPolicyId
         case paymentId
     }
@@ -69,10 +69,10 @@ public struct RefundRequestDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(approved, forKey: .approved)
         try container.encodeIfPresent(approvedTimestamp, forKey: .approvedTimestamp)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(businessProfileRecordId, forKey: .businessProfileRecordId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(supportEntitlementId, forKey: .supportEntitlementId)
         try container.encodeIfPresent(contactId, forKey: .contactId)
-        try container.encodeIfPresent(accountHolderId, forKey: .accountHolderId)
+        try container.encodeIfPresent(userId, forKey: .userId)
         try container.encodeIfPresent(refundPolicyId, forKey: .refundPolicyId)
         try container.encodeIfPresent(paymentId, forKey: .paymentId)
     }

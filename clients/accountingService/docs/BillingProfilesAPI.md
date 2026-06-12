@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getBillingProfileByIdAsync**](BillingProfilesAPI.md#getbillingprofilebyidasync) | **GET** /api/v2/AccountingService/BillingProfiles/{billingProfileId} | Gets a billing profile by id
 [**getBillingProfilesAsync**](BillingProfilesAPI.md#getbillingprofilesasync) | **GET** /api/v2/AccountingService/BillingProfiles | Gets all billing profiles
 [**getBillingProfilesCountAsync**](BillingProfilesAPI.md#getbillingprofilescountasync) | **GET** /api/v2/AccountingService/BillingProfiles/Count | Gets the count of billing profiles
+[**patchBillingProfileAsync**](BillingProfilesAPI.md#patchbillingprofileasync) | **PATCH** /api/v2/AccountingService/BillingProfiles/{billingProfileId} | Patch a billing profile
 [**updateBillingProfileAsync**](BillingProfilesAPI.md#updatebillingprofileasync) | **PUT** /api/v2/AccountingService/BillingProfiles/{billingProfileId} | Updates an existing billing profile
 
 
@@ -27,7 +28,7 @@ Adds a new billing profile record for the specified tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let billingProfileCreateDto = BillingProfileCreateDto(id: 123, timestamp: Date(), contactId: "contactId_example", taxId: "taxId_example", phone: "phone_example", email: "email_example", address: "address_example", address1: "address1_example", address2: "address2_example", postalCode: "postalCode_example", businessName: "businessName_example", commercialName: "commercialName_example", ticker: "ticker_example", duns: "duns_example", isPublicCompany: false, isFactaCustomer: false, countryId: "countryId_example", stateId: "stateId_example", cityId: "cityId_example", fiscalIdentificationTypeId: "fiscalIdentificationTypeId_example", fiscalAuthorityId: "fiscalAuthorityId_example", fiscalRegimeId: "fiscalRegimeId_example") // BillingProfileCreateDto | 
+let billingProfileCreateDto = BillingProfileCreateDto(id: 123, timestamp: Date(), contactId: "contactId_example", taxId: "taxId_example", phone: "phone_example", email: "email_example", address: "address_example", address1: "address1_example", address2: "address2_example", postalCode: "postalCode_example", businessName: "businessName_example", commercialName: "commercialName_example", ticker: "ticker_example", duns: "duns_example", isPublicCompany: false, isFactaCustomer: false, taxPayerType: "taxPayerType_example", countryId: "countryId_example", stateId: "stateId_example", cityId: "cityId_example", fiscalIdentificationTypeId: "fiscalIdentificationTypeId_example", fiscalAuthorityId: "fiscalAuthorityId_example", fiscalRegimeId: "fiscalRegimeId_example") // BillingProfileCreateDto | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
@@ -288,6 +289,64 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchBillingProfileAsync**
+```swift
+    open class func patchBillingProfileAsync(tenantId: UUID, billingProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a billing profile
+
+Partially updates a billing profile.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let billingProfileId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a billing profile
+BillingProfilesAPI.patchBillingProfileAsync(tenantId: tenantId, billingProfileId: billingProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **billingProfileId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateBillingProfileAsync**
 ```swift
     open class func updateBillingProfileAsync(tenantId: UUID, billingProfileId: UUID, billingProfileUpdateDto: BillingProfileUpdateDto, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
@@ -304,7 +363,7 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let billingProfileId = 987 // UUID | 
-let billingProfileUpdateDto = BillingProfileUpdateDto(contactId: "contactId_example", taxId: "taxId_example", phone: "phone_example", email: "email_example", address: "address_example", address1: "address1_example", address2: "address2_example", postalCode: "postalCode_example", businessName: "businessName_example", commercialName: "commercialName_example", ticker: "ticker_example", duns: "duns_example", isPublicCompany: false, isFactaCustomer: false, countryId: "countryId_example", stateId: "stateId_example", cityId: "cityId_example", fiscalIdentificationTypeId: "fiscalIdentificationTypeId_example", fiscalAuthorityId: "fiscalAuthorityId_example", fiscalRegimeId: "fiscalRegimeId_example") // BillingProfileUpdateDto | 
+let billingProfileUpdateDto = BillingProfileUpdateDto(contactId: "contactId_example", taxId: "taxId_example", phone: "phone_example", email: "email_example", address: "address_example", address1: "address1_example", address2: "address2_example", postalCode: "postalCode_example", businessName: "businessName_example", commercialName: "commercialName_example", ticker: "ticker_example", duns: "duns_example", isPublicCompany: false, isFactaCustomer: false, taxPayerType: "taxPayerType_example", countryId: "countryId_example", stateId: "stateId_example", cityId: "cityId_example", fiscalIdentificationTypeId: "fiscalIdentificationTypeId_example", fiscalAuthorityId: "fiscalAuthorityId_example", fiscalRegimeId: "fiscalRegimeId_example") // BillingProfileUpdateDto | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 

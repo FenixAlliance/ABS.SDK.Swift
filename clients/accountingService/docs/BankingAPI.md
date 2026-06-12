@@ -24,6 +24,10 @@ Method | HTTP request | Description
 [**getBankTransactionsCount**](BankingAPI.md#getbanktransactionscount) | **GET** /api/v2/AccountingService/Banking/{bankId}/Transactions/Count | Gets the current tenant bank transactions count
 [**getBanks**](BankingAPI.md#getbanks) | **GET** /api/v2/AccountingService/Banking | Gets the current tenant banks
 [**getBanksCount**](BankingAPI.md#getbankscount) | **GET** /api/v2/AccountingService/Banking/Count | Gets the current tenant banks count
+[**patchBank**](BankingAPI.md#patchbank) | **PATCH** /api/v2/AccountingService/Banking/{bankId} | Patches a bank
+[**patchBankAccount**](BankingAPI.md#patchbankaccount) | **PATCH** /api/v2/AccountingService/Banking/{bankId}/Accounts/{accountId} | Patches a bank account
+[**patchBankGuarantee**](BankingAPI.md#patchbankguarantee) | **PATCH** /api/v2/AccountingService/Banking/{bankId}/Guarantees/{guaranteeId} | Patches a bank guarantee
+[**patchBankTransaction**](BankingAPI.md#patchbanktransaction) | **PATCH** /api/v2/AccountingService/Banking/{bankId}/Transactions/{transactionId} | Patches a bank transaction
 [**updateBank**](BankingAPI.md#updatebank) | **PUT** /api/v2/AccountingService/Banking/{bankId} | Updates a bank
 [**updateBankAccount**](BankingAPI.md#updatebankaccount) | **PUT** /api/v2/AccountingService/Banking/{bankId}/Accounts/{accountId} | Updates a bank account
 [**updateBankGuarantee**](BankingAPI.md#updatebankguarantee) | **PUT** /api/v2/AccountingService/Banking/{bankId}/Guarantees/{guaranteeId} | Updates a bank guarantee
@@ -104,7 +108,7 @@ let tenantId = 987 // UUID |
 let bankId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let bankAccountCreateDto = BankAccountCreateDto(id: 123, timestamp: Date(), name: "name_example", iban: "iban_example", swift: "swift_example", branchCode: "branchCode_example", bankAccountNumber: "bankAccountNumber_example", qualifiedName: "qualifiedName_example", bankId: "bankId_example", bankProfileId: "bankProfileId_example") // BankAccountCreateDto |  (optional)
+let bankAccountCreateDto = BankAccountCreateDto(id: 123, timestamp: Date(), name: "name_example", iban: "iban_example", swift: "swift_example", branchCode: "branchCode_example", bankAccountNumber: "bankAccountNumber_example", bankId: "bankId_example", bankProfileId: "bankProfileId_example", walletId: "walletId_example") // BankAccountCreateDto |  (optional)
 
 // Creates a new bank account
 BankingAPI.createBankAccount(tenantId: tenantId, bankId: bankId, apiVersion: apiVersion, xApiVersion: xApiVersion, bankAccountCreateDto: bankAccountCreateDto) { (response, error) in
@@ -220,7 +224,7 @@ let tenantId = 987 // UUID |
 let bankId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let bankTransactionCreateDto = BankTransactionCreateDto(id: 123, timestamp: Date(), bankProfileId: "bankProfileId_example", bankAccountId: "bankAccountId_example") // BankTransactionCreateDto |  (optional)
+let bankTransactionCreateDto = BankTransactionCreateDto(id: 123, timestamp: Date(), description: "description_example", price: 123, quantity: 123, externalDescription: "externalDescription_example", basisQuantity: 123, basisAmount: 123, percent: 123, unitGroupId: "unitGroupId_example", unitId: "unitId_example", transactionCategoryId: "transactionCategoryId_example", currencyId: "currencyId_example", bankProfileId: "bankProfileId_example", bankAccountId: "bankAccountId_example") // BankTransactionCreateDto |  (optional)
 
 // Creates a new bank transaction
 BankingAPI.createBankTransaction(tenantId: tenantId, bankId: bankId, apiVersion: apiVersion, xApiVersion: xApiVersion, bankTransactionCreateDto: bankTransactionCreateDto) { (response, error) in
@@ -1164,6 +1168,244 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchBank**
+```swift
+    open class func patchBank(tenantId: UUID, bankId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patches a bank
+
+Partially update a bank using JSON Patch.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let bankId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patches a bank
+BankingAPI.patchBank(tenantId: tenantId, bankId: bankId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **bankId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchBankAccount**
+```swift
+    open class func patchBankAccount(tenantId: UUID, bankId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patches a bank account
+
+Partially update a bank account using JSON Patch.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let bankId = 987 // UUID | 
+let accountId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patches a bank account
+BankingAPI.patchBankAccount(tenantId: tenantId, bankId: bankId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **bankId** | **UUID** |  | 
+ **accountId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchBankGuarantee**
+```swift
+    open class func patchBankGuarantee(tenantId: UUID, bankId: UUID, guaranteeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patches a bank guarantee
+
+Partially update a bank guarantee using JSON Patch.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let bankId = 987 // UUID | 
+let guaranteeId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patches a bank guarantee
+BankingAPI.patchBankGuarantee(tenantId: tenantId, bankId: bankId, guaranteeId: guaranteeId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **bankId** | **UUID** |  | 
+ **guaranteeId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchBankTransaction**
+```swift
+    open class func patchBankTransaction(tenantId: UUID, bankId: UUID, transactionId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patches a bank transaction
+
+Partially update a bank transaction using JSON Patch.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let bankId = 987 // UUID | 
+let transactionId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patches a bank transaction
+BankingAPI.patchBankTransaction(tenantId: tenantId, bankId: bankId, transactionId: transactionId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **bankId** | **UUID** |  | 
+ **transactionId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateBank**
 ```swift
     open class func updateBank(tenantId: UUID, bankId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, bankUpdateDto: BankUpdateDto? = nil, completion: @escaping (_ data: BankDtoEnvelope?, _ error: Error?) -> Void)
@@ -1241,7 +1483,7 @@ let bankId = 987 // UUID |
 let accountId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let bankAccountUpdateDto = BankAccountUpdateDto(name: "name_example", iban: "iban_example", swift: "swift_example", branchCode: "branchCode_example", bankAccountNumber: "bankAccountNumber_example", qualifiedName: "qualifiedName_example", bankId: "bankId_example", bankProfileId: "bankProfileId_example") // BankAccountUpdateDto |  (optional)
+let bankAccountUpdateDto = BankAccountUpdateDto(name: "name_example", iban: "iban_example", swift: "swift_example", branchCode: "branchCode_example", bankAccountNumber: "bankAccountNumber_example", bankId: "bankId_example", bankProfileId: "bankProfileId_example", walletId: "walletId_example") // BankAccountUpdateDto |  (optional)
 
 // Updates a bank account
 BankingAPI.updateBankAccount(tenantId: tenantId, bankId: bankId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, bankAccountUpdateDto: bankAccountUpdateDto) { (response, error) in

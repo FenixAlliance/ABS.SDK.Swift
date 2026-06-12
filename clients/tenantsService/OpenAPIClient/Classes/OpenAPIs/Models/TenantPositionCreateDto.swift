@@ -16,12 +16,14 @@ public struct TenantPositionCreateDto: Codable, JSONEncodable, Hashable {
     public var timestamp: Date?
     public var title: String?
     public var description: String?
+    public var type: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil, type: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
         self.description = description
+        self.type = type
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -29,6 +31,7 @@ public struct TenantPositionCreateDto: Codable, JSONEncodable, Hashable {
         case timestamp
         case title
         case description
+        case type
     }
 
     // Encodable protocol methods
@@ -39,6 +42,7 @@ public struct TenantPositionCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(description, forKey: .description)
+        try container.encodeIfPresent(type, forKey: .type)
     }
 }
 

@@ -12,10 +12,17 @@ import AnyCodable
 
 public struct SupportEntitlementDto: Codable, JSONEncodable, Hashable {
 
+    public enum Status: String, Codable, CaseIterable {
+        case active = "Active"
+        case gracePeriod = "GracePeriod"
+        case disabled = "Disabled"
+        case deleted = "Deleted"
+    }
     public var id: String?
     public var timestamp: Date?
     public var title: String?
     public var description: String?
+    public var status: Status?
     public var startDateTime: Date?
     public var endDateTime: Date?
     public var nextInvoiceDateTime: Date?
@@ -53,21 +60,22 @@ public struct SupportEntitlementDto: Codable, JSONEncodable, Hashable {
     public var data8Label: String?
     public var data9: String?
     public var data9Label: String?
-    public var accountHolderID: String?
-    public var individualID: String?
-    public var organizationID: String?
-    public var receiverBusinessID: String?
-    public var businessID: String?
-    public var businessProfileRecordID: String?
-    public var paymentTokenID: String?
-    public var walletAccountID: String?
-    public var securityCertificateID: String?
+    public var userId: String?
+    public var individualId: String?
+    public var organizationId: String?
+    public var receiverTenantId: String?
+    public var tenantId: String?
+    public var enrollmentId: String?
+    public var paymentTokenId: String?
+    public var walletAccountId: String?
+    public var securityCertificateId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil, startDateTime: Date? = nil, endDateTime: Date? = nil, nextInvoiceDateTime: Date? = nil, code: String? = nil, signature: String? = nil, quantity: Int? = nil, repetitions: Int? = nil, chargeAttempts: Int? = nil, freeTrialInDays: Int? = nil, gracePeriodInDays: Int? = nil, customRenewalPeriod: Int? = nil, enableAutomaticRenew: Bool? = nil, enableProRateBilling: Bool? = nil, enableUsageThreshold: Bool? = nil, enableAutomaticDisable: Bool? = nil, enableAutomaticPayments: Bool? = nil, usageThreshold: Int? = nil, data: String? = nil, dataLabel: String? = nil, data1: String? = nil, data1Label: String? = nil, data2: String? = nil, data2Label: String? = nil, data3: String? = nil, data3Label: String? = nil, data4: String? = nil, data4Label: String? = nil, data5: String? = nil, data5Label: String? = nil, data6: String? = nil, data6Label: String? = nil, data7: String? = nil, data7Label: String? = nil, data8: String? = nil, data8Label: String? = nil, data9: String? = nil, data9Label: String? = nil, accountHolderID: String? = nil, individualID: String? = nil, organizationID: String? = nil, receiverBusinessID: String? = nil, businessID: String? = nil, businessProfileRecordID: String? = nil, paymentTokenID: String? = nil, walletAccountID: String? = nil, securityCertificateID: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil, status: Status? = nil, startDateTime: Date? = nil, endDateTime: Date? = nil, nextInvoiceDateTime: Date? = nil, code: String? = nil, signature: String? = nil, quantity: Int? = nil, repetitions: Int? = nil, chargeAttempts: Int? = nil, freeTrialInDays: Int? = nil, gracePeriodInDays: Int? = nil, customRenewalPeriod: Int? = nil, enableAutomaticRenew: Bool? = nil, enableProRateBilling: Bool? = nil, enableUsageThreshold: Bool? = nil, enableAutomaticDisable: Bool? = nil, enableAutomaticPayments: Bool? = nil, usageThreshold: Int? = nil, data: String? = nil, dataLabel: String? = nil, data1: String? = nil, data1Label: String? = nil, data2: String? = nil, data2Label: String? = nil, data3: String? = nil, data3Label: String? = nil, data4: String? = nil, data4Label: String? = nil, data5: String? = nil, data5Label: String? = nil, data6: String? = nil, data6Label: String? = nil, data7: String? = nil, data7Label: String? = nil, data8: String? = nil, data8Label: String? = nil, data9: String? = nil, data9Label: String? = nil, userId: String? = nil, individualId: String? = nil, organizationId: String? = nil, receiverTenantId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil, paymentTokenId: String? = nil, walletAccountId: String? = nil, securityCertificateId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
         self.description = description
+        self.status = status
         self.startDateTime = startDateTime
         self.endDateTime = endDateTime
         self.nextInvoiceDateTime = nextInvoiceDateTime
@@ -105,15 +113,15 @@ public struct SupportEntitlementDto: Codable, JSONEncodable, Hashable {
         self.data8Label = data8Label
         self.data9 = data9
         self.data9Label = data9Label
-        self.accountHolderID = accountHolderID
-        self.individualID = individualID
-        self.organizationID = organizationID
-        self.receiverBusinessID = receiverBusinessID
-        self.businessID = businessID
-        self.businessProfileRecordID = businessProfileRecordID
-        self.paymentTokenID = paymentTokenID
-        self.walletAccountID = walletAccountID
-        self.securityCertificateID = securityCertificateID
+        self.userId = userId
+        self.individualId = individualId
+        self.organizationId = organizationId
+        self.receiverTenantId = receiverTenantId
+        self.tenantId = tenantId
+        self.enrollmentId = enrollmentId
+        self.paymentTokenId = paymentTokenId
+        self.walletAccountId = walletAccountId
+        self.securityCertificateId = securityCertificateId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -121,6 +129,7 @@ public struct SupportEntitlementDto: Codable, JSONEncodable, Hashable {
         case timestamp
         case title
         case description
+        case status
         case startDateTime
         case endDateTime
         case nextInvoiceDateTime
@@ -158,15 +167,15 @@ public struct SupportEntitlementDto: Codable, JSONEncodable, Hashable {
         case data8Label
         case data9
         case data9Label
-        case accountHolderID
-        case individualID
-        case organizationID
-        case receiverBusinessID
-        case businessID
-        case businessProfileRecordID
-        case paymentTokenID
-        case walletAccountID
-        case securityCertificateID
+        case userId
+        case individualId
+        case organizationId
+        case receiverTenantId
+        case tenantId
+        case enrollmentId
+        case paymentTokenId
+        case walletAccountId
+        case securityCertificateId
     }
 
     // Encodable protocol methods
@@ -177,6 +186,7 @@ public struct SupportEntitlementDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(description, forKey: .description)
+        try container.encodeIfPresent(status, forKey: .status)
         try container.encodeIfPresent(startDateTime, forKey: .startDateTime)
         try container.encodeIfPresent(endDateTime, forKey: .endDateTime)
         try container.encodeIfPresent(nextInvoiceDateTime, forKey: .nextInvoiceDateTime)
@@ -214,15 +224,15 @@ public struct SupportEntitlementDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(data8Label, forKey: .data8Label)
         try container.encodeIfPresent(data9, forKey: .data9)
         try container.encodeIfPresent(data9Label, forKey: .data9Label)
-        try container.encodeIfPresent(accountHolderID, forKey: .accountHolderID)
-        try container.encodeIfPresent(individualID, forKey: .individualID)
-        try container.encodeIfPresent(organizationID, forKey: .organizationID)
-        try container.encodeIfPresent(receiverBusinessID, forKey: .receiverBusinessID)
-        try container.encodeIfPresent(businessID, forKey: .businessID)
-        try container.encodeIfPresent(businessProfileRecordID, forKey: .businessProfileRecordID)
-        try container.encodeIfPresent(paymentTokenID, forKey: .paymentTokenID)
-        try container.encodeIfPresent(walletAccountID, forKey: .walletAccountID)
-        try container.encodeIfPresent(securityCertificateID, forKey: .securityCertificateID)
+        try container.encodeIfPresent(userId, forKey: .userId)
+        try container.encodeIfPresent(individualId, forKey: .individualId)
+        try container.encodeIfPresent(organizationId, forKey: .organizationId)
+        try container.encodeIfPresent(receiverTenantId, forKey: .receiverTenantId)
+        try container.encodeIfPresent(tenantId, forKey: .tenantId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
+        try container.encodeIfPresent(paymentTokenId, forKey: .paymentTokenId)
+        try container.encodeIfPresent(walletAccountId, forKey: .walletAccountId)
+        try container.encodeIfPresent(securityCertificateId, forKey: .securityCertificateId)
     }
 }
 

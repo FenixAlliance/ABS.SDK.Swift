@@ -14,24 +14,24 @@ public struct ShippingLabelUpdateDto: Codable, JSONEncodable, Hashable {
 
     public var trackingCode: String?
     public var expectedDelivery: Date?
-    public var locationID: String?
-    public var shipmentID: String?
-    public var shippingCourierID: String?
+    public var locationId: String?
+    public var shipmentId: String?
+    public var shippingCourierId: String?
 
-    public init(trackingCode: String? = nil, expectedDelivery: Date? = nil, locationID: String? = nil, shipmentID: String? = nil, shippingCourierID: String? = nil) {
+    public init(trackingCode: String? = nil, expectedDelivery: Date? = nil, locationId: String? = nil, shipmentId: String? = nil, shippingCourierId: String? = nil) {
         self.trackingCode = trackingCode
         self.expectedDelivery = expectedDelivery
-        self.locationID = locationID
-        self.shipmentID = shipmentID
-        self.shippingCourierID = shippingCourierID
+        self.locationId = locationId
+        self.shipmentId = shipmentId
+        self.shippingCourierId = shippingCourierId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case trackingCode
         case expectedDelivery
-        case locationID
-        case shipmentID
-        case shippingCourierID
+        case locationId
+        case shipmentId
+        case shippingCourierId
     }
 
     // Encodable protocol methods
@@ -40,9 +40,9 @@ public struct ShippingLabelUpdateDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(trackingCode, forKey: .trackingCode)
         try container.encodeIfPresent(expectedDelivery, forKey: .expectedDelivery)
-        try container.encodeIfPresent(locationID, forKey: .locationID)
-        try container.encodeIfPresent(shipmentID, forKey: .shipmentID)
-        try container.encodeIfPresent(shippingCourierID, forKey: .shippingCourierID)
+        try container.encodeIfPresent(locationId, forKey: .locationId)
+        try container.encodeIfPresent(shipmentId, forKey: .shipmentId)
+        try container.encodeIfPresent(shippingCourierId, forKey: .shippingCourierId)
     }
 }
 

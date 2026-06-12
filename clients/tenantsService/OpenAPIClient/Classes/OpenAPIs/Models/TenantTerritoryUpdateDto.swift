@@ -14,15 +14,18 @@ public struct TenantTerritoryUpdateDto: Codable, JSONEncodable, Hashable {
 
     public var name: String?
     public var description: String?
+    public var parentTerritoryId: String?
 
-    public init(name: String? = nil, description: String? = nil) {
+    public init(name: String? = nil, description: String? = nil, parentTerritoryId: String? = nil) {
         self.name = name
         self.description = description
+        self.parentTerritoryId = parentTerritoryId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case name
         case description
+        case parentTerritoryId
     }
 
     // Encodable protocol methods
@@ -31,6 +34,7 @@ public struct TenantTerritoryUpdateDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(description, forKey: .description)
+        try container.encodeIfPresent(parentTerritoryId, forKey: .parentTerritoryId)
     }
 }
 

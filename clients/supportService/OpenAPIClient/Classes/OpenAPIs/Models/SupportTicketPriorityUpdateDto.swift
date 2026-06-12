@@ -14,15 +14,18 @@ public struct SupportTicketPriorityUpdateDto: Codable, JSONEncodable, Hashable {
 
     public var title: String?
     public var description: String?
+    public var supportEntitlementId: String?
 
-    public init(title: String? = nil, description: String? = nil) {
+    public init(title: String? = nil, description: String? = nil, supportEntitlementId: String? = nil) {
         self.title = title
         self.description = description
+        self.supportEntitlementId = supportEntitlementId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case title
         case description
+        case supportEntitlementId
     }
 
     // Encodable protocol methods
@@ -31,6 +34,7 @@ public struct SupportTicketPriorityUpdateDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(description, forKey: .description)
+        try container.encodeIfPresent(supportEntitlementId, forKey: .supportEntitlementId)
     }
 }
 

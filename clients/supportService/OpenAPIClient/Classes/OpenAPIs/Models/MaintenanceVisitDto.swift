@@ -15,20 +15,20 @@ public struct MaintenanceVisitDto: Codable, JSONEncodable, Hashable {
     public var id: String?
     public var timestamp: Date?
     public var tenantId: String?
-    public var businessProfileRecordId: String?
+    public var enrollmentId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, tenantId: String? = nil, businessProfileRecordId: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.tenantId = tenantId
-        self.businessProfileRecordId = businessProfileRecordId
+        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
         case tenantId
-        case businessProfileRecordId
+        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -38,7 +38,7 @@ public struct MaintenanceVisitDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(businessProfileRecordId, forKey: .businessProfileRecordId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

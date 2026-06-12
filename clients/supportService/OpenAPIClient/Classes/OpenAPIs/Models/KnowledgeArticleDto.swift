@@ -28,9 +28,9 @@ public struct KnowledgeArticleDto: Codable, JSONEncodable, Hashable {
     public var releaseDateTime: Date?
     public var lastModification: Date?
     public var tenantId: String?
-    public var businessProfileRecordId: String?
+    public var enrollmentId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, slug: String? = nil, excerpt: String? = nil, description: String? = nil, content: String? = nil, highlightImage: String? = nil, seoTitle: String? = nil, seoKeyWords: String? = nil, metaDescription: String? = nil, published: Bool? = nil, enable: Bool? = nil, releaseDateTime: Date? = nil, lastModification: Date? = nil, tenantId: String? = nil, businessProfileRecordId: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, slug: String? = nil, excerpt: String? = nil, description: String? = nil, content: String? = nil, highlightImage: String? = nil, seoTitle: String? = nil, seoKeyWords: String? = nil, metaDescription: String? = nil, published: Bool? = nil, enable: Bool? = nil, releaseDateTime: Date? = nil, lastModification: Date? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
@@ -47,7 +47,7 @@ public struct KnowledgeArticleDto: Codable, JSONEncodable, Hashable {
         self.releaseDateTime = releaseDateTime
         self.lastModification = lastModification
         self.tenantId = tenantId
-        self.businessProfileRecordId = businessProfileRecordId
+        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -67,7 +67,7 @@ public struct KnowledgeArticleDto: Codable, JSONEncodable, Hashable {
         case releaseDateTime
         case lastModification
         case tenantId
-        case businessProfileRecordId
+        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -90,7 +90,7 @@ public struct KnowledgeArticleDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(releaseDateTime, forKey: .releaseDateTime)
         try container.encodeIfPresent(lastModification, forKey: .lastModification)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(businessProfileRecordId, forKey: .businessProfileRecordId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

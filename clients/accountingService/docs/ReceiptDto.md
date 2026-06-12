@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **paymentId** | **String** |  | [optional] 
 **tenantId** | **String** |  | [optional] 
 **closed** | **Bool** |  | [optional] 
-**accountHolderId** | **String** |  | [optional] 
+**userId** | **String** |  | [optional] 
 **contactId** | **String** |  | [optional] 
 **enrollmentId** | **String** |  | [optional] 
 **receiptType** | **String** |  | [optional] 

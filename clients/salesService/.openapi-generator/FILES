@@ -33,6 +33,7 @@ OpenAPIClient/Classes/OpenAPIs/Models/LoyaltyProgramDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/LoyaltyProgramDtoEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/LoyaltyProgramDtoListEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/LoyaltyProgramUpdateDto.swift
+OpenAPIClient/Classes/OpenAPIs/Models/Operation.swift
 OpenAPIClient/Classes/OpenAPIs/Models/PointOfSaleCreateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/PointOfSaleDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/PointOfSaleDtoEnvelope.swift
@@ -82,6 +83,7 @@ docs/LoyaltyProgramDtoListEnvelope.md
 docs/LoyaltyProgramUpdateDto.md
 docs/LoyaltyProgramsAPI.md
 docs/MarginsAPI.md
+docs/Operation.md
 docs/PointOfSaleCreateDto.md
 docs/PointOfSaleDto.md
 docs/PointOfSaleDtoEnvelope.md

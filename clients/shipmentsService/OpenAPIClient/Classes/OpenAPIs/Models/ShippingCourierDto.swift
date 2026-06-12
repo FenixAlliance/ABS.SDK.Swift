@@ -16,18 +16,18 @@ public struct ShippingCourierDto: Codable, JSONEncodable, Hashable {
     public var timestamp: Date?
     public var name: String?
     public var logoURL: String?
-    public var countryID: String?
-    public var businessID: String?
-    public var businessProfileRecordID: String?
+    public var countryId: String?
+    public var tenantId: String?
+    public var enrollmentId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, logoURL: String? = nil, countryID: String? = nil, businessID: String? = nil, businessProfileRecordID: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, logoURL: String? = nil, countryId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
         self.logoURL = logoURL
-        self.countryID = countryID
-        self.businessID = businessID
-        self.businessProfileRecordID = businessProfileRecordID
+        self.countryId = countryId
+        self.tenantId = tenantId
+        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -35,9 +35,9 @@ public struct ShippingCourierDto: Codable, JSONEncodable, Hashable {
         case timestamp
         case name
         case logoURL
-        case countryID
-        case businessID
-        case businessProfileRecordID
+        case countryId
+        case tenantId
+        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -48,9 +48,9 @@ public struct ShippingCourierDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(logoURL, forKey: .logoURL)
-        try container.encodeIfPresent(countryID, forKey: .countryID)
-        try container.encodeIfPresent(businessID, forKey: .businessID)
-        try container.encodeIfPresent(businessProfileRecordID, forKey: .businessProfileRecordID)
+        try container.encodeIfPresent(countryId, forKey: .countryId)
+        try container.encodeIfPresent(tenantId, forKey: .tenantId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

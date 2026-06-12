@@ -17,17 +17,17 @@ public struct TenantDepartmentCreateDto: Codable, JSONEncodable, Hashable {
     public var name: String?
     public var description: String?
     public var disabled: Bool?
-    public var organizationProfileID: String?
-    public var parentDepartmentID: String?
+    public var organizationProfileId: String?
+    public var parentDepartmentId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil, description: String? = nil, disabled: Bool? = nil, organizationProfileID: String? = nil, parentDepartmentID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil, description: String? = nil, disabled: Bool? = nil, organizationProfileId: String? = nil, parentDepartmentId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
         self.description = description
         self.disabled = disabled
-        self.organizationProfileID = organizationProfileID
-        self.parentDepartmentID = parentDepartmentID
+        self.organizationProfileId = organizationProfileId
+        self.parentDepartmentId = parentDepartmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -36,8 +36,8 @@ public struct TenantDepartmentCreateDto: Codable, JSONEncodable, Hashable {
         case name
         case description
         case disabled
-        case organizationProfileID
-        case parentDepartmentID
+        case organizationProfileId
+        case parentDepartmentId
     }
 
     // Encodable protocol methods
@@ -49,8 +49,8 @@ public struct TenantDepartmentCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(disabled, forKey: .disabled)
-        try container.encodeIfPresent(organizationProfileID, forKey: .organizationProfileID)
-        try container.encodeIfPresent(parentDepartmentID, forKey: .parentDepartmentID)
+        try container.encodeIfPresent(organizationProfileId, forKey: .organizationProfileId)
+        try container.encodeIfPresent(parentDepartmentId, forKey: .parentDepartmentId)
     }
 }
 

@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getTenantTeamById**](TeamsAPI.md#gettenantteambyid) | **GET** /api/v2/TenantsService/Teams/{tenantTeamId} | Retrieve a single tenant team by its ID
 [**getTenantTeams**](TeamsAPI.md#gettenantteams) | **GET** /api/v2/TenantsService/Teams | Retrieve a list of tenant teams
 [**getTenantTeamsCount**](TeamsAPI.md#gettenantteamscount) | **GET** /api/v2/TenantsService/Teams/Count | Get the count of tenant teams
+[**patchTenantTeam**](TeamsAPI.md#patchtenantteam) | **PATCH** /api/v2/TenantsService/Teams/{tenantTeamId} | Patch a tenant team
 [**updateTenantTeam**](TeamsAPI.md#updatetenantteam) | **PUT** /api/v2/TenantsService/Teams/{tenantTeamId} | Update a tenant team
 
 
@@ -29,7 +30,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let tenantTeamCreateDto = TenantTeamCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", avatarURL: "avatarURL_example", isPublic: false, businessUnitID: "businessUnitID_example", organizationProfileID: "organizationProfileID_example") // TenantTeamCreateDto |  (optional)
+let tenantTeamCreateDto = TenantTeamCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", avatarUrl: "avatarUrl_example", isPublic: false, businessUnitId: "businessUnitId_example", organizationProfileId: "organizationProfileId_example") // TenantTeamCreateDto |  (optional)
 
 // Create a new tenant team
 TeamsAPI.createTenantTeam(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, tenantTeamCreateDto: tenantTeamCreateDto) { (response, error) in
@@ -288,6 +289,64 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchTenantTeam**
+```swift
+    open class func patchTenantTeam(tenantId: UUID, tenantTeamId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a tenant team
+
+Patch a tenant team
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let tenantTeamId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a tenant team
+TeamsAPI.patchTenantTeam(tenantId: tenantId, tenantTeamId: tenantTeamId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **tenantTeamId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateTenantTeam**
 ```swift
     open class func updateTenantTeam(tenantId: UUID, tenantTeamId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, tenantTeamUpdateDto: TenantTeamUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
@@ -306,7 +365,7 @@ let tenantId = 987 // UUID |
 let tenantTeamId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let tenantTeamUpdateDto = TenantTeamUpdateDto(id: "id_example", timestamp: Date(), name: "name_example", description: "description_example", avatarURL: "avatarURL_example", isPublic: false, businessUnitID: "businessUnitID_example", organizationProfileID: "organizationProfileID_example") // TenantTeamUpdateDto |  (optional)
+let tenantTeamUpdateDto = TenantTeamUpdateDto(name: "name_example", description: "description_example", avatarUrl: "avatarUrl_example", isPublic: false, businessUnitId: "businessUnitId_example", organizationProfileId: "organizationProfileId_example") // TenantTeamUpdateDto |  (optional)
 
 // Update a tenant team
 TeamsAPI.updateTenantTeam(tenantId: tenantId, tenantTeamId: tenantTeamId, apiVersion: apiVersion, xApiVersion: xApiVersion, tenantTeamUpdateDto: tenantTeamUpdateDto) { (response, error) in

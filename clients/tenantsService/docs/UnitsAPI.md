@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getTenantUnitById**](UnitsAPI.md#gettenantunitbyid) | **GET** /api/v2/TenantsService/Units/{tenantUnitId} | Retrieve a single tenant unit by its ID
 [**getTenantUnits**](UnitsAPI.md#gettenantunits) | **GET** /api/v2/TenantsService/Units | Retrieve a list of tenant units
 [**getTenantUnitsCount**](UnitsAPI.md#gettenantunitscount) | **GET** /api/v2/TenantsService/Units/Count | Get the count of tenant units
+[**patchTenantUnit**](UnitsAPI.md#patchtenantunit) | **PATCH** /api/v2/TenantsService/Units/{tenantUnitId} | Patch a tenant unit
 [**updateTenantUnit**](UnitsAPI.md#updatetenantunit) | **PUT** /api/v2/TenantsService/Units/{tenantUnitId} | Update a tenant unit
 
 
@@ -29,7 +30,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let tenantUnitCreateDto = TenantUnitCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", disabled: false, businessUnitQualifiedName: "businessUnitQualifiedName_example", countryID: "countryID_example", organizationProfileID: "organizationProfileID_example", parentBusinessUnitID: "parentBusinessUnitID_example") // TenantUnitCreateDto |  (optional)
+let tenantUnitCreateDto = TenantUnitCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", disabled: false, countryId: "countryId_example", organizationProfileId: "organizationProfileId_example", parentBusinessUnitId: "parentBusinessUnitId_example") // TenantUnitCreateDto |  (optional)
 
 // Create a new tenant unit
 UnitsAPI.createTenantUnit(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, tenantUnitCreateDto: tenantUnitCreateDto) { (response, error) in
@@ -288,6 +289,64 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchTenantUnit**
+```swift
+    open class func patchTenantUnit(tenantId: UUID, tenantUnitId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a tenant unit
+
+Patch a tenant unit
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let tenantUnitId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a tenant unit
+UnitsAPI.patchTenantUnit(tenantId: tenantId, tenantUnitId: tenantUnitId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **tenantUnitId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateTenantUnit**
 ```swift
     open class func updateTenantUnit(tenantId: UUID, tenantUnitId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, tenantUnitUpdateDto: TenantUnitUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
@@ -306,7 +365,7 @@ let tenantId = 987 // UUID |
 let tenantUnitId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let tenantUnitUpdateDto = TenantUnitUpdateDto(name: "name_example", description: "description_example", disabled: false, businessUnitQualifiedName: "businessUnitQualifiedName_example", countryID: "countryID_example", organizationProfileID: "organizationProfileID_example", parentBusinessUnitID: "parentBusinessUnitID_example") // TenantUnitUpdateDto |  (optional)
+let tenantUnitUpdateDto = TenantUnitUpdateDto(name: "name_example", description: "description_example", disabled: false, countryId: "countryId_example", organizationProfileId: "organizationProfileId_example", parentBusinessUnitId: "parentBusinessUnitId_example") // TenantUnitUpdateDto |  (optional)
 
 // Update a tenant unit
 UnitsAPI.updateTenantUnit(tenantId: tenantId, tenantUnitId: tenantUnitId, apiVersion: apiVersion, xApiVersion: xApiVersion, tenantUnitUpdateDto: tenantUnitUpdateDto) { (response, error) in

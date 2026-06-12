@@ -16,20 +16,20 @@ public struct ShippingLabelDto: Codable, JSONEncodable, Hashable {
     public var timestamp: Date?
     public var trackingCode: String?
     public var expectedDelivery: Date?
-    public var locationID: String?
-    public var businessID: String?
-    public var shipmentID: String?
-    public var shippingCourierID: String?
+    public var locationId: String?
+    public var tenantId: String?
+    public var shipmentId: String?
+    public var shippingCourierId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, trackingCode: String? = nil, expectedDelivery: Date? = nil, locationID: String? = nil, businessID: String? = nil, shipmentID: String? = nil, shippingCourierID: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, trackingCode: String? = nil, expectedDelivery: Date? = nil, locationId: String? = nil, tenantId: String? = nil, shipmentId: String? = nil, shippingCourierId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.trackingCode = trackingCode
         self.expectedDelivery = expectedDelivery
-        self.locationID = locationID
-        self.businessID = businessID
-        self.shipmentID = shipmentID
-        self.shippingCourierID = shippingCourierID
+        self.locationId = locationId
+        self.tenantId = tenantId
+        self.shipmentId = shipmentId
+        self.shippingCourierId = shippingCourierId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -37,10 +37,10 @@ public struct ShippingLabelDto: Codable, JSONEncodable, Hashable {
         case timestamp
         case trackingCode
         case expectedDelivery
-        case locationID
-        case businessID
-        case shipmentID
-        case shippingCourierID
+        case locationId
+        case tenantId
+        case shipmentId
+        case shippingCourierId
     }
 
     // Encodable protocol methods
@@ -51,10 +51,10 @@ public struct ShippingLabelDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(trackingCode, forKey: .trackingCode)
         try container.encodeIfPresent(expectedDelivery, forKey: .expectedDelivery)
-        try container.encodeIfPresent(locationID, forKey: .locationID)
-        try container.encodeIfPresent(businessID, forKey: .businessID)
-        try container.encodeIfPresent(shipmentID, forKey: .shipmentID)
-        try container.encodeIfPresent(shippingCourierID, forKey: .shippingCourierID)
+        try container.encodeIfPresent(locationId, forKey: .locationId)
+        try container.encodeIfPresent(tenantId, forKey: .tenantId)
+        try container.encodeIfPresent(shipmentId, forKey: .shipmentId)
+        try container.encodeIfPresent(shippingCourierId, forKey: .shippingCourierId)
     }
 }
 

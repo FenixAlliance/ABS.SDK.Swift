@@ -14,24 +14,27 @@ public struct TenantIndustryDto: Codable, JSONEncodable, Hashable {
 
     public var id: String?
     public var timestamp: Date?
+    public var tenantId: String?
+    public var enrollmentId: String?
     public var name: String?
-    public var parentBusinessIndustryID: String?
-    public var businessProfileRecordID: String?
+    public var parentBusinessIndustryId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, parentBusinessIndustryID: String? = nil, businessProfileRecordID: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, tenantId: String? = nil, enrollmentId: String? = nil, name: String? = nil, parentBusinessIndustryId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
+        self.tenantId = tenantId
+        self.enrollmentId = enrollmentId
         self.name = name
-        self.parentBusinessIndustryID = parentBusinessIndustryID
-        self.businessProfileRecordID = businessProfileRecordID
+        self.parentBusinessIndustryId = parentBusinessIndustryId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
+        case tenantId
+        case enrollmentId
         case name
-        case parentBusinessIndustryID
-        case businessProfileRecordID
+        case parentBusinessIndustryId
     }
 
     // Encodable protocol methods
@@ -40,9 +43,10 @@ public struct TenantIndustryDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
+        try container.encodeIfPresent(tenantId, forKey: .tenantId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(name, forKey: .name)
-        try container.encodeIfPresent(parentBusinessIndustryID, forKey: .parentBusinessIndustryID)
-        try container.encodeIfPresent(businessProfileRecordID, forKey: .businessProfileRecordID)
+        try container.encodeIfPresent(parentBusinessIndustryId, forKey: .parentBusinessIndustryId)
     }
 }
 

@@ -286,6 +286,66 @@ open class ServiceLevelAgreementsAPI {
     }
 
     /**
+     Patch a service level agreement
+     
+     - parameter tenantId: (query)  
+     - parameter serviceLevelAgreementId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter operation: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func patchServiceLevelAgreementAsync(tenantId: UUID, serviceLevelAgreementId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchServiceLevelAgreementAsyncWithRequestBuilder(tenantId: tenantId, serviceLevelAgreementId: serviceLevelAgreementId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Patch a service level agreement
+     - PATCH /api/v2/ServicesService/ServiceLevelAgreements/{serviceLevelAgreementId}
+     - Partially updates an existing service level agreement using a JSON Patch document.
+     - parameter tenantId: (query)  
+     - parameter serviceLevelAgreementId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter operation: (body)  (optional)
+     - returns: RequestBuilder<Envelope> 
+     */
+    open class func patchServiceLevelAgreementAsyncWithRequestBuilder(tenantId: UUID, serviceLevelAgreementId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil) -> RequestBuilder<Envelope> {
+        var localVariablePath = "/api/v2/ServicesService/ServiceLevelAgreements/{serviceLevelAgreementId}"
+        let serviceLevelAgreementIdPreEscape = "\(APIHelper.mapValueToPathItem(serviceLevelAgreementId))"
+        let serviceLevelAgreementIdPostEscape = serviceLevelAgreementIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{serviceLevelAgreementId}", with: serviceLevelAgreementIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
      Update a service level agreement
      
      - parameter tenantId: (query)  

@@ -65,6 +65,7 @@ OpenAPIClient/Classes/OpenAPIs/Models/MaintenanceVisitCreateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/MaintenanceVisitDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/MaintenanceVisitDtoEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/MaintenanceVisitDtoListEnvelope.swift
+OpenAPIClient/Classes/OpenAPIs/Models/Operation.swift
 OpenAPIClient/Classes/OpenAPIs/Models/PrivateMessageDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/PrivateMessageDtoListEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/RefreshRequest.swift
@@ -171,6 +172,7 @@ docs/MaintenanceVisitDto.md
 docs/MaintenanceVisitDtoEnvelope.md
 docs/MaintenanceVisitDtoListEnvelope.md
 docs/MaintenanceVisitsAPI.md
+docs/Operation.md
 docs/PrivateMessageDto.md
 docs/PrivateMessageDtoListEnvelope.md
 docs/RefreshRequest.md

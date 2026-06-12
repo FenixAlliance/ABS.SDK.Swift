@@ -16,8 +16,8 @@ Name | Type | Description | Notes
 **phone** | **String** |  | [optional] 
 **message** | **String** |  | [optional] 
 **tenantId** | **String** |  | [optional] 
-**businessProfileRecordId** | **String** |  | [optional] 
-**accountHolderId** | **String** |  | [optional] 
+**enrollmentId** | **String** |  | [optional] 
+**userId** | **String** |  | [optional] 
 **socialProfileId** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

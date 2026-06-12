@@ -44,12 +44,12 @@ Name | Type | Description | Notes
 **data8Label** | **String** |  | [optional] 
 **data9** | **String** |  | [optional] 
 **data9Label** | **String** |  | [optional] 
-**individualID** | **String** |  | [optional] 
-**organizationID** | **String** |  | [optional] 
-**receiverBusinessID** | **String** |  | [optional] 
-**paymentTokenID** | **String** |  | [optional] 
-**walletAccountID** | **String** |  | [optional] 
-**securityCertificateID** | **String** |  | [optional] 
+**individualId** | **String** |  | [optional] 
+**organizationId** | **String** |  | [optional] 
+**receiverTenantId** | **String** |  | [optional] 
+**paymentTokenId** | **String** |  | [optional] 
+**walletAccountId** | **String** |  | [optional] 
+**securityCertificateId** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

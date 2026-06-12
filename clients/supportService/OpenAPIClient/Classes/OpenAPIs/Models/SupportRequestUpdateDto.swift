@@ -16,14 +16,14 @@ public struct SupportRequestUpdateDto: Codable, JSONEncodable, Hashable {
     public var description: String?
     public var approved: Bool?
     public var approvedTimestamp: Date?
-    public var supportEntitlementID: String?
+    public var supportEntitlementId: String?
 
-    public init(title: String? = nil, description: String? = nil, approved: Bool? = nil, approvedTimestamp: Date? = nil, supportEntitlementID: String? = nil) {
+    public init(title: String? = nil, description: String? = nil, approved: Bool? = nil, approvedTimestamp: Date? = nil, supportEntitlementId: String? = nil) {
         self.title = title
         self.description = description
         self.approved = approved
         self.approvedTimestamp = approvedTimestamp
-        self.supportEntitlementID = supportEntitlementID
+        self.supportEntitlementId = supportEntitlementId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -31,7 +31,7 @@ public struct SupportRequestUpdateDto: Codable, JSONEncodable, Hashable {
         case description
         case approved
         case approvedTimestamp
-        case supportEntitlementID
+        case supportEntitlementId
     }
 
     // Encodable protocol methods
@@ -42,7 +42,7 @@ public struct SupportRequestUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(approved, forKey: .approved)
         try container.encodeIfPresent(approvedTimestamp, forKey: .approvedTimestamp)
-        try container.encodeIfPresent(supportEntitlementID, forKey: .supportEntitlementID)
+        try container.encodeIfPresent(supportEntitlementId, forKey: .supportEntitlementId)
     }
 }
 

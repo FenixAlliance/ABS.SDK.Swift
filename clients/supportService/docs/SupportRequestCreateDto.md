@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **description** | **String** |  | [optional] 
 **approved** | **Bool** |  | [optional] 
 **approvedTimestamp** | **Date** |  | [optional] 
-**supportEntitlementID** | **String** |  | [optional] 
-**contactID** | **String** |  | [optional] 
+**supportEntitlementId** | **String** |  | [optional] 
+**contactId** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

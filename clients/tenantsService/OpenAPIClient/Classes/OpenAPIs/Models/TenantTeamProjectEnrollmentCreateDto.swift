@@ -12,25 +12,25 @@ import AnyCodable
 
 public struct TenantTeamProjectEnrollmentCreateDto: Codable, JSONEncodable, Hashable {
 
-    static let businessTeamIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
-    static let projectIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
+    static let businessTeamIdRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
+    static let projectIdRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
-    public var businessTeamID: String
-    public var projectID: String
+    public var businessTeamId: String
+    public var projectId: String
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, businessTeamID: String, projectID: String) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, businessTeamId: String, projectId: String) {
         self.id = id
         self.timestamp = timestamp
-        self.businessTeamID = businessTeamID
-        self.projectID = projectID
+        self.businessTeamId = businessTeamId
+        self.projectId = projectId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
-        case businessTeamID
-        case projectID
+        case businessTeamId
+        case projectId
     }
 
     // Encodable protocol methods
@@ -39,8 +39,8 @@ public struct TenantTeamProjectEnrollmentCreateDto: Codable, JSONEncodable, Hash
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
-        try container.encode(businessTeamID, forKey: .businessTeamID)
-        try container.encode(projectID, forKey: .projectID)
+        try container.encode(businessTeamId, forKey: .businessTeamId)
+        try container.encode(projectId, forKey: .projectId)
     }
 }
 

@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**getSupportTicketConversationsAsync**](SupportTicketsAPI.md#getsupportticketconversationsasync) | **GET** /api/v2/SupportService/SupportTickets/{supportTicketId}/Conversations | Retrieve conversations for a support ticket
 [**getSupportTicketsAsync**](SupportTicketsAPI.md#getsupportticketsasync) | **GET** /api/v2/SupportService/SupportTickets | Retrieve a list of support tickets
 [**getSupportTicketsCountAsync**](SupportTicketsAPI.md#getsupportticketscountasync) | **GET** /api/v2/SupportService/SupportTickets/Count | Get the count of support tickets
+[**patchSupportTicketAsync**](SupportTicketsAPI.md#patchsupportticketasync) | **PATCH** /api/v2/SupportService/SupportTickets/{supportTicketId} | Patch a support ticket
 [**relateSupportTicketToConversationAsync**](SupportTicketsAPI.md#relatesupporttickettoconversationasync) | **POST** /api/v2/SupportService/SupportTickets/{supportTicketId}/Conversations | Create a conversation for a support ticket
 [**updateSupportTicketAsync**](SupportTicketsAPI.md#updatesupportticketasync) | **PUT** /api/v2/SupportService/SupportTickets/{supportTicketId} | Update a support ticket
 
@@ -34,7 +35,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let supportTicketCreateDto = SupportTicketCreateDto(id: 123, timestamp: Date(), description: "description_example", contactID: "contactID_example", supportTicketTypeID: "supportTicketTypeID_example", supportEntitlementID: "supportEntitlementID_example", supportPriorityID: "supportPriorityID_example") // SupportTicketCreateDto |  (optional)
+let supportTicketCreateDto = SupportTicketCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", supportTicketStatus: "supportTicketStatus_example", contactId: "contactId_example", supportTicketTypeId: "supportTicketTypeId_example", supportEntitlementId: "supportEntitlementId_example", supportPriorityId: "supportPriorityId_example") // SupportTicketCreateDto |  (optional)
 
 // Create a new support ticket
 SupportTicketsAPI.createSupportTicketAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, supportTicketCreateDto: supportTicketCreateDto) { (response, error) in
@@ -527,6 +528,64 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchSupportTicketAsync**
+```swift
+    open class func patchSupportTicketAsync(tenantId: UUID, supportTicketId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a support ticket
+
+Partially updates an existing support ticket by its unique identifier.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let supportTicketId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a support ticket
+SupportTicketsAPI.patchSupportTicketAsync(tenantId: tenantId, supportTicketId: supportTicketId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **supportTicketId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **relateSupportTicketToConversationAsync**
 ```swift
     open class func relateSupportTicketToConversationAsync(tenantId: UUID, supportTicketId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, supportTicketConversationCreateDto: SupportTicketConversationCreateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
@@ -545,7 +604,7 @@ let tenantId = 987 // UUID |
 let supportTicketId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let supportTicketConversationCreateDto = SupportTicketConversationCreateDto(id: 123, timestamp: Date(), topic: "topic_example", closed: false, closedTimestamp: Date(), socialProfileID: "socialProfileID_example") // SupportTicketConversationCreateDto |  (optional)
+let supportTicketConversationCreateDto = SupportTicketConversationCreateDto(id: 123, timestamp: Date(), topic: "topic_example", closed: false, closedTimestamp: Date(), socialProfileId: "socialProfileId_example") // SupportTicketConversationCreateDto |  (optional)
 
 // Create a conversation for a support ticket
 SupportTicketsAPI.relateSupportTicketToConversationAsync(tenantId: tenantId, supportTicketId: supportTicketId, apiVersion: apiVersion, xApiVersion: xApiVersion, supportTicketConversationCreateDto: supportTicketConversationCreateDto) { (response, error) in
@@ -603,7 +662,7 @@ let tenantId = 987 // UUID |
 let supportTicketId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let supportTicketUpdateDto = SupportTicketUpdateDto(description: "description_example", contactID: "contactID_example", supportTicketTypeID: "supportTicketTypeID_example", supportEntitlementID: "supportEntitlementID_example", supportPriorityID: "supportPriorityID_example") // SupportTicketUpdateDto |  (optional)
+let supportTicketUpdateDto = SupportTicketUpdateDto(title: "title_example", description: "description_example", supportTicketStatus: "supportTicketStatus_example", contactId: "contactId_example", supportTicketTypeId: "supportTicketTypeId_example", supportEntitlementId: "supportEntitlementId_example", supportPriorityId: "supportPriorityId_example") // SupportTicketUpdateDto |  (optional)
 
 // Update a support ticket
 SupportTicketsAPI.updateSupportTicketAsync(tenantId: tenantId, supportTicketId: supportTicketId, apiVersion: apiVersion, xApiVersion: xApiVersion, supportTicketUpdateDto: supportTicketUpdateDto) { (response, error) in

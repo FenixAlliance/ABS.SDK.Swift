@@ -16,14 +16,14 @@ public struct TenantTerritoryCreateDto: Codable, JSONEncodable, Hashable {
     public var timestamp: Date?
     public var name: String?
     public var description: String?
-    public var parentTerritoryID: String?
+    public var parentTerritoryId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil, description: String? = nil, parentTerritoryID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil, description: String? = nil, parentTerritoryId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
         self.description = description
-        self.parentTerritoryID = parentTerritoryID
+        self.parentTerritoryId = parentTerritoryId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -31,7 +31,7 @@ public struct TenantTerritoryCreateDto: Codable, JSONEncodable, Hashable {
         case timestamp
         case name
         case description
-        case parentTerritoryID
+        case parentTerritoryId
     }
 
     // Encodable protocol methods
@@ -42,7 +42,7 @@ public struct TenantTerritoryCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(parentTerritoryID, forKey: .parentTerritoryID)
+        try container.encodeIfPresent(parentTerritoryId, forKey: .parentTerritoryId)
     }
 }
 

@@ -12,18 +12,15 @@ import AnyCodable
 
 public struct TenantSizeUpdateDto: Codable, JSONEncodable, Hashable {
 
-    public var name: String?
     public var employeeLowRangeValue: Int?
     public var employeeHighRangeValue: Int?
 
-    public init(name: String? = nil, employeeLowRangeValue: Int? = nil, employeeHighRangeValue: Int? = nil) {
-        self.name = name
+    public init(employeeLowRangeValue: Int? = nil, employeeHighRangeValue: Int? = nil) {
         self.employeeLowRangeValue = employeeLowRangeValue
         self.employeeHighRangeValue = employeeHighRangeValue
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case name
         case employeeLowRangeValue
         case employeeHighRangeValue
     }
@@ -32,7 +29,6 @@ public struct TenantSizeUpdateDto: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(employeeLowRangeValue, forKey: .employeeLowRangeValue)
         try container.encodeIfPresent(employeeHighRangeValue, forKey: .employeeHighRangeValue)
     }

@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getTenantTeamProjectEnrollmentById**](TeamProjectEnrollmentsAPI.md#gettenantteamprojectenrollmentbyid) | **GET** /api/v2/TenantsService/TeamProjectEnrollments/{tenantTeamProjectEnrollmentId} | Retrieve a single tenant team project enrollment by its ID
 [**getTenantTeamProjectEnrollments**](TeamProjectEnrollmentsAPI.md#gettenantteamprojectenrollments) | **GET** /api/v2/TenantsService/TeamProjectEnrollments | Retrieve a list of tenant team project enrollments
 [**getTenantTeamProjectEnrollmentsCount**](TeamProjectEnrollmentsAPI.md#gettenantteamprojectenrollmentscount) | **GET** /api/v2/TenantsService/TeamProjectEnrollments/Count | Get the count of tenant team project enrollments
+[**patchTenantTeamProjectEnrollment**](TeamProjectEnrollmentsAPI.md#patchtenantteamprojectenrollment) | **PATCH** /api/v2/TenantsService/TeamProjectEnrollments/{tenantTeamProjectEnrollmentId} | Patch a tenant team project enrollment
 [**updateTenantTeamProjectEnrollment**](TeamProjectEnrollmentsAPI.md#updatetenantteamprojectenrollment) | **PUT** /api/v2/TenantsService/TeamProjectEnrollments/{tenantTeamProjectEnrollmentId} | Update a tenant team project enrollment
 
 
@@ -29,7 +30,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let tenantTeamProjectEnrollmentCreateDto = TenantTeamProjectEnrollmentCreateDto(id: 123, timestamp: Date(), businessTeamID: "businessTeamID_example", projectID: "projectID_example") // TenantTeamProjectEnrollmentCreateDto |  (optional)
+let tenantTeamProjectEnrollmentCreateDto = TenantTeamProjectEnrollmentCreateDto(id: 123, timestamp: Date(), businessTeamId: "businessTeamId_example", projectId: "projectId_example") // TenantTeamProjectEnrollmentCreateDto |  (optional)
 
 // Create a new tenant team project enrollment
 TeamProjectEnrollmentsAPI.createTenantTeamProjectEnrollment(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, tenantTeamProjectEnrollmentCreateDto: tenantTeamProjectEnrollmentCreateDto) { (response, error) in
@@ -288,6 +289,64 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchTenantTeamProjectEnrollment**
+```swift
+    open class func patchTenantTeamProjectEnrollment(tenantId: UUID, tenantTeamProjectEnrollmentId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a tenant team project enrollment
+
+Patch a tenant team project enrollment
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let tenantTeamProjectEnrollmentId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a tenant team project enrollment
+TeamProjectEnrollmentsAPI.patchTenantTeamProjectEnrollment(tenantId: tenantId, tenantTeamProjectEnrollmentId: tenantTeamProjectEnrollmentId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **tenantTeamProjectEnrollmentId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateTenantTeamProjectEnrollment**
 ```swift
     open class func updateTenantTeamProjectEnrollment(tenantId: UUID, tenantTeamProjectEnrollmentId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, tenantTeamProjectEnrollmentUpdateDto: TenantTeamProjectEnrollmentUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
@@ -306,7 +365,7 @@ let tenantId = 987 // UUID |
 let tenantTeamProjectEnrollmentId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let tenantTeamProjectEnrollmentUpdateDto = TenantTeamProjectEnrollmentUpdateDto(businessTeamID: "businessTeamID_example", projectID: "projectID_example") // TenantTeamProjectEnrollmentUpdateDto |  (optional)
+let tenantTeamProjectEnrollmentUpdateDto = TenantTeamProjectEnrollmentUpdateDto(businessTeamId: "businessTeamId_example", projectId: "projectId_example") // TenantTeamProjectEnrollmentUpdateDto |  (optional)
 
 // Update a tenant team project enrollment
 TeamProjectEnrollmentsAPI.updateTenantTeamProjectEnrollment(tenantId: tenantId, tenantTeamProjectEnrollmentId: tenantTeamProjectEnrollmentId, apiVersion: apiVersion, xApiVersion: xApiVersion, tenantTeamProjectEnrollmentUpdateDto: tenantTeamProjectEnrollmentUpdateDto) { (response, error) in

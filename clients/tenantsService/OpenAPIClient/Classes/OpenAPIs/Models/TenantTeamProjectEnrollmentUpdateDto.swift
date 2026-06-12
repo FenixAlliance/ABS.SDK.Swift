@@ -12,25 +12,25 @@ import AnyCodable
 
 public struct TenantTeamProjectEnrollmentUpdateDto: Codable, JSONEncodable, Hashable {
 
-    public var businessTeamID: String?
-    public var projectID: String?
+    public var businessTeamId: String?
+    public var projectId: String?
 
-    public init(businessTeamID: String? = nil, projectID: String? = nil) {
-        self.businessTeamID = businessTeamID
-        self.projectID = projectID
+    public init(businessTeamId: String? = nil, projectId: String? = nil) {
+        self.businessTeamId = businessTeamId
+        self.projectId = projectId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case businessTeamID
-        case projectID
+        case businessTeamId
+        case projectId
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(businessTeamID, forKey: .businessTeamID)
-        try container.encodeIfPresent(projectID, forKey: .projectID)
+        try container.encodeIfPresent(businessTeamId, forKey: .businessTeamId)
+        try container.encodeIfPresent(projectId, forKey: .projectId)
     }
 }
 

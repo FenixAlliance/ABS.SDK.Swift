@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getServiceByIdAsync**](ServicesAPI.md#getservicebyidasync) | **GET** /api/v2/ServicesService/Services/{serviceId} | Get a service by ID
 [**getServicesAsync**](ServicesAPI.md#getservicesasync) | **GET** /api/v2/ServicesService/Services | Get all services
 [**getServicesCountAsync**](ServicesAPI.md#getservicescountasync) | **GET** /api/v2/ServicesService/Services/Count | Get services count
+[**patchServiceAsync**](ServicesAPI.md#patchserviceasync) | **PATCH** /api/v2/ServicesService/Services/{serviceId} | Patch a service
 [**updateServiceAsync**](ServicesAPI.md#updateserviceasync) | **PUT** /api/v2/ServicesService/Services/{serviceId} | Update a service
 
 
@@ -284,6 +285,64 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchServiceAsync**
+```swift
+    open class func patchServiceAsync(tenantId: UUID, serviceId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: Envelope?, _ error: Error?) -> Void)
+```
+
+Patch a service
+
+Partially updates an existing service using a JSON Patch document.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let serviceId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a service
+ServicesAPI.patchServiceAsync(tenantId: tenantId, serviceId: serviceId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **serviceId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**Envelope**](Envelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

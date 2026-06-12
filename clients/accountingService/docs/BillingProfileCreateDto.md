@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **duns** | **String** |  | [optional] 
 **isPublicCompany** | **Bool** |  | [optional] 
 **isFactaCustomer** | **Bool** |  | [optional] 
+**taxPayerType** | **String** |  | [optional] 
 **countryId** | **String** |  | 
 **stateId** | **String** |  | 
 **cityId** | **String** |  | 

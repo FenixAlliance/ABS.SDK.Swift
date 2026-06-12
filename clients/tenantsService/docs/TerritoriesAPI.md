@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getTenantTerritories**](TerritoriesAPI.md#gettenantterritories) | **GET** /api/v2/TenantsService/Territories | Retrieve a list of tenant territories
 [**getTenantTerritoriesCount**](TerritoriesAPI.md#gettenantterritoriescount) | **GET** /api/v2/TenantsService/Territories/Count | Get the count of tenant territories
 [**getTenantTerritoryById**](TerritoriesAPI.md#gettenantterritorybyid) | **GET** /api/v2/TenantsService/Territories/{tenantTerritoryId} | Retrieve a single tenant territory by its ID
+[**patchTenantTerritory**](TerritoriesAPI.md#patchtenantterritory) | **PATCH** /api/v2/TenantsService/Territories/{tenantTerritoryId} | Patch a tenant territory
 [**updateTenantTerritory**](TerritoriesAPI.md#updatetenantterritory) | **PUT** /api/v2/TenantsService/Territories/{tenantTerritoryId} | Update a tenant territory
 
 
@@ -29,7 +30,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let tenantTerritoryCreateDto = TenantTerritoryCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", parentTerritoryID: "parentTerritoryID_example") // TenantTerritoryCreateDto |  (optional)
+let tenantTerritoryCreateDto = TenantTerritoryCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", parentTerritoryId: "parentTerritoryId_example") // TenantTerritoryCreateDto |  (optional)
 
 // Create a new tenant territory
 TerritoriesAPI.createTenantTerritory(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, tenantTerritoryCreateDto: tenantTerritoryCreateDto) { (response, error) in
@@ -288,6 +289,64 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchTenantTerritory**
+```swift
+    open class func patchTenantTerritory(tenantId: UUID, tenantTerritoryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a tenant territory
+
+Patch a tenant territory
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let tenantTerritoryId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a tenant territory
+TerritoriesAPI.patchTenantTerritory(tenantId: tenantId, tenantTerritoryId: tenantTerritoryId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **tenantTerritoryId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateTenantTerritory**
 ```swift
     open class func updateTenantTerritory(tenantId: UUID, tenantTerritoryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, tenantTerritoryUpdateDto: TenantTerritoryUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
@@ -306,7 +365,7 @@ let tenantId = 987 // UUID |
 let tenantTerritoryId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let tenantTerritoryUpdateDto = TenantTerritoryUpdateDto(name: "name_example", description: "description_example") // TenantTerritoryUpdateDto |  (optional)
+let tenantTerritoryUpdateDto = TenantTerritoryUpdateDto(name: "name_example", description: "description_example", parentTerritoryId: "parentTerritoryId_example") // TenantTerritoryUpdateDto |  (optional)
 
 // Update a tenant territory
 TerritoriesAPI.updateTenantTerritory(tenantId: tenantId, tenantTerritoryId: tenantTerritoryId, apiVersion: apiVersion, xApiVersion: xApiVersion, tenantTerritoryUpdateDto: tenantTerritoryUpdateDto) { (response, error) in

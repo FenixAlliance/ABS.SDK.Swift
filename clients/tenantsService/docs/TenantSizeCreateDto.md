@@ -5,7 +5,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **UUID** |  | [optional] 
 **timestamp** | **Date** |  | [optional] 
-**name** | **String** |  | [optional] 
 **employeeLowRangeValue** | **Int** |  | [optional] 
 **employeeHighRangeValue** | **Int** |  | [optional] 
 

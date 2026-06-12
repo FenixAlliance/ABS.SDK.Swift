@@ -12,24 +12,33 @@ import AnyCodable
 
 public struct NotificationDto: Codable, JSONEncodable, Hashable {
 
+    public enum ModelType: String, Codable, CaseIterable {
+        case event = "Event"
+        case alert = "Alert"
+        case log = "Log"
+    }
     public var id: String?
     public var timestamp: Date?
     public var read: Bool?
     public var icon: String?
     public var message: String?
+    public var imageUrl: String?
     public var redirectUrl: String?
-    public var socialProfileID: String?
+    public var type: ModelType?
+    public var socialProfileId: String?
     public var readTimestamp: Date?
     public var issuedTimestamp: Date?
 
-    public init(id: String? = nil, timestamp: Date? = nil, read: Bool? = nil, icon: String? = nil, message: String? = nil, redirectUrl: String? = nil, socialProfileID: String? = nil, readTimestamp: Date? = nil, issuedTimestamp: Date? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, read: Bool? = nil, icon: String? = nil, message: String? = nil, imageUrl: String? = nil, redirectUrl: String? = nil, type: ModelType? = nil, socialProfileId: String? = nil, readTimestamp: Date? = nil, issuedTimestamp: Date? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.read = read
         self.icon = icon
         self.message = message
+        self.imageUrl = imageUrl
         self.redirectUrl = redirectUrl
-        self.socialProfileID = socialProfileID
+        self.type = type
+        self.socialProfileId = socialProfileId
         self.readTimestamp = readTimestamp
         self.issuedTimestamp = issuedTimestamp
     }
@@ -40,8 +49,10 @@ public struct NotificationDto: Codable, JSONEncodable, Hashable {
         case read
         case icon
         case message
+        case imageUrl
         case redirectUrl
-        case socialProfileID
+        case type
+        case socialProfileId
         case readTimestamp
         case issuedTimestamp
     }
@@ -55,8 +66,10 @@ public struct NotificationDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(read, forKey: .read)
         try container.encodeIfPresent(icon, forKey: .icon)
         try container.encodeIfPresent(message, forKey: .message)
+        try container.encodeIfPresent(imageUrl, forKey: .imageUrl)
         try container.encodeIfPresent(redirectUrl, forKey: .redirectUrl)
-        try container.encodeIfPresent(socialProfileID, forKey: .socialProfileID)
+        try container.encodeIfPresent(type, forKey: .type)
+        try container.encodeIfPresent(socialProfileId, forKey: .socialProfileId)
         try container.encodeIfPresent(readTimestamp, forKey: .readTimestamp)
         try container.encodeIfPresent(issuedTimestamp, forKey: .issuedTimestamp)
     }

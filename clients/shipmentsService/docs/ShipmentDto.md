@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 **expectedShippingDate** | **Date** |  | [optional] 
 **expectedDeliveryDate** | **Date** |  | [optional] 
 **shippingTerms** | **String** |  | [optional] 
-**orderID** | **String** |  | [optional] 
-**businessID** | **String** |  | [optional] 
+**orderId** | **String** |  | [optional] 
+**tenantId** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

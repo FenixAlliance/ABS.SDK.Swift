@@ -14,26 +14,26 @@ public struct TenantTeamCreateDto: Codable, JSONEncodable, Hashable {
 
     static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     static let descriptionRule = StringRule(minLength: 0, maxLength: 1000, pattern: nil)
-    static let businessUnitIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
-    static let organizationProfileIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
+    static let businessUnitIdRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
+    static let organizationProfileIdRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var name: String?
     public var description: String?
-    public var avatarURL: String?
+    public var avatarUrl: String?
     public var isPublic: Bool?
-    public var businessUnitID: String?
-    public var organizationProfileID: String?
+    public var businessUnitId: String?
+    public var organizationProfileId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil, description: String? = nil, avatarURL: String? = nil, isPublic: Bool? = nil, businessUnitID: String? = nil, organizationProfileID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil, description: String? = nil, avatarUrl: String? = nil, isPublic: Bool? = nil, businessUnitId: String? = nil, organizationProfileId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
         self.description = description
-        self.avatarURL = avatarURL
+        self.avatarUrl = avatarUrl
         self.isPublic = isPublic
-        self.businessUnitID = businessUnitID
-        self.organizationProfileID = organizationProfileID
+        self.businessUnitId = businessUnitId
+        self.organizationProfileId = organizationProfileId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -41,10 +41,10 @@ public struct TenantTeamCreateDto: Codable, JSONEncodable, Hashable {
         case timestamp
         case name
         case description
-        case avatarURL
+        case avatarUrl
         case isPublic
-        case businessUnitID
-        case organizationProfileID
+        case businessUnitId
+        case organizationProfileId
     }
 
     // Encodable protocol methods
@@ -55,10 +55,10 @@ public struct TenantTeamCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(avatarURL, forKey: .avatarURL)
+        try container.encodeIfPresent(avatarUrl, forKey: .avatarUrl)
         try container.encodeIfPresent(isPublic, forKey: .isPublic)
-        try container.encodeIfPresent(businessUnitID, forKey: .businessUnitID)
-        try container.encodeIfPresent(organizationProfileID, forKey: .organizationProfileID)
+        try container.encodeIfPresent(businessUnitId, forKey: .businessUnitId)
+        try container.encodeIfPresent(organizationProfileId, forKey: .organizationProfileId)
     }
 }
 

@@ -14,27 +14,27 @@ public struct JournalCreateDto: Codable, JSONEncodable, Hashable {
 
     static let nameRule = StringRule(minLength: 1, maxLength: 255, pattern: nil)
     static let descriptionRule = StringRule(minLength: 1, maxLength: 1000, pattern: nil)
-    static let parentJournalIDRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    static let journalTypeIDRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    static let ledgerIDRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
+    static let parentJournalIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
+    static let journalTypeIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
+    static let ledgerIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var name: String
     public var description: String?
     public var dateTime: Date?
-    public var parentJournalID: String?
-    public var journalTypeID: String?
-    public var ledgerID: String?
+    public var parentJournalId: String?
+    public var journalTypeId: String?
+    public var ledgerId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, name: String, description: String? = nil, dateTime: Date? = nil, parentJournalID: String? = nil, journalTypeID: String? = nil, ledgerID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, name: String, description: String? = nil, dateTime: Date? = nil, parentJournalId: String? = nil, journalTypeId: String? = nil, ledgerId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
         self.description = description
         self.dateTime = dateTime
-        self.parentJournalID = parentJournalID
-        self.journalTypeID = journalTypeID
-        self.ledgerID = ledgerID
+        self.parentJournalId = parentJournalId
+        self.journalTypeId = journalTypeId
+        self.ledgerId = ledgerId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -43,9 +43,9 @@ public struct JournalCreateDto: Codable, JSONEncodable, Hashable {
         case name
         case description
         case dateTime
-        case parentJournalID
-        case journalTypeID
-        case ledgerID
+        case parentJournalId
+        case journalTypeId
+        case ledgerId
     }
 
     // Encodable protocol methods
@@ -57,9 +57,9 @@ public struct JournalCreateDto: Codable, JSONEncodable, Hashable {
         try container.encode(name, forKey: .name)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(dateTime, forKey: .dateTime)
-        try container.encodeIfPresent(parentJournalID, forKey: .parentJournalID)
-        try container.encodeIfPresent(journalTypeID, forKey: .journalTypeID)
-        try container.encodeIfPresent(ledgerID, forKey: .ledgerID)
+        try container.encodeIfPresent(parentJournalId, forKey: .parentJournalId)
+        try container.encodeIfPresent(journalTypeId, forKey: .journalTypeId)
+        try container.encodeIfPresent(ledgerId, forKey: .ledgerId)
     }
 }
 

@@ -17,16 +17,14 @@ public struct ShippingCourierCreateDto: Codable, JSONEncodable, Hashable {
     public var timestamp: Date?
     public var name: String
     public var logoURL: String?
-    public var countryID: String?
-    public var businessProfileRecordID: String?
+    public var countryId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, name: String, logoURL: String? = nil, countryID: String? = nil, businessProfileRecordID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, name: String, logoURL: String? = nil, countryId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
         self.logoURL = logoURL
-        self.countryID = countryID
-        self.businessProfileRecordID = businessProfileRecordID
+        self.countryId = countryId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -34,8 +32,7 @@ public struct ShippingCourierCreateDto: Codable, JSONEncodable, Hashable {
         case timestamp
         case name
         case logoURL
-        case countryID
-        case businessProfileRecordID
+        case countryId
     }
 
     // Encodable protocol methods
@@ -46,8 +43,7 @@ public struct ShippingCourierCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encode(name, forKey: .name)
         try container.encodeIfPresent(logoURL, forKey: .logoURL)
-        try container.encodeIfPresent(countryID, forKey: .countryID)
-        try container.encodeIfPresent(businessProfileRecordID, forKey: .businessProfileRecordID)
+        try container.encodeIfPresent(countryId, forKey: .countryId)
     }
 }
 

@@ -17,19 +17,19 @@ public struct SocialGroupDto: Codable, JSONEncodable, Hashable {
     public var name: String?
     public var title: String?
     public var avatarURL: String?
-    public var businessID: String?
-    public var businessProfileRecordID: String?
-    public var socialProfileID: String?
+    public var tenantId: String?
+    public var enrollmentId: String?
+    public var socialProfileId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, title: String? = nil, avatarURL: String? = nil, businessID: String? = nil, businessProfileRecordID: String? = nil, socialProfileID: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, title: String? = nil, avatarURL: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil, socialProfileId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
         self.title = title
         self.avatarURL = avatarURL
-        self.businessID = businessID
-        self.businessProfileRecordID = businessProfileRecordID
-        self.socialProfileID = socialProfileID
+        self.tenantId = tenantId
+        self.enrollmentId = enrollmentId
+        self.socialProfileId = socialProfileId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -38,9 +38,9 @@ public struct SocialGroupDto: Codable, JSONEncodable, Hashable {
         case name
         case title
         case avatarURL
-        case businessID
-        case businessProfileRecordID
-        case socialProfileID
+        case tenantId
+        case enrollmentId
+        case socialProfileId
     }
 
     // Encodable protocol methods
@@ -52,9 +52,9 @@ public struct SocialGroupDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(avatarURL, forKey: .avatarURL)
-        try container.encodeIfPresent(businessID, forKey: .businessID)
-        try container.encodeIfPresent(businessProfileRecordID, forKey: .businessProfileRecordID)
-        try container.encodeIfPresent(socialProfileID, forKey: .socialProfileID)
+        try container.encodeIfPresent(tenantId, forKey: .tenantId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
+        try container.encodeIfPresent(socialProfileId, forKey: .socialProfileId)
     }
 }
 

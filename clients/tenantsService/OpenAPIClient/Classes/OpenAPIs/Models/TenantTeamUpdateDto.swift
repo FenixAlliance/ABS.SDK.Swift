@@ -12,49 +12,41 @@ import AnyCodable
 
 public struct TenantTeamUpdateDto: Codable, JSONEncodable, Hashable {
 
-    public var id: String?
-    public var timestamp: Date?
     public var name: String?
     public var description: String?
-    public var avatarURL: String?
+    public var avatarUrl: String?
     public var isPublic: Bool?
-    public var businessUnitID: String?
-    public var organizationProfileID: String?
+    public var businessUnitId: String?
+    public var organizationProfileId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, description: String? = nil, avatarURL: String? = nil, isPublic: Bool? = nil, businessUnitID: String? = nil, organizationProfileID: String? = nil) {
-        self.id = id
-        self.timestamp = timestamp
+    public init(name: String? = nil, description: String? = nil, avatarUrl: String? = nil, isPublic: Bool? = nil, businessUnitId: String? = nil, organizationProfileId: String? = nil) {
         self.name = name
         self.description = description
-        self.avatarURL = avatarURL
+        self.avatarUrl = avatarUrl
         self.isPublic = isPublic
-        self.businessUnitID = businessUnitID
-        self.organizationProfileID = organizationProfileID
+        self.businessUnitId = businessUnitId
+        self.organizationProfileId = organizationProfileId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case id
-        case timestamp
         case name
         case description
-        case avatarURL
+        case avatarUrl
         case isPublic
-        case businessUnitID
-        case organizationProfileID
+        case businessUnitId
+        case organizationProfileId
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(avatarURL, forKey: .avatarURL)
+        try container.encodeIfPresent(avatarUrl, forKey: .avatarUrl)
         try container.encodeIfPresent(isPublic, forKey: .isPublic)
-        try container.encodeIfPresent(businessUnitID, forKey: .businessUnitID)
-        try container.encodeIfPresent(organizationProfileID, forKey: .organizationProfileID)
+        try container.encodeIfPresent(businessUnitId, forKey: .businessUnitId)
+        try container.encodeIfPresent(organizationProfileId, forKey: .organizationProfileId)
     }
 }
 

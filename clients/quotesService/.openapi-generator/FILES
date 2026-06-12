@@ -27,6 +27,7 @@ OpenAPIClient/Classes/OpenAPIs/Models/InfoRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/InfoResponse.swift
 OpenAPIClient/Classes/OpenAPIs/Models/Int32Envelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/LoginRequest.swift
+OpenAPIClient/Classes/OpenAPIs/Models/Operation.swift
 OpenAPIClient/Classes/OpenAPIs/Models/QuoteCreateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/QuoteDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/QuoteDtoEnvelope.swift
@@ -69,6 +70,7 @@ docs/InfoRequest.md
 docs/InfoResponse.md
 docs/Int32Envelope.md
 docs/LoginRequest.md
+docs/Operation.md
 docs/QuoteCreateDto.md
 docs/QuoteDto.md
 docs/QuoteDtoEnvelope.md

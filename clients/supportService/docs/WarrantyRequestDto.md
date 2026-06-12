@@ -10,10 +10,10 @@ Name | Type | Description | Notes
 **approved** | **Bool** |  | [optional] 
 **approvedTimestamp** | **Date** |  | [optional] 
 **tenantId** | **String** |  | [optional] 
-**businessProfileRecordId** | **String** |  | [optional] 
+**enrollmentId** | **String** |  | [optional] 
 **supportEntitlementId** | **String** |  | [optional] 
 **contactId** | **String** |  | [optional] 
-**accountHolderId** | **String** |  | [optional] 
+**userId** | **String** |  | [optional] 
 **warrantyPolicyId** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

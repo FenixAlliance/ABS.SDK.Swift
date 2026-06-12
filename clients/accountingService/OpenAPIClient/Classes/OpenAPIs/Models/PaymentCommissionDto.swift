@@ -27,9 +27,9 @@ public struct PaymentCommissionDto: Codable, JSONEncodable, Hashable {
     public var receiverWalletAccountId: String?
     public var emisorContactId: String?
     public var receiverContactId: String?
-    public var paymentID: String?
+    public var paymentId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil, baseAmount: Double? = nil, addedPercent: Double? = nil, addedAmount: Double? = nil, taxComission: Double? = nil, tenantId: String? = nil, enrollmentId: String? = nil, salaryId: String? = nil, emisorWalletAccountId: String? = nil, receiverWalletAccountId: String? = nil, emisorContactId: String? = nil, receiverContactId: String? = nil, paymentID: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil, baseAmount: Double? = nil, addedPercent: Double? = nil, addedAmount: Double? = nil, taxComission: Double? = nil, tenantId: String? = nil, enrollmentId: String? = nil, salaryId: String? = nil, emisorWalletAccountId: String? = nil, receiverWalletAccountId: String? = nil, emisorContactId: String? = nil, receiverContactId: String? = nil, paymentId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
@@ -45,7 +45,7 @@ public struct PaymentCommissionDto: Codable, JSONEncodable, Hashable {
         self.receiverWalletAccountId = receiverWalletAccountId
         self.emisorContactId = emisorContactId
         self.receiverContactId = receiverContactId
-        self.paymentID = paymentID
+        self.paymentId = paymentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -64,7 +64,7 @@ public struct PaymentCommissionDto: Codable, JSONEncodable, Hashable {
         case receiverWalletAccountId
         case emisorContactId
         case receiverContactId
-        case paymentID
+        case paymentId
     }
 
     // Encodable protocol methods
@@ -86,7 +86,7 @@ public struct PaymentCommissionDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(receiverWalletAccountId, forKey: .receiverWalletAccountId)
         try container.encodeIfPresent(emisorContactId, forKey: .emisorContactId)
         try container.encodeIfPresent(receiverContactId, forKey: .receiverContactId)
-        try container.encodeIfPresent(paymentID, forKey: .paymentID)
+        try container.encodeIfPresent(paymentId, forKey: .paymentId)
     }
 }
 

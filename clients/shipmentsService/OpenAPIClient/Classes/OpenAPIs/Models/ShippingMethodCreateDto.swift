@@ -24,10 +24,10 @@ public struct ShippingMethodCreateDto: Codable, JSONEncodable, Hashable {
     public var cost: Double?
     public var taxable: Bool?
     public var taxIncluded: Bool?
-    public var currencyID: String?
+    public var currencyId: String?
     public var shippingClassCalculationType: ShippingClassCalculationType?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, name: String, description: String? = nil, cost: Double? = nil, taxable: Bool? = nil, taxIncluded: Bool? = nil, currencyID: String? = nil, shippingClassCalculationType: ShippingClassCalculationType? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, name: String, description: String? = nil, cost: Double? = nil, taxable: Bool? = nil, taxIncluded: Bool? = nil, currencyId: String? = nil, shippingClassCalculationType: ShippingClassCalculationType? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
@@ -35,7 +35,7 @@ public struct ShippingMethodCreateDto: Codable, JSONEncodable, Hashable {
         self.cost = cost
         self.taxable = taxable
         self.taxIncluded = taxIncluded
-        self.currencyID = currencyID
+        self.currencyId = currencyId
         self.shippingClassCalculationType = shippingClassCalculationType
     }
 
@@ -47,7 +47,7 @@ public struct ShippingMethodCreateDto: Codable, JSONEncodable, Hashable {
         case cost
         case taxable
         case taxIncluded
-        case currencyID
+        case currencyId
         case shippingClassCalculationType
     }
 
@@ -62,7 +62,7 @@ public struct ShippingMethodCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(cost, forKey: .cost)
         try container.encodeIfPresent(taxable, forKey: .taxable)
         try container.encodeIfPresent(taxIncluded, forKey: .taxIncluded)
-        try container.encodeIfPresent(currencyID, forKey: .currencyID)
+        try container.encodeIfPresent(currencyId, forKey: .currencyId)
         try container.encodeIfPresent(shippingClassCalculationType, forKey: .shippingClassCalculationType)
     }
 }

@@ -16,16 +16,16 @@ public struct SupportTicketPriorityDto: Codable, JSONEncodable, Hashable {
     public var timestamp: Date?
     public var title: String?
     public var description: String?
-    public var businessID: String?
-    public var supportEntitlementID: String?
+    public var tenantId: String?
+    public var supportEntitlementId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil, businessID: String? = nil, supportEntitlementID: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil, tenantId: String? = nil, supportEntitlementId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
         self.description = description
-        self.businessID = businessID
-        self.supportEntitlementID = supportEntitlementID
+        self.tenantId = tenantId
+        self.supportEntitlementId = supportEntitlementId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -33,8 +33,8 @@ public struct SupportTicketPriorityDto: Codable, JSONEncodable, Hashable {
         case timestamp
         case title
         case description
-        case businessID
-        case supportEntitlementID
+        case tenantId
+        case supportEntitlementId
     }
 
     // Encodable protocol methods
@@ -45,8 +45,8 @@ public struct SupportTicketPriorityDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(businessID, forKey: .businessID)
-        try container.encodeIfPresent(supportEntitlementID, forKey: .supportEntitlementID)
+        try container.encodeIfPresent(tenantId, forKey: .tenantId)
+        try container.encodeIfPresent(supportEntitlementId, forKey: .supportEntitlementId)
     }
 }
 

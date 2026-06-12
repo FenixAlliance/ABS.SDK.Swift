@@ -17,15 +17,15 @@ public struct TenantTeamContactEnrollmentDto: Codable, JSONEncodable, Hashable {
     public var teamId: String?
     public var tenantId: String?
     public var enrollmentId: String?
-    public var contactID: String?
+    public var contactId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, teamId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil, contactID: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, teamId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil, contactId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.teamId = teamId
         self.tenantId = tenantId
         self.enrollmentId = enrollmentId
-        self.contactID = contactID
+        self.contactId = contactId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -34,7 +34,7 @@ public struct TenantTeamContactEnrollmentDto: Codable, JSONEncodable, Hashable {
         case teamId
         case tenantId
         case enrollmentId
-        case contactID
+        case contactId
     }
 
     // Encodable protocol methods
@@ -46,7 +46,7 @@ public struct TenantTeamContactEnrollmentDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(teamId, forKey: .teamId)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
-        try container.encodeIfPresent(contactID, forKey: .contactID)
+        try container.encodeIfPresent(contactId, forKey: .contactId)
     }
 }
 

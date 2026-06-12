@@ -12,21 +12,21 @@ import AnyCodable
 
 public struct TenantTeamRecordUpdateDto: Codable, JSONEncodable, Hashable {
 
-    public var businessTeamID: String?
+    public var businessTeamId: String?
 
-    public init(businessTeamID: String? = nil) {
-        self.businessTeamID = businessTeamID
+    public init(businessTeamId: String? = nil) {
+        self.businessTeamId = businessTeamId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case businessTeamID
+        case businessTeamId
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(businessTeamID, forKey: .businessTeamID)
+        try container.encodeIfPresent(businessTeamId, forKey: .businessTeamId)
     }
 }
 

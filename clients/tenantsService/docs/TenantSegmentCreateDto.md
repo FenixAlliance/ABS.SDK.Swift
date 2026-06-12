@@ -5,7 +5,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **UUID** |  | [optional] 
 **timestamp** | **Date** |  | [optional] 
-**revenue** | **String** |  | [optional] 
 **minEmployees** | **Double** |  | [optional] 
 **maxEmployees** | **Double** |  | [optional] 
 

@@ -14,13 +14,15 @@ public struct TenantSizeDto: Codable, JSONEncodable, Hashable {
 
     public var id: String?
     public var timestamp: Date?
+    public var tenantId: String?
     public var name: String?
     public var employeeLowRangeValue: Int?
     public var employeeHighRangeValue: Int?
 
-    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, employeeLowRangeValue: Int? = nil, employeeHighRangeValue: Int? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, tenantId: String? = nil, name: String? = nil, employeeLowRangeValue: Int? = nil, employeeHighRangeValue: Int? = nil) {
         self.id = id
         self.timestamp = timestamp
+        self.tenantId = tenantId
         self.name = name
         self.employeeLowRangeValue = employeeLowRangeValue
         self.employeeHighRangeValue = employeeHighRangeValue
@@ -29,6 +31,7 @@ public struct TenantSizeDto: Codable, JSONEncodable, Hashable {
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
+        case tenantId
         case name
         case employeeLowRangeValue
         case employeeHighRangeValue
@@ -40,6 +43,7 @@ public struct TenantSizeDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
+        try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(employeeLowRangeValue, forKey: .employeeLowRangeValue)
         try container.encodeIfPresent(employeeHighRangeValue, forKey: .employeeHighRangeValue)

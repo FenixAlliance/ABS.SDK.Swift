@@ -5,6 +5,7 @@ OpenAPIClient.podspec
 OpenAPIClient/Classes/OpenAPIs/APIHelper.swift
 OpenAPIClient/Classes/OpenAPIs/APIs.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/AntiforgeryAPI.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/BusinessDomainsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/CartsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/CompletionsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/ContactOptionsAPI.swift
@@ -31,6 +32,9 @@ OpenAPIClient/Classes/OpenAPIs/Models.swift
 OpenAPIClient/Classes/OpenAPIs/Models/AccessTokenResponse.swift
 OpenAPIClient/Classes/OpenAPIs/Models/AdditionalAttribute.swift
 OpenAPIClient/Classes/OpenAPIs/Models/BooleanEnvelope.swift
+OpenAPIClient/Classes/OpenAPIs/Models/BusinessDomainDto.swift
+OpenAPIClient/Classes/OpenAPIs/Models/BusinessDomainDtoEnvelope.swift
+OpenAPIClient/Classes/OpenAPIs/Models/BusinessDomainDtoListEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/CartDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/CartDtoEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/CartDtoListEnvelope.swift
@@ -68,6 +72,7 @@ OpenAPIClient/Classes/OpenAPIs/Models/LoginRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/Module.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ModuleListEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ObjectEmailDispatchRequest.swift
+OpenAPIClient/Classes/OpenAPIs/Models/Operation.swift
 OpenAPIClient/Classes/OpenAPIs/Models/OptionCreateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/OptionDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/OptionDtoEnvelope.swift
@@ -118,6 +123,10 @@ docs/AccessTokenResponse.md
 docs/AdditionalAttribute.md
 docs/AntiforgeryAPI.md
 docs/BooleanEnvelope.md
+docs/BusinessDomainDto.md
+docs/BusinessDomainDtoEnvelope.md
+docs/BusinessDomainDtoListEnvelope.md
+docs/BusinessDomainsAPI.md
 docs/CartDto.md
 docs/CartDtoEnvelope.md
 docs/CartDtoListEnvelope.md
@@ -165,6 +174,7 @@ docs/Module.md
 docs/ModuleListEnvelope.md
 docs/ModulesAPI.md
 docs/ObjectEmailDispatchRequest.md
+docs/Operation.md
 docs/OptionCreateDto.md
 docs/OptionDto.md
 docs/OptionDtoEnvelope.md

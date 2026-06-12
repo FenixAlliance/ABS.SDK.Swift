@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 **enrollmentId** | **String** |  | [optional] 
 **socialProfileId** | **String** |  | [optional] 
 **folderPath** | **String** |  | [optional] 
-**supportRequestID** | **String** |  | [optional] 
+**supportRequestId** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

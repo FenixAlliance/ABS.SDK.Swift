@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**getOAuthAuthorizationByIdAsync**](OAuthApplicationsAPI.md#getoauthauthorizationbyidasync) | **GET** /api/v2/SecurityService/OAuthApplications/Authorizations/{authorizationId} | Get OAuth authorization by ID
 [**getOAuthAuthorizationsAsync**](OAuthApplicationsAPI.md#getoauthauthorizationsasync) | **GET** /api/v2/SecurityService/OAuthApplications/Authorizations | Get all OAuth authorizations
 [**getOAuthAuthorizationsCountAsync**](OAuthApplicationsAPI.md#getoauthauthorizationscountasync) | **GET** /api/v2/SecurityService/OAuthApplications/Authorizations/Count | Get OAuth authorizations count
+[**patchOAuthApplicationAsync**](OAuthApplicationsAPI.md#patchoauthapplicationasync) | **PATCH** /api/v2/SecurityService/OAuthApplications/{applicationId} | Patch an existing OAuth application
 [**updateOAuthApplicationAsync**](OAuthApplicationsAPI.md#updateoauthapplicationasync) | **PUT** /api/v2/SecurityService/OAuthApplications/{applicationId} | Update an existing OAuth application
 
 
@@ -455,6 +456,64 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchOAuthApplicationAsync**
+```swift
+    open class func patchOAuthApplicationAsync(tenantId: UUID, applicationId: String, operation: [Operation], apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch an existing OAuth application
+
+Partially updates an existing OAuth application using a JSON Patch document.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let applicationId = "applicationId_example" // String | 
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Patch an existing OAuth application
+OAuthApplicationsAPI.patchOAuthApplicationAsync(tenantId: tenantId, applicationId: applicationId, operation: operation, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **applicationId** | **String** |  | 
+ **operation** | [**[Operation]**](Operation.md) |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -14,13 +14,17 @@ public struct ItemTaxPolicyRecordDto: Codable, JSONEncodable, Hashable {
 
     public var id: String?
     public var timestamp: Date?
+    public var tenantId: String?
+    public var enrollmentId: String?
     public var taxPolicyId: String?
     public var itemPriceId: String?
     public var itemId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, taxPolicyId: String? = nil, itemPriceId: String? = nil, itemId: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, tenantId: String? = nil, enrollmentId: String? = nil, taxPolicyId: String? = nil, itemPriceId: String? = nil, itemId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
+        self.tenantId = tenantId
+        self.enrollmentId = enrollmentId
         self.taxPolicyId = taxPolicyId
         self.itemPriceId = itemPriceId
         self.itemId = itemId
@@ -29,6 +33,8 @@ public struct ItemTaxPolicyRecordDto: Codable, JSONEncodable, Hashable {
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
+        case tenantId
+        case enrollmentId
         case taxPolicyId
         case itemPriceId
         case itemId
@@ -40,6 +46,8 @@ public struct ItemTaxPolicyRecordDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
+        try container.encodeIfPresent(tenantId, forKey: .tenantId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(taxPolicyId, forKey: .taxPolicyId)
         try container.encodeIfPresent(itemPriceId, forKey: .itemPriceId)
         try container.encodeIfPresent(itemId, forKey: .itemId)

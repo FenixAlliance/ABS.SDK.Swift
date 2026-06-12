@@ -5,15 +5,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | [optional] 
 **timestamp** | **Date** |  | [optional] 
-**businessID** | **String** |  | [optional] 
-**businessProfileRecordID** | **String** |  | [optional] 
+**tenantId** | **String** |  | [optional] 
+**enrollmentId** | **String** |  | [optional] 
 **name** | **String** |  | [optional] 
 **description** | **String** |  | [optional] 
 **disabled** | **Bool** |  | [optional] 
 **businessUnitQualifiedName** | **String** |  | [optional] 
-**countryID** | **String** |  | [optional] 
-**organizationProfileID** | **String** |  | [optional] 
-**parentBusinessUnitID** | **String** |  | [optional] 
+**countryId** | **String** |  | [optional] 
+**organizationProfileId** | **String** |  | [optional] 
+**parentBusinessUnitId** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

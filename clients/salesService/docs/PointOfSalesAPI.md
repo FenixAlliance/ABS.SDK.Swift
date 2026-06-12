@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**deletePointOfSaleAsync**](PointOfSalesAPI.md#deletepointofsaleasync) | **DELETE** /api/v2/SalesService/PointOfSales/{pointOfSaleId} | Delete a point of sale
 [**getPointOfSaleAsync**](PointOfSalesAPI.md#getpointofsaleasync) | **GET** /api/v2/SalesService/PointOfSales/{pointOfSaleId} | Get point of sale by ID
 [**getPointOfSalesAsync**](PointOfSalesAPI.md#getpointofsalesasync) | **GET** /api/v2/SalesService/PointOfSales | Get point of sales
+[**patchPointOfSaleAsync**](PointOfSalesAPI.md#patchpointofsaleasync) | **PATCH** /api/v2/SalesService/PointOfSales/{pointOfSaleId} | Patch a point of sale
 [**updatePointOfSaleAsync**](PointOfSalesAPI.md#updatepointofsaleasync) | **PUT** /api/v2/SalesService/PointOfSales/{pointOfSaleId} | Update a point of sale
 
 
@@ -264,6 +265,60 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchPointOfSaleAsync**
+```swift
+    open class func patchPointOfSaleAsync(tenantId: UUID, pointOfSaleId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a point of sale
+
+Partially updates an existing point of sale using a JSON Patch document.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let pointOfSaleId = 987 // UUID | 
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a point of sale
+PointOfSalesAPI.patchPointOfSaleAsync(tenantId: tenantId, pointOfSaleId: pointOfSaleId, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **pointOfSaleId** | **UUID** |  | 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

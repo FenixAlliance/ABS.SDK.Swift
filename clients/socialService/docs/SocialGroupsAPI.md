@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**deleteSocialGroupAsync**](SocialGroupsAPI.md#deletesocialgroupasync) | **DELETE** /api/v2/SocialService/SocialGroups/{socialGroupId} | Delete a social group
 [**getSocialGroupByIdAsync**](SocialGroupsAPI.md#getsocialgroupbyidasync) | **GET** /api/v2/SocialService/SocialGroups/{socialGroupId} | Get social group by ID
 [**getSocialGroupsAsync**](SocialGroupsAPI.md#getsocialgroupsasync) | **GET** /api/v2/SocialService/SocialGroups | Get social groups
+[**patchSocialGroupAsync**](SocialGroupsAPI.md#patchsocialgroupasync) | **PATCH** /api/v2/SocialService/SocialGroups/{socialGroupId} | Patch a social group
 [**updateSocialGroupAsync**](SocialGroupsAPI.md#updatesocialgroupasync) | **PUT** /api/v2/SocialService/SocialGroups/{socialGroupId} | Update a social group
 
 
@@ -84,7 +85,7 @@ let tenantId = 987 // UUID |
 let socialProfileId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let socialGroupCreateDto = SocialGroupCreateDto(id: 123, timestamp: Date(), name: "name_example", title: "title_example", avatarURL: "avatarURL_example", socialProfileID: "socialProfileID_example") // SocialGroupCreateDto |  (optional)
+let socialGroupCreateDto = SocialGroupCreateDto(id: 123, timestamp: Date(), name: "name_example", title: "title_example", avatarURL: "avatarURL_example", socialProfileId: "socialProfileId_example") // SocialGroupCreateDto |  (optional)
 
 // Create a social group
 SocialGroupsAPI.createSocialGroupAsync(tenantId: tenantId, socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialGroupCreateDto: socialGroupCreateDto) { (response, error) in
@@ -288,6 +289,66 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchSocialGroupAsync**
+```swift
+    open class func patchSocialGroupAsync(tenantId: UUID, socialProfileId: UUID, socialGroupId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a social group
+
+Partially updates an existing social group using a JSON Patch document.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let socialProfileId = 987 // UUID | 
+let socialGroupId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a social group
+SocialGroupsAPI.patchSocialGroupAsync(tenantId: tenantId, socialProfileId: socialProfileId, socialGroupId: socialGroupId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **socialProfileId** | **UUID** |  | 
+ **socialGroupId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

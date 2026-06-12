@@ -19,6 +19,9 @@ Method | HTTP request | Description
 [**getTaxPoliciesByAuthority**](TaxPoliciesAPI.md#gettaxpoliciesbyauthority) | **GET** /api/v2/AccountingService/TaxPolicies/ByAuthority/{authorityId} | Get tax policies by fiscal authority
 [**getTaxPoliciesCount**](TaxPoliciesAPI.md#gettaxpoliciescount) | **GET** /api/v2/AccountingService/TaxPolicies/Count | Get tax policies count
 [**getTaxPolicy**](TaxPoliciesAPI.md#gettaxpolicy) | **GET** /api/v2/AccountingService/TaxPolicies/{id} | Get tax policy by ID
+[**patchAppliedTaxPolicyRecord**](TaxPoliciesAPI.md#patchappliedtaxpolicyrecord) | **PATCH** /api/v2/AccountingService/TaxPolicies/{taxPolicyId}/AppliedTaxPolicyRecords/{appliedTaxPolicyRecordId} | Patch an applied tax policy record
+[**patchItemTaxPolicyRecord**](TaxPoliciesAPI.md#patchitemtaxpolicyrecord) | **PATCH** /api/v2/AccountingService/TaxPolicies/{taxPolicyId}/ItemTaxPolicyRecords/{itemTaxPolicyRecordId} | Patch an item tax policy record
+[**patchTaxPolicy**](TaxPoliciesAPI.md#patchtaxpolicy) | **PATCH** /api/v2/AccountingService/TaxPolicies/{id} | Patch a tax policy
 [**updateAppliedTaxPolicyRecord**](TaxPoliciesAPI.md#updateappliedtaxpolicyrecord) | **PUT** /api/v2/AccountingService/TaxPolicies/{taxPolicyId}/AppliedTaxPolicyRecords/{appliedTaxPolicyRecordId} | Update an applied tax policy record
 [**updateItemTaxPolicyRecord**](TaxPoliciesAPI.md#updateitemtaxpolicyrecord) | **PUT** /api/v2/AccountingService/TaxPolicies/{taxPolicyId}/ItemTaxPolicyRecords/{itemTaxPolicyRecordId} | Update an item tax policy record
 [**updateTaxPolicy**](TaxPoliciesAPI.md#updatetaxpolicy) | **PUT** /api/v2/AccountingService/TaxPolicies/{id} | Update a tax policy
@@ -872,6 +875,184 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchAppliedTaxPolicyRecord**
+```swift
+    open class func patchAppliedTaxPolicyRecord(tenantId: UUID, taxPolicyId: UUID, appliedTaxPolicyRecordId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch an applied tax policy record
+
+Partially updates an existing applied tax policy record identified by its unique identifier.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let taxPolicyId = 987 // UUID | 
+let appliedTaxPolicyRecordId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch an applied tax policy record
+TaxPoliciesAPI.patchAppliedTaxPolicyRecord(tenantId: tenantId, taxPolicyId: taxPolicyId, appliedTaxPolicyRecordId: appliedTaxPolicyRecordId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **taxPolicyId** | **UUID** |  | 
+ **appliedTaxPolicyRecordId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchItemTaxPolicyRecord**
+```swift
+    open class func patchItemTaxPolicyRecord(tenantId: UUID, taxPolicyId: UUID, itemTaxPolicyRecordId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch an item tax policy record
+
+Partially updates an existing item tax policy record identified by its unique identifier.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let taxPolicyId = 987 // UUID | 
+let itemTaxPolicyRecordId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch an item tax policy record
+TaxPoliciesAPI.patchItemTaxPolicyRecord(tenantId: tenantId, taxPolicyId: taxPolicyId, itemTaxPolicyRecordId: itemTaxPolicyRecordId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **taxPolicyId** | **UUID** |  | 
+ **itemTaxPolicyRecordId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchTaxPolicy**
+```swift
+    open class func patchTaxPolicy(tenantId: UUID, id: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a tax policy
+
+Partially updates an existing tax policy identified by its unique identifier.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let id = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a tax policy
+TaxPoliciesAPI.patchTaxPolicy(tenantId: tenantId, id: id, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **id** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateAppliedTaxPolicyRecord**
 ```swift
     open class func updateAppliedTaxPolicyRecord(tenantId: UUID, taxPolicyId: UUID, appliedTaxPolicyRecordId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, appliedTaxPolicyRecordUpdateDto: AppliedTaxPolicyRecordUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
@@ -951,7 +1132,7 @@ let taxPolicyId = 987 // UUID |
 let itemTaxPolicyRecordId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let itemTaxPolicyRecordUpdateDto = ItemTaxPolicyRecordUpdateDto(id: 123, timestamp: Date(), taxPolicyId: "taxPolicyId_example", itemPriceId: "itemPriceId_example", itemId: "itemId_example") // ItemTaxPolicyRecordUpdateDto |  (optional)
+let itemTaxPolicyRecordUpdateDto = ItemTaxPolicyRecordUpdateDto(taxPolicyId: "taxPolicyId_example", itemPriceId: "itemPriceId_example", itemId: "itemId_example") // ItemTaxPolicyRecordUpdateDto |  (optional)
 
 // Update an item tax policy record
 TaxPoliciesAPI.updateItemTaxPolicyRecord(tenantId: tenantId, taxPolicyId: taxPolicyId, itemTaxPolicyRecordId: itemTaxPolicyRecordId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemTaxPolicyRecordUpdateDto: itemTaxPolicyRecordUpdateDto) { (response, error) in

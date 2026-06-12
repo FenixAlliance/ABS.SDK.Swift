@@ -21,20 +21,20 @@ public struct ReceiptDto: Codable, JSONEncodable, Hashable {
     public var paymentId: String?
     public var tenantId: String?
     public var closed: Bool?
-    public var accountHolderId: String?
+    public var userId: String?
     public var contactId: String?
     public var enrollmentId: String?
     public var receiptType: ReceiptType?
     public var orderId: String?
     public var invoiceId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, paymentId: String? = nil, tenantId: String? = nil, closed: Bool? = nil, accountHolderId: String? = nil, contactId: String? = nil, enrollmentId: String? = nil, receiptType: ReceiptType? = nil, orderId: String? = nil, invoiceId: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, paymentId: String? = nil, tenantId: String? = nil, closed: Bool? = nil, userId: String? = nil, contactId: String? = nil, enrollmentId: String? = nil, receiptType: ReceiptType? = nil, orderId: String? = nil, invoiceId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.paymentId = paymentId
         self.tenantId = tenantId
         self.closed = closed
-        self.accountHolderId = accountHolderId
+        self.userId = userId
         self.contactId = contactId
         self.enrollmentId = enrollmentId
         self.receiptType = receiptType
@@ -48,7 +48,7 @@ public struct ReceiptDto: Codable, JSONEncodable, Hashable {
         case paymentId
         case tenantId
         case closed
-        case accountHolderId
+        case userId
         case contactId
         case enrollmentId
         case receiptType
@@ -65,7 +65,7 @@ public struct ReceiptDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(paymentId, forKey: .paymentId)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encodeIfPresent(closed, forKey: .closed)
-        try container.encodeIfPresent(accountHolderId, forKey: .accountHolderId)
+        try container.encodeIfPresent(userId, forKey: .userId)
         try container.encodeIfPresent(contactId, forKey: .contactId)
         try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(receiptType, forKey: .receiptType)

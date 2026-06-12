@@ -19,9 +19,9 @@ public struct ShippingZoneDto: Codable, JSONEncodable, Hashable {
     public var everywhere: Bool?
     public var postalCodes: String?
     public var countryCodes: String?
-    public var businessID: String?
+    public var tenantId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, _default: Bool? = nil, everywhere: Bool? = nil, postalCodes: String? = nil, countryCodes: String? = nil, businessID: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, _default: Bool? = nil, everywhere: Bool? = nil, postalCodes: String? = nil, countryCodes: String? = nil, tenantId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
@@ -29,7 +29,7 @@ public struct ShippingZoneDto: Codable, JSONEncodable, Hashable {
         self.everywhere = everywhere
         self.postalCodes = postalCodes
         self.countryCodes = countryCodes
-        self.businessID = businessID
+        self.tenantId = tenantId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -40,7 +40,7 @@ public struct ShippingZoneDto: Codable, JSONEncodable, Hashable {
         case everywhere
         case postalCodes
         case countryCodes
-        case businessID
+        case tenantId
     }
 
     // Encodable protocol methods
@@ -54,7 +54,7 @@ public struct ShippingZoneDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(everywhere, forKey: .everywhere)
         try container.encodeIfPresent(postalCodes, forKey: .postalCodes)
         try container.encodeIfPresent(countryCodes, forKey: .countryCodes)
-        try container.encodeIfPresent(businessID, forKey: .businessID)
+        try container.encodeIfPresent(tenantId, forKey: .tenantId)
     }
 }
 

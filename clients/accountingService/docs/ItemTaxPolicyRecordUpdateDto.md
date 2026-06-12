@@ -3,8 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **UUID** |  | [optional] 
-**timestamp** | **Date** |  | [optional] 
 **taxPolicyId** | **String** |  | [optional] 
 **itemPriceId** | **String** |  | [optional] 
 **itemId** | **String** |  | [optional] 

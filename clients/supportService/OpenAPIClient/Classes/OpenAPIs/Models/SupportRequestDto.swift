@@ -18,24 +18,24 @@ public struct SupportRequestDto: Codable, JSONEncodable, Hashable {
     public var description: String?
     public var approved: Bool?
     public var approvedTimestamp: Date?
-    public var businessID: String?
-    public var businessProfileRecordID: String?
-    public var supportEntitlementID: String?
-    public var contactID: String?
-    public var accountHolderID: String?
+    public var tenantId: String?
+    public var enrollmentId: String?
+    public var supportEntitlementId: String?
+    public var contactId: String?
+    public var userId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil, approved: Bool? = nil, approvedTimestamp: Date? = nil, businessID: String? = nil, businessProfileRecordID: String? = nil, supportEntitlementID: String? = nil, contactID: String? = nil, accountHolderID: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil, approved: Bool? = nil, approvedTimestamp: Date? = nil, tenantId: String? = nil, enrollmentId: String? = nil, supportEntitlementId: String? = nil, contactId: String? = nil, userId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
         self.description = description
         self.approved = approved
         self.approvedTimestamp = approvedTimestamp
-        self.businessID = businessID
-        self.businessProfileRecordID = businessProfileRecordID
-        self.supportEntitlementID = supportEntitlementID
-        self.contactID = contactID
-        self.accountHolderID = accountHolderID
+        self.tenantId = tenantId
+        self.enrollmentId = enrollmentId
+        self.supportEntitlementId = supportEntitlementId
+        self.contactId = contactId
+        self.userId = userId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -45,11 +45,11 @@ public struct SupportRequestDto: Codable, JSONEncodable, Hashable {
         case description
         case approved
         case approvedTimestamp
-        case businessID
-        case businessProfileRecordID
-        case supportEntitlementID
-        case contactID
-        case accountHolderID
+        case tenantId
+        case enrollmentId
+        case supportEntitlementId
+        case contactId
+        case userId
     }
 
     // Encodable protocol methods
@@ -62,11 +62,11 @@ public struct SupportRequestDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(approved, forKey: .approved)
         try container.encodeIfPresent(approvedTimestamp, forKey: .approvedTimestamp)
-        try container.encodeIfPresent(businessID, forKey: .businessID)
-        try container.encodeIfPresent(businessProfileRecordID, forKey: .businessProfileRecordID)
-        try container.encodeIfPresent(supportEntitlementID, forKey: .supportEntitlementID)
-        try container.encodeIfPresent(contactID, forKey: .contactID)
-        try container.encodeIfPresent(accountHolderID, forKey: .accountHolderID)
+        try container.encodeIfPresent(tenantId, forKey: .tenantId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
+        try container.encodeIfPresent(supportEntitlementId, forKey: .supportEntitlementId)
+        try container.encodeIfPresent(contactId, forKey: .contactId)
+        try container.encodeIfPresent(userId, forKey: .userId)
     }
 }
 

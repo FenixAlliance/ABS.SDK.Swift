@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 **id** | **String** |  | [optional] 
 **timestamp** | **Date** |  | [optional] 
 **accountId** | **String** |  | [optional] 
+**type** | **String** |  | [optional] 
 **tenantId** | **String** |  | [optional] 
 **enrollmentId** | **String** |  | [optional] 
 

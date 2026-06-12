@@ -47,6 +47,8 @@ Method | HTTP request | Description
 [**getWalletWithdrawRequestsCountAsync**](WalletsAPI.md#getwalletwithdrawrequestscountasync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/WithdrawRequests/Count | Get Wallet Withdraw Requests Count
 [**getWalletWithdrawsAsync**](WalletsAPI.md#getwalletwithdrawsasync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Withdraws | Get Wallet Withdraws
 [**getWalletWithdrawsCountAsync**](WalletsAPI.md#getwalletwithdrawscountasync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Withdraws/Count | Get Wallet Withdraws Count
+[**patchWalletBankAccountAsync**](WalletsAPI.md#patchwalletbankaccountasync) | **PATCH** /api/v2/WalletsService/Wallets/{walletId}/BankAccounts/{bankAccountId} | Patch Wallet Bank Account
+[**patchWalletTokenAsync**](WalletsAPI.md#patchwallettokenasync) | **PATCH** /api/v2/WalletsService/Wallets/{walletId}/Tokens/{tokenId} | Patch Wallet Token
 [**updateWalletBankAccountAsync**](WalletsAPI.md#updatewalletbankaccountasync) | **PUT** /api/v2/WalletsService/Wallets/{walletId}/BankAccounts/{bankAccountId} | Update Wallet Bank Account
 [**updateWalletLocationAsync**](WalletsAPI.md#updatewalletlocationasync) | **PUT** /api/v2/WalletsService/Wallets/{walletId}/Locations/{locationId} | Update Wallet Location
 [**updateWalletTokenAsync**](WalletsAPI.md#updatewallettokenasync) | **PUT** /api/v2/WalletsService/Wallets/{walletId}/Tokens/{tokenId} | Update Wallet Token
@@ -69,7 +71,7 @@ import OpenAPIClient
 let walletId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let bankAccountCreateDto = BankAccountCreateDto(id: 123, timestamp: Date(), name: "name_example", iban: "iban_example", swift: "swift_example", branchCode: "branchCode_example", bankAccountNumber: "bankAccountNumber_example", qualifiedName: "qualifiedName_example", bankId: "bankId_example", bankProfileId: "bankProfileId_example") // BankAccountCreateDto |  (optional)
+let bankAccountCreateDto = BankAccountCreateDto(id: 123, timestamp: Date(), name: "name_example", iban: "iban_example", swift: "swift_example", branchCode: "branchCode_example", bankAccountNumber: "bankAccountNumber_example", bankId: "bankId_example", bankProfileId: "bankProfileId_example", walletId: "walletId_example") // BankAccountCreateDto |  (optional)
 
 // Create Wallet Bank Account
 WalletsAPI.createWalletBankAccountAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, bankAccountCreateDto: bankAccountCreateDto) { (response, error) in
@@ -2396,6 +2398,122 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchWalletBankAccountAsync**
+```swift
+    open class func patchWalletBankAccountAsync(walletId: UUID, bankAccountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch Wallet Bank Account
+
+Partially update a specific bank account of a specific wallet by ID.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let walletId = 987 // UUID | 
+let bankAccountId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch Wallet Bank Account
+WalletsAPI.patchWalletBankAccountAsync(walletId: walletId, bankAccountId: bankAccountId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **walletId** | **UUID** |  | 
+ **bankAccountId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchWalletTokenAsync**
+```swift
+    open class func patchWalletTokenAsync(walletId: UUID, tokenId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch Wallet Token
+
+Partially update a specific payment token of a specific wallet by ID.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let walletId = 987 // UUID | 
+let tokenId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch Wallet Token
+WalletsAPI.patchWalletTokenAsync(walletId: walletId, tokenId: tokenId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **walletId** | **UUID** |  | 
+ **tokenId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateWalletBankAccountAsync**
 ```swift
     open class func updateWalletBankAccountAsync(walletId: UUID, bankAccountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, bankAccountUpdateDto: BankAccountUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
@@ -2414,7 +2532,7 @@ let walletId = 987 // UUID |
 let bankAccountId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let bankAccountUpdateDto = BankAccountUpdateDto(name: "name_example", iban: "iban_example", swift: "swift_example", branchCode: "branchCode_example", bankAccountNumber: "bankAccountNumber_example", qualifiedName: "qualifiedName_example", bankId: "bankId_example", bankProfileId: "bankProfileId_example") // BankAccountUpdateDto |  (optional)
+let bankAccountUpdateDto = BankAccountUpdateDto(name: "name_example", iban: "iban_example", swift: "swift_example", branchCode: "branchCode_example", bankAccountNumber: "bankAccountNumber_example", bankId: "bankId_example", bankProfileId: "bankProfileId_example", walletId: "walletId_example") // BankAccountUpdateDto |  (optional)
 
 // Update Wallet Bank Account
 WalletsAPI.updateWalletBankAccountAsync(walletId: walletId, bankAccountId: bankAccountId, apiVersion: apiVersion, xApiVersion: xApiVersion, bankAccountUpdateDto: bankAccountUpdateDto) { (response, error) in

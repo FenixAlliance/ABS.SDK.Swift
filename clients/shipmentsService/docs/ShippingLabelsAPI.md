@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getShippingLabelByIdAsync**](ShippingLabelsAPI.md#getshippinglabelbyidasync) | **GET** /api/v2/ShipmentsService/ShippingLabels/{labelId} | Get shipping label by ID
 [**getShippingLabelsAsync**](ShippingLabelsAPI.md#getshippinglabelsasync) | **GET** /api/v2/ShipmentsService/ShippingLabels | Get all shipping labels
 [**getShippingLabelsCountAsync**](ShippingLabelsAPI.md#getshippinglabelscountasync) | **GET** /api/v2/ShipmentsService/ShippingLabels/Count | Get shipping labels count
+[**patchShippingLabelAsync**](ShippingLabelsAPI.md#patchshippinglabelasync) | **PATCH** /api/v2/ShipmentsService/ShippingLabels/{labelId} | Patch a shipping label
 [**updateShippingLabelAsync**](ShippingLabelsAPI.md#updateshippinglabelasync) | **PUT** /api/v2/ShipmentsService/ShippingLabels/{labelId} | Update a shipping label
 
 
@@ -29,7 +30,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let shippingLabelCreateDto = ShippingLabelCreateDto(id: 123, timestamp: Date(), trackingCode: "trackingCode_example", expectedDelivery: Date(), locationID: "locationID_example", shipmentID: "shipmentID_example", shippingCourierID: "shippingCourierID_example") // ShippingLabelCreateDto |  (optional)
+let shippingLabelCreateDto = ShippingLabelCreateDto(id: 123, timestamp: Date(), trackingCode: "trackingCode_example", expectedDelivery: Date(), locationId: "locationId_example", shipmentId: "shipmentId_example", shippingCourierId: "shippingCourierId_example") // ShippingLabelCreateDto |  (optional)
 
 // Create a shipping label
 ShippingLabelsAPI.createShippingLabelAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, shippingLabelCreateDto: shippingLabelCreateDto) { (response, error) in
@@ -288,6 +289,64 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchShippingLabelAsync**
+```swift
+    open class func patchShippingLabelAsync(tenantId: UUID, labelId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a shipping label
+
+Partially updates an existing shipping label using JSON Patch.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let labelId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a shipping label
+ShippingLabelsAPI.patchShippingLabelAsync(tenantId: tenantId, labelId: labelId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **labelId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateShippingLabelAsync**
 ```swift
     open class func updateShippingLabelAsync(tenantId: UUID, labelId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, shippingLabelUpdateDto: ShippingLabelUpdateDto? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
@@ -306,7 +365,7 @@ let tenantId = 987 // UUID |
 let labelId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let shippingLabelUpdateDto = ShippingLabelUpdateDto(trackingCode: "trackingCode_example", expectedDelivery: Date(), locationID: "locationID_example", shipmentID: "shipmentID_example", shippingCourierID: "shippingCourierID_example") // ShippingLabelUpdateDto |  (optional)
+let shippingLabelUpdateDto = ShippingLabelUpdateDto(trackingCode: "trackingCode_example", expectedDelivery: Date(), locationId: "locationId_example", shipmentId: "shipmentId_example", shippingCourierId: "shippingCourierId_example") // ShippingLabelUpdateDto |  (optional)
 
 // Update a shipping label
 ShippingLabelsAPI.updateShippingLabelAsync(tenantId: tenantId, labelId: labelId, apiVersion: apiVersion, xApiVersion: xApiVersion, shippingLabelUpdateDto: shippingLabelUpdateDto) { (response, error) in

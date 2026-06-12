@@ -307,6 +307,60 @@ open class SalesLiteraturesAPI {
     }
 
     /**
+     Patch a sales literature
+     
+     - parameter tenantId: (query)  
+     - parameter salesLiteratureId: (path)  
+     - parameter operation: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func patchSalesLiteratureAsync(tenantId: UUID, salesLiteratureId: UUID, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchSalesLiteratureAsyncWithRequestBuilder(tenantId: tenantId, salesLiteratureId: salesLiteratureId, operation: operation).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Patch a sales literature
+     - PATCH /api/v2/SalesService/SalesLiteratures/{salesLiteratureId}
+     - Partially updates an existing sales literature using a JSON Patch document.
+     - parameter tenantId: (query)  
+     - parameter salesLiteratureId: (path)  
+     - parameter operation: (body)  (optional)
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func patchSalesLiteratureAsyncWithRequestBuilder(tenantId: UUID, salesLiteratureId: UUID, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/SalesService/SalesLiteratures/{salesLiteratureId}"
+        let salesLiteratureIdPreEscape = "\(APIHelper.mapValueToPathItem(salesLiteratureId))"
+        let salesLiteratureIdPostEscape = salesLiteratureIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{salesLiteratureId}", with: salesLiteratureIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
      Update a sales literature
      
      - parameter tenantId: (query)  

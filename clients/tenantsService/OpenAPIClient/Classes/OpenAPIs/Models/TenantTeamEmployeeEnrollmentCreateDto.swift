@@ -12,25 +12,25 @@ import AnyCodable
 
 public struct TenantTeamEmployeeEnrollmentCreateDto: Codable, JSONEncodable, Hashable {
 
-    static let businessTeamIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
-    static let employeeProfileIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
+    static let businessTeamIdRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
+    static let employeeProfileIdRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
-    public var businessTeamID: String
-    public var employeeProfileID: String
+    public var businessTeamId: String
+    public var employeeProfileId: String
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, businessTeamID: String, employeeProfileID: String) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, businessTeamId: String, employeeProfileId: String) {
         self.id = id
         self.timestamp = timestamp
-        self.businessTeamID = businessTeamID
-        self.employeeProfileID = employeeProfileID
+        self.businessTeamId = businessTeamId
+        self.employeeProfileId = employeeProfileId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
-        case businessTeamID
-        case employeeProfileID
+        case businessTeamId
+        case employeeProfileId
     }
 
     // Encodable protocol methods
@@ -39,8 +39,8 @@ public struct TenantTeamEmployeeEnrollmentCreateDto: Codable, JSONEncodable, Has
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
-        try container.encode(businessTeamID, forKey: .businessTeamID)
-        try container.encode(employeeProfileID, forKey: .employeeProfileID)
+        try container.encode(businessTeamId, forKey: .businessTeamId)
+        try container.encode(employeeProfileId, forKey: .employeeProfileId)
     }
 }
 

@@ -14,17 +14,17 @@ public struct TenantPositionDto: Codable, JSONEncodable, Hashable {
 
     public var id: String?
     public var timestamp: Date?
-    public var businessID: String?
-    public var businessProfileRecordID: String?
+    public var tenantId: String?
+    public var enrollmentId: String?
     public var title: String?
     public var description: String?
     public var type: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, businessID: String? = nil, businessProfileRecordID: String? = nil, title: String? = nil, description: String? = nil, type: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, tenantId: String? = nil, enrollmentId: String? = nil, title: String? = nil, description: String? = nil, type: String? = nil) {
         self.id = id
         self.timestamp = timestamp
-        self.businessID = businessID
-        self.businessProfileRecordID = businessProfileRecordID
+        self.tenantId = tenantId
+        self.enrollmentId = enrollmentId
         self.title = title
         self.description = description
         self.type = type
@@ -33,8 +33,8 @@ public struct TenantPositionDto: Codable, JSONEncodable, Hashable {
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
-        case businessID
-        case businessProfileRecordID
+        case tenantId
+        case enrollmentId
         case title
         case description
         case type
@@ -46,8 +46,8 @@ public struct TenantPositionDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
-        try container.encodeIfPresent(businessID, forKey: .businessID)
-        try container.encodeIfPresent(businessProfileRecordID, forKey: .businessProfileRecordID)
+        try container.encodeIfPresent(tenantId, forKey: .tenantId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(type, forKey: .type)
