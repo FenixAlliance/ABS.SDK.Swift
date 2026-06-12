@@ -13,16 +13,16 @@ import AnyCodable
 public struct CourseContentGroupUpdateDto: Codable, JSONEncodable, Hashable {
 
     public var name: String?
-    public var courseID: String?
+    public var courseId: String?
 
-    public init(name: String? = nil, courseID: String? = nil) {
+    public init(name: String? = nil, courseId: String? = nil) {
         self.name = name
-        self.courseID = courseID
+        self.courseId = courseId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case name
-        case courseID
+        case courseId
     }
 
     // Encodable protocol methods
@@ -30,7 +30,7 @@ public struct CourseContentGroupUpdateDto: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(name, forKey: .name)
-        try container.encodeIfPresent(courseID, forKey: .courseID)
+        try container.encodeIfPresent(courseId, forKey: .courseId)
     }
 }
 

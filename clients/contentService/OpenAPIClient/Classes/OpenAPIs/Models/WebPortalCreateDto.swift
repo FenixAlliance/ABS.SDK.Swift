@@ -19,11 +19,11 @@ public struct WebPortalCreateDto: Codable, JSONEncodable, Hashable {
     public var domain: String?
     public var disabled: Bool?
     public var description: String?
-    public var websiteThemeID: String?
-    public var businessDomainID: String?
-    public var businessPortalApplicationID: String?
+    public var websiteThemeId: String?
+    public var businessDomainId: String?
+    public var businessPortalApplicationId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, root: Bool? = nil, title: String? = nil, domain: String? = nil, disabled: Bool? = nil, description: String? = nil, websiteThemeID: String? = nil, businessDomainID: String? = nil, businessPortalApplicationID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, root: Bool? = nil, title: String? = nil, domain: String? = nil, disabled: Bool? = nil, description: String? = nil, websiteThemeId: String? = nil, businessDomainId: String? = nil, businessPortalApplicationId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.root = root
@@ -31,9 +31,9 @@ public struct WebPortalCreateDto: Codable, JSONEncodable, Hashable {
         self.domain = domain
         self.disabled = disabled
         self.description = description
-        self.websiteThemeID = websiteThemeID
-        self.businessDomainID = businessDomainID
-        self.businessPortalApplicationID = businessPortalApplicationID
+        self.websiteThemeId = websiteThemeId
+        self.businessDomainId = businessDomainId
+        self.businessPortalApplicationId = businessPortalApplicationId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -44,9 +44,9 @@ public struct WebPortalCreateDto: Codable, JSONEncodable, Hashable {
         case domain
         case disabled
         case description
-        case websiteThemeID
-        case businessDomainID
-        case businessPortalApplicationID
+        case websiteThemeId
+        case businessDomainId
+        case businessPortalApplicationId
     }
 
     // Encodable protocol methods
@@ -60,9 +60,9 @@ public struct WebPortalCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(domain, forKey: .domain)
         try container.encodeIfPresent(disabled, forKey: .disabled)
         try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(websiteThemeID, forKey: .websiteThemeID)
-        try container.encodeIfPresent(businessDomainID, forKey: .businessDomainID)
-        try container.encodeIfPresent(businessPortalApplicationID, forKey: .businessPortalApplicationID)
+        try container.encodeIfPresent(websiteThemeId, forKey: .websiteThemeId)
+        try container.encodeIfPresent(businessDomainId, forKey: .businessDomainId)
+        try container.encodeIfPresent(businessPortalApplicationId, forKey: .businessPortalApplicationId)
     }
 }
 

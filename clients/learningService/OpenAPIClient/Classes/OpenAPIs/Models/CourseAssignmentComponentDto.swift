@@ -18,20 +18,22 @@ public struct CourseAssignmentComponentDto: Codable, JSONEncodable, Hashable {
     public var description: String?
     public var content: String?
     public var order: Int?
-    public var courseAssignmentID: String?
-    public var courseID: String?
+    public var courseAssignmentId: String?
+    public var courseId: String?
     public var tenantId: String?
+    public var enrollmentId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil, content: String? = nil, order: Int? = nil, courseAssignmentID: String? = nil, courseID: String? = nil, tenantId: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil, content: String? = nil, order: Int? = nil, courseAssignmentId: String? = nil, courseId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
         self.description = description
         self.content = content
         self.order = order
-        self.courseAssignmentID = courseAssignmentID
-        self.courseID = courseID
+        self.courseAssignmentId = courseAssignmentId
+        self.courseId = courseId
         self.tenantId = tenantId
+        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -41,9 +43,10 @@ public struct CourseAssignmentComponentDto: Codable, JSONEncodable, Hashable {
         case description
         case content
         case order
-        case courseAssignmentID
-        case courseID
+        case courseAssignmentId
+        case courseId
         case tenantId
+        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -56,9 +59,10 @@ public struct CourseAssignmentComponentDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(content, forKey: .content)
         try container.encodeIfPresent(order, forKey: .order)
-        try container.encodeIfPresent(courseAssignmentID, forKey: .courseAssignmentID)
-        try container.encodeIfPresent(courseID, forKey: .courseID)
+        try container.encodeIfPresent(courseAssignmentId, forKey: .courseAssignmentId)
+        try container.encodeIfPresent(courseId, forKey: .courseId)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

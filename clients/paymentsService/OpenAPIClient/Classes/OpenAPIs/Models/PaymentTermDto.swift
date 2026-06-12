@@ -22,11 +22,11 @@ public struct PaymentTermDto: Codable, JSONEncodable, Hashable {
     public var creditWeeks: Double?
     public var creditMonths: Double?
     public var creditYears: Double?
-    public var paymentModeID: String?
+    public var paymentModeId: String?
     public var tenantId: String?
     public var enrollmentId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, description: String? = nil, isTemplate: Bool? = nil, percentage: Double? = nil, creditDays: Double? = nil, creditWeeks: Double? = nil, creditMonths: Double? = nil, creditYears: Double? = nil, paymentModeID: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, description: String? = nil, isTemplate: Bool? = nil, percentage: Double? = nil, creditDays: Double? = nil, creditWeeks: Double? = nil, creditMonths: Double? = nil, creditYears: Double? = nil, paymentModeId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
@@ -37,7 +37,7 @@ public struct PaymentTermDto: Codable, JSONEncodable, Hashable {
         self.creditWeeks = creditWeeks
         self.creditMonths = creditMonths
         self.creditYears = creditYears
-        self.paymentModeID = paymentModeID
+        self.paymentModeId = paymentModeId
         self.tenantId = tenantId
         self.enrollmentId = enrollmentId
     }
@@ -53,7 +53,7 @@ public struct PaymentTermDto: Codable, JSONEncodable, Hashable {
         case creditWeeks
         case creditMonths
         case creditYears
-        case paymentModeID
+        case paymentModeId
         case tenantId
         case enrollmentId
     }
@@ -72,7 +72,7 @@ public struct PaymentTermDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(creditWeeks, forKey: .creditWeeks)
         try container.encodeIfPresent(creditMonths, forKey: .creditMonths)
         try container.encodeIfPresent(creditYears, forKey: .creditYears)
-        try container.encodeIfPresent(paymentModeID, forKey: .paymentModeID)
+        try container.encodeIfPresent(paymentModeId, forKey: .paymentModeId)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }

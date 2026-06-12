@@ -34,6 +34,12 @@ Method | HTTP request | Description
 [**getAssetValueAmendsCount**](AssetsAPI.md#getassetvalueamendscount) | **GET** /api/v2/AssetsService/Assets/{assetId}/ValueAmends/Count | Gets count of value amendments for a specific asset
 [**getAssets**](AssetsAPI.md#getassets) | **GET** /api/v2/AssetsService/Assets | Gets all assets for the current tenant
 [**getAssetsCount**](AssetsAPI.md#getassetscount) | **GET** /api/v2/AssetsService/Assets/count | Gets the count of assets
+[**patchAsset**](AssetsAPI.md#patchasset) | **PATCH** /api/v2/AssetsService/Assets/{assetId} | Partially updates an existing asset
+[**patchAssetAssetCategory**](AssetsAPI.md#patchassetassetcategory) | **PATCH** /api/v2/AssetsService/Assets/Categories/{categoryId} | Partially updates an existing asset category
+[**patchAssetDepreciationRecord**](AssetsAPI.md#patchassetdepreciationrecord) | **PATCH** /api/v2/AssetsService/Assets/{assetId}/DepreciationRecords/{recordId} | Partially updates a depreciation record for an asset
+[**patchAssetRepair**](AssetsAPI.md#patchassetrepair) | **PATCH** /api/v2/AssetsService/Assets/{assetId}/Repairs/{repairId} | Partially updates a repair for an asset
+[**patchAssetTransfer**](AssetsAPI.md#patchassettransfer) | **PATCH** /api/v2/AssetsService/Assets/{assetId}/Transfers/{transferId} | Partially updates a transfer for an asset
+[**patchAssetValueAmend**](AssetsAPI.md#patchassetvalueamend) | **PATCH** /api/v2/AssetsService/Assets/{assetId}/ValueAmends/{amendId} | Partially updates a value amendment for an asset
 [**updateAsset**](AssetsAPI.md#updateasset) | **PUT** /api/v2/AssetsService/Assets/{assetId} | Updates an existing asset
 [**updateAssetAssetCategory**](AssetsAPI.md#updateassetassetcategory) | **PUT** /api/v2/AssetsService/Assets/Categories/{categoryId} | Updates an existing asset category
 [**updateAssetDepreciationRecord**](AssetsAPI.md#updateassetdepreciationrecord) | **PUT** /api/v2/AssetsService/Assets/{assetId}/DepreciationRecords/{recordId} | Updates a depreciation record for an asset
@@ -57,7 +63,7 @@ Creates a new asset for the authenticated tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let assetCreateDto = AssetCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", assetClass: "assetClass_example", assetOwner: "assetOwner_example", isExistingAsset: false, calculateDepreciation: false, allowMonthlyDepreciation: false, openingDepreciation: 123, purchaseDate: Date(), purchasePrice: 123, currencyId: "currencyId_example", itemId: "itemId_example", assetCategoryId: "assetCategoryId_example", purchaseInvoiceId: "purchaseInvoiceId_example", purchaseReceiptId: "purchaseReceiptId_example", assetLocationId: "assetLocationId_example", contactId: "contactId_example", organizationDepartmentId: "organizationDepartmentId_example") // AssetCreateDto |  (optional)
+let assetCreateDto = AssetCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", assetClass: "assetClass_example", assetOwner: "assetOwner_example", isExistingAsset: false, calculateDepreciation: false, allowMonthlyDepreciation: false, openingDepreciation: 123, purchaseDate: Date(), purchasePrice: 123, currencyId: "currencyId_example", itemId: "itemId_example", assetTypeId: "assetTypeId_example", assetCategoryId: "assetCategoryId_example", purchaseInvoiceId: "purchaseInvoiceId_example", purchaseReceiptId: "purchaseReceiptId_example", assetLocationId: "assetLocationId_example", contactId: "contactId_example", organizationDepartmentId: "organizationDepartmentId_example") // AssetCreateDto |  (optional)
 
 // Creates a new asset
 AssetsAPI.createAsset(tenantId: tenantId, assetCreateDto: assetCreateDto) { (response, error) in
@@ -324,7 +330,7 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let assetId = 987 // UUID | 
-let assetValueAmendCreateDto = AssetValueAmendCreateDto(id: 123, timestamp: Date(), assetId: "assetId_example", previousValue: 123, newValue: 123, reason: "reason_example", amendmentDate: Date(), approvedBy: "approvedBy_example", approvalDate: Date()) // AssetValueAmendCreateDto |  (optional)
+let assetValueAmendCreateDto = AssetValueAmendCreateDto(id: 123, timestamp: Date(), assetId: "assetId_example", previousValue: 123, newValue: 123, reason: "reason_example", amendmentDate: Date(), currencyId: "currencyId_example") // AssetValueAmendCreateDto |  (optional)
 
 // Creates a new value amendment for an asset
 AssetsAPI.createAssetValueAmend(tenantId: tenantId, assetId: assetId, assetValueAmendCreateDto: assetValueAmendCreateDto) { (response, error) in
@@ -1618,6 +1624,338 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchAsset**
+```swift
+    open class func patchAsset(tenantId: UUID, assetId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Partially updates an existing asset
+
+Applies a JSON Patch document to an existing asset for the authenticated tenant.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let assetId = 987 // UUID | 
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Partially updates an existing asset
+AssetsAPI.patchAsset(tenantId: tenantId, assetId: assetId, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **assetId** | **UUID** |  | 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchAssetAssetCategory**
+```swift
+    open class func patchAssetAssetCategory(tenantId: UUID, categoryId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Partially updates an existing asset category
+
+Applies a JSON Patch document to an existing asset category for the authenticated tenant.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let categoryId = 987 // UUID | 
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Partially updates an existing asset category
+AssetsAPI.patchAssetAssetCategory(tenantId: tenantId, categoryId: categoryId, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **categoryId** | **UUID** |  | 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchAssetDepreciationRecord**
+```swift
+    open class func patchAssetDepreciationRecord(tenantId: UUID, assetId: UUID, recordId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Partially updates a depreciation record for an asset
+
+Applies a JSON Patch document to an existing depreciation record for the specified asset.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let assetId = 987 // UUID | 
+let recordId = 987 // UUID | 
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Partially updates a depreciation record for an asset
+AssetsAPI.patchAssetDepreciationRecord(tenantId: tenantId, assetId: assetId, recordId: recordId, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **assetId** | **UUID** |  | 
+ **recordId** | **UUID** |  | 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchAssetRepair**
+```swift
+    open class func patchAssetRepair(tenantId: UUID, assetId: UUID, repairId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Partially updates a repair for an asset
+
+Applies a JSON Patch document to an existing repair record for the specified asset.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let assetId = 987 // UUID | 
+let repairId = 987 // UUID | 
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Partially updates a repair for an asset
+AssetsAPI.patchAssetRepair(tenantId: tenantId, assetId: assetId, repairId: repairId, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **assetId** | **UUID** |  | 
+ **repairId** | **UUID** |  | 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchAssetTransfer**
+```swift
+    open class func patchAssetTransfer(tenantId: UUID, assetId: UUID, transferId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Partially updates a transfer for an asset
+
+Applies a JSON Patch document to an existing transfer record for the specified asset.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let assetId = 987 // UUID | 
+let transferId = 987 // UUID | 
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Partially updates a transfer for an asset
+AssetsAPI.patchAssetTransfer(tenantId: tenantId, assetId: assetId, transferId: transferId, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **assetId** | **UUID** |  | 
+ **transferId** | **UUID** |  | 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchAssetValueAmend**
+```swift
+    open class func patchAssetValueAmend(tenantId: UUID, assetId: UUID, amendId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Partially updates a value amendment for an asset
+
+Applies a JSON Patch document to an existing value amendment record for the specified asset.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let assetId = 987 // UUID | 
+let amendId = 987 // UUID | 
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Partially updates a value amendment for an asset
+AssetsAPI.patchAssetValueAmend(tenantId: tenantId, assetId: assetId, amendId: amendId, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **assetId** | **UUID** |  | 
+ **amendId** | **UUID** |  | 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateAsset**
 ```swift
     open class func updateAsset(tenantId: UUID, assetId: UUID, assetUpdateDto: AssetUpdateDto? = nil, completion: @escaping (_ data: AssetDtoEnvelope?, _ error: Error?) -> Void)
@@ -1634,7 +1972,7 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let assetId = 987 // UUID | 
-let assetUpdateDto = AssetUpdateDto(name: "name_example", description: "description_example", assetType: "assetType_example", assetOwner: "assetOwner_example", calculateDepreciation: false, allowMonthlyDepreciation: false, openingDepreciation: 123, purchaseDate: Date(), purchasePrice: 123, currencyId: "currencyId_example", currencyCode: "currencyCode_example", itemId: "itemId_example", assetCategoryId: "assetCategoryId_example", purchaseInvoiceId: "purchaseInvoiceId_example", purchaseReceiptId: "purchaseReceiptId_example", assetLocationId: "assetLocationId_example", contactId: "contactId_example", organizationDepartmentId: "organizationDepartmentId_example") // AssetUpdateDto |  (optional)
+let assetUpdateDto = AssetUpdateDto(name: "name_example", description: "description_example", assetClass: "assetClass_example", assetOwner: "assetOwner_example", calculateDepreciation: false, allowMonthlyDepreciation: false, openingDepreciation: 123, purchaseDate: Date(), purchasePrice: 123, currencyId: "currencyId_example", itemId: "itemId_example", assetTypeId: "assetTypeId_example", assetCategoryId: "assetCategoryId_example", purchaseInvoiceId: "purchaseInvoiceId_example", purchaseReceiptId: "purchaseReceiptId_example", assetLocationId: "assetLocationId_example", contactId: "contactId_example", organizationDepartmentId: "organizationDepartmentId_example") // AssetUpdateDto |  (optional)
 
 // Updates an existing asset
 AssetsAPI.updateAsset(tenantId: tenantId, assetId: assetId, assetUpdateDto: assetUpdateDto) { (response, error) in
@@ -1911,7 +2249,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let assetId = 987 // UUID | 
 let amendId = 987 // UUID | 
-let assetValueAmendUpdateDto = AssetValueAmendUpdateDto(newValue: 123, reason: "reason_example", amendmentDate: Date(), approvedBy: "approvedBy_example", approvalDate: Date()) // AssetValueAmendUpdateDto |  (optional)
+let assetValueAmendUpdateDto = AssetValueAmendUpdateDto(newValue: 123, reason: "reason_example", amendmentDate: Date()) // AssetValueAmendUpdateDto |  (optional)
 
 // Updates a value amendment for an asset
 AssetsAPI.updateAssetValueAmend(tenantId: tenantId, assetId: assetId, amendId: amendId, assetValueAmendUpdateDto: assetValueAmendUpdateDto) { (response, error) in

@@ -14,6 +14,8 @@ Method | HTTP request | Description
 [**getDiscountListEntry**](DiscountListsAPI.md#getdiscountlistentry) | **GET** /api/v2/PricingService/DiscountLists/{discountListId}/Discounts/{discountListEntryId} | Gets a discount list entry by ID
 [**getDiscountLists**](DiscountListsAPI.md#getdiscountlists) | **GET** /api/v2/PricingService/DiscountLists | Retrieves all discount lists
 [**getDiscountListsCount**](DiscountListsAPI.md#getdiscountlistscount) | **GET** /api/v2/PricingService/DiscountLists/Count | Counts discount lists
+[**patchDiscountList**](DiscountListsAPI.md#patchdiscountlist) | **PATCH** /api/v2/PricingService/DiscountLists/{discountListId} | Patches a discount list
+[**patchDiscountListEntry**](DiscountListsAPI.md#patchdiscountlistentry) | **PATCH** /api/v2/PricingService/DiscountLists/{discountListId}/Discounts/{discountListEntryId} | Patches a discount list entry
 [**updateDiscountList**](DiscountListsAPI.md#updatediscountlist) | **PUT** /api/v2/PricingService/DiscountLists/{discountListId} | Updates a discount list
 [**updateDiscountListEntry**](DiscountListsAPI.md#updatediscountlistentry) | **PUT** /api/v2/PricingService/DiscountLists/{discountListId}/Discounts/{discountListEntryId} | Updates a discount list entry
 
@@ -33,7 +35,7 @@ Creates a new discount list for the current tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let discountListCreateDto = DiscountListCreateDto(id: 123, timestamp: Date(), name: "name_example", currencyId: "currencyId_example") // DiscountListCreateDto |  (optional)
+let discountListCreateDto = DiscountListCreateDto(id: 123, timestamp: Date(), name: "name_example", discountListType: "discountListType_example", currencyId: "currencyId_example") // DiscountListCreateDto |  (optional)
 
 // Creates a new discount list
 DiscountListsAPI.createDiscountList(tenantId: tenantId, discountListCreateDto: discountListCreateDto) { (response, error) in
@@ -86,7 +88,7 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let discountListId = 987 // UUID | 
-let discountCreateDto = DiscountCreateDto(id: 123, timestamp: Date(), description: "description_example", beginQuantity: 123, endQuantity: 123, percent: 123, value: 123, discountListId: "discountListId_example") // DiscountCreateDto |  (optional)
+let discountCreateDto = DiscountCreateDto(id: 123, timestamp: Date(), description: "description_example", beginQuantity: 123, endQuantity: 123, percent: 123, value: 123, itemId: "itemId_example", discountListId: "discountListId_example") // DiscountCreateDto |  (optional)
 
 // Creates a discount list entry
 DiscountListsAPI.createDiscountListEntry(tenantId: tenantId, discountListId: discountListId, discountCreateDto: discountCreateDto) { (response, error) in
@@ -540,6 +542,116 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchDiscountList**
+```swift
+    open class func patchDiscountList(tenantId: UUID, discountListId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patches a discount list
+
+Partially updates the specified discount list using a JSON Patch document.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let discountListId = 987 // UUID | 
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patches a discount list
+DiscountListsAPI.patchDiscountList(tenantId: tenantId, discountListId: discountListId, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **discountListId** | **UUID** |  | 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchDiscountListEntry**
+```swift
+    open class func patchDiscountListEntry(tenantId: UUID, discountListId: UUID, discountListEntryId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patches a discount list entry
+
+Partially updates the specified discount entry using a JSON Patch document.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let discountListId = 987 // UUID | 
+let discountListEntryId = 987 // UUID | 
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patches a discount list entry
+DiscountListsAPI.patchDiscountListEntry(tenantId: tenantId, discountListId: discountListId, discountListEntryId: discountListEntryId, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **discountListId** | **UUID** |  | 
+ **discountListEntryId** | **UUID** |  | 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateDiscountList**
 ```swift
     open class func updateDiscountList(tenantId: UUID, discountListId: UUID, discountListUpdateDto: DiscountListUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
@@ -556,7 +668,7 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let discountListId = 987 // UUID | 
-let discountListUpdateDto = DiscountListUpdateDto(name: "name_example", currencyId: "currencyId_example") // DiscountListUpdateDto |  (optional)
+let discountListUpdateDto = DiscountListUpdateDto(name: "name_example", discountListType: "discountListType_example", currencyId: "currencyId_example") // DiscountListUpdateDto |  (optional)
 
 // Updates a discount list
 DiscountListsAPI.updateDiscountList(tenantId: tenantId, discountListId: discountListId, discountListUpdateDto: discountListUpdateDto) { (response, error) in
@@ -611,7 +723,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let discountListId = 987 // UUID | 
 let discountListEntryId = 987 // UUID | 
-let discountUpdateDto = DiscountUpdateDto(description: "description_example", beginQuantity: 123, endQuantity: 123, percent: 123, value: 123, discountListId: "discountListId_example") // DiscountUpdateDto |  (optional)
+let discountUpdateDto = DiscountUpdateDto(description: "description_example", beginQuantity: 123, endQuantity: 123, percent: 123, value: 123, itemId: "itemId_example", discountListId: "discountListId_example") // DiscountUpdateDto |  (optional)
 
 // Updates a discount list entry
 DiscountListsAPI.updateDiscountListEntry(tenantId: tenantId, discountListId: discountListId, discountListEntryId: discountListEntryId, discountUpdateDto: discountUpdateDto) { (response, error) in

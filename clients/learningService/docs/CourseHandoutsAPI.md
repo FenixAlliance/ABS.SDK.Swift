@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getCourseHandoutByIdAsync**](CourseHandoutsAPI.md#getcoursehandoutbyidasync) | **GET** /api/v2/LearningService/CourseHandouts/{handoutId} | Get course handout by ID
 [**getCourseHandoutsAsync**](CourseHandoutsAPI.md#getcoursehandoutsasync) | **GET** /api/v2/LearningService/CourseHandouts | Get all course handouts
 [**getCourseHandoutsCountAsync**](CourseHandoutsAPI.md#getcoursehandoutscountasync) | **GET** /api/v2/LearningService/CourseHandouts/Count | Get course handouts count
+[**patchCourseHandoutAsync**](CourseHandoutsAPI.md#patchcoursehandoutasync) | **PATCH** /api/v2/LearningService/CourseHandouts/{handoutId} | Patch a course handout
 [**updateCourseHandoutAsync**](CourseHandoutsAPI.md#updatecoursehandoutasync) | **PUT** /api/v2/LearningService/CourseHandouts/{handoutId} | Update a course handout
 
 
@@ -29,7 +30,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseHandoutCreateDto = CourseHandoutCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", content: "content_example", url: "url_example", releaseDateTime: Date(), courseID: "courseID_example", courseUnitID: "courseUnitID_example") // CourseHandoutCreateDto |  (optional)
+let courseHandoutCreateDto = CourseHandoutCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", content: "content_example", url: "url_example", releaseDateTime: Date(), courseId: "courseId_example", courseUnitId: "courseUnitId_example") // CourseHandoutCreateDto |  (optional)
 
 // Create a course handout
 CourseHandoutsAPI.createCourseHandoutAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseHandoutCreateDto: courseHandoutCreateDto) { (response, error) in
@@ -286,6 +287,64 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchCourseHandoutAsync**
+```swift
+    open class func patchCourseHandoutAsync(tenantId: UUID, handoutId: String, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+```
+
+Patch a course handout
+
+Partially updates an existing course handout.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let handoutId = "handoutId_example" // String | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a course handout
+CourseHandoutsAPI.patchCourseHandoutAsync(tenantId: tenantId, handoutId: handoutId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **handoutId** | **String** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+Void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateCourseHandoutAsync**
 ```swift
     open class func updateCourseHandoutAsync(tenantId: UUID, handoutId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseHandoutUpdateDto: CourseHandoutUpdateDto? = nil, completion: @escaping (_ data: CourseHandoutDto?, _ error: Error?) -> Void)
@@ -304,7 +363,7 @@ let tenantId = 987 // UUID |
 let handoutId = "handoutId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseHandoutUpdateDto = CourseHandoutUpdateDto(name: "name_example", description: "description_example", content: "content_example", url: "url_example", releaseDateTime: Date(), courseUnitID: "courseUnitID_example") // CourseHandoutUpdateDto |  (optional)
+let courseHandoutUpdateDto = CourseHandoutUpdateDto(name: "name_example", description: "description_example", content: "content_example", url: "url_example", releaseDateTime: Date(), courseUnitId: "courseUnitId_example") // CourseHandoutUpdateDto |  (optional)
 
 // Update a course handout
 CourseHandoutsAPI.updateCourseHandoutAsync(tenantId: tenantId, handoutId: handoutId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseHandoutUpdateDto: courseHandoutUpdateDto) { (response, error) in

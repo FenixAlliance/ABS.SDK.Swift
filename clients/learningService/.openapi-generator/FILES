@@ -119,6 +119,7 @@ OpenAPIClient/Classes/OpenAPIs/Models/CourseUpdateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/CourseWikiCreateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/CourseWikiDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/CourseWikiUpdateDto.swift
+OpenAPIClient/Classes/OpenAPIs/Models/EmptyEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ErrorEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ForgotPasswordRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/HttpValidationProblemDetails.swift
@@ -129,6 +130,7 @@ OpenAPIClient/Classes/OpenAPIs/Models/InstructorProfileDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/InstructorProfileDtoIReadOnlyListEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/InstructorProfileUpdateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/LoginRequest.swift
+OpenAPIClient/Classes/OpenAPIs/Models/Operation.swift
 OpenAPIClient/Classes/OpenAPIs/Models/RefreshRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/RegisterRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ResendConfirmationEmailRequest.swift
@@ -250,6 +252,7 @@ docs/CourseWikiDto.md
 docs/CourseWikiUpdateDto.md
 docs/CourseWikisAPI.md
 docs/CoursesAPI.md
+docs/EmptyEnvelope.md
 docs/ErrorEnvelope.md
 docs/FenixAlliancePortalsWebsiteAPI.md
 docs/ForgotPasswordRequest.md
@@ -263,6 +266,7 @@ docs/InstructorProfileUpdateDto.md
 docs/InstructorProfilesAPI.md
 docs/LoginRequest.md
 docs/MeAPI.md
+docs/Operation.md
 docs/RefreshRequest.md
 docs/RegisterRequest.md
 docs/ResendConfirmationEmailRequest.md

@@ -27,6 +27,7 @@ OpenAPIClient/Classes/OpenAPIs/Models/LocationDtoEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/LocationDtoIReadOnlyListEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/LocationUpdateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/LoginRequest.swift
+OpenAPIClient/Classes/OpenAPIs/Models/Operation.swift
 OpenAPIClient/Classes/OpenAPIs/Models/RefreshRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/RegisterRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ResendConfirmationEmailRequest.swift
@@ -56,6 +57,7 @@ docs/LocationDtoIReadOnlyListEnvelope.md
 docs/LocationUpdateDto.md
 docs/LocationsAPI.md
 docs/LoginRequest.md
+docs/Operation.md
 docs/RefreshRequest.md
 docs/RegisterRequest.md
 docs/ResendConfirmationEmailRequest.md

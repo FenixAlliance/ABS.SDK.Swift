@@ -14,21 +14,21 @@ public struct ItemCategoryCreateDto: Codable, JSONEncodable, Hashable {
 
     static let titleRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     static let descriptionRule = StringRule(minLength: 0, maxLength: 1000, pattern: nil)
-    static let parentItemCategoryIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
+    static let parentItemCategoryIdRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var title: String
     public var description: String?
     public var imageURL: String?
-    public var parentItemCategoryID: String?
+    public var parentItemCategoryId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, title: String, description: String? = nil, imageURL: String? = nil, parentItemCategoryID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, title: String, description: String? = nil, imageURL: String? = nil, parentItemCategoryId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
         self.description = description
         self.imageURL = imageURL
-        self.parentItemCategoryID = parentItemCategoryID
+        self.parentItemCategoryId = parentItemCategoryId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -37,7 +37,7 @@ public struct ItemCategoryCreateDto: Codable, JSONEncodable, Hashable {
         case title
         case description
         case imageURL
-        case parentItemCategoryID
+        case parentItemCategoryId
     }
 
     // Encodable protocol methods
@@ -49,7 +49,7 @@ public struct ItemCategoryCreateDto: Codable, JSONEncodable, Hashable {
         try container.encode(title, forKey: .title)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(imageURL, forKey: .imageURL)
-        try container.encodeIfPresent(parentItemCategoryID, forKey: .parentItemCategoryID)
+        try container.encodeIfPresent(parentItemCategoryId, forKey: .parentItemCategoryId)
     }
 }
 

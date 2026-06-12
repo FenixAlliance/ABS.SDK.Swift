@@ -29,7 +29,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let deliveryNoteCreateDto = DeliveryNoteCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", shipmentID: "shipmentID_example", proofOfDeliveryID: "proofOfDeliveryID_example") // DeliveryNoteCreateDto |  (optional)
+let deliveryNoteCreateDto = DeliveryNoteCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", shipmentId: "shipmentId_example", proofOfDeliveryId: "proofOfDeliveryId_example") // DeliveryNoteCreateDto |  (optional)
 
 // Create a delivery note
 DeliveryNotesAPI.createDeliveryNoteAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, deliveryNoteCreateDto: deliveryNoteCreateDto) { (response, error) in
@@ -306,7 +306,7 @@ let tenantId = 987 // UUID |
 let deliveryNoteId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let deliveryNoteUpdateDto = DeliveryNoteUpdateDto(title: "title_example", description: "description_example", shipmentID: "shipmentID_example", proofOfDeliveryID: "proofOfDeliveryID_example") // DeliveryNoteUpdateDto |  (optional)
+let deliveryNoteUpdateDto = DeliveryNoteUpdateDto(title: "title_example", description: "description_example", shipmentId: "shipmentId_example", proofOfDeliveryId: "proofOfDeliveryId_example") // DeliveryNoteUpdateDto |  (optional)
 
 // Update a delivery note
 DeliveryNotesAPI.updateDeliveryNoteAsync(tenantId: tenantId, deliveryNoteId: deliveryNoteId, apiVersion: apiVersion, xApiVersion: xApiVersion, deliveryNoteUpdateDto: deliveryNoteUpdateDto) { (response, error) in

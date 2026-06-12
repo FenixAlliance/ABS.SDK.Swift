@@ -17,15 +17,15 @@ public struct ItemFamilyDto: Codable, JSONEncodable, Hashable {
     public var name: String?
     public var code: String?
     public var description: String?
-    public var businessID: String?
+    public var tenantId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, code: String? = nil, description: String? = nil, businessID: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, code: String? = nil, description: String? = nil, tenantId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
         self.code = code
         self.description = description
-        self.businessID = businessID
+        self.tenantId = tenantId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -34,7 +34,7 @@ public struct ItemFamilyDto: Codable, JSONEncodable, Hashable {
         case name
         case code
         case description
-        case businessID
+        case tenantId
     }
 
     // Encodable protocol methods
@@ -46,7 +46,7 @@ public struct ItemFamilyDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(code, forKey: .code)
         try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(businessID, forKey: .businessID)
+        try container.encodeIfPresent(tenantId, forKey: .tenantId)
     }
 }
 

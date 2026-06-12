@@ -8,9 +8,9 @@ Name | Type | Description | Notes
 **title** | **String** |  | 
 **description** | **String** |  | [optional] 
 **overallScore** | **Double** |  | [optional] 
-**courseID** | **String** |  | 
-**courseUnitID** | **String** |  | [optional] 
-**courseGradingRubricID** | **String** |  | [optional] 
+**courseId** | **String** |  | 
+**courseUnitId** | **String** |  | [optional] 
+**courseGradingRubricId** | **String** |  | [optional] 
 **releaseDateTime** | **Date** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

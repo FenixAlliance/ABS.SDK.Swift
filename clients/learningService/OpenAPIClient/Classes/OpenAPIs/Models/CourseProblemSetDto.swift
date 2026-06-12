@@ -17,21 +17,25 @@ public struct CourseProblemSetDto: Codable, JSONEncodable, Hashable {
     public var title: String?
     public var description: String?
     public var overallScore: Double?
-    public var courseID: String?
-    public var courseUnitID: String?
+    public var courseId: String?
+    public var courseUnitId: String?
+    public var courseGradingRubricId: String?
     public var releaseDateTime: Date?
     public var tenantId: String?
+    public var enrollmentId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil, overallScore: Double? = nil, courseID: String? = nil, courseUnitID: String? = nil, releaseDateTime: Date? = nil, tenantId: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil, overallScore: Double? = nil, courseId: String? = nil, courseUnitId: String? = nil, courseGradingRubricId: String? = nil, releaseDateTime: Date? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
         self.description = description
         self.overallScore = overallScore
-        self.courseID = courseID
-        self.courseUnitID = courseUnitID
+        self.courseId = courseId
+        self.courseUnitId = courseUnitId
+        self.courseGradingRubricId = courseGradingRubricId
         self.releaseDateTime = releaseDateTime
         self.tenantId = tenantId
+        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -40,10 +44,12 @@ public struct CourseProblemSetDto: Codable, JSONEncodable, Hashable {
         case title
         case description
         case overallScore
-        case courseID
-        case courseUnitID
+        case courseId
+        case courseUnitId
+        case courseGradingRubricId
         case releaseDateTime
         case tenantId
+        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -55,10 +61,12 @@ public struct CourseProblemSetDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(overallScore, forKey: .overallScore)
-        try container.encodeIfPresent(courseID, forKey: .courseID)
-        try container.encodeIfPresent(courseUnitID, forKey: .courseUnitID)
+        try container.encodeIfPresent(courseId, forKey: .courseId)
+        try container.encodeIfPresent(courseUnitId, forKey: .courseUnitId)
+        try container.encodeIfPresent(courseGradingRubricId, forKey: .courseGradingRubricId)
         try container.encodeIfPresent(releaseDateTime, forKey: .releaseDateTime)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**getCourseContentGroupsByCourseAsync**](CourseContentGroupsAPI.md#getcoursecontentgroupsbycourseasync) | **GET** /api/v2/LearningService/Courses/{courseId}/ContentGroups | Get course content groups by course
 [**getCourseContentGroupsByCourseCountAsync**](CourseContentGroupsAPI.md#getcoursecontentgroupsbycoursecountasync) | **GET** /api/v2/LearningService/Courses/{courseId}/ContentGroups/Count | Get course content groups count by course
 [**getCourseContentGroupsCountAsync**](CourseContentGroupsAPI.md#getcoursecontentgroupscountasync) | **GET** /api/v2/LearningService/CourseContentGroups/Count | Get course content groups count
+[**patchCourseContentGroupAsync**](CourseContentGroupsAPI.md#patchcoursecontentgroupasync) | **PATCH** /api/v2/LearningService/CourseContentGroups/{groupId} | Patch a course content group
 [**updateCourseContentGroupAsync**](CourseContentGroupsAPI.md#updatecoursecontentgroupasync) | **PUT** /api/v2/LearningService/CourseContentGroups/{groupId} | Update a course content group
 
 
@@ -31,7 +32,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseContentGroupCreateDto = CourseContentGroupCreateDto(id: 123, timestamp: Date(), name: "name_example", courseID: "courseID_example") // CourseContentGroupCreateDto |  (optional)
+let courseContentGroupCreateDto = CourseContentGroupCreateDto(id: 123, timestamp: Date(), name: "name_example", courseId: "courseId_example") // CourseContentGroupCreateDto |  (optional)
 
 // Create a new course content group
 CourseContentGroupsAPI.createCourseContentGroupAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseContentGroupCreateDto: courseContentGroupCreateDto) { (response, error) in
@@ -396,6 +397,64 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchCourseContentGroupAsync**
+```swift
+    open class func patchCourseContentGroupAsync(tenantId: UUID, groupId: String, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a course content group
+
+Partially updates a course content group for the specified tenant.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let groupId = "groupId_example" // String | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a course content group
+CourseContentGroupsAPI.patchCourseContentGroupAsync(tenantId: tenantId, groupId: groupId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **groupId** | **String** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateCourseContentGroupAsync**
 ```swift
     open class func updateCourseContentGroupAsync(tenantId: UUID, groupId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseContentGroupUpdateDto: CourseContentGroupUpdateDto? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
@@ -414,7 +473,7 @@ let tenantId = 987 // UUID |
 let groupId = "groupId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseContentGroupUpdateDto = CourseContentGroupUpdateDto(name: "name_example", courseID: "courseID_example") // CourseContentGroupUpdateDto |  (optional)
+let courseContentGroupUpdateDto = CourseContentGroupUpdateDto(name: "name_example", courseId: "courseId_example") // CourseContentGroupUpdateDto |  (optional)
 
 // Update a course content group
 CourseContentGroupsAPI.updateCourseContentGroupAsync(tenantId: tenantId, groupId: groupId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseContentGroupUpdateDto: courseContentGroupUpdateDto) { (response, error) in

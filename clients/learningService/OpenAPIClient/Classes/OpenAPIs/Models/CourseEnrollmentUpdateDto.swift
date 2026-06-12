@@ -12,33 +12,25 @@ import AnyCodable
 
 public struct CourseEnrollmentUpdateDto: Codable, JSONEncodable, Hashable {
 
-    public var id: UUID?
-    public var timestamp: Date?
-    public var courseCohortID: String?
-    public var courseCompletionCertificateID: String?
+    public var courseCohortId: String?
+    public var courseCompletionCertificateId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, courseCohortID: String? = nil, courseCompletionCertificateID: String? = nil) {
-        self.id = id
-        self.timestamp = timestamp
-        self.courseCohortID = courseCohortID
-        self.courseCompletionCertificateID = courseCompletionCertificateID
+    public init(courseCohortId: String? = nil, courseCompletionCertificateId: String? = nil) {
+        self.courseCohortId = courseCohortId
+        self.courseCompletionCertificateId = courseCompletionCertificateId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case id
-        case timestamp
-        case courseCohortID
-        case courseCompletionCertificateID
+        case courseCohortId
+        case courseCompletionCertificateId
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(timestamp, forKey: .timestamp)
-        try container.encodeIfPresent(courseCohortID, forKey: .courseCohortID)
-        try container.encodeIfPresent(courseCompletionCertificateID, forKey: .courseCompletionCertificateID)
+        try container.encodeIfPresent(courseCohortId, forKey: .courseCohortId)
+        try container.encodeIfPresent(courseCompletionCertificateId, forKey: .courseCompletionCertificateId)
     }
 }
 

@@ -31,9 +31,11 @@ public struct WebPageCreateDto: Codable, JSONEncodable, Hashable {
     public var markup: String?
     public var featuredImageUrl: String?
     public var codeType: CodeType?
-    public var webTemplateID: String?
+    public var slug: String?
+    public var webTemplateId: String?
+    public var parentWebContentId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, title: String, published: Bool? = nil, description: String? = nil, code: String? = nil, markup: String? = nil, featuredImageUrl: String? = nil, codeType: CodeType? = nil, webTemplateID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, title: String, published: Bool? = nil, description: String? = nil, code: String? = nil, markup: String? = nil, featuredImageUrl: String? = nil, codeType: CodeType? = nil, slug: String? = nil, webTemplateId: String? = nil, parentWebContentId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
@@ -43,7 +45,9 @@ public struct WebPageCreateDto: Codable, JSONEncodable, Hashable {
         self.markup = markup
         self.featuredImageUrl = featuredImageUrl
         self.codeType = codeType
-        self.webTemplateID = webTemplateID
+        self.slug = slug
+        self.webTemplateId = webTemplateId
+        self.parentWebContentId = parentWebContentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -56,7 +60,9 @@ public struct WebPageCreateDto: Codable, JSONEncodable, Hashable {
         case markup
         case featuredImageUrl
         case codeType
-        case webTemplateID
+        case slug
+        case webTemplateId
+        case parentWebContentId
     }
 
     // Encodable protocol methods
@@ -72,7 +78,9 @@ public struct WebPageCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(markup, forKey: .markup)
         try container.encodeIfPresent(featuredImageUrl, forKey: .featuredImageUrl)
         try container.encodeIfPresent(codeType, forKey: .codeType)
-        try container.encodeIfPresent(webTemplateID, forKey: .webTemplateID)
+        try container.encodeIfPresent(slug, forKey: .slug)
+        try container.encodeIfPresent(webTemplateId, forKey: .webTemplateId)
+        try container.encodeIfPresent(parentWebContentId, forKey: .parentWebContentId)
     }
 }
 

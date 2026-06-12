@@ -8,9 +8,9 @@ Name | Type | Description | Notes
 **title** | **String** |  | 
 **description** | **String** |  | [optional] 
 **content** | **String** |  | [optional] 
-**courseID** | **String** |  | 
-**courseSectionID** | **String** |  | 
-**courseContentGroupID** | **String** |  | [optional] 
+**courseId** | **String** |  | 
+**courseSectionId** | **String** |  | 
+**courseContentGroupId** | **String** |  | [optional] 
 **releaseDateTime** | **Date** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

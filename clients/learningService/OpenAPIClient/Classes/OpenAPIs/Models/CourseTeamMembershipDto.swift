@@ -18,27 +18,30 @@ public struct CourseTeamMembershipDto: Codable, JSONEncodable, Hashable {
     }
     public var id: String?
     public var timestamp: Date?
-    public var courseID: String?
-    public var instructorProfileID: String?
+    public var courseId: String?
+    public var instructorProfileId: String?
     public var courseTeamMembershipType: CourseTeamMembershipType?
     public var tenantId: String?
+    public var enrollmentId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, courseID: String? = nil, instructorProfileID: String? = nil, courseTeamMembershipType: CourseTeamMembershipType? = nil, tenantId: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, courseId: String? = nil, instructorProfileId: String? = nil, courseTeamMembershipType: CourseTeamMembershipType? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
-        self.courseID = courseID
-        self.instructorProfileID = instructorProfileID
+        self.courseId = courseId
+        self.instructorProfileId = instructorProfileId
         self.courseTeamMembershipType = courseTeamMembershipType
         self.tenantId = tenantId
+        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
-        case courseID
-        case instructorProfileID
+        case courseId
+        case instructorProfileId
         case courseTeamMembershipType
         case tenantId
+        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -47,10 +50,11 @@ public struct CourseTeamMembershipDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
-        try container.encodeIfPresent(courseID, forKey: .courseID)
-        try container.encodeIfPresent(instructorProfileID, forKey: .instructorProfileID)
+        try container.encodeIfPresent(courseId, forKey: .courseId)
+        try container.encodeIfPresent(instructorProfileId, forKey: .instructorProfileId)
         try container.encodeIfPresent(courseTeamMembershipType, forKey: .courseTeamMembershipType)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

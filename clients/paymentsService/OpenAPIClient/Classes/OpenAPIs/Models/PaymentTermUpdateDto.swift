@@ -14,7 +14,7 @@ public struct PaymentTermUpdateDto: Codable, JSONEncodable, Hashable {
 
     static let nameRule = StringRule(minLength: 0, maxLength: 100, pattern: nil)
     static let descriptionRule = StringRule(minLength: 0, maxLength: 500, pattern: nil)
-    static let paymentModeIDRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
+    static let paymentModeIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     public var name: String?
     public var description: String?
     public var isTemplate: Bool?
@@ -23,9 +23,9 @@ public struct PaymentTermUpdateDto: Codable, JSONEncodable, Hashable {
     public var creditWeeks: Double?
     public var creditMonths: Double?
     public var creditYears: Double?
-    public var paymentModeID: String?
+    public var paymentModeId: String?
 
-    public init(name: String? = nil, description: String? = nil, isTemplate: Bool? = nil, percentage: Double? = nil, creditDays: Double? = nil, creditWeeks: Double? = nil, creditMonths: Double? = nil, creditYears: Double? = nil, paymentModeID: String? = nil) {
+    public init(name: String? = nil, description: String? = nil, isTemplate: Bool? = nil, percentage: Double? = nil, creditDays: Double? = nil, creditWeeks: Double? = nil, creditMonths: Double? = nil, creditYears: Double? = nil, paymentModeId: String? = nil) {
         self.name = name
         self.description = description
         self.isTemplate = isTemplate
@@ -34,7 +34,7 @@ public struct PaymentTermUpdateDto: Codable, JSONEncodable, Hashable {
         self.creditWeeks = creditWeeks
         self.creditMonths = creditMonths
         self.creditYears = creditYears
-        self.paymentModeID = paymentModeID
+        self.paymentModeId = paymentModeId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -46,7 +46,7 @@ public struct PaymentTermUpdateDto: Codable, JSONEncodable, Hashable {
         case creditWeeks
         case creditMonths
         case creditYears
-        case paymentModeID
+        case paymentModeId
     }
 
     // Encodable protocol methods
@@ -61,7 +61,7 @@ public struct PaymentTermUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(creditWeeks, forKey: .creditWeeks)
         try container.encodeIfPresent(creditMonths, forKey: .creditMonths)
         try container.encodeIfPresent(creditYears, forKey: .creditYears)
-        try container.encodeIfPresent(paymentModeID, forKey: .paymentModeID)
+        try container.encodeIfPresent(paymentModeId, forKey: .paymentModeId)
     }
 }
 

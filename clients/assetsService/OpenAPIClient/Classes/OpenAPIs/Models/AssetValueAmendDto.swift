@@ -12,25 +12,24 @@ import AnyCodable
 
 public struct AssetValueAmendDto: Codable, JSONEncodable, Hashable {
 
-    public var id: AnyCodable?
+    public var id: String?
     public var timestamp: Date?
-    public var businessId: AnyCodable?
-    public var businessProfileRecordId: AnyCodable?
-    public var assetId: AnyCodable?
+    public var tenantId: String?
+    public var enrollmentId: String?
+    public var assetId: String?
     public var assetName: String?
     public var previousValue: Double?
     public var newValue: Double?
     public var amendmentAmount: Double?
     public var reason: String?
     public var amendmentDate: Date?
-    public var approvedBy: String?
-    public var approvalDate: Date?
+    public var currencyId: String?
 
-    public init(id: AnyCodable? = nil, timestamp: Date? = nil, businessId: AnyCodable? = nil, businessProfileRecordId: AnyCodable? = nil, assetId: AnyCodable? = nil, assetName: String? = nil, previousValue: Double? = nil, newValue: Double? = nil, amendmentAmount: Double? = nil, reason: String? = nil, amendmentDate: Date? = nil, approvedBy: String? = nil, approvalDate: Date? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, tenantId: String? = nil, enrollmentId: String? = nil, assetId: String? = nil, assetName: String? = nil, previousValue: Double? = nil, newValue: Double? = nil, amendmentAmount: Double? = nil, reason: String? = nil, amendmentDate: Date? = nil, currencyId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
-        self.businessId = businessId
-        self.businessProfileRecordId = businessProfileRecordId
+        self.tenantId = tenantId
+        self.enrollmentId = enrollmentId
         self.assetId = assetId
         self.assetName = assetName
         self.previousValue = previousValue
@@ -38,15 +37,14 @@ public struct AssetValueAmendDto: Codable, JSONEncodable, Hashable {
         self.amendmentAmount = amendmentAmount
         self.reason = reason
         self.amendmentDate = amendmentDate
-        self.approvedBy = approvedBy
-        self.approvalDate = approvalDate
+        self.currencyId = currencyId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
-        case businessId
-        case businessProfileRecordId
+        case tenantId
+        case enrollmentId
         case assetId
         case assetName
         case previousValue
@@ -54,8 +52,7 @@ public struct AssetValueAmendDto: Codable, JSONEncodable, Hashable {
         case amendmentAmount
         case reason
         case amendmentDate
-        case approvedBy
-        case approvalDate
+        case currencyId
     }
 
     // Encodable protocol methods
@@ -64,8 +61,8 @@ public struct AssetValueAmendDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
-        try container.encodeIfPresent(businessId, forKey: .businessId)
-        try container.encodeIfPresent(businessProfileRecordId, forKey: .businessProfileRecordId)
+        try container.encodeIfPresent(tenantId, forKey: .tenantId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(assetId, forKey: .assetId)
         try container.encodeIfPresent(assetName, forKey: .assetName)
         try container.encodeIfPresent(previousValue, forKey: .previousValue)
@@ -73,8 +70,7 @@ public struct AssetValueAmendDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(amendmentAmount, forKey: .amendmentAmount)
         try container.encodeIfPresent(reason, forKey: .reason)
         try container.encodeIfPresent(amendmentDate, forKey: .amendmentDate)
-        try container.encodeIfPresent(approvedBy, forKey: .approvedBy)
-        try container.encodeIfPresent(approvalDate, forKey: .approvalDate)
+        try container.encodeIfPresent(currencyId, forKey: .currencyId)
     }
 }
 

@@ -18,16 +18,16 @@ public struct DealUnitFlowDto: Codable, JSONEncodable, Hashable {
     public var description: String?
     public var parentBusinessProcessId: String?
     public var tenantId: String?
-    public var tenantEnrollmentId: String?
+    public var enrollmentId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, description: String? = nil, parentBusinessProcessId: String? = nil, tenantId: String? = nil, tenantEnrollmentId: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, description: String? = nil, parentBusinessProcessId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
         self.description = description
         self.parentBusinessProcessId = parentBusinessProcessId
         self.tenantId = tenantId
-        self.tenantEnrollmentId = tenantEnrollmentId
+        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -37,7 +37,7 @@ public struct DealUnitFlowDto: Codable, JSONEncodable, Hashable {
         case description
         case parentBusinessProcessId
         case tenantId
-        case tenantEnrollmentId
+        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -50,7 +50,7 @@ public struct DealUnitFlowDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(parentBusinessProcessId, forKey: .parentBusinessProcessId)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(tenantEnrollmentId, forKey: .tenantEnrollmentId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

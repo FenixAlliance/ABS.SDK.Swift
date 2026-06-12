@@ -36,8 +36,10 @@ public struct LocationDto: Codable, JSONEncodable, Hashable {
     public var isDefaultSenderAddress: Bool?
     public var isDefaultReturnAddress: Bool?
     public var isDefaultSuppingLocation: Bool?
+    public var tenantId: String?
+    public var enrollmentId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, business: String? = nil, email: String? = nil, phone: String? = nil, fax: String? = nil, address1: String? = nil, address2: String? = nil, address3: String? = nil, unit: String? = nil, cityId: String? = nil, stateId: String? = nil, postalCode: String? = nil, countryId: String? = nil, longitude: Double? = nil, latitude: Double? = nil, isRoutable: Bool? = nil, isGlobalPrimary: Bool? = nil, isCountryPrimary: Bool? = nil, canGenerateLabels: Bool? = nil, isDefaultSenderAddress: Bool? = nil, isDefaultReturnAddress: Bool? = nil, isDefaultSuppingLocation: Bool? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, business: String? = nil, email: String? = nil, phone: String? = nil, fax: String? = nil, address1: String? = nil, address2: String? = nil, address3: String? = nil, unit: String? = nil, cityId: String? = nil, stateId: String? = nil, postalCode: String? = nil, countryId: String? = nil, longitude: Double? = nil, latitude: Double? = nil, isRoutable: Bool? = nil, isGlobalPrimary: Bool? = nil, isCountryPrimary: Bool? = nil, canGenerateLabels: Bool? = nil, isDefaultSenderAddress: Bool? = nil, isDefaultReturnAddress: Bool? = nil, isDefaultSuppingLocation: Bool? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
@@ -62,6 +64,8 @@ public struct LocationDto: Codable, JSONEncodable, Hashable {
         self.isDefaultSenderAddress = isDefaultSenderAddress
         self.isDefaultReturnAddress = isDefaultReturnAddress
         self.isDefaultSuppingLocation = isDefaultSuppingLocation
+        self.tenantId = tenantId
+        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -89,6 +93,8 @@ public struct LocationDto: Codable, JSONEncodable, Hashable {
         case isDefaultSenderAddress
         case isDefaultReturnAddress
         case isDefaultSuppingLocation
+        case tenantId
+        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -119,6 +125,8 @@ public struct LocationDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(isDefaultSenderAddress, forKey: .isDefaultSenderAddress)
         try container.encodeIfPresent(isDefaultReturnAddress, forKey: .isDefaultReturnAddress)
         try container.encodeIfPresent(isDefaultSuppingLocation, forKey: .isDefaultSuppingLocation)
+        try container.encodeIfPresent(tenantId, forKey: .tenantId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

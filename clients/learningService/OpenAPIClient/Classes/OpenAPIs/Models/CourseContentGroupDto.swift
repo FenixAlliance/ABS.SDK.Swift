@@ -15,23 +15,26 @@ public struct CourseContentGroupDto: Codable, JSONEncodable, Hashable {
     public var id: String?
     public var timestamp: Date?
     public var name: String?
-    public var courseID: String?
-    public var businessID: String?
+    public var courseId: String?
+    public var tenantId: String?
+    public var enrollmentId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, courseID: String? = nil, businessID: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, courseId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
-        self.courseID = courseID
-        self.businessID = businessID
+        self.courseId = courseId
+        self.tenantId = tenantId
+        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
         case name
-        case courseID
-        case businessID
+        case courseId
+        case tenantId
+        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -41,8 +44,9 @@ public struct CourseContentGroupDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(name, forKey: .name)
-        try container.encodeIfPresent(courseID, forKey: .courseID)
-        try container.encodeIfPresent(businessID, forKey: .businessID)
+        try container.encodeIfPresent(courseId, forKey: .courseId)
+        try container.encodeIfPresent(tenantId, forKey: .tenantId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

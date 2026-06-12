@@ -12,37 +12,37 @@ import AnyCodable
 
 public struct CourseCertificateTemplateUpdateDto: Codable, JSONEncodable, Hashable {
 
-    public var webPortalID: String?
-    public var websiteThemeID: String?
-    public var socialProfileID: String?
-    public var parentWebContentID: String?
-    public var parentWebContentVersionID: String?
+    public var webPortalId: String?
+    public var websiteThemeId: String?
+    public var socialProfileId: String?
+    public var parentWebContentId: String?
+    public var parentWebContentVersionId: String?
 
-    public init(webPortalID: String? = nil, websiteThemeID: String? = nil, socialProfileID: String? = nil, parentWebContentID: String? = nil, parentWebContentVersionID: String? = nil) {
-        self.webPortalID = webPortalID
-        self.websiteThemeID = websiteThemeID
-        self.socialProfileID = socialProfileID
-        self.parentWebContentID = parentWebContentID
-        self.parentWebContentVersionID = parentWebContentVersionID
+    public init(webPortalId: String? = nil, websiteThemeId: String? = nil, socialProfileId: String? = nil, parentWebContentId: String? = nil, parentWebContentVersionId: String? = nil) {
+        self.webPortalId = webPortalId
+        self.websiteThemeId = websiteThemeId
+        self.socialProfileId = socialProfileId
+        self.parentWebContentId = parentWebContentId
+        self.parentWebContentVersionId = parentWebContentVersionId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case webPortalID
-        case websiteThemeID
-        case socialProfileID
-        case parentWebContentID
-        case parentWebContentVersionID
+        case webPortalId
+        case websiteThemeId
+        case socialProfileId
+        case parentWebContentId
+        case parentWebContentVersionId
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(webPortalID, forKey: .webPortalID)
-        try container.encodeIfPresent(websiteThemeID, forKey: .websiteThemeID)
-        try container.encodeIfPresent(socialProfileID, forKey: .socialProfileID)
-        try container.encodeIfPresent(parentWebContentID, forKey: .parentWebContentID)
-        try container.encodeIfPresent(parentWebContentVersionID, forKey: .parentWebContentVersionID)
+        try container.encodeIfPresent(webPortalId, forKey: .webPortalId)
+        try container.encodeIfPresent(websiteThemeId, forKey: .websiteThemeId)
+        try container.encodeIfPresent(socialProfileId, forKey: .socialProfileId)
+        try container.encodeIfPresent(parentWebContentId, forKey: .parentWebContentId)
+        try container.encodeIfPresent(parentWebContentVersionId, forKey: .parentWebContentVersionId)
     }
 }
 

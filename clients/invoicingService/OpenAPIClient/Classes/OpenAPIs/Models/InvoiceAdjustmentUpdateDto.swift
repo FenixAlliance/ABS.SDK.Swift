@@ -17,6 +17,8 @@ public struct InvoiceAdjustmentUpdateDto: Codable, JSONEncodable, Hashable {
         case surcharge = "Surcharge"
     }
     public var currencyId: String?
+    public var priority: Int?
+    public var code: String?
     public var description: String?
     public var surchargePercent: Double?
     public var surchargeAmount: Double?
@@ -26,8 +28,10 @@ public struct InvoiceAdjustmentUpdateDto: Codable, JSONEncodable, Hashable {
     public var totalDiscount: Double?
     public var type: ModelType?
 
-    public init(currencyId: String? = nil, description: String? = nil, surchargePercent: Double? = nil, surchargeAmount: Double? = nil, discountPercent: Double? = nil, discountAmount: Double? = nil, totalSurcharge: Double? = nil, totalDiscount: Double? = nil, type: ModelType? = nil) {
+    public init(currencyId: String? = nil, priority: Int? = nil, code: String? = nil, description: String? = nil, surchargePercent: Double? = nil, surchargeAmount: Double? = nil, discountPercent: Double? = nil, discountAmount: Double? = nil, totalSurcharge: Double? = nil, totalDiscount: Double? = nil, type: ModelType? = nil) {
         self.currencyId = currencyId
+        self.priority = priority
+        self.code = code
         self.description = description
         self.surchargePercent = surchargePercent
         self.surchargeAmount = surchargeAmount
@@ -40,6 +44,8 @@ public struct InvoiceAdjustmentUpdateDto: Codable, JSONEncodable, Hashable {
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case currencyId
+        case priority
+        case code
         case description
         case surchargePercent
         case surchargeAmount
@@ -55,6 +61,8 @@ public struct InvoiceAdjustmentUpdateDto: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(currencyId, forKey: .currencyId)
+        try container.encodeIfPresent(priority, forKey: .priority)
+        try container.encodeIfPresent(code, forKey: .code)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(surchargePercent, forKey: .surchargePercent)
         try container.encodeIfPresent(surchargeAmount, forKey: .surchargeAmount)

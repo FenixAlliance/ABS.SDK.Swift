@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **startDate** | **Date** |  | [optional] 
 **endDate** | **Date** |  | [optional] 
 **description** | **String** |  | [optional] 
+**context** | **String** |  | [optional] 
 **currencyId** | **String** |  | [optional] 
 **tenantId** | **String** |  | [optional] 
 **unitId** | **String** |  | [optional] 

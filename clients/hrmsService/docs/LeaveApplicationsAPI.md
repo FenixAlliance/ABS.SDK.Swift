@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getLeaveApplicationByIdAsync**](LeaveApplicationsAPI.md#getleaveapplicationbyidasync) | **GET** /api/v2/HrmsService/LeaveApplications/{leaveApplicationId} | Get leave application by ID
 [**getLeaveApplicationsAsync**](LeaveApplicationsAPI.md#getleaveapplicationsasync) | **GET** /api/v2/HrmsService/LeaveApplications | Get leave applications
 [**getLeaveApplicationsCountAsync**](LeaveApplicationsAPI.md#getleaveapplicationscountasync) | **GET** /api/v2/HrmsService/LeaveApplications/Count | Count leave applications
+[**patchLeaveApplicationAsync**](LeaveApplicationsAPI.md#patchleaveapplicationasync) | **PATCH** /api/v2/HrmsService/LeaveApplications/{leaveApplicationId} | Patch a leave application
 [**updateLeaveApplicationAsync**](LeaveApplicationsAPI.md#updateleaveapplicationasync) | **PUT** /api/v2/HrmsService/LeaveApplications/{leaveApplicationId} | Update a leave application
 
 
@@ -284,6 +285,64 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchLeaveApplicationAsync**
+```swift
+    open class func patchLeaveApplicationAsync(tenantId: UUID, leaveApplicationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a leave application
+
+Partially updates an existing leave application for the specified tenant.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let leaveApplicationId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a leave application
+LeaveApplicationsAPI.patchLeaveApplicationAsync(tenantId: tenantId, leaveApplicationId: leaveApplicationId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **leaveApplicationId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

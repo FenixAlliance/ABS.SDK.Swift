@@ -40,6 +40,11 @@ Method | HTTP request | Description
 [**getInvoiceReferencesCount**](InvoicesAPI.md#getinvoicereferencescount) | **GET** /api/v2/InvoicingService/Invoices/{invoiceId}/References/Count | Get the count of invoice references.
 [**getInvoices**](InvoicesAPI.md#getinvoices) | **GET** /api/v2/InvoicingService/Invoices | Get a list of invoices.
 [**getInvoicesCount**](InvoicesAPI.md#getinvoicescount) | **GET** /api/v2/InvoicingService/Invoices/Count | Get the count of invoices.
+[**patchInvoice**](InvoicesAPI.md#patchinvoice) | **PATCH** /api/v2/InvoicingService/Invoices/{invoiceId} | Patch an invoice.
+[**patchInvoiceAdjustment**](InvoicesAPI.md#patchinvoiceadjustment) | **PATCH** /api/v2/InvoicingService/Invoices/{invoiceId}/Adjustments/{invoiceAdjustmentId} | Patch an invoice adjustment.
+[**patchInvoiceLine**](InvoicesAPI.md#patchinvoiceline) | **PATCH** /api/v2/InvoicingService/Invoices/{invoiceId}/Lines/{invoiceLineId} | Patch an invoice line.
+[**patchInvoiceLineTax**](InvoicesAPI.md#patchinvoicelinetax) | **PATCH** /api/v2/InvoicingService/Invoices/{invoiceId}/Lines/{invoiceLineId}/Taxes/{invoiceLineTaxId} | Patch a tax for an invoice line.
+[**patchInvoiceReference**](InvoicesAPI.md#patchinvoicereference) | **PATCH** /api/v2/InvoicingService/Invoices/{invoiceId}/References/{invoiceReferenceId} | Patch an invoice reference.
 [**previewInvoiceEmail**](InvoicesAPI.md#previewinvoiceemail) | **POST** /api/v2/InvoicingService/Invoices/{invoiceId}/Emails/Preview | Preview the rendered email for an invoice.
 [**sendInvoiceEmail**](InvoicesAPI.md#sendinvoiceemail) | **POST** /api/v2/InvoicingService/Invoices/{invoiceId}/Emails/Send | Send an invoice transactional email to recipients.
 [**updateInvoice**](InvoicesAPI.md#updateinvoice) | **PUT** /api/v2/InvoicingService/Invoices/{invoiceId} | Update an invoice.
@@ -440,7 +445,7 @@ Creates a new invoice for the specified tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let invoiceCreateDto = InvoiceCreateDto(id: 123, timestamp: Date(), closed: false, title: "title_example", priceListId: "priceListId_example", description: "description_example", individualId: "individualId_example", paymentTermId: "paymentTermId_example", organizationId: "organizationId_example", receiverTenantId: "receiverTenantId_example", firstName: "firstName_example", lastName: "lastName_example", companyName: "companyName_example", billingEmail: "billingEmail_example", addressLine1: "addressLine1_example", addressLine2: "addressLine2_example", postalCode: "postalCode_example", countryId: "countryId_example", stateId: "stateId_example", cityId: "cityId_example", forexRate: 123, currencyId: "currencyId_example", totalDetail: 123, totalDetailCurrencyId: "totalDetailCurrencyId_example", totalProfit: 123, totalProfitCurrencyId: "totalProfitCurrencyId_example", totalDiscounts: 123, totalDiscountsCurrencyId: "totalDiscountsCurrencyId_example", totalSurcharges: 123, totalSurchargesCurrencyId: "totalSurchargesCurrencyId_example", totalShippingCost: 123, totalShippingCostCurrencyId: "totalShippingCostCurrencyId_example", totalShippingTax: 123, totalShippingTaxCurrencyId: "totalShippingTaxCurrencyId_example", totalWithheldTax: 123, totalWithheldTaxCurrencyId: "totalWithheldTaxCurrencyId_example", totalTaxBase: 123, totalTaxBaseCurrencyId: "totalTaxBaseCurrencyId_example", totalTaxes: 123, totalTaxesCurrencyId: "totalTaxesCurrencyId_example", totalGlobalSurcharges: 123, totalGlobalSurchargesCurrencyId: "totalGlobalSurchargesCurrencyId_example", totalGlobalDiscounts: 123, totalGlobalDiscountsCurrencyId: "totalGlobalDiscountsCurrencyId_example", total: 123, totalCurrencyId: "totalCurrencyId_example", costCalculationMethod: "costCalculationMethod_example", taxCalculationMethod: "taxCalculationMethod_example", paid: false, number: 123, notes: "notes_example", orderId: "orderId_example", enumeration: "enumeration_example", paymentModeId: "paymentModeId_example", enumerationRangeId: "enumerationRangeId_example", emisorBillingProfileId: "emisorBillingProfileId_example", receiverBillingProfileId: "receiverBillingProfileId_example", emisorWalletAccountId: "emisorWalletAccountId_example", receiverWalletAccountId: "receiverWalletAccountId_example", customerNotes: "customerNotes_example", invoiceType: "invoiceType_example", documentType: "documentType_example", invoiceStatus: "invoiceStatus_example", paymentDue: Date(), validFrom: Date(), validTo: Date(), invoiceLines: [InvoiceLineCreateDto(id: 123, timestamp: Date(), closed: false, title: "title_example", priceListId: "priceListId_example", description: "description_example", individualId: "individualId_example", paymentTermId: "paymentTermId_example", organizationId: "organizationId_example", receiverTenantId: "receiverTenantId_example", firstName: "firstName_example", lastName: "lastName_example", companyName: "companyName_example", billingEmail: "billingEmail_example", addressLine1: "addressLine1_example", addressLine2: "addressLine2_example", postalCode: "postalCode_example", countryId: "countryId_example", stateId: "stateId_example", cityId: "cityId_example", forexRate: 123, currencyId: "currencyId_example", totalDetail: 123, totalDetailCurrencyId: "totalDetailCurrencyId_example", totalProfit: 123, totalProfitCurrencyId: "totalProfitCurrencyId_example", totalDiscounts: 123, totalDiscountsCurrencyId: "totalDiscountsCurrencyId_example", totalSurcharges: 123, totalSurchargesCurrencyId: "totalSurchargesCurrencyId_example", totalShippingCost: 123, totalShippingCostCurrencyId: "totalShippingCostCurrencyId_example", totalShippingTax: 123, totalShippingTaxCurrencyId: "totalShippingTaxCurrencyId_example", totalWithheldTax: 123, totalWithheldTaxCurrencyId: "totalWithheldTaxCurrencyId_example", totalTaxBase: 123, totalTaxBaseCurrencyId: "totalTaxBaseCurrencyId_example", totalTaxes: 123, totalTaxesCurrencyId: "totalTaxesCurrencyId_example", totalGlobalSurcharges: 123, totalGlobalSurchargesCurrencyId: "totalGlobalSurchargesCurrencyId_example", totalGlobalDiscounts: 123, totalGlobalDiscountsCurrencyId: "totalGlobalDiscountsCurrencyId_example", total: 123, totalCurrencyId: "totalCurrencyId_example", costCalculationMethod: "costCalculationMethod_example", taxCalculationMethod: "taxCalculationMethod_example", quantity: 123, itemId: "itemId_example", invoiceId: "invoiceId_example", itemPriceId: "itemPriceId_example")], invoiceReferences: [InvoiceReferenceCreateDto(id: 123, timestamp: Date(), referencedInvoiceId: "referencedInvoiceId_example")], invoiceAdjustments: [InvoiceAdjustmentCreateDto(id: 123, timestamp: Date(), currencyId: "currencyId_example", description: "description_example", surchargePercent: 123, surchargeAmount: 123, discountPercent: 123, discountAmount: 123, totalSurcharge: 123, totalDiscount: 123, type: "type_example")]) // InvoiceCreateDto |  (optional)
+let invoiceCreateDto = InvoiceCreateDto(id: 123, timestamp: Date(), closed: false, title: "title_example", priceListId: "priceListId_example", description: "description_example", individualId: "individualId_example", paymentTermId: "paymentTermId_example", organizationId: "organizationId_example", receiverTenantId: "receiverTenantId_example", firstName: "firstName_example", lastName: "lastName_example", companyName: "companyName_example", billingEmail: "billingEmail_example", addressLine1: "addressLine1_example", addressLine2: "addressLine2_example", postalCode: "postalCode_example", countryId: "countryId_example", stateId: "stateId_example", cityId: "cityId_example", forexRate: 123, currencyId: "currencyId_example", totalDetail: 123, totalDetailCurrencyId: "totalDetailCurrencyId_example", totalProfit: 123, totalProfitCurrencyId: "totalProfitCurrencyId_example", totalDiscounts: 123, totalDiscountsCurrencyId: "totalDiscountsCurrencyId_example", totalSurcharges: 123, totalSurchargesCurrencyId: "totalSurchargesCurrencyId_example", totalShippingCost: 123, totalShippingCostCurrencyId: "totalShippingCostCurrencyId_example", totalShippingTax: 123, totalShippingTaxCurrencyId: "totalShippingTaxCurrencyId_example", totalWithheldTax: 123, totalWithheldTaxCurrencyId: "totalWithheldTaxCurrencyId_example", totalTaxBase: 123, totalTaxBaseCurrencyId: "totalTaxBaseCurrencyId_example", totalTaxes: 123, totalTaxesCurrencyId: "totalTaxesCurrencyId_example", totalGlobalSurcharges: 123, totalGlobalSurchargesCurrencyId: "totalGlobalSurchargesCurrencyId_example", totalGlobalDiscounts: 123, totalGlobalDiscountsCurrencyId: "totalGlobalDiscountsCurrencyId_example", total: 123, totalCurrencyId: "totalCurrencyId_example", costCalculationMethod: "costCalculationMethod_example", taxCalculationMethod: "taxCalculationMethod_example", paid: false, number: 123, notes: "notes_example", orderId: "orderId_example", enumeration: "enumeration_example", paymentModeId: "paymentModeId_example", enumerationRangeId: "enumerationRangeId_example", emisorBillingProfileId: "emisorBillingProfileId_example", receiverBillingProfileId: "receiverBillingProfileId_example", emisorWalletAccountId: "emisorWalletAccountId_example", receiverWalletAccountId: "receiverWalletAccountId_example", customerNotes: "customerNotes_example", invoiceType: "invoiceType_example", documentType: "documentType_example", invoiceStatus: "invoiceStatus_example", paymentDue: Date(), validFrom: Date(), validTo: Date(), invoiceLines: [InvoiceLineCreateDto(id: 123, timestamp: Date(), closed: false, title: "title_example", priceListId: "priceListId_example", description: "description_example", individualId: "individualId_example", paymentTermId: "paymentTermId_example", organizationId: "organizationId_example", receiverTenantId: "receiverTenantId_example", firstName: "firstName_example", lastName: "lastName_example", companyName: "companyName_example", billingEmail: "billingEmail_example", addressLine1: "addressLine1_example", addressLine2: "addressLine2_example", postalCode: "postalCode_example", countryId: "countryId_example", stateId: "stateId_example", cityId: "cityId_example", forexRate: 123, currencyId: "currencyId_example", totalDetail: 123, totalDetailCurrencyId: "totalDetailCurrencyId_example", totalProfit: 123, totalProfitCurrencyId: "totalProfitCurrencyId_example", totalDiscounts: 123, totalDiscountsCurrencyId: "totalDiscountsCurrencyId_example", totalSurcharges: 123, totalSurchargesCurrencyId: "totalSurchargesCurrencyId_example", totalShippingCost: 123, totalShippingCostCurrencyId: "totalShippingCostCurrencyId_example", totalShippingTax: 123, totalShippingTaxCurrencyId: "totalShippingTaxCurrencyId_example", totalWithheldTax: 123, totalWithheldTaxCurrencyId: "totalWithheldTaxCurrencyId_example", totalTaxBase: 123, totalTaxBaseCurrencyId: "totalTaxBaseCurrencyId_example", totalTaxes: 123, totalTaxesCurrencyId: "totalTaxesCurrencyId_example", totalGlobalSurcharges: 123, totalGlobalSurchargesCurrencyId: "totalGlobalSurchargesCurrencyId_example", totalGlobalDiscounts: 123, totalGlobalDiscountsCurrencyId: "totalGlobalDiscountsCurrencyId_example", total: 123, totalCurrencyId: "totalCurrencyId_example", costCalculationMethod: "costCalculationMethod_example", taxCalculationMethod: "taxCalculationMethod_example", quantity: 123, itemId: "itemId_example", invoiceId: "invoiceId_example", itemPriceId: "itemPriceId_example")], invoiceReferences: [InvoiceReferenceCreateDto(id: 123, timestamp: Date(), referencedInvoiceId: "referencedInvoiceId_example")], invoiceAdjustments: [InvoiceAdjustmentCreateDto(id: 123, timestamp: Date(), currencyId: "currencyId_example", priority: 123, code: "code_example", description: "description_example", surchargePercent: 123, surchargeAmount: 123, discountPercent: 123, discountAmount: 123, totalSurcharge: 123, totalDiscount: 123, type: "type_example")]) // InvoiceCreateDto |  (optional)
 
 // Create a new invoice.
 InvoicesAPI.createInvoice(tenantId: tenantId, invoiceCreateDto: invoiceCreateDto) { (response, error) in
@@ -493,7 +498,7 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let invoiceId = 987 // UUID | 
-let invoiceAdjustmentCreateDto = InvoiceAdjustmentCreateDto(id: 123, timestamp: Date(), currencyId: "currencyId_example", description: "description_example", surchargePercent: 123, surchargeAmount: 123, discountPercent: 123, discountAmount: 123, totalSurcharge: 123, totalDiscount: 123, type: "type_example") // InvoiceAdjustmentCreateDto |  (optional)
+let invoiceAdjustmentCreateDto = InvoiceAdjustmentCreateDto(id: 123, timestamp: Date(), currencyId: "currencyId_example", priority: 123, code: "code_example", description: "description_example", surchargePercent: 123, surchargeAmount: 123, discountPercent: 123, discountAmount: 123, totalSurcharge: 123, totalDiscount: 123, type: "type_example") // InvoiceAdjustmentCreateDto |  (optional)
 
 // Create a new invoice adjustment.
 InvoicesAPI.createInvoiceAdjustment(tenantId: tenantId, invoiceId: invoiceId, invoiceAdjustmentCreateDto: invoiceAdjustmentCreateDto) { (response, error) in
@@ -1957,6 +1962,286 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchInvoice**
+```swift
+    open class func patchInvoice(tenantId: UUID, invoiceId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch an invoice.
+
+Partially updates the specified invoice for the tenant.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let invoiceId = 987 // UUID | 
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch an invoice.
+InvoicesAPI.patchInvoice(tenantId: tenantId, invoiceId: invoiceId, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **invoiceId** | **UUID** |  | 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchInvoiceAdjustment**
+```swift
+    open class func patchInvoiceAdjustment(tenantId: UUID, invoiceId: UUID, invoiceAdjustmentId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch an invoice adjustment.
+
+Partially updates the specified adjustment for the invoice.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let invoiceId = 987 // UUID | 
+let invoiceAdjustmentId = 987 // UUID | 
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch an invoice adjustment.
+InvoicesAPI.patchInvoiceAdjustment(tenantId: tenantId, invoiceId: invoiceId, invoiceAdjustmentId: invoiceAdjustmentId, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **invoiceId** | **UUID** |  | 
+ **invoiceAdjustmentId** | **UUID** |  | 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchInvoiceLine**
+```swift
+    open class func patchInvoiceLine(tenantId: UUID, invoiceId: UUID, invoiceLineId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch an invoice line.
+
+Partially updates the specified invoice line.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let invoiceId = 987 // UUID | 
+let invoiceLineId = 987 // UUID | 
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch an invoice line.
+InvoicesAPI.patchInvoiceLine(tenantId: tenantId, invoiceId: invoiceId, invoiceLineId: invoiceLineId, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **invoiceId** | **UUID** |  | 
+ **invoiceLineId** | **UUID** |  | 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchInvoiceLineTax**
+```swift
+    open class func patchInvoiceLineTax(tenantId: UUID, invoiceId: UUID, invoiceLineId: UUID, invoiceLineTaxId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a tax for an invoice line.
+
+Partially updates the specified tax entry for the invoice line.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let invoiceId = 987 // UUID | 
+let invoiceLineId = 987 // UUID | 
+let invoiceLineTaxId = 987 // UUID | 
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a tax for an invoice line.
+InvoicesAPI.patchInvoiceLineTax(tenantId: tenantId, invoiceId: invoiceId, invoiceLineId: invoiceLineId, invoiceLineTaxId: invoiceLineTaxId, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **invoiceId** | **UUID** |  | 
+ **invoiceLineId** | **UUID** |  | 
+ **invoiceLineTaxId** | **UUID** |  | 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchInvoiceReference**
+```swift
+    open class func patchInvoiceReference(tenantId: UUID, invoiceId: UUID, invoiceReferenceId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch an invoice reference.
+
+Partially updates the specified reference for the invoice.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let invoiceId = 987 // UUID | 
+let invoiceReferenceId = 987 // UUID | 
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch an invoice reference.
+InvoicesAPI.patchInvoiceReference(tenantId: tenantId, invoiceId: invoiceId, invoiceReferenceId: invoiceReferenceId, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **invoiceId** | **UUID** |  | 
+ **invoiceReferenceId** | **UUID** |  | 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **previewInvoiceEmail**
 ```swift
     open class func previewInvoiceEmail(invoiceId: UUID, tenantId: UUID, emailDispatchRequest: EmailDispatchRequest? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
@@ -2081,7 +2366,7 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let invoiceId = 987 // UUID | 
-let invoiceUpdateDto = InvoiceUpdateDto(closed: false, title: "title_example", userId: "userId_example", priceListId: "priceListId_example", description: "description_example", individualId: "individualId_example", paymentTermId: "paymentTermId_example", organizationId: "organizationId_example", receiverTenantId: "receiverTenantId_example", firstName: "firstName_example", lastName: "lastName_example", companyName: "companyName_example", billingEmail: "billingEmail_example", addressLine1: "addressLine1_example", addressLine2: "addressLine2_example", postalCode: "postalCode_example", countryId: "countryId_example", stateId: "stateId_example", cityId: "cityId_example", billingLocationId: "billingLocationId_example", shippingLocationId: "shippingLocationId_example", shippingMethodId: "shippingMethodId_example", forexRate: 123, currencyId: "currencyId_example", totalDetail: 123, totalDetailCurrencyId: "totalDetailCurrencyId_example", totalProfit: 123, totalProfitCurrencyId: "totalProfitCurrencyId_example", totalDiscounts: 123, totalDiscountsCurrencyId: "totalDiscountsCurrencyId_example", totalSurcharges: 123, totalSurchargesCurrencyId: "totalSurchargesCurrencyId_example", totalShippingTax: 123, totalShippingTaxCurrencyId: "totalShippingTaxCurrencyId_example", totalShippingCost: 123, totalShippingCostCurrencyId: "totalShippingCostCurrencyId_example", totalGlobalDiscounts: 123, totalGlobalDiscountsCurrencyId: "totalGlobalDiscountsCurrencyId_example", totalGlobalSurcharges: 123, totalGlobalSurchargesCurrencyId: "totalGlobalSurchargesCurrencyId_example", totalWithheldTax: 123, totalWithheldTaxCurrencyId: "totalWithheldTaxCurrencyId_example", totalTaxBase: 123, totalTaxBaseCurrencyId: "totalTaxBaseCurrencyId_example", totalTaxes: 123, totalTaxesCurrencyId: "totalTaxesCurrencyId_example", total: 123, totalCurrencyId: "totalCurrencyId_example", costCalculationMethod: "costCalculationMethod_example", taxCalculationMethod: "taxCalculationMethod_example", paid: false, number: 123, notes: "notes_example", orderId: "orderId_example", enumeration: "enumeration_example", paymentModeId: "paymentModeId_example", enumerationRangeId: "enumerationRangeId_example", emisorBillingProfileId: "emisorBillingProfileId_example", receiverBillingProfileId: "receiverBillingProfileId_example", emisorWalletAccountId: "emisorWalletAccountId_example", receiverWalletAccountId: "receiverWalletAccountId_example", customerNotes: "customerNotes_example", invoiceType: "invoiceType_example", documentType: "documentType_example", invoiceStatus: "invoiceStatus_example", paymentDue: Date(), validFrom: Date(), validTo: Date(), invoiceLines: [InvoiceLineCreateDto(id: 123, timestamp: Date(), closed: false, title: "title_example", priceListId: "priceListId_example", description: "description_example", individualId: "individualId_example", paymentTermId: "paymentTermId_example", organizationId: "organizationId_example", receiverTenantId: "receiverTenantId_example", firstName: "firstName_example", lastName: "lastName_example", companyName: "companyName_example", billingEmail: "billingEmail_example", addressLine1: "addressLine1_example", addressLine2: "addressLine2_example", postalCode: "postalCode_example", countryId: "countryId_example", stateId: "stateId_example", cityId: "cityId_example", forexRate: 123, currencyId: "currencyId_example", totalDetail: 123, totalDetailCurrencyId: "totalDetailCurrencyId_example", totalProfit: 123, totalProfitCurrencyId: "totalProfitCurrencyId_example", totalDiscounts: 123, totalDiscountsCurrencyId: "totalDiscountsCurrencyId_example", totalSurcharges: 123, totalSurchargesCurrencyId: "totalSurchargesCurrencyId_example", totalShippingCost: 123, totalShippingCostCurrencyId: "totalShippingCostCurrencyId_example", totalShippingTax: 123, totalShippingTaxCurrencyId: "totalShippingTaxCurrencyId_example", totalWithheldTax: 123, totalWithheldTaxCurrencyId: "totalWithheldTaxCurrencyId_example", totalTaxBase: 123, totalTaxBaseCurrencyId: "totalTaxBaseCurrencyId_example", totalTaxes: 123, totalTaxesCurrencyId: "totalTaxesCurrencyId_example", totalGlobalSurcharges: 123, totalGlobalSurchargesCurrencyId: "totalGlobalSurchargesCurrencyId_example", totalGlobalDiscounts: 123, totalGlobalDiscountsCurrencyId: "totalGlobalDiscountsCurrencyId_example", total: 123, totalCurrencyId: "totalCurrencyId_example", costCalculationMethod: "costCalculationMethod_example", taxCalculationMethod: "taxCalculationMethod_example", quantity: 123, itemId: "itemId_example", invoiceId: "invoiceId_example", itemPriceId: "itemPriceId_example")], invoiceReferences: [InvoiceReferenceCreateDto(id: 123, timestamp: Date(), referencedInvoiceId: "referencedInvoiceId_example")], invoiceAdjustments: [InvoiceAdjustmentCreateDto(id: 123, timestamp: Date(), currencyId: "currencyId_example", description: "description_example", surchargePercent: 123, surchargeAmount: 123, discountPercent: 123, discountAmount: 123, totalSurcharge: 123, totalDiscount: 123, type: "type_example")]) // InvoiceUpdateDto |  (optional)
+let invoiceUpdateDto = InvoiceUpdateDto(closed: false, title: "title_example", userId: "userId_example", priceListId: "priceListId_example", description: "description_example", individualId: "individualId_example", paymentTermId: "paymentTermId_example", organizationId: "organizationId_example", receiverTenantId: "receiverTenantId_example", firstName: "firstName_example", lastName: "lastName_example", companyName: "companyName_example", billingEmail: "billingEmail_example", addressLine1: "addressLine1_example", addressLine2: "addressLine2_example", postalCode: "postalCode_example", countryId: "countryId_example", stateId: "stateId_example", cityId: "cityId_example", billingLocationId: "billingLocationId_example", shippingLocationId: "shippingLocationId_example", shippingMethodId: "shippingMethodId_example", forexRate: 123, currencyId: "currencyId_example", totalDetail: 123, totalDetailCurrencyId: "totalDetailCurrencyId_example", totalProfit: 123, totalProfitCurrencyId: "totalProfitCurrencyId_example", totalDiscounts: 123, totalDiscountsCurrencyId: "totalDiscountsCurrencyId_example", totalSurcharges: 123, totalSurchargesCurrencyId: "totalSurchargesCurrencyId_example", totalShippingTax: 123, totalShippingTaxCurrencyId: "totalShippingTaxCurrencyId_example", totalShippingCost: 123, totalShippingCostCurrencyId: "totalShippingCostCurrencyId_example", totalGlobalDiscounts: 123, totalGlobalDiscountsCurrencyId: "totalGlobalDiscountsCurrencyId_example", totalGlobalSurcharges: 123, totalGlobalSurchargesCurrencyId: "totalGlobalSurchargesCurrencyId_example", totalWithheldTax: 123, totalWithheldTaxCurrencyId: "totalWithheldTaxCurrencyId_example", totalTaxBase: 123, totalTaxBaseCurrencyId: "totalTaxBaseCurrencyId_example", totalTaxes: 123, totalTaxesCurrencyId: "totalTaxesCurrencyId_example", total: 123, totalCurrencyId: "totalCurrencyId_example", costCalculationMethod: "costCalculationMethod_example", taxCalculationMethod: "taxCalculationMethod_example", paid: false, number: 123, notes: "notes_example", orderId: "orderId_example", enumeration: "enumeration_example", paymentModeId: "paymentModeId_example", enumerationRangeId: "enumerationRangeId_example", emisorBillingProfileId: "emisorBillingProfileId_example", receiverBillingProfileId: "receiverBillingProfileId_example", emisorWalletAccountId: "emisorWalletAccountId_example", receiverWalletAccountId: "receiverWalletAccountId_example", customerNotes: "customerNotes_example", invoiceType: "invoiceType_example", documentType: "documentType_example", invoiceStatus: "invoiceStatus_example", paymentDue: Date(), validFrom: Date(), validTo: Date(), invoiceLines: [InvoiceLineCreateDto(id: 123, timestamp: Date(), closed: false, title: "title_example", priceListId: "priceListId_example", description: "description_example", individualId: "individualId_example", paymentTermId: "paymentTermId_example", organizationId: "organizationId_example", receiverTenantId: "receiverTenantId_example", firstName: "firstName_example", lastName: "lastName_example", companyName: "companyName_example", billingEmail: "billingEmail_example", addressLine1: "addressLine1_example", addressLine2: "addressLine2_example", postalCode: "postalCode_example", countryId: "countryId_example", stateId: "stateId_example", cityId: "cityId_example", forexRate: 123, currencyId: "currencyId_example", totalDetail: 123, totalDetailCurrencyId: "totalDetailCurrencyId_example", totalProfit: 123, totalProfitCurrencyId: "totalProfitCurrencyId_example", totalDiscounts: 123, totalDiscountsCurrencyId: "totalDiscountsCurrencyId_example", totalSurcharges: 123, totalSurchargesCurrencyId: "totalSurchargesCurrencyId_example", totalShippingCost: 123, totalShippingCostCurrencyId: "totalShippingCostCurrencyId_example", totalShippingTax: 123, totalShippingTaxCurrencyId: "totalShippingTaxCurrencyId_example", totalWithheldTax: 123, totalWithheldTaxCurrencyId: "totalWithheldTaxCurrencyId_example", totalTaxBase: 123, totalTaxBaseCurrencyId: "totalTaxBaseCurrencyId_example", totalTaxes: 123, totalTaxesCurrencyId: "totalTaxesCurrencyId_example", totalGlobalSurcharges: 123, totalGlobalSurchargesCurrencyId: "totalGlobalSurchargesCurrencyId_example", totalGlobalDiscounts: 123, totalGlobalDiscountsCurrencyId: "totalGlobalDiscountsCurrencyId_example", total: 123, totalCurrencyId: "totalCurrencyId_example", costCalculationMethod: "costCalculationMethod_example", taxCalculationMethod: "taxCalculationMethod_example", quantity: 123, itemId: "itemId_example", invoiceId: "invoiceId_example", itemPriceId: "itemPriceId_example")], invoiceReferences: [InvoiceReferenceCreateDto(id: 123, timestamp: Date(), referencedInvoiceId: "referencedInvoiceId_example")], invoiceAdjustments: [InvoiceAdjustmentCreateDto(id: 123, timestamp: Date(), currencyId: "currencyId_example", priority: 123, code: "code_example", description: "description_example", surchargePercent: 123, surchargeAmount: 123, discountPercent: 123, discountAmount: 123, totalSurcharge: 123, totalDiscount: 123, type: "type_example")]) // InvoiceUpdateDto |  (optional)
 
 // Update an invoice.
 InvoicesAPI.updateInvoice(tenantId: tenantId, invoiceId: invoiceId, invoiceUpdateDto: invoiceUpdateDto) { (response, error) in
@@ -2136,7 +2421,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let invoiceId = 987 // UUID | 
 let invoiceAdjustmentId = 987 // UUID | 
-let invoiceAdjustmentUpdateDto = InvoiceAdjustmentUpdateDto(currencyId: "currencyId_example", description: "description_example", surchargePercent: 123, surchargeAmount: 123, discountPercent: 123, discountAmount: 123, totalSurcharge: 123, totalDiscount: 123, type: "type_example") // InvoiceAdjustmentUpdateDto |  (optional)
+let invoiceAdjustmentUpdateDto = InvoiceAdjustmentUpdateDto(currencyId: "currencyId_example", priority: 123, code: "code_example", description: "description_example", surchargePercent: 123, surchargeAmount: 123, discountPercent: 123, discountAmount: 123, totalSurcharge: 123, totalDiscount: 123, type: "type_example") // InvoiceAdjustmentUpdateDto |  (optional)
 
 // Update an invoice adjustment.
 InvoicesAPI.updateInvoiceAdjustment(tenantId: tenantId, invoiceId: invoiceId, invoiceAdjustmentId: invoiceAdjustmentId, invoiceAdjustmentUpdateDto: invoiceAdjustmentUpdateDto) { (response, error) in

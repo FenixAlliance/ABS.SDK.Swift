@@ -16,9 +16,9 @@ Name | Type | Description | Notes
 **canonicalUrl** | **String** |  | [optional] 
 **imageURL** | **String** |  | [optional] 
 **image** | **String** |  | [optional] 
-**webPortalID** | **String** |  | [optional] 
-**businessID** | **String** |  | [optional] 
-**businessProfileRecordID** | **String** |  | [optional] 
+**webPortalId** | **String** |  | [optional] 
+**tenantId** | **String** |  | [optional] 
+**enrollmentId** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -19,10 +19,11 @@ public struct CourseCohortDto: Codable, JSONEncodable, Hashable {
     public var endDateTime: Date?
     public var expectedStartDateTime: Date?
     public var expectedEndDateTime: Date?
-    public var courseID: String?
+    public var courseId: String?
     public var tenantId: String?
+    public var enrollmentId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, startDateTime: Date? = nil, endDateTime: Date? = nil, expectedStartDateTime: Date? = nil, expectedEndDateTime: Date? = nil, courseID: String? = nil, tenantId: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, startDateTime: Date? = nil, endDateTime: Date? = nil, expectedStartDateTime: Date? = nil, expectedEndDateTime: Date? = nil, courseId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
@@ -30,8 +31,9 @@ public struct CourseCohortDto: Codable, JSONEncodable, Hashable {
         self.endDateTime = endDateTime
         self.expectedStartDateTime = expectedStartDateTime
         self.expectedEndDateTime = expectedEndDateTime
-        self.courseID = courseID
+        self.courseId = courseId
         self.tenantId = tenantId
+        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -42,8 +44,9 @@ public struct CourseCohortDto: Codable, JSONEncodable, Hashable {
         case endDateTime
         case expectedStartDateTime
         case expectedEndDateTime
-        case courseID
+        case courseId
         case tenantId
+        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -57,8 +60,9 @@ public struct CourseCohortDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(endDateTime, forKey: .endDateTime)
         try container.encodeIfPresent(expectedStartDateTime, forKey: .expectedStartDateTime)
         try container.encodeIfPresent(expectedEndDateTime, forKey: .expectedEndDateTime)
-        try container.encodeIfPresent(courseID, forKey: .courseID)
+        try container.encodeIfPresent(courseId, forKey: .courseId)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

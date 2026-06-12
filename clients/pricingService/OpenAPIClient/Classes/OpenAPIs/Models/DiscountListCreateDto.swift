@@ -12,16 +12,22 @@ import AnyCodable
 
 public struct DiscountListCreateDto: Codable, JSONEncodable, Hashable {
 
+    public enum DiscountListType: String, Codable, CaseIterable {
+        case amount = "Amount"
+        case percentage = "Percentage"
+    }
     static let nameRule = StringRule(minLength: 0, maxLength: 50, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var name: String?
+    public var discountListType: DiscountListType?
     public var currencyId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil, currencyId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil, discountListType: DiscountListType? = nil, currencyId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
+        self.discountListType = discountListType
         self.currencyId = currencyId
     }
 
@@ -29,6 +35,7 @@ public struct DiscountListCreateDto: Codable, JSONEncodable, Hashable {
         case id
         case timestamp
         case name
+        case discountListType
         case currencyId
     }
 
@@ -39,6 +46,7 @@ public struct DiscountListCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(name, forKey: .name)
+        try container.encodeIfPresent(discountListType, forKey: .discountListType)
         try container.encodeIfPresent(currencyId, forKey: .currencyId)
     }
 }

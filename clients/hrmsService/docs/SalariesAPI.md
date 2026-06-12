@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getSalariesAsync**](SalariesAPI.md#getsalariesasync) | **GET** /api/v2/HrmsService/Salaries | Get salaries
 [**getSalariesCountAsync**](SalariesAPI.md#getsalariescountasync) | **GET** /api/v2/HrmsService/Salaries/Count | Count salaries
 [**getSalaryByIdAsync**](SalariesAPI.md#getsalarybyidasync) | **GET** /api/v2/HrmsService/Salaries/{salaryId} | Get salary by ID
+[**patchSalaryAsync**](SalariesAPI.md#patchsalaryasync) | **PATCH** /api/v2/HrmsService/Salaries/{salaryId} | Patch a salary
 [**updateSalaryAsync**](SalariesAPI.md#updatesalaryasync) | **PUT** /api/v2/HrmsService/Salaries/{salaryId} | Update a salary
 
 
@@ -284,6 +285,64 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchSalaryAsync**
+```swift
+    open class func patchSalaryAsync(tenantId: UUID, salaryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a salary
+
+Partially updates an existing salary for the specified tenant.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let salaryId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a salary
+SalariesAPI.patchSalaryAsync(tenantId: tenantId, salaryId: salaryId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **salaryId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

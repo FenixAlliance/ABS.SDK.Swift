@@ -17,17 +17,19 @@ public struct CourseGradingRubricDto: Codable, JSONEncodable, Hashable {
     public var title: String?
     public var description: String?
     public var enablePoints: Bool?
-    public var courseID: String?
+    public var courseId: String?
     public var tenantId: String?
+    public var enrollmentId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil, enablePoints: Bool? = nil, courseID: String? = nil, tenantId: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil, enablePoints: Bool? = nil, courseId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
         self.description = description
         self.enablePoints = enablePoints
-        self.courseID = courseID
+        self.courseId = courseId
         self.tenantId = tenantId
+        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -36,8 +38,9 @@ public struct CourseGradingRubricDto: Codable, JSONEncodable, Hashable {
         case title
         case description
         case enablePoints
-        case courseID
+        case courseId
         case tenantId
+        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -49,8 +52,9 @@ public struct CourseGradingRubricDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(enablePoints, forKey: .enablePoints)
-        try container.encodeIfPresent(courseID, forKey: .courseID)
+        try container.encodeIfPresent(courseId, forKey: .courseId)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

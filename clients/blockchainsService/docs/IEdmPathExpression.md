@@ -1,0 +1,12 @@
+# IEdmPathExpression
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**expressionKind** | **String** |  | [optional] [readonly] 
+**pathSegments** | **[String]** |  | [optional] [readonly] 
+**path** | **String** |  | [optional] [readonly] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

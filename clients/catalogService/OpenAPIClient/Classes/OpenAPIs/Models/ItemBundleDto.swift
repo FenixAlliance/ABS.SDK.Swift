@@ -18,16 +18,16 @@ public struct ItemBundleDto: Codable, JSONEncodable, Hashable {
     public var code: String?
     public var description: String?
     public var disabled: Bool?
-    public var businessID: String?
+    public var tenantId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, code: String? = nil, description: String? = nil, disabled: Bool? = nil, businessID: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, code: String? = nil, description: String? = nil, disabled: Bool? = nil, tenantId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
         self.code = code
         self.description = description
         self.disabled = disabled
-        self.businessID = businessID
+        self.tenantId = tenantId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -37,7 +37,7 @@ public struct ItemBundleDto: Codable, JSONEncodable, Hashable {
         case code
         case description
         case disabled
-        case businessID
+        case tenantId
     }
 
     // Encodable protocol methods
@@ -50,7 +50,7 @@ public struct ItemBundleDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(code, forKey: .code)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(disabled, forKey: .disabled)
-        try container.encodeIfPresent(businessID, forKey: .businessID)
+        try container.encodeIfPresent(tenantId, forKey: .tenantId)
     }
 }
 

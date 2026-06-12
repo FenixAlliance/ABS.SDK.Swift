@@ -19,6 +19,8 @@ Method | HTTP request | Description
 [**getQuoteLinesCount**](QuotesAPI.md#getquotelinescount) | **GET** /api/v2/QuotesService/Quotes/{quoteId}/Lines/Count | Get the count of quote lines.
 [**getQuotes**](QuotesAPI.md#getquotes) | **GET** /api/v2/QuotesService/Quotes | Get a list of quotes.
 [**getQuotesCount**](QuotesAPI.md#getquotescount) | **GET** /api/v2/QuotesService/Quotes/Count | Get the count of quotes.
+[**patchQuoteAsync**](QuotesAPI.md#patchquoteasync) | **PATCH** /api/v2/QuotesService/Quotes/{quoteId} | Patch an existing quote.
+[**patchQuoteLineAsync**](QuotesAPI.md#patchquotelineasync) | **PATCH** /api/v2/QuotesService/Quotes/{quoteId}/Lines/{quoteLineId} | Patch a quote line.
 [**previewQuoteEmailTemplate**](QuotesAPI.md#previewquoteemailtemplate) | **POST** /api/v2/QuotesService/Quotes/{quoteId}/Emails/Preview | Preview the rendered email for an invoice.
 [**quoteLineExists**](QuotesAPI.md#quotelineexists) | **GET** /api/v2/QuotesService/Quotes/{quoteId}/Lines/Exists | Check if a quote line exists.
 [**reopenQuote**](QuotesAPI.md#reopenquote) | **PUT** /api/v2/QuotesService/Quotes/{quoteId}/Reopen | Reopen a closed quote.
@@ -808,6 +810,116 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchQuoteAsync**
+```swift
+    open class func patchQuoteAsync(tenantId: UUID, quoteId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch an existing quote.
+
+Partially updates an existing quote for the specified tenant and quote ID using a JSON Patch document.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let quoteId = 987 // UUID | 
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch an existing quote.
+QuotesAPI.patchQuoteAsync(tenantId: tenantId, quoteId: quoteId, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **quoteId** | **UUID** |  | 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchQuoteLineAsync**
+```swift
+    open class func patchQuoteLineAsync(tenantId: UUID, quoteId: UUID, quoteLineId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a quote line.
+
+Partially updates an existing quote line for the specified quote and tenant using a JSON Patch document.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let quoteId = 987 // UUID | 
+let quoteLineId = 987 // UUID | 
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a quote line.
+QuotesAPI.patchQuoteLineAsync(tenantId: tenantId, quoteId: quoteId, quoteLineId: quoteLineId, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **quoteId** | **UUID** |  | 
+ **quoteLineId** | **UUID** |  | 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

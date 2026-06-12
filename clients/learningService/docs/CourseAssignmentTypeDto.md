@@ -10,8 +10,9 @@ Name | Type | Description | Notes
 **weight** | **Double** |  | [optional] 
 **quantity** | **Int** |  | [optional] 
 **excluded** | **Int** |  | [optional] 
-**courseID** | **String** |  | [optional] 
+**courseId** | **String** |  | [optional] 
 **tenantId** | **String** |  | [optional] 
+**enrollmentId** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

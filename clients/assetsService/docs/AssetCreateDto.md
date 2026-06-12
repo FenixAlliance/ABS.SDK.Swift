@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **purchasePrice** | **Double** |  | [optional] 
 **currencyId** | **String** |  | [optional] 
 **itemId** | **String** |  | [optional] 
+**assetTypeId** | **String** |  | [optional] 
 **assetCategoryId** | **String** |  | [optional] 
 **purchaseInvoiceId** | **String** |  | [optional] 
 **purchaseReceiptId** | **String** |  | [optional] 

@@ -1933,6 +1933,301 @@ open class InvoicesAPI {
     }
 
     /**
+     Patch an invoice.
+     
+     - parameter tenantId: (query)  
+     - parameter invoiceId: (path)  
+     - parameter operation: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func patchInvoice(tenantId: UUID, invoiceId: UUID, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchInvoiceWithRequestBuilder(tenantId: tenantId, invoiceId: invoiceId, operation: operation).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Patch an invoice.
+     - PATCH /api/v2/InvoicingService/Invoices/{invoiceId}
+     - Partially updates the specified invoice for the tenant.
+     - parameter tenantId: (query)  
+     - parameter invoiceId: (path)  
+     - parameter operation: (body)  (optional)
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func patchInvoiceWithRequestBuilder(tenantId: UUID, invoiceId: UUID, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/InvoicingService/Invoices/{invoiceId}"
+        let invoiceIdPreEscape = "\(APIHelper.mapValueToPathItem(invoiceId))"
+        let invoiceIdPostEscape = invoiceIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{invoiceId}", with: invoiceIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Patch an invoice adjustment.
+     
+     - parameter tenantId: (query)  
+     - parameter invoiceId: (path)  
+     - parameter invoiceAdjustmentId: (path)  
+     - parameter operation: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func patchInvoiceAdjustment(tenantId: UUID, invoiceId: UUID, invoiceAdjustmentId: UUID, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchInvoiceAdjustmentWithRequestBuilder(tenantId: tenantId, invoiceId: invoiceId, invoiceAdjustmentId: invoiceAdjustmentId, operation: operation).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Patch an invoice adjustment.
+     - PATCH /api/v2/InvoicingService/Invoices/{invoiceId}/Adjustments/{invoiceAdjustmentId}
+     - Partially updates the specified adjustment for the invoice.
+     - parameter tenantId: (query)  
+     - parameter invoiceId: (path)  
+     - parameter invoiceAdjustmentId: (path)  
+     - parameter operation: (body)  (optional)
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func patchInvoiceAdjustmentWithRequestBuilder(tenantId: UUID, invoiceId: UUID, invoiceAdjustmentId: UUID, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/InvoicingService/Invoices/{invoiceId}/Adjustments/{invoiceAdjustmentId}"
+        let invoiceIdPreEscape = "\(APIHelper.mapValueToPathItem(invoiceId))"
+        let invoiceIdPostEscape = invoiceIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{invoiceId}", with: invoiceIdPostEscape, options: .literal, range: nil)
+        let invoiceAdjustmentIdPreEscape = "\(APIHelper.mapValueToPathItem(invoiceAdjustmentId))"
+        let invoiceAdjustmentIdPostEscape = invoiceAdjustmentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{invoiceAdjustmentId}", with: invoiceAdjustmentIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Patch an invoice line.
+     
+     - parameter tenantId: (query)  
+     - parameter invoiceId: (path)  
+     - parameter invoiceLineId: (path)  
+     - parameter operation: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func patchInvoiceLine(tenantId: UUID, invoiceId: UUID, invoiceLineId: UUID, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchInvoiceLineWithRequestBuilder(tenantId: tenantId, invoiceId: invoiceId, invoiceLineId: invoiceLineId, operation: operation).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Patch an invoice line.
+     - PATCH /api/v2/InvoicingService/Invoices/{invoiceId}/Lines/{invoiceLineId}
+     - Partially updates the specified invoice line.
+     - parameter tenantId: (query)  
+     - parameter invoiceId: (path)  
+     - parameter invoiceLineId: (path)  
+     - parameter operation: (body)  (optional)
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func patchInvoiceLineWithRequestBuilder(tenantId: UUID, invoiceId: UUID, invoiceLineId: UUID, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/InvoicingService/Invoices/{invoiceId}/Lines/{invoiceLineId}"
+        let invoiceIdPreEscape = "\(APIHelper.mapValueToPathItem(invoiceId))"
+        let invoiceIdPostEscape = invoiceIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{invoiceId}", with: invoiceIdPostEscape, options: .literal, range: nil)
+        let invoiceLineIdPreEscape = "\(APIHelper.mapValueToPathItem(invoiceLineId))"
+        let invoiceLineIdPostEscape = invoiceLineIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{invoiceLineId}", with: invoiceLineIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Patch a tax for an invoice line.
+     
+     - parameter tenantId: (query)  
+     - parameter invoiceId: (path)  
+     - parameter invoiceLineId: (path)  
+     - parameter invoiceLineTaxId: (path)  
+     - parameter operation: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func patchInvoiceLineTax(tenantId: UUID, invoiceId: UUID, invoiceLineId: UUID, invoiceLineTaxId: UUID, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchInvoiceLineTaxWithRequestBuilder(tenantId: tenantId, invoiceId: invoiceId, invoiceLineId: invoiceLineId, invoiceLineTaxId: invoiceLineTaxId, operation: operation).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Patch a tax for an invoice line.
+     - PATCH /api/v2/InvoicingService/Invoices/{invoiceId}/Lines/{invoiceLineId}/Taxes/{invoiceLineTaxId}
+     - Partially updates the specified tax entry for the invoice line.
+     - parameter tenantId: (query)  
+     - parameter invoiceId: (path)  
+     - parameter invoiceLineId: (path)  
+     - parameter invoiceLineTaxId: (path)  
+     - parameter operation: (body)  (optional)
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func patchInvoiceLineTaxWithRequestBuilder(tenantId: UUID, invoiceId: UUID, invoiceLineId: UUID, invoiceLineTaxId: UUID, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/InvoicingService/Invoices/{invoiceId}/Lines/{invoiceLineId}/Taxes/{invoiceLineTaxId}"
+        let invoiceIdPreEscape = "\(APIHelper.mapValueToPathItem(invoiceId))"
+        let invoiceIdPostEscape = invoiceIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{invoiceId}", with: invoiceIdPostEscape, options: .literal, range: nil)
+        let invoiceLineIdPreEscape = "\(APIHelper.mapValueToPathItem(invoiceLineId))"
+        let invoiceLineIdPostEscape = invoiceLineIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{invoiceLineId}", with: invoiceLineIdPostEscape, options: .literal, range: nil)
+        let invoiceLineTaxIdPreEscape = "\(APIHelper.mapValueToPathItem(invoiceLineTaxId))"
+        let invoiceLineTaxIdPostEscape = invoiceLineTaxIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{invoiceLineTaxId}", with: invoiceLineTaxIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Patch an invoice reference.
+     
+     - parameter tenantId: (query)  
+     - parameter invoiceId: (path)  
+     - parameter invoiceReferenceId: (path)  
+     - parameter operation: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func patchInvoiceReference(tenantId: UUID, invoiceId: UUID, invoiceReferenceId: UUID, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchInvoiceReferenceWithRequestBuilder(tenantId: tenantId, invoiceId: invoiceId, invoiceReferenceId: invoiceReferenceId, operation: operation).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Patch an invoice reference.
+     - PATCH /api/v2/InvoicingService/Invoices/{invoiceId}/References/{invoiceReferenceId}
+     - Partially updates the specified reference for the invoice.
+     - parameter tenantId: (query)  
+     - parameter invoiceId: (path)  
+     - parameter invoiceReferenceId: (path)  
+     - parameter operation: (body)  (optional)
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func patchInvoiceReferenceWithRequestBuilder(tenantId: UUID, invoiceId: UUID, invoiceReferenceId: UUID, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/InvoicingService/Invoices/{invoiceId}/References/{invoiceReferenceId}"
+        let invoiceIdPreEscape = "\(APIHelper.mapValueToPathItem(invoiceId))"
+        let invoiceIdPostEscape = invoiceIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{invoiceId}", with: invoiceIdPostEscape, options: .literal, range: nil)
+        let invoiceReferenceIdPreEscape = "\(APIHelper.mapValueToPathItem(invoiceReferenceId))"
+        let invoiceReferenceIdPostEscape = invoiceReferenceIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{invoiceReferenceId}", with: invoiceReferenceIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
      Preview the rendered email for an invoice.
      
      - parameter invoiceId: (path)  

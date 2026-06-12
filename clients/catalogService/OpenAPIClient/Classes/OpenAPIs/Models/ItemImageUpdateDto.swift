@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct ItemImageUpdateDto: Codable, JSONEncodable, Hashable {
 
-    static let itemIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
+    static let itemIdRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     static let mD5HashRule = StringRule(minLength: 0, maxLength: 32, pattern: nil)
     static let metadataRule = StringRule(minLength: 0, maxLength: 1000, pattern: nil)
     static let fileUploadURLRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
@@ -24,8 +24,8 @@ public struct ItemImageUpdateDto: Codable, JSONEncodable, Hashable {
     static let notesRule = StringRule(minLength: 0, maxLength: 1000, pattern: nil)
     static let contentTypeRule = StringRule(minLength: 0, maxLength: 100, pattern: nil)
     static let fileLengthRule = NumericRule<Int64>(minimum: 0, exclusiveMinimum: false, maximum: -9223372036854775616, exclusiveMaximum: false, multipleOf: nil)
-    static let parentFileUploadIDRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    public var itemID: String
+    static let parentFileUploadIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
+    public var itemId: String
     public var isItemMozaicBG: Bool?
     public var mD5Hash: String
     public var metadata: String?
@@ -39,10 +39,10 @@ public struct ItemImageUpdateDto: Codable, JSONEncodable, Hashable {
     public var contentType: String
     public var fileLength: Int64?
     public var validResponse: Bool?
-    public var parentFileUploadID: String?
+    public var parentFileUploadId: String?
 
-    public init(itemID: String, isItemMozaicBG: Bool? = nil, mD5Hash: String, metadata: String? = nil, fileUploadURL: String, fileName: String, title: String? = nil, abstract: String? = nil, author: String? = nil, keyWords: String? = nil, notes: String? = nil, contentType: String, fileLength: Int64? = nil, validResponse: Bool? = nil, parentFileUploadID: String? = nil) {
-        self.itemID = itemID
+    public init(itemId: String, isItemMozaicBG: Bool? = nil, mD5Hash: String, metadata: String? = nil, fileUploadURL: String, fileName: String, title: String? = nil, abstract: String? = nil, author: String? = nil, keyWords: String? = nil, notes: String? = nil, contentType: String, fileLength: Int64? = nil, validResponse: Bool? = nil, parentFileUploadId: String? = nil) {
+        self.itemId = itemId
         self.isItemMozaicBG = isItemMozaicBG
         self.mD5Hash = mD5Hash
         self.metadata = metadata
@@ -56,11 +56,11 @@ public struct ItemImageUpdateDto: Codable, JSONEncodable, Hashable {
         self.contentType = contentType
         self.fileLength = fileLength
         self.validResponse = validResponse
-        self.parentFileUploadID = parentFileUploadID
+        self.parentFileUploadId = parentFileUploadId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case itemID
+        case itemId
         case isItemMozaicBG
         case mD5Hash
         case metadata
@@ -74,14 +74,14 @@ public struct ItemImageUpdateDto: Codable, JSONEncodable, Hashable {
         case contentType
         case fileLength
         case validResponse
-        case parentFileUploadID
+        case parentFileUploadId
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(itemID, forKey: .itemID)
+        try container.encode(itemId, forKey: .itemId)
         try container.encodeIfPresent(isItemMozaicBG, forKey: .isItemMozaicBG)
         try container.encode(mD5Hash, forKey: .mD5Hash)
         try container.encodeIfPresent(metadata, forKey: .metadata)
@@ -95,7 +95,7 @@ public struct ItemImageUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encode(contentType, forKey: .contentType)
         try container.encodeIfPresent(fileLength, forKey: .fileLength)
         try container.encodeIfPresent(validResponse, forKey: .validResponse)
-        try container.encodeIfPresent(parentFileUploadID, forKey: .parentFileUploadID)
+        try container.encodeIfPresent(parentFileUploadId, forKey: .parentFileUploadId)
     }
 }
 

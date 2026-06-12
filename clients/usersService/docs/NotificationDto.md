@@ -8,8 +8,10 @@ Name | Type | Description | Notes
 **read** | **Bool** |  | [optional] 
 **icon** | **String** |  | [optional] 
 **message** | **String** |  | [optional] 
+**imageUrl** | **String** |  | [optional] 
 **redirectUrl** | **String** |  | [optional] 
-**socialProfileID** | **String** |  | [optional] 
+**type** | **String** |  | [optional] 
+**socialProfileId** | **String** |  | [optional] 
 **readTimestamp** | **Date** |  | [optional] 
 **issuedTimestamp** | **Date** |  | [optional] 
 

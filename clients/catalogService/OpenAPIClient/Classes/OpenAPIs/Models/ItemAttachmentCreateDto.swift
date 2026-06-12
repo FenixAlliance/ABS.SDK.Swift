@@ -24,9 +24,9 @@ public struct ItemAttachmentCreateDto: Codable, JSONEncodable, Hashable {
     public var validResponse: Bool?
     public var parentFileUploadId: String?
     public var filePath: String?
-    public var itemID: String?
+    public var itemId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, notes: String? = nil, title: String? = nil, author: String? = nil, isFolder: Bool? = nil, fileName: String? = nil, abstract: String? = nil, keyWords: String? = nil, validResponse: Bool? = nil, parentFileUploadId: String? = nil, filePath: String? = nil, itemID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, notes: String? = nil, title: String? = nil, author: String? = nil, isFolder: Bool? = nil, fileName: String? = nil, abstract: String? = nil, keyWords: String? = nil, validResponse: Bool? = nil, parentFileUploadId: String? = nil, filePath: String? = nil, itemId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.notes = notes
@@ -39,7 +39,7 @@ public struct ItemAttachmentCreateDto: Codable, JSONEncodable, Hashable {
         self.validResponse = validResponse
         self.parentFileUploadId = parentFileUploadId
         self.filePath = filePath
-        self.itemID = itemID
+        self.itemId = itemId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -55,7 +55,7 @@ public struct ItemAttachmentCreateDto: Codable, JSONEncodable, Hashable {
         case validResponse
         case parentFileUploadId
         case filePath
-        case itemID
+        case itemId
     }
 
     // Encodable protocol methods
@@ -74,7 +74,7 @@ public struct ItemAttachmentCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(validResponse, forKey: .validResponse)
         try container.encodeIfPresent(parentFileUploadId, forKey: .parentFileUploadId)
         try container.encodeIfPresent(filePath, forKey: .filePath)
-        try container.encodeIfPresent(itemID, forKey: .itemID)
+        try container.encodeIfPresent(itemId, forKey: .itemId)
     }
 }
 

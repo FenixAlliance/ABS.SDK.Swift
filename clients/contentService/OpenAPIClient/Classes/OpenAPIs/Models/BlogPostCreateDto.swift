@@ -31,10 +31,11 @@ public struct BlogPostCreateDto: Codable, JSONEncodable, Hashable {
     public var markup: String?
     public var featuredImageUrl: String?
     public var codeType: CodeType?
+    public var slug: String?
     public var blogPostCategoryId: String?
     public var webTemplateId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, title: String, published: Bool? = nil, description: String? = nil, code: String? = nil, markup: String? = nil, featuredImageUrl: String? = nil, codeType: CodeType? = nil, blogPostCategoryId: String? = nil, webTemplateId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, title: String, published: Bool? = nil, description: String? = nil, code: String? = nil, markup: String? = nil, featuredImageUrl: String? = nil, codeType: CodeType? = nil, slug: String? = nil, blogPostCategoryId: String? = nil, webTemplateId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
@@ -44,6 +45,7 @@ public struct BlogPostCreateDto: Codable, JSONEncodable, Hashable {
         self.markup = markup
         self.featuredImageUrl = featuredImageUrl
         self.codeType = codeType
+        self.slug = slug
         self.blogPostCategoryId = blogPostCategoryId
         self.webTemplateId = webTemplateId
     }
@@ -58,6 +60,7 @@ public struct BlogPostCreateDto: Codable, JSONEncodable, Hashable {
         case markup
         case featuredImageUrl
         case codeType
+        case slug
         case blogPostCategoryId
         case webTemplateId
     }
@@ -75,6 +78,7 @@ public struct BlogPostCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(markup, forKey: .markup)
         try container.encodeIfPresent(featuredImageUrl, forKey: .featuredImageUrl)
         try container.encodeIfPresent(codeType, forKey: .codeType)
+        try container.encodeIfPresent(slug, forKey: .slug)
         try container.encodeIfPresent(blogPostCategoryId, forKey: .blogPostCategoryId)
         try container.encodeIfPresent(webTemplateId, forKey: .webTemplateId)
     }

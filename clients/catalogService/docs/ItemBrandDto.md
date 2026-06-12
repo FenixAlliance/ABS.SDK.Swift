@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **logoURL** | **String** |  | [optional] 
 **featured** | **Bool** |  | [optional] 
 **trending** | **Bool** |  | [optional] 
-**businessID** | **String** |  | [optional] 
+**tenantId** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

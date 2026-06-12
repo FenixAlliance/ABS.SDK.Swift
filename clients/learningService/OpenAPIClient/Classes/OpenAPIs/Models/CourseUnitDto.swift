@@ -18,23 +18,27 @@ public struct CourseUnitDto: Codable, JSONEncodable, Hashable {
     public var description: String?
     public var releaseDateTime: Date?
     public var content: String?
-    public var courseID: String?
-    public var courseSectionID: String?
+    public var courseId: String?
+    public var courseSectionId: String?
+    public var courseContentGroupId: String?
     public var tenantId: String?
+    public var enrollmentId: String?
     public var courseHandouts: [CourseHandoutDto]?
     public var courseAssignments: [CourseAssignmentDto]?
     public var courseComponents: [CourseUnitComponentDto]?
 
-    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil, releaseDateTime: Date? = nil, content: String? = nil, courseID: String? = nil, courseSectionID: String? = nil, tenantId: String? = nil, courseHandouts: [CourseHandoutDto]? = nil, courseAssignments: [CourseAssignmentDto]? = nil, courseComponents: [CourseUnitComponentDto]? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil, releaseDateTime: Date? = nil, content: String? = nil, courseId: String? = nil, courseSectionId: String? = nil, courseContentGroupId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil, courseHandouts: [CourseHandoutDto]? = nil, courseAssignments: [CourseAssignmentDto]? = nil, courseComponents: [CourseUnitComponentDto]? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
         self.description = description
         self.releaseDateTime = releaseDateTime
         self.content = content
-        self.courseID = courseID
-        self.courseSectionID = courseSectionID
+        self.courseId = courseId
+        self.courseSectionId = courseSectionId
+        self.courseContentGroupId = courseContentGroupId
         self.tenantId = tenantId
+        self.enrollmentId = enrollmentId
         self.courseHandouts = courseHandouts
         self.courseAssignments = courseAssignments
         self.courseComponents = courseComponents
@@ -47,9 +51,11 @@ public struct CourseUnitDto: Codable, JSONEncodable, Hashable {
         case description
         case releaseDateTime
         case content
-        case courseID
-        case courseSectionID
+        case courseId
+        case courseSectionId
+        case courseContentGroupId
         case tenantId
+        case enrollmentId
         case courseHandouts
         case courseAssignments
         case courseComponents
@@ -65,9 +71,11 @@ public struct CourseUnitDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(releaseDateTime, forKey: .releaseDateTime)
         try container.encodeIfPresent(content, forKey: .content)
-        try container.encodeIfPresent(courseID, forKey: .courseID)
-        try container.encodeIfPresent(courseSectionID, forKey: .courseSectionID)
+        try container.encodeIfPresent(courseId, forKey: .courseId)
+        try container.encodeIfPresent(courseSectionId, forKey: .courseSectionId)
+        try container.encodeIfPresent(courseContentGroupId, forKey: .courseContentGroupId)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(courseHandouts, forKey: .courseHandouts)
         try container.encodeIfPresent(courseAssignments, forKey: .courseAssignments)
         try container.encodeIfPresent(courseComponents, forKey: .courseComponents)

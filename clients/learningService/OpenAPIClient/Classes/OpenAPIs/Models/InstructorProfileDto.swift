@@ -46,11 +46,8 @@ public struct InstructorProfileDto: Codable, JSONEncodable, Hashable {
     public var data9: String?
     public var data9Label: String?
     public var authorized: Bool?
-    public var businessID: String?
-    public var contactID: String?
-    public var businessProfileRecordID: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, contactId: String? = nil, tenantId: String? = nil, type: String? = nil, enrollmentId: String? = nil, about: String? = nil, verified: Bool? = nil, submitted: Bool? = nil, avatarUrl: String? = nil, contact: ContactDto? = nil, qualifiedName: String? = nil, verificationTimestamp: Date? = nil, data: String? = nil, dataLabel: String? = nil, data1: String? = nil, data1Label: String? = nil, data2: String? = nil, data2Label: String? = nil, data3: String? = nil, data3Label: String? = nil, data4: String? = nil, data4Label: String? = nil, data5: String? = nil, data5Label: String? = nil, data6: String? = nil, data6Label: String? = nil, data7: String? = nil, data7Label: String? = nil, data8: String? = nil, data8Label: String? = nil, data9: String? = nil, data9Label: String? = nil, authorized: Bool? = nil, businessID: String? = nil, contactID: String? = nil, businessProfileRecordID: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, contactId: String? = nil, tenantId: String? = nil, type: String? = nil, enrollmentId: String? = nil, about: String? = nil, verified: Bool? = nil, submitted: Bool? = nil, avatarUrl: String? = nil, contact: ContactDto? = nil, qualifiedName: String? = nil, verificationTimestamp: Date? = nil, data: String? = nil, dataLabel: String? = nil, data1: String? = nil, data1Label: String? = nil, data2: String? = nil, data2Label: String? = nil, data3: String? = nil, data3Label: String? = nil, data4: String? = nil, data4Label: String? = nil, data5: String? = nil, data5Label: String? = nil, data6: String? = nil, data6Label: String? = nil, data7: String? = nil, data7Label: String? = nil, data8: String? = nil, data8Label: String? = nil, data9: String? = nil, data9Label: String? = nil, authorized: Bool? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.contactId = contactId
@@ -85,9 +82,6 @@ public struct InstructorProfileDto: Codable, JSONEncodable, Hashable {
         self.data9 = data9
         self.data9Label = data9Label
         self.authorized = authorized
-        self.businessID = businessID
-        self.contactID = contactID
-        self.businessProfileRecordID = businessProfileRecordID
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -125,9 +119,6 @@ public struct InstructorProfileDto: Codable, JSONEncodable, Hashable {
         case data9
         case data9Label
         case authorized
-        case businessID
-        case contactID
-        case businessProfileRecordID
     }
 
     // Encodable protocol methods
@@ -168,9 +159,6 @@ public struct InstructorProfileDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(data9, forKey: .data9)
         try container.encodeIfPresent(data9Label, forKey: .data9Label)
         try container.encodeIfPresent(authorized, forKey: .authorized)
-        try container.encodeIfPresent(businessID, forKey: .businessID)
-        try container.encodeIfPresent(contactID, forKey: .contactID)
-        try container.encodeIfPresent(businessProfileRecordID, forKey: .businessProfileRecordID)
     }
 }
 

@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getTrainingProgramEventByIdAsync**](TrainingProgramEventsAPI.md#gettrainingprogrameventbyidasync) | **GET** /api/v2/HrmsService/TrainingProgramEvents/{eventId} | Get training program event by ID
 [**getTrainingProgramEventsAsync**](TrainingProgramEventsAPI.md#gettrainingprogrameventsasync) | **GET** /api/v2/HrmsService/TrainingProgramEvents | Get training program events
 [**getTrainingProgramEventsCountAsync**](TrainingProgramEventsAPI.md#gettrainingprogrameventscountasync) | **GET** /api/v2/HrmsService/TrainingProgramEvents/Count | Count training program events
+[**patchTrainingProgramEventAsync**](TrainingProgramEventsAPI.md#patchtrainingprogrameventasync) | **PATCH** /api/v2/HrmsService/TrainingProgramEvents/{eventId} | Patch a training program event
 [**updateTrainingProgramEventAsync**](TrainingProgramEventsAPI.md#updatetrainingprogrameventasync) | **PUT** /api/v2/HrmsService/TrainingProgramEvents/{eventId} | Update a training program event
 
 
@@ -284,6 +285,64 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchTrainingProgramEventAsync**
+```swift
+    open class func patchTrainingProgramEventAsync(tenantId: UUID, eventId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a training program event
+
+Partially updates an existing training program event for the specified tenant.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let eventId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a training program event
+TrainingProgramEventsAPI.patchTrainingProgramEventAsync(tenantId: tenantId, eventId: eventId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **eventId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

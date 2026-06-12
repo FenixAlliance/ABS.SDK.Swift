@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getCourseAssignmentComponentByIdAsync**](CourseAssignmentComponentsAPI.md#getcourseassignmentcomponentbyidasync) | **GET** /api/v2/LearningService/CourseAssignmentComponents/{componentId} | Get course assignment component by ID
 [**getCourseAssignmentComponentsAsync**](CourseAssignmentComponentsAPI.md#getcourseassignmentcomponentsasync) | **GET** /api/v2/LearningService/CourseAssignmentComponents | Get all course assignment components
 [**getCourseAssignmentComponentsCountAsync**](CourseAssignmentComponentsAPI.md#getcourseassignmentcomponentscountasync) | **GET** /api/v2/LearningService/CourseAssignmentComponents/Count | Get course assignment components count
+[**patchCourseAssignmentComponentAsync**](CourseAssignmentComponentsAPI.md#patchcourseassignmentcomponentasync) | **PATCH** /api/v2/LearningService/CourseAssignmentComponents/{componentId} | Patch a course assignment component
 [**updateCourseAssignmentComponentAsync**](CourseAssignmentComponentsAPI.md#updatecourseassignmentcomponentasync) | **PUT** /api/v2/LearningService/CourseAssignmentComponents/{componentId} | Update a course assignment component
 
 
@@ -29,7 +30,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseAssignmentComponentCreateDto = CourseAssignmentComponentCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", content: "content_example", order: 123, courseAssignmentID: "courseAssignmentID_example", courseID: "courseID_example") // CourseAssignmentComponentCreateDto |  (optional)
+let courseAssignmentComponentCreateDto = CourseAssignmentComponentCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", content: "content_example", order: 123, courseAssignmentId: "courseAssignmentId_example", courseId: "courseId_example") // CourseAssignmentComponentCreateDto |  (optional)
 
 // Create a course assignment component
 CourseAssignmentComponentsAPI.createCourseAssignmentComponentAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseAssignmentComponentCreateDto: courseAssignmentComponentCreateDto) { (response, error) in
@@ -286,6 +287,64 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchCourseAssignmentComponentAsync**
+```swift
+    open class func patchCourseAssignmentComponentAsync(tenantId: UUID, componentId: String, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a course assignment component
+
+Partially updates a course assignment component for the specified tenant.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let componentId = "componentId_example" // String | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a course assignment component
+CourseAssignmentComponentsAPI.patchCourseAssignmentComponentAsync(tenantId: tenantId, componentId: componentId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **componentId** | **String** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateCourseAssignmentComponentAsync**
 ```swift
     open class func updateCourseAssignmentComponentAsync(tenantId: UUID, componentId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseAssignmentComponentUpdateDto: CourseAssignmentComponentUpdateDto? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
@@ -304,7 +363,7 @@ let tenantId = 987 // UUID |
 let componentId = "componentId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseAssignmentComponentUpdateDto = CourseAssignmentComponentUpdateDto(title: "title_example", description: "description_example", content: "content_example", order: 123, courseAssignmentID: "courseAssignmentID_example") // CourseAssignmentComponentUpdateDto |  (optional)
+let courseAssignmentComponentUpdateDto = CourseAssignmentComponentUpdateDto(title: "title_example", description: "description_example", content: "content_example", order: 123, courseAssignmentId: "courseAssignmentId_example") // CourseAssignmentComponentUpdateDto |  (optional)
 
 // Update a course assignment component
 CourseAssignmentComponentsAPI.updateCourseAssignmentComponentAsync(tenantId: tenantId, componentId: componentId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseAssignmentComponentUpdateDto: courseAssignmentComponentUpdateDto) { (response, error) in

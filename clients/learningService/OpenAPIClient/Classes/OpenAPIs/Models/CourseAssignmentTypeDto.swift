@@ -19,10 +19,11 @@ public struct CourseAssignmentTypeDto: Codable, JSONEncodable, Hashable {
     public var weight: Double?
     public var quantity: Int?
     public var excluded: Int?
-    public var courseID: String?
+    public var courseId: String?
     public var tenantId: String?
+    public var enrollmentId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, abbreviation: String? = nil, weight: Double? = nil, quantity: Int? = nil, excluded: Int? = nil, courseID: String? = nil, tenantId: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, abbreviation: String? = nil, weight: Double? = nil, quantity: Int? = nil, excluded: Int? = nil, courseId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
@@ -30,8 +31,9 @@ public struct CourseAssignmentTypeDto: Codable, JSONEncodable, Hashable {
         self.weight = weight
         self.quantity = quantity
         self.excluded = excluded
-        self.courseID = courseID
+        self.courseId = courseId
         self.tenantId = tenantId
+        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -42,8 +44,9 @@ public struct CourseAssignmentTypeDto: Codable, JSONEncodable, Hashable {
         case weight
         case quantity
         case excluded
-        case courseID
+        case courseId
         case tenantId
+        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -57,8 +60,9 @@ public struct CourseAssignmentTypeDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(weight, forKey: .weight)
         try container.encodeIfPresent(quantity, forKey: .quantity)
         try container.encodeIfPresent(excluded, forKey: .excluded)
-        try container.encodeIfPresent(courseID, forKey: .courseID)
+        try container.encodeIfPresent(courseId, forKey: .courseId)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

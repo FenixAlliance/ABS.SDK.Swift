@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getCourseGradingRubricByIdAsync**](CourseGradingRubricsAPI.md#getcoursegradingrubricbyidasync) | **GET** /api/v2/LearningService/CourseGradingRubrics/{rubricId} | Get course grading rubric by ID
 [**getCourseGradingRubricsAsync**](CourseGradingRubricsAPI.md#getcoursegradingrubricsasync) | **GET** /api/v2/LearningService/CourseGradingRubrics | Get all course grading rubrics
 [**getCourseGradingRubricsCountAsync**](CourseGradingRubricsAPI.md#getcoursegradingrubricscountasync) | **GET** /api/v2/LearningService/CourseGradingRubrics/Count | Get course grading rubrics count
+[**patchCourseGradingRubricAsync**](CourseGradingRubricsAPI.md#patchcoursegradingrubricasync) | **PATCH** /api/v2/LearningService/CourseGradingRubrics/{rubricId} | Patch a course grading rubric
 [**updateCourseGradingRubricAsync**](CourseGradingRubricsAPI.md#updatecoursegradingrubricasync) | **PUT** /api/v2/LearningService/CourseGradingRubrics/{rubricId} | Update a course grading rubric
 
 
@@ -29,7 +30,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseGradingRubricCreateDto = CourseGradingRubricCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", enablePoints: false, courseID: "courseID_example") // CourseGradingRubricCreateDto |  (optional)
+let courseGradingRubricCreateDto = CourseGradingRubricCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", enablePoints: false, courseId: "courseId_example") // CourseGradingRubricCreateDto |  (optional)
 
 // Create a course grading rubric
 CourseGradingRubricsAPI.createCourseGradingRubricAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseGradingRubricCreateDto: courseGradingRubricCreateDto) { (response, error) in
@@ -282,6 +283,64 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchCourseGradingRubricAsync**
+```swift
+    open class func patchCourseGradingRubricAsync(tenantId: UUID, rubricId: String, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+```
+
+Patch a course grading rubric
+
+Partially updates an existing course grading rubric.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let rubricId = "rubricId_example" // String | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a course grading rubric
+CourseGradingRubricsAPI.patchCourseGradingRubricAsync(tenantId: tenantId, rubricId: rubricId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **rubricId** | **String** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+Void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

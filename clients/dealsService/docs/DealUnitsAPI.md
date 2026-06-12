@@ -18,6 +18,8 @@ Method | HTTP request | Description
 [**getDealUnitsCountAsync**](DealUnitsAPI.md#getdealunitscountasync) | **GET** /api/v2/DealsService/DealUnits/Count | Get deal units count
 [**getExtendedDealUnitAsync**](DealUnitsAPI.md#getextendeddealunitasync) | **GET** /api/v2/DealsService/DealUnits/{dealUnitId}/Extended | Get extended deal unit by ID
 [**getExtendedDealUnitsAsync**](DealUnitsAPI.md#getextendeddealunitsasync) | **GET** /api/v2/DealsService/DealUnits/Extended | Get extended deal units
+[**patchDealUnitAsync**](DealUnitsAPI.md#patchdealunitasync) | **PATCH** /api/v2/DealsService/DealUnits/{dealUnitId} | Patch a deal unit
+[**patchDealUnitLineAsync**](DealUnitsAPI.md#patchdealunitlineasync) | **PATCH** /api/v2/DealsService/DealUnits/{dealUnitId}/Lines/{dealUnitLineId} | Patch a deal unit line
 [**updateDealUnitAsync**](DealUnitsAPI.md#updatedealunitasync) | **PUT** /api/v2/DealsService/DealUnits/{dealUnitId} | Update a deal unit
 [**updateDealUnitPriceAsync**](DealUnitsAPI.md#updatedealunitpriceasync) | **PUT** /api/v2/DealsService/DealUnits/{dealUnitId}/Lines/{dealUnitLineId} | Update a deal unit line
 
@@ -750,6 +752,116 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchDealUnitAsync**
+```swift
+    open class func patchDealUnitAsync(tenantId: UUID, dealUnitId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a deal unit
+
+Partially updates an existing deal unit by its unique identifier using a JSON Patch document.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let dealUnitId = 987 // UUID | 
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a deal unit
+DealUnitsAPI.patchDealUnitAsync(tenantId: tenantId, dealUnitId: dealUnitId, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **dealUnitId** | **UUID** |  | 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchDealUnitLineAsync**
+```swift
+    open class func patchDealUnitLineAsync(tenantId: UUID, dealUnitId: UUID, dealUnitLineId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a deal unit line
+
+Partially updates an existing line within a specific deal unit using a JSON Patch document.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let dealUnitId = 987 // UUID | 
+let dealUnitLineId = 987 // UUID | 
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a deal unit line
+DealUnitsAPI.patchDealUnitLineAsync(tenantId: tenantId, dealUnitId: dealUnitId, dealUnitLineId: dealUnitLineId, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **dealUnitId** | **UUID** |  | 
+ **dealUnitLineId** | **UUID** |  | 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

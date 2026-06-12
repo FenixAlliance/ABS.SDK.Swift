@@ -14,27 +14,27 @@ public struct CourseEnrollmentCreateDto: Codable, JSONEncodable, Hashable {
 
     public var id: UUID?
     public var timestamp: Date?
-    public var courseID: String?
-    public var courseCohortID: String?
-    public var studentProfileID: String?
-    public var courseCompletionCertificateID: String?
+    public var courseId: String?
+    public var courseCohortId: String?
+    public var studentProfileId: String?
+    public var courseCompletionCertificateId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, courseID: String? = nil, courseCohortID: String? = nil, studentProfileID: String? = nil, courseCompletionCertificateID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, courseId: String? = nil, courseCohortId: String? = nil, studentProfileId: String? = nil, courseCompletionCertificateId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
-        self.courseID = courseID
-        self.courseCohortID = courseCohortID
-        self.studentProfileID = studentProfileID
-        self.courseCompletionCertificateID = courseCompletionCertificateID
+        self.courseId = courseId
+        self.courseCohortId = courseCohortId
+        self.studentProfileId = studentProfileId
+        self.courseCompletionCertificateId = courseCompletionCertificateId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
-        case courseID
-        case courseCohortID
-        case studentProfileID
-        case courseCompletionCertificateID
+        case courseId
+        case courseCohortId
+        case studentProfileId
+        case courseCompletionCertificateId
     }
 
     // Encodable protocol methods
@@ -43,10 +43,10 @@ public struct CourseEnrollmentCreateDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
-        try container.encodeIfPresent(courseID, forKey: .courseID)
-        try container.encodeIfPresent(courseCohortID, forKey: .courseCohortID)
-        try container.encodeIfPresent(studentProfileID, forKey: .studentProfileID)
-        try container.encodeIfPresent(courseCompletionCertificateID, forKey: .courseCompletionCertificateID)
+        try container.encodeIfPresent(courseId, forKey: .courseId)
+        try container.encodeIfPresent(courseCohortId, forKey: .courseCohortId)
+        try container.encodeIfPresent(studentProfileId, forKey: .studentProfileId)
+        try container.encodeIfPresent(courseCompletionCertificateId, forKey: .courseCompletionCertificateId)
     }
 }
 

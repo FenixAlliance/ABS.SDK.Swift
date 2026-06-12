@@ -12,28 +12,39 @@ import AnyCodable
 
 public struct PriceListCreateDto: Codable, JSONEncodable, Hashable {
 
+    public enum Context: String, Codable, CaseIterable {
+        case sales = "Sales"
+        case purchase = "Purchase"
+        case cost = "Cost"
+    }
     static let nameRule = StringRule(minLength: 1, maxLength: 100, pattern: "/^[a-zA-Z0-9\\s]*$/")
     static let descriptionRule = StringRule(minLength: nil, maxLength: 500, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var name: String
     public var description: String?
+    public var context: Context?
     public var startDate: Date?
     public var endDate: Date?
     public var currencyId: String?
     public var unitId: String?
     public var unitGroupId: String?
+    public var partnerVisible: Bool?
+    public var unitOfMeasureDependant: Bool?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, name: String, description: String? = nil, startDate: Date? = nil, endDate: Date? = nil, currencyId: String? = nil, unitId: String? = nil, unitGroupId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, name: String, description: String? = nil, context: Context? = nil, startDate: Date? = nil, endDate: Date? = nil, currencyId: String? = nil, unitId: String? = nil, unitGroupId: String? = nil, partnerVisible: Bool? = nil, unitOfMeasureDependant: Bool? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
         self.description = description
+        self.context = context
         self.startDate = startDate
         self.endDate = endDate
         self.currencyId = currencyId
         self.unitId = unitId
         self.unitGroupId = unitGroupId
+        self.partnerVisible = partnerVisible
+        self.unitOfMeasureDependant = unitOfMeasureDependant
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -41,11 +52,14 @@ public struct PriceListCreateDto: Codable, JSONEncodable, Hashable {
         case timestamp
         case name
         case description
+        case context
         case startDate
         case endDate
         case currencyId
         case unitId
         case unitGroupId
+        case partnerVisible
+        case unitOfMeasureDependant
     }
 
     // Encodable protocol methods
@@ -56,11 +70,14 @@ public struct PriceListCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encode(name, forKey: .name)
         try container.encodeIfPresent(description, forKey: .description)
+        try container.encodeIfPresent(context, forKey: .context)
         try container.encodeIfPresent(startDate, forKey: .startDate)
         try container.encodeIfPresent(endDate, forKey: .endDate)
         try container.encodeIfPresent(currencyId, forKey: .currencyId)
         try container.encodeIfPresent(unitId, forKey: .unitId)
         try container.encodeIfPresent(unitGroupId, forKey: .unitGroupId)
+        try container.encodeIfPresent(partnerVisible, forKey: .partnerVisible)
+        try container.encodeIfPresent(unitOfMeasureDependant, forKey: .unitOfMeasureDependant)
     }
 }
 

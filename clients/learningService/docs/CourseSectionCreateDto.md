@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **name** | **String** |  | 
 **icon** | **String** |  | [optional] 
 **description** | **String** |  | [optional] 
-**courseID** | **String** |  | 
+**courseId** | **String** |  | 
 **releaseDateTime** | **Date** |  | [optional] 
 **hideFromStudents** | **Bool** |  | [optional] 
 

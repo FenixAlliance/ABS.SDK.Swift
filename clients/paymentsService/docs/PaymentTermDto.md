@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **creditWeeks** | **Double** |  | [optional] 
 **creditMonths** | **Double** |  | [optional] 
 **creditYears** | **Double** |  | [optional] 
-**paymentModeID** | **String** |  | [optional] 
+**paymentModeId** | **String** |  | [optional] 
 **tenantId** | **String** |  | [optional] 
 **enrollmentId** | **String** |  | [optional] 
 

@@ -80,6 +80,7 @@ OpenAPIClient/Classes/OpenAPIs/Models/JobOfferCreateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/JobOfferDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/JobOfferDtoEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/JobOfferDtoListEnvelope.swift
+OpenAPIClient/Classes/OpenAPIs/Models/JobOfferUpdateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/JobTitleCreateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/JobTitleDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/JobTitleDtoEnvelope.swift
@@ -96,6 +97,7 @@ OpenAPIClient/Classes/OpenAPIs/Models/LeaveTypeDtoEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/LeaveTypeDtoListEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/LeaveTypeUpdateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/LoginRequest.swift
+OpenAPIClient/Classes/OpenAPIs/Models/Operation.swift
 OpenAPIClient/Classes/OpenAPIs/Models/PayrollCreateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/PayrollDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/PayrollDtoEnvelope.swift
@@ -210,6 +212,7 @@ docs/JobOfferCreateDto.md
 docs/JobOfferDto.md
 docs/JobOfferDtoEnvelope.md
 docs/JobOfferDtoListEnvelope.md
+docs/JobOfferUpdateDto.md
 docs/JobOffersAPI.md
 docs/JobTitleCreateDto.md
 docs/JobTitleDto.md
@@ -230,6 +233,7 @@ docs/LeaveTypeDtoListEnvelope.md
 docs/LeaveTypeUpdateDto.md
 docs/LeaveTypesAPI.md
 docs/LoginRequest.md
+docs/Operation.md
 docs/PayrollCreateDto.md
 docs/PayrollDto.md
 docs/PayrollDtoEnvelope.md

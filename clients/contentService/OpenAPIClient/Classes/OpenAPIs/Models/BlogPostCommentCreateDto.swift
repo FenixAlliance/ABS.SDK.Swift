@@ -13,32 +13,32 @@ import AnyCodable
 public struct BlogPostCommentCreateDto: Codable, JSONEncodable, Hashable {
 
     static let messageRule = StringRule(minLength: 0, maxLength: 1000, pattern: nil)
-    static let ownerSocialProfileIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
-    static let socialPostIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
-    static let parentCommentIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
+    static let ownerSocialProfileIdRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
+    static let socialPostIdRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
+    static let parentCommentIdRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var message: String
-    public var ownerSocialProfileID: String?
-    public var socialPostID: String?
-    public var parentCommentID: String?
+    public var ownerSocialProfileId: String?
+    public var socialPostId: String?
+    public var parentCommentId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, message: String, ownerSocialProfileID: String? = nil, socialPostID: String? = nil, parentCommentID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, message: String, ownerSocialProfileId: String? = nil, socialPostId: String? = nil, parentCommentId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.message = message
-        self.ownerSocialProfileID = ownerSocialProfileID
-        self.socialPostID = socialPostID
-        self.parentCommentID = parentCommentID
+        self.ownerSocialProfileId = ownerSocialProfileId
+        self.socialPostId = socialPostId
+        self.parentCommentId = parentCommentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
         case message
-        case ownerSocialProfileID
-        case socialPostID
-        case parentCommentID
+        case ownerSocialProfileId
+        case socialPostId
+        case parentCommentId
     }
 
     // Encodable protocol methods
@@ -48,9 +48,9 @@ public struct BlogPostCommentCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encode(message, forKey: .message)
-        try container.encodeIfPresent(ownerSocialProfileID, forKey: .ownerSocialProfileID)
-        try container.encodeIfPresent(socialPostID, forKey: .socialPostID)
-        try container.encodeIfPresent(parentCommentID, forKey: .parentCommentID)
+        try container.encodeIfPresent(ownerSocialProfileId, forKey: .ownerSocialProfileId)
+        try container.encodeIfPresent(socialPostId, forKey: .socialPostId)
+        try container.encodeIfPresent(parentCommentId, forKey: .parentCommentId)
     }
 }
 

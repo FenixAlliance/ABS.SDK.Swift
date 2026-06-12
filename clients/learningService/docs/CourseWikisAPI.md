@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getCourseWikiByIdAsync**](CourseWikisAPI.md#getcoursewikibyidasync) | **GET** /api/v2/LearningService/CourseWikis/{wikiId} | Get course wiki by ID
 [**getCourseWikisAsync**](CourseWikisAPI.md#getcoursewikisasync) | **GET** /api/v2/LearningService/CourseWikis | Get all course wikis
 [**getCourseWikisCountAsync**](CourseWikisAPI.md#getcoursewikiscountasync) | **GET** /api/v2/LearningService/CourseWikis/Count | Get course wikis count
+[**patchCourseWikiAsync**](CourseWikisAPI.md#patchcoursewikiasync) | **PATCH** /api/v2/LearningService/CourseWikis/{wikiId} | Patch a course wiki
 [**updateCourseWikiAsync**](CourseWikisAPI.md#updatecoursewikiasync) | **PUT** /api/v2/LearningService/CourseWikis/{wikiId} | Update a course wiki
 
 
@@ -29,7 +30,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseWikiCreateDto = CourseWikiCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", courseID: "courseID_example", courseUnitID: "courseUnitID_example", releaseDateTime: Date()) // CourseWikiCreateDto |  (optional)
+let courseWikiCreateDto = CourseWikiCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", courseId: "courseId_example", courseUnitId: "courseUnitId_example", releaseDateTime: Date()) // CourseWikiCreateDto |  (optional)
 
 // Create a new course wiki
 CourseWikisAPI.createCourseWikiAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseWikiCreateDto: courseWikiCreateDto) { (response, error) in
@@ -286,6 +287,64 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchCourseWikiAsync**
+```swift
+    open class func patchCourseWikiAsync(tenantId: UUID, wikiId: String, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a course wiki
+
+Partially updates a course wiki for the specified tenant.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let wikiId = "wikiId_example" // String | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a course wiki
+CourseWikisAPI.patchCourseWikiAsync(tenantId: tenantId, wikiId: wikiId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **wikiId** | **String** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateCourseWikiAsync**
 ```swift
     open class func updateCourseWikiAsync(tenantId: UUID, wikiId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseWikiUpdateDto: CourseWikiUpdateDto? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
@@ -304,7 +363,7 @@ let tenantId = 987 // UUID |
 let wikiId = "wikiId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseWikiUpdateDto = CourseWikiUpdateDto(title: "title_example", description: "description_example", courseUnitID: "courseUnitID_example", releaseDateTime: Date()) // CourseWikiUpdateDto |  (optional)
+let courseWikiUpdateDto = CourseWikiUpdateDto(title: "title_example", description: "description_example", courseUnitId: "courseUnitId_example", releaseDateTime: Date()) // CourseWikiUpdateDto |  (optional)
 
 // Update a course wiki
 CourseWikisAPI.updateCourseWikiAsync(tenantId: tenantId, wikiId: wikiId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseWikiUpdateDto: courseWikiUpdateDto) { (response, error) in

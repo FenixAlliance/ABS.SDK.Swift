@@ -46,6 +46,7 @@ OpenAPIClient/Classes/OpenAPIs/Models/ItemPriceUpdateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/LoginRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/Money.swift
 OpenAPIClient/Classes/OpenAPIs/Models/MoneyEnvelope.swift
+OpenAPIClient/Classes/OpenAPIs/Models/Operation.swift
 OpenAPIClient/Classes/OpenAPIs/Models/PriceListCreateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/PriceListDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/PriceListDtoEnvelope.swift
@@ -105,6 +106,7 @@ docs/ItemPriceUpdateDto.md
 docs/LoginRequest.md
 docs/Money.md
 docs/MoneyEnvelope.md
+docs/Operation.md
 docs/PriceListCreateDto.md
 docs/PriceListDto.md
 docs/PriceListDtoEnvelope.md

@@ -39,9 +39,8 @@ public struct InstructorProfileCreateDto: Codable, JSONEncodable, Hashable {
     public var data9: String?
     public var data9Label: String?
     public var authorized: Bool?
-    public var contactID: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, type: String? = nil, contactId: String? = nil, about: String? = nil, avatarUrl: String? = nil, data: String? = nil, dataLabel: String? = nil, data1: String? = nil, data1Label: String? = nil, data2: String? = nil, data2Label: String? = nil, data3: String? = nil, data3Label: String? = nil, data4: String? = nil, data4Label: String? = nil, data5: String? = nil, data5Label: String? = nil, data6: String? = nil, data6Label: String? = nil, data7: String? = nil, data7Label: String? = nil, data8: String? = nil, data8Label: String? = nil, data9: String? = nil, data9Label: String? = nil, authorized: Bool? = nil, contactID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, type: String? = nil, contactId: String? = nil, about: String? = nil, avatarUrl: String? = nil, data: String? = nil, dataLabel: String? = nil, data1: String? = nil, data1Label: String? = nil, data2: String? = nil, data2Label: String? = nil, data3: String? = nil, data3Label: String? = nil, data4: String? = nil, data4Label: String? = nil, data5: String? = nil, data5Label: String? = nil, data6: String? = nil, data6Label: String? = nil, data7: String? = nil, data7Label: String? = nil, data8: String? = nil, data8Label: String? = nil, data9: String? = nil, data9Label: String? = nil, authorized: Bool? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.type = type
@@ -69,7 +68,6 @@ public struct InstructorProfileCreateDto: Codable, JSONEncodable, Hashable {
         self.data9 = data9
         self.data9Label = data9Label
         self.authorized = authorized
-        self.contactID = contactID
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -100,7 +98,6 @@ public struct InstructorProfileCreateDto: Codable, JSONEncodable, Hashable {
         case data9
         case data9Label
         case authorized
-        case contactID
     }
 
     // Encodable protocol methods
@@ -134,7 +131,6 @@ public struct InstructorProfileCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(data9, forKey: .data9)
         try container.encodeIfPresent(data9Label, forKey: .data9Label)
         try container.encodeIfPresent(authorized, forKey: .authorized)
-        try container.encodeIfPresent(contactID, forKey: .contactID)
     }
 }
 

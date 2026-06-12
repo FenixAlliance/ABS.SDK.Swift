@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**apiV2LearningServiceStudentProfilesStudentProfileIdDelete**](StudentProfilesAPI.md#apiv2learningservicestudentprofilesstudentprofileiddelete) | **DELETE** /api/v2/LearningService/StudentProfiles/{studentProfileId} | 
 [**apiV2LearningServiceStudentProfilesStudentProfileIdGet**](StudentProfilesAPI.md#apiv2learningservicestudentprofilesstudentprofileidget) | **GET** /api/v2/LearningService/StudentProfiles/{studentProfileId} | 
 [**apiV2LearningServiceStudentProfilesStudentProfileIdHoursCompletedGet**](StudentProfilesAPI.md#apiv2learningservicestudentprofilesstudentprofileidhourscompletedget) | **GET** /api/v2/LearningService/StudentProfiles/{studentProfileId}/HoursCompleted | 
+[**apiV2LearningServiceStudentProfilesStudentProfileIdPatch**](StudentProfilesAPI.md#apiv2learningservicestudentprofilesstudentprofileidpatch) | **PATCH** /api/v2/LearningService/StudentProfiles/{studentProfileId} | 
 [**apiV2LearningServiceStudentProfilesStudentProfileIdPut**](StudentProfilesAPI.md#apiv2learningservicestudentprofilesstudentprofileidput) | **PUT** /api/v2/LearningService/StudentProfiles/{studentProfileId} | 
 
 
@@ -131,7 +132,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let studentProfileCreateDto = StudentProfileCreateDto(id: 123, timestamp: Date(), type: "type_example", contactId: "contactId_example", about: "about_example", avatarUrl: "avatarUrl_example", data: "data_example", dataLabel: "dataLabel_example", data1: "data1_example", data1Label: "data1Label_example", data2: "data2_example", data2Label: "data2Label_example", data3: "data3_example", data3Label: "data3Label_example", data4: "data4_example", data4Label: "data4Label_example", data5: "data5_example", data5Label: "data5Label_example", data6: "data6_example", data6Label: "data6Label_example", data7: "data7_example", data7Label: "data7Label_example", data8: "data8_example", data8Label: "data8Label_example", data9: "data9_example", data9Label: "data9Label_example", contactID: "contactID_example") // StudentProfileCreateDto |  (optional)
+let studentProfileCreateDto = StudentProfileCreateDto(id: 123, timestamp: Date(), type: "type_example", contactId: "contactId_example", about: "about_example", avatarUrl: "avatarUrl_example", data: "data_example", dataLabel: "dataLabel_example", data1: "data1_example", data1Label: "data1Label_example", data2: "data2_example", data2Label: "data2Label_example", data3: "data3_example", data3Label: "data3Label_example", data4: "data4_example", data4Label: "data4Label_example", data5: "data5_example", data5Label: "data5Label_example", data6: "data6_example", data6Label: "data6Label_example", data7: "data7_example", data7Label: "data7Label_example", data8: "data8_example", data8Label: "data8Label_example", data9: "data9_example", data9Label: "data9Label_example") // StudentProfileCreateDto |  (optional)
 
 StudentProfilesAPI.apiV2LearningServiceStudentProfilesPost(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, studentProfileCreateDto: studentProfileCreateDto) { (response, error) in
     guard error == nil else {
@@ -381,6 +382,61 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **apiV2LearningServiceStudentProfilesStudentProfileIdPatch**
+```swift
+    open class func apiV2LearningServiceStudentProfilesStudentProfileIdPatch(tenantId: UUID, studentProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let studentProfileId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+StudentProfilesAPI.apiV2LearningServiceStudentProfilesStudentProfileIdPatch(tenantId: tenantId, studentProfileId: studentProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **studentProfileId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **apiV2LearningServiceStudentProfilesStudentProfileIdPut**
 ```swift
     open class func apiV2LearningServiceStudentProfilesStudentProfileIdPut(tenantId: UUID, studentProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, studentProfileUpdateDto: StudentProfileUpdateDto? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
@@ -397,7 +453,7 @@ let tenantId = 987 // UUID |
 let studentProfileId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let studentProfileUpdateDto = StudentProfileUpdateDto(type: "type_example", contactId: "contactId_example", about: "about_example", avatarUrl: "avatarUrl_example", data: "data_example", dataLabel: "dataLabel_example", data1: "data1_example", data1Label: "data1Label_example", data2: "data2_example", data2Label: "data2Label_example", data3: "data3_example", data3Label: "data3Label_example", data4: "data4_example", data4Label: "data4Label_example", data5: "data5_example", data5Label: "data5Label_example", data6: "data6_example", data6Label: "data6Label_example", data7: "data7_example", data7Label: "data7Label_example", data8: "data8_example", data8Label: "data8Label_example", data9: "data9_example", data9Label: "data9Label_example", contactID: "contactID_example") // StudentProfileUpdateDto |  (optional)
+let studentProfileUpdateDto = StudentProfileUpdateDto(type: "type_example", contactId: "contactId_example", about: "about_example", avatarUrl: "avatarUrl_example", data: "data_example", dataLabel: "dataLabel_example", data1: "data1_example", data1Label: "data1Label_example", data2: "data2_example", data2Label: "data2Label_example", data3: "data3_example", data3Label: "data3Label_example", data4: "data4_example", data4Label: "data4Label_example", data5: "data5_example", data5Label: "data5Label_example", data6: "data6_example", data6Label: "data6Label_example", data7: "data7_example", data7Label: "data7Label_example", data8: "data8_example", data8Label: "data8Label_example", data9: "data9_example", data9Label: "data9Label_example") // StudentProfileUpdateDto |  (optional)
 
 StudentProfilesAPI.apiV2LearningServiceStudentProfilesStudentProfileIdPut(tenantId: tenantId, studentProfileId: studentProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, studentProfileUpdateDto: studentProfileUpdateDto) { (response, error) in
     guard error == nil else {

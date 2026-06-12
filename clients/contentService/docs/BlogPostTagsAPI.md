@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**deleteBlogPostTagAsync**](BlogPostTagsAPI.md#deleteblogposttagasync) | **DELETE** /api/v2/ContentService/BlogPostTags/{blogPostTagId} | Delete a blog post tag
 [**getBlogPostTagByIdAsync**](BlogPostTagsAPI.md#getblogposttagbyidasync) | **GET** /api/v2/ContentService/BlogPostTags/{blogPostTagId} | Get blog post tag by ID
 [**getBlogPostTagsAsync**](BlogPostTagsAPI.md#getblogposttagsasync) | **GET** /api/v2/ContentService/BlogPostTags | Get blog post tags
+[**patchBlogPostTagAsync**](BlogPostTagsAPI.md#patchblogposttagasync) | **PATCH** /api/v2/ContentService/BlogPostTags/{blogPostTagId} | Patch a blog post tag
 [**updateBlogPostTagAsync**](BlogPostTagsAPI.md#updateblogposttagasync) | **PUT** /api/v2/ContentService/BlogPostTags/{blogPostTagId} | Update a blog post tag
 
 
@@ -83,7 +84,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let blogPostTagCreateDto = BlogPostTagCreateDto(id: 123, timestamp: Date(), slug: "slug_example", type: "type_example", title: "title_example", description: "description_example", seoTitle: "seoTitle_example", metaDescription: "metaDescription_example", cornerstoneContent: false, allowSerachEngines: false, seoKeyPhrases: "seoKeyPhrases_example", canonicalUrl: "canonicalUrl_example", imageURL: "imageURL_example", image: "image_example", webPortalID: "webPortalID_example") // BlogPostTagCreateDto |  (optional)
+let blogPostTagCreateDto = BlogPostTagCreateDto(id: 123, timestamp: Date(), slug: "slug_example", type: "type_example", title: "title_example", description: "description_example", seoTitle: "seoTitle_example", metaDescription: "metaDescription_example", cornerstoneContent: false, allowSerachEngines: false, seoKeyPhrases: "seoKeyPhrases_example", canonicalUrl: "canonicalUrl_example", imageURL: "imageURL_example", image: "image_example", webPortalId: "webPortalId_example") // BlogPostTagCreateDto |  (optional)
 
 // Create a blog post tag
 BlogPostTagsAPI.createBlogPostTagAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, blogPostTagCreateDto: blogPostTagCreateDto) { (response, error) in
@@ -288,6 +289,64 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchBlogPostTagAsync**
+```swift
+    open class func patchBlogPostTagAsync(tenantId: UUID, blogPostTagId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a blog post tag
+
+Partially updates an existing blog post tag for the specified tenant.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let blogPostTagId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a blog post tag
+BlogPostTagsAPI.patchBlogPostTagAsync(tenantId: tenantId, blogPostTagId: blogPostTagId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **blogPostTagId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateBlogPostTagAsync**
 ```swift
     open class func updateBlogPostTagAsync(tenantId: UUID, blogPostTagId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, blogPostTagUpdateDto: BlogPostTagUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
@@ -306,7 +365,7 @@ let tenantId = 987 // UUID |
 let blogPostTagId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let blogPostTagUpdateDto = BlogPostTagUpdateDto(slug: "slug_example", type: "type_example", title: "title_example", description: "description_example", seoTitle: "seoTitle_example", metaDescription: "metaDescription_example", cornerstoneContent: false, allowSerachEngines: false, seoKeyPhrases: "seoKeyPhrases_example", canonicalUrl: "canonicalUrl_example", imageURL: "imageURL_example", image: "image_example", webPortalID: "webPortalID_example") // BlogPostTagUpdateDto |  (optional)
+let blogPostTagUpdateDto = BlogPostTagUpdateDto(slug: "slug_example", type: "type_example", title: "title_example", description: "description_example", seoTitle: "seoTitle_example", metaDescription: "metaDescription_example", cornerstoneContent: false, allowSerachEngines: false, seoKeyPhrases: "seoKeyPhrases_example", canonicalUrl: "canonicalUrl_example", imageURL: "imageURL_example", image: "image_example", webPortalId: "webPortalId_example") // BlogPostTagUpdateDto |  (optional)
 
 // Update a blog post tag
 BlogPostTagsAPI.updateBlogPostTagAsync(tenantId: tenantId, blogPostTagId: blogPostTagId, apiVersion: apiVersion, xApiVersion: xApiVersion, blogPostTagUpdateDto: blogPostTagUpdateDto) { (response, error) in

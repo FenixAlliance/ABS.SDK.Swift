@@ -13,6 +13,68 @@ import AnyCodable
 open class PortalsAPI {
 
     /**
+     Bind a domain to a web portal
+     
+     - parameter tenantId: (query)  
+     - parameter portalId: (path)  
+     - parameter businessDomainId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func bindWebPortalDomainAsync(tenantId: UUID, portalId: UUID, businessDomainId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return bindWebPortalDomainAsyncWithRequestBuilder(tenantId: tenantId, portalId: portalId, businessDomainId: businessDomainId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Bind a domain to a web portal
+     - POST /api/v2/ContentService/Portals/{portalId}/DomainBindings/{businessDomainId}
+     - Bind a verified BusinessDomain to a web portal
+     - parameter tenantId: (query)  
+     - parameter portalId: (path)  
+     - parameter businessDomainId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func bindWebPortalDomainAsyncWithRequestBuilder(tenantId: UUID, portalId: UUID, businessDomainId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/ContentService/Portals/{portalId}/DomainBindings/{businessDomainId}"
+        let portalIdPreEscape = "\(APIHelper.mapValueToPathItem(portalId))"
+        let portalIdPostEscape = portalIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{portalId}", with: portalIdPostEscape, options: .literal, range: nil)
+        let businessDomainIdPreEscape = "\(APIHelper.mapValueToPathItem(businessDomainId))"
+        let businessDomainIdPostEscape = businessDomainIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{businessDomainId}", with: businessDomainIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
      Count portals
      
      - parameter tenantId: (query)  
@@ -430,6 +492,63 @@ open class PortalsAPI {
     }
 
     /**
+     Get a web portal's bound domains
+     
+     - parameter tenantId: (query)  
+     - parameter portalId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getWebPortalDomainBindingsAsync(tenantId: UUID, portalId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BusinessDomainDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getWebPortalDomainBindingsAsyncWithRequestBuilder(tenantId: tenantId, portalId: portalId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get a web portal's bound domains
+     - GET /api/v2/ContentService/Portals/{portalId}/DomainBindings
+     - Get the BusinessDomains bound to a web portal
+     - parameter tenantId: (query)  
+     - parameter portalId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<BusinessDomainDtoListEnvelope> 
+     */
+    open class func getWebPortalDomainBindingsAsyncWithRequestBuilder(tenantId: UUID, portalId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<BusinessDomainDtoListEnvelope> {
+        var localVariablePath = "/api/v2/ContentService/Portals/{portalId}/DomainBindings"
+        let portalIdPreEscape = "\(APIHelper.mapValueToPathItem(portalId))"
+        let portalIdPostEscape = portalIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{portalId}", with: portalIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<BusinessDomainDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
      Get a web portal's options by its ID
      
      - parameter portalId: (path)  
@@ -699,6 +818,68 @@ open class PortalsAPI {
     }
 
     /**
+     Unbind a domain from a web portal
+     
+     - parameter tenantId: (query)  
+     - parameter portalId: (path)  
+     - parameter businessDomainId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func unbindWebPortalDomainAsync(tenantId: UUID, portalId: UUID, businessDomainId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return unbindWebPortalDomainAsyncWithRequestBuilder(tenantId: tenantId, portalId: portalId, businessDomainId: businessDomainId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Unbind a domain from a web portal
+     - DELETE /api/v2/ContentService/Portals/{portalId}/DomainBindings/{businessDomainId}
+     - Unbind a BusinessDomain from a web portal
+     - parameter tenantId: (query)  
+     - parameter portalId: (path)  
+     - parameter businessDomainId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func unbindWebPortalDomainAsyncWithRequestBuilder(tenantId: UUID, portalId: UUID, businessDomainId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/ContentService/Portals/{portalId}/DomainBindings/{businessDomainId}"
+        let portalIdPreEscape = "\(APIHelper.mapValueToPathItem(portalId))"
+        let portalIdPostEscape = portalIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{portalId}", with: portalIdPostEscape, options: .literal, range: nil)
+        let businessDomainIdPreEscape = "\(APIHelper.mapValueToPathItem(businessDomainId))"
+        let businessDomainIdPostEscape = businessDomainIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{businessDomainId}", with: businessDomainIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
      Update an existing web portal
      
      - parameter tenantId: (query)  
@@ -739,6 +920,66 @@ open class PortalsAPI {
         localVariablePath = localVariablePath.replacingOccurrences(of: "{portalId}", with: portalIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: webPortalUpdateDto)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Update a web portal's settings
+     
+     - parameter tenantId: (query)  
+     - parameter portalId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter portalSettings: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func updateWebPortalSettingsAsync(tenantId: UUID, portalId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, portalSettings: PortalSettings? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return updateWebPortalSettingsAsyncWithRequestBuilder(tenantId: tenantId, portalId: portalId, apiVersion: apiVersion, xApiVersion: xApiVersion, portalSettings: portalSettings).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Update a web portal's settings
+     - PUT /api/v2/ContentService/Portals/{portalId}/Settings
+     - Update a web portal's settings (Options) by its ID
+     - parameter tenantId: (query)  
+     - parameter portalId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter portalSettings: (body)  (optional)
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func updateWebPortalSettingsAsyncWithRequestBuilder(tenantId: UUID, portalId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, portalSettings: PortalSettings? = nil) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/ContentService/Portals/{portalId}/Settings"
+        let portalIdPreEscape = "\(APIHelper.mapValueToPathItem(portalId))"
+        let portalIdPostEscape = portalIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{portalId}", with: portalIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: portalSettings)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

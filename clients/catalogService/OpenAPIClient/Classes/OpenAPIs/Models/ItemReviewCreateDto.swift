@@ -14,27 +14,27 @@ public struct ItemReviewCreateDto: Codable, JSONEncodable, Hashable {
 
     public var id: UUID?
     public var timestamp: Date?
-    public var itemID: String?
+    public var itemId: String?
     public var reviewScore: Double?
     public var reviewMessage: String?
-    public var socialProfileID: String?
+    public var socialProfileId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, itemID: String? = nil, reviewScore: Double? = nil, reviewMessage: String? = nil, socialProfileID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, itemId: String? = nil, reviewScore: Double? = nil, reviewMessage: String? = nil, socialProfileId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
-        self.itemID = itemID
+        self.itemId = itemId
         self.reviewScore = reviewScore
         self.reviewMessage = reviewMessage
-        self.socialProfileID = socialProfileID
+        self.socialProfileId = socialProfileId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
-        case itemID
+        case itemId
         case reviewScore
         case reviewMessage
-        case socialProfileID
+        case socialProfileId
     }
 
     // Encodable protocol methods
@@ -43,10 +43,10 @@ public struct ItemReviewCreateDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
-        try container.encodeIfPresent(itemID, forKey: .itemID)
+        try container.encodeIfPresent(itemId, forKey: .itemId)
         try container.encodeIfPresent(reviewScore, forKey: .reviewScore)
         try container.encodeIfPresent(reviewMessage, forKey: .reviewMessage)
-        try container.encodeIfPresent(socialProfileID, forKey: .socialProfileID)
+        try container.encodeIfPresent(socialProfileId, forKey: .socialProfileId)
     }
 }
 

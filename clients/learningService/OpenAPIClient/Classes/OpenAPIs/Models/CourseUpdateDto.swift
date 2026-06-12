@@ -18,9 +18,9 @@ public struct CourseUpdateDto: Codable, JSONEncodable, Hashable {
     public var summary: String?
     public var code: String?
     public var version: String?
-    public var courseCategoryID: String?
-    public var instructorProfileID: String?
-    public var currencyID: String?
+    public var courseCategoryId: String?
+    public var instructorProfileId: String?
+    public var currencyId: String?
     public var regularPrice: Double?
     public var maxCourseEnrollments: Int?
     public var totalEffortInWeeks: Int?
@@ -32,16 +32,16 @@ public struct CourseUpdateDto: Codable, JSONEncodable, Hashable {
     public var inscriptionsEndDateTime: Date?
     public var published: Bool?
 
-    public init(title: String? = nil, description: String? = nil, sku: String? = nil, summary: String? = nil, code: String? = nil, version: String? = nil, courseCategoryID: String? = nil, instructorProfileID: String? = nil, currencyID: String? = nil, regularPrice: Double? = nil, maxCourseEnrollments: Int? = nil, totalEffortInWeeks: Int? = nil, totalHoursPerWeek: Int? = nil, totalEffortInHours: Int? = nil, startDateTime: Date? = nil, endDateTime: Date? = nil, inscriptionsStartDateTime: Date? = nil, inscriptionsEndDateTime: Date? = nil, published: Bool? = nil) {
+    public init(title: String? = nil, description: String? = nil, sku: String? = nil, summary: String? = nil, code: String? = nil, version: String? = nil, courseCategoryId: String? = nil, instructorProfileId: String? = nil, currencyId: String? = nil, regularPrice: Double? = nil, maxCourseEnrollments: Int? = nil, totalEffortInWeeks: Int? = nil, totalHoursPerWeek: Int? = nil, totalEffortInHours: Int? = nil, startDateTime: Date? = nil, endDateTime: Date? = nil, inscriptionsStartDateTime: Date? = nil, inscriptionsEndDateTime: Date? = nil, published: Bool? = nil) {
         self.title = title
         self.description = description
         self.sku = sku
         self.summary = summary
         self.code = code
         self.version = version
-        self.courseCategoryID = courseCategoryID
-        self.instructorProfileID = instructorProfileID
-        self.currencyID = currencyID
+        self.courseCategoryId = courseCategoryId
+        self.instructorProfileId = instructorProfileId
+        self.currencyId = currencyId
         self.regularPrice = regularPrice
         self.maxCourseEnrollments = maxCourseEnrollments
         self.totalEffortInWeeks = totalEffortInWeeks
@@ -61,9 +61,9 @@ public struct CourseUpdateDto: Codable, JSONEncodable, Hashable {
         case summary
         case code
         case version
-        case courseCategoryID
-        case instructorProfileID
-        case currencyID
+        case courseCategoryId
+        case instructorProfileId
+        case currencyId
         case regularPrice
         case maxCourseEnrollments
         case totalEffortInWeeks
@@ -86,9 +86,9 @@ public struct CourseUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(summary, forKey: .summary)
         try container.encodeIfPresent(code, forKey: .code)
         try container.encodeIfPresent(version, forKey: .version)
-        try container.encodeIfPresent(courseCategoryID, forKey: .courseCategoryID)
-        try container.encodeIfPresent(instructorProfileID, forKey: .instructorProfileID)
-        try container.encodeIfPresent(currencyID, forKey: .currencyID)
+        try container.encodeIfPresent(courseCategoryId, forKey: .courseCategoryId)
+        try container.encodeIfPresent(instructorProfileId, forKey: .instructorProfileId)
+        try container.encodeIfPresent(currencyId, forKey: .currencyId)
         try container.encodeIfPresent(regularPrice, forKey: .regularPrice)
         try container.encodeIfPresent(maxCourseEnrollments, forKey: .maxCourseEnrollments)
         try container.encodeIfPresent(totalEffortInWeeks, forKey: .totalEffortInWeeks)

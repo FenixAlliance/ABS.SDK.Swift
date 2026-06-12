@@ -14,39 +14,39 @@ public struct CourseCertificateTemplateDto: Codable, JSONEncodable, Hashable {
 
     public var id: String?
     public var timestamp: Date?
-    public var courseID: String?
-    public var businessID: String?
-    public var webPortalID: String?
-    public var websiteThemeID: String?
-    public var businessProfileRecordID: String?
-    public var socialProfileID: String?
-    public var parentWebContentID: String?
-    public var parentWebContentVersionID: String?
+    public var courseId: String?
+    public var tenantId: String?
+    public var webPortalId: String?
+    public var websiteThemeId: String?
+    public var enrollmentId: String?
+    public var socialProfileId: String?
+    public var parentWebContentId: String?
+    public var parentWebContentVersionId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, courseID: String? = nil, businessID: String? = nil, webPortalID: String? = nil, websiteThemeID: String? = nil, businessProfileRecordID: String? = nil, socialProfileID: String? = nil, parentWebContentID: String? = nil, parentWebContentVersionID: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, courseId: String? = nil, tenantId: String? = nil, webPortalId: String? = nil, websiteThemeId: String? = nil, enrollmentId: String? = nil, socialProfileId: String? = nil, parentWebContentId: String? = nil, parentWebContentVersionId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
-        self.courseID = courseID
-        self.businessID = businessID
-        self.webPortalID = webPortalID
-        self.websiteThemeID = websiteThemeID
-        self.businessProfileRecordID = businessProfileRecordID
-        self.socialProfileID = socialProfileID
-        self.parentWebContentID = parentWebContentID
-        self.parentWebContentVersionID = parentWebContentVersionID
+        self.courseId = courseId
+        self.tenantId = tenantId
+        self.webPortalId = webPortalId
+        self.websiteThemeId = websiteThemeId
+        self.enrollmentId = enrollmentId
+        self.socialProfileId = socialProfileId
+        self.parentWebContentId = parentWebContentId
+        self.parentWebContentVersionId = parentWebContentVersionId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
-        case courseID
-        case businessID
-        case webPortalID
-        case websiteThemeID
-        case businessProfileRecordID
-        case socialProfileID
-        case parentWebContentID
-        case parentWebContentVersionID
+        case courseId
+        case tenantId
+        case webPortalId
+        case websiteThemeId
+        case enrollmentId
+        case socialProfileId
+        case parentWebContentId
+        case parentWebContentVersionId
     }
 
     // Encodable protocol methods
@@ -55,14 +55,14 @@ public struct CourseCertificateTemplateDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
-        try container.encodeIfPresent(courseID, forKey: .courseID)
-        try container.encodeIfPresent(businessID, forKey: .businessID)
-        try container.encodeIfPresent(webPortalID, forKey: .webPortalID)
-        try container.encodeIfPresent(websiteThemeID, forKey: .websiteThemeID)
-        try container.encodeIfPresent(businessProfileRecordID, forKey: .businessProfileRecordID)
-        try container.encodeIfPresent(socialProfileID, forKey: .socialProfileID)
-        try container.encodeIfPresent(parentWebContentID, forKey: .parentWebContentID)
-        try container.encodeIfPresent(parentWebContentVersionID, forKey: .parentWebContentVersionID)
+        try container.encodeIfPresent(courseId, forKey: .courseId)
+        try container.encodeIfPresent(tenantId, forKey: .tenantId)
+        try container.encodeIfPresent(webPortalId, forKey: .webPortalId)
+        try container.encodeIfPresent(websiteThemeId, forKey: .websiteThemeId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
+        try container.encodeIfPresent(socialProfileId, forKey: .socialProfileId)
+        try container.encodeIfPresent(parentWebContentId, forKey: .parentWebContentId)
+        try container.encodeIfPresent(parentWebContentVersionId, forKey: .parentWebContentVersionId)
     }
 }
 

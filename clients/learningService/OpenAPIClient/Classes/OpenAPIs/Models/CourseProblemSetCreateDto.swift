@@ -13,26 +13,26 @@ import AnyCodable
 public struct CourseProblemSetCreateDto: Codable, JSONEncodable, Hashable {
 
     static let titleRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    static let courseIDRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let courseIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var title: String
     public var description: String?
     public var overallScore: Double?
-    public var courseID: String
-    public var courseUnitID: String?
-    public var courseGradingRubricID: String?
+    public var courseId: String
+    public var courseUnitId: String?
+    public var courseGradingRubricId: String?
     public var releaseDateTime: Date?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, title: String, description: String? = nil, overallScore: Double? = nil, courseID: String, courseUnitID: String? = nil, courseGradingRubricID: String? = nil, releaseDateTime: Date? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, title: String, description: String? = nil, overallScore: Double? = nil, courseId: String, courseUnitId: String? = nil, courseGradingRubricId: String? = nil, releaseDateTime: Date? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
         self.description = description
         self.overallScore = overallScore
-        self.courseID = courseID
-        self.courseUnitID = courseUnitID
-        self.courseGradingRubricID = courseGradingRubricID
+        self.courseId = courseId
+        self.courseUnitId = courseUnitId
+        self.courseGradingRubricId = courseGradingRubricId
         self.releaseDateTime = releaseDateTime
     }
 
@@ -42,9 +42,9 @@ public struct CourseProblemSetCreateDto: Codable, JSONEncodable, Hashable {
         case title
         case description
         case overallScore
-        case courseID
-        case courseUnitID
-        case courseGradingRubricID
+        case courseId
+        case courseUnitId
+        case courseGradingRubricId
         case releaseDateTime
     }
 
@@ -57,9 +57,9 @@ public struct CourseProblemSetCreateDto: Codable, JSONEncodable, Hashable {
         try container.encode(title, forKey: .title)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(overallScore, forKey: .overallScore)
-        try container.encode(courseID, forKey: .courseID)
-        try container.encodeIfPresent(courseUnitID, forKey: .courseUnitID)
-        try container.encodeIfPresent(courseGradingRubricID, forKey: .courseGradingRubricID)
+        try container.encode(courseId, forKey: .courseId)
+        try container.encodeIfPresent(courseUnitId, forKey: .courseUnitId)
+        try container.encodeIfPresent(courseGradingRubricId, forKey: .courseGradingRubricId)
         try container.encodeIfPresent(releaseDateTime, forKey: .releaseDateTime)
     }
 }

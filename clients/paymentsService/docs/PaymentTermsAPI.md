@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getPaymentTermDetailsAsync**](PaymentTermsAPI.md#getpaymenttermdetailsasync) | **GET** /api/v2/PaymentsService/PaymentTerms/{paymentTermId} | Gets a payment term by ID
 [**getPaymentTermsAsync**](PaymentTermsAPI.md#getpaymenttermsasync) | **GET** /api/v2/PaymentsService/PaymentTerms | Retrieves all payment terms
 [**getPaymentTermsCountAsync**](PaymentTermsAPI.md#getpaymenttermscountasync) | **GET** /api/v2/PaymentsService/PaymentTerms/Count | Counts payment terms
+[**patchPaymentTermAsync**](PaymentTermsAPI.md#patchpaymenttermasync) | **PATCH** /api/v2/PaymentsService/PaymentTerms/{paymentTermId} | Patch a payment term
 [**updatePaymentTermAsync**](PaymentTermsAPI.md#updatepaymenttermasync) | **PUT** /api/v2/PaymentsService/PaymentTerms/{paymentTermId} | Updates a payment term
 
 
@@ -29,7 +30,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let paymentTermCreateDto = PaymentTermCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", isTemplate: false, percentage: 123, creditDays: 123, creditWeeks: 123, creditMonths: 123, creditYears: 123, paymentModeID: "paymentModeID_example") // PaymentTermCreateDto |  (optional)
+let paymentTermCreateDto = PaymentTermCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", isTemplate: false, percentage: 123, creditDays: 123, creditWeeks: 123, creditMonths: 123, creditYears: 123, paymentModeId: "paymentModeId_example") // PaymentTermCreateDto |  (optional)
 
 // Creates a new payment term
 PaymentTermsAPI.createPaymentTermAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, paymentTermCreateDto: paymentTermCreateDto) { (response, error) in
@@ -288,6 +289,64 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchPaymentTermAsync**
+```swift
+    open class func patchPaymentTermAsync(tenantId: UUID, paymentTermId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a payment term
+
+Patch a payment term
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let paymentTermId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a payment term
+PaymentTermsAPI.patchPaymentTermAsync(tenantId: tenantId, paymentTermId: paymentTermId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **paymentTermId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updatePaymentTermAsync**
 ```swift
     open class func updatePaymentTermAsync(tenantId: UUID, paymentTermId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, paymentTermUpdateDto: PaymentTermUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
@@ -306,7 +365,7 @@ let tenantId = 987 // UUID |
 let paymentTermId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let paymentTermUpdateDto = PaymentTermUpdateDto(name: "name_example", description: "description_example", isTemplate: false, percentage: 123, creditDays: 123, creditWeeks: 123, creditMonths: 123, creditYears: 123, paymentModeID: "paymentModeID_example") // PaymentTermUpdateDto |  (optional)
+let paymentTermUpdateDto = PaymentTermUpdateDto(name: "name_example", description: "description_example", isTemplate: false, percentage: 123, creditDays: 123, creditWeeks: 123, creditMonths: 123, creditYears: 123, paymentModeId: "paymentModeId_example") // PaymentTermUpdateDto |  (optional)
 
 // Updates a payment term
 PaymentTermsAPI.updatePaymentTermAsync(tenantId: tenantId, paymentTermId: paymentTermId, apiVersion: apiVersion, xApiVersion: xApiVersion, paymentTermUpdateDto: paymentTermUpdateDto) { (response, error) in

@@ -13,23 +13,23 @@ import AnyCodable
 public struct CourseSectionCreateDto: Codable, JSONEncodable, Hashable {
 
     static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    static let courseIDRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let courseIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var name: String
     public var icon: String?
     public var description: String?
-    public var courseID: String
+    public var courseId: String
     public var releaseDateTime: Date?
     public var hideFromStudents: Bool?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, name: String, icon: String? = nil, description: String? = nil, courseID: String, releaseDateTime: Date? = nil, hideFromStudents: Bool? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, name: String, icon: String? = nil, description: String? = nil, courseId: String, releaseDateTime: Date? = nil, hideFromStudents: Bool? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
         self.icon = icon
         self.description = description
-        self.courseID = courseID
+        self.courseId = courseId
         self.releaseDateTime = releaseDateTime
         self.hideFromStudents = hideFromStudents
     }
@@ -40,7 +40,7 @@ public struct CourseSectionCreateDto: Codable, JSONEncodable, Hashable {
         case name
         case icon
         case description
-        case courseID
+        case courseId
         case releaseDateTime
         case hideFromStudents
     }
@@ -54,7 +54,7 @@ public struct CourseSectionCreateDto: Codable, JSONEncodable, Hashable {
         try container.encode(name, forKey: .name)
         try container.encodeIfPresent(icon, forKey: .icon)
         try container.encodeIfPresent(description, forKey: .description)
-        try container.encode(courseID, forKey: .courseID)
+        try container.encode(courseId, forKey: .courseId)
         try container.encodeIfPresent(releaseDateTime, forKey: .releaseDateTime)
         try container.encodeIfPresent(hideFromStudents, forKey: .hideFromStudents)
     }

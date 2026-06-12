@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getCourseUnitByIdAsync**](CourseUnitsAPI.md#getcourseunitbyidasync) | **GET** /api/v2/LearningService/CourseUnits/{unitId} | Get course unit by ID
 [**getCourseUnitsAsync**](CourseUnitsAPI.md#getcourseunitsasync) | **GET** /api/v2/LearningService/CourseUnits | Get all course units
 [**getCourseUnitsCountAsync**](CourseUnitsAPI.md#getcourseunitscountasync) | **GET** /api/v2/LearningService/CourseUnits/Count | Get course units count
+[**patchCourseUnitAsync**](CourseUnitsAPI.md#patchcourseunitasync) | **PATCH** /api/v2/LearningService/CourseUnits/{unitId} | Patch a course unit
 [**updateCourseUnitAsync**](CourseUnitsAPI.md#updatecourseunitasync) | **PUT** /api/v2/LearningService/CourseUnits/{unitId} | Update a course unit
 
 
@@ -29,7 +30,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseUnitCreateDto = CourseUnitCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", content: "content_example", courseID: "courseID_example", courseSectionID: "courseSectionID_example", courseContentGroupID: "courseContentGroupID_example", releaseDateTime: Date()) // CourseUnitCreateDto |  (optional)
+let courseUnitCreateDto = CourseUnitCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", content: "content_example", courseId: "courseId_example", courseSectionId: "courseSectionId_example", courseContentGroupId: "courseContentGroupId_example", releaseDateTime: Date()) // CourseUnitCreateDto |  (optional)
 
 // Create a new course unit
 CourseUnitsAPI.createCourseUnitAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseUnitCreateDto: courseUnitCreateDto) { (response, error) in
@@ -286,6 +287,64 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchCourseUnitAsync**
+```swift
+    open class func patchCourseUnitAsync(tenantId: UUID, unitId: String, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a course unit
+
+Partially updates a course unit for the specified tenant.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let unitId = "unitId_example" // String | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a course unit
+CourseUnitsAPI.patchCourseUnitAsync(tenantId: tenantId, unitId: unitId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **unitId** | **String** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateCourseUnitAsync**
 ```swift
     open class func updateCourseUnitAsync(tenantId: UUID, unitId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseUnitUpdateDto: CourseUnitUpdateDto? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
@@ -304,7 +363,7 @@ let tenantId = 987 // UUID |
 let unitId = "unitId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseUnitUpdateDto = CourseUnitUpdateDto(title: "title_example", description: "description_example", content: "content_example", courseContentGroupID: "courseContentGroupID_example", releaseDateTime: Date()) // CourseUnitUpdateDto |  (optional)
+let courseUnitUpdateDto = CourseUnitUpdateDto(title: "title_example", description: "description_example", content: "content_example", courseContentGroupId: "courseContentGroupId_example", releaseDateTime: Date()) // CourseUnitUpdateDto |  (optional)
 
 // Update a course unit
 CourseUnitsAPI.updateCourseUnitAsync(tenantId: tenantId, unitId: unitId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseUnitUpdateDto: courseUnitUpdateDto) { (response, error) in

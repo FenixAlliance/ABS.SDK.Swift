@@ -19,10 +19,9 @@ public struct AssetValueAmendCreateDto: Codable, JSONEncodable, Hashable {
     public var newValue: Double?
     public var reason: String?
     public var amendmentDate: Date?
-    public var approvedBy: String?
-    public var approvalDate: Date?
+    public var currencyId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, assetId: String? = nil, previousValue: Double? = nil, newValue: Double? = nil, reason: String? = nil, amendmentDate: Date? = nil, approvedBy: String? = nil, approvalDate: Date? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, assetId: String? = nil, previousValue: Double? = nil, newValue: Double? = nil, reason: String? = nil, amendmentDate: Date? = nil, currencyId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.assetId = assetId
@@ -30,8 +29,7 @@ public struct AssetValueAmendCreateDto: Codable, JSONEncodable, Hashable {
         self.newValue = newValue
         self.reason = reason
         self.amendmentDate = amendmentDate
-        self.approvedBy = approvedBy
-        self.approvalDate = approvalDate
+        self.currencyId = currencyId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -42,8 +40,7 @@ public struct AssetValueAmendCreateDto: Codable, JSONEncodable, Hashable {
         case newValue
         case reason
         case amendmentDate
-        case approvedBy
-        case approvalDate
+        case currencyId
     }
 
     // Encodable protocol methods
@@ -57,8 +54,7 @@ public struct AssetValueAmendCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(newValue, forKey: .newValue)
         try container.encodeIfPresent(reason, forKey: .reason)
         try container.encodeIfPresent(amendmentDate, forKey: .amendmentDate)
-        try container.encodeIfPresent(approvedBy, forKey: .approvedBy)
-        try container.encodeIfPresent(approvalDate, forKey: .approvalDate)
+        try container.encodeIfPresent(currencyId, forKey: .currencyId)
     }
 }
 

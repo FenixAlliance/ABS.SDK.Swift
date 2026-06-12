@@ -16,27 +16,27 @@ public struct CourseTeamMembershipCreateDto: Codable, JSONEncodable, Hashable {
         case admin = "Admin"
         case staff = "Staff"
     }
-    static let courseIDRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    static let instructorProfileIDRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let courseIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let instructorProfileIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
-    public var courseID: String
-    public var instructorProfileID: String
+    public var courseId: String
+    public var instructorProfileId: String
     public var courseTeamMembershipType: CourseTeamMembershipType?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, courseID: String, instructorProfileID: String, courseTeamMembershipType: CourseTeamMembershipType? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, courseId: String, instructorProfileId: String, courseTeamMembershipType: CourseTeamMembershipType? = nil) {
         self.id = id
         self.timestamp = timestamp
-        self.courseID = courseID
-        self.instructorProfileID = instructorProfileID
+        self.courseId = courseId
+        self.instructorProfileId = instructorProfileId
         self.courseTeamMembershipType = courseTeamMembershipType
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
-        case courseID
-        case instructorProfileID
+        case courseId
+        case instructorProfileId
         case courseTeamMembershipType
     }
 
@@ -46,8 +46,8 @@ public struct CourseTeamMembershipCreateDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
-        try container.encode(courseID, forKey: .courseID)
-        try container.encode(instructorProfileID, forKey: .instructorProfileID)
+        try container.encode(courseId, forKey: .courseId)
+        try container.encode(instructorProfileId, forKey: .instructorProfileId)
         try container.encodeIfPresent(courseTeamMembershipType, forKey: .courseTeamMembershipType)
     }
 }

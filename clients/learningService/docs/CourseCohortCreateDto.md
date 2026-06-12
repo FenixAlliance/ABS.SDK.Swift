@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **id** | **UUID** |  | [optional] 
 **timestamp** | **Date** |  | [optional] 
 **name** | **String** |  | 
-**courseID** | **String** |  | 
+**courseId** | **String** |  | 
 **startDateTime** | **Date** |  | [optional] 
 **endDateTime** | **Date** |  | [optional] 
 **expectedStartDateTime** | **Date** |  | [optional] 

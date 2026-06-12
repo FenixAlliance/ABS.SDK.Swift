@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**deleteItemImageAsync**](ItemImagesAPI.md#deleteitemimageasync) | **DELETE** /api/v2/CatalogService/ItemImages/{itemImageId} | Delete an item image
 [**getItemImageByIdAsync**](ItemImagesAPI.md#getitemimagebyidasync) | **GET** /api/v2/CatalogService/ItemImages/{itemImageId} | Get item image by ID
 [**getItemImagesAsync**](ItemImagesAPI.md#getitemimagesasync) | **GET** /api/v2/CatalogService/ItemImages | Get all item images
+[**patchItemImageAsync**](ItemImagesAPI.md#patchitemimageasync) | **PATCH** /api/v2/CatalogService/ItemImages/{itemImageId} | Patch an item image
 [**updateItemImageAsync**](ItemImagesAPI.md#updateitemimageasync) | **PUT** /api/v2/CatalogService/ItemImages/{itemImageId} | Update an item image
 
 
@@ -28,7 +29,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let itemImageCreateDto = ItemImageCreateDto(id: 123, timestamp: Date(), itemID: "itemID_example", isItemMozaicBG: false, mD5Hash: "mD5Hash_example", metadata: "metadata_example", fileUploadURL: "fileUploadURL_example", fileName: "fileName_example", title: "title_example", abstract: "abstract_example", author: "author_example", keyWords: "keyWords_example", notes: "notes_example", contentType: "contentType_example", fileLength: 123, validResponse: false, socialProfileID: "socialProfileID_example", parentFileUploadID: "parentFileUploadID_example") // ItemImageCreateDto |  (optional)
+let itemImageCreateDto = ItemImageCreateDto(id: 123, timestamp: Date(), itemId: "itemId_example", isItemMozaicBG: false, mD5Hash: "mD5Hash_example", metadata: "metadata_example", fileUploadURL: "fileUploadURL_example", fileName: "fileName_example", title: "title_example", abstract: "abstract_example", author: "author_example", keyWords: "keyWords_example", notes: "notes_example", contentType: "contentType_example", fileLength: 123, validResponse: false, socialProfileId: "socialProfileId_example", parentFileUploadId: "parentFileUploadId_example") // ItemImageCreateDto |  (optional)
 
 // Create a new item image
 ItemImagesAPI.createItemImageAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemImageCreateDto: itemImageCreateDto) { (response, error) in
@@ -233,6 +234,64 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchItemImageAsync**
+```swift
+    open class func patchItemImageAsync(tenantId: UUID, itemImageId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+```
+
+Patch an item image
+
+Partially updates an existing item image for the specified tenant using a JSON Patch document.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let itemImageId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch an item image
+ItemImagesAPI.patchItemImageAsync(tenantId: tenantId, itemImageId: itemImageId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **itemImageId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+Void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateItemImageAsync**
 ```swift
     open class func updateItemImageAsync(tenantId: UUID, itemImageId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemImageUpdateDto: ItemImageUpdateDto? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
@@ -251,7 +310,7 @@ let tenantId = 987 // UUID |
 let itemImageId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let itemImageUpdateDto = ItemImageUpdateDto(itemID: "itemID_example", isItemMozaicBG: false, mD5Hash: "mD5Hash_example", metadata: "metadata_example", fileUploadURL: "fileUploadURL_example", fileName: "fileName_example", title: "title_example", abstract: "abstract_example", author: "author_example", keyWords: "keyWords_example", notes: "notes_example", contentType: "contentType_example", fileLength: 123, validResponse: false, parentFileUploadID: "parentFileUploadID_example") // ItemImageUpdateDto |  (optional)
+let itemImageUpdateDto = ItemImageUpdateDto(itemId: "itemId_example", isItemMozaicBG: false, mD5Hash: "mD5Hash_example", metadata: "metadata_example", fileUploadURL: "fileUploadURL_example", fileName: "fileName_example", title: "title_example", abstract: "abstract_example", author: "author_example", keyWords: "keyWords_example", notes: "notes_example", contentType: "contentType_example", fileLength: 123, validResponse: false, parentFileUploadId: "parentFileUploadId_example") // ItemImageUpdateDto |  (optional)
 
 // Update an item image
 ItemImagesAPI.updateItemImageAsync(tenantId: tenantId, itemImageId: itemImageId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemImageUpdateDto: itemImageUpdateDto) { (response, error) in

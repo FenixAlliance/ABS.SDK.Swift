@@ -16,9 +16,9 @@ public struct ItemTypeDto: Codable, JSONEncodable, Hashable {
     static let singularTitleRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     static let descriptionRule = StringRule(minLength: 0, maxLength: 1000, pattern: nil)
     static let googleCategoryTaxonomyRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
-    static let businessIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
-    static let itemCategoryIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
-    static let itemGoogleCategoryIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
+    static let tenantIdRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
+    static let itemCategoryIdRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
+    static let itemGoogleCategoryIdRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     public var id: String?
     public var timestamp: Date?
     public var pluralTitle: String
@@ -26,11 +26,11 @@ public struct ItemTypeDto: Codable, JSONEncodable, Hashable {
     public var description: String?
     public var imageURL: String?
     public var googleCategoryTaxonomy: String?
-    public var businessID: String
-    public var itemCategoryID: String
-    public var itemGoogleCategoryID: String?
+    public var tenantId: String
+    public var itemCategoryId: String
+    public var itemGoogleCategoryId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, pluralTitle: String, singularTitle: String, description: String? = nil, imageURL: String? = nil, googleCategoryTaxonomy: String? = nil, businessID: String, itemCategoryID: String, itemGoogleCategoryID: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, pluralTitle: String, singularTitle: String, description: String? = nil, imageURL: String? = nil, googleCategoryTaxonomy: String? = nil, tenantId: String, itemCategoryId: String, itemGoogleCategoryId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.pluralTitle = pluralTitle
@@ -38,9 +38,9 @@ public struct ItemTypeDto: Codable, JSONEncodable, Hashable {
         self.description = description
         self.imageURL = imageURL
         self.googleCategoryTaxonomy = googleCategoryTaxonomy
-        self.businessID = businessID
-        self.itemCategoryID = itemCategoryID
-        self.itemGoogleCategoryID = itemGoogleCategoryID
+        self.tenantId = tenantId
+        self.itemCategoryId = itemCategoryId
+        self.itemGoogleCategoryId = itemGoogleCategoryId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -51,9 +51,9 @@ public struct ItemTypeDto: Codable, JSONEncodable, Hashable {
         case description
         case imageURL
         case googleCategoryTaxonomy
-        case businessID
-        case itemCategoryID
-        case itemGoogleCategoryID
+        case tenantId
+        case itemCategoryId
+        case itemGoogleCategoryId
     }
 
     // Encodable protocol methods
@@ -67,9 +67,9 @@ public struct ItemTypeDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(imageURL, forKey: .imageURL)
         try container.encodeIfPresent(googleCategoryTaxonomy, forKey: .googleCategoryTaxonomy)
-        try container.encode(businessID, forKey: .businessID)
-        try container.encode(itemCategoryID, forKey: .itemCategoryID)
-        try container.encodeIfPresent(itemGoogleCategoryID, forKey: .itemGoogleCategoryID)
+        try container.encode(tenantId, forKey: .tenantId)
+        try container.encode(itemCategoryId, forKey: .itemCategoryId)
+        try container.encodeIfPresent(itemGoogleCategoryId, forKey: .itemGoogleCategoryId)
     }
 }
 

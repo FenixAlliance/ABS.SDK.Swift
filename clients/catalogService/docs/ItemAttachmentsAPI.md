@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**deleteItemAttachmentAsync**](ItemAttachmentsAPI.md#deleteitemattachmentasync) | **DELETE** /api/v2/CatalogService/ItemAttachments/{itemAttachmentId} | Delete an item attachment
 [**getItemAttachmentByIdAsync**](ItemAttachmentsAPI.md#getitemattachmentbyidasync) | **GET** /api/v2/CatalogService/ItemAttachments/{itemAttachmentId} | Get item attachment by ID
 [**getItemAttachmentsAsync**](ItemAttachmentsAPI.md#getitemattachmentsasync) | **GET** /api/v2/CatalogService/ItemAttachments | Get all item attachments
+[**patchItemAttachmentAsync**](ItemAttachmentsAPI.md#patchitemattachmentasync) | **PATCH** /api/v2/CatalogService/ItemAttachments/{itemAttachmentId} | Patch an item attachment
 [**updateItemAttachmentAsync**](ItemAttachmentsAPI.md#updateitemattachmentasync) | **PUT** /api/v2/CatalogService/ItemAttachments/{itemAttachmentId} | Update an item attachment
 
 
@@ -28,7 +29,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let itemAttachmentCreateDto = ItemAttachmentCreateDto(id: 123, timestamp: Date(), notes: "notes_example", title: "title_example", author: "author_example", isFolder: false, fileName: "fileName_example", abstract: "abstract_example", keyWords: "keyWords_example", validResponse: false, parentFileUploadId: "parentFileUploadId_example", filePath: "filePath_example", itemID: "itemID_example") // ItemAttachmentCreateDto |  (optional)
+let itemAttachmentCreateDto = ItemAttachmentCreateDto(id: 123, timestamp: Date(), notes: "notes_example", title: "title_example", author: "author_example", isFolder: false, fileName: "fileName_example", abstract: "abstract_example", keyWords: "keyWords_example", validResponse: false, parentFileUploadId: "parentFileUploadId_example", filePath: "filePath_example", itemId: "itemId_example") // ItemAttachmentCreateDto |  (optional)
 
 // Create a new item attachment
 ItemAttachmentsAPI.createItemAttachmentAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemAttachmentCreateDto: itemAttachmentCreateDto) { (response, error) in
@@ -229,6 +230,64 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchItemAttachmentAsync**
+```swift
+    open class func patchItemAttachmentAsync(tenantId: UUID, itemAttachmentId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch an item attachment
+
+Partially updates an existing item attachment for the specified tenant using a JSON Patch document.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let itemAttachmentId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch an item attachment
+ItemAttachmentsAPI.patchItemAttachmentAsync(tenantId: tenantId, itemAttachmentId: itemAttachmentId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **itemAttachmentId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

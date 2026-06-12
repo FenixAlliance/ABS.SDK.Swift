@@ -14,6 +14,8 @@ Method | HTTP request | Description
 [**getDealUnitFlowStagesCountAsync**](DealUnitFlowsAPI.md#getdealunitflowstagescountasync) | **GET** /api/v2/DealsService/DealUnitFlows/{dealUnitFlowId}/Stages/Count | Get stages count for a deal unit flow
 [**getDealUnitFlowsAsync**](DealUnitFlowsAPI.md#getdealunitflowsasync) | **GET** /api/v2/DealsService/DealUnitFlows | Get deal unit flows
 [**getDealUnitFlowsCountAsync**](DealUnitFlowsAPI.md#getdealunitflowscountasync) | **GET** /api/v2/DealsService/DealUnitFlows/Count | Get deal unit flows count
+[**patchDealUnitFlowAsync**](DealUnitFlowsAPI.md#patchdealunitflowasync) | **PATCH** /api/v2/DealsService/DealUnitFlows/{dealUnitFlowId} | Patch a deal unit flow
+[**patchDealUnitFlowStageAsync**](DealUnitFlowsAPI.md#patchdealunitflowstageasync) | **PATCH** /api/v2/DealsService/DealUnitFlows/{dealUnitFlowId}/Stages/{dealUnitFlowStageId} | Patch a deal unit flow stage
 [**updateDealUnitFlowAsync**](DealUnitFlowsAPI.md#updatedealunitflowasync) | **PUT** /api/v2/DealsService/DealUnitFlows/{dealUnitFlowId} | Update a deal unit flow
 [**updateDealUnitFlowStageAsync**](DealUnitFlowsAPI.md#updatedealunitflowstageasync) | **PUT** /api/v2/DealsService/DealUnitFlows/{dealUnitFlowId}/Stages/{dealUnitFlowStageId} | Update a deal unit flow stage
 
@@ -540,6 +542,116 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchDealUnitFlowAsync**
+```swift
+    open class func patchDealUnitFlowAsync(tenantId: UUID, dealUnitFlowId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a deal unit flow
+
+Partially updates an existing deal unit flow by its unique identifier using a JSON Patch document.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let dealUnitFlowId = 987 // UUID | 
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a deal unit flow
+DealUnitFlowsAPI.patchDealUnitFlowAsync(tenantId: tenantId, dealUnitFlowId: dealUnitFlowId, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **dealUnitFlowId** | **UUID** |  | 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchDealUnitFlowStageAsync**
+```swift
+    open class func patchDealUnitFlowStageAsync(tenantId: UUID, dealUnitFlowId: UUID, dealUnitFlowStageId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a deal unit flow stage
+
+Partially updates an existing stage within a specific deal unit flow using a JSON Patch document.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let dealUnitFlowId = 987 // UUID | 
+let dealUnitFlowStageId = 987 // UUID | 
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a deal unit flow stage
+DealUnitFlowsAPI.patchDealUnitFlowStageAsync(tenantId: tenantId, dealUnitFlowId: dealUnitFlowId, dealUnitFlowStageId: dealUnitFlowStageId, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **dealUnitFlowId** | **UUID** |  | 
+ **dealUnitFlowStageId** | **UUID** |  | 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateDealUnitFlowAsync**
 ```swift
     open class func updateDealUnitFlowAsync(tenantId: UUID, dealUnitFlowId: UUID, dealUnitFlowUpdateDto: DealUnitFlowUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
@@ -556,7 +668,7 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let dealUnitFlowId = 987 // UUID | 
-let dealUnitFlowUpdateDto = DealUnitFlowUpdateDto(name: "name_example", description: "description_example", parentBusinessProcessId: "parentBusinessProcessId_example", tenantEnrollmentId: "tenantEnrollmentId_example") // DealUnitFlowUpdateDto |  (optional)
+let dealUnitFlowUpdateDto = DealUnitFlowUpdateDto(name: "name_example", description: "description_example", parentBusinessProcessId: "parentBusinessProcessId_example") // DealUnitFlowUpdateDto |  (optional)
 
 // Update a deal unit flow
 DealUnitFlowsAPI.updateDealUnitFlowAsync(tenantId: tenantId, dealUnitFlowId: dealUnitFlowId, dealUnitFlowUpdateDto: dealUnitFlowUpdateDto) { (response, error) in

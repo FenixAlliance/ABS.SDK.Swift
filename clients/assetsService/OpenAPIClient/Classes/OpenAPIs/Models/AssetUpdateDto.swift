@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct AssetUpdateDto: Codable, JSONEncodable, Hashable {
 
-    public enum AssetType: String, Codable, CaseIterable {
+    public enum AssetClass: String, Codable, CaseIterable {
         case fixed = "Fixed"
         case stock = "Stock"
     }
@@ -24,7 +24,7 @@ public struct AssetUpdateDto: Codable, JSONEncodable, Hashable {
     }
     public var name: String?
     public var description: String?
-    public var assetType: AssetType?
+    public var assetClass: AssetClass?
     public var assetOwner: AssetOwner?
     public var calculateDepreciation: Bool?
     public var allowMonthlyDepreciation: Bool?
@@ -32,8 +32,8 @@ public struct AssetUpdateDto: Codable, JSONEncodable, Hashable {
     public var purchaseDate: Date?
     public var purchasePrice: Double?
     public var currencyId: String?
-    public var currencyCode: String?
     public var itemId: String?
+    public var assetTypeId: String?
     public var assetCategoryId: String?
     public var purchaseInvoiceId: String?
     public var purchaseReceiptId: String?
@@ -41,10 +41,10 @@ public struct AssetUpdateDto: Codable, JSONEncodable, Hashable {
     public var contactId: String?
     public var organizationDepartmentId: String?
 
-    public init(name: String? = nil, description: String? = nil, assetType: AssetType? = nil, assetOwner: AssetOwner? = nil, calculateDepreciation: Bool? = nil, allowMonthlyDepreciation: Bool? = nil, openingDepreciation: Double? = nil, purchaseDate: Date? = nil, purchasePrice: Double? = nil, currencyId: String? = nil, currencyCode: String? = nil, itemId: String? = nil, assetCategoryId: String? = nil, purchaseInvoiceId: String? = nil, purchaseReceiptId: String? = nil, assetLocationId: String? = nil, contactId: String? = nil, organizationDepartmentId: String? = nil) {
+    public init(name: String? = nil, description: String? = nil, assetClass: AssetClass? = nil, assetOwner: AssetOwner? = nil, calculateDepreciation: Bool? = nil, allowMonthlyDepreciation: Bool? = nil, openingDepreciation: Double? = nil, purchaseDate: Date? = nil, purchasePrice: Double? = nil, currencyId: String? = nil, itemId: String? = nil, assetTypeId: String? = nil, assetCategoryId: String? = nil, purchaseInvoiceId: String? = nil, purchaseReceiptId: String? = nil, assetLocationId: String? = nil, contactId: String? = nil, organizationDepartmentId: String? = nil) {
         self.name = name
         self.description = description
-        self.assetType = assetType
+        self.assetClass = assetClass
         self.assetOwner = assetOwner
         self.calculateDepreciation = calculateDepreciation
         self.allowMonthlyDepreciation = allowMonthlyDepreciation
@@ -52,8 +52,8 @@ public struct AssetUpdateDto: Codable, JSONEncodable, Hashable {
         self.purchaseDate = purchaseDate
         self.purchasePrice = purchasePrice
         self.currencyId = currencyId
-        self.currencyCode = currencyCode
         self.itemId = itemId
+        self.assetTypeId = assetTypeId
         self.assetCategoryId = assetCategoryId
         self.purchaseInvoiceId = purchaseInvoiceId
         self.purchaseReceiptId = purchaseReceiptId
@@ -65,7 +65,7 @@ public struct AssetUpdateDto: Codable, JSONEncodable, Hashable {
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case name
         case description
-        case assetType
+        case assetClass
         case assetOwner
         case calculateDepreciation
         case allowMonthlyDepreciation
@@ -73,8 +73,8 @@ public struct AssetUpdateDto: Codable, JSONEncodable, Hashable {
         case purchaseDate
         case purchasePrice
         case currencyId
-        case currencyCode
         case itemId
+        case assetTypeId
         case assetCategoryId
         case purchaseInvoiceId
         case purchaseReceiptId
@@ -89,7 +89,7 @@ public struct AssetUpdateDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(assetType, forKey: .assetType)
+        try container.encodeIfPresent(assetClass, forKey: .assetClass)
         try container.encodeIfPresent(assetOwner, forKey: .assetOwner)
         try container.encodeIfPresent(calculateDepreciation, forKey: .calculateDepreciation)
         try container.encodeIfPresent(allowMonthlyDepreciation, forKey: .allowMonthlyDepreciation)
@@ -97,8 +97,8 @@ public struct AssetUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(purchaseDate, forKey: .purchaseDate)
         try container.encodeIfPresent(purchasePrice, forKey: .purchasePrice)
         try container.encodeIfPresent(currencyId, forKey: .currencyId)
-        try container.encodeIfPresent(currencyCode, forKey: .currencyCode)
         try container.encodeIfPresent(itemId, forKey: .itemId)
+        try container.encodeIfPresent(assetTypeId, forKey: .assetTypeId)
         try container.encodeIfPresent(assetCategoryId, forKey: .assetCategoryId)
         try container.encodeIfPresent(purchaseInvoiceId, forKey: .purchaseInvoiceId)
         try container.encodeIfPresent(purchaseReceiptId, forKey: .purchaseReceiptId)

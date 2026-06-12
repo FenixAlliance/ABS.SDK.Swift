@@ -16,12 +16,18 @@ public struct DeliveryNoteDto: Codable, JSONEncodable, Hashable {
     public var timestamp: Date?
     public var title: String?
     public var description: String?
+    public var shipmentId: String?
+    public var proofOfDeliveryId: String?
+    public var tenantId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil, shipmentId: String? = nil, proofOfDeliveryId: String? = nil, tenantId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
         self.description = description
+        self.shipmentId = shipmentId
+        self.proofOfDeliveryId = proofOfDeliveryId
+        self.tenantId = tenantId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -29,6 +35,9 @@ public struct DeliveryNoteDto: Codable, JSONEncodable, Hashable {
         case timestamp
         case title
         case description
+        case shipmentId
+        case proofOfDeliveryId
+        case tenantId
     }
 
     // Encodable protocol methods
@@ -39,6 +48,9 @@ public struct DeliveryNoteDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(description, forKey: .description)
+        try container.encodeIfPresent(shipmentId, forKey: .shipmentId)
+        try container.encodeIfPresent(proofOfDeliveryId, forKey: .proofOfDeliveryId)
+        try container.encodeIfPresent(tenantId, forKey: .tenantId)
     }
 }
 

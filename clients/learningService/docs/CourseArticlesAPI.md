@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getCourseArticleByIdAsync**](CourseArticlesAPI.md#getcoursearticlebyidasync) | **GET** /api/v2/LearningService/CourseArticles/{articleId} | Get course article by ID
 [**getCourseArticlesAsync**](CourseArticlesAPI.md#getcoursearticlesasync) | **GET** /api/v2/LearningService/CourseArticles | Get all course articles
 [**getCourseArticlesCountAsync**](CourseArticlesAPI.md#getcoursearticlescountasync) | **GET** /api/v2/LearningService/CourseArticles/Count | Get course articles count
+[**patchCourseArticleAsync**](CourseArticlesAPI.md#patchcoursearticleasync) | **PATCH** /api/v2/LearningService/CourseArticles/{articleId} | Patch a course article
 [**updateCourseArticleAsync**](CourseArticlesAPI.md#updatecoursearticleasync) | **PUT** /api/v2/LearningService/CourseArticles/{articleId} | Update a course article
 
 
@@ -29,7 +30,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseArticleCreateDto = CourseArticleCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", content: "content_example", courseID: "courseID_example", courseWikiID: "courseWikiID_example") // CourseArticleCreateDto |  (optional)
+let courseArticleCreateDto = CourseArticleCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", content: "content_example", courseId: "courseId_example", courseWikiId: "courseWikiId_example") // CourseArticleCreateDto |  (optional)
 
 // Create a new course article
 CourseArticlesAPI.createCourseArticleAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseArticleCreateDto: courseArticleCreateDto) { (response, error) in
@@ -282,6 +283,64 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchCourseArticleAsync**
+```swift
+    open class func patchCourseArticleAsync(tenantId: UUID, articleId: String, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a course article
+
+Partially updates a course article for the specified tenant.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let articleId = "articleId_example" // String | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a course article
+CourseArticlesAPI.patchCourseArticleAsync(tenantId: tenantId, articleId: articleId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **articleId** | **String** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

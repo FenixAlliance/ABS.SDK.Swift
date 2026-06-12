@@ -26,7 +26,7 @@ public struct AssetDto: Codable, JSONEncodable, Hashable {
     public var timestamp: Date?
     public var tenantId: String?
     public var businessName: String?
-    public var businessProfileRecordId: String?
+    public var enrollmentId: String?
     public var name: String?
     public var description: String?
     public var assetClass: AssetClass?
@@ -41,6 +41,8 @@ public struct AssetDto: Codable, JSONEncodable, Hashable {
     public var currencyCode: String?
     public var itemId: String?
     public var itemName: String?
+    public var assetTypeId: String?
+    public var assetTypeName: String?
     public var assetCategoryId: String?
     public var assetCategoryName: String?
     public var purchaseInvoiceId: String?
@@ -53,12 +55,12 @@ public struct AssetDto: Codable, JSONEncodable, Hashable {
     public var organizationDepartmentName: String?
     public var purchaseReceiptId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, tenantId: String? = nil, businessName: String? = nil, businessProfileRecordId: String? = nil, name: String? = nil, description: String? = nil, assetClass: AssetClass? = nil, assetOwner: AssetOwner? = nil, isExistingAsset: Bool? = nil, calculateDepreciation: Bool? = nil, allowMonthlyDepreciation: Bool? = nil, openingDepreciation: Double? = nil, purchaseDate: Date? = nil, purchasePrice: Double? = nil, currencyId: String? = nil, currencyCode: String? = nil, itemId: String? = nil, itemName: String? = nil, assetCategoryId: String? = nil, assetCategoryName: String? = nil, purchaseInvoiceId: String? = nil, purchaseInvoiceNumber: String? = nil, assetLocationId: String? = nil, assetLocationName: String? = nil, contactId: String? = nil, contactName: String? = nil, organizationDepartmentId: String? = nil, organizationDepartmentName: String? = nil, purchaseReceiptId: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, tenantId: String? = nil, businessName: String? = nil, enrollmentId: String? = nil, name: String? = nil, description: String? = nil, assetClass: AssetClass? = nil, assetOwner: AssetOwner? = nil, isExistingAsset: Bool? = nil, calculateDepreciation: Bool? = nil, allowMonthlyDepreciation: Bool? = nil, openingDepreciation: Double? = nil, purchaseDate: Date? = nil, purchasePrice: Double? = nil, currencyId: String? = nil, currencyCode: String? = nil, itemId: String? = nil, itemName: String? = nil, assetTypeId: String? = nil, assetTypeName: String? = nil, assetCategoryId: String? = nil, assetCategoryName: String? = nil, purchaseInvoiceId: String? = nil, purchaseInvoiceNumber: String? = nil, assetLocationId: String? = nil, assetLocationName: String? = nil, contactId: String? = nil, contactName: String? = nil, organizationDepartmentId: String? = nil, organizationDepartmentName: String? = nil, purchaseReceiptId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.tenantId = tenantId
         self.businessName = businessName
-        self.businessProfileRecordId = businessProfileRecordId
+        self.enrollmentId = enrollmentId
         self.name = name
         self.description = description
         self.assetClass = assetClass
@@ -73,6 +75,8 @@ public struct AssetDto: Codable, JSONEncodable, Hashable {
         self.currencyCode = currencyCode
         self.itemId = itemId
         self.itemName = itemName
+        self.assetTypeId = assetTypeId
+        self.assetTypeName = assetTypeName
         self.assetCategoryId = assetCategoryId
         self.assetCategoryName = assetCategoryName
         self.purchaseInvoiceId = purchaseInvoiceId
@@ -91,7 +95,7 @@ public struct AssetDto: Codable, JSONEncodable, Hashable {
         case timestamp
         case tenantId
         case businessName
-        case businessProfileRecordId
+        case enrollmentId
         case name
         case description
         case assetClass
@@ -106,6 +110,8 @@ public struct AssetDto: Codable, JSONEncodable, Hashable {
         case currencyCode
         case itemId
         case itemName
+        case assetTypeId
+        case assetTypeName
         case assetCategoryId
         case assetCategoryName
         case purchaseInvoiceId
@@ -127,7 +133,7 @@ public struct AssetDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encodeIfPresent(businessName, forKey: .businessName)
-        try container.encodeIfPresent(businessProfileRecordId, forKey: .businessProfileRecordId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(assetClass, forKey: .assetClass)
@@ -142,6 +148,8 @@ public struct AssetDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(currencyCode, forKey: .currencyCode)
         try container.encodeIfPresent(itemId, forKey: .itemId)
         try container.encodeIfPresent(itemName, forKey: .itemName)
+        try container.encodeIfPresent(assetTypeId, forKey: .assetTypeId)
+        try container.encodeIfPresent(assetTypeName, forKey: .assetTypeName)
         try container.encodeIfPresent(assetCategoryId, forKey: .assetCategoryId)
         try container.encodeIfPresent(assetCategoryName, forKey: .assetCategoryName)
         try container.encodeIfPresent(purchaseInvoiceId, forKey: .purchaseInvoiceId)

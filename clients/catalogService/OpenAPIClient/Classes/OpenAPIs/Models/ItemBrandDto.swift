@@ -21,9 +21,9 @@ public struct ItemBrandDto: Codable, JSONEncodable, Hashable {
     public var logoURL: String?
     public var featured: Bool?
     public var trending: Bool?
-    public var businessID: String?
+    public var tenantId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, code: String? = nil, name: String? = nil, description: String? = nil, websiteURL: String? = nil, logoURL: String? = nil, featured: Bool? = nil, trending: Bool? = nil, businessID: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, code: String? = nil, name: String? = nil, description: String? = nil, websiteURL: String? = nil, logoURL: String? = nil, featured: Bool? = nil, trending: Bool? = nil, tenantId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.code = code
@@ -33,7 +33,7 @@ public struct ItemBrandDto: Codable, JSONEncodable, Hashable {
         self.logoURL = logoURL
         self.featured = featured
         self.trending = trending
-        self.businessID = businessID
+        self.tenantId = tenantId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -46,7 +46,7 @@ public struct ItemBrandDto: Codable, JSONEncodable, Hashable {
         case logoURL
         case featured
         case trending
-        case businessID
+        case tenantId
     }
 
     // Encodable protocol methods
@@ -62,7 +62,7 @@ public struct ItemBrandDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(logoURL, forKey: .logoURL)
         try container.encodeIfPresent(featured, forKey: .featured)
         try container.encodeIfPresent(trending, forKey: .trending)
-        try container.encodeIfPresent(businessID, forKey: .businessID)
+        try container.encodeIfPresent(tenantId, forKey: .tenantId)
     }
 }
 

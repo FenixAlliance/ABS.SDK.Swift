@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct ItemImageCreateDto: Codable, JSONEncodable, Hashable {
 
-    static let itemIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
+    static let itemIdRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     static let mD5HashRule = StringRule(minLength: 32, maxLength: 32, pattern: nil)
     static let metadataRule = StringRule(minLength: 0, maxLength: 1000, pattern: nil)
     static let fileNameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
@@ -23,11 +23,11 @@ public struct ItemImageCreateDto: Codable, JSONEncodable, Hashable {
     static let notesRule = StringRule(minLength: 0, maxLength: 1000, pattern: nil)
     static let contentTypeRule = StringRule(minLength: 0, maxLength: 100, pattern: nil)
     static let fileLengthRule = NumericRule<Int64>(minimum: 0, exclusiveMinimum: false, maximum: -9223372036854775616, exclusiveMaximum: false, multipleOf: nil)
-    static let socialProfileIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
-    static let parentFileUploadIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
+    static let socialProfileIdRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
+    static let parentFileUploadIdRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
-    public var itemID: String?
+    public var itemId: String?
     public var isItemMozaicBG: Bool?
     public var mD5Hash: String?
     public var metadata: String?
@@ -41,13 +41,13 @@ public struct ItemImageCreateDto: Codable, JSONEncodable, Hashable {
     public var contentType: String?
     public var fileLength: Int64?
     public var validResponse: Bool?
-    public var socialProfileID: String?
-    public var parentFileUploadID: String?
+    public var socialProfileId: String?
+    public var parentFileUploadId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, itemID: String? = nil, isItemMozaicBG: Bool? = nil, mD5Hash: String? = nil, metadata: String? = nil, fileUploadURL: String? = nil, fileName: String, title: String? = nil, abstract: String? = nil, author: String? = nil, keyWords: String? = nil, notes: String? = nil, contentType: String? = nil, fileLength: Int64? = nil, validResponse: Bool? = nil, socialProfileID: String? = nil, parentFileUploadID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, itemId: String? = nil, isItemMozaicBG: Bool? = nil, mD5Hash: String? = nil, metadata: String? = nil, fileUploadURL: String? = nil, fileName: String, title: String? = nil, abstract: String? = nil, author: String? = nil, keyWords: String? = nil, notes: String? = nil, contentType: String? = nil, fileLength: Int64? = nil, validResponse: Bool? = nil, socialProfileId: String? = nil, parentFileUploadId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
-        self.itemID = itemID
+        self.itemId = itemId
         self.isItemMozaicBG = isItemMozaicBG
         self.mD5Hash = mD5Hash
         self.metadata = metadata
@@ -61,14 +61,14 @@ public struct ItemImageCreateDto: Codable, JSONEncodable, Hashable {
         self.contentType = contentType
         self.fileLength = fileLength
         self.validResponse = validResponse
-        self.socialProfileID = socialProfileID
-        self.parentFileUploadID = parentFileUploadID
+        self.socialProfileId = socialProfileId
+        self.parentFileUploadId = parentFileUploadId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
-        case itemID
+        case itemId
         case isItemMozaicBG
         case mD5Hash
         case metadata
@@ -82,8 +82,8 @@ public struct ItemImageCreateDto: Codable, JSONEncodable, Hashable {
         case contentType
         case fileLength
         case validResponse
-        case socialProfileID
-        case parentFileUploadID
+        case socialProfileId
+        case parentFileUploadId
     }
 
     // Encodable protocol methods
@@ -92,7 +92,7 @@ public struct ItemImageCreateDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
-        try container.encodeIfPresent(itemID, forKey: .itemID)
+        try container.encodeIfPresent(itemId, forKey: .itemId)
         try container.encodeIfPresent(isItemMozaicBG, forKey: .isItemMozaicBG)
         try container.encodeIfPresent(mD5Hash, forKey: .mD5Hash)
         try container.encodeIfPresent(metadata, forKey: .metadata)
@@ -106,8 +106,8 @@ public struct ItemImageCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(contentType, forKey: .contentType)
         try container.encodeIfPresent(fileLength, forKey: .fileLength)
         try container.encodeIfPresent(validResponse, forKey: .validResponse)
-        try container.encodeIfPresent(socialProfileID, forKey: .socialProfileID)
-        try container.encodeIfPresent(parentFileUploadID, forKey: .parentFileUploadID)
+        try container.encodeIfPresent(socialProfileId, forKey: .socialProfileId)
+        try container.encodeIfPresent(parentFileUploadId, forKey: .parentFileUploadId)
     }
 }
 

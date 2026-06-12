@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getCourseCategoriesAsync**](CourseCategoriesAPI.md#getcoursecategoriesasync) | **GET** /api/v2/LearningService/CourseCategories | Get all course categories
 [**getCourseCategoriesCountAsync**](CourseCategoriesAPI.md#getcoursecategoriescountasync) | **GET** /api/v2/LearningService/CourseCategories/Count | Get course categories count
 [**getCourseCategoryByIdAsync**](CourseCategoriesAPI.md#getcoursecategorybyidasync) | **GET** /api/v2/LearningService/CourseCategories/{categoryId} | Get course category by ID
+[**patchCourseCategoryAsync**](CourseCategoriesAPI.md#patchcoursecategoryasync) | **PATCH** /api/v2/LearningService/CourseCategories/{categoryId} | Patch a course category
 [**updateCourseCategoryAsync**](CourseCategoriesAPI.md#updatecoursecategoryasync) | **PUT** /api/v2/LearningService/CourseCategories/{categoryId} | Update a course category
 
 
@@ -282,6 +283,64 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchCourseCategoryAsync**
+```swift
+    open class func patchCourseCategoryAsync(tenantId: UUID, categoryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a course category
+
+Partially updates a course category for the specified tenant.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let categoryId = "categoryId_example" // String | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a course category
+CourseCategoriesAPI.patchCourseCategoryAsync(tenantId: tenantId, categoryId: categoryId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **categoryId** | **String** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

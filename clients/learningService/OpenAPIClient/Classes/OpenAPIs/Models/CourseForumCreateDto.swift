@@ -13,19 +13,19 @@ import AnyCodable
 public struct CourseForumCreateDto: Codable, JSONEncodable, Hashable {
 
     static let titleRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    static let courseIDRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let courseIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var title: String
     public var description: String?
-    public var courseID: String
+    public var courseId: String
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, title: String, description: String? = nil, courseID: String) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, title: String, description: String? = nil, courseId: String) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
         self.description = description
-        self.courseID = courseID
+        self.courseId = courseId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -33,7 +33,7 @@ public struct CourseForumCreateDto: Codable, JSONEncodable, Hashable {
         case timestamp
         case title
         case description
-        case courseID
+        case courseId
     }
 
     // Encodable protocol methods
@@ -44,7 +44,7 @@ public struct CourseForumCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encode(title, forKey: .title)
         try container.encodeIfPresent(description, forKey: .description)
-        try container.encode(courseID, forKey: .courseID)
+        try container.encode(courseId, forKey: .courseId)
     }
 }
 

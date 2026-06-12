@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getPricingRuleById**](PricingRulesAPI.md#getpricingrulebyid) | **GET** /api/v2/PricingService/PricingRules/{pricingRuleId} | Get pricing rule by ID
 [**getPricingRules**](PricingRulesAPI.md#getpricingrules) | **GET** /api/v2/PricingService/PricingRules | Get all pricing rules
 [**getPricingRulesCountAsync**](PricingRulesAPI.md#getpricingrulescountasync) | **GET** /api/v2/PricingService/PricingRules/Count | Counts pricing rules
+[**patchPricingRule**](PricingRulesAPI.md#patchpricingrule) | **PATCH** /api/v2/PricingService/PricingRules/{pricingRuleId} | Patch a pricing rule
 [**updatePricingRule**](PricingRulesAPI.md#updatepricingrule) | **PUT** /api/v2/PricingService/PricingRules/Update | Update a pricing rule
 
 
@@ -29,7 +30,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let pricingRuleCreateDto = PricingRuleCreateDto(id: 123, timestamp: Date(), code: "code_example", title: "title_example", description: "description_example", isFree: false, reduce: false, isEnabled: false, isDefault: false, allowInternational: false, hours: 123, days: 123, weeks: 123, months: 123, years: 123, value: 123, percentage: 123, currencyID: "currencyID_example", countryID: "countryID_example", countryStateID: "countryStateID_example", customState: "customState_example", customCity: "customCity_example", cityID: "cityID_example") // PricingRuleCreateDto |  (optional)
+let pricingRuleCreateDto = PricingRuleCreateDto(id: 123, timestamp: Date(), code: "code_example", title: "title_example", description: "description_example", isFree: false, reduce: false, isEnabled: false, isDefault: false, allowInternational: false, hours: 123, days: 123, weeks: 123, months: 123, years: 123, value: 123, percentage: 123, currencyId: "currencyId_example", countryId: "countryId_example", countryStateId: "countryStateId_example", customState: "customState_example", customCity: "customCity_example", cityId: "cityId_example") // PricingRuleCreateDto |  (optional)
 
 // Create a new pricing rule
 PricingRulesAPI.createPricingRule(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, pricingRuleCreateDto: pricingRuleCreateDto) { (response, error) in
@@ -288,6 +289,64 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchPricingRule**
+```swift
+    open class func patchPricingRule(tenantId: UUID, pricingRuleId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+```
+
+Patch a pricing rule
+
+Partially updates a pricing rule using a JSON Patch document.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let pricingRuleId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a pricing rule
+PricingRulesAPI.patchPricingRule(tenantId: tenantId, pricingRuleId: pricingRuleId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **pricingRuleId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+Void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updatePricingRule**
 ```swift
     open class func updatePricingRule(tenantId: UUID, pricingRuleId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, pricingRuleUpdateDto: PricingRuleUpdateDto? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
@@ -306,7 +365,7 @@ let tenantId = 987 // UUID |
 let pricingRuleId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let pricingRuleUpdateDto = PricingRuleUpdateDto(title: "title_example", description: "description_example", isFree: false, reduce: false, isEnabled: false, isDefault: false, allowInternational: false, hours: 123, days: 123, weeks: 123, months: 123, years: 123, value: 123, percentage: 123, currencyID: "currencyID_example", countryID: "countryID_example", countryStateID: "countryStateID_example", customState: "customState_example", customCity: "customCity_example", cityID: "cityID_example") // PricingRuleUpdateDto |  (optional)
+let pricingRuleUpdateDto = PricingRuleUpdateDto(title: "title_example", description: "description_example", isFree: false, reduce: false, isEnabled: false, isDefault: false, allowInternational: false, hours: 123, days: 123, weeks: 123, months: 123, years: 123, value: 123, percentage: 123, currencyId: "currencyId_example", countryId: "countryId_example", countryStateId: "countryStateId_example", customState: "customState_example", customCity: "customCity_example", cityId: "cityId_example") // PricingRuleUpdateDto |  (optional)
 
 // Update a pricing rule
 PricingRulesAPI.updatePricingRule(tenantId: tenantId, pricingRuleId: pricingRuleId, apiVersion: apiVersion, xApiVersion: xApiVersion, pricingRuleUpdateDto: pricingRuleUpdateDto) { (response, error) in

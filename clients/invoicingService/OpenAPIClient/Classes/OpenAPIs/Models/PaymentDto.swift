@@ -96,8 +96,10 @@ public struct PaymentDto: Codable, JSONEncodable, Hashable {
     public var enrollmentId: String?
     public var bankId: String?
     public var paymentTokenId: String?
+    public var emisorWalletAccountId: String?
+    public var receiverWalletAccountId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, test: Bool? = nil, invoiceId: String? = nil, tenantId: String? = nil, emisorWalletId: String? = nil, receiverWalletId: String? = nil, currencyId: String? = nil, forexRate: Double? = nil, totalCost: Double? = nil, totalTaxes: Double? = nil, closed: Bool? = nil, data: String? = nil, dataLabel: String? = nil, data1: String? = nil, data1Label: String? = nil, response: String? = nil, authorization: String? = nil, referenceCode: String? = nil, correlationCode: String? = nil, lastUpdated: Date? = nil, onBehalfOf: OnBehalfOf? = nil, paymentType: PaymentType? = nil, paymentStatus: PaymentStatus? = nil, baseCost: Double? = nil, signature: String? = nil, signatureMismatch: Bool? = nil, isExternal: Bool? = nil, markedForRevision: Bool? = nil, forexRatesSnapshot: String? = nil, officialId: String? = nil, officialIdExpeditionDate: Date? = nil, fiscalIdentificationTypeId: String? = nil, billingAddress: String? = nil, phone: String? = nil, cellphone: String? = nil, department: String? = nil, city: String? = nil, countryId: String? = nil, locationId: String? = nil, entitlementId: String? = nil, antiFraudScore: Double? = nil, callRecordURL: String? = nil, called: Bool? = nil, verified: Bool? = nil, payerPictureTimestamp: String? = nil, payerPicture: String? = nil, identificationPictureTimestamp: String? = nil, identificationPicture: String? = nil, identificationBackPicture: String? = nil, identificationBackPictureTimestamp: String? = nil, ipLookupId: String? = nil, orderId: String? = nil, accountingEntryId: String? = nil, paymentGatewayId: String? = nil, bankAccountId: String? = nil, enrollmentId: String? = nil, bankId: String? = nil, paymentTokenId: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, test: Bool? = nil, invoiceId: String? = nil, tenantId: String? = nil, emisorWalletId: String? = nil, receiverWalletId: String? = nil, currencyId: String? = nil, forexRate: Double? = nil, totalCost: Double? = nil, totalTaxes: Double? = nil, closed: Bool? = nil, data: String? = nil, dataLabel: String? = nil, data1: String? = nil, data1Label: String? = nil, response: String? = nil, authorization: String? = nil, referenceCode: String? = nil, correlationCode: String? = nil, lastUpdated: Date? = nil, onBehalfOf: OnBehalfOf? = nil, paymentType: PaymentType? = nil, paymentStatus: PaymentStatus? = nil, baseCost: Double? = nil, signature: String? = nil, signatureMismatch: Bool? = nil, isExternal: Bool? = nil, markedForRevision: Bool? = nil, forexRatesSnapshot: String? = nil, officialId: String? = nil, officialIdExpeditionDate: Date? = nil, fiscalIdentificationTypeId: String? = nil, billingAddress: String? = nil, phone: String? = nil, cellphone: String? = nil, department: String? = nil, city: String? = nil, countryId: String? = nil, locationId: String? = nil, entitlementId: String? = nil, antiFraudScore: Double? = nil, callRecordURL: String? = nil, called: Bool? = nil, verified: Bool? = nil, payerPictureTimestamp: String? = nil, payerPicture: String? = nil, identificationPictureTimestamp: String? = nil, identificationPicture: String? = nil, identificationBackPicture: String? = nil, identificationBackPictureTimestamp: String? = nil, ipLookupId: String? = nil, orderId: String? = nil, accountingEntryId: String? = nil, paymentGatewayId: String? = nil, bankAccountId: String? = nil, enrollmentId: String? = nil, bankId: String? = nil, paymentTokenId: String? = nil, emisorWalletAccountId: String? = nil, receiverWalletAccountId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.test = test
@@ -157,6 +159,8 @@ public struct PaymentDto: Codable, JSONEncodable, Hashable {
         self.enrollmentId = enrollmentId
         self.bankId = bankId
         self.paymentTokenId = paymentTokenId
+        self.emisorWalletAccountId = emisorWalletAccountId
+        self.receiverWalletAccountId = receiverWalletAccountId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -219,6 +223,8 @@ public struct PaymentDto: Codable, JSONEncodable, Hashable {
         case enrollmentId
         case bankId
         case paymentTokenId
+        case emisorWalletAccountId
+        case receiverWalletAccountId
     }
 
     // Encodable protocol methods
@@ -284,6 +290,8 @@ public struct PaymentDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(bankId, forKey: .bankId)
         try container.encodeIfPresent(paymentTokenId, forKey: .paymentTokenId)
+        try container.encodeIfPresent(emisorWalletAccountId, forKey: .emisorWalletAccountId)
+        try container.encodeIfPresent(receiverWalletAccountId, forKey: .receiverWalletAccountId)
     }
 }
 

@@ -14,6 +14,8 @@ Method | HTTP request | Description
 [**getCourseCertificateTemplatesCountAsync**](CourseCertificatesAPI.md#getcoursecertificatetemplatescountasync) | **GET** /api/v2/LearningService/CourseCertificates/Template/Count | Get certificate templates count
 [**getCourseCertificatesAsync**](CourseCertificatesAPI.md#getcoursecertificatesasync) | **GET** /api/v2/LearningService/CourseCertificates | Get all course certificates
 [**getCourseCertificatesCountAsync**](CourseCertificatesAPI.md#getcoursecertificatescountasync) | **GET** /api/v2/LearningService/CourseCertificates/Count | Get course certificates count
+[**patchCourseCertificateAsync**](CourseCertificatesAPI.md#patchcoursecertificateasync) | **PATCH** /api/v2/LearningService/CourseCertificates/{courseCertificateId} | Patch a course certificate
+[**patchCourseCertificateTemplateAsync**](CourseCertificatesAPI.md#patchcoursecertificatetemplateasync) | **PATCH** /api/v2/LearningService/CourseCertificates/Template/{courseCertificateTemplateId} | Patch a certificate template
 [**updateCourseCertificateAsync**](CourseCertificatesAPI.md#updatecoursecertificateasync) | **PUT** /api/v2/LearningService/CourseCertificates/{courseCertificateId} | Update a course certificate
 [**updateCourseCertificateTemplateAsync**](CourseCertificatesAPI.md#updatecoursecertificatetemplateasync) | **PUT** /api/v2/LearningService/CourseCertificates/Template/{courseCertificateTemplateId} | Update a certificate template
 
@@ -35,7 +37,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseCompletionCertificateCreateDto = CourseCompletionCertificateCreateDto(id: 123, timestamp: Date(), studentProfileID: "studentProfileID_example", courseEnrollmentID: "courseEnrollmentID_example", courseCompletionCertificateTemplateID: "courseCompletionCertificateTemplateID_example", courseID: "courseID_example") // CourseCompletionCertificateCreateDto |  (optional)
+let courseCompletionCertificateCreateDto = CourseCompletionCertificateCreateDto(id: 123, timestamp: Date(), studentProfileId: "studentProfileId_example", courseEnrollmentId: "courseEnrollmentId_example", courseCompletionCertificateTemplateId: "courseCompletionCertificateTemplateId_example", courseId: "courseId_example") // CourseCompletionCertificateCreateDto |  (optional)
 
 // Create a course certificate
 CourseCertificatesAPI.createCourseCertificateAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseCompletionCertificateCreateDto: courseCompletionCertificateCreateDto) { (response, error) in
@@ -91,7 +93,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseCertificateTemplateCreateDto = CourseCertificateTemplateCreateDto(id: 123, timestamp: Date(), courseID: "courseID_example", webPortalID: "webPortalID_example", websiteThemeID: "websiteThemeID_example", socialProfileID: "socialProfileID_example", parentWebContentID: "parentWebContentID_example", parentWebContentVersionID: "parentWebContentVersionID_example") // CourseCertificateTemplateCreateDto |  (optional)
+let courseCertificateTemplateCreateDto = CourseCertificateTemplateCreateDto(id: 123, timestamp: Date(), courseId: "courseId_example", webPortalId: "webPortalId_example", websiteThemeId: "websiteThemeId_example", socialProfileId: "socialProfileId_example", parentWebContentId: "parentWebContentId_example", parentWebContentVersionId: "parentWebContentVersionId_example") // CourseCertificateTemplateCreateDto |  (optional)
 
 // Create a certificate template
 CourseCertificatesAPI.createCourseCertificateTemplateAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseCertificateTemplateCreateDto: courseCertificateTemplateCreateDto) { (response, error) in
@@ -570,6 +572,122 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchCourseCertificateAsync**
+```swift
+    open class func patchCourseCertificateAsync(tenantId: UUID, courseCertificateId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a course certificate
+
+Partially updates a course certificate for the specified tenant.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let courseCertificateId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a course certificate
+CourseCertificatesAPI.patchCourseCertificateAsync(tenantId: tenantId, courseCertificateId: courseCertificateId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **courseCertificateId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchCourseCertificateTemplateAsync**
+```swift
+    open class func patchCourseCertificateTemplateAsync(tenantId: UUID, courseCertificateTemplateId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a certificate template
+
+Partially updates a course certificate template for the specified tenant.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let courseCertificateTemplateId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a certificate template
+CourseCertificatesAPI.patchCourseCertificateTemplateAsync(tenantId: tenantId, courseCertificateTemplateId: courseCertificateTemplateId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **courseCertificateTemplateId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateCourseCertificateAsync**
 ```swift
     open class func updateCourseCertificateAsync(tenantId: UUID, courseCertificateId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, courseCompletionCertificateUpdateDto: CourseCompletionCertificateUpdateDto? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
@@ -588,7 +706,7 @@ let tenantId = 987 // UUID |
 let courseCertificateId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseCompletionCertificateUpdateDto = CourseCompletionCertificateUpdateDto(studentProfileID: "studentProfileID_example", courseEnrollmentID: "courseEnrollmentID_example", courseCompletionCertificateTemplateID: "courseCompletionCertificateTemplateID_example", courseID: "courseID_example") // CourseCompletionCertificateUpdateDto |  (optional)
+let courseCompletionCertificateUpdateDto = CourseCompletionCertificateUpdateDto(studentProfileId: "studentProfileId_example", courseEnrollmentId: "courseEnrollmentId_example", courseCompletionCertificateTemplateId: "courseCompletionCertificateTemplateId_example", courseId: "courseId_example") // CourseCompletionCertificateUpdateDto |  (optional)
 
 // Update a course certificate
 CourseCertificatesAPI.updateCourseCertificateAsync(tenantId: tenantId, courseCertificateId: courseCertificateId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseCompletionCertificateUpdateDto: courseCompletionCertificateUpdateDto) { (response, error) in
@@ -646,7 +764,7 @@ let tenantId = 987 // UUID |
 let courseCertificateTemplateId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseCertificateTemplateUpdateDto = CourseCertificateTemplateUpdateDto(webPortalID: "webPortalID_example", websiteThemeID: "websiteThemeID_example", socialProfileID: "socialProfileID_example", parentWebContentID: "parentWebContentID_example", parentWebContentVersionID: "parentWebContentVersionID_example") // CourseCertificateTemplateUpdateDto |  (optional)
+let courseCertificateTemplateUpdateDto = CourseCertificateTemplateUpdateDto(webPortalId: "webPortalId_example", websiteThemeId: "websiteThemeId_example", socialProfileId: "socialProfileId_example", parentWebContentId: "parentWebContentId_example", parentWebContentVersionId: "parentWebContentVersionId_example") // CourseCertificateTemplateUpdateDto |  (optional)
 
 // Update a certificate template
 CourseCertificatesAPI.updateCourseCertificateTemplateAsync(tenantId: tenantId, courseCertificateTemplateId: courseCertificateTemplateId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseCertificateTemplateUpdateDto: courseCertificateTemplateUpdateDto) { (response, error) in

@@ -16,16 +16,16 @@ public struct CourseTeamMembershipUpdateDto: Codable, JSONEncodable, Hashable {
         case admin = "Admin"
         case staff = "Staff"
     }
-    public var instructorProfileID: String?
+    public var instructorProfileId: String?
     public var courseTeamMembershipType: CourseTeamMembershipType?
 
-    public init(instructorProfileID: String? = nil, courseTeamMembershipType: CourseTeamMembershipType? = nil) {
-        self.instructorProfileID = instructorProfileID
+    public init(instructorProfileId: String? = nil, courseTeamMembershipType: CourseTeamMembershipType? = nil) {
+        self.instructorProfileId = instructorProfileId
         self.courseTeamMembershipType = courseTeamMembershipType
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case instructorProfileID
+        case instructorProfileId
         case courseTeamMembershipType
     }
 
@@ -33,7 +33,7 @@ public struct CourseTeamMembershipUpdateDto: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(instructorProfileID, forKey: .instructorProfileID)
+        try container.encodeIfPresent(instructorProfileId, forKey: .instructorProfileId)
         try container.encodeIfPresent(courseTeamMembershipType, forKey: .courseTeamMembershipType)
     }
 }

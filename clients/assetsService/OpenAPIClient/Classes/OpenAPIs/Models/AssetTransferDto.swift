@@ -14,8 +14,8 @@ public struct AssetTransferDto: Codable, JSONEncodable, Hashable {
 
     public var id: String?
     public var timestamp: Date?
-    public var businessId: String?
-    public var businessProfileRecordId: String?
+    public var tenantId: String?
+    public var enrollmentId: String?
     public var assetId: String?
     public var assetName: String?
     public var isRootTransfer: Bool?
@@ -36,11 +36,11 @@ public struct AssetTransferDto: Codable, JSONEncodable, Hashable {
     public var destinationDepartmentId: String?
     public var destinationDepartmentName: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, businessId: String? = nil, businessProfileRecordId: String? = nil, assetId: String? = nil, assetName: String? = nil, isRootTransfer: Bool? = nil, serialList: String? = nil, quantity: String? = nil, serial: String? = nil, previousAssetTransferId: String? = nil, sourceLocationId: String? = nil, sourceLocationName: String? = nil, destinationLocationId: String? = nil, destinationLocationName: String? = nil, sourceContactId: String? = nil, sourceContactName: String? = nil, destinationContactId: String? = nil, destinationContactName: String? = nil, sourceDepartmentId: String? = nil, sourceDepartmentName: String? = nil, destinationDepartmentId: String? = nil, destinationDepartmentName: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, tenantId: String? = nil, enrollmentId: String? = nil, assetId: String? = nil, assetName: String? = nil, isRootTransfer: Bool? = nil, serialList: String? = nil, quantity: String? = nil, serial: String? = nil, previousAssetTransferId: String? = nil, sourceLocationId: String? = nil, sourceLocationName: String? = nil, destinationLocationId: String? = nil, destinationLocationName: String? = nil, sourceContactId: String? = nil, sourceContactName: String? = nil, destinationContactId: String? = nil, destinationContactName: String? = nil, sourceDepartmentId: String? = nil, sourceDepartmentName: String? = nil, destinationDepartmentId: String? = nil, destinationDepartmentName: String? = nil) {
         self.id = id
         self.timestamp = timestamp
-        self.businessId = businessId
-        self.businessProfileRecordId = businessProfileRecordId
+        self.tenantId = tenantId
+        self.enrollmentId = enrollmentId
         self.assetId = assetId
         self.assetName = assetName
         self.isRootTransfer = isRootTransfer
@@ -65,8 +65,8 @@ public struct AssetTransferDto: Codable, JSONEncodable, Hashable {
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
-        case businessId
-        case businessProfileRecordId
+        case tenantId
+        case enrollmentId
         case assetId
         case assetName
         case isRootTransfer
@@ -94,8 +94,8 @@ public struct AssetTransferDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
-        try container.encodeIfPresent(businessId, forKey: .businessId)
-        try container.encodeIfPresent(businessProfileRecordId, forKey: .businessProfileRecordId)
+        try container.encodeIfPresent(tenantId, forKey: .tenantId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(assetId, forKey: .assetId)
         try container.encodeIfPresent(assetName, forKey: .assetName)
         try container.encodeIfPresent(isRootTransfer, forKey: .isRootTransfer)

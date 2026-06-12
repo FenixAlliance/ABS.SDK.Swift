@@ -12,7 +12,9 @@ Name | Type | Description | Notes
 **markup** | **String** |  | [optional] 
 **featuredImageUrl** | **String** |  | [optional] 
 **codeType** | **String** |  | [optional] 
-**webTemplateID** | **String** |  | [optional] 
+**slug** | **String** |  | [optional] 
+**webTemplateId** | **String** |  | [optional] 
+**parentWebContentId** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

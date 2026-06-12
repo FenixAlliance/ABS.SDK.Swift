@@ -12,14 +12,20 @@ import AnyCodable
 
 public struct AssetDepreciationRecordDto: Codable, JSONEncodable, Hashable {
 
-    public var id: AnyCodable?
+    public var id: String?
     public var timestamp: Date?
-    public var businessId: AnyCodable?
-    public var businessProfileRecordId: AnyCodable?
-    public var assetId: AnyCodable?
+    public var tenantId: String?
+    public var enrollmentId: String?
+    public var assetId: String?
     public var assetName: String?
     public var assetDepreciationPolicyId: String?
     public var assetDepreciationPolicyName: String?
+    public var financialBookId: String?
+    public var startDate: Date?
+    public var totalDepreciations: Int?
+    public var depreciationFrequency: Int?
+    public var depreciationRate: Double?
+    public var expectedValueAUL: Double?
     public var depreciationAmount: Double?
     public var accumulatedDepreciation: Double?
     public var bookValue: Double?
@@ -28,15 +34,21 @@ public struct AssetDepreciationRecordDto: Codable, JSONEncodable, Hashable {
     public var month: Int?
     public var period: String?
 
-    public init(id: AnyCodable? = nil, timestamp: Date? = nil, businessId: AnyCodable? = nil, businessProfileRecordId: AnyCodable? = nil, assetId: AnyCodable? = nil, assetName: String? = nil, assetDepreciationPolicyId: String? = nil, assetDepreciationPolicyName: String? = nil, depreciationAmount: Double? = nil, accumulatedDepreciation: Double? = nil, bookValue: Double? = nil, depreciationDate: Date? = nil, year: Int? = nil, month: Int? = nil, period: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, tenantId: String? = nil, enrollmentId: String? = nil, assetId: String? = nil, assetName: String? = nil, assetDepreciationPolicyId: String? = nil, assetDepreciationPolicyName: String? = nil, financialBookId: String? = nil, startDate: Date? = nil, totalDepreciations: Int? = nil, depreciationFrequency: Int? = nil, depreciationRate: Double? = nil, expectedValueAUL: Double? = nil, depreciationAmount: Double? = nil, accumulatedDepreciation: Double? = nil, bookValue: Double? = nil, depreciationDate: Date? = nil, year: Int? = nil, month: Int? = nil, period: String? = nil) {
         self.id = id
         self.timestamp = timestamp
-        self.businessId = businessId
-        self.businessProfileRecordId = businessProfileRecordId
+        self.tenantId = tenantId
+        self.enrollmentId = enrollmentId
         self.assetId = assetId
         self.assetName = assetName
         self.assetDepreciationPolicyId = assetDepreciationPolicyId
         self.assetDepreciationPolicyName = assetDepreciationPolicyName
+        self.financialBookId = financialBookId
+        self.startDate = startDate
+        self.totalDepreciations = totalDepreciations
+        self.depreciationFrequency = depreciationFrequency
+        self.depreciationRate = depreciationRate
+        self.expectedValueAUL = expectedValueAUL
         self.depreciationAmount = depreciationAmount
         self.accumulatedDepreciation = accumulatedDepreciation
         self.bookValue = bookValue
@@ -49,12 +61,18 @@ public struct AssetDepreciationRecordDto: Codable, JSONEncodable, Hashable {
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
-        case businessId
-        case businessProfileRecordId
+        case tenantId
+        case enrollmentId
         case assetId
         case assetName
         case assetDepreciationPolicyId
         case assetDepreciationPolicyName
+        case financialBookId
+        case startDate
+        case totalDepreciations
+        case depreciationFrequency
+        case depreciationRate
+        case expectedValueAUL
         case depreciationAmount
         case accumulatedDepreciation
         case bookValue
@@ -70,12 +88,18 @@ public struct AssetDepreciationRecordDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
-        try container.encodeIfPresent(businessId, forKey: .businessId)
-        try container.encodeIfPresent(businessProfileRecordId, forKey: .businessProfileRecordId)
+        try container.encodeIfPresent(tenantId, forKey: .tenantId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(assetId, forKey: .assetId)
         try container.encodeIfPresent(assetName, forKey: .assetName)
         try container.encodeIfPresent(assetDepreciationPolicyId, forKey: .assetDepreciationPolicyId)
         try container.encodeIfPresent(assetDepreciationPolicyName, forKey: .assetDepreciationPolicyName)
+        try container.encodeIfPresent(financialBookId, forKey: .financialBookId)
+        try container.encodeIfPresent(startDate, forKey: .startDate)
+        try container.encodeIfPresent(totalDepreciations, forKey: .totalDepreciations)
+        try container.encodeIfPresent(depreciationFrequency, forKey: .depreciationFrequency)
+        try container.encodeIfPresent(depreciationRate, forKey: .depreciationRate)
+        try container.encodeIfPresent(expectedValueAUL, forKey: .expectedValueAUL)
         try container.encodeIfPresent(depreciationAmount, forKey: .depreciationAmount)
         try container.encodeIfPresent(accumulatedDepreciation, forKey: .accumulatedDepreciation)
         try container.encodeIfPresent(bookValue, forKey: .bookValue)

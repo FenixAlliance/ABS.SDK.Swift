@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getJobTitleByIdAsync**](JobTitlesAPI.md#getjobtitlebyidasync) | **GET** /api/v2/HrmsService/JobTitles/{jobTitleId} | Get job title by ID
 [**getJobTitlesAsync**](JobTitlesAPI.md#getjobtitlesasync) | **GET** /api/v2/HrmsService/JobTitles | Get job titles
 [**getJobTitlesCountAsync**](JobTitlesAPI.md#getjobtitlescountasync) | **GET** /api/v2/HrmsService/JobTitles/Count | Count job titles
+[**patchJobTitleAsync**](JobTitlesAPI.md#patchjobtitleasync) | **PATCH** /api/v2/HrmsService/JobTitles/{jobTitleId} | Patch a job title
 [**updateJobTitleAsync**](JobTitlesAPI.md#updatejobtitleasync) | **PUT** /api/v2/HrmsService/JobTitles/{jobTitleId} | Update a job title
 
 
@@ -284,6 +285,64 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchJobTitleAsync**
+```swift
+    open class func patchJobTitleAsync(tenantId: UUID, jobTitleId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a job title
+
+Partially updates an existing job title for the specified tenant.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let jobTitleId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a job title
+JobTitlesAPI.patchJobTitleAsync(tenantId: tenantId, jobTitleId: jobTitleId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **jobTitleId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

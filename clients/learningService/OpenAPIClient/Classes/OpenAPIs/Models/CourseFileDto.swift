@@ -19,10 +19,11 @@ public struct CourseFileDto: Codable, JSONEncodable, Hashable {
     public var fileUploadURL: String?
     public var contentType: String?
     public var fileLength: Int64?
-    public var courseID: String?
+    public var courseId: String?
     public var tenantId: String?
+    public var enrollmentId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, fileName: String? = nil, fileUploadURL: String? = nil, contentType: String? = nil, fileLength: Int64? = nil, courseID: String? = nil, tenantId: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, fileName: String? = nil, fileUploadURL: String? = nil, contentType: String? = nil, fileLength: Int64? = nil, courseId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
@@ -30,8 +31,9 @@ public struct CourseFileDto: Codable, JSONEncodable, Hashable {
         self.fileUploadURL = fileUploadURL
         self.contentType = contentType
         self.fileLength = fileLength
-        self.courseID = courseID
+        self.courseId = courseId
         self.tenantId = tenantId
+        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -42,8 +44,9 @@ public struct CourseFileDto: Codable, JSONEncodable, Hashable {
         case fileUploadURL
         case contentType
         case fileLength
-        case courseID
+        case courseId
         case tenantId
+        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -57,8 +60,9 @@ public struct CourseFileDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(fileUploadURL, forKey: .fileUploadURL)
         try container.encodeIfPresent(contentType, forKey: .contentType)
         try container.encodeIfPresent(fileLength, forKey: .fileLength)
-        try container.encodeIfPresent(courseID, forKey: .courseID)
+        try container.encodeIfPresent(courseId, forKey: .courseId)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

@@ -12,12 +12,18 @@ import AnyCodable
 
 public struct PriceListDto: Codable, JSONEncodable, Hashable {
 
+    public enum Context: String, Codable, CaseIterable {
+        case sales = "Sales"
+        case purchase = "Purchase"
+        case cost = "Cost"
+    }
     public var id: String?
     public var timestamp: Date?
     public var name: String?
     public var startDate: Date?
     public var endDate: Date?
     public var description: String?
+    public var context: Context?
     public var currencyId: String?
     public var tenantId: String?
     public var unitId: String?
@@ -26,13 +32,14 @@ public struct PriceListDto: Codable, JSONEncodable, Hashable {
     public var unitOfMeasureDependant: Bool?
     public var enrollmentId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, startDate: Date? = nil, endDate: Date? = nil, description: String? = nil, currencyId: String? = nil, tenantId: String? = nil, unitId: String? = nil, unitGroupId: String? = nil, partnerVisible: Bool? = nil, unitOfMeasureDependant: Bool? = nil, enrollmentId: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, startDate: Date? = nil, endDate: Date? = nil, description: String? = nil, context: Context? = nil, currencyId: String? = nil, tenantId: String? = nil, unitId: String? = nil, unitGroupId: String? = nil, partnerVisible: Bool? = nil, unitOfMeasureDependant: Bool? = nil, enrollmentId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
         self.startDate = startDate
         self.endDate = endDate
         self.description = description
+        self.context = context
         self.currencyId = currencyId
         self.tenantId = tenantId
         self.unitId = unitId
@@ -49,6 +56,7 @@ public struct PriceListDto: Codable, JSONEncodable, Hashable {
         case startDate
         case endDate
         case description
+        case context
         case currencyId
         case tenantId
         case unitId
@@ -68,6 +76,7 @@ public struct PriceListDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(startDate, forKey: .startDate)
         try container.encodeIfPresent(endDate, forKey: .endDate)
         try container.encodeIfPresent(description, forKey: .description)
+        try container.encodeIfPresent(context, forKey: .context)
         try container.encodeIfPresent(currencyId, forKey: .currencyId)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encodeIfPresent(unitId, forKey: .unitId)

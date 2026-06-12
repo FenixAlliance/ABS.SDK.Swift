@@ -33,6 +33,8 @@ OpenAPIClient/Classes/OpenAPIs/JSONDataEncoding.swift
 OpenAPIClient/Classes/OpenAPIs/JSONEncodingHelper.swift
 OpenAPIClient/Classes/OpenAPIs/Models.swift
 OpenAPIClient/Classes/OpenAPIs/Models/AccessTokenResponse.swift
+OpenAPIClient/Classes/OpenAPIs/Models/BatchStockItemUpdateRequest.swift
+OpenAPIClient/Classes/OpenAPIs/Models/BulkProduct.swift
 OpenAPIClient/Classes/OpenAPIs/Models/CatalogItemCreateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/CatalogItemDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/CatalogItemDtoEnvelope.swift
@@ -132,6 +134,7 @@ OpenAPIClient/Classes/OpenAPIs/Models/MerchantDtoEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/MerchantDtoListEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/Money.swift
 OpenAPIClient/Classes/OpenAPIs/Models/MoneyEnvelope.swift
+OpenAPIClient/Classes/OpenAPIs/Models/Operation.swift
 OpenAPIClient/Classes/OpenAPIs/Models/PricingRuleDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/PricingRuleDtoEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/PricingRuleDtoListEnvelope.swift
@@ -149,6 +152,8 @@ OpenAPIClient/Classes/OpenAPIs/Validation.swift
 Package.swift
 README.md
 docs/AccessTokenResponse.md
+docs/BatchStockItemUpdateRequest.md
+docs/BulkProduct.md
 docs/CatalogItemCreateDto.md
 docs/CatalogItemDto.md
 docs/CatalogItemDtoEnvelope.md
@@ -270,6 +275,7 @@ docs/MerchantDtoListEnvelope.md
 docs/MerchantsAPI.md
 docs/Money.md
 docs/MoneyEnvelope.md
+docs/Operation.md
 docs/PricingRuleDto.md
 docs/PricingRuleDtoEnvelope.md
 docs/PricingRuleDtoListEnvelope.md

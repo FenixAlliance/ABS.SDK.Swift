@@ -30,7 +30,6 @@ Name | Type | Description | Notes
 **data9** | **String** |  | [optional] 
 **data9Label** | **String** |  | [optional] 
 **authorized** | **Bool** |  | [optional] 
-**contactID** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

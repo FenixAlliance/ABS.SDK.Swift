@@ -12,17 +12,23 @@ import AnyCodable
 
 public struct DiscountListDto: Codable, JSONEncodable, Hashable {
 
+    public enum DiscountListType: String, Codable, CaseIterable {
+        case amount = "Amount"
+        case percentage = "Percentage"
+    }
     public var id: String?
     public var timestamp: Date?
     public var name: String?
+    public var discountListType: DiscountListType?
     public var currencyId: String?
     public var tenantId: String?
     public var enrollmentId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, currencyId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, discountListType: DiscountListType? = nil, currencyId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
+        self.discountListType = discountListType
         self.currencyId = currencyId
         self.tenantId = tenantId
         self.enrollmentId = enrollmentId
@@ -32,6 +38,7 @@ public struct DiscountListDto: Codable, JSONEncodable, Hashable {
         case id
         case timestamp
         case name
+        case discountListType
         case currencyId
         case tenantId
         case enrollmentId
@@ -44,6 +51,7 @@ public struct DiscountListDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(name, forKey: .name)
+        try container.encodeIfPresent(discountListType, forKey: .discountListType)
         try container.encodeIfPresent(currencyId, forKey: .currencyId)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)

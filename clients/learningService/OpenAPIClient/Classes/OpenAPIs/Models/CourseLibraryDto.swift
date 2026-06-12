@@ -16,20 +16,22 @@ public struct CourseLibraryDto: Codable, JSONEncodable, Hashable {
     public var timestamp: Date?
     public var title: String?
     public var description: String?
-    public var courseID: String?
-    public var courseUnitID: String?
+    public var courseId: String?
+    public var courseUnitId: String?
     public var releaseDateTime: Date?
     public var tenantId: String?
+    public var enrollmentId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil, courseID: String? = nil, courseUnitID: String? = nil, releaseDateTime: Date? = nil, tenantId: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil, courseId: String? = nil, courseUnitId: String? = nil, releaseDateTime: Date? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
         self.description = description
-        self.courseID = courseID
-        self.courseUnitID = courseUnitID
+        self.courseId = courseId
+        self.courseUnitId = courseUnitId
         self.releaseDateTime = releaseDateTime
         self.tenantId = tenantId
+        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -37,10 +39,11 @@ public struct CourseLibraryDto: Codable, JSONEncodable, Hashable {
         case timestamp
         case title
         case description
-        case courseID
-        case courseUnitID
+        case courseId
+        case courseUnitId
         case releaseDateTime
         case tenantId
+        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -51,10 +54,11 @@ public struct CourseLibraryDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(courseID, forKey: .courseID)
-        try container.encodeIfPresent(courseUnitID, forKey: .courseUnitID)
+        try container.encodeIfPresent(courseId, forKey: .courseId)
+        try container.encodeIfPresent(courseUnitId, forKey: .courseUnitId)
         try container.encodeIfPresent(releaseDateTime, forKey: .releaseDateTime)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

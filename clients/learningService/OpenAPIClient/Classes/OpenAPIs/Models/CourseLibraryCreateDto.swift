@@ -13,22 +13,22 @@ import AnyCodable
 public struct CourseLibraryCreateDto: Codable, JSONEncodable, Hashable {
 
     static let titleRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    static let courseIDRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let courseIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var title: String
     public var description: String?
-    public var courseID: String
-    public var courseUnitID: String?
+    public var courseId: String
+    public var courseUnitId: String?
     public var releaseDateTime: Date?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, title: String, description: String? = nil, courseID: String, courseUnitID: String? = nil, releaseDateTime: Date? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, title: String, description: String? = nil, courseId: String, courseUnitId: String? = nil, releaseDateTime: Date? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
         self.description = description
-        self.courseID = courseID
-        self.courseUnitID = courseUnitID
+        self.courseId = courseId
+        self.courseUnitId = courseUnitId
         self.releaseDateTime = releaseDateTime
     }
 
@@ -37,8 +37,8 @@ public struct CourseLibraryCreateDto: Codable, JSONEncodable, Hashable {
         case timestamp
         case title
         case description
-        case courseID
-        case courseUnitID
+        case courseId
+        case courseUnitId
         case releaseDateTime
     }
 
@@ -50,8 +50,8 @@ public struct CourseLibraryCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encode(title, forKey: .title)
         try container.encodeIfPresent(description, forKey: .description)
-        try container.encode(courseID, forKey: .courseID)
-        try container.encodeIfPresent(courseUnitID, forKey: .courseUnitID)
+        try container.encode(courseId, forKey: .courseId)
+        try container.encodeIfPresent(courseUnitId, forKey: .courseUnitId)
         try container.encodeIfPresent(releaseDateTime, forKey: .releaseDateTime)
     }
 }

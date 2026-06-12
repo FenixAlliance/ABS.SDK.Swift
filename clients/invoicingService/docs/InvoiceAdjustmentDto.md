@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **invoiceId** | **String** |  | [optional] 
 **currencyId** | **String** |  | [optional] 
 **enrollmentId** | **String** |  | [optional] 
+**priority** | **Int** |  | [optional] 
+**code** | **String** |  | [optional] 
 **description** | **String** |  | [optional] 
 **surchargePercent** | **Double** |  | [optional] 
 **surchargeAmount** | **Double** |  | [optional] 

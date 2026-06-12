@@ -17,15 +17,15 @@ public struct ItemAttributeOptionDto: Codable, JSONEncodable, Hashable {
     public var name: String?
     public var description: String?
     public var itemAttributeId: String?
-    public var businessID: String?
+    public var tenantId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, description: String? = nil, itemAttributeId: String? = nil, businessID: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, description: String? = nil, itemAttributeId: String? = nil, tenantId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
         self.description = description
         self.itemAttributeId = itemAttributeId
-        self.businessID = businessID
+        self.tenantId = tenantId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -34,7 +34,7 @@ public struct ItemAttributeOptionDto: Codable, JSONEncodable, Hashable {
         case name
         case description
         case itemAttributeId
-        case businessID
+        case tenantId
     }
 
     // Encodable protocol methods
@@ -46,7 +46,7 @@ public struct ItemAttributeOptionDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(itemAttributeId, forKey: .itemAttributeId)
-        try container.encodeIfPresent(businessID, forKey: .businessID)
+        try container.encodeIfPresent(tenantId, forKey: .tenantId)
     }
 }
 

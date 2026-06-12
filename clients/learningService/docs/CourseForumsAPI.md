@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getCourseForumByIdAsync**](CourseForumsAPI.md#getcourseforumbyidasync) | **GET** /api/v2/LearningService/CourseForums/{forumId} | Get course forum by ID
 [**getCourseForumsAsync**](CourseForumsAPI.md#getcourseforumsasync) | **GET** /api/v2/LearningService/CourseForums | Get all course forums
 [**getCourseForumsCountAsync**](CourseForumsAPI.md#getcourseforumscountasync) | **GET** /api/v2/LearningService/CourseForums/Count | Get course forums count
+[**patchCourseForumAsync**](CourseForumsAPI.md#patchcourseforumasync) | **PATCH** /api/v2/LearningService/CourseForums/{forumId} | Patch a course forum
 [**updateCourseForumAsync**](CourseForumsAPI.md#updatecourseforumasync) | **PUT** /api/v2/LearningService/CourseForums/{forumId} | Update a course forum
 
 
@@ -29,7 +30,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseForumCreateDto = CourseForumCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", courseID: "courseID_example") // CourseForumCreateDto |  (optional)
+let courseForumCreateDto = CourseForumCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", courseId: "courseId_example") // CourseForumCreateDto |  (optional)
 
 // Create a course forum
 CourseForumsAPI.createCourseForumAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseForumCreateDto: courseForumCreateDto) { (response, error) in
@@ -282,6 +283,64 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchCourseForumAsync**
+```swift
+    open class func patchCourseForumAsync(tenantId: UUID, forumId: String, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+```
+
+Patch a course forum
+
+Partially updates an existing course forum.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let forumId = "forumId_example" // String | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a course forum
+CourseForumsAPI.patchCourseForumAsync(tenantId: tenantId, forumId: forumId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **forumId** | **String** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+Void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

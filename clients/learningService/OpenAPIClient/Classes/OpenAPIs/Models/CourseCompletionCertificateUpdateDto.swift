@@ -12,33 +12,33 @@ import AnyCodable
 
 public struct CourseCompletionCertificateUpdateDto: Codable, JSONEncodable, Hashable {
 
-    public var studentProfileID: String?
-    public var courseEnrollmentID: String?
-    public var courseCompletionCertificateTemplateID: String?
-    public var courseID: String?
+    public var studentProfileId: String?
+    public var courseEnrollmentId: String?
+    public var courseCompletionCertificateTemplateId: String?
+    public var courseId: String?
 
-    public init(studentProfileID: String? = nil, courseEnrollmentID: String? = nil, courseCompletionCertificateTemplateID: String? = nil, courseID: String? = nil) {
-        self.studentProfileID = studentProfileID
-        self.courseEnrollmentID = courseEnrollmentID
-        self.courseCompletionCertificateTemplateID = courseCompletionCertificateTemplateID
-        self.courseID = courseID
+    public init(studentProfileId: String? = nil, courseEnrollmentId: String? = nil, courseCompletionCertificateTemplateId: String? = nil, courseId: String? = nil) {
+        self.studentProfileId = studentProfileId
+        self.courseEnrollmentId = courseEnrollmentId
+        self.courseCompletionCertificateTemplateId = courseCompletionCertificateTemplateId
+        self.courseId = courseId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case studentProfileID
-        case courseEnrollmentID
-        case courseCompletionCertificateTemplateID
-        case courseID
+        case studentProfileId
+        case courseEnrollmentId
+        case courseCompletionCertificateTemplateId
+        case courseId
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(studentProfileID, forKey: .studentProfileID)
-        try container.encodeIfPresent(courseEnrollmentID, forKey: .courseEnrollmentID)
-        try container.encodeIfPresent(courseCompletionCertificateTemplateID, forKey: .courseCompletionCertificateTemplateID)
-        try container.encodeIfPresent(courseID, forKey: .courseID)
+        try container.encodeIfPresent(studentProfileId, forKey: .studentProfileId)
+        try container.encodeIfPresent(courseEnrollmentId, forKey: .courseEnrollmentId)
+        try container.encodeIfPresent(courseCompletionCertificateTemplateId, forKey: .courseCompletionCertificateTemplateId)
+        try container.encodeIfPresent(courseId, forKey: .courseId)
     }
 }
 

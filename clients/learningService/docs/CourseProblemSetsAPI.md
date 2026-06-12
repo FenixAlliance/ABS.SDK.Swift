@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getCourseProblemSetByIdAsync**](CourseProblemSetsAPI.md#getcourseproblemsetbyidasync) | **GET** /api/v2/LearningService/CourseProblemSets/{problemSetId} | Get course problem set by ID
 [**getCourseProblemSetsAsync**](CourseProblemSetsAPI.md#getcourseproblemsetsasync) | **GET** /api/v2/LearningService/CourseProblemSets | Get all course problem sets
 [**getCourseProblemSetsCountAsync**](CourseProblemSetsAPI.md#getcourseproblemsetscountasync) | **GET** /api/v2/LearningService/CourseProblemSets/Count | Get course problem sets count
+[**patchCourseProblemSetAsync**](CourseProblemSetsAPI.md#patchcourseproblemsetasync) | **PATCH** /api/v2/LearningService/CourseProblemSets/{problemSetId} | Patch a course problem set
 [**updateCourseProblemSetAsync**](CourseProblemSetsAPI.md#updatecourseproblemsetasync) | **PUT** /api/v2/LearningService/CourseProblemSets/{problemSetId} | Update a course problem set
 
 
@@ -29,7 +30,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseProblemSetCreateDto = CourseProblemSetCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", overallScore: 123, courseID: "courseID_example", courseUnitID: "courseUnitID_example", courseGradingRubricID: "courseGradingRubricID_example", releaseDateTime: Date()) // CourseProblemSetCreateDto |  (optional)
+let courseProblemSetCreateDto = CourseProblemSetCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", overallScore: 123, courseId: "courseId_example", courseUnitId: "courseUnitId_example", courseGradingRubricId: "courseGradingRubricId_example", releaseDateTime: Date()) // CourseProblemSetCreateDto |  (optional)
 
 // Create a new course problem set
 CourseProblemSetsAPI.createCourseProblemSetAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseProblemSetCreateDto: courseProblemSetCreateDto) { (response, error) in
@@ -286,6 +287,64 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchCourseProblemSetAsync**
+```swift
+    open class func patchCourseProblemSetAsync(tenantId: UUID, problemSetId: String, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a course problem set
+
+Partially updates a course problem set for the specified tenant.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let problemSetId = "problemSetId_example" // String | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a course problem set
+CourseProblemSetsAPI.patchCourseProblemSetAsync(tenantId: tenantId, problemSetId: problemSetId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **problemSetId** | **String** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateCourseProblemSetAsync**
 ```swift
     open class func updateCourseProblemSetAsync(tenantId: UUID, problemSetId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseProblemSetUpdateDto: CourseProblemSetUpdateDto? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
@@ -304,7 +363,7 @@ let tenantId = 987 // UUID |
 let problemSetId = "problemSetId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseProblemSetUpdateDto = CourseProblemSetUpdateDto(title: "title_example", description: "description_example", overallScore: 123, courseUnitID: "courseUnitID_example", courseGradingRubricID: "courseGradingRubricID_example", releaseDateTime: Date()) // CourseProblemSetUpdateDto |  (optional)
+let courseProblemSetUpdateDto = CourseProblemSetUpdateDto(title: "title_example", description: "description_example", overallScore: 123, courseUnitId: "courseUnitId_example", courseGradingRubricId: "courseGradingRubricId_example", releaseDateTime: Date()) // CourseProblemSetUpdateDto |  (optional)
 
 // Update a course problem set
 CourseProblemSetsAPI.updateCourseProblemSetAsync(tenantId: tenantId, problemSetId: problemSetId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseProblemSetUpdateDto: courseProblemSetUpdateDto) { (response, error) in

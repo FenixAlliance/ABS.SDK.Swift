@@ -18,18 +18,20 @@ public struct CourseWikiDto: Codable, JSONEncodable, Hashable {
     public var description: String?
     public var releaseDateTime: Date?
     public var tenantId: String?
-    public var courseID: String?
-    public var courseUnitID: String?
+    public var enrollmentId: String?
+    public var courseId: String?
+    public var courseUnitId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil, releaseDateTime: Date? = nil, tenantId: String? = nil, courseID: String? = nil, courseUnitID: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil, releaseDateTime: Date? = nil, tenantId: String? = nil, enrollmentId: String? = nil, courseId: String? = nil, courseUnitId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
         self.description = description
         self.releaseDateTime = releaseDateTime
         self.tenantId = tenantId
-        self.courseID = courseID
-        self.courseUnitID = courseUnitID
+        self.enrollmentId = enrollmentId
+        self.courseId = courseId
+        self.courseUnitId = courseUnitId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -39,8 +41,9 @@ public struct CourseWikiDto: Codable, JSONEncodable, Hashable {
         case description
         case releaseDateTime
         case tenantId
-        case courseID
-        case courseUnitID
+        case enrollmentId
+        case courseId
+        case courseUnitId
     }
 
     // Encodable protocol methods
@@ -53,8 +56,9 @@ public struct CourseWikiDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(releaseDateTime, forKey: .releaseDateTime)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(courseID, forKey: .courseID)
-        try container.encodeIfPresent(courseUnitID, forKey: .courseUnitID)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
+        try container.encodeIfPresent(courseId, forKey: .courseId)
+        try container.encodeIfPresent(courseUnitId, forKey: .courseUnitId)
     }
 }
 

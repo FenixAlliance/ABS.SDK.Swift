@@ -26,6 +26,7 @@ OpenAPIClient/Classes/OpenAPIs/Models/InfoRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/InfoResponse.swift
 OpenAPIClient/Classes/OpenAPIs/Models/Int32Envelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/LoginRequest.swift
+OpenAPIClient/Classes/OpenAPIs/Models/Operation.swift
 OpenAPIClient/Classes/OpenAPIs/Models/OrderCreateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/OrderDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/OrderDtoEnvelope.swift
@@ -66,6 +67,7 @@ docs/InfoRequest.md
 docs/InfoResponse.md
 docs/Int32Envelope.md
 docs/LoginRequest.md
+docs/Operation.md
 docs/OrderCreateDto.md
 docs/OrderDto.md
 docs/OrderDtoEnvelope.md

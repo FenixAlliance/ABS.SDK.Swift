@@ -13,24 +13,24 @@ import AnyCodable
 public struct CourseContentGroupCreateDto: Codable, JSONEncodable, Hashable {
 
     static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    static let courseIDRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let courseIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var name: String
-    public var courseID: String
+    public var courseId: String
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, name: String, courseID: String) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, name: String, courseId: String) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
-        self.courseID = courseID
+        self.courseId = courseId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
         case name
-        case courseID
+        case courseId
     }
 
     // Encodable protocol methods
@@ -40,7 +40,7 @@ public struct CourseContentGroupCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encode(name, forKey: .name)
-        try container.encode(courseID, forKey: .courseID)
+        try container.encode(courseId, forKey: .courseId)
     }
 }
 

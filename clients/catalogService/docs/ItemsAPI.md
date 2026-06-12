@@ -4,6 +4,8 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**batchUpdateStockItems**](ItemsAPI.md#batchupdatestockitems) | **POST** /api/v2/CatalogService/Items/Batch | Bulk-update stock items
+[**bulkUpsertStockItems**](ItemsAPI.md#bulkupsertstockitems) | **POST** /api/v2/CatalogService/Items/BulkUpsert | Bulk upsert stock items from rows
 [**countStockItemTagsByItemId**](ItemsAPI.md#countstockitemtagsbyitemid) | **GET** /api/v2/CatalogService/Items/{itemId}/Tags/Count | Count tags for a stock item
 [**countStockItemsByBusiness**](ItemsAPI.md#countstockitemsbybusiness) | **GET** /api/v2/CatalogService/Items/Count | Count stock items by business
 [**createStockItem**](ItemsAPI.md#createstockitem) | **POST** /api/v2/CatalogService/Items | Create a new stock item
@@ -46,6 +48,8 @@ Method | HTTP request | Description
 [**getStockItemsOdataMaxPrice**](ItemsAPI.md#getstockitemsodatamaxprice) | **GET** /api/v2/CatalogService/Items/MaxPrice | Get max price of stock items
 [**getStockItemsOdataMinPrice**](ItemsAPI.md#getstockitemsodataminprice) | **GET** /api/v2/CatalogService/Items/MinPrice | Get min price of stock items
 [**getStockItemsQuery**](ItemsAPI.md#getstockitemsquery) | **GET** /api/v2/CatalogService/Items | Get all stock items
+[**patchStockItem**](ItemsAPI.md#patchstockitem) | **PATCH** /api/v2/CatalogService/Items/{itemId} | Patch a stock item
+[**recalculateStockItemPrices**](ItemsAPI.md#recalculatestockitemprices) | **POST** /api/v2/CatalogService/Items/RecalculatePrices | Recalculate stock item prices
 [**relateAttachmentToStockItem**](ItemsAPI.md#relateattachmenttostockitem) | **POST** /api/v2/CatalogService/Items/{itemId}/Attachments/{itemAttachmentId} | Relate attachment to stock item
 [**relateAttributeOptionToStockItem**](ItemsAPI.md#relateattributeoptiontostockitem) | **POST** /api/v2/CatalogService/Items/{itemId}/AttributeOptions/{itemAttributeOptionId} | Relate attribute option to stock item
 [**relateBrandToStockItem**](ItemsAPI.md#relatebrandtostockitem) | **POST** /api/v2/CatalogService/Items/{itemId}/Brands/{itemBrandId} | Relate brand to stock item
@@ -81,6 +85,118 @@ Method | HTTP request | Description
 [**updateProductPrimaryImageAsync**](ItemsAPI.md#updateproductprimaryimageasync) | **POST** /api/v2/CatalogService/Items/{itemId}/Images/Primary | Update item primary image
 [**updateStockItem**](ItemsAPI.md#updatestockitem) | **PUT** /api/v2/CatalogService/Items/{itemId} | Update a stock item
 
+
+# **batchUpdateStockItems**
+```swift
+    open class func batchUpdateStockItems(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, batchStockItemUpdateRequest: BatchStockItemUpdateRequest? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+```
+
+Bulk-update stock items
+
+Applies a targeted bulk operation (set flags, add/remove tax policies) to many items atomically.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let batchStockItemUpdateRequest = BatchStockItemUpdateRequest(itemIds: [123], published: false, taxable: false, addTaxPolicyIds: ["addTaxPolicyIds_example"], removeTaxPolicyIds: ["removeTaxPolicyIds_example"]) // BatchStockItemUpdateRequest |  (optional)
+
+// Bulk-update stock items
+ItemsAPI.batchUpdateStockItems(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, batchStockItemUpdateRequest: batchStockItemUpdateRequest) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **batchStockItemUpdateRequest** | [**BatchStockItemUpdateRequest**](BatchStockItemUpdateRequest.md) |  | [optional] 
+
+### Return type
+
+Void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **bulkUpsertStockItems**
+```swift
+    open class func bulkUpsertStockItems(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, bulkProduct: [BulkProduct]? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+```
+
+Bulk upsert stock items from rows
+
+Updates scalar fields of matching tenant-owned items or creates new ones, all in one transaction.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let bulkProduct = [BulkProduct(id: "id_example", sku: "sku_example", title: "title_example", type: "type_example", image: "image_example", brand: "brand_example", currency: "currency_example", supplier: "supplier_example", taxPolicies: "taxPolicies_example", supplierCode: "supplierCode_example", googleCategory: "googleCategory_example", shippingCountry: "shippingCountry_example", regularPrice: 123, discountPercentage: 123, discountAmount: 123, currentStock: 123, taxable: false, inStock: false, onDiscount: false, byRequest: false, isFixedDiscount: false, manageInventory: false, isDeadlineDiscount: false, deadlineDiscountFromDate: Date(), deadlineDiscountDueDate: Date())] // [BulkProduct] |  (optional)
+
+// Bulk upsert stock items from rows
+ItemsAPI.bulkUpsertStockItems(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, bulkProduct: bulkProduct) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **bulkProduct** | [**[BulkProduct]**](BulkProduct.md) |  | [optional] 
+
+### Return type
+
+Void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **countStockItemTagsByItemId**
 ```swift
@@ -2396,6 +2512,120 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchStockItem**
+```swift
+    open class func patchStockItem(tenantId: UUID, itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+```
+
+Patch a stock item
+
+Partially updates an existing stock item for the specified tenant and item ID.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let itemId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a stock item
+ItemsAPI.patchStockItem(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **itemId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+Void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **recalculateStockItemPrices**
+```swift
+    open class func recalculateStockItemPrices(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, requestBody: [UUID]? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+```
+
+Recalculate stock item prices
+
+Recomputes derived prices for the given tenant-owned items via the pricing service, atomically.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let requestBody = [123] // [UUID] |  (optional)
+
+// Recalculate stock item prices
+ItemsAPI.recalculateStockItemPrices(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, requestBody: requestBody) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **requestBody** | [**[UUID]**](UUID.md) |  | [optional] 
+
+### Return type
+
+Void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **relateAttachmentToStockItem**
 ```swift
     open class func relateAttachmentToStockItem(tenantId: UUID, itemId: UUID, itemAttachmentId: String, apiVersion: String? = nil, xApiVersion: String? = nil, itemAttachmentCreateDto: ItemAttachmentCreateDto? = nil, completion: @escaping (_ data: ItemAttachmentDtoEnvelope?, _ error: Error?) -> Void)
@@ -2415,7 +2645,7 @@ let itemId = 987 // UUID |
 let itemAttachmentId = "itemAttachmentId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let itemAttachmentCreateDto = ItemAttachmentCreateDto(id: 123, timestamp: Date(), notes: "notes_example", title: "title_example", author: "author_example", isFolder: false, fileName: "fileName_example", abstract: "abstract_example", keyWords: "keyWords_example", validResponse: false, parentFileUploadId: "parentFileUploadId_example", filePath: "filePath_example", itemID: "itemID_example") // ItemAttachmentCreateDto |  (optional)
+let itemAttachmentCreateDto = ItemAttachmentCreateDto(id: 123, timestamp: Date(), notes: "notes_example", title: "title_example", author: "author_example", isFolder: false, fileName: "fileName_example", abstract: "abstract_example", keyWords: "keyWords_example", validResponse: false, parentFileUploadId: "parentFileUploadId_example", filePath: "filePath_example", itemId: "itemId_example") // ItemAttachmentCreateDto |  (optional)
 
 // Relate attachment to stock item
 ItemsAPI.relateAttachmentToStockItem(tenantId: tenantId, itemId: itemId, itemAttachmentId: itemAttachmentId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemAttachmentCreateDto: itemAttachmentCreateDto) { (response, error) in
@@ -2818,7 +3048,7 @@ let tenantId = 987 // UUID |
 let itemId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let itemQuestionRecordCreateDto = ItemQuestionRecordCreateDto(id: 123, timestamp: Date(), title: "title_example", needsRevision: false, question: "question_example", socialProfileID: "socialProfileID_example") // ItemQuestionRecordCreateDto |  (optional)
+let itemQuestionRecordCreateDto = ItemQuestionRecordCreateDto(id: 123, timestamp: Date(), title: "title_example", needsRevision: false, question: "question_example", socialProfileId: "socialProfileId_example") // ItemQuestionRecordCreateDto |  (optional)
 
 // Create question for stock item
 ItemsAPI.relateQuestionToStockItem(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemQuestionRecordCreateDto: itemQuestionRecordCreateDto) { (response, error) in
@@ -2992,7 +3222,7 @@ let tenantId = 987 // UUID |
 let itemId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let itemReviewRecordCreateDto = ItemReviewRecordCreateDto(id: 123, timestamp: Date(), reviewScore: 123, reviewMessage: "reviewMessage_example", socialProfileID: "socialProfileID_example") // ItemReviewRecordCreateDto |  (optional)
+let itemReviewRecordCreateDto = ItemReviewRecordCreateDto(id: 123, timestamp: Date(), reviewScore: 123, reviewMessage: "reviewMessage_example", socialProfileId: "socialProfileId_example") // ItemReviewRecordCreateDto |  (optional)
 
 // Create review for stock item
 ItemsAPI.relateReviewToStockItem(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemReviewRecordCreateDto: itemReviewRecordCreateDto) { (response, error) in

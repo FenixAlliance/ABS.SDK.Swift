@@ -17,6 +17,7 @@ Method | HTTP request | Description
 [**getCommentsForBlogPostAsync**](BlogPostsAPI.md#getcommentsforblogpostasync) | **GET** /api/v2/ContentService/BlogPosts/{blogPostId}/Comments | Get comments for a blog post
 [**getRepliesForCommentAsync**](BlogPostsAPI.md#getrepliesforcommentasync) | **GET** /api/v2/ContentService/BlogPosts/{blogPostId}/Comments/{commentId}/Replies | Get replies for a comment
 [**getTagsForBlogPostAsync**](BlogPostsAPI.md#gettagsforblogpostasync) | **GET** /api/v2/ContentService/BlogPosts/{blogPostId}/Tags | Get tags for a blog post
+[**patchBlogPostAsync**](BlogPostsAPI.md#patchblogpostasync) | **PATCH** /api/v2/ContentService/BlogPosts/{blogPostId} | Patch a blog post
 [**relateCategoryToBlogPostAsync**](BlogPostsAPI.md#relatecategorytoblogpostasync) | **POST** /api/v2/ContentService/BlogPosts/{blogPostId}/Categories/{categoryId} | Relate an existing category to a blog post
 [**relateTagToBlogPostAsync**](BlogPostsAPI.md#relatetagtoblogpostasync) | **POST** /api/v2/ContentService/BlogPosts/{blogPostId}/Tags/{tagId} | Relate an existing tag to a blog post
 [**replyToCommentAsync**](BlogPostsAPI.md#replytocommentasync) | **POST** /api/v2/ContentService/BlogPosts/{blogPostId}/Comments/{commentId}/Reply | Reply to a blog post comment
@@ -40,7 +41,7 @@ Creates a new blog post for the specified tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let blogPostCreateDto = BlogPostCreateDto(id: 123, timestamp: Date(), title: "title_example", published: false, description: "description_example", code: "code_example", markup: "markup_example", featuredImageUrl: "featuredImageUrl_example", codeType: "codeType_example", blogPostCategoryId: "blogPostCategoryId_example", webTemplateId: "webTemplateId_example") // BlogPostCreateDto |  (optional)
+let blogPostCreateDto = BlogPostCreateDto(id: 123, timestamp: Date(), title: "title_example", published: false, description: "description_example", code: "code_example", markup: "markup_example", featuredImageUrl: "featuredImageUrl_example", codeType: "codeType_example", slug: "slug_example", blogPostCategoryId: "blogPostCategoryId_example", webTemplateId: "webTemplateId_example") // BlogPostCreateDto |  (optional)
 
 // Create a new blog post
 BlogPostsAPI.createBlogPostAsync(tenantId: tenantId, blogPostCreateDto: blogPostCreateDto) { (response, error) in
@@ -93,7 +94,7 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let blogPostId = 987 // UUID | 
-let blogPostCategoryCreateDto = BlogPostCategoryCreateDto(id: 123, timestamp: Date(), slug: "slug_example", type: "type_example", title: "title_example", description: "description_example", seoTitle: "seoTitle_example", metaDescription: "metaDescription_example", cornerstoneContent: false, allowSerachEngines: false, seoKeyPhrases: "seoKeyPhrases_example", canonicalUrl: "canonicalUrl_example", imageURL: "imageURL_example", image: "image_example", webPortalID: "webPortalID_example") // BlogPostCategoryCreateDto |  (optional)
+let blogPostCategoryCreateDto = BlogPostCategoryCreateDto(id: 123, timestamp: Date(), slug: "slug_example", type: "type_example", title: "title_example", description: "description_example", seoTitle: "seoTitle_example", metaDescription: "metaDescription_example", cornerstoneContent: false, allowSerachEngines: false, seoKeyPhrases: "seoKeyPhrases_example", canonicalUrl: "canonicalUrl_example", imageURL: "imageURL_example", image: "image_example", webPortalId: "webPortalId_example") // BlogPostCategoryCreateDto |  (optional)
 
 // Create a category for a blog post
 BlogPostsAPI.createCategoryForBlogPostAsync(tenantId: tenantId, blogPostId: blogPostId, blogPostCategoryCreateDto: blogPostCategoryCreateDto) { (response, error) in
@@ -147,7 +148,7 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let blogPostId = 987 // UUID | 
-let blogPostCommentCreateDto = BlogPostCommentCreateDto(id: 123, timestamp: Date(), message: "message_example", ownerSocialProfileID: "ownerSocialProfileID_example", socialPostID: "socialPostID_example", parentCommentID: "parentCommentID_example") // BlogPostCommentCreateDto |  (optional)
+let blogPostCommentCreateDto = BlogPostCommentCreateDto(id: 123, timestamp: Date(), message: "message_example", ownerSocialProfileId: "ownerSocialProfileId_example", socialPostId: "socialPostId_example", parentCommentId: "parentCommentId_example") // BlogPostCommentCreateDto |  (optional)
 
 // Create a comment for a blog post
 BlogPostsAPI.createCommentForBlogPostAsync(tenantId: tenantId, blogPostId: blogPostId, blogPostCommentCreateDto: blogPostCommentCreateDto) { (response, error) in
@@ -201,7 +202,7 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let blogPostId = 987 // UUID | 
-let blogPostTagCreateDto = BlogPostTagCreateDto(id: 123, timestamp: Date(), slug: "slug_example", type: "type_example", title: "title_example", description: "description_example", seoTitle: "seoTitle_example", metaDescription: "metaDescription_example", cornerstoneContent: false, allowSerachEngines: false, seoKeyPhrases: "seoKeyPhrases_example", canonicalUrl: "canonicalUrl_example", imageURL: "imageURL_example", image: "image_example", webPortalID: "webPortalID_example") // BlogPostTagCreateDto |  (optional)
+let blogPostTagCreateDto = BlogPostTagCreateDto(id: 123, timestamp: Date(), slug: "slug_example", type: "type_example", title: "title_example", description: "description_example", seoTitle: "seoTitle_example", metaDescription: "metaDescription_example", cornerstoneContent: false, allowSerachEngines: false, seoKeyPhrases: "seoKeyPhrases_example", canonicalUrl: "canonicalUrl_example", imageURL: "imageURL_example", image: "image_example", webPortalId: "webPortalId_example") // BlogPostTagCreateDto |  (optional)
 
 // Create a tag for a blog post
 BlogPostsAPI.createTagForBlogPostAsync(tenantId: tenantId, blogPostId: blogPostId, blogPostTagCreateDto: blogPostTagCreateDto) { (response, error) in
@@ -697,6 +698,60 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchBlogPostAsync**
+```swift
+    open class func patchBlogPostAsync(tenantId: UUID, blogPostId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a blog post
+
+Partially updates an existing blog post for the specified tenant.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let blogPostId = 987 // UUID | 
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a blog post
+BlogPostsAPI.patchBlogPostAsync(tenantId: tenantId, blogPostId: blogPostId, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **blogPostId** | **UUID** |  | 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **relateCategoryToBlogPostAsync**
 ```swift
     open class func relateCategoryToBlogPostAsync(tenantId: UUID, blogPostId: UUID, categoryId: UUID, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
@@ -822,7 +877,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let blogPostId = 987 // UUID | 
 let commentId = 987 // UUID | 
-let blogPostCommentCreateDto = BlogPostCommentCreateDto(id: 123, timestamp: Date(), message: "message_example", ownerSocialProfileID: "ownerSocialProfileID_example", socialPostID: "socialPostID_example", parentCommentID: "parentCommentID_example") // BlogPostCommentCreateDto |  (optional)
+let blogPostCommentCreateDto = BlogPostCommentCreateDto(id: 123, timestamp: Date(), message: "message_example", ownerSocialProfileId: "ownerSocialProfileId_example", socialPostId: "socialPostId_example", parentCommentId: "parentCommentId_example") // BlogPostCommentCreateDto |  (optional)
 
 // Reply to a blog post comment
 BlogPostsAPI.replyToCommentAsync(tenantId: tenantId, blogPostId: blogPostId, commentId: commentId, blogPostCommentCreateDto: blogPostCommentCreateDto) { (response, error) in

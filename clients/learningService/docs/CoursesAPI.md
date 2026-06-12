@@ -44,6 +44,7 @@ Method | HTTP request | Description
 [**getInstructorProfilesByCourseCountAsync**](CoursesAPI.md#getinstructorprofilesbycoursecountasync) | **GET** /api/v2/LearningService/Courses/{courseId}/Instructors/Count | Get instructor profiles by course count
 [**getStudentProfilesByCourseAsync**](CoursesAPI.md#getstudentprofilesbycourseasync) | **GET** /api/v2/LearningService/Courses/{courseId}/Students | Get student profiles by course
 [**getStudentProfilesByCourseCountAsync**](CoursesAPI.md#getstudentprofilesbycoursecountasync) | **GET** /api/v2/LearningService/Courses/{courseId}/Students/Count | Get student profiles by course count
+[**patchCourseAsync**](CoursesAPI.md#patchcourseasync) | **PATCH** /api/v2/LearningService/Courses/{courseId} | Patch a course
 [**updateCourseAsync**](CoursesAPI.md#updatecourseasync) | **PUT** /api/v2/LearningService/Courses/{courseId} | Update a course
 
 
@@ -64,7 +65,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseCreateDto = CourseCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", sku: "sku_example", summary: "summary_example", code: "code_example", version: "version_example", courseCategoryID: "courseCategoryID_example", instructorProfileID: "instructorProfileID_example", currencyID: "currencyID_example", regularPrice: 123, maxCourseEnrollments: 123, totalEffortInWeeks: 123, totalHoursPerWeek: 123, totalEffortInHours: 123, startDateTime: Date(), endDateTime: Date(), inscriptionsStartDateTime: Date(), inscriptionsEndDateTime: Date()) // CourseCreateDto |  (optional)
+let courseCreateDto = CourseCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", sku: "sku_example", summary: "summary_example", code: "code_example", version: "version_example", courseCategoryId: "courseCategoryId_example", instructorProfileId: "instructorProfileId_example", currencyId: "currencyId_example", regularPrice: 123, maxCourseEnrollments: 123, totalEffortInWeeks: 123, totalHoursPerWeek: 123, totalEffortInHours: 123, startDateTime: Date(), endDateTime: Date(), inscriptionsStartDateTime: Date(), inscriptionsEndDateTime: Date()) // CourseCreateDto |  (optional)
 
 // Create a new course
 CoursesAPI.createCourseAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseCreateDto: courseCreateDto) { (response, error) in
@@ -2223,6 +2224,64 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchCourseAsync**
+```swift
+    open class func patchCourseAsync(tenantId: UUID, courseId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a course
+
+Partially updates a course for the specified tenant.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let courseId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a course
+CoursesAPI.patchCourseAsync(tenantId: tenantId, courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **courseId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateCourseAsync**
 ```swift
     open class func updateCourseAsync(tenantId: UUID, courseId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, courseUpdateDto: CourseUpdateDto? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
@@ -2241,7 +2300,7 @@ let tenantId = 987 // UUID |
 let courseId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseUpdateDto = CourseUpdateDto(title: "title_example", description: "description_example", sku: "sku_example", summary: "summary_example", code: "code_example", version: "version_example", courseCategoryID: "courseCategoryID_example", instructorProfileID: "instructorProfileID_example", currencyID: "currencyID_example", regularPrice: 123, maxCourseEnrollments: 123, totalEffortInWeeks: 123, totalHoursPerWeek: 123, totalEffortInHours: 123, startDateTime: Date(), endDateTime: Date(), inscriptionsStartDateTime: Date(), inscriptionsEndDateTime: Date(), published: false) // CourseUpdateDto |  (optional)
+let courseUpdateDto = CourseUpdateDto(title: "title_example", description: "description_example", sku: "sku_example", summary: "summary_example", code: "code_example", version: "version_example", courseCategoryId: "courseCategoryId_example", instructorProfileId: "instructorProfileId_example", currencyId: "currencyId_example", regularPrice: 123, maxCourseEnrollments: 123, totalEffortInWeeks: 123, totalHoursPerWeek: 123, totalEffortInHours: 123, startDateTime: Date(), endDateTime: Date(), inscriptionsStartDateTime: Date(), inscriptionsEndDateTime: Date(), published: false) // CourseUpdateDto |  (optional)
 
 // Update a course
 CoursesAPI.updateCourseAsync(tenantId: tenantId, courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseUpdateDto: courseUpdateDto) { (response, error) in

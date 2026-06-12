@@ -25,11 +25,11 @@ public struct WebPageTagDto: Codable, JSONEncodable, Hashable {
     public var canonicalUrl: String?
     public var imageURL: String?
     public var image: String?
-    public var webPortalID: String?
-    public var businessID: String?
-    public var businessProfileRecordID: String?
+    public var webPortalId: String?
+    public var tenantId: String?
+    public var enrollmentId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, slug: String? = nil, title: String? = nil, description: String? = nil, seoTitle: String? = nil, metaDescription: String? = nil, cornerstoneContent: Bool? = nil, allowSerachEngines: Bool? = nil, seoKeyPhrases: String? = nil, canonicalUrl: String? = nil, imageURL: String? = nil, image: String? = nil, webPortalID: String? = nil, businessID: String? = nil, businessProfileRecordID: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, slug: String? = nil, title: String? = nil, description: String? = nil, seoTitle: String? = nil, metaDescription: String? = nil, cornerstoneContent: Bool? = nil, allowSerachEngines: Bool? = nil, seoKeyPhrases: String? = nil, canonicalUrl: String? = nil, imageURL: String? = nil, image: String? = nil, webPortalId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.slug = slug
@@ -43,9 +43,9 @@ public struct WebPageTagDto: Codable, JSONEncodable, Hashable {
         self.canonicalUrl = canonicalUrl
         self.imageURL = imageURL
         self.image = image
-        self.webPortalID = webPortalID
-        self.businessID = businessID
-        self.businessProfileRecordID = businessProfileRecordID
+        self.webPortalId = webPortalId
+        self.tenantId = tenantId
+        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -62,9 +62,9 @@ public struct WebPageTagDto: Codable, JSONEncodable, Hashable {
         case canonicalUrl
         case imageURL
         case image
-        case webPortalID
-        case businessID
-        case businessProfileRecordID
+        case webPortalId
+        case tenantId
+        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -84,9 +84,9 @@ public struct WebPageTagDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(canonicalUrl, forKey: .canonicalUrl)
         try container.encodeIfPresent(imageURL, forKey: .imageURL)
         try container.encodeIfPresent(image, forKey: .image)
-        try container.encodeIfPresent(webPortalID, forKey: .webPortalID)
-        try container.encodeIfPresent(businessID, forKey: .businessID)
-        try container.encodeIfPresent(businessProfileRecordID, forKey: .businessProfileRecordID)
+        try container.encodeIfPresent(webPortalId, forKey: .webPortalId)
+        try container.encodeIfPresent(tenantId, forKey: .tenantId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

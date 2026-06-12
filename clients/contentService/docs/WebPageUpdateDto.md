@@ -57,6 +57,8 @@ Name | Type | Description | Notes
 **cornerstoneContent** | **Bool** |  | [optional] 
 **isEssentialContent** | **Bool** |  | [optional] 
 **allowSearchEngineIndexing** | **Bool** |  | [optional] 
+**webTemplateId** | **String** |  | [optional] 
+**parentWebContentId** | **String** |  | [optional] 
 **isHomePage** | **Bool** |  | [optional] 
 **isStorePage** | **Bool** |  | [optional] 
 **isCartPage** | **Bool** |  | [optional] 

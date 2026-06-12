@@ -17,19 +17,19 @@ public struct ItemQuestionDto: Codable, JSONEncodable, Hashable {
     public var title: String?
     public var needsRevision: Bool?
     public var question: String?
-    public var socialProfileID: String?
-    public var businessID: String?
-    public var itemID: String?
+    public var socialProfileId: String?
+    public var tenantId: String?
+    public var itemId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, needsRevision: Bool? = nil, question: String? = nil, socialProfileID: String? = nil, businessID: String? = nil, itemID: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, needsRevision: Bool? = nil, question: String? = nil, socialProfileId: String? = nil, tenantId: String? = nil, itemId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
         self.needsRevision = needsRevision
         self.question = question
-        self.socialProfileID = socialProfileID
-        self.businessID = businessID
-        self.itemID = itemID
+        self.socialProfileId = socialProfileId
+        self.tenantId = tenantId
+        self.itemId = itemId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -38,9 +38,9 @@ public struct ItemQuestionDto: Codable, JSONEncodable, Hashable {
         case title
         case needsRevision
         case question
-        case socialProfileID
-        case businessID
-        case itemID
+        case socialProfileId
+        case tenantId
+        case itemId
     }
 
     // Encodable protocol methods
@@ -52,9 +52,9 @@ public struct ItemQuestionDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(needsRevision, forKey: .needsRevision)
         try container.encodeIfPresent(question, forKey: .question)
-        try container.encodeIfPresent(socialProfileID, forKey: .socialProfileID)
-        try container.encodeIfPresent(businessID, forKey: .businessID)
-        try container.encodeIfPresent(itemID, forKey: .itemID)
+        try container.encodeIfPresent(socialProfileId, forKey: .socialProfileId)
+        try container.encodeIfPresent(tenantId, forKey: .tenantId)
+        try container.encodeIfPresent(itemId, forKey: .itemId)
     }
 }
 

@@ -16,6 +16,8 @@ Name | Type | Description | Notes
 **razorContent** | **String** |  | [optional] 
 **highlightImage** | **String** |  | [optional] 
 **order** | **Int** |  | [optional] 
+**tenantId** | **String** |  | [optional] 
+**enrollmentId** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

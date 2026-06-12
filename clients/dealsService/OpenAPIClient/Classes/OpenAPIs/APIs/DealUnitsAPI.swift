@@ -743,6 +743,119 @@ open class DealUnitsAPI {
     }
 
     /**
+     Patch a deal unit
+     
+     - parameter tenantId: (query)  
+     - parameter dealUnitId: (path)  
+     - parameter operation: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func patchDealUnitAsync(tenantId: UUID, dealUnitId: UUID, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchDealUnitAsyncWithRequestBuilder(tenantId: tenantId, dealUnitId: dealUnitId, operation: operation).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Patch a deal unit
+     - PATCH /api/v2/DealsService/DealUnits/{dealUnitId}
+     - Partially updates an existing deal unit by its unique identifier using a JSON Patch document.
+     - parameter tenantId: (query)  
+     - parameter dealUnitId: (path)  
+     - parameter operation: (body)  (optional)
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func patchDealUnitAsyncWithRequestBuilder(tenantId: UUID, dealUnitId: UUID, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/DealsService/DealUnits/{dealUnitId}"
+        let dealUnitIdPreEscape = "\(APIHelper.mapValueToPathItem(dealUnitId))"
+        let dealUnitIdPostEscape = dealUnitIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{dealUnitId}", with: dealUnitIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Patch a deal unit line
+     
+     - parameter tenantId: (query)  
+     - parameter dealUnitId: (path)  
+     - parameter dealUnitLineId: (path)  
+     - parameter operation: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func patchDealUnitLineAsync(tenantId: UUID, dealUnitId: UUID, dealUnitLineId: UUID, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchDealUnitLineAsyncWithRequestBuilder(tenantId: tenantId, dealUnitId: dealUnitId, dealUnitLineId: dealUnitLineId, operation: operation).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Patch a deal unit line
+     - PATCH /api/v2/DealsService/DealUnits/{dealUnitId}/Lines/{dealUnitLineId}
+     - Partially updates an existing line within a specific deal unit using a JSON Patch document.
+     - parameter tenantId: (query)  
+     - parameter dealUnitId: (path)  
+     - parameter dealUnitLineId: (path)  
+     - parameter operation: (body)  (optional)
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func patchDealUnitLineAsyncWithRequestBuilder(tenantId: UUID, dealUnitId: UUID, dealUnitLineId: UUID, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/DealsService/DealUnits/{dealUnitId}/Lines/{dealUnitLineId}"
+        let dealUnitIdPreEscape = "\(APIHelper.mapValueToPathItem(dealUnitId))"
+        let dealUnitIdPostEscape = dealUnitIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{dealUnitId}", with: dealUnitIdPostEscape, options: .literal, range: nil)
+        let dealUnitLineIdPreEscape = "\(APIHelper.mapValueToPathItem(dealUnitLineId))"
+        let dealUnitLineIdPostEscape = dealUnitLineIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{dealUnitLineId}", with: dealUnitLineIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
      Update a deal unit
      
      - parameter tenantId: (query)  

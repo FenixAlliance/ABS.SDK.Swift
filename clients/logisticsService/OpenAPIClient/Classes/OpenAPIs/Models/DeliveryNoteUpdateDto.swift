@@ -14,21 +14,21 @@ public struct DeliveryNoteUpdateDto: Codable, JSONEncodable, Hashable {
 
     public var title: String?
     public var description: String?
-    public var shipmentID: String?
-    public var proofOfDeliveryID: String?
+    public var shipmentId: String?
+    public var proofOfDeliveryId: String?
 
-    public init(title: String? = nil, description: String? = nil, shipmentID: String? = nil, proofOfDeliveryID: String? = nil) {
+    public init(title: String? = nil, description: String? = nil, shipmentId: String? = nil, proofOfDeliveryId: String? = nil) {
         self.title = title
         self.description = description
-        self.shipmentID = shipmentID
-        self.proofOfDeliveryID = proofOfDeliveryID
+        self.shipmentId = shipmentId
+        self.proofOfDeliveryId = proofOfDeliveryId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case title
         case description
-        case shipmentID
-        case proofOfDeliveryID
+        case shipmentId
+        case proofOfDeliveryId
     }
 
     // Encodable protocol methods
@@ -37,8 +37,8 @@ public struct DeliveryNoteUpdateDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(shipmentID, forKey: .shipmentID)
-        try container.encodeIfPresent(proofOfDeliveryID, forKey: .proofOfDeliveryID)
+        try container.encodeIfPresent(shipmentId, forKey: .shipmentId)
+        try container.encodeIfPresent(proofOfDeliveryId, forKey: .proofOfDeliveryId)
     }
 }
 

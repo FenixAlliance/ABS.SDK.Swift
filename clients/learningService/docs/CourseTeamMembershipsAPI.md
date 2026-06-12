@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getCourseTeamMembershipByIdAsync**](CourseTeamMembershipsAPI.md#getcourseteammembershipbyidasync) | **GET** /api/v2/LearningService/CourseTeamMemberships/{membershipId} | Get course team membership by ID
 [**getCourseTeamMembershipsAsync**](CourseTeamMembershipsAPI.md#getcourseteammembershipsasync) | **GET** /api/v2/LearningService/CourseTeamMemberships | Get all course team memberships
 [**getCourseTeamMembershipsCountAsync**](CourseTeamMembershipsAPI.md#getcourseteammembershipscountasync) | **GET** /api/v2/LearningService/CourseTeamMemberships/Count | Get course team memberships count
+[**patchCourseTeamMembershipAsync**](CourseTeamMembershipsAPI.md#patchcourseteammembershipasync) | **PATCH** /api/v2/LearningService/CourseTeamMemberships/{membershipId} | Patch a course team membership
 [**updateCourseTeamMembershipAsync**](CourseTeamMembershipsAPI.md#updatecourseteammembershipasync) | **PUT** /api/v2/LearningService/CourseTeamMemberships/{membershipId} | Update a course team membership
 
 
@@ -29,7 +30,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseTeamMembershipCreateDto = CourseTeamMembershipCreateDto(id: 123, timestamp: Date(), courseID: "courseID_example", instructorProfileID: "instructorProfileID_example", courseTeamMembershipType: "courseTeamMembershipType_example") // CourseTeamMembershipCreateDto |  (optional)
+let courseTeamMembershipCreateDto = CourseTeamMembershipCreateDto(id: 123, timestamp: Date(), courseId: "courseId_example", instructorProfileId: "instructorProfileId_example", courseTeamMembershipType: "courseTeamMembershipType_example") // CourseTeamMembershipCreateDto |  (optional)
 
 // Create a course team membership
 CourseTeamMembershipsAPI.createCourseTeamMembershipAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseTeamMembershipCreateDto: courseTeamMembershipCreateDto) { (response, error) in
@@ -286,6 +287,64 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchCourseTeamMembershipAsync**
+```swift
+    open class func patchCourseTeamMembershipAsync(tenantId: UUID, membershipId: String, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a course team membership
+
+Partially updates a course team membership for the specified tenant.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let membershipId = "membershipId_example" // String | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a course team membership
+CourseTeamMembershipsAPI.patchCourseTeamMembershipAsync(tenantId: tenantId, membershipId: membershipId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **membershipId** | **String** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateCourseTeamMembershipAsync**
 ```swift
     open class func updateCourseTeamMembershipAsync(tenantId: UUID, membershipId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseTeamMembershipUpdateDto: CourseTeamMembershipUpdateDto? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
@@ -304,7 +363,7 @@ let tenantId = 987 // UUID |
 let membershipId = "membershipId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseTeamMembershipUpdateDto = CourseTeamMembershipUpdateDto(instructorProfileID: "instructorProfileID_example", courseTeamMembershipType: "courseTeamMembershipType_example") // CourseTeamMembershipUpdateDto |  (optional)
+let courseTeamMembershipUpdateDto = CourseTeamMembershipUpdateDto(instructorProfileId: "instructorProfileId_example", courseTeamMembershipType: "courseTeamMembershipType_example") // CourseTeamMembershipUpdateDto |  (optional)
 
 // Update a course team membership
 CourseTeamMembershipsAPI.updateCourseTeamMembershipAsync(tenantId: tenantId, membershipId: membershipId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseTeamMembershipUpdateDto: courseTeamMembershipUpdateDto) { (response, error) in

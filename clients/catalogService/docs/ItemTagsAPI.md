@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**deleteItemTagAsync**](ItemTagsAPI.md#deleteitemtagasync) | **DELETE** /api/v2/CatalogService/ItemTags/{itemTagId} | Delete an item tag
 [**getItemTagByIdAsync**](ItemTagsAPI.md#getitemtagbyidasync) | **GET** /api/v2/CatalogService/ItemTags/{itemTagId} | Get item tag by ID
 [**getItemTagsAsync**](ItemTagsAPI.md#getitemtagsasync) | **GET** /api/v2/CatalogService/ItemTags | Get all item tags
+[**patchItemTagAsync**](ItemTagsAPI.md#patchitemtagasync) | **PATCH** /api/v2/CatalogService/ItemTags/{itemTagId} | Patch an item tag
 [**updateItemTagAsync**](ItemTagsAPI.md#updateitemtagasync) | **PUT** /api/v2/CatalogService/ItemTags/{itemTagId} | Update an item tag
 
 
@@ -229,6 +230,64 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchItemTagAsync**
+```swift
+    open class func patchItemTagAsync(tenantId: UUID, itemTagId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+```
+
+Patch an item tag
+
+Partially updates an existing item tag for the specified tenant.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let itemTagId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch an item tag
+ItemTagsAPI.patchItemTagAsync(tenantId: tenantId, itemTagId: itemTagId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **itemTagId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+Void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

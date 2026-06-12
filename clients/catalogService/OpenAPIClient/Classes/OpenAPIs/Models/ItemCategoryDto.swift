@@ -23,11 +23,11 @@ public struct ItemCategoryDto: Codable, JSONEncodable, Hashable {
     public var enableForLicenses: Bool?
     public var enableForServices: Bool?
     public var enableForSubscriptions: Bool?
-    public var businessID: String?
-    public var businessProfileRecordID: String?
-    public var parentItemCategoryID: String?
+    public var tenantId: String?
+    public var enrollmentId: String?
+    public var parentItemCategoryId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil, imageURL: String? = nil, isFeatured: Bool? = nil, enableForCourses: Bool? = nil, enableForProducts: Bool? = nil, enableForLicenses: Bool? = nil, enableForServices: Bool? = nil, enableForSubscriptions: Bool? = nil, businessID: String? = nil, businessProfileRecordID: String? = nil, parentItemCategoryID: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil, imageURL: String? = nil, isFeatured: Bool? = nil, enableForCourses: Bool? = nil, enableForProducts: Bool? = nil, enableForLicenses: Bool? = nil, enableForServices: Bool? = nil, enableForSubscriptions: Bool? = nil, tenantId: String? = nil, enrollmentId: String? = nil, parentItemCategoryId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
@@ -39,9 +39,9 @@ public struct ItemCategoryDto: Codable, JSONEncodable, Hashable {
         self.enableForLicenses = enableForLicenses
         self.enableForServices = enableForServices
         self.enableForSubscriptions = enableForSubscriptions
-        self.businessID = businessID
-        self.businessProfileRecordID = businessProfileRecordID
-        self.parentItemCategoryID = parentItemCategoryID
+        self.tenantId = tenantId
+        self.enrollmentId = enrollmentId
+        self.parentItemCategoryId = parentItemCategoryId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -56,9 +56,9 @@ public struct ItemCategoryDto: Codable, JSONEncodable, Hashable {
         case enableForLicenses
         case enableForServices
         case enableForSubscriptions
-        case businessID
-        case businessProfileRecordID
-        case parentItemCategoryID
+        case tenantId
+        case enrollmentId
+        case parentItemCategoryId
     }
 
     // Encodable protocol methods
@@ -76,9 +76,9 @@ public struct ItemCategoryDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(enableForLicenses, forKey: .enableForLicenses)
         try container.encodeIfPresent(enableForServices, forKey: .enableForServices)
         try container.encodeIfPresent(enableForSubscriptions, forKey: .enableForSubscriptions)
-        try container.encodeIfPresent(businessID, forKey: .businessID)
-        try container.encodeIfPresent(businessProfileRecordID, forKey: .businessProfileRecordID)
-        try container.encodeIfPresent(parentItemCategoryID, forKey: .parentItemCategoryID)
+        try container.encodeIfPresent(tenantId, forKey: .tenantId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
+        try container.encodeIfPresent(parentItemCategoryId, forKey: .parentItemCategoryId)
     }
 }
 

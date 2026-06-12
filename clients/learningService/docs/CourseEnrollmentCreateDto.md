@@ -5,10 +5,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **UUID** |  | [optional] 
 **timestamp** | **Date** |  | [optional] 
-**courseID** | **String** |  | [optional] 
-**courseCohortID** | **String** |  | [optional] 
-**studentProfileID** | **String** |  | [optional] 
-**courseCompletionCertificateID** | **String** |  | [optional] 
+**courseId** | **String** |  | [optional] 
+**courseCohortId** | **String** |  | [optional] 
+**studentProfileId** | **String** |  | [optional] 
+**courseCompletionCertificateId** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

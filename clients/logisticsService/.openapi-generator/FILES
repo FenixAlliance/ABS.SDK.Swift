@@ -85,6 +85,7 @@ OpenAPIClient/Classes/OpenAPIs/Models/ItemRetainSampleDtoEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ItemRetainSampleDtoListEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ItemRetainSampleUpdateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/LoginRequest.swift
+OpenAPIClient/Classes/OpenAPIs/Models/Operation.swift
 OpenAPIClient/Classes/OpenAPIs/Models/PortCreateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/PortDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/PortDtoEnvelope.swift
@@ -234,6 +235,7 @@ docs/ItemRetainSampleDtoListEnvelope.md
 docs/ItemRetainSampleUpdateDto.md
 docs/ItemRetainSamplesAPI.md
 docs/LoginRequest.md
+docs/Operation.md
 docs/PortCreateDto.md
 docs/PortDto.md
 docs/PortDtoEnvelope.md

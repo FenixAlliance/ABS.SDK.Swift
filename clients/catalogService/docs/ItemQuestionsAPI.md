@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**deleteItemQuestionAsync**](ItemQuestionsAPI.md#deleteitemquestionasync) | **DELETE** /api/v2/CatalogService/ItemQuestions/{itemQuestionId} | Delete an item question
 [**getItemQuestionByIdAsync**](ItemQuestionsAPI.md#getitemquestionbyidasync) | **GET** /api/v2/CatalogService/ItemQuestions/{itemQuestionId} | Get item question by ID
 [**getItemQuestionsAsync**](ItemQuestionsAPI.md#getitemquestionsasync) | **GET** /api/v2/CatalogService/ItemQuestions | Get all item questions
+[**patchItemQuestionAsync**](ItemQuestionsAPI.md#patchitemquestionasync) | **PATCH** /api/v2/CatalogService/ItemQuestions/{itemQuestionId} | Patch an item question
 [**updateItemQuestionAsync**](ItemQuestionsAPI.md#updateitemquestionasync) | **PUT** /api/v2/CatalogService/ItemQuestions/{itemQuestionId} | Update an item question
 
 
@@ -28,7 +29,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let itemQuestionCreateDto = ItemQuestionCreateDto(id: 123, timestamp: Date(), title: "title_example", needsRevision: false, question: "question_example", socialProfileID: "socialProfileID_example", itemID: "itemID_example") // ItemQuestionCreateDto |  (optional)
+let itemQuestionCreateDto = ItemQuestionCreateDto(id: 123, timestamp: Date(), title: "title_example", needsRevision: false, question: "question_example", socialProfileId: "socialProfileId_example", itemId: "itemId_example") // ItemQuestionCreateDto |  (optional)
 
 // Create a new item question
 ItemQuestionsAPI.createItemQuestionAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemQuestionCreateDto: itemQuestionCreateDto) { (response, error) in
@@ -229,6 +230,64 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchItemQuestionAsync**
+```swift
+    open class func patchItemQuestionAsync(tenantId: UUID, itemQuestionId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+```
+
+Patch an item question
+
+Partially updates an existing item question for the specified tenant using a JSON Patch document.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let itemQuestionId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch an item question
+ItemQuestionsAPI.patchItemQuestionAsync(tenantId: tenantId, itemQuestionId: itemQuestionId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **itemQuestionId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+Void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

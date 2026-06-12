@@ -34,9 +34,9 @@ public struct ItemAttachmentDto: Codable, JSONEncodable, Hashable {
     public var enrollmentId: String?
     public var socialProfileId: String?
     public var folderPath: String?
-    public var itemID: String?
+    public var itemId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, notes: String? = nil, title: String? = nil, author: String? = nil, isFolder: Bool? = nil, hash: String? = nil, fileUrl: String? = nil, filePath: String? = nil, fileName: String? = nil, abstract: String? = nil, keyWords: String? = nil, metadata: String? = nil, fileLength: Int64? = nil, contentType: String? = nil, parentFileId: String? = nil, validResponse: Bool? = nil, userId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil, socialProfileId: String? = nil, folderPath: String? = nil, itemID: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, notes: String? = nil, title: String? = nil, author: String? = nil, isFolder: Bool? = nil, hash: String? = nil, fileUrl: String? = nil, filePath: String? = nil, fileName: String? = nil, abstract: String? = nil, keyWords: String? = nil, metadata: String? = nil, fileLength: Int64? = nil, contentType: String? = nil, parentFileId: String? = nil, validResponse: Bool? = nil, userId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil, socialProfileId: String? = nil, folderPath: String? = nil, itemId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.notes = notes
@@ -59,7 +59,7 @@ public struct ItemAttachmentDto: Codable, JSONEncodable, Hashable {
         self.enrollmentId = enrollmentId
         self.socialProfileId = socialProfileId
         self.folderPath = folderPath
-        self.itemID = itemID
+        self.itemId = itemId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -85,7 +85,7 @@ public struct ItemAttachmentDto: Codable, JSONEncodable, Hashable {
         case enrollmentId
         case socialProfileId
         case folderPath
-        case itemID
+        case itemId
     }
 
     // Encodable protocol methods
@@ -114,7 +114,7 @@ public struct ItemAttachmentDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(socialProfileId, forKey: .socialProfileId)
         try container.encodeIfPresent(folderPath, forKey: .folderPath)
-        try container.encodeIfPresent(itemID, forKey: .itemID)
+        try container.encodeIfPresent(itemId, forKey: .itemId)
     }
 }
 

@@ -3,11 +3,11 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **AnyCodable** |  | [optional] 
+**id** | **String** |  | [optional] 
 **timestamp** | **Date** |  | [optional] 
-**businessId** | **AnyCodable** |  | [optional] 
-**businessProfileRecordId** | **AnyCodable** |  | [optional] 
-**assetId** | **AnyCodable** |  | [optional] 
+**tenantId** | **String** |  | [optional] 
+**enrollmentId** | **String** |  | [optional] 
+**assetId** | **String** |  | [optional] 
 **assetName** | **String** |  | [optional] 
 **repairStatus** | **String** |  | [optional] 
 **scheduledDate** | **Date** |  | [optional] 

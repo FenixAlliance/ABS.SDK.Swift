@@ -15,23 +15,17 @@ public struct AssetValueAmendUpdateDto: Codable, JSONEncodable, Hashable {
     public var newValue: Double?
     public var reason: String?
     public var amendmentDate: Date?
-    public var approvedBy: String?
-    public var approvalDate: Date?
 
-    public init(newValue: Double? = nil, reason: String? = nil, amendmentDate: Date? = nil, approvedBy: String? = nil, approvalDate: Date? = nil) {
+    public init(newValue: Double? = nil, reason: String? = nil, amendmentDate: Date? = nil) {
         self.newValue = newValue
         self.reason = reason
         self.amendmentDate = amendmentDate
-        self.approvedBy = approvedBy
-        self.approvalDate = approvalDate
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case newValue
         case reason
         case amendmentDate
-        case approvedBy
-        case approvalDate
     }
 
     // Encodable protocol methods
@@ -41,8 +35,6 @@ public struct AssetValueAmendUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(newValue, forKey: .newValue)
         try container.encodeIfPresent(reason, forKey: .reason)
         try container.encodeIfPresent(amendmentDate, forKey: .amendmentDate)
-        try container.encodeIfPresent(approvedBy, forKey: .approvedBy)
-        try container.encodeIfPresent(approvalDate, forKey: .approvalDate)
     }
 }
 

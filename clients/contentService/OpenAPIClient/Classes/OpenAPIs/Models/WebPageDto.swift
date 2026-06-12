@@ -80,7 +80,9 @@ public struct WebPageDto: Codable, JSONEncodable, Hashable {
     public var socialProfileId: String?
     public var parentWebContentId: String?
     public var parentWebContentVersionId: String?
-    public var webTemplateID: String?
+    public var webTemplateId: String?
+    public var authorName: String?
+    public var authorId: String?
     public var isHomePage: Bool?
     public var isStorePage: Bool?
     public var isCartPage: Bool?
@@ -92,7 +94,7 @@ public struct WebPageDto: Codable, JSONEncodable, Hashable {
     public var isPrivacyPolicyPage: Bool?
     public var isTermsOfServicePage: Bool?
 
-    public init(id: String? = nil, timestamp: Date? = nil, codeType: CodeType? = nil, order: Int? = nil, slug: String? = nil, name: String? = nil, title: String? = nil, excerpt: String? = nil, password: String? = nil, description: String? = nil, highlightImage: String? = nil, canonicalUrl: String? = nil, emitResult: AnyCodable? = nil, seoTitle: String? = nil, seoKeyWords: String? = nil, seoKeyPhrases: String? = nil, metaDescription: String? = nil, twitterImage: String? = nil, twitterTitle: String? = nil, twitterDescription: String? = nil, facebookImage: String? = nil, facebookTitle: String? = nil, facebookDescription: String? = nil, featuredImageUrl: String? = nil, content: String? = nil, code: String? = nil, namespace: String? = nil, typeName: String? = nil, generatedCode: String? = nil, compilationPath: String? = nil, htmlContent: String? = nil, cSharpContent: String? = nil, razorContent: String? = nil, cssContent: String? = nil, jsContent: String? = nil, cssFiles: String? = nil, jsFiles: String? = nil, razorGeneratedCode: String? = nil, cSharpGeneratedCode: String? = nil, template: Bool? = nil, _default: Bool? = nil, enable: Bool? = nil, enableComments: Bool? = nil, displaySocialBox: Bool? = nil, published: Bool? = nil, inTrashCan: Bool? = nil, systemLocked: Bool? = nil, allowPingBacks: Bool? = nil, allowTrackbacks: Bool? = nil, cornerstoneContent: Bool? = nil, isEssentialContent: Bool? = nil, allowSearchEngineIndexing: Bool? = nil, tenantId: String? = nil, webPortalId: String? = nil, websiteThemeId: String? = nil, enrollmentId: String? = nil, socialProfileId: String? = nil, parentWebContentId: String? = nil, parentWebContentVersionId: String? = nil, webTemplateID: String? = nil, isHomePage: Bool? = nil, isStorePage: Bool? = nil, isCartPage: Bool? = nil, isBlogPage: Bool? = nil, isAccountPage: Bool? = nil, isCheckoutPage: Bool? = nil, isWishListsPage: Bool? = nil, isContactPage: Bool? = nil, isPrivacyPolicyPage: Bool? = nil, isTermsOfServicePage: Bool? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, codeType: CodeType? = nil, order: Int? = nil, slug: String? = nil, name: String? = nil, title: String? = nil, excerpt: String? = nil, password: String? = nil, description: String? = nil, highlightImage: String? = nil, canonicalUrl: String? = nil, emitResult: AnyCodable? = nil, seoTitle: String? = nil, seoKeyWords: String? = nil, seoKeyPhrases: String? = nil, metaDescription: String? = nil, twitterImage: String? = nil, twitterTitle: String? = nil, twitterDescription: String? = nil, facebookImage: String? = nil, facebookTitle: String? = nil, facebookDescription: String? = nil, featuredImageUrl: String? = nil, content: String? = nil, code: String? = nil, namespace: String? = nil, typeName: String? = nil, generatedCode: String? = nil, compilationPath: String? = nil, htmlContent: String? = nil, cSharpContent: String? = nil, razorContent: String? = nil, cssContent: String? = nil, jsContent: String? = nil, cssFiles: String? = nil, jsFiles: String? = nil, razorGeneratedCode: String? = nil, cSharpGeneratedCode: String? = nil, template: Bool? = nil, _default: Bool? = nil, enable: Bool? = nil, enableComments: Bool? = nil, displaySocialBox: Bool? = nil, published: Bool? = nil, inTrashCan: Bool? = nil, systemLocked: Bool? = nil, allowPingBacks: Bool? = nil, allowTrackbacks: Bool? = nil, cornerstoneContent: Bool? = nil, isEssentialContent: Bool? = nil, allowSearchEngineIndexing: Bool? = nil, tenantId: String? = nil, webPortalId: String? = nil, websiteThemeId: String? = nil, enrollmentId: String? = nil, socialProfileId: String? = nil, parentWebContentId: String? = nil, parentWebContentVersionId: String? = nil, webTemplateId: String? = nil, authorName: String? = nil, authorId: String? = nil, isHomePage: Bool? = nil, isStorePage: Bool? = nil, isCartPage: Bool? = nil, isBlogPage: Bool? = nil, isAccountPage: Bool? = nil, isCheckoutPage: Bool? = nil, isWishListsPage: Bool? = nil, isContactPage: Bool? = nil, isPrivacyPolicyPage: Bool? = nil, isTermsOfServicePage: Bool? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.codeType = codeType
@@ -152,7 +154,9 @@ public struct WebPageDto: Codable, JSONEncodable, Hashable {
         self.socialProfileId = socialProfileId
         self.parentWebContentId = parentWebContentId
         self.parentWebContentVersionId = parentWebContentVersionId
-        self.webTemplateID = webTemplateID
+        self.webTemplateId = webTemplateId
+        self.authorName = authorName
+        self.authorId = authorId
         self.isHomePage = isHomePage
         self.isStorePage = isStorePage
         self.isCartPage = isCartPage
@@ -225,7 +229,9 @@ public struct WebPageDto: Codable, JSONEncodable, Hashable {
         case socialProfileId
         case parentWebContentId
         case parentWebContentVersionId
-        case webTemplateID
+        case webTemplateId
+        case authorName
+        case authorId
         case isHomePage
         case isStorePage
         case isCartPage
@@ -301,7 +307,9 @@ public struct WebPageDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(socialProfileId, forKey: .socialProfileId)
         try container.encodeIfPresent(parentWebContentId, forKey: .parentWebContentId)
         try container.encodeIfPresent(parentWebContentVersionId, forKey: .parentWebContentVersionId)
-        try container.encodeIfPresent(webTemplateID, forKey: .webTemplateID)
+        try container.encodeIfPresent(webTemplateId, forKey: .webTemplateId)
+        try container.encodeIfPresent(authorName, forKey: .authorName)
+        try container.encodeIfPresent(authorId, forKey: .authorId)
         try container.encodeIfPresent(isHomePage, forKey: .isHomePage)
         try container.encodeIfPresent(isStorePage, forKey: .isStorePage)
         try container.encodeIfPresent(isCartPage, forKey: .isCartPage)

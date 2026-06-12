@@ -54,6 +54,7 @@ OpenAPIClient/Classes/OpenAPIs/Models/InvoiceUpdateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/LoginRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/Money.swift
 OpenAPIClient/Classes/OpenAPIs/Models/MoneyEnvelope.swift
+OpenAPIClient/Classes/OpenAPIs/Models/Operation.swift
 OpenAPIClient/Classes/OpenAPIs/Models/PaymentDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/PaymentDtoIReadOnlyListEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/RefreshRequest.swift
@@ -116,6 +117,7 @@ docs/InvoicesAPI.md
 docs/LoginRequest.md
 docs/Money.md
 docs/MoneyEnvelope.md
+docs/Operation.md
 docs/PaymentDto.md
 docs/PaymentDtoIReadOnlyListEnvelope.md
 docs/RefreshRequest.md

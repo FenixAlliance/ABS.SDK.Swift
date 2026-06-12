@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **markup** | **String** |  | [optional] 
 **featuredImageUrl** | **String** |  | [optional] 
 **codeType** | **String** |  | [optional] 
+**slug** | **String** |  | [optional] 
 **blogPostCategoryId** | **String** |  | [optional] 
 **webTemplateId** | **String** |  | [optional] 
 

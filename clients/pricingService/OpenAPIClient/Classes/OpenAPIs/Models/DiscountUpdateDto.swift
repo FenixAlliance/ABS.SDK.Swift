@@ -12,20 +12,23 @@ import AnyCodable
 
 public struct DiscountUpdateDto: Codable, JSONEncodable, Hashable {
 
+    static let itemIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let discountListIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     public var description: String?
     public var beginQuantity: Double?
     public var endQuantity: Double?
     public var percent: Double?
     public var value: Double?
+    public var itemId: String?
     public var discountListId: String?
 
-    public init(description: String? = nil, beginQuantity: Double? = nil, endQuantity: Double? = nil, percent: Double? = nil, value: Double? = nil, discountListId: String? = nil) {
+    public init(description: String? = nil, beginQuantity: Double? = nil, endQuantity: Double? = nil, percent: Double? = nil, value: Double? = nil, itemId: String? = nil, discountListId: String? = nil) {
         self.description = description
         self.beginQuantity = beginQuantity
         self.endQuantity = endQuantity
         self.percent = percent
         self.value = value
+        self.itemId = itemId
         self.discountListId = discountListId
     }
 
@@ -35,6 +38,7 @@ public struct DiscountUpdateDto: Codable, JSONEncodable, Hashable {
         case endQuantity
         case percent
         case value
+        case itemId
         case discountListId
     }
 
@@ -47,6 +51,7 @@ public struct DiscountUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(endQuantity, forKey: .endQuantity)
         try container.encodeIfPresent(percent, forKey: .percent)
         try container.encodeIfPresent(value, forKey: .value)
+        try container.encodeIfPresent(itemId, forKey: .itemId)
         try container.encodeIfPresent(discountListId, forKey: .discountListId)
     }
 }

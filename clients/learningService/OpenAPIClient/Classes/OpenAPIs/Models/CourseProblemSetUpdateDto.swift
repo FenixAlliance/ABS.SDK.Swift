@@ -15,16 +15,16 @@ public struct CourseProblemSetUpdateDto: Codable, JSONEncodable, Hashable {
     public var title: String?
     public var description: String?
     public var overallScore: Double?
-    public var courseUnitID: String?
-    public var courseGradingRubricID: String?
+    public var courseUnitId: String?
+    public var courseGradingRubricId: String?
     public var releaseDateTime: Date?
 
-    public init(title: String? = nil, description: String? = nil, overallScore: Double? = nil, courseUnitID: String? = nil, courseGradingRubricID: String? = nil, releaseDateTime: Date? = nil) {
+    public init(title: String? = nil, description: String? = nil, overallScore: Double? = nil, courseUnitId: String? = nil, courseGradingRubricId: String? = nil, releaseDateTime: Date? = nil) {
         self.title = title
         self.description = description
         self.overallScore = overallScore
-        self.courseUnitID = courseUnitID
-        self.courseGradingRubricID = courseGradingRubricID
+        self.courseUnitId = courseUnitId
+        self.courseGradingRubricId = courseGradingRubricId
         self.releaseDateTime = releaseDateTime
     }
 
@@ -32,8 +32,8 @@ public struct CourseProblemSetUpdateDto: Codable, JSONEncodable, Hashable {
         case title
         case description
         case overallScore
-        case courseUnitID
-        case courseGradingRubricID
+        case courseUnitId
+        case courseGradingRubricId
         case releaseDateTime
     }
 
@@ -44,8 +44,8 @@ public struct CourseProblemSetUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(overallScore, forKey: .overallScore)
-        try container.encodeIfPresent(courseUnitID, forKey: .courseUnitID)
-        try container.encodeIfPresent(courseGradingRubricID, forKey: .courseGradingRubricID)
+        try container.encodeIfPresent(courseUnitId, forKey: .courseUnitId)
+        try container.encodeIfPresent(courseGradingRubricId, forKey: .courseGradingRubricId)
         try container.encodeIfPresent(releaseDateTime, forKey: .releaseDateTime)
     }
 }

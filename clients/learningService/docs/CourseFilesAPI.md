@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getCourseFileByIdAsync**](CourseFilesAPI.md#getcoursefilebyidasync) | **GET** /api/v2/LearningService/CourseFiles/{fileId} | Get course file by ID
 [**getCourseFilesAsync**](CourseFilesAPI.md#getcoursefilesasync) | **GET** /api/v2/LearningService/CourseFiles | Get all course files
 [**getCourseFilesCountAsync**](CourseFilesAPI.md#getcoursefilescountasync) | **GET** /api/v2/LearningService/CourseFiles/Count | Get course files count
+[**patchCourseFileAsync**](CourseFilesAPI.md#patchcoursefileasync) | **PATCH** /api/v2/LearningService/CourseFiles/{fileId} | Patch a course file
 [**updateCourseFileAsync**](CourseFilesAPI.md#updatecoursefileasync) | **PUT** /api/v2/LearningService/CourseFiles/{fileId} | Update a course file
 
 
@@ -29,7 +30,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseFileCreateDto = CourseFileCreateDto(id: 123, timestamp: Date(), title: "title_example", fileName: "fileName_example", fileUploadURL: "fileUploadURL_example", contentType: "contentType_example", fileLength: 123, courseID: "courseID_example") // CourseFileCreateDto |  (optional)
+let courseFileCreateDto = CourseFileCreateDto(id: 123, timestamp: Date(), title: "title_example", fileName: "fileName_example", fileUploadURL: "fileUploadURL_example", contentType: "contentType_example", fileLength: 123, courseId: "courseId_example") // CourseFileCreateDto |  (optional)
 
 // Create a new course file
 CourseFilesAPI.createCourseFileAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseFileCreateDto: courseFileCreateDto) { (response, error) in
@@ -282,6 +283,64 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchCourseFileAsync**
+```swift
+    open class func patchCourseFileAsync(tenantId: UUID, fileId: String, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+```
+
+Patch a course file
+
+Partially updates an existing course file for the specified tenant.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let fileId = "fileId_example" // String | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a course file
+CourseFilesAPI.patchCourseFileAsync(tenantId: tenantId, fileId: fileId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **fileId** | **String** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+Void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

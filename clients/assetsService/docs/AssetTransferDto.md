@@ -5,8 +5,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | [optional] 
 **timestamp** | **Date** |  | [optional] 
-**businessId** | **String** |  | [optional] 
-**businessProfileRecordId** | **String** |  | [optional] 
+**tenantId** | **String** |  | [optional] 
+**enrollmentId** | **String** |  | [optional] 
 **assetId** | **String** |  | [optional] 
 **assetName** | **String** |  | [optional] 
 **isRootTransfer** | **Bool** |  | [optional] 

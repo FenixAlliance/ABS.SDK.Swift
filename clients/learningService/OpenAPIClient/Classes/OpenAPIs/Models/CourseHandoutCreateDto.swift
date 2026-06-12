@@ -13,7 +13,7 @@ import AnyCodable
 public struct CourseHandoutCreateDto: Codable, JSONEncodable, Hashable {
 
     static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    static let courseIDRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let courseIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var name: String
@@ -21,10 +21,10 @@ public struct CourseHandoutCreateDto: Codable, JSONEncodable, Hashable {
     public var content: String?
     public var url: String?
     public var releaseDateTime: Date?
-    public var courseID: String
-    public var courseUnitID: String?
+    public var courseId: String
+    public var courseUnitId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, name: String, description: String? = nil, content: String? = nil, url: String? = nil, releaseDateTime: Date? = nil, courseID: String, courseUnitID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, name: String, description: String? = nil, content: String? = nil, url: String? = nil, releaseDateTime: Date? = nil, courseId: String, courseUnitId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
@@ -32,8 +32,8 @@ public struct CourseHandoutCreateDto: Codable, JSONEncodable, Hashable {
         self.content = content
         self.url = url
         self.releaseDateTime = releaseDateTime
-        self.courseID = courseID
-        self.courseUnitID = courseUnitID
+        self.courseId = courseId
+        self.courseUnitId = courseUnitId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -44,8 +44,8 @@ public struct CourseHandoutCreateDto: Codable, JSONEncodable, Hashable {
         case content
         case url
         case releaseDateTime
-        case courseID
-        case courseUnitID
+        case courseId
+        case courseUnitId
     }
 
     // Encodable protocol methods
@@ -59,8 +59,8 @@ public struct CourseHandoutCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(content, forKey: .content)
         try container.encodeIfPresent(url, forKey: .url)
         try container.encodeIfPresent(releaseDateTime, forKey: .releaseDateTime)
-        try container.encode(courseID, forKey: .courseID)
-        try container.encodeIfPresent(courseUnitID, forKey: .courseUnitID)
+        try container.encode(courseId, forKey: .courseId)
+        try container.encodeIfPresent(courseUnitId, forKey: .courseUnitId)
     }
 }
 

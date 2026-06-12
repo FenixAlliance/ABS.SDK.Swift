@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**deleteItemReviewAsync**](ItemReviewsAPI.md#deleteitemreviewasync) | **DELETE** /api/v2/CatalogService/ItemReviews/{itemReviewId} | Delete an item review
 [**getItemReviewByIdAsync**](ItemReviewsAPI.md#getitemreviewbyidasync) | **GET** /api/v2/CatalogService/ItemReviews/{itemReviewId} | Get item review by ID
 [**getItemReviewsAsync**](ItemReviewsAPI.md#getitemreviewsasync) | **GET** /api/v2/CatalogService/ItemReviews | Get all item reviews
+[**patchItemReviewAsync**](ItemReviewsAPI.md#patchitemreviewasync) | **PATCH** /api/v2/CatalogService/ItemReviews/{itemReviewId} | Patch an item review
 [**updateItemReviewAsync**](ItemReviewsAPI.md#updateitemreviewasync) | **PUT** /api/v2/CatalogService/ItemReviews/{itemReviewId} | Update an item review
 
 
@@ -28,7 +29,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let itemReviewCreateDto = ItemReviewCreateDto(id: 123, timestamp: Date(), itemID: "itemID_example", reviewScore: 123, reviewMessage: "reviewMessage_example", socialProfileID: "socialProfileID_example") // ItemReviewCreateDto |  (optional)
+let itemReviewCreateDto = ItemReviewCreateDto(id: 123, timestamp: Date(), itemId: "itemId_example", reviewScore: 123, reviewMessage: "reviewMessage_example", socialProfileId: "socialProfileId_example") // ItemReviewCreateDto |  (optional)
 
 // Create a new item review
 ItemReviewsAPI.createItemReviewAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemReviewCreateDto: itemReviewCreateDto) { (response, error) in
@@ -229,6 +230,64 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchItemReviewAsync**
+```swift
+    open class func patchItemReviewAsync(tenantId: UUID, itemReviewId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+```
+
+Patch an item review
+
+Partially updates an existing item review for the specified tenant.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let itemReviewId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch an item review
+ItemReviewsAPI.patchItemReviewAsync(tenantId: tenantId, itemReviewId: itemReviewId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **itemReviewId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+Void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

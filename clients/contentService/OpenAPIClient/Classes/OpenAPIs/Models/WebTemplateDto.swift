@@ -25,8 +25,10 @@ public struct WebTemplateDto: Codable, JSONEncodable, Hashable {
     public var razorContent: String?
     public var highlightImage: String?
     public var order: Int?
+    public var tenantId: String?
+    public var enrollmentId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, slug: String? = nil, name: String? = nil, title: String? = nil, description: String? = nil, content: String? = nil, htmlContent: String? = nil, cssContent: String? = nil, jsContent: String? = nil, razorContent: String? = nil, highlightImage: String? = nil, order: Int? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, slug: String? = nil, name: String? = nil, title: String? = nil, description: String? = nil, content: String? = nil, htmlContent: String? = nil, cssContent: String? = nil, jsContent: String? = nil, razorContent: String? = nil, highlightImage: String? = nil, order: Int? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.slug = slug
@@ -40,6 +42,8 @@ public struct WebTemplateDto: Codable, JSONEncodable, Hashable {
         self.razorContent = razorContent
         self.highlightImage = highlightImage
         self.order = order
+        self.tenantId = tenantId
+        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -56,6 +60,8 @@ public struct WebTemplateDto: Codable, JSONEncodable, Hashable {
         case razorContent
         case highlightImage
         case order
+        case tenantId
+        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -75,6 +81,8 @@ public struct WebTemplateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(razorContent, forKey: .razorContent)
         try container.encodeIfPresent(highlightImage, forKey: .highlightImage)
         try container.encodeIfPresent(order, forKey: .order)
+        try container.encodeIfPresent(tenantId, forKey: .tenantId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

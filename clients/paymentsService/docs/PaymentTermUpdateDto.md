@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **creditWeeks** | **Double** |  | [optional] 
 **creditMonths** | **Double** |  | [optional] 
 **creditYears** | **Double** |  | [optional] 
-**paymentModeID** | **String** |  | [optional] 
+**paymentModeId** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

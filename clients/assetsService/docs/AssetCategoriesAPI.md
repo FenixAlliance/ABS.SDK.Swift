@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getAssetCategories**](AssetCategoriesAPI.md#getassetcategories) | **GET** /api/v2/AssetsService/AssetCategories | Gets all asset categories for the current tenant
 [**getAssetCategoriesCount**](AssetCategoriesAPI.md#getassetcategoriescount) | **GET** /api/v2/AssetsService/AssetCategories/count | Gets the count of asset categories
 [**getAssetCategory**](AssetCategoriesAPI.md#getassetcategory) | **GET** /api/v2/AssetsService/AssetCategories/{categoryId} | Gets a specific asset category
+[**patchAssetCategory**](AssetCategoriesAPI.md#patchassetcategory) | **PATCH** /api/v2/AssetsService/AssetCategories/{categoryId} | Partially updates an existing asset category
 [**updateAssetCategory**](AssetCategoriesAPI.md#updateassetcategory) | **PUT** /api/v2/AssetsService/AssetCategories/{categoryId} | Updates an existing asset category
 
 
@@ -264,6 +265,60 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchAssetCategory**
+```swift
+    open class func patchAssetCategory(tenantId: UUID, categoryId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Partially updates an existing asset category
+
+Applies a JSON Patch document to an existing asset category for the authenticated tenant.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let categoryId = 987 // UUID | 
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Partially updates an existing asset category
+AssetCategoriesAPI.patchAssetCategory(tenantId: tenantId, categoryId: categoryId, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **categoryId** | **UUID** |  | 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -14,12 +14,12 @@ public struct CourseCompletionCertificateDto: Codable, JSONEncodable, Hashable {
 
     public var id: String?
     public var timestamp: Date?
-    public var studentProfileID: String?
-    public var courseEnrollmentID: String?
-    public var businessID: String?
-    public var businessProfileRecordID: String?
-    public var courseCompletionCertificateTemplateID: String?
-    public var courseID: String?
+    public var studentProfileId: String?
+    public var courseEnrollmentId: String?
+    public var tenantId: String?
+    public var enrollmentId: String?
+    public var courseCompletionCertificateTemplateId: String?
+    public var courseId: String?
     public var studentName: String?
     public var studentLastName: String?
     public var courseTitle: String?
@@ -27,15 +27,15 @@ public struct CourseCompletionCertificateDto: Codable, JSONEncodable, Hashable {
     public var instructorName: String?
     public var instructorLastName: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, studentProfileID: String? = nil, courseEnrollmentID: String? = nil, businessID: String? = nil, businessProfileRecordID: String? = nil, courseCompletionCertificateTemplateID: String? = nil, courseID: String? = nil, studentName: String? = nil, studentLastName: String? = nil, courseTitle: String? = nil, totalEffortInHours: Double? = nil, instructorName: String? = nil, instructorLastName: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, studentProfileId: String? = nil, courseEnrollmentId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil, courseCompletionCertificateTemplateId: String? = nil, courseId: String? = nil, studentName: String? = nil, studentLastName: String? = nil, courseTitle: String? = nil, totalEffortInHours: Double? = nil, instructorName: String? = nil, instructorLastName: String? = nil) {
         self.id = id
         self.timestamp = timestamp
-        self.studentProfileID = studentProfileID
-        self.courseEnrollmentID = courseEnrollmentID
-        self.businessID = businessID
-        self.businessProfileRecordID = businessProfileRecordID
-        self.courseCompletionCertificateTemplateID = courseCompletionCertificateTemplateID
-        self.courseID = courseID
+        self.studentProfileId = studentProfileId
+        self.courseEnrollmentId = courseEnrollmentId
+        self.tenantId = tenantId
+        self.enrollmentId = enrollmentId
+        self.courseCompletionCertificateTemplateId = courseCompletionCertificateTemplateId
+        self.courseId = courseId
         self.studentName = studentName
         self.studentLastName = studentLastName
         self.courseTitle = courseTitle
@@ -47,12 +47,12 @@ public struct CourseCompletionCertificateDto: Codable, JSONEncodable, Hashable {
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
-        case studentProfileID
-        case courseEnrollmentID
-        case businessID
-        case businessProfileRecordID
-        case courseCompletionCertificateTemplateID
-        case courseID
+        case studentProfileId
+        case courseEnrollmentId
+        case tenantId
+        case enrollmentId
+        case courseCompletionCertificateTemplateId
+        case courseId
         case studentName
         case studentLastName
         case courseTitle
@@ -67,12 +67,12 @@ public struct CourseCompletionCertificateDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
-        try container.encodeIfPresent(studentProfileID, forKey: .studentProfileID)
-        try container.encodeIfPresent(courseEnrollmentID, forKey: .courseEnrollmentID)
-        try container.encodeIfPresent(businessID, forKey: .businessID)
-        try container.encodeIfPresent(businessProfileRecordID, forKey: .businessProfileRecordID)
-        try container.encodeIfPresent(courseCompletionCertificateTemplateID, forKey: .courseCompletionCertificateTemplateID)
-        try container.encodeIfPresent(courseID, forKey: .courseID)
+        try container.encodeIfPresent(studentProfileId, forKey: .studentProfileId)
+        try container.encodeIfPresent(courseEnrollmentId, forKey: .courseEnrollmentId)
+        try container.encodeIfPresent(tenantId, forKey: .tenantId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
+        try container.encodeIfPresent(courseCompletionCertificateTemplateId, forKey: .courseCompletionCertificateTemplateId)
+        try container.encodeIfPresent(courseId, forKey: .courseId)
         try container.encodeIfPresent(studentName, forKey: .studentName)
         try container.encodeIfPresent(studentLastName, forKey: .studentLastName)
         try container.encodeIfPresent(courseTitle, forKey: .courseTitle)

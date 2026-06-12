@@ -18,11 +18,11 @@ public struct AssetRepairDto: Codable, JSONEncodable, Hashable {
         case completed = "Completed"
         case cancelled = "Cancelled"
     }
-    public var id: AnyCodable?
+    public var id: String?
     public var timestamp: Date?
-    public var businessId: AnyCodable?
-    public var businessProfileRecordId: AnyCodable?
-    public var assetId: AnyCodable?
+    public var tenantId: String?
+    public var enrollmentId: String?
+    public var assetId: String?
     public var assetName: String?
     public var repairStatus: RepairStatus?
     public var scheduledDate: Date?
@@ -36,11 +36,11 @@ public struct AssetRepairDto: Codable, JSONEncodable, Hashable {
     public var assetMaintenanceTeamId: String?
     public var assetMaintenanceTeamName: String?
 
-    public init(id: AnyCodable? = nil, timestamp: Date? = nil, businessId: AnyCodable? = nil, businessProfileRecordId: AnyCodable? = nil, assetId: AnyCodable? = nil, assetName: String? = nil, repairStatus: RepairStatus? = nil, scheduledDate: Date? = nil, completionDate: Date? = nil, reportedDate: Date? = nil, estimatedCost: Double? = nil, actualCost: Double? = nil, problemDescription: String? = nil, repairDescription: String? = nil, notes: String? = nil, assetMaintenanceTeamId: String? = nil, assetMaintenanceTeamName: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, tenantId: String? = nil, enrollmentId: String? = nil, assetId: String? = nil, assetName: String? = nil, repairStatus: RepairStatus? = nil, scheduledDate: Date? = nil, completionDate: Date? = nil, reportedDate: Date? = nil, estimatedCost: Double? = nil, actualCost: Double? = nil, problemDescription: String? = nil, repairDescription: String? = nil, notes: String? = nil, assetMaintenanceTeamId: String? = nil, assetMaintenanceTeamName: String? = nil) {
         self.id = id
         self.timestamp = timestamp
-        self.businessId = businessId
-        self.businessProfileRecordId = businessProfileRecordId
+        self.tenantId = tenantId
+        self.enrollmentId = enrollmentId
         self.assetId = assetId
         self.assetName = assetName
         self.repairStatus = repairStatus
@@ -59,8 +59,8 @@ public struct AssetRepairDto: Codable, JSONEncodable, Hashable {
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
-        case businessId
-        case businessProfileRecordId
+        case tenantId
+        case enrollmentId
         case assetId
         case assetName
         case repairStatus
@@ -82,8 +82,8 @@ public struct AssetRepairDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
-        try container.encodeIfPresent(businessId, forKey: .businessId)
-        try container.encodeIfPresent(businessProfileRecordId, forKey: .businessProfileRecordId)
+        try container.encodeIfPresent(tenantId, forKey: .tenantId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(assetId, forKey: .assetId)
         try container.encodeIfPresent(assetName, forKey: .assetName)
         try container.encodeIfPresent(repairStatus, forKey: .repairStatus)

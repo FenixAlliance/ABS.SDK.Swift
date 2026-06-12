@@ -22,6 +22,8 @@ public struct InvoiceAdjustmentDto: Codable, JSONEncodable, Hashable {
     public var invoiceId: String?
     public var currencyId: String?
     public var enrollmentId: String?
+    public var priority: Int?
+    public var code: String?
     public var description: String?
     public var surchargePercent: Double?
     public var surchargeAmount: Double?
@@ -31,13 +33,15 @@ public struct InvoiceAdjustmentDto: Codable, JSONEncodable, Hashable {
     public var totalDiscount: Double?
     public var type: ModelType?
 
-    public init(id: String? = nil, timestamp: Date? = nil, tenantId: String? = nil, invoiceId: String? = nil, currencyId: String? = nil, enrollmentId: String? = nil, description: String? = nil, surchargePercent: Double? = nil, surchargeAmount: Double? = nil, discountPercent: Double? = nil, discountAmount: Double? = nil, totalSurcharge: Double? = nil, totalDiscount: Double? = nil, type: ModelType? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, tenantId: String? = nil, invoiceId: String? = nil, currencyId: String? = nil, enrollmentId: String? = nil, priority: Int? = nil, code: String? = nil, description: String? = nil, surchargePercent: Double? = nil, surchargeAmount: Double? = nil, discountPercent: Double? = nil, discountAmount: Double? = nil, totalSurcharge: Double? = nil, totalDiscount: Double? = nil, type: ModelType? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.tenantId = tenantId
         self.invoiceId = invoiceId
         self.currencyId = currencyId
         self.enrollmentId = enrollmentId
+        self.priority = priority
+        self.code = code
         self.description = description
         self.surchargePercent = surchargePercent
         self.surchargeAmount = surchargeAmount
@@ -55,6 +59,8 @@ public struct InvoiceAdjustmentDto: Codable, JSONEncodable, Hashable {
         case invoiceId
         case currencyId
         case enrollmentId
+        case priority
+        case code
         case description
         case surchargePercent
         case surchargeAmount
@@ -75,6 +81,8 @@ public struct InvoiceAdjustmentDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(invoiceId, forKey: .invoiceId)
         try container.encodeIfPresent(currencyId, forKey: .currencyId)
         try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
+        try container.encodeIfPresent(priority, forKey: .priority)
+        try container.encodeIfPresent(code, forKey: .code)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(surchargePercent, forKey: .surchargePercent)
         try container.encodeIfPresent(surchargeAmount, forKey: .surchargeAmount)

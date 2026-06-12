@@ -36,6 +36,7 @@ public struct AssetCreateDto: Codable, JSONEncodable, Hashable {
     public var purchasePrice: Double?
     public var currencyId: String?
     public var itemId: String?
+    public var assetTypeId: String?
     public var assetCategoryId: String?
     public var purchaseInvoiceId: String?
     public var purchaseReceiptId: String?
@@ -43,7 +44,7 @@ public struct AssetCreateDto: Codable, JSONEncodable, Hashable {
     public var contactId: String?
     public var organizationDepartmentId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil, description: String? = nil, assetClass: AssetClass? = nil, assetOwner: AssetOwner? = nil, isExistingAsset: Bool? = nil, calculateDepreciation: Bool? = nil, allowMonthlyDepreciation: Bool? = nil, openingDepreciation: Double? = nil, purchaseDate: Date? = nil, purchasePrice: Double? = nil, currencyId: String? = nil, itemId: String? = nil, assetCategoryId: String? = nil, purchaseInvoiceId: String? = nil, purchaseReceiptId: String? = nil, assetLocationId: String? = nil, contactId: String? = nil, organizationDepartmentId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil, description: String? = nil, assetClass: AssetClass? = nil, assetOwner: AssetOwner? = nil, isExistingAsset: Bool? = nil, calculateDepreciation: Bool? = nil, allowMonthlyDepreciation: Bool? = nil, openingDepreciation: Double? = nil, purchaseDate: Date? = nil, purchasePrice: Double? = nil, currencyId: String? = nil, itemId: String? = nil, assetTypeId: String? = nil, assetCategoryId: String? = nil, purchaseInvoiceId: String? = nil, purchaseReceiptId: String? = nil, assetLocationId: String? = nil, contactId: String? = nil, organizationDepartmentId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
@@ -58,6 +59,7 @@ public struct AssetCreateDto: Codable, JSONEncodable, Hashable {
         self.purchasePrice = purchasePrice
         self.currencyId = currencyId
         self.itemId = itemId
+        self.assetTypeId = assetTypeId
         self.assetCategoryId = assetCategoryId
         self.purchaseInvoiceId = purchaseInvoiceId
         self.purchaseReceiptId = purchaseReceiptId
@@ -81,6 +83,7 @@ public struct AssetCreateDto: Codable, JSONEncodable, Hashable {
         case purchasePrice
         case currencyId
         case itemId
+        case assetTypeId
         case assetCategoryId
         case purchaseInvoiceId
         case purchaseReceiptId
@@ -107,6 +110,7 @@ public struct AssetCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(purchasePrice, forKey: .purchasePrice)
         try container.encodeIfPresent(currencyId, forKey: .currencyId)
         try container.encodeIfPresent(itemId, forKey: .itemId)
+        try container.encodeIfPresent(assetTypeId, forKey: .assetTypeId)
         try container.encodeIfPresent(assetCategoryId, forKey: .assetCategoryId)
         try container.encodeIfPresent(purchaseInvoiceId, forKey: .purchaseInvoiceId)
         try container.encodeIfPresent(purchaseReceiptId, forKey: .purchaseReceiptId)

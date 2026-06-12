@@ -13,7 +13,7 @@ import AnyCodable
 public struct CourseAssignmentTypeCreateDto: Codable, JSONEncodable, Hashable {
 
     static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    static let courseIDRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let courseIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var name: String
@@ -21,9 +21,9 @@ public struct CourseAssignmentTypeCreateDto: Codable, JSONEncodable, Hashable {
     public var weight: Double?
     public var quantity: Int?
     public var excluded: Int?
-    public var courseID: String
+    public var courseId: String
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, name: String, abbreviation: String? = nil, weight: Double? = nil, quantity: Int? = nil, excluded: Int? = nil, courseID: String) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, name: String, abbreviation: String? = nil, weight: Double? = nil, quantity: Int? = nil, excluded: Int? = nil, courseId: String) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
@@ -31,7 +31,7 @@ public struct CourseAssignmentTypeCreateDto: Codable, JSONEncodable, Hashable {
         self.weight = weight
         self.quantity = quantity
         self.excluded = excluded
-        self.courseID = courseID
+        self.courseId = courseId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -42,7 +42,7 @@ public struct CourseAssignmentTypeCreateDto: Codable, JSONEncodable, Hashable {
         case weight
         case quantity
         case excluded
-        case courseID
+        case courseId
     }
 
     // Encodable protocol methods
@@ -56,7 +56,7 @@ public struct CourseAssignmentTypeCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(weight, forKey: .weight)
         try container.encodeIfPresent(quantity, forKey: .quantity)
         try container.encodeIfPresent(excluded, forKey: .excluded)
-        try container.encode(courseID, forKey: .courseID)
+        try container.encode(courseId, forKey: .courseId)
     }
 }
 

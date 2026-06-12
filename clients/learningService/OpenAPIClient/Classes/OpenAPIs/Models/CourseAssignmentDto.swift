@@ -19,12 +19,17 @@ public struct CourseAssignmentDto: Codable, JSONEncodable, Hashable {
     public var instructions: String?
     public var points: Double?
     public var dueDateTime: Date?
-    public var courseID: String?
-    public var courseUnitID: String?
-    public var courseSectionID: String?
+    public var courseId: String?
+    public var courseUnitId: String?
+    public var courseSectionId: String?
+    public var courseCohortId: String?
+    public var courseAssignmentTypeId: String?
+    public var asignToAllCohorts: Bool?
+    public var resources: String?
     public var tenantId: String?
+    public var enrollmentId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil, instructions: String? = nil, points: Double? = nil, dueDateTime: Date? = nil, courseID: String? = nil, courseUnitID: String? = nil, courseSectionID: String? = nil, tenantId: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil, instructions: String? = nil, points: Double? = nil, dueDateTime: Date? = nil, courseId: String? = nil, courseUnitId: String? = nil, courseSectionId: String? = nil, courseCohortId: String? = nil, courseAssignmentTypeId: String? = nil, asignToAllCohorts: Bool? = nil, resources: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
@@ -32,10 +37,15 @@ public struct CourseAssignmentDto: Codable, JSONEncodable, Hashable {
         self.instructions = instructions
         self.points = points
         self.dueDateTime = dueDateTime
-        self.courseID = courseID
-        self.courseUnitID = courseUnitID
-        self.courseSectionID = courseSectionID
+        self.courseId = courseId
+        self.courseUnitId = courseUnitId
+        self.courseSectionId = courseSectionId
+        self.courseCohortId = courseCohortId
+        self.courseAssignmentTypeId = courseAssignmentTypeId
+        self.asignToAllCohorts = asignToAllCohorts
+        self.resources = resources
         self.tenantId = tenantId
+        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -46,10 +56,15 @@ public struct CourseAssignmentDto: Codable, JSONEncodable, Hashable {
         case instructions
         case points
         case dueDateTime
-        case courseID
-        case courseUnitID
-        case courseSectionID
+        case courseId
+        case courseUnitId
+        case courseSectionId
+        case courseCohortId
+        case courseAssignmentTypeId
+        case asignToAllCohorts
+        case resources
         case tenantId
+        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -63,10 +78,15 @@ public struct CourseAssignmentDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(instructions, forKey: .instructions)
         try container.encodeIfPresent(points, forKey: .points)
         try container.encodeIfPresent(dueDateTime, forKey: .dueDateTime)
-        try container.encodeIfPresent(courseID, forKey: .courseID)
-        try container.encodeIfPresent(courseUnitID, forKey: .courseUnitID)
-        try container.encodeIfPresent(courseSectionID, forKey: .courseSectionID)
+        try container.encodeIfPresent(courseId, forKey: .courseId)
+        try container.encodeIfPresent(courseUnitId, forKey: .courseUnitId)
+        try container.encodeIfPresent(courseSectionId, forKey: .courseSectionId)
+        try container.encodeIfPresent(courseCohortId, forKey: .courseCohortId)
+        try container.encodeIfPresent(courseAssignmentTypeId, forKey: .courseAssignmentTypeId)
+        try container.encodeIfPresent(asignToAllCohorts, forKey: .asignToAllCohorts)
+        try container.encodeIfPresent(resources, forKey: .resources)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

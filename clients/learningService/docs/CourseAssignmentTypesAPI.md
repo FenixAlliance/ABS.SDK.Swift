@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getCourseAssignmentTypeByIdAsync**](CourseAssignmentTypesAPI.md#getcourseassignmenttypebyidasync) | **GET** /api/v2/LearningService/CourseAssignmentTypes/{assignmentTypeId} | Get course assignment type by ID
 [**getCourseAssignmentTypesAsync**](CourseAssignmentTypesAPI.md#getcourseassignmenttypesasync) | **GET** /api/v2/LearningService/CourseAssignmentTypes | Get all course assignment types
 [**getCourseAssignmentTypesCountAsync**](CourseAssignmentTypesAPI.md#getcourseassignmenttypescountasync) | **GET** /api/v2/LearningService/CourseAssignmentTypes/Count | Get course assignment types count
+[**patchCourseAssignmentTypeAsync**](CourseAssignmentTypesAPI.md#patchcourseassignmenttypeasync) | **PATCH** /api/v2/LearningService/CourseAssignmentTypes/{assignmentTypeId} | Patch a course assignment type
 [**updateCourseAssignmentTypeAsync**](CourseAssignmentTypesAPI.md#updatecourseassignmenttypeasync) | **PUT** /api/v2/LearningService/CourseAssignmentTypes/{assignmentTypeId} | Update a course assignment type
 
 
@@ -29,7 +30,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseAssignmentTypeCreateDto = CourseAssignmentTypeCreateDto(id: 123, timestamp: Date(), name: "name_example", abbreviation: "abbreviation_example", weight: 123, quantity: 123, excluded: 123, courseID: "courseID_example") // CourseAssignmentTypeCreateDto |  (optional)
+let courseAssignmentTypeCreateDto = CourseAssignmentTypeCreateDto(id: 123, timestamp: Date(), name: "name_example", abbreviation: "abbreviation_example", weight: 123, quantity: 123, excluded: 123, courseId: "courseId_example") // CourseAssignmentTypeCreateDto |  (optional)
 
 // Create a course assignment type
 CourseAssignmentTypesAPI.createCourseAssignmentTypeAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseAssignmentTypeCreateDto: courseAssignmentTypeCreateDto) { (response, error) in
@@ -282,6 +283,64 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchCourseAssignmentTypeAsync**
+```swift
+    open class func patchCourseAssignmentTypeAsync(tenantId: UUID, assignmentTypeId: String, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a course assignment type
+
+Partially updates a course assignment type for the specified tenant.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let assignmentTypeId = "assignmentTypeId_example" // String | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a course assignment type
+CourseAssignmentTypesAPI.patchCourseAssignmentTypeAsync(tenantId: tenantId, assignmentTypeId: assignmentTypeId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **assignmentTypeId** | **String** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

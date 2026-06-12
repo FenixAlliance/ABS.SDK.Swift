@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 **id** | **String** |  | [optional] 
 **timestamp** | **Date** |  | [optional] 
 **name** | **String** |  | [optional] 
+**discountListType** | **String** |  | [optional] 
 **currencyId** | **String** |  | [optional] 
 **tenantId** | **String** |  | [optional] 
 **enrollmentId** | **String** |  | [optional] 

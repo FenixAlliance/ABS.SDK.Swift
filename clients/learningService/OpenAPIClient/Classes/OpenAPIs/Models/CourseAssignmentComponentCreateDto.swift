@@ -13,26 +13,26 @@ import AnyCodable
 public struct CourseAssignmentComponentCreateDto: Codable, JSONEncodable, Hashable {
 
     static let titleRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    static let courseAssignmentIDRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    static let courseIDRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let courseAssignmentIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let courseIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var title: String
     public var description: String?
     public var content: String?
     public var order: Int?
-    public var courseAssignmentID: String
-    public var courseID: String
+    public var courseAssignmentId: String
+    public var courseId: String
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, title: String, description: String? = nil, content: String? = nil, order: Int? = nil, courseAssignmentID: String, courseID: String) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, title: String, description: String? = nil, content: String? = nil, order: Int? = nil, courseAssignmentId: String, courseId: String) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
         self.description = description
         self.content = content
         self.order = order
-        self.courseAssignmentID = courseAssignmentID
-        self.courseID = courseID
+        self.courseAssignmentId = courseAssignmentId
+        self.courseId = courseId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -42,8 +42,8 @@ public struct CourseAssignmentComponentCreateDto: Codable, JSONEncodable, Hashab
         case description
         case content
         case order
-        case courseAssignmentID
-        case courseID
+        case courseAssignmentId
+        case courseId
     }
 
     // Encodable protocol methods
@@ -56,8 +56,8 @@ public struct CourseAssignmentComponentCreateDto: Codable, JSONEncodable, Hashab
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(content, forKey: .content)
         try container.encodeIfPresent(order, forKey: .order)
-        try container.encode(courseAssignmentID, forKey: .courseAssignmentID)
-        try container.encode(courseID, forKey: .courseID)
+        try container.encode(courseAssignmentId, forKey: .courseAssignmentId)
+        try container.encode(courseId, forKey: .courseId)
     }
 }
 

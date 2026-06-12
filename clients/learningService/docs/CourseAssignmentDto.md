@@ -10,10 +10,15 @@ Name | Type | Description | Notes
 **instructions** | **String** |  | [optional] 
 **points** | **Double** |  | [optional] 
 **dueDateTime** | **Date** |  | [optional] 
-**courseID** | **String** |  | [optional] 
-**courseUnitID** | **String** |  | [optional] 
-**courseSectionID** | **String** |  | [optional] 
+**courseId** | **String** |  | [optional] 
+**courseUnitId** | **String** |  | [optional] 
+**courseSectionId** | **String** |  | [optional] 
+**courseCohortId** | **String** |  | [optional] 
+**courseAssignmentTypeId** | **String** |  | [optional] 
+**asignToAllCohorts** | **Bool** |  | [optional] 
+**resources** | **String** |  | [optional] 
 **tenantId** | **String** |  | [optional] 
+**enrollmentId** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

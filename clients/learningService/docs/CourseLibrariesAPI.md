@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getCourseLibrariesAsync**](CourseLibrariesAPI.md#getcourselibrariesasync) | **GET** /api/v2/LearningService/CourseLibraries | Get all course libraries
 [**getCourseLibrariesCountAsync**](CourseLibrariesAPI.md#getcourselibrariescountasync) | **GET** /api/v2/LearningService/CourseLibraries/Count | Get course libraries count
 [**getCourseLibraryByIdAsync**](CourseLibrariesAPI.md#getcourselibrarybyidasync) | **GET** /api/v2/LearningService/CourseLibraries/{libraryId} | Get course library by ID
+[**patchCourseLibraryAsync**](CourseLibrariesAPI.md#patchcourselibraryasync) | **PATCH** /api/v2/LearningService/CourseLibraries/{libraryId} | Patch a course library
 [**updateCourseLibraryAsync**](CourseLibrariesAPI.md#updatecourselibraryasync) | **PUT** /api/v2/LearningService/CourseLibraries/{libraryId} | Update a course library
 
 
@@ -29,7 +30,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseLibraryCreateDto = CourseLibraryCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", courseID: "courseID_example", courseUnitID: "courseUnitID_example", releaseDateTime: Date()) // CourseLibraryCreateDto |  (optional)
+let courseLibraryCreateDto = CourseLibraryCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", courseId: "courseId_example", courseUnitId: "courseUnitId_example", releaseDateTime: Date()) // CourseLibraryCreateDto |  (optional)
 
 // Create a course library
 CourseLibrariesAPI.createCourseLibraryAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseLibraryCreateDto: courseLibraryCreateDto) { (response, error) in
@@ -286,6 +287,64 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchCourseLibraryAsync**
+```swift
+    open class func patchCourseLibraryAsync(tenantId: UUID, libraryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+```
+
+Patch a course library
+
+Partially updates an existing course library.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let libraryId = "libraryId_example" // String | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a course library
+CourseLibrariesAPI.patchCourseLibraryAsync(tenantId: tenantId, libraryId: libraryId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **libraryId** | **String** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+Void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateCourseLibraryAsync**
 ```swift
     open class func updateCourseLibraryAsync(tenantId: UUID, libraryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseLibraryUpdateDto: CourseLibraryUpdateDto? = nil, completion: @escaping (_ data: CourseLibraryDto?, _ error: Error?) -> Void)
@@ -304,7 +363,7 @@ let tenantId = 987 // UUID |
 let libraryId = "libraryId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseLibraryUpdateDto = CourseLibraryUpdateDto(title: "title_example", description: "description_example", courseUnitID: "courseUnitID_example", releaseDateTime: Date()) // CourseLibraryUpdateDto |  (optional)
+let courseLibraryUpdateDto = CourseLibraryUpdateDto(title: "title_example", description: "description_example", courseUnitId: "courseUnitId_example", releaseDateTime: Date()) // CourseLibraryUpdateDto |  (optional)
 
 // Update a course library
 CourseLibrariesAPI.updateCourseLibraryAsync(tenantId: tenantId, libraryId: libraryId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseLibraryUpdateDto: courseLibraryUpdateDto) { (response, error) in

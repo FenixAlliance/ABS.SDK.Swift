@@ -19,8 +19,9 @@ public struct CourseCategoryDto: Codable, JSONEncodable, Hashable {
     public var imageURL: String?
     public var isFeatured: Bool?
     public var tenantId: String?
+    public var enrollmentId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil, imageURL: String? = nil, isFeatured: Bool? = nil, tenantId: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil, imageURL: String? = nil, isFeatured: Bool? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
@@ -28,6 +29,7 @@ public struct CourseCategoryDto: Codable, JSONEncodable, Hashable {
         self.imageURL = imageURL
         self.isFeatured = isFeatured
         self.tenantId = tenantId
+        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -38,6 +40,7 @@ public struct CourseCategoryDto: Codable, JSONEncodable, Hashable {
         case imageURL
         case isFeatured
         case tenantId
+        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -51,6 +54,7 @@ public struct CourseCategoryDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(imageURL, forKey: .imageURL)
         try container.encodeIfPresent(isFeatured, forKey: .isFeatured)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

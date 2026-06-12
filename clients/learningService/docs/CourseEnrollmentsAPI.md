@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**getEnrollmentsAsync**](CourseEnrollmentsAPI.md#getenrollmentsasync) | **GET** /api/v2/LearningService/CourseEnrollments | Get all course enrollments
 [**getEnrollmentsCountAsync**](CourseEnrollmentsAPI.md#getenrollmentscountasync) | **GET** /api/v2/LearningService/CourseEnrollments/Count | Get course enrollments count
 [**getStudentCourseEnrollmentsAsync**](CourseEnrollmentsAPI.md#getstudentcourseenrollmentsasync) | **GET** /api/v2/LearningService/CourseEnrollments/Student/{studentProfileId} | Get enrollments by student
+[**patchCourseEnrollmentAsync**](CourseEnrollmentsAPI.md#patchcourseenrollmentasync) | **PATCH** /api/v2/LearningService/CourseEnrollments/{courseEnrollmentId} | Patch a course enrollment
 [**updateCourseEnrollmentAsync**](CourseEnrollmentsAPI.md#updatecourseenrollmentasync) | **PUT** /api/v2/LearningService/CourseEnrollments/{courseEnrollmentId} | Update a course enrollment
 
 
@@ -30,7 +31,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseEnrollmentCreateDto = CourseEnrollmentCreateDto(id: 123, timestamp: Date(), courseID: "courseID_example", courseCohortID: "courseCohortID_example", studentProfileID: "studentProfileID_example", courseCompletionCertificateID: "courseCompletionCertificateID_example") // CourseEnrollmentCreateDto |  (optional)
+let courseEnrollmentCreateDto = CourseEnrollmentCreateDto(id: 123, timestamp: Date(), courseId: "courseId_example", courseCohortId: "courseCohortId_example", studentProfileId: "studentProfileId_example", courseCompletionCertificateId: "courseCompletionCertificateId_example") // CourseEnrollmentCreateDto |  (optional)
 
 // Create a new course enrollment
 CourseEnrollmentsAPI.createCourseEnrollmentAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseEnrollmentCreateDto: courseEnrollmentCreateDto) { (response, error) in
@@ -345,6 +346,64 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchCourseEnrollmentAsync**
+```swift
+    open class func patchCourseEnrollmentAsync(tenantId: UUID, courseEnrollmentId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+```
+
+Patch a course enrollment
+
+Partially updates an existing course enrollment for the specified tenant.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let courseEnrollmentId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a course enrollment
+CourseEnrollmentsAPI.patchCourseEnrollmentAsync(tenantId: tenantId, courseEnrollmentId: courseEnrollmentId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **courseEnrollmentId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+Void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateCourseEnrollmentAsync**
 ```swift
     open class func updateCourseEnrollmentAsync(tenantId: UUID, courseEnrollmentId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, courseEnrollmentUpdateDto: CourseEnrollmentUpdateDto? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
@@ -363,7 +422,7 @@ let tenantId = 987 // UUID |
 let courseEnrollmentId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseEnrollmentUpdateDto = CourseEnrollmentUpdateDto(id: 123, timestamp: Date(), courseCohortID: "courseCohortID_example", courseCompletionCertificateID: "courseCompletionCertificateID_example") // CourseEnrollmentUpdateDto |  (optional)
+let courseEnrollmentUpdateDto = CourseEnrollmentUpdateDto(courseCohortId: "courseCohortId_example", courseCompletionCertificateId: "courseCompletionCertificateId_example") // CourseEnrollmentUpdateDto |  (optional)
 
 // Update a course enrollment
 CourseEnrollmentsAPI.updateCourseEnrollmentAsync(tenantId: tenantId, courseEnrollmentId: courseEnrollmentId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseEnrollmentUpdateDto: courseEnrollmentUpdateDto) { (response, error) in

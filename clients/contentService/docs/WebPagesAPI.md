@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**getTagsByWebPageAsync**](WebPagesAPI.md#gettagsbywebpageasync) | **GET** /api/v2/ContentService/WebPages/{webPageId}/Tags | Get tags by web page
 [**getWebPageByIdAsync**](WebPagesAPI.md#getwebpagebyidasync) | **GET** /api/v2/ContentService/WebPages/{webPageId} | Get web page by ID
 [**getWebPagesAsync**](WebPagesAPI.md#getwebpagesasync) | **GET** /api/v2/ContentService/WebPages | Get web pages
+[**patchWebPageAsync**](WebPagesAPI.md#patchwebpageasync) | **PATCH** /api/v2/ContentService/WebPages/{webPageId} | Patch a web page
 [**relateWebPageToCategoryAsync**](WebPagesAPI.md#relatewebpagetocategoryasync) | **POST** /api/v2/ContentService/WebPages/{webPageId}/Categories/{categoryId} | Relate web page to category
 [**relateWebPageToTagAsync**](WebPagesAPI.md#relatewebpagetotagasync) | **POST** /api/v2/ContentService/WebPages/{webPageId}/Tags/{tagId} | Relate web page to tag
 [**unrelateWebPageCategoryAsync**](WebPagesAPI.md#unrelatewebpagecategoryasync) | **DELETE** /api/v2/ContentService/WebPages/{webPageId}/Categories/{categoryId} | Unrelate web page from category
@@ -91,7 +92,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let webPageCreateDto = WebPageCreateDto(id: 123, timestamp: Date(), title: "title_example", published: false, description: "description_example", code: "code_example", markup: "markup_example", featuredImageUrl: "featuredImageUrl_example", codeType: "codeType_example", webTemplateID: "webTemplateID_example") // WebPageCreateDto |  (optional)
+let webPageCreateDto = WebPageCreateDto(id: 123, timestamp: Date(), title: "title_example", published: false, description: "description_example", code: "code_example", markup: "markup_example", featuredImageUrl: "featuredImageUrl_example", codeType: "codeType_example", slug: "slug_example", webTemplateId: "webTemplateId_example", parentWebContentId: "parentWebContentId_example") // WebPageCreateDto |  (optional)
 
 // Create a web page
 WebPagesAPI.createWebPageAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, webPageCreateDto: webPageCreateDto) { (response, error) in
@@ -148,7 +149,7 @@ let tenantId = 987 // UUID |
 let webPageId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let webPageCategoryCreateDto = WebPageCategoryCreateDto(id: 123, timestamp: Date(), slug: "slug_example", title: "title_example", description: "description_example", seoTitle: "seoTitle_example", metaDescription: "metaDescription_example", cornerstoneContent: false, allowSerachEngines: false, seoKeyPhrases: "seoKeyPhrases_example", canonicalUrl: "canonicalUrl_example", imageURL: "imageURL_example", image: "image_example", webPortalID: "webPortalID_example") // WebPageCategoryCreateDto |  (optional)
+let webPageCategoryCreateDto = WebPageCategoryCreateDto(id: 123, timestamp: Date(), slug: "slug_example", title: "title_example", description: "description_example", seoTitle: "seoTitle_example", metaDescription: "metaDescription_example", cornerstoneContent: false, allowSerachEngines: false, seoKeyPhrases: "seoKeyPhrases_example", canonicalUrl: "canonicalUrl_example", imageURL: "imageURL_example", image: "image_example", webPortalId: "webPortalId_example") // WebPageCategoryCreateDto |  (optional)
 
 // Create a web page category relation
 WebPagesAPI.createWebPageCategoryRelationAsync(tenantId: tenantId, webPageId: webPageId, apiVersion: apiVersion, xApiVersion: xApiVersion, webPageCategoryCreateDto: webPageCategoryCreateDto) { (response, error) in
@@ -206,7 +207,7 @@ let tenantId = 987 // UUID |
 let webPageId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let webPageTagCreateDto = WebPageTagCreateDto(id: 123, timestamp: Date(), slug: "slug_example", title: "title_example", description: "description_example", seoTitle: "seoTitle_example", metaDescription: "metaDescription_example", cornerstoneContent: false, allowSerachEngines: false, seoKeyPhrases: "seoKeyPhrases_example", canonicalUrl: "canonicalUrl_example", imageURL: "imageURL_example", image: "image_example", webPortalID: "webPortalID_example") // WebPageTagCreateDto |  (optional)
+let webPageTagCreateDto = WebPageTagCreateDto(id: 123, timestamp: Date(), slug: "slug_example", title: "title_example", description: "description_example", seoTitle: "seoTitle_example", metaDescription: "metaDescription_example", cornerstoneContent: false, allowSerachEngines: false, seoKeyPhrases: "seoKeyPhrases_example", canonicalUrl: "canonicalUrl_example", imageURL: "imageURL_example", image: "image_example", webPortalId: "webPortalId_example") // WebPageTagCreateDto |  (optional)
 
 // Create a web page tag relation
 WebPagesAPI.createWebPageTagRelationAsync(tenantId: tenantId, webPageId: webPageId, apiVersion: apiVersion, xApiVersion: xApiVersion, webPageTagCreateDto: webPageTagCreateDto) { (response, error) in
@@ -520,6 +521,64 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchWebPageAsync**
+```swift
+    open class func patchWebPageAsync(tenantId: UUID, webPageId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+```
+
+Patch a web page
+
+Partially updates an existing web page for the specified tenant.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let webPageId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a web page
+WebPagesAPI.patchWebPageAsync(tenantId: tenantId, webPageId: webPageId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **webPageId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+Void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **relateWebPageToCategoryAsync**
 ```swift
     open class func relateWebPageToCategoryAsync(tenantId: UUID, webPageId: UUID, categoryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
@@ -770,7 +829,7 @@ let tenantId = 987 // UUID |
 let webPageId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let webPageUpdateDto = WebPageUpdateDto(order: 123, slug: "slug_example", name: "name_example", title: "title_example", excerpt: "excerpt_example", password: "password_example", description: "description_example", highlightImage: "highlightImage_example", canonicalUrl: "canonicalUrl_example", seoTitle: "seoTitle_example", seoKeyWords: "seoKeyWords_example", seoKeyPhrases: "seoKeyPhrases_example", metaDescription: "metaDescription_example", twitterImage: "twitterImage_example", twitterTitle: "twitterTitle_example", twitterDescription: "twitterDescription_example", facebookImage: "facebookImage_example", facebookTitle: "facebookTitle_example", facebookDescription: "facebookDescription_example", featuredImageUrl: "featuredImageUrl_example", content: "content_example", code: "code_example", namespace: "namespace_example", typeName: "typeName_example", generatedCode: "generatedCode_example", compilationPath: "compilationPath_example", htmlContent: "htmlContent_example", codeType: "codeType_example", cSharpContent: "cSharpContent_example", razorContent: "razorContent_example", cssContent: "cssContent_example", jsContent: "jsContent_example", cssFiles: "cssFiles_example", jsFiles: "jsFiles_example", razorGeneratedCode: "razorGeneratedCode_example", cSharpGeneratedCode: "cSharpGeneratedCode_example", precompiledLogicSize: 123, precompiledLogicSizeLong: 123, precompiledViewSize: 123, precompiledViewSizeLong: 123, precompiledLogicViewSize: 123, template: false, _default: false, enable: false, enableComments: false, displaySocialBox: false, published: false, inTrashCan: false, systemLocked: false, allowPingbacks: false, allowTrackbacks: false, cornerstoneContent: false, isEssentialContent: false, allowSearchEngineIndexing: false, isHomePage: false, isStorePage: false, isCartPage: false, isBlogPage: false, isAccountPage: false, isCheckoutPage: false, isWishListsPage: false, isContactPage: false, isPrivacyPolicyPage: false, isTermsOfServicePage: false) // WebPageUpdateDto |  (optional)
+let webPageUpdateDto = WebPageUpdateDto(order: 123, slug: "slug_example", name: "name_example", title: "title_example", excerpt: "excerpt_example", password: "password_example", description: "description_example", highlightImage: "highlightImage_example", canonicalUrl: "canonicalUrl_example", seoTitle: "seoTitle_example", seoKeyWords: "seoKeyWords_example", seoKeyPhrases: "seoKeyPhrases_example", metaDescription: "metaDescription_example", twitterImage: "twitterImage_example", twitterTitle: "twitterTitle_example", twitterDescription: "twitterDescription_example", facebookImage: "facebookImage_example", facebookTitle: "facebookTitle_example", facebookDescription: "facebookDescription_example", featuredImageUrl: "featuredImageUrl_example", content: "content_example", code: "code_example", namespace: "namespace_example", typeName: "typeName_example", generatedCode: "generatedCode_example", compilationPath: "compilationPath_example", htmlContent: "htmlContent_example", codeType: "codeType_example", cSharpContent: "cSharpContent_example", razorContent: "razorContent_example", cssContent: "cssContent_example", jsContent: "jsContent_example", cssFiles: "cssFiles_example", jsFiles: "jsFiles_example", razorGeneratedCode: "razorGeneratedCode_example", cSharpGeneratedCode: "cSharpGeneratedCode_example", precompiledLogicSize: 123, precompiledLogicSizeLong: 123, precompiledViewSize: 123, precompiledViewSizeLong: 123, precompiledLogicViewSize: 123, template: false, _default: false, enable: false, enableComments: false, displaySocialBox: false, published: false, inTrashCan: false, systemLocked: false, allowPingbacks: false, allowTrackbacks: false, cornerstoneContent: false, isEssentialContent: false, allowSearchEngineIndexing: false, webTemplateId: "webTemplateId_example", parentWebContentId: "parentWebContentId_example", isHomePage: false, isStorePage: false, isCartPage: false, isBlogPage: false, isAccountPage: false, isCheckoutPage: false, isWishListsPage: false, isContactPage: false, isPrivacyPolicyPage: false, isTermsOfServicePage: false) // WebPageUpdateDto |  (optional)
 
 // Update a web page
 WebPagesAPI.updateWebPageAsync(tenantId: tenantId, webPageId: webPageId, apiVersion: apiVersion, xApiVersion: xApiVersion, webPageUpdateDto: webPageUpdateDto) { (response, error) in

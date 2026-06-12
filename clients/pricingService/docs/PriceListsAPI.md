@@ -13,6 +13,8 @@ Method | HTTP request | Description
 [**getPriceListPricesAsync**](PriceListsAPI.md#getpricelistpricesasync) | **GET** /api/v2/PricingService/PriceLists/{priceListId}/Prices | Retrieves prices in a price list
 [**getPriceListsAsync**](PriceListsAPI.md#getpricelistsasync) | **GET** /api/v2/PricingService/PriceLists | Retrieves all price lists
 [**getPriceListsCountAsync**](PriceListsAPI.md#getpricelistscountasync) | **GET** /api/v2/PricingService/PriceLists/Count | Counts price lists
+[**patchPriceListAsync**](PriceListsAPI.md#patchpricelistasync) | **PATCH** /api/v2/PricingService/PriceLists/{priceListId} | Patches a price list
+[**patchPriceListPriceAsync**](PriceListsAPI.md#patchpricelistpriceasync) | **PATCH** /api/v2/PricingService/PriceLists/{priceListId}/Prices/{priceId} | Patches a price list entry
 [**updatePriceListAsync**](PriceListsAPI.md#updatepricelistasync) | **PUT** /api/v2/PricingService/PriceLists/{priceListId} | Updates a price list
 [**updatePriceListPriceAsync**](PriceListsAPI.md#updatepricelistpriceasync) | **PUT** /api/v2/PricingService/PriceLists/{priceListId}/Prices/{priceId} | Updates a price list entry
 
@@ -32,7 +34,7 @@ Creates a new price list for the current tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let priceListCreateDto = PriceListCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", startDate: Date(), endDate: Date(), currencyId: "currencyId_example", unitId: "unitId_example", unitGroupId: "unitGroupId_example") // PriceListCreateDto |  (optional)
+let priceListCreateDto = PriceListCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", context: "context_example", startDate: Date(), endDate: Date(), currencyId: "currencyId_example", unitId: "unitId_example", unitGroupId: "unitGroupId_example", partnerVisible: false, unitOfMeasureDependant: false) // PriceListCreateDto |  (optional)
 
 // Creates a new price list
 PriceListsAPI.createPriceListAsync(tenantId: tenantId, priceListCreateDto: priceListCreateDto) { (response, error) in
@@ -489,6 +491,116 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchPriceListAsync**
+```swift
+    open class func patchPriceListAsync(tenantId: UUID, priceListId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patches a price list
+
+Partially updates the specified price list using a JSON Patch document.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let priceListId = 987 // UUID | 
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patches a price list
+PriceListsAPI.patchPriceListAsync(tenantId: tenantId, priceListId: priceListId, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **priceListId** | **UUID** |  | 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchPriceListPriceAsync**
+```swift
+    open class func patchPriceListPriceAsync(tenantId: UUID, priceListId: UUID, priceId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patches a price list entry
+
+Partially updates the specified price entry in a price list using a JSON Patch document.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let priceListId = 987 // UUID | 
+let priceId = 987 // UUID | 
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patches a price list entry
+PriceListsAPI.patchPriceListPriceAsync(tenantId: tenantId, priceListId: priceListId, priceId: priceId, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **priceListId** | **UUID** |  | 
+ **priceId** | **UUID** |  | 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updatePriceListAsync**
 ```swift
     open class func updatePriceListAsync(tenantId: UUID, priceListId: UUID, priceListUpdateDto: PriceListUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
@@ -505,7 +617,7 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let priceListId = 987 // UUID | 
-let priceListUpdateDto = PriceListUpdateDto(name: "name_example", description: "description_example", startDate: Date(), endDate: Date(), currencyId: "currencyId_example", unitId: "unitId_example", unitGroupId: "unitGroupId_example") // PriceListUpdateDto |  (optional)
+let priceListUpdateDto = PriceListUpdateDto(name: "name_example", description: "description_example", context: "context_example", startDate: Date(), endDate: Date(), currencyId: "currencyId_example", unitId: "unitId_example", unitGroupId: "unitGroupId_example", partnerVisible: false, unitOfMeasureDependant: false) // PriceListUpdateDto |  (optional)
 
 // Updates a price list
 PriceListsAPI.updatePriceListAsync(tenantId: tenantId, priceListId: priceListId, priceListUpdateDto: priceListUpdateDto) { (response, error) in

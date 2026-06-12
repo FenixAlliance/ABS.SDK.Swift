@@ -9,9 +9,10 @@ Name | Type | Description | Notes
 **description** | **String** |  | [optional] 
 **content** | **String** |  | [optional] 
 **order** | **Int** |  | [optional] 
-**courseAssignmentID** | **String** |  | [optional] 
-**courseID** | **String** |  | [optional] 
+**courseAssignmentId** | **String** |  | [optional] 
+**courseId** | **String** |  | [optional] 
 **tenantId** | **String** |  | [optional] 
+**enrollmentId** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

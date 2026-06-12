@@ -16,14 +16,14 @@ public struct CourseUnitComponentUpdateDto: Codable, JSONEncodable, Hashable {
     public var description: String?
     public var content: String?
     public var order: Int?
-    public var courseUnitID: String?
+    public var courseUnitId: String?
 
-    public init(title: String? = nil, description: String? = nil, content: String? = nil, order: Int? = nil, courseUnitID: String? = nil) {
+    public init(title: String? = nil, description: String? = nil, content: String? = nil, order: Int? = nil, courseUnitId: String? = nil) {
         self.title = title
         self.description = description
         self.content = content
         self.order = order
-        self.courseUnitID = courseUnitID
+        self.courseUnitId = courseUnitId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -31,7 +31,7 @@ public struct CourseUnitComponentUpdateDto: Codable, JSONEncodable, Hashable {
         case description
         case content
         case order
-        case courseUnitID
+        case courseUnitId
     }
 
     // Encodable protocol methods
@@ -42,7 +42,7 @@ public struct CourseUnitComponentUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(content, forKey: .content)
         try container.encodeIfPresent(order, forKey: .order)
-        try container.encodeIfPresent(courseUnitID, forKey: .courseUnitID)
+        try container.encodeIfPresent(courseUnitId, forKey: .courseUnitId)
     }
 }
 

@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getCourseAssignmentByIdAsync**](CourseAssignmentsAPI.md#getcourseassignmentbyidasync) | **GET** /api/v2/LearningService/CourseAssignments/{assignmentId} | Get course assignment by ID
 [**getCourseAssignmentsAsync**](CourseAssignmentsAPI.md#getcourseassignmentsasync) | **GET** /api/v2/LearningService/CourseAssignments | Get all course assignments
 [**getCourseAssignmentsCountAsync**](CourseAssignmentsAPI.md#getcourseassignmentscountasync) | **GET** /api/v2/LearningService/CourseAssignments/Count | Get course assignments count
+[**patchCourseAssignmentAsync**](CourseAssignmentsAPI.md#patchcourseassignmentasync) | **PATCH** /api/v2/LearningService/CourseAssignments/{assignmentId} | Patch a course assignment
 [**updateCourseAssignmentAsync**](CourseAssignmentsAPI.md#updatecourseassignmentasync) | **PUT** /api/v2/LearningService/CourseAssignments/{assignmentId} | Update a course assignment
 
 
@@ -29,7 +30,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseAssignmentCreateDto = CourseAssignmentCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", instructions: "instructions_example", points: 123, courseID: "courseID_example", courseUnitID: "courseUnitID_example", courseCohortID: "courseCohortID_example", courseAssignmentTypeID: "courseAssignmentTypeID_example", dueDateTime: Date(), asignToAllCohorts: false, resources: "resources_example") // CourseAssignmentCreateDto |  (optional)
+let courseAssignmentCreateDto = CourseAssignmentCreateDto(id: 123, timestamp: Date(), title: "title_example", description: "description_example", instructions: "instructions_example", points: 123, courseId: "courseId_example", courseUnitId: "courseUnitId_example", courseCohortId: "courseCohortId_example", courseAssignmentTypeId: "courseAssignmentTypeId_example", dueDateTime: Date(), asignToAllCohorts: false, resources: "resources_example") // CourseAssignmentCreateDto |  (optional)
 
 // Create a new course assignment
 CourseAssignmentsAPI.createCourseAssignmentAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseAssignmentCreateDto: courseAssignmentCreateDto) { (response, error) in
@@ -286,6 +287,64 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchCourseAssignmentAsync**
+```swift
+    open class func patchCourseAssignmentAsync(tenantId: UUID, assignmentId: String, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a course assignment
+
+Partially updates a course assignment for the specified tenant.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let assignmentId = "assignmentId_example" // String | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a course assignment
+CourseAssignmentsAPI.patchCourseAssignmentAsync(tenantId: tenantId, assignmentId: assignmentId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **assignmentId** | **String** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateCourseAssignmentAsync**
 ```swift
     open class func updateCourseAssignmentAsync(tenantId: UUID, assignmentId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseAssignmentUpdateDto: CourseAssignmentUpdateDto? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
@@ -304,7 +363,7 @@ let tenantId = 987 // UUID |
 let assignmentId = "assignmentId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let courseAssignmentUpdateDto = CourseAssignmentUpdateDto(title: "title_example", description: "description_example", instructions: "instructions_example", points: 123, courseUnitID: "courseUnitID_example", courseCohortID: "courseCohortID_example", courseAssignmentTypeID: "courseAssignmentTypeID_example", dueDateTime: Date(), asignToAllCohorts: false, resources: "resources_example") // CourseAssignmentUpdateDto |  (optional)
+let courseAssignmentUpdateDto = CourseAssignmentUpdateDto(title: "title_example", description: "description_example", instructions: "instructions_example", points: 123, courseUnitId: "courseUnitId_example", courseCohortId: "courseCohortId_example", courseAssignmentTypeId: "courseAssignmentTypeId_example", dueDateTime: Date(), asignToAllCohorts: false, resources: "resources_example") // CourseAssignmentUpdateDto |  (optional)
 
 // Update a course assignment
 CourseAssignmentsAPI.updateCourseAssignmentAsync(tenantId: tenantId, assignmentId: assignmentId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseAssignmentUpdateDto: courseAssignmentUpdateDto) { (response, error) in

@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getScheduleByIdAsync**](SchedulesAPI.md#getschedulebyidasync) | **GET** /api/v2/HrmsService/Schedules/{scheduleId} | Get schedule by ID
 [**getSchedulesAsync**](SchedulesAPI.md#getschedulesasync) | **GET** /api/v2/HrmsService/Schedules | Get schedules
 [**getSchedulesCountAsync**](SchedulesAPI.md#getschedulescountasync) | **GET** /api/v2/HrmsService/Schedules/Count | Count schedules
+[**patchScheduleAsync**](SchedulesAPI.md#patchscheduleasync) | **PATCH** /api/v2/HrmsService/Schedules/{scheduleId} | Patch a schedule
 [**updateScheduleAsync**](SchedulesAPI.md#updatescheduleasync) | **PUT** /api/v2/HrmsService/Schedules/{scheduleId} | Update a schedule
 
 
@@ -284,6 +285,64 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchScheduleAsync**
+```swift
+    open class func patchScheduleAsync(tenantId: UUID, scheduleId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a schedule
+
+Partially updates an existing schedule for the specified tenant.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let scheduleId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a schedule
+SchedulesAPI.patchScheduleAsync(tenantId: tenantId, scheduleId: scheduleId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **scheduleId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

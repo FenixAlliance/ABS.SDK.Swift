@@ -70,6 +70,7 @@ OpenAPIClient/Classes/OpenAPIs/Models/NewsletterCreateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/NewsletterDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/NewsletterDtoEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/NewsletterUpdateDto.swift
+OpenAPIClient/Classes/OpenAPIs/Models/Operation.swift
 OpenAPIClient/Classes/OpenAPIs/Models/OrderDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/OrderDtoEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/RefreshRequest.swift
@@ -151,6 +152,7 @@ docs/NewsletterDto.md
 docs/NewsletterDtoEnvelope.md
 docs/NewsletterUpdateDto.md
 docs/NewslettersAPI.md
+docs/Operation.md
 docs/OrderDto.md
 docs/OrderDtoEnvelope.md
 docs/RefreshRequest.md

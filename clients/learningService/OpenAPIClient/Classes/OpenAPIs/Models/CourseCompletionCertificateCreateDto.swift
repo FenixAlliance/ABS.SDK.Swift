@@ -12,31 +12,31 @@ import AnyCodable
 
 public struct CourseCompletionCertificateCreateDto: Codable, JSONEncodable, Hashable {
 
-    static let studentProfileIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
-    static let courseEnrollmentIDRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
+    static let studentProfileIdRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
+    static let courseEnrollmentIdRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
-    public var studentProfileID: String
-    public var courseEnrollmentID: String
-    public var courseCompletionCertificateTemplateID: String?
-    public var courseID: String?
+    public var studentProfileId: String
+    public var courseEnrollmentId: String
+    public var courseCompletionCertificateTemplateId: String?
+    public var courseId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, studentProfileID: String, courseEnrollmentID: String, courseCompletionCertificateTemplateID: String? = nil, courseID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, studentProfileId: String, courseEnrollmentId: String, courseCompletionCertificateTemplateId: String? = nil, courseId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
-        self.studentProfileID = studentProfileID
-        self.courseEnrollmentID = courseEnrollmentID
-        self.courseCompletionCertificateTemplateID = courseCompletionCertificateTemplateID
-        self.courseID = courseID
+        self.studentProfileId = studentProfileId
+        self.courseEnrollmentId = courseEnrollmentId
+        self.courseCompletionCertificateTemplateId = courseCompletionCertificateTemplateId
+        self.courseId = courseId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
-        case studentProfileID
-        case courseEnrollmentID
-        case courseCompletionCertificateTemplateID
-        case courseID
+        case studentProfileId
+        case courseEnrollmentId
+        case courseCompletionCertificateTemplateId
+        case courseId
     }
 
     // Encodable protocol methods
@@ -45,10 +45,10 @@ public struct CourseCompletionCertificateCreateDto: Codable, JSONEncodable, Hash
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
-        try container.encode(studentProfileID, forKey: .studentProfileID)
-        try container.encode(courseEnrollmentID, forKey: .courseEnrollmentID)
-        try container.encodeIfPresent(courseCompletionCertificateTemplateID, forKey: .courseCompletionCertificateTemplateID)
-        try container.encodeIfPresent(courseID, forKey: .courseID)
+        try container.encode(studentProfileId, forKey: .studentProfileId)
+        try container.encode(courseEnrollmentId, forKey: .courseEnrollmentId)
+        try container.encodeIfPresent(courseCompletionCertificateTemplateId, forKey: .courseCompletionCertificateTemplateId)
+        try container.encodeIfPresent(courseId, forKey: .courseId)
     }
 }
 

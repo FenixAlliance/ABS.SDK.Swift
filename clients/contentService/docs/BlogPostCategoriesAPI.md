@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**deleteBlogPostCategoryAsync**](BlogPostCategoriesAPI.md#deleteblogpostcategoryasync) | **DELETE** /api/v2/ContentService/BlogPostCategories/{blogPostCategoryId} | Delete a blog post category
 [**getBlogPostCategoriesAsync**](BlogPostCategoriesAPI.md#getblogpostcategoriesasync) | **GET** /api/v2/ContentService/BlogPostCategories | Get blog post categories
 [**getBlogPostCategoryByIdAsync**](BlogPostCategoriesAPI.md#getblogpostcategorybyidasync) | **GET** /api/v2/ContentService/BlogPostCategories/{blogPostCategoryId} | Get blog post category by ID
+[**patchBlogPostCategoryAsync**](BlogPostCategoriesAPI.md#patchblogpostcategoryasync) | **PATCH** /api/v2/ContentService/BlogPostCategories/{blogPostCategoryId} | Patch a blog post category
 [**updateBlogPostCategoryAsync**](BlogPostCategoriesAPI.md#updateblogpostcategoryasync) | **PUT** /api/v2/ContentService/BlogPostCategories/{blogPostCategoryId} | Update a blog post category
 
 
@@ -83,7 +84,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let blogPostCategoryCreateDto = BlogPostCategoryCreateDto(id: 123, timestamp: Date(), slug: "slug_example", type: "type_example", title: "title_example", description: "description_example", seoTitle: "seoTitle_example", metaDescription: "metaDescription_example", cornerstoneContent: false, allowSerachEngines: false, seoKeyPhrases: "seoKeyPhrases_example", canonicalUrl: "canonicalUrl_example", imageURL: "imageURL_example", image: "image_example", webPortalID: "webPortalID_example") // BlogPostCategoryCreateDto |  (optional)
+let blogPostCategoryCreateDto = BlogPostCategoryCreateDto(id: 123, timestamp: Date(), slug: "slug_example", type: "type_example", title: "title_example", description: "description_example", seoTitle: "seoTitle_example", metaDescription: "metaDescription_example", cornerstoneContent: false, allowSerachEngines: false, seoKeyPhrases: "seoKeyPhrases_example", canonicalUrl: "canonicalUrl_example", imageURL: "imageURL_example", image: "image_example", webPortalId: "webPortalId_example") // BlogPostCategoryCreateDto |  (optional)
 
 // Create a blog post category
 BlogPostCategoriesAPI.createBlogPostCategoryAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, blogPostCategoryCreateDto: blogPostCategoryCreateDto) { (response, error) in
@@ -288,6 +289,64 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchBlogPostCategoryAsync**
+```swift
+    open class func patchBlogPostCategoryAsync(tenantId: UUID, blogPostCategoryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a blog post category
+
+Partially updates an existing blog post category for the specified tenant.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let blogPostCategoryId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a blog post category
+BlogPostCategoriesAPI.patchBlogPostCategoryAsync(tenantId: tenantId, blogPostCategoryId: blogPostCategoryId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **blogPostCategoryId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateBlogPostCategoryAsync**
 ```swift
     open class func updateBlogPostCategoryAsync(tenantId: UUID, blogPostCategoryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, blogPostCategoryUpdateDto: BlogPostCategoryUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
@@ -306,7 +365,7 @@ let tenantId = 987 // UUID |
 let blogPostCategoryId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let blogPostCategoryUpdateDto = BlogPostCategoryUpdateDto(slug: "slug_example", type: "type_example", title: "title_example", description: "description_example", seoTitle: "seoTitle_example", metaDescription: "metaDescription_example", cornerstoneContent: false, allowSerachEngines: false, seoKeyPhrases: "seoKeyPhrases_example", canonicalUrl: "canonicalUrl_example", imageURL: "imageURL_example", image: "image_example", webPortalID: "webPortalID_example") // BlogPostCategoryUpdateDto |  (optional)
+let blogPostCategoryUpdateDto = BlogPostCategoryUpdateDto(slug: "slug_example", type: "type_example", title: "title_example", description: "description_example", seoTitle: "seoTitle_example", metaDescription: "metaDescription_example", cornerstoneContent: false, allowSerachEngines: false, seoKeyPhrases: "seoKeyPhrases_example", canonicalUrl: "canonicalUrl_example", imageURL: "imageURL_example", image: "image_example", webPortalId: "webPortalId_example") // BlogPostCategoryUpdateDto |  (optional)
 
 // Update a blog post category
 BlogPostCategoriesAPI.updateBlogPostCategoryAsync(tenantId: tenantId, blogPostCategoryId: blogPostCategoryId, apiVersion: apiVersion, xApiVersion: xApiVersion, blogPostCategoryUpdateDto: blogPostCategoryUpdateDto) { (response, error) in

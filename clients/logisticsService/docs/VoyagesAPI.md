@@ -15,6 +15,8 @@ Method | HTTP request | Description
 [**getVoyagePortCallsCountAsync**](VoyagesAPI.md#getvoyageportcallscountasync) | **GET** /api/v2/LogisticsService/Voyages/{voyageId}/PortCalls/Count | Get voyage port calls count
 [**getVoyagesAsync**](VoyagesAPI.md#getvoyagesasync) | **GET** /api/v2/LogisticsService/Voyages | Get all voyages
 [**getVoyagesCountAsync**](VoyagesAPI.md#getvoyagescountasync) | **GET** /api/v2/LogisticsService/Voyages/Count | Get voyages count
+[**patchVoyageAsync**](VoyagesAPI.md#patchvoyageasync) | **PATCH** /api/v2/LogisticsService/Voyages/{voyageId} | Patch a voyage
+[**patchVoyagePortCallAsync**](VoyagesAPI.md#patchvoyageportcallasync) | **PATCH** /api/v2/LogisticsService/Voyages/{voyageId}/PortCalls/{portCallId} | Patch a voyage port call
 [**startVoyageAsync**](VoyagesAPI.md#startvoyageasync) | **POST** /api/v2/LogisticsService/Voyages/{voyageId}/Start | Start a voyage
 [**updateVoyageAsync**](VoyagesAPI.md#updatevoyageasync) | **PUT** /api/v2/LogisticsService/Voyages/{voyageId} | Update a voyage
 [**updateVoyagePortCallAsync**](VoyagesAPI.md#updatevoyageportcallasync) | **PUT** /api/v2/LogisticsService/Voyages/{voyageId}/PortCalls/{portCallId} | Update a port call
@@ -632,6 +634,124 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchVoyageAsync**
+```swift
+    open class func patchVoyageAsync(tenantId: UUID, voyageId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a voyage
+
+Partially updates an existing voyage using JSON Patch.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let voyageId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a voyage
+VoyagesAPI.patchVoyageAsync(tenantId: tenantId, voyageId: voyageId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **voyageId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchVoyagePortCallAsync**
+```swift
+    open class func patchVoyagePortCallAsync(tenantId: UUID, voyageId: UUID, portCallId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a voyage port call
+
+Partially updates an existing voyage port call using JSON Patch.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let voyageId = 987 // UUID | 
+let portCallId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a voyage port call
+VoyagesAPI.patchVoyagePortCallAsync(tenantId: tenantId, voyageId: voyageId, portCallId: portCallId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **voyageId** | **UUID** |  | 
+ **portCallId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

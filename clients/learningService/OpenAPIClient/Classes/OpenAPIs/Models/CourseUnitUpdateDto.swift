@@ -15,14 +15,14 @@ public struct CourseUnitUpdateDto: Codable, JSONEncodable, Hashable {
     public var title: String?
     public var description: String?
     public var content: String?
-    public var courseContentGroupID: String?
+    public var courseContentGroupId: String?
     public var releaseDateTime: Date?
 
-    public init(title: String? = nil, description: String? = nil, content: String? = nil, courseContentGroupID: String? = nil, releaseDateTime: Date? = nil) {
+    public init(title: String? = nil, description: String? = nil, content: String? = nil, courseContentGroupId: String? = nil, releaseDateTime: Date? = nil) {
         self.title = title
         self.description = description
         self.content = content
-        self.courseContentGroupID = courseContentGroupID
+        self.courseContentGroupId = courseContentGroupId
         self.releaseDateTime = releaseDateTime
     }
 
@@ -30,7 +30,7 @@ public struct CourseUnitUpdateDto: Codable, JSONEncodable, Hashable {
         case title
         case description
         case content
-        case courseContentGroupID
+        case courseContentGroupId
         case releaseDateTime
     }
 
@@ -41,7 +41,7 @@ public struct CourseUnitUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(content, forKey: .content)
-        try container.encodeIfPresent(courseContentGroupID, forKey: .courseContentGroupID)
+        try container.encodeIfPresent(courseContentGroupId, forKey: .courseContentGroupId)
         try container.encodeIfPresent(releaseDateTime, forKey: .releaseDateTime)
     }
 }
