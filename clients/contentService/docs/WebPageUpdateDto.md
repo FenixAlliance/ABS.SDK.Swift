@@ -57,6 +57,7 @@ Name | Type | Description | Notes
 **cornerstoneContent** | **Bool** |  | [optional] 
 **isEssentialContent** | **Bool** |  | [optional] 
 **allowSearchEngineIndexing** | **Bool** |  | [optional] 
+**webPortalId** | **String** |  | [optional] 
 **webTemplateId** | **String** |  | [optional] 
 **parentWebContentId** | **String** |  | [optional] 
 **isHomePage** | **Bool** |  | [optional] 

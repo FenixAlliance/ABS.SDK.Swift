@@ -12,6 +12,10 @@ import AnyCodable
 
 public struct SocialPostCommentDto: Codable, JSONEncodable, Hashable {
 
+    public enum BodyFormat: String, Codable, CaseIterable {
+        case plainText = "PlainText"
+        case html = "Html"
+    }
     public var id: String?
     public var timestamp: Date?
     public var message: String?
@@ -20,9 +24,11 @@ public struct SocialPostCommentDto: Codable, JSONEncodable, Hashable {
     public var socialFeedPostId: String?
     public var socialProfileName: String?
     public var socialProfileAvatarUrl: String?
+    public var bodyHtml: String?
+    public var bodyFormat: BodyFormat?
     public var socialPostId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, message: String? = nil, parentCommentId: String? = nil, socialProfileId: String? = nil, socialFeedPostId: String? = nil, socialProfileName: String? = nil, socialProfileAvatarUrl: String? = nil, socialPostId: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, message: String? = nil, parentCommentId: String? = nil, socialProfileId: String? = nil, socialFeedPostId: String? = nil, socialProfileName: String? = nil, socialProfileAvatarUrl: String? = nil, bodyHtml: String? = nil, bodyFormat: BodyFormat? = nil, socialPostId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.message = message
@@ -31,6 +37,8 @@ public struct SocialPostCommentDto: Codable, JSONEncodable, Hashable {
         self.socialFeedPostId = socialFeedPostId
         self.socialProfileName = socialProfileName
         self.socialProfileAvatarUrl = socialProfileAvatarUrl
+        self.bodyHtml = bodyHtml
+        self.bodyFormat = bodyFormat
         self.socialPostId = socialPostId
     }
 
@@ -43,6 +51,8 @@ public struct SocialPostCommentDto: Codable, JSONEncodable, Hashable {
         case socialFeedPostId
         case socialProfileName
         case socialProfileAvatarUrl
+        case bodyHtml
+        case bodyFormat
         case socialPostId
     }
 
@@ -58,6 +68,8 @@ public struct SocialPostCommentDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(socialFeedPostId, forKey: .socialFeedPostId)
         try container.encodeIfPresent(socialProfileName, forKey: .socialProfileName)
         try container.encodeIfPresent(socialProfileAvatarUrl, forKey: .socialProfileAvatarUrl)
+        try container.encodeIfPresent(bodyHtml, forKey: .bodyHtml)
+        try container.encodeIfPresent(bodyFormat, forKey: .bodyFormat)
         try container.encodeIfPresent(socialPostId, forKey: .socialPostId)
     }
 }

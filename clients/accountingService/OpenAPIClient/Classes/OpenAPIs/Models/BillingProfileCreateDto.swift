@@ -41,6 +41,11 @@ public struct BillingProfileCreateDto: Codable, JSONEncodable, Hashable {
     public var postalCode: String
     public var businessName: String
     public var commercialName: String
+    public var verificationDigit: String?
+    public var economicActivityCode: String?
+    public var economicActivityScheme: String?
+    public var isPrimary: Bool?
+    public var establishmentCode: String?
     public var ticker: String?
     public var duns: String?
     public var isPublicCompany: Bool?
@@ -53,7 +58,7 @@ public struct BillingProfileCreateDto: Codable, JSONEncodable, Hashable {
     public var fiscalAuthorityId: String
     public var fiscalRegimeId: String
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, contactId: String? = nil, taxId: String, phone: String, email: String, address: String, address1: String? = nil, address2: String? = nil, postalCode: String, businessName: String, commercialName: String, ticker: String? = nil, duns: String? = nil, isPublicCompany: Bool? = nil, isFactaCustomer: Bool? = nil, taxPayerType: TaxPayerType? = nil, countryId: String, stateId: String, cityId: String, fiscalIdentificationTypeId: String, fiscalAuthorityId: String, fiscalRegimeId: String) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, contactId: String? = nil, taxId: String, phone: String, email: String, address: String, address1: String? = nil, address2: String? = nil, postalCode: String, businessName: String, commercialName: String, verificationDigit: String? = nil, economicActivityCode: String? = nil, economicActivityScheme: String? = nil, isPrimary: Bool? = nil, establishmentCode: String? = nil, ticker: String? = nil, duns: String? = nil, isPublicCompany: Bool? = nil, isFactaCustomer: Bool? = nil, taxPayerType: TaxPayerType? = nil, countryId: String, stateId: String, cityId: String, fiscalIdentificationTypeId: String, fiscalAuthorityId: String, fiscalRegimeId: String) {
         self.id = id
         self.timestamp = timestamp
         self.contactId = contactId
@@ -66,6 +71,11 @@ public struct BillingProfileCreateDto: Codable, JSONEncodable, Hashable {
         self.postalCode = postalCode
         self.businessName = businessName
         self.commercialName = commercialName
+        self.verificationDigit = verificationDigit
+        self.economicActivityCode = economicActivityCode
+        self.economicActivityScheme = economicActivityScheme
+        self.isPrimary = isPrimary
+        self.establishmentCode = establishmentCode
         self.ticker = ticker
         self.duns = duns
         self.isPublicCompany = isPublicCompany
@@ -92,6 +102,11 @@ public struct BillingProfileCreateDto: Codable, JSONEncodable, Hashable {
         case postalCode
         case businessName
         case commercialName
+        case verificationDigit
+        case economicActivityCode
+        case economicActivityScheme
+        case isPrimary
+        case establishmentCode
         case ticker
         case duns
         case isPublicCompany
@@ -121,6 +136,11 @@ public struct BillingProfileCreateDto: Codable, JSONEncodable, Hashable {
         try container.encode(postalCode, forKey: .postalCode)
         try container.encode(businessName, forKey: .businessName)
         try container.encode(commercialName, forKey: .commercialName)
+        try container.encodeIfPresent(verificationDigit, forKey: .verificationDigit)
+        try container.encodeIfPresent(economicActivityCode, forKey: .economicActivityCode)
+        try container.encodeIfPresent(economicActivityScheme, forKey: .economicActivityScheme)
+        try container.encodeIfPresent(isPrimary, forKey: .isPrimary)
+        try container.encodeIfPresent(establishmentCode, forKey: .establishmentCode)
         try container.encodeIfPresent(ticker, forKey: .ticker)
         try container.encodeIfPresent(duns, forKey: .duns)
         try container.encodeIfPresent(isPublicCompany, forKey: .isPublicCompany)

@@ -1,6 +1,6 @@
 # TaxPoliciesAPI
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://absuite.net*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -160,7 +160,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let taxPolicyCreateDto = TaxPolicyCreateDto(id: 123, timestamp: Date(), code: "code_example", title: "title_example", description: "description_example", isFree: false, reduce: false, isEnabled: false, isDefault: false, allowInternational: false, hours: 123, days: 123, weeks: 123, months: 123, years: 123, value: 123, percentage: 123, currencyId: "currencyId_example", countryId: "countryId_example", countryStateId: "countryStateId_example", customState: "customState_example", customCity: "customCity_example", cityId: "cityId_example", zero: false, reduced: false, withholding: false, fiscalAuthorityId: "fiscalAuthorityId_example") // TaxPolicyCreateDto |  (optional)
+let taxPolicyCreateDto = TaxPolicyCreateDto(id: 123, timestamp: Date(), code: "code_example", title: "title_example", description: "description_example", isFree: false, reduce: false, isEnabled: false, isDefault: false, allowInternational: false, hours: 123, days: 123, weeks: 123, months: 123, years: 123, value: 123, percentage: 123, currencyId: "currencyId_example", countryId: "countryId_example", countryStateId: "countryStateId_example", customState: "customState_example", customCity: "customCity_example", cityId: "cityId_example", zero: false, reduced: false, withholding: false, taxSchemeCode: "taxSchemeCode_example", taxCategoryCode: "taxCategoryCode_example", fiscalAuthorityId: "fiscalAuthorityId_example") // TaxPolicyCreateDto |  (optional)
 
 // Create a tax policy
 TaxPoliciesAPI.createTaxPolicy(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, taxPolicyCreateDto: taxPolicyCreateDto) { (response, error) in
@@ -1191,7 +1191,7 @@ let tenantId = 987 // UUID |
 let id = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let taxPolicyUpdateDto = TaxPolicyUpdateDto(code: "code_example", title: "title_example", description: "description_example", isFree: false, reduce: false, isEnabled: false, isDefault: false, allowInternational: false, hours: 123, days: 123, weeks: 123, months: 123, years: 123, value: 123, percentage: 123, currencyId: "currencyId_example", countryId: "countryId_example", countryStateId: "countryStateId_example", customState: "customState_example", customCity: "customCity_example", cityId: "cityId_example", zero: false, reduced: false, withholding: false, fiscalAuthorityId: "fiscalAuthorityId_example") // TaxPolicyUpdateDto |  (optional)
+let taxPolicyUpdateDto = TaxPolicyUpdateDto(code: "code_example", title: "title_example", description: "description_example", isFree: false, reduce: false, isEnabled: false, isDefault: false, allowInternational: false, hours: 123, days: 123, weeks: 123, months: 123, years: 123, value: 123, percentage: 123, currencyId: "currencyId_example", countryId: "countryId_example", countryStateId: "countryStateId_example", customState: "customState_example", customCity: "customCity_example", cityId: "cityId_example", zero: false, reduced: false, withholding: false, taxSchemeCode: "taxSchemeCode_example", taxCategoryCode: "taxCategoryCode_example", fiscalAuthorityId: "fiscalAuthorityId_example") // TaxPolicyUpdateDto |  (optional)
 
 // Update a tax policy
 TaxPoliciesAPI.updateTaxPolicy(tenantId: tenantId, id: id, apiVersion: apiVersion, xApiVersion: xApiVersion, taxPolicyUpdateDto: taxPolicyUpdateDto) { (response, error) in

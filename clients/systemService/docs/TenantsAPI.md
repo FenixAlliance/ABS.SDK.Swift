@@ -1,6 +1,6 @@
 # TenantsAPI
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://absuite.net*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -145,7 +145,7 @@ import OpenAPIClient
 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let tenantCreateDto = TenantCreateDto(id: 123, timestamp: Date(), name: "name_example", legalName: "legalName_example", email: "email_example", phone: "phone_example", webUrl: "webUrl_example", handler: "handler_example", about: "about_example", slogan: "slogan_example", currencyId: "currencyId_example", duns: "duns_example", taxId: "taxId_example", avatarUrl: "avatarUrl_example", countryId: "countryId_example", stateId: "stateId_example", cityId: "cityId_example", languageId: "languageId_example", timezoneId: "timezoneId_example", businessTypeId: "businessTypeId_example", businessSegmentId: "businessSegmentId_example", businessIndustryId: "businessIndustryId_example", businessSizeId: "businessSizeId_example") // TenantCreateDto |  (optional)
+let tenantCreateDto = TenantCreateDto(id: 123, timestamp: Date(), kind: "kind_example", name: "name_example", legalName: "legalName_example", email: "email_example", phone: "phone_example", webUrl: "webUrl_example", handler: "handler_example", about: "about_example", slogan: "slogan_example", currencyId: "currencyId_example", duns: "duns_example", taxId: "taxId_example", avatarUrl: "avatarUrl_example", countryId: "countryId_example", stateId: "stateId_example", cityId: "cityId_example", languageId: "languageId_example", timezoneId: "timezoneId_example", businessTypeId: "businessTypeId_example", businessSegmentId: "businessSegmentId_example", businessIndustryId: "businessIndustryId_example", businessSizeId: "businessSizeId_example") // TenantCreateDto |  (optional)
 
 // Create a new tenant.
 TenantsAPI.createTenant(apiVersion: apiVersion, xApiVersion: xApiVersion, tenantCreateDto: tenantCreateDto) { (response, error) in
@@ -572,7 +572,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let tenantUpdateDto = TenantUpdateDto(name: "name_example", legalName: "legalName_example", email: "email_example", phone: "phone_example", webUrl: "webUrl_example", about: "about_example", slogan: "slogan_example", handler: "handler_example", currencyId: "currencyId_example", duns: "duns_example", taxId: "taxId_example", avatarUrl: "avatarUrl_example", twitterUsername: "twitterUsername_example", facebookUrl: "facebookUrl_example", twitterUrl: "twitterUrl_example", gitHubUrl: "gitHubUrl_example", linkedInUrl: "linkedInUrl_example", instagramUrl: "instagramUrl_example", youTubeUrl: "youTubeUrl_example", whatsAppNumber: "whatsAppNumber_example", supportPhoneNumber: "supportPhoneNumber_example", countryId: "countryId_example", timezoneId: "timezoneId_example", languageId: "languageId_example", stateId: "stateId_example", cityId: "cityId_example") // TenantUpdateDto |  (optional)
+let tenantUpdateDto = TenantUpdateDto(kind: "kind_example", name: "name_example", legalName: "legalName_example", email: "email_example", phone: "phone_example", webUrl: "webUrl_example", about: "about_example", slogan: "slogan_example", handler: "handler_example", currencyId: "currencyId_example", duns: "duns_example", taxId: "taxId_example", avatarUrl: "avatarUrl_example", twitterUsername: "twitterUsername_example", facebookUrl: "facebookUrl_example", twitterUrl: "twitterUrl_example", gitHubUrl: "gitHubUrl_example", linkedInUrl: "linkedInUrl_example", instagramUrl: "instagramUrl_example", youTubeUrl: "youTubeUrl_example", whatsAppNumber: "whatsAppNumber_example", supportPhoneNumber: "supportPhoneNumber_example", countryId: "countryId_example", timezoneId: "timezoneId_example", languageId: "languageId_example", stateId: "stateId_example", cityId: "cityId_example") // TenantUpdateDto |  (optional)
 
 // Update a specific tenant by ID.
 TenantsAPI.updateTenant(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, tenantUpdateDto: tenantUpdateDto) { (response, error) in

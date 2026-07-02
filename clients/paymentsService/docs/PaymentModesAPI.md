@@ -1,6 +1,6 @@
 # PaymentModesAPI
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://absuite.net*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -30,7 +30,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let paymentModeCreateDto = PaymentModeCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example") // PaymentModeCreateDto |  (optional)
+let paymentModeCreateDto = PaymentModeCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", paymentMeansCode: "paymentMeansCode_example") // PaymentModeCreateDto |  (optional)
 
 // Creates a new payment mode
 PaymentModesAPI.createPaymentModeAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, paymentModeCreateDto: paymentModeCreateDto) { (response, error) in
@@ -365,7 +365,7 @@ let tenantId = 987 // UUID |
 let paymentModeId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let paymentModeUpdateDto = PaymentModeUpdateDto(name: "name_example", description: "description_example") // PaymentModeUpdateDto |  (optional)
+let paymentModeUpdateDto = PaymentModeUpdateDto(name: "name_example", description: "description_example", paymentMeansCode: "paymentMeansCode_example") // PaymentModeUpdateDto |  (optional)
 
 // Updates a payment mode
 PaymentModesAPI.updatePaymentModeAsync(tenantId: tenantId, paymentModeId: paymentModeId, apiVersion: apiVersion, xApiVersion: xApiVersion, paymentModeUpdateDto: paymentModeUpdateDto) { (response, error) in

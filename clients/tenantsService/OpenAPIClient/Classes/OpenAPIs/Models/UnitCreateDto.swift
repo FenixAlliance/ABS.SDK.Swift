@@ -18,13 +18,15 @@ public struct UnitCreateDto: Codable, JSONEncodable, Hashable {
     public var name: String
     public var baseUnitAmount: Double?
     public var baseUnitId: String?
+    public var unECECode: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, name: String, baseUnitAmount: Double? = nil, baseUnitId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, name: String, baseUnitAmount: Double? = nil, baseUnitId: String? = nil, unECECode: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
         self.baseUnitAmount = baseUnitAmount
         self.baseUnitId = baseUnitId
+        self.unECECode = unECECode
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -33,6 +35,7 @@ public struct UnitCreateDto: Codable, JSONEncodable, Hashable {
         case name
         case baseUnitAmount
         case baseUnitId
+        case unECECode
     }
 
     // Encodable protocol methods
@@ -44,6 +47,7 @@ public struct UnitCreateDto: Codable, JSONEncodable, Hashable {
         try container.encode(name, forKey: .name)
         try container.encodeIfPresent(baseUnitAmount, forKey: .baseUnitAmount)
         try container.encodeIfPresent(baseUnitId, forKey: .baseUnitId)
+        try container.encodeIfPresent(unECECode, forKey: .unECECode)
     }
 }
 

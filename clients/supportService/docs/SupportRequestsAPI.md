@@ -1,6 +1,6 @@
 # SupportRequestsAPI
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://absuite.net*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -596,7 +596,7 @@ let tenantId = 987 // UUID |
 let supportRequestId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let supportRequestAttachmentCreateDto = SupportRequestAttachmentCreateDto(id: 123, timestamp: Date(), notes: "notes_example", title: "title_example", author: "author_example", isFolder: false, fileName: "fileName_example", abstract: "abstract_example", keyWords: "keyWords_example", validResponse: false, parentFileUploadId: "parentFileUploadId_example", filePath: "filePath_example", metadata: "metadata_example", supportRequestId: "supportRequestId_example") // SupportRequestAttachmentCreateDto |  (optional)
+let supportRequestAttachmentCreateDto = SupportRequestAttachmentCreateDto(id: 123, timestamp: Date(), notes: "notes_example", title: "title_example", author: "author_example", isFolder: false, fileName: "fileName_example", abstract: "abstract_example", keyWords: "keyWords_example", validResponse: false, parentFileUploadId: "parentFileUploadId_example", filePath: "filePath_example", publicAccessType: "publicAccessType_example", metadata: "metadata_example", supportRequestId: "supportRequestId_example") // SupportRequestAttachmentCreateDto |  (optional)
 
 // Add an attachment to a support request
 SupportRequestsAPI.relateSupportRequestToAttachmentAsync(tenantId: tenantId, supportRequestId: supportRequestId, apiVersion: apiVersion, xApiVersion: xApiVersion, supportRequestAttachmentCreateDto: supportRequestAttachmentCreateDto) { (response, error) in

@@ -4,8 +4,7 @@ Cartfile
 OpenAPIClient.podspec
 OpenAPIClient/Classes/OpenAPIs/APIHelper.swift
 OpenAPIClient/Classes/OpenAPIs/APIs.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/CompletionsAPI.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/FenixAlliancePortalsWebsiteAPI.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/FenixAllianceABSWebAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/QuotesAPI.swift
 OpenAPIClient/Classes/OpenAPIs/CodableHelper.swift
 OpenAPIClient/Classes/OpenAPIs/Configuration.swift
@@ -56,14 +55,13 @@ Package.swift
 README.md
 docs/AccessTokenResponse.md
 docs/BooleanEnvelope.md
-docs/CompletionsAPI.md
 docs/ContactDto.md
 docs/EmailDispatchRequest.md
 docs/EmptyEnvelope.md
 docs/ErrorEnvelope.md
 docs/ExtendedQuoteDto.md
 docs/ExtendedQuoteDtoListEnvelope.md
-docs/FenixAlliancePortalsWebsiteAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/ForgotPasswordRequest.md
 docs/HttpValidationProblemDetails.md
 docs/InfoRequest.md

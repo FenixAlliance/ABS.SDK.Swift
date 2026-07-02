@@ -5,9 +5,8 @@ OpenAPIClient.podspec
 OpenAPIClient/Classes/OpenAPIs/APIHelper.swift
 OpenAPIClient/Classes/OpenAPIs/APIs.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/AirwayBillsAPI.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/CompletionsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/DeliveryNotesAPI.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/FenixAlliancePortalsWebsiteAPI.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/FenixAllianceABSWebAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/ItemPackingSlipsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/ItemPickListsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/ItemRestocksAPI.swift
@@ -35,6 +34,7 @@ OpenAPIClient/Classes/OpenAPIs/Models/AirwayBillDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/AirwayBillDtoEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/AirwayBillDtoListEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/AirwayBillUpdateDto.swift
+OpenAPIClient/Classes/OpenAPIs/Models/ContactCreateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ContactDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/DeliveryNoteCreateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/DeliveryNoteDto.swift
@@ -178,7 +178,7 @@ docs/AirwayBillDtoEnvelope.md
 docs/AirwayBillDtoListEnvelope.md
 docs/AirwayBillUpdateDto.md
 docs/AirwayBillsAPI.md
-docs/CompletionsAPI.md
+docs/ContactCreateDto.md
 docs/ContactDto.md
 docs/DeliveryNoteCreateDto.md
 docs/DeliveryNoteDto.md
@@ -189,7 +189,7 @@ docs/DeliveryNotesAPI.md
 docs/DisputeProofOfDeliveryRequest.md
 docs/EmptyEnvelope.md
 docs/ErrorEnvelope.md
-docs/FenixAlliancePortalsWebsiteAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/ForgotPasswordRequest.md
 docs/HttpValidationProblemDetails.md
 docs/InfoRequest.md

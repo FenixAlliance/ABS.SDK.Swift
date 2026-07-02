@@ -16,6 +16,7 @@ public struct SupplierProfileCreateDto: Codable, JSONEncodable, Hashable {
     public var timestamp: Date?
     public var type: String?
     public var contactId: String?
+    public var contact: ContactCreateDto?
     public var about: String?
     public var avatarUrl: String?
     public var data: String?
@@ -39,11 +40,12 @@ public struct SupplierProfileCreateDto: Codable, JSONEncodable, Hashable {
     public var data9: String?
     public var data9Label: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, type: String? = nil, contactId: String? = nil, about: String? = nil, avatarUrl: String? = nil, data: String? = nil, dataLabel: String? = nil, data1: String? = nil, data1Label: String? = nil, data2: String? = nil, data2Label: String? = nil, data3: String? = nil, data3Label: String? = nil, data4: String? = nil, data4Label: String? = nil, data5: String? = nil, data5Label: String? = nil, data6: String? = nil, data6Label: String? = nil, data7: String? = nil, data7Label: String? = nil, data8: String? = nil, data8Label: String? = nil, data9: String? = nil, data9Label: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, type: String? = nil, contactId: String? = nil, contact: ContactCreateDto? = nil, about: String? = nil, avatarUrl: String? = nil, data: String? = nil, dataLabel: String? = nil, data1: String? = nil, data1Label: String? = nil, data2: String? = nil, data2Label: String? = nil, data3: String? = nil, data3Label: String? = nil, data4: String? = nil, data4Label: String? = nil, data5: String? = nil, data5Label: String? = nil, data6: String? = nil, data6Label: String? = nil, data7: String? = nil, data7Label: String? = nil, data8: String? = nil, data8Label: String? = nil, data9: String? = nil, data9Label: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.type = type
         self.contactId = contactId
+        self.contact = contact
         self.about = about
         self.avatarUrl = avatarUrl
         self.data = data
@@ -73,6 +75,7 @@ public struct SupplierProfileCreateDto: Codable, JSONEncodable, Hashable {
         case timestamp
         case type
         case contactId
+        case contact
         case about
         case avatarUrl
         case data
@@ -105,6 +108,7 @@ public struct SupplierProfileCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(type, forKey: .type)
         try container.encodeIfPresent(contactId, forKey: .contactId)
+        try container.encodeIfPresent(contact, forKey: .contact)
         try container.encodeIfPresent(about, forKey: .about)
         try container.encodeIfPresent(avatarUrl, forKey: .avatarUrl)
         try container.encodeIfPresent(data, forKey: .data)

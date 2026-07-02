@@ -41,9 +41,11 @@ public struct TaxPolicyUpdateDto: Codable, JSONEncodable, Hashable {
     public var zero: Bool?
     public var reduced: Bool?
     public var withholding: Bool?
+    public var taxSchemeCode: String?
+    public var taxCategoryCode: String?
     public var fiscalAuthorityId: String?
 
-    public init(code: String? = nil, title: String? = nil, description: String? = nil, isFree: Bool? = nil, reduce: Bool? = nil, isEnabled: Bool? = nil, isDefault: Bool? = nil, allowInternational: Bool? = nil, hours: Int? = nil, days: Int? = nil, weeks: Int? = nil, months: Int? = nil, years: Int? = nil, value: Double? = nil, percentage: Double? = nil, currencyId: String? = nil, countryId: String? = nil, countryStateId: String? = nil, customState: String? = nil, customCity: String? = nil, cityId: String? = nil, zero: Bool? = nil, reduced: Bool? = nil, withholding: Bool? = nil, fiscalAuthorityId: String? = nil) {
+    public init(code: String? = nil, title: String? = nil, description: String? = nil, isFree: Bool? = nil, reduce: Bool? = nil, isEnabled: Bool? = nil, isDefault: Bool? = nil, allowInternational: Bool? = nil, hours: Int? = nil, days: Int? = nil, weeks: Int? = nil, months: Int? = nil, years: Int? = nil, value: Double? = nil, percentage: Double? = nil, currencyId: String? = nil, countryId: String? = nil, countryStateId: String? = nil, customState: String? = nil, customCity: String? = nil, cityId: String? = nil, zero: Bool? = nil, reduced: Bool? = nil, withholding: Bool? = nil, taxSchemeCode: String? = nil, taxCategoryCode: String? = nil, fiscalAuthorityId: String? = nil) {
         self.code = code
         self.title = title
         self.description = description
@@ -68,6 +70,8 @@ public struct TaxPolicyUpdateDto: Codable, JSONEncodable, Hashable {
         self.zero = zero
         self.reduced = reduced
         self.withholding = withholding
+        self.taxSchemeCode = taxSchemeCode
+        self.taxCategoryCode = taxCategoryCode
         self.fiscalAuthorityId = fiscalAuthorityId
     }
 
@@ -96,6 +100,8 @@ public struct TaxPolicyUpdateDto: Codable, JSONEncodable, Hashable {
         case zero
         case reduced
         case withholding
+        case taxSchemeCode
+        case taxCategoryCode
         case fiscalAuthorityId
     }
 
@@ -127,6 +133,8 @@ public struct TaxPolicyUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(zero, forKey: .zero)
         try container.encodeIfPresent(reduced, forKey: .reduced)
         try container.encodeIfPresent(withholding, forKey: .withholding)
+        try container.encodeIfPresent(taxSchemeCode, forKey: .taxSchemeCode)
+        try container.encodeIfPresent(taxCategoryCode, forKey: .taxCategoryCode)
         try container.encodeIfPresent(fiscalAuthorityId, forKey: .fiscalAuthorityId)
     }
 }

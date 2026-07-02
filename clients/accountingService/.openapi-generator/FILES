@@ -5,6 +5,7 @@ OpenAPIClient.podspec
 OpenAPIClient/Classes/OpenAPIs/APIHelper.swift
 OpenAPIClient/Classes/OpenAPIs/APIs.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/AccountGroupsAPI.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/AccountingEntriesAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/AccountingPeriodsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/AccountsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/BankProfilesAPI.swift
@@ -13,11 +14,10 @@ OpenAPIClient/Classes/OpenAPIs/APIs/BillableLineTaxesAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/BillingProfilesAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/BudgetsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/CommissionsAPI.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/CompletionsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/CostCentresAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/ExpenseClaimsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/ExpenseTypesAPI.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/FenixAlliancePortalsWebsiteAPI.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/FenixAllianceABSWebAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/FinancialBooksAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/FiscalAuthoritiesAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/FiscalAuthorityYearsAPI.swift
@@ -30,6 +30,7 @@ OpenAPIClient/Classes/OpenAPIs/APIs/FiscalResponsibilityRecordsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/FiscalYearsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/GrantsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/InvoiceEnumerationRangesAPI.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/JournalEntriesAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/JournalTypesAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/JournalsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/LedgerTypesAPI.swift
@@ -149,6 +150,7 @@ OpenAPIClient/Classes/OpenAPIs/Models/CostCentreGroupUpdateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/CostCentreUpdateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/CreateLedgerDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/CurrencyId.swift
+OpenAPIClient/Classes/OpenAPIs/Models/DecimalEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/EmptyEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ErrorEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ExpenseClaimCreateDto.swift
@@ -352,6 +354,7 @@ docs/AccountTypeDtoEnvelope.md
 docs/AccountTypeDtoListEnvelope.md
 docs/AccountTypeUpdateDto.md
 docs/AccountUpdateDto.md
+docs/AccountingEntriesAPI.md
 docs/AccountingEntryCreateDto.md
 docs/AccountingEntryDto.md
 docs/AccountingEntryDtoEnvelope.md
@@ -423,7 +426,6 @@ docs/CommissionDtoEnvelope.md
 docs/CommissionDtoListEnvelope.md
 docs/CommissionUpdateDto.md
 docs/CommissionsAPI.md
-docs/CompletionsAPI.md
 docs/ContactDto.md
 docs/CostCentreBudgetCreateDto.md
 docs/CostCentreBudgetDto.md
@@ -443,6 +445,7 @@ docs/CostCentreUpdateDto.md
 docs/CostCentresAPI.md
 docs/CreateLedgerDto.md
 docs/CurrencyId.md
+docs/DecimalEnvelope.md
 docs/EmptyEnvelope.md
 docs/ErrorEnvelope.md
 docs/ExpenseClaimCreateDto.md
@@ -457,7 +460,7 @@ docs/ExpenseTypeDtoEnvelope.md
 docs/ExpenseTypeDtoListEnvelope.md
 docs/ExpenseTypeUpdateDto.md
 docs/ExpenseTypesAPI.md
-docs/FenixAlliancePortalsWebsiteAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/FinancialBookCreateDto.md
 docs/FinancialBookDto.md
 docs/FinancialBookDtoEnvelope.md
@@ -534,6 +537,7 @@ docs/JournalCreateDto.md
 docs/JournalDto.md
 docs/JournalDtoEnvelope.md
 docs/JournalDtoIReadOnlyListEnvelope.md
+docs/JournalEntriesAPI.md
 docs/JournalEntryCreateDto.md
 docs/JournalEntryDto.md
 docs/JournalEntryDtoIReadOnlyListEnvelope.md

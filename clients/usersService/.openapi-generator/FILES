@@ -4,8 +4,7 @@ Cartfile
 OpenAPIClient.podspec
 OpenAPIClient/Classes/OpenAPIs/APIHelper.swift
 OpenAPIClient/Classes/OpenAPIs/APIs.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/CompletionsAPI.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/FenixAlliancePortalsWebsiteAPI.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/FenixAllianceABSWebAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/OptionsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/UsersAPI.swift
 OpenAPIClient/Classes/OpenAPIs/CodableHelper.swift
@@ -78,7 +77,6 @@ docs/AddressDto.md
 docs/AddressDtoListEnvelope.md
 docs/CartDto.md
 docs/CartDtoEnvelope.md
-docs/CompletionsAPI.md
 docs/EmptyEnvelope.md
 docs/ErrorEnvelope.md
 docs/ExtendedTenantDto.md
@@ -87,7 +85,7 @@ docs/ExtendedTenantEnrollmentDto.md
 docs/ExtendedTenantEnrollmentDtoListEnvelope.md
 docs/ExtendedUserDto.md
 docs/ExtendedUserDtoEnvelope.md
-docs/FenixAlliancePortalsWebsiteAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/FollowRecordDto.md
 docs/FollowRecordDtoListEnvelope.md
 docs/ForgotPasswordRequest.md

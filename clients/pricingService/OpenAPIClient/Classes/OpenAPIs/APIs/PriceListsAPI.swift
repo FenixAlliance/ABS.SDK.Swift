@@ -389,6 +389,58 @@ open class PriceListsAPI {
     }
 
     /**
+     Counts prices in a price list
+     
+     - parameter tenantId: (query)  
+     - parameter priceListId: (path)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getPriceListPricesCountAsync(tenantId: UUID, priceListId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getPriceListPricesCountAsyncWithRequestBuilder(tenantId: tenantId, priceListId: priceListId).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Counts prices in a price list
+     - GET /api/v2/PricingService/PriceLists/{priceListId}/Prices/Count
+     - Gets the count of price entries for a specific price list.
+     - parameter tenantId: (query)  
+     - parameter priceListId: (path)  
+     - returns: RequestBuilder<Int32Envelope> 
+     */
+    open class func getPriceListPricesCountAsyncWithRequestBuilder(tenantId: UUID, priceListId: UUID) -> RequestBuilder<Int32Envelope> {
+        var localVariablePath = "/api/v2/PricingService/PriceLists/{priceListId}/Prices/Count"
+        let priceListIdPreEscape = "\(APIHelper.mapValueToPathItem(priceListId))"
+        let priceListIdPostEscape = priceListIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{priceListId}", with: priceListIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
      Retrieves all price lists
      
      - parameter tenantId: (query)  

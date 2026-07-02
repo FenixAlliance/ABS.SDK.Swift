@@ -12,8 +12,15 @@ import AnyCodable
 
 public struct JobOfferDto: Codable, JSONEncodable, Hashable {
 
+    public enum Status: String, Codable, CaseIterable {
+        case draft = "Draft"
+        case published = "Published"
+        case closed = "Closed"
+        case filled = "Filled"
+    }
     public var id: String?
     public var timestamp: Date?
+    public var status: Status?
     public var remote: Bool?
     public var expectedHireDate: Date?
     public var title: String?
@@ -65,9 +72,10 @@ public struct JobOfferDto: Codable, JSONEncodable, Hashable {
     public var countryStateId: String?
     public var cityId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, remote: Bool? = nil, expectedHireDate: Date? = nil, title: String? = nil, description: String? = nil, technicalSkills: String? = nil, nonTechnicalSkills: String? = nil, certifications: String? = nil, projectExperience: String? = nil, technologies: String? = nil, benefits: String? = nil, isOfficialJobOffer: Bool? = nil, isRemoteJobOffer: Bool? = nil, isMidTimeJobOffer: Bool? = nil, isUndergraduateOption: Bool? = nil, minOverallExperienceYears: Int? = nil, availiablePositionsCount: Int? = nil, viewsCount: Int? = nil, minSalaryAmount: Double? = nil, maxSalaryAmount: Double? = nil, imageUrl: String? = nil, location: String? = nil, data: String? = nil, dataLabel: String? = nil, data1: String? = nil, data1Label: String? = nil, data2: String? = nil, data2Label: String? = nil, data3: String? = nil, data3Label: String? = nil, data4: String? = nil, data4Label: String? = nil, data5: String? = nil, data5Label: String? = nil, data6: String? = nil, data6Label: String? = nil, data7: String? = nil, data7Label: String? = nil, data8: String? = nil, data8Label: String? = nil, data9: String? = nil, data9Label: String? = nil, externalUrl: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil, currencyId: String? = nil, jobFieldId: String? = nil, employerProfileId: String? = nil, countryId: String? = nil, countryStateId: String? = nil, cityId: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, status: Status? = nil, remote: Bool? = nil, expectedHireDate: Date? = nil, title: String? = nil, description: String? = nil, technicalSkills: String? = nil, nonTechnicalSkills: String? = nil, certifications: String? = nil, projectExperience: String? = nil, technologies: String? = nil, benefits: String? = nil, isOfficialJobOffer: Bool? = nil, isRemoteJobOffer: Bool? = nil, isMidTimeJobOffer: Bool? = nil, isUndergraduateOption: Bool? = nil, minOverallExperienceYears: Int? = nil, availiablePositionsCount: Int? = nil, viewsCount: Int? = nil, minSalaryAmount: Double? = nil, maxSalaryAmount: Double? = nil, imageUrl: String? = nil, location: String? = nil, data: String? = nil, dataLabel: String? = nil, data1: String? = nil, data1Label: String? = nil, data2: String? = nil, data2Label: String? = nil, data3: String? = nil, data3Label: String? = nil, data4: String? = nil, data4Label: String? = nil, data5: String? = nil, data5Label: String? = nil, data6: String? = nil, data6Label: String? = nil, data7: String? = nil, data7Label: String? = nil, data8: String? = nil, data8Label: String? = nil, data9: String? = nil, data9Label: String? = nil, externalUrl: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil, currencyId: String? = nil, jobFieldId: String? = nil, employerProfileId: String? = nil, countryId: String? = nil, countryStateId: String? = nil, cityId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
+        self.status = status
         self.remote = remote
         self.expectedHireDate = expectedHireDate
         self.title = title
@@ -123,6 +131,7 @@ public struct JobOfferDto: Codable, JSONEncodable, Hashable {
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
+        case status
         case remote
         case expectedHireDate
         case title
@@ -181,6 +190,7 @@ public struct JobOfferDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
+        try container.encodeIfPresent(status, forKey: .status)
         try container.encodeIfPresent(remote, forKey: .remote)
         try container.encodeIfPresent(expectedHireDate, forKey: .expectedHireDate)
         try container.encodeIfPresent(title, forKey: .title)

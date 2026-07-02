@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **timestamp** | **Date** |  | [optional] 
 **type** | **String** |  | [optional] 
 **contactId** | **String** |  | [optional] 
+**contact** | [**ContactCreateDto**](ContactCreateDto.md) |  | [optional] 
 **about** | **String** |  | [optional] 
 **avatarUrl** | **String** |  | [optional] 
 **data** | **String** |  | [optional] 

@@ -76,6 +76,8 @@ Name | Type | Description | Notes
 **billingLocationId** | **String** |  | [optional] 
 **shippingLocationId** | **String** |  | [optional] 
 **qualifiedIdentifier** | **String** |  | [optional] 
+**sellerBillingProfileId** | **String** |  | [optional] 
+**buyerBillingProfileId** | **String** |  | [optional] 
 **costCalculationMethod** | **String** |  | [optional] 
 **freightTerms** | **String** |  | [optional] 
 **orderStatus** | **String** |  | [optional] 

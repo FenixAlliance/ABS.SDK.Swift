@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **hash** | **String** |  | [optional] 
 **fileUrl** | **String** |  | [optional] 
 **filePath** | **String** |  | [optional] 
+**storageKey** | **String** |  | [optional] 
+**storageProviderKey** | **String** |  | [optional] 
 **fileName** | **String** |  | [optional] 
 **abstract** | **String** |  | [optional] 
 **keyWords** | **String** |  | [optional] 
@@ -25,6 +27,14 @@ Name | Type | Description | Notes
 **enrollmentId** | **String** |  | [optional] 
 **socialProfileId** | **String** |  | [optional] 
 **folderPath** | **String** |  | [optional] 
+**scanStatus** | **String** |  | [optional] 
+**thumbnailStatus** | **String** |  | [optional] 
+**hasThumbnail** | **Bool** |  | [optional] [readonly] 
+**thumbnailStorageKey** | **String** |  | [optional] 
+**thumbnailContentType** | **String** |  | [optional] 
+**thumbnailWidth** | **Int** |  | [optional] 
+**thumbnailHeight** | **Int** |  | [optional] 
+**publicAccessType** | **String** |  | [optional] 
 **socialPostId** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

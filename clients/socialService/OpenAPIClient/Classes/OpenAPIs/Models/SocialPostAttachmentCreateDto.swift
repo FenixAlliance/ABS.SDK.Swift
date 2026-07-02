@@ -12,6 +12,12 @@ import AnyCodable
 
 public struct SocialPostAttachmentCreateDto: Codable, JSONEncodable, Hashable {
 
+    public enum PublicAccessType: String, Codable, CaseIterable {
+        case _false = "false"
+        case container = "Container"
+        case blob = "Blob"
+        case unknown = "Unknown"
+    }
     public var id: UUID?
     public var timestamp: Date?
     public var notes: String?
@@ -24,9 +30,10 @@ public struct SocialPostAttachmentCreateDto: Codable, JSONEncodable, Hashable {
     public var validResponse: Bool?
     public var parentFileUploadId: String?
     public var filePath: String?
+    public var publicAccessType: PublicAccessType?
     public var socialPostId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, notes: String? = nil, title: String? = nil, author: String? = nil, isFolder: Bool? = nil, fileName: String? = nil, abstract: String? = nil, keyWords: String? = nil, validResponse: Bool? = nil, parentFileUploadId: String? = nil, filePath: String? = nil, socialPostId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, notes: String? = nil, title: String? = nil, author: String? = nil, isFolder: Bool? = nil, fileName: String? = nil, abstract: String? = nil, keyWords: String? = nil, validResponse: Bool? = nil, parentFileUploadId: String? = nil, filePath: String? = nil, publicAccessType: PublicAccessType? = nil, socialPostId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.notes = notes
@@ -39,6 +46,7 @@ public struct SocialPostAttachmentCreateDto: Codable, JSONEncodable, Hashable {
         self.validResponse = validResponse
         self.parentFileUploadId = parentFileUploadId
         self.filePath = filePath
+        self.publicAccessType = publicAccessType
         self.socialPostId = socialPostId
     }
 
@@ -55,6 +63,7 @@ public struct SocialPostAttachmentCreateDto: Codable, JSONEncodable, Hashable {
         case validResponse
         case parentFileUploadId
         case filePath
+        case publicAccessType
         case socialPostId
     }
 
@@ -74,6 +83,7 @@ public struct SocialPostAttachmentCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(validResponse, forKey: .validResponse)
         try container.encodeIfPresent(parentFileUploadId, forKey: .parentFileUploadId)
         try container.encodeIfPresent(filePath, forKey: .filePath)
+        try container.encodeIfPresent(publicAccessType, forKey: .publicAccessType)
         try container.encodeIfPresent(socialPostId, forKey: .socialPostId)
     }
 }

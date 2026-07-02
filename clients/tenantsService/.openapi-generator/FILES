@@ -4,11 +4,11 @@ Cartfile
 OpenAPIClient.podspec
 OpenAPIClient/Classes/OpenAPIs/APIHelper.swift
 OpenAPIClient/Classes/OpenAPIs/APIs.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/CompletionsAPI.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/BusinessRelationshipsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/DepartmentsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/EmployeeEnrollmentsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/EnrollmentsAPI.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/FenixAlliancePortalsWebsiteAPI.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/FenixAllianceABSWebAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/IndustriesAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/InvitationsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/OptionsAPI.swift
@@ -172,9 +172,9 @@ Package.swift
 README.md
 docs/AccessTokenResponse.md
 docs/BooleanEnvelope.md
+docs/BusinessRelationshipsAPI.md
 docs/CartDto.md
 docs/CartDtoEnvelope.md
-docs/CompletionsAPI.md
 docs/DepartmentsAPI.md
 docs/EmployeeEnrollmentsAPI.md
 docs/EmptyEnvelope.md
@@ -184,7 +184,7 @@ docs/ExtendedTenantDto.md
 docs/ExtendedTenantDtoEnvelope.md
 docs/ExtendedTenantEnrollmentDto.md
 docs/ExtendedTenantEnrollmentDtoEnvelope.md
-docs/FenixAlliancePortalsWebsiteAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/ForgotPasswordRequest.md
 docs/HttpValidationProblemDetails.md
 docs/IndustriesAPI.md

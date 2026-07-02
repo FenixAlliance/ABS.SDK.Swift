@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **featuredImageUrl** | **String** |  | [optional] 
 **codeType** | **String** |  | [optional] 
 **slug** | **String** |  | [optional] 
+**webPortalId** | **String** |  | [optional] 
 **webTemplateId** | **String** |  | [optional] 
 **parentWebContentId** | **String** |  | [optional] 
 

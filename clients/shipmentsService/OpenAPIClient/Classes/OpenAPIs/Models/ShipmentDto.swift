@@ -39,8 +39,10 @@ public struct ShipmentDto: Codable, JSONEncodable, Hashable {
     public var shippingTerms: ShippingTerms?
     public var orderId: String?
     public var tenantId: String?
+    public var sellerBillingProfileId: String?
+    public var buyerBillingProfileId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, trackingCode: String? = nil, isInternational: Bool? = nil, shipped: Bool? = nil, delivered: Bool? = nil, shipmentTimestamp: Date? = nil, deliveryTimestamp: Date? = nil, expectedShippingDate: Date? = nil, expectedDeliveryDate: Date? = nil, shippingTerms: ShippingTerms? = nil, orderId: String? = nil, tenantId: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, trackingCode: String? = nil, isInternational: Bool? = nil, shipped: Bool? = nil, delivered: Bool? = nil, shipmentTimestamp: Date? = nil, deliveryTimestamp: Date? = nil, expectedShippingDate: Date? = nil, expectedDeliveryDate: Date? = nil, shippingTerms: ShippingTerms? = nil, orderId: String? = nil, tenantId: String? = nil, sellerBillingProfileId: String? = nil, buyerBillingProfileId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.trackingCode = trackingCode
@@ -54,6 +56,8 @@ public struct ShipmentDto: Codable, JSONEncodable, Hashable {
         self.shippingTerms = shippingTerms
         self.orderId = orderId
         self.tenantId = tenantId
+        self.sellerBillingProfileId = sellerBillingProfileId
+        self.buyerBillingProfileId = buyerBillingProfileId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -70,6 +74,8 @@ public struct ShipmentDto: Codable, JSONEncodable, Hashable {
         case shippingTerms
         case orderId
         case tenantId
+        case sellerBillingProfileId
+        case buyerBillingProfileId
     }
 
     // Encodable protocol methods
@@ -89,6 +95,8 @@ public struct ShipmentDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(shippingTerms, forKey: .shippingTerms)
         try container.encodeIfPresent(orderId, forKey: .orderId)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
+        try container.encodeIfPresent(sellerBillingProfileId, forKey: .sellerBillingProfileId)
+        try container.encodeIfPresent(buyerBillingProfileId, forKey: .buyerBillingProfileId)
     }
 }
 

@@ -12,9 +12,14 @@ import AnyCodable
 
 public struct TenantDto: Codable, JSONEncodable, Hashable {
 
+    public enum Kind: String, Codable, CaseIterable {
+        case organization = "Organization"
+        case individual = "Individual"
+    }
     public var id: String?
     public var timestamp: Date?
     public var qualifiedName: String?
+    public var kind: Kind?
     public var taxId: String?
     public var about: String?
     public var walletId: String?
@@ -51,10 +56,11 @@ public struct TenantDto: Codable, JSONEncodable, Hashable {
     public var businessLegalName: String?
     public var twitterUsername: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, qualifiedName: String? = nil, taxId: String? = nil, about: String? = nil, walletId: String? = nil, socialFeedId: String? = nil, businessIndustryId: String? = nil, businessSegmentId: String? = nil, socialProfileId: String? = nil, languageId: String? = nil, name: String? = nil, duns: String? = nil, slogan: String? = nil, legalName: String? = nil, coverUrl: String? = nil, avatarUrl: String? = nil, cartId: String? = nil, currencyId: String? = nil, timezoneId: String? = nil, countryId: String? = nil, stateId: String? = nil, cityId: String? = nil, email: String? = nil, phone: String? = nil, webUrl: String? = nil, facebookUrl: String? = nil, twitterUrl: String? = nil, gitHubUrl: String? = nil, linkedInUrl: String? = nil, instagramUrl: String? = nil, youTubeUrl: String? = nil, whatsAppNumber: String? = nil, supportPhoneNumber: String? = nil, verified: Bool? = nil, businessName: String? = nil, businessLegalName: String? = nil, twitterUsername: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, qualifiedName: String? = nil, kind: Kind? = nil, taxId: String? = nil, about: String? = nil, walletId: String? = nil, socialFeedId: String? = nil, businessIndustryId: String? = nil, businessSegmentId: String? = nil, socialProfileId: String? = nil, languageId: String? = nil, name: String? = nil, duns: String? = nil, slogan: String? = nil, legalName: String? = nil, coverUrl: String? = nil, avatarUrl: String? = nil, cartId: String? = nil, currencyId: String? = nil, timezoneId: String? = nil, countryId: String? = nil, stateId: String? = nil, cityId: String? = nil, email: String? = nil, phone: String? = nil, webUrl: String? = nil, facebookUrl: String? = nil, twitterUrl: String? = nil, gitHubUrl: String? = nil, linkedInUrl: String? = nil, instagramUrl: String? = nil, youTubeUrl: String? = nil, whatsAppNumber: String? = nil, supportPhoneNumber: String? = nil, verified: Bool? = nil, businessName: String? = nil, businessLegalName: String? = nil, twitterUsername: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.qualifiedName = qualifiedName
+        self.kind = kind
         self.taxId = taxId
         self.about = about
         self.walletId = walletId
@@ -96,6 +102,7 @@ public struct TenantDto: Codable, JSONEncodable, Hashable {
         case id
         case timestamp
         case qualifiedName
+        case kind
         case taxId
         case about
         case walletId
@@ -140,6 +147,7 @@ public struct TenantDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(qualifiedName, forKey: .qualifiedName)
+        try container.encodeIfPresent(kind, forKey: .kind)
         try container.encodeIfPresent(taxId, forKey: .taxId)
         try container.encodeIfPresent(about, forKey: .about)
         try container.encodeIfPresent(walletId, forKey: .walletId)

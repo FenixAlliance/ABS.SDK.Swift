@@ -26,6 +26,11 @@ public struct BillingProfileUpdateDto: Codable, JSONEncodable, Hashable {
     public var postalCode: String?
     public var businessName: String?
     public var commercialName: String?
+    public var verificationDigit: String?
+    public var economicActivityCode: String?
+    public var economicActivityScheme: String?
+    public var isPrimary: Bool?
+    public var establishmentCode: String?
     public var ticker: String?
     public var duns: String?
     public var isPublicCompany: Bool?
@@ -38,7 +43,7 @@ public struct BillingProfileUpdateDto: Codable, JSONEncodable, Hashable {
     public var fiscalAuthorityId: String?
     public var fiscalRegimeId: String?
 
-    public init(contactId: String? = nil, taxId: String? = nil, phone: String? = nil, email: String? = nil, address: String? = nil, address1: String? = nil, address2: String? = nil, postalCode: String? = nil, businessName: String? = nil, commercialName: String? = nil, ticker: String? = nil, duns: String? = nil, isPublicCompany: Bool? = nil, isFactaCustomer: Bool? = nil, taxPayerType: TaxPayerType? = nil, countryId: String? = nil, stateId: String? = nil, cityId: String? = nil, fiscalIdentificationTypeId: String? = nil, fiscalAuthorityId: String? = nil, fiscalRegimeId: String? = nil) {
+    public init(contactId: String? = nil, taxId: String? = nil, phone: String? = nil, email: String? = nil, address: String? = nil, address1: String? = nil, address2: String? = nil, postalCode: String? = nil, businessName: String? = nil, commercialName: String? = nil, verificationDigit: String? = nil, economicActivityCode: String? = nil, economicActivityScheme: String? = nil, isPrimary: Bool? = nil, establishmentCode: String? = nil, ticker: String? = nil, duns: String? = nil, isPublicCompany: Bool? = nil, isFactaCustomer: Bool? = nil, taxPayerType: TaxPayerType? = nil, countryId: String? = nil, stateId: String? = nil, cityId: String? = nil, fiscalIdentificationTypeId: String? = nil, fiscalAuthorityId: String? = nil, fiscalRegimeId: String? = nil) {
         self.contactId = contactId
         self.taxId = taxId
         self.phone = phone
@@ -49,6 +54,11 @@ public struct BillingProfileUpdateDto: Codable, JSONEncodable, Hashable {
         self.postalCode = postalCode
         self.businessName = businessName
         self.commercialName = commercialName
+        self.verificationDigit = verificationDigit
+        self.economicActivityCode = economicActivityCode
+        self.economicActivityScheme = economicActivityScheme
+        self.isPrimary = isPrimary
+        self.establishmentCode = establishmentCode
         self.ticker = ticker
         self.duns = duns
         self.isPublicCompany = isPublicCompany
@@ -73,6 +83,11 @@ public struct BillingProfileUpdateDto: Codable, JSONEncodable, Hashable {
         case postalCode
         case businessName
         case commercialName
+        case verificationDigit
+        case economicActivityCode
+        case economicActivityScheme
+        case isPrimary
+        case establishmentCode
         case ticker
         case duns
         case isPublicCompany
@@ -100,6 +115,11 @@ public struct BillingProfileUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(postalCode, forKey: .postalCode)
         try container.encodeIfPresent(businessName, forKey: .businessName)
         try container.encodeIfPresent(commercialName, forKey: .commercialName)
+        try container.encodeIfPresent(verificationDigit, forKey: .verificationDigit)
+        try container.encodeIfPresent(economicActivityCode, forKey: .economicActivityCode)
+        try container.encodeIfPresent(economicActivityScheme, forKey: .economicActivityScheme)
+        try container.encodeIfPresent(isPrimary, forKey: .isPrimary)
+        try container.encodeIfPresent(establishmentCode, forKey: .establishmentCode)
         try container.encodeIfPresent(ticker, forKey: .ticker)
         try container.encodeIfPresent(duns, forKey: .duns)
         try container.encodeIfPresent(isPublicCompany, forKey: .isPublicCompany)

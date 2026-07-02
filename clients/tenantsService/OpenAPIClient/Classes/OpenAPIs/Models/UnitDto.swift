@@ -15,16 +15,18 @@ public struct UnitDto: Codable, JSONEncodable, Hashable {
     public var id: String?
     public var timestamp: Date?
     public var name: String?
+    public var unECECode: String?
     public var unitGroupId: String?
     public var baseUnitAmount: Double?
     public var baseUnitId: String?
     public var tenantId: String?
     public var enrollmentId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, unitGroupId: String? = nil, baseUnitAmount: Double? = nil, baseUnitId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, unECECode: String? = nil, unitGroupId: String? = nil, baseUnitAmount: Double? = nil, baseUnitId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
+        self.unECECode = unECECode
         self.unitGroupId = unitGroupId
         self.baseUnitAmount = baseUnitAmount
         self.baseUnitId = baseUnitId
@@ -36,6 +38,7 @@ public struct UnitDto: Codable, JSONEncodable, Hashable {
         case id
         case timestamp
         case name
+        case unECECode
         case unitGroupId
         case baseUnitAmount
         case baseUnitId
@@ -50,6 +53,7 @@ public struct UnitDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(name, forKey: .name)
+        try container.encodeIfPresent(unECECode, forKey: .unECECode)
         try container.encodeIfPresent(unitGroupId, forKey: .unitGroupId)
         try container.encodeIfPresent(baseUnitAmount, forKey: .baseUnitAmount)
         try container.encodeIfPresent(baseUnitId, forKey: .baseUnitId)

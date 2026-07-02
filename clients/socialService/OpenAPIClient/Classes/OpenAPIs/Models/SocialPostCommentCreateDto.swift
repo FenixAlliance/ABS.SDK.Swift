@@ -12,19 +12,28 @@ import AnyCodable
 
 public struct SocialPostCommentCreateDto: Codable, JSONEncodable, Hashable {
 
+    public enum BodyFormat: String, Codable, CaseIterable {
+        case plainText = "PlainText"
+        case html = "Html"
+    }
     static let messageRule = StringRule(minLength: 1, maxLength: 280, pattern: "/^[\\w\\s\\.\\,\\!\\?\\-\\(\\)\\[\\]\\{\\}\\'\\\"\\:\\;]{1,280}$/")
+    static let bodyHtmlRule = StringRule(minLength: nil, maxLength: 8000, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var message: String
+    public var bodyHtml: String?
+    public var bodyFormat: BodyFormat?
     public var parentCommentId: String?
     public var socialProfileId: String?
     public var socialFeedPostId: String?
     public var socialPostId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, message: String, parentCommentId: String? = nil, socialProfileId: String? = nil, socialFeedPostId: String? = nil, socialPostId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, message: String, bodyHtml: String? = nil, bodyFormat: BodyFormat? = nil, parentCommentId: String? = nil, socialProfileId: String? = nil, socialFeedPostId: String? = nil, socialPostId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.message = message
+        self.bodyHtml = bodyHtml
+        self.bodyFormat = bodyFormat
         self.parentCommentId = parentCommentId
         self.socialProfileId = socialProfileId
         self.socialFeedPostId = socialFeedPostId
@@ -35,6 +44,8 @@ public struct SocialPostCommentCreateDto: Codable, JSONEncodable, Hashable {
         case id
         case timestamp
         case message
+        case bodyHtml
+        case bodyFormat
         case parentCommentId
         case socialProfileId
         case socialFeedPostId
@@ -48,6 +59,8 @@ public struct SocialPostCommentCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encode(message, forKey: .message)
+        try container.encodeIfPresent(bodyHtml, forKey: .bodyHtml)
+        try container.encodeIfPresent(bodyFormat, forKey: .bodyFormat)
         try container.encodeIfPresent(parentCommentId, forKey: .parentCommentId)
         try container.encodeIfPresent(socialProfileId, forKey: .socialProfileId)
         try container.encodeIfPresent(socialFeedPostId, forKey: .socialFeedPostId)

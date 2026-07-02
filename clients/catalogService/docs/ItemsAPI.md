@@ -1,6 +1,6 @@
 # ItemsAPI
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://absuite.net*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -2645,7 +2645,7 @@ let itemId = 987 // UUID |
 let itemAttachmentId = "itemAttachmentId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let itemAttachmentCreateDto = ItemAttachmentCreateDto(id: 123, timestamp: Date(), notes: "notes_example", title: "title_example", author: "author_example", isFolder: false, fileName: "fileName_example", abstract: "abstract_example", keyWords: "keyWords_example", validResponse: false, parentFileUploadId: "parentFileUploadId_example", filePath: "filePath_example", itemId: "itemId_example") // ItemAttachmentCreateDto |  (optional)
+let itemAttachmentCreateDto = ItemAttachmentCreateDto(id: 123, timestamp: Date(), notes: "notes_example", title: "title_example", author: "author_example", isFolder: false, fileName: "fileName_example", abstract: "abstract_example", keyWords: "keyWords_example", validResponse: false, parentFileUploadId: "parentFileUploadId_example", filePath: "filePath_example", publicAccessType: "publicAccessType_example", itemId: "itemId_example") // ItemAttachmentCreateDto |  (optional)
 
 // Relate attachment to stock item
 ItemsAPI.relateAttachmentToStockItem(tenantId: tenantId, itemId: itemId, itemAttachmentId: itemAttachmentId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemAttachmentCreateDto: itemAttachmentCreateDto) { (response, error) in

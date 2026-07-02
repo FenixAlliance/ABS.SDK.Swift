@@ -1,6 +1,6 @@
 # BillingProfilesAPI
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://absuite.net*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -28,7 +28,7 @@ Adds a new billing profile record for the specified tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let billingProfileCreateDto = BillingProfileCreateDto(id: 123, timestamp: Date(), contactId: "contactId_example", taxId: "taxId_example", phone: "phone_example", email: "email_example", address: "address_example", address1: "address1_example", address2: "address2_example", postalCode: "postalCode_example", businessName: "businessName_example", commercialName: "commercialName_example", ticker: "ticker_example", duns: "duns_example", isPublicCompany: false, isFactaCustomer: false, taxPayerType: "taxPayerType_example", countryId: "countryId_example", stateId: "stateId_example", cityId: "cityId_example", fiscalIdentificationTypeId: "fiscalIdentificationTypeId_example", fiscalAuthorityId: "fiscalAuthorityId_example", fiscalRegimeId: "fiscalRegimeId_example") // BillingProfileCreateDto | 
+let billingProfileCreateDto = BillingProfileCreateDto(id: 123, timestamp: Date(), contactId: "contactId_example", taxId: "taxId_example", phone: "phone_example", email: "email_example", address: "address_example", address1: "address1_example", address2: "address2_example", postalCode: "postalCode_example", businessName: "businessName_example", commercialName: "commercialName_example", verificationDigit: "verificationDigit_example", economicActivityCode: "economicActivityCode_example", economicActivityScheme: "economicActivityScheme_example", isPrimary: false, establishmentCode: "establishmentCode_example", ticker: "ticker_example", duns: "duns_example", isPublicCompany: false, isFactaCustomer: false, taxPayerType: "taxPayerType_example", countryId: "countryId_example", stateId: "stateId_example", cityId: "cityId_example", fiscalIdentificationTypeId: "fiscalIdentificationTypeId_example", fiscalAuthorityId: "fiscalAuthorityId_example", fiscalRegimeId: "fiscalRegimeId_example") // BillingProfileCreateDto | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
@@ -363,7 +363,7 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let billingProfileId = 987 // UUID | 
-let billingProfileUpdateDto = BillingProfileUpdateDto(contactId: "contactId_example", taxId: "taxId_example", phone: "phone_example", email: "email_example", address: "address_example", address1: "address1_example", address2: "address2_example", postalCode: "postalCode_example", businessName: "businessName_example", commercialName: "commercialName_example", ticker: "ticker_example", duns: "duns_example", isPublicCompany: false, isFactaCustomer: false, taxPayerType: "taxPayerType_example", countryId: "countryId_example", stateId: "stateId_example", cityId: "cityId_example", fiscalIdentificationTypeId: "fiscalIdentificationTypeId_example", fiscalAuthorityId: "fiscalAuthorityId_example", fiscalRegimeId: "fiscalRegimeId_example") // BillingProfileUpdateDto | 
+let billingProfileUpdateDto = BillingProfileUpdateDto(contactId: "contactId_example", taxId: "taxId_example", phone: "phone_example", email: "email_example", address: "address_example", address1: "address1_example", address2: "address2_example", postalCode: "postalCode_example", businessName: "businessName_example", commercialName: "commercialName_example", verificationDigit: "verificationDigit_example", economicActivityCode: "economicActivityCode_example", economicActivityScheme: "economicActivityScheme_example", isPrimary: false, establishmentCode: "establishmentCode_example", ticker: "ticker_example", duns: "duns_example", isPublicCompany: false, isFactaCustomer: false, taxPayerType: "taxPayerType_example", countryId: "countryId_example", stateId: "stateId_example", cityId: "cityId_example", fiscalIdentificationTypeId: "fiscalIdentificationTypeId_example", fiscalAuthorityId: "fiscalAuthorityId_example", fiscalRegimeId: "fiscalRegimeId_example") // BillingProfileUpdateDto | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 

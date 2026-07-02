@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 **id** | **String** |  | [optional] 
 **timestamp** | **Date** |  | [optional] 
 **qualifiedName** | **String** |  | [optional] [readonly] 
+**kind** | **String** |  | [optional] 
 **taxId** | **String** |  | [optional] 
 **about** | **String** |  | [optional] 
 **walletId** | **String** |  | [optional] 

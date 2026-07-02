@@ -18,14 +18,18 @@ public struct ItemRestockDto: Codable, JSONEncodable, Hashable {
     public var description: String?
     public var tenantId: String?
     public var entryCount: Int?
+    public var sellerBillingProfileId: String?
+    public var buyerBillingProfileId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, description: String? = nil, tenantId: String? = nil, entryCount: Int? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, description: String? = nil, tenantId: String? = nil, entryCount: Int? = nil, sellerBillingProfileId: String? = nil, buyerBillingProfileId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
         self.description = description
         self.tenantId = tenantId
         self.entryCount = entryCount
+        self.sellerBillingProfileId = sellerBillingProfileId
+        self.buyerBillingProfileId = buyerBillingProfileId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -35,6 +39,8 @@ public struct ItemRestockDto: Codable, JSONEncodable, Hashable {
         case description
         case tenantId
         case entryCount
+        case sellerBillingProfileId
+        case buyerBillingProfileId
     }
 
     // Encodable protocol methods
@@ -47,6 +53,8 @@ public struct ItemRestockDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encodeIfPresent(entryCount, forKey: .entryCount)
+        try container.encodeIfPresent(sellerBillingProfileId, forKey: .sellerBillingProfileId)
+        try container.encodeIfPresent(buyerBillingProfileId, forKey: .buyerBillingProfileId)
     }
 }
 

@@ -15,17 +15,20 @@ public struct UnitUpdateDto: Codable, JSONEncodable, Hashable {
     public var name: String?
     public var baseUnitAmount: Double?
     public var baseUnitId: String?
+    public var unECECode: String?
 
-    public init(name: String? = nil, baseUnitAmount: Double? = nil, baseUnitId: String? = nil) {
+    public init(name: String? = nil, baseUnitAmount: Double? = nil, baseUnitId: String? = nil, unECECode: String? = nil) {
         self.name = name
         self.baseUnitAmount = baseUnitAmount
         self.baseUnitId = baseUnitId
+        self.unECECode = unECECode
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case name
         case baseUnitAmount
         case baseUnitId
+        case unECECode
     }
 
     // Encodable protocol methods
@@ -35,6 +38,7 @@ public struct UnitUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(baseUnitAmount, forKey: .baseUnitAmount)
         try container.encodeIfPresent(baseUnitId, forKey: .baseUnitId)
+        try container.encodeIfPresent(unECECode, forKey: .unECECode)
     }
 }
 

@@ -12,6 +12,10 @@ import AnyCodable
 
 public struct TenantUpdateDto: Codable, JSONEncodable, Hashable {
 
+    public enum Kind: String, Codable, CaseIterable {
+        case organization = "Organization"
+        case individual = "Individual"
+    }
     static let nameRule = StringRule(minLength: 1, maxLength: 100, pattern: nil)
     static let legalNameRule = StringRule(minLength: nil, maxLength: 100, pattern: nil)
     static let emailRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
@@ -22,6 +26,7 @@ public struct TenantUpdateDto: Codable, JSONEncodable, Hashable {
     static let dunsRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d{9}$/")
     static let taxIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^[A-Z0-9]{8,15}$/")
     static let countryIdRule = StringRule(minLength: 1, maxLength: nil, pattern: "/^[A-Z]{3}$/")
+    public var kind: Kind?
     public var name: String
     public var legalName: String?
     public var email: String
@@ -49,7 +54,8 @@ public struct TenantUpdateDto: Codable, JSONEncodable, Hashable {
     public var stateId: String?
     public var cityId: String?
 
-    public init(name: String, legalName: String? = nil, email: String, phone: String? = nil, webUrl: String? = nil, about: String? = nil, slogan: String? = nil, handler: String? = nil, currencyId: String, duns: String? = nil, taxId: String? = nil, avatarUrl: String? = nil, twitterUsername: String? = nil, facebookUrl: String? = nil, twitterUrl: String? = nil, gitHubUrl: String? = nil, linkedInUrl: String? = nil, instagramUrl: String? = nil, youTubeUrl: String? = nil, whatsAppNumber: String? = nil, supportPhoneNumber: String? = nil, countryId: String, timezoneId: String? = nil, languageId: String? = nil, stateId: String? = nil, cityId: String? = nil) {
+    public init(kind: Kind? = nil, name: String, legalName: String? = nil, email: String, phone: String? = nil, webUrl: String? = nil, about: String? = nil, slogan: String? = nil, handler: String? = nil, currencyId: String, duns: String? = nil, taxId: String? = nil, avatarUrl: String? = nil, twitterUsername: String? = nil, facebookUrl: String? = nil, twitterUrl: String? = nil, gitHubUrl: String? = nil, linkedInUrl: String? = nil, instagramUrl: String? = nil, youTubeUrl: String? = nil, whatsAppNumber: String? = nil, supportPhoneNumber: String? = nil, countryId: String, timezoneId: String? = nil, languageId: String? = nil, stateId: String? = nil, cityId: String? = nil) {
+        self.kind = kind
         self.name = name
         self.legalName = legalName
         self.email = email
@@ -79,6 +85,7 @@ public struct TenantUpdateDto: Codable, JSONEncodable, Hashable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case kind
         case name
         case legalName
         case email
@@ -111,6 +118,7 @@ public struct TenantUpdateDto: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(kind, forKey: .kind)
         try container.encode(name, forKey: .name)
         try container.encodeIfPresent(legalName, forKey: .legalName)
         try container.encode(email, forKey: .email)

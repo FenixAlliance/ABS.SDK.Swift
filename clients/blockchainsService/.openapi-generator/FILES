@@ -5,8 +5,7 @@ OpenAPIClient.podspec
 OpenAPIClient/Classes/OpenAPIs/APIHelper.swift
 OpenAPIClient/Classes/OpenAPIs/APIs.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/BlockchainsAPI.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/CompletionsAPI.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/FenixAlliancePortalsWebsiteAPI.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/FenixAllianceABSWebAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/NonFungibleTokensAPI.swift
 OpenAPIClient/Classes/OpenAPIs/CodableHelper.swift
 OpenAPIClient/Classes/OpenAPIs/Configuration.swift
@@ -175,7 +174,6 @@ docs/CancellationToken.md
 docs/Claim.md
 docs/ClaimsIdentity.md
 docs/ClaimsPrincipal.md
-docs/CompletionsAPI.md
 docs/ComputeClause.md
 docs/ComputeExpression.md
 docs/ComputeQueryOption.md
@@ -191,7 +189,7 @@ docs/EdmReferentialConstraintPropertyPair.md
 docs/EmptyEnvelope.md
 docs/ErrorEnvelope.md
 docs/EventInfo.md
-docs/FenixAlliancePortalsWebsiteAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/FieldInfo.md
 docs/FilterClause.md
 docs/FilterQueryOption.md

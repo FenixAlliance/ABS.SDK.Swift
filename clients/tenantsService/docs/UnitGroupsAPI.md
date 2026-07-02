@@ -1,6 +1,6 @@
 # UnitGroupsAPI
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://absuite.net*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 # **createUnitAsync**
 ```swift
-    open class func createUnitAsync(tenantId: UUID, unitGroupId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, unitCreateDto: UnitCreateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func createUnitAsync(tenantId: UUID, unitGroupId: String, apiVersion: String? = nil, xApiVersion: String? = nil, unitCreateDto: UnitCreateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Create a unit within a unit group
@@ -35,10 +35,10 @@ Creates a new unit within a specific unit group.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let unitGroupId = 987 // UUID | 
+let unitGroupId = "unitGroupId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let unitCreateDto = UnitCreateDto(id: 123, timestamp: Date(), name: "name_example", baseUnitAmount: 123, baseUnitId: "baseUnitId_example") // UnitCreateDto |  (optional)
+let unitCreateDto = UnitCreateDto(id: 123, timestamp: Date(), name: "name_example", baseUnitAmount: 123, baseUnitId: "baseUnitId_example", unECECode: "unECECode_example") // UnitCreateDto |  (optional)
 
 // Create a unit within a unit group
 UnitGroupsAPI.createUnitAsync(tenantId: tenantId, unitGroupId: unitGroupId, apiVersion: apiVersion, xApiVersion: xApiVersion, unitCreateDto: unitCreateDto) { (response, error) in
@@ -58,7 +58,7 @@ UnitGroupsAPI.createUnitAsync(tenantId: tenantId, unitGroupId: unitGroupId, apiV
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
- **unitGroupId** | **UUID** |  | 
+ **unitGroupId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
  **unitCreateDto** | [**UnitCreateDto**](UnitCreateDto.md) |  | [optional] 
@@ -136,7 +136,7 @@ No authorization required
 
 # **deleteUnitAsync**
 ```swift
-    open class func deleteUnitAsync(tenantId: UUID, unitGroupId: UUID, unitId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func deleteUnitAsync(tenantId: UUID, unitGroupId: String, unitId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Delete a unit from a unit group
@@ -149,8 +149,8 @@ Deletes a unit from a specific unit group.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let unitGroupId = 987 // UUID | 
-let unitId = 987 // UUID | 
+let unitGroupId = "unitGroupId_example" // String | 
+let unitId = "unitId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
@@ -172,8 +172,8 @@ UnitGroupsAPI.deleteUnitAsync(tenantId: tenantId, unitGroupId: unitGroupId, unit
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
- **unitGroupId** | **UUID** |  | 
- **unitId** | **UUID** |  | 
+ **unitGroupId** | **String** |  | 
+ **unitId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 
@@ -194,7 +194,7 @@ No authorization required
 
 # **deleteUnitGroupAsync**
 ```swift
-    open class func deleteUnitGroupAsync(tenantId: UUID, unitGroupId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func deleteUnitGroupAsync(tenantId: UUID, unitGroupId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Delete a unit group
@@ -207,7 +207,7 @@ Deletes a unit group by its unique identifier.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let unitGroupId = 987 // UUID | 
+let unitGroupId = "unitGroupId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
@@ -229,7 +229,7 @@ UnitGroupsAPI.deleteUnitGroupAsync(tenantId: tenantId, unitGroupId: unitGroupId,
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
- **unitGroupId** | **UUID** |  | 
+ **unitGroupId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 
@@ -250,7 +250,7 @@ No authorization required
 
 # **getUnitAsync**
 ```swift
-    open class func getUnitAsync(tenantId: UUID, unitGroupId: UUID, unitId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: UnitDtoEnvelope?, _ error: Error?) -> Void)
+    open class func getUnitAsync(tenantId: UUID, unitGroupId: String, unitId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: UnitDtoEnvelope?, _ error: Error?) -> Void)
 ```
 
 Retrieve a unit by ID within a unit group
@@ -263,8 +263,8 @@ Retrieves a single unit by its unique identifier within a specific unit group.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let unitGroupId = 987 // UUID | 
-let unitId = 987 // UUID | 
+let unitGroupId = "unitGroupId_example" // String | 
+let unitId = "unitId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
@@ -286,8 +286,8 @@ UnitGroupsAPI.getUnitAsync(tenantId: tenantId, unitGroupId: unitGroupId, unitId:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
- **unitGroupId** | **UUID** |  | 
- **unitId** | **UUID** |  | 
+ **unitGroupId** | **String** |  | 
+ **unitId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 
@@ -308,7 +308,7 @@ No authorization required
 
 # **getUnitGroupAsync**
 ```swift
-    open class func getUnitGroupAsync(tenantId: UUID, unitGroupId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: UnitGroupDtoEnvelope?, _ error: Error?) -> Void)
+    open class func getUnitGroupAsync(tenantId: UUID, unitGroupId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: UnitGroupDtoEnvelope?, _ error: Error?) -> Void)
 ```
 
 Retrieve a unit group by ID
@@ -321,7 +321,7 @@ Retrieves a single unit group by its unique identifier.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let unitGroupId = 987 // UUID | 
+let unitGroupId = "unitGroupId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
@@ -343,7 +343,7 @@ UnitGroupsAPI.getUnitGroupAsync(tenantId: tenantId, unitGroupId: unitGroupId, ap
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
- **unitGroupId** | **UUID** |  | 
+ **unitGroupId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 
@@ -472,7 +472,7 @@ No authorization required
 
 # **getUnitsAsync**
 ```swift
-    open class func getUnitsAsync(tenantId: UUID, unitGroupId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: UnitDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getUnitsAsync(tenantId: UUID, unitGroupId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: UnitDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Retrieve units for a unit group
@@ -485,7 +485,7 @@ Retrieves a list of units belonging to a specific unit group.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let unitGroupId = 987 // UUID | 
+let unitGroupId = "unitGroupId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
@@ -507,7 +507,7 @@ UnitGroupsAPI.getUnitsAsync(tenantId: tenantId, unitGroupId: unitGroupId, apiVer
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
- **unitGroupId** | **UUID** |  | 
+ **unitGroupId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 
@@ -528,7 +528,7 @@ No authorization required
 
 # **getUnitsCountAsync**
 ```swift
-    open class func getUnitsCountAsync(tenantId: UUID, unitGroupId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getUnitsCountAsync(tenantId: UUID, unitGroupId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get the count of units in a unit group
@@ -541,7 +541,7 @@ Returns the total count of units in a specific unit group.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let unitGroupId = 987 // UUID | 
+let unitGroupId = "unitGroupId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
@@ -563,7 +563,7 @@ UnitGroupsAPI.getUnitsCountAsync(tenantId: tenantId, unitGroupId: unitGroupId, a
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
- **unitGroupId** | **UUID** |  | 
+ **unitGroupId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 
@@ -584,7 +584,7 @@ No authorization required
 
 # **patchUnitAsync**
 ```swift
-    open class func patchUnitAsync(tenantId: UUID, unitGroupId: UUID, unitId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchUnitAsync(tenantId: UUID, unitGroupId: String, unitId: String, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a unit within a unit group
@@ -597,8 +597,8 @@ Partially updates an existing unit within a specific unit group.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let unitGroupId = 987 // UUID | 
-let unitId = 987 // UUID | 
+let unitGroupId = "unitGroupId_example" // String | 
+let unitId = "unitId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
@@ -621,8 +621,8 @@ UnitGroupsAPI.patchUnitAsync(tenantId: tenantId, unitGroupId: unitGroupId, unitI
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
- **unitGroupId** | **UUID** |  | 
- **unitId** | **UUID** |  | 
+ **unitGroupId** | **String** |  | 
+ **unitId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
  **operation** | [**[Operation]**](Operation.md) |  | [optional] 
@@ -644,7 +644,7 @@ No authorization required
 
 # **patchUnitGroupAsync**
 ```swift
-    open class func patchUnitGroupAsync(tenantId: UUID, unitGroupId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchUnitGroupAsync(tenantId: UUID, unitGroupId: String, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a unit group
@@ -657,7 +657,7 @@ Partially updates an existing unit group by its unique identifier.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let unitGroupId = 987 // UUID | 
+let unitGroupId = "unitGroupId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
@@ -680,7 +680,7 @@ UnitGroupsAPI.patchUnitGroupAsync(tenantId: tenantId, unitGroupId: unitGroupId, 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
- **unitGroupId** | **UUID** |  | 
+ **unitGroupId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
  **operation** | [**[Operation]**](Operation.md) |  | [optional] 
@@ -702,7 +702,7 @@ No authorization required
 
 # **updateUnitAsync**
 ```swift
-    open class func updateUnitAsync(tenantId: UUID, unitGroupId: UUID, unitId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, unitUpdateDto: UnitUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func updateUnitAsync(tenantId: UUID, unitGroupId: String, unitId: String, apiVersion: String? = nil, xApiVersion: String? = nil, unitUpdateDto: UnitUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Update a unit within a unit group
@@ -715,11 +715,11 @@ Updates an existing unit within a specific unit group.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let unitGroupId = 987 // UUID | 
-let unitId = 987 // UUID | 
+let unitGroupId = "unitGroupId_example" // String | 
+let unitId = "unitId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let unitUpdateDto = UnitUpdateDto(name: "name_example", baseUnitAmount: 123, baseUnitId: "baseUnitId_example") // UnitUpdateDto |  (optional)
+let unitUpdateDto = UnitUpdateDto(name: "name_example", baseUnitAmount: 123, baseUnitId: "baseUnitId_example", unECECode: "unECECode_example") // UnitUpdateDto |  (optional)
 
 // Update a unit within a unit group
 UnitGroupsAPI.updateUnitAsync(tenantId: tenantId, unitGroupId: unitGroupId, unitId: unitId, apiVersion: apiVersion, xApiVersion: xApiVersion, unitUpdateDto: unitUpdateDto) { (response, error) in
@@ -739,8 +739,8 @@ UnitGroupsAPI.updateUnitAsync(tenantId: tenantId, unitGroupId: unitGroupId, unit
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
- **unitGroupId** | **UUID** |  | 
- **unitId** | **UUID** |  | 
+ **unitGroupId** | **String** |  | 
+ **unitId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
  **unitUpdateDto** | [**UnitUpdateDto**](UnitUpdateDto.md) |  | [optional] 
@@ -762,7 +762,7 @@ No authorization required
 
 # **updateUnitGroupAsync**
 ```swift
-    open class func updateUnitGroupAsync(tenantId: UUID, unitGroupId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, unitGroupUpdateDto: UnitGroupUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func updateUnitGroupAsync(tenantId: UUID, unitGroupId: String, apiVersion: String? = nil, xApiVersion: String? = nil, unitGroupUpdateDto: UnitGroupUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Update a unit group
@@ -775,7 +775,7 @@ Updates an existing unit group by its unique identifier.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let unitGroupId = 987 // UUID | 
+let unitGroupId = "unitGroupId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 let unitGroupUpdateDto = UnitGroupUpdateDto(name: "name_example", description: "description_example") // UnitGroupUpdateDto |  (optional)
@@ -798,7 +798,7 @@ UnitGroupsAPI.updateUnitGroupAsync(tenantId: tenantId, unitGroupId: unitGroupId,
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
- **unitGroupId** | **UUID** |  | 
+ **unitGroupId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
  **unitGroupUpdateDto** | [**UnitGroupUpdateDto**](UnitGroupUpdateDto.md) |  | [optional] 

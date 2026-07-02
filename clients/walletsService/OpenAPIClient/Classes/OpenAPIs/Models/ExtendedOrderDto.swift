@@ -109,6 +109,8 @@ public struct ExtendedOrderDto: Codable, JSONEncodable, Hashable {
     public var billingLocationId: String?
     public var shippingLocationId: String?
     public var qualifiedIdentifier: String?
+    public var sellerBillingProfileId: String?
+    public var buyerBillingProfileId: String?
     public var costCalculationMethod: CostCalculationMethod?
     public var freightTerms: FreightTerms?
     public var orderStatus: OrderStatus?
@@ -129,7 +131,7 @@ public struct ExtendedOrderDto: Codable, JSONEncodable, Hashable {
     public var receiverTenant: TenantDto?
     public var enrollment: TenantEnrollmentDto?
 
-    public init(id: String? = nil, timestamp: Date? = nil, closed: Bool? = nil, type: String? = nil, title: String? = nil, userId: String? = nil, tenantId: String? = nil, description: String? = nil, priceListId: String? = nil, enrollmentId: String? = nil, individualId: String? = nil, organizationId: String? = nil, receiverTenantId: String? = nil, firstName: String? = nil, lastName: String? = nil, companyName: String? = nil, billingEmail: String? = nil, addressLine1: String? = nil, addressLine2: String? = nil, postalCode: String? = nil, countryId: String? = nil, stateId: String? = nil, cityId: String? = nil, customerNotes: String? = nil, taxCalculationMethod: TaxCalculationMethod? = nil, forexRate: Double? = nil, forexRatesSnapshot: String? = nil, currencyId: String? = nil, totalDetail: Double? = nil, totalDetailCurrencyId: String? = nil, totalProfit: Double? = nil, totalProfitCurrencyId: String? = nil, totalDiscounts: Double? = nil, totalDiscountsCurrencyId: String? = nil, totalSurcharges: Double? = nil, totalSurchargesCurrencyId: String? = nil, totalTaxBase: Double? = nil, totalTaxBaseCurrencyId: String? = nil, totalTaxes: Double? = nil, totalTaxesCurrencyId: String? = nil, totalShippingCost: Double? = nil, totalShippingCostCurrencyId: String? = nil, totalShippingTax: Double? = nil, totalShippingTaxCurrencyId: String? = nil, totalWithheldTax: Double? = nil, totalWithheldTaxCurrencyId: String? = nil, totalGlobalDiscounts: Double? = nil, totalGlobalDiscountsCurrencyId: String? = nil, totalGlobalSurcharges: Double? = nil, totalGlobalSurchargesCurrencyId: String? = nil, total: Double? = nil, totalCurrencyId: String? = nil, totalDetailInUsd: Double? = nil, totalProfitInUsd: Double? = nil, totalDiscountsInUsd: Double? = nil, totalSurchargesInUsd: Double? = nil, totalTaxBaseInUsd: Double? = nil, totalTaxesInUsd: Double? = nil, totalWithheldTaxesInUsd: Double? = nil, totalShippingCostInUsd: Double? = nil, totalShippingTaxesInUsd: Double? = nil, totalGlobalDiscountsInUsd: Double? = nil, totalGlobalSurchargesInUsd: Double? = nil, totalInUsd: Double? = nil, orderLinesCount: Int? = nil, quoteId: String? = nil, walletId: String? = nil, paymentTermId: String? = nil, parentOrderId: String? = nil, shippingMethodId: String? = nil, billingLocationId: String? = nil, shippingLocationId: String? = nil, qualifiedIdentifier: String? = nil, costCalculationMethod: CostCalculationMethod? = nil, freightTerms: FreightTerms? = nil, orderStatus: OrderStatus? = nil, requestedDeliveryDate: Date? = nil, customTaxAmount: Double? = nil, customTotalAmount: Double? = nil, customDetailAmount: Double? = nil, customProfitAmount: Double? = nil, customDiscountsAmount: Double? = nil, customSurchargesAmount: Double? = nil, customShippingTaxAmount: Double? = nil, customShippingCostAmount: Double? = nil, customWithholdingTaxAmount: Double? = nil, user: UserDto? = nil, tenant: TenantDto? = nil, individual: ContactDto? = nil, organization: ContactDto? = nil, receiverTenant: TenantDto? = nil, enrollment: TenantEnrollmentDto? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, closed: Bool? = nil, type: String? = nil, title: String? = nil, userId: String? = nil, tenantId: String? = nil, description: String? = nil, priceListId: String? = nil, enrollmentId: String? = nil, individualId: String? = nil, organizationId: String? = nil, receiverTenantId: String? = nil, firstName: String? = nil, lastName: String? = nil, companyName: String? = nil, billingEmail: String? = nil, addressLine1: String? = nil, addressLine2: String? = nil, postalCode: String? = nil, countryId: String? = nil, stateId: String? = nil, cityId: String? = nil, customerNotes: String? = nil, taxCalculationMethod: TaxCalculationMethod? = nil, forexRate: Double? = nil, forexRatesSnapshot: String? = nil, currencyId: String? = nil, totalDetail: Double? = nil, totalDetailCurrencyId: String? = nil, totalProfit: Double? = nil, totalProfitCurrencyId: String? = nil, totalDiscounts: Double? = nil, totalDiscountsCurrencyId: String? = nil, totalSurcharges: Double? = nil, totalSurchargesCurrencyId: String? = nil, totalTaxBase: Double? = nil, totalTaxBaseCurrencyId: String? = nil, totalTaxes: Double? = nil, totalTaxesCurrencyId: String? = nil, totalShippingCost: Double? = nil, totalShippingCostCurrencyId: String? = nil, totalShippingTax: Double? = nil, totalShippingTaxCurrencyId: String? = nil, totalWithheldTax: Double? = nil, totalWithheldTaxCurrencyId: String? = nil, totalGlobalDiscounts: Double? = nil, totalGlobalDiscountsCurrencyId: String? = nil, totalGlobalSurcharges: Double? = nil, totalGlobalSurchargesCurrencyId: String? = nil, total: Double? = nil, totalCurrencyId: String? = nil, totalDetailInUsd: Double? = nil, totalProfitInUsd: Double? = nil, totalDiscountsInUsd: Double? = nil, totalSurchargesInUsd: Double? = nil, totalTaxBaseInUsd: Double? = nil, totalTaxesInUsd: Double? = nil, totalWithheldTaxesInUsd: Double? = nil, totalShippingCostInUsd: Double? = nil, totalShippingTaxesInUsd: Double? = nil, totalGlobalDiscountsInUsd: Double? = nil, totalGlobalSurchargesInUsd: Double? = nil, totalInUsd: Double? = nil, orderLinesCount: Int? = nil, quoteId: String? = nil, walletId: String? = nil, paymentTermId: String? = nil, parentOrderId: String? = nil, shippingMethodId: String? = nil, billingLocationId: String? = nil, shippingLocationId: String? = nil, qualifiedIdentifier: String? = nil, sellerBillingProfileId: String? = nil, buyerBillingProfileId: String? = nil, costCalculationMethod: CostCalculationMethod? = nil, freightTerms: FreightTerms? = nil, orderStatus: OrderStatus? = nil, requestedDeliveryDate: Date? = nil, customTaxAmount: Double? = nil, customTotalAmount: Double? = nil, customDetailAmount: Double? = nil, customProfitAmount: Double? = nil, customDiscountsAmount: Double? = nil, customSurchargesAmount: Double? = nil, customShippingTaxAmount: Double? = nil, customShippingCostAmount: Double? = nil, customWithholdingTaxAmount: Double? = nil, user: UserDto? = nil, tenant: TenantDto? = nil, individual: ContactDto? = nil, organization: ContactDto? = nil, receiverTenant: TenantDto? = nil, enrollment: TenantEnrollmentDto? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.closed = closed
@@ -203,6 +205,8 @@ public struct ExtendedOrderDto: Codable, JSONEncodable, Hashable {
         self.billingLocationId = billingLocationId
         self.shippingLocationId = shippingLocationId
         self.qualifiedIdentifier = qualifiedIdentifier
+        self.sellerBillingProfileId = sellerBillingProfileId
+        self.buyerBillingProfileId = buyerBillingProfileId
         self.costCalculationMethod = costCalculationMethod
         self.freightTerms = freightTerms
         self.orderStatus = orderStatus
@@ -298,6 +302,8 @@ public struct ExtendedOrderDto: Codable, JSONEncodable, Hashable {
         case billingLocationId
         case shippingLocationId
         case qualifiedIdentifier
+        case sellerBillingProfileId
+        case buyerBillingProfileId
         case costCalculationMethod
         case freightTerms
         case orderStatus
@@ -396,6 +402,8 @@ public struct ExtendedOrderDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(billingLocationId, forKey: .billingLocationId)
         try container.encodeIfPresent(shippingLocationId, forKey: .shippingLocationId)
         try container.encodeIfPresent(qualifiedIdentifier, forKey: .qualifiedIdentifier)
+        try container.encodeIfPresent(sellerBillingProfileId, forKey: .sellerBillingProfileId)
+        try container.encodeIfPresent(buyerBillingProfileId, forKey: .buyerBillingProfileId)
         try container.encodeIfPresent(costCalculationMethod, forKey: .costCalculationMethod)
         try container.encodeIfPresent(freightTerms, forKey: .freightTerms)
         try container.encodeIfPresent(orderStatus, forKey: .orderStatus)

@@ -5,8 +5,7 @@ OpenAPIClient.podspec
 OpenAPIClient/Classes/OpenAPIs/APIHelper.swift
 OpenAPIClient/Classes/OpenAPIs/APIs.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/BillsOfLadingAPI.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/CompletionsAPI.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/FenixAlliancePortalsWebsiteAPI.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/FenixAllianceABSWebAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/ItemShippingPoliciesAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/ShipmentsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/ShippingClassesAPI.swift
@@ -105,10 +104,9 @@ docs/BillOfLadingLineDtoListEnvelope.md
 docs/BillOfLadingLineUpdateDto.md
 docs/BillOfLadingUpdateDto.md
 docs/BillsOfLadingAPI.md
-docs/CompletionsAPI.md
 docs/EmptyEnvelope.md
 docs/ErrorEnvelope.md
-docs/FenixAlliancePortalsWebsiteAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/ForgotPasswordRequest.md
 docs/HttpValidationProblemDetails.md
 docs/InfoRequest.md

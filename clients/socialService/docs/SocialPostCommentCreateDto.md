@@ -6,6 +6,8 @@ Name | Type | Description | Notes
 **id** | **UUID** |  | [optional] 
 **timestamp** | **Date** |  | [optional] 
 **message** | **String** |  | 
+**bodyHtml** | **String** |  | [optional] 
+**bodyFormat** | **String** |  | [optional] 
 **parentCommentId** | **String** |  | [optional] 
 **socialProfileId** | **String** |  | [optional] 
 **socialFeedPostId** | **String** |  | [optional] 

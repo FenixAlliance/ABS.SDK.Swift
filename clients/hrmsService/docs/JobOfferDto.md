@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | [optional] 
 **timestamp** | **Date** |  | [optional] 
+**status** | **String** |  | [optional] 
 **remote** | **Bool** |  | [optional] 
 **expectedHireDate** | **Date** |  | [optional] 
 **title** | **String** |  | [optional] 

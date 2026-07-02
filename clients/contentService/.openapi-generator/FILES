@@ -9,8 +9,7 @@ OpenAPIClient/Classes/OpenAPIs/APIs/BlogPostCategoriesAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/BlogPostTagsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/BlogPostsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/BusinessDomainsAPI.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/CompletionsAPI.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/FenixAlliancePortalsWebsiteAPI.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/FenixAllianceABSWebAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/LocalizationStringsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/MenuContextsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/PortalsAPI.swift
@@ -358,7 +357,6 @@ docs/ClaimsIdentity.md
 docs/ClaimsPrincipal.md
 docs/ColorOptions.md
 docs/ColorScheme.md
-docs/CompletionsAPI.md
 docs/ComputeClause.md
 docs/ComputeExpression.md
 docs/ComputeQueryOption.md
@@ -386,8 +384,8 @@ docs/ErrorEnvelope.md
 docs/EventInfo.md
 docs/FacebookIntegrationOptions.md
 docs/Favicons.md
+docs/FenixAllianceABSWebAPI.md
 docs/FenixAllianceIntegrationsOptions.md
-docs/FenixAlliancePortalsWebsiteAPI.md
 docs/FieldInfo.md
 docs/FilterClause.md
 docs/FilterQueryOption.md

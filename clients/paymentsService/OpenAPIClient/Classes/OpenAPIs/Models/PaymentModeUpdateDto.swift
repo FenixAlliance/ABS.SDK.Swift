@@ -16,15 +16,18 @@ public struct PaymentModeUpdateDto: Codable, JSONEncodable, Hashable {
     static let descriptionRule = StringRule(minLength: 0, maxLength: 500, pattern: nil)
     public var name: String?
     public var description: String?
+    public var paymentMeansCode: String?
 
-    public init(name: String? = nil, description: String? = nil) {
+    public init(name: String? = nil, description: String? = nil, paymentMeansCode: String? = nil) {
         self.name = name
         self.description = description
+        self.paymentMeansCode = paymentMeansCode
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case name
         case description
+        case paymentMeansCode
     }
 
     // Encodable protocol methods
@@ -33,6 +36,7 @@ public struct PaymentModeUpdateDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(description, forKey: .description)
+        try container.encodeIfPresent(paymentMeansCode, forKey: .paymentMeansCode)
     }
 }
 

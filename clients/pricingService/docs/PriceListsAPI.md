@@ -1,6 +1,6 @@
 # PriceListsAPI
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://absuite.net*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**getPriceListAsync**](PriceListsAPI.md#getpricelistasync) | **GET** /api/v2/PricingService/PriceLists/{priceListId} | Gets a price list by ID
 [**getPriceListPriceAsync**](PriceListsAPI.md#getpricelistpriceasync) | **GET** /api/v2/PricingService/PriceLists/{priceListId}/Prices/{priceId} | Gets a price list entry by ID
 [**getPriceListPricesAsync**](PriceListsAPI.md#getpricelistpricesasync) | **GET** /api/v2/PricingService/PriceLists/{priceListId}/Prices | Retrieves prices in a price list
+[**getPriceListPricesCountAsync**](PriceListsAPI.md#getpricelistpricescountasync) | **GET** /api/v2/PricingService/PriceLists/{priceListId}/Prices/Count | Counts prices in a price list
 [**getPriceListsAsync**](PriceListsAPI.md#getpricelistsasync) | **GET** /api/v2/PricingService/PriceLists | Retrieves all price lists
 [**getPriceListsCountAsync**](PriceListsAPI.md#getpricelistscountasync) | **GET** /api/v2/PricingService/PriceLists/Count | Counts price lists
 [**patchPriceListAsync**](PriceListsAPI.md#patchpricelistasync) | **PATCH** /api/v2/PricingService/PriceLists/{priceListId} | Patches a price list
@@ -379,6 +380,58 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ItemPriceDtoListEnvelope**](ItemPriceDtoListEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getPriceListPricesCountAsync**
+```swift
+    open class func getPriceListPricesCountAsync(tenantId: UUID, priceListId: UUID, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+```
+
+Counts prices in a price list
+
+Gets the count of price entries for a specific price list.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let priceListId = 987 // UUID | 
+
+// Counts prices in a price list
+PriceListsAPI.getPriceListPricesCountAsync(tenantId: tenantId, priceListId: priceListId) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **priceListId** | **UUID** |  | 
+
+### Return type
+
+[**Int32Envelope**](Int32Envelope.md)
 
 ### Authorization
 

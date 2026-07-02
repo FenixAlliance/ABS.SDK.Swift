@@ -75,6 +75,7 @@ public struct WebPageUpdateDto: Codable, JSONEncodable, Hashable {
     public var cornerstoneContent: Bool?
     public var isEssentialContent: Bool?
     public var allowSearchEngineIndexing: Bool?
+    public var webPortalId: String?
     public var webTemplateId: String?
     public var parentWebContentId: String?
     public var isHomePage: Bool?
@@ -88,7 +89,7 @@ public struct WebPageUpdateDto: Codable, JSONEncodable, Hashable {
     public var isPrivacyPolicyPage: Bool?
     public var isTermsOfServicePage: Bool?
 
-    public init(order: Int? = nil, slug: String? = nil, name: String? = nil, title: String? = nil, excerpt: String? = nil, password: String? = nil, description: String? = nil, highlightImage: String? = nil, canonicalUrl: String? = nil, seoTitle: String? = nil, seoKeyWords: String? = nil, seoKeyPhrases: String? = nil, metaDescription: String? = nil, twitterImage: String? = nil, twitterTitle: String? = nil, twitterDescription: String? = nil, facebookImage: String? = nil, facebookTitle: String? = nil, facebookDescription: String? = nil, featuredImageUrl: String? = nil, content: String? = nil, code: String? = nil, namespace: String? = nil, typeName: String? = nil, generatedCode: String? = nil, compilationPath: String? = nil, htmlContent: String? = nil, codeType: CodeType? = nil, cSharpContent: String? = nil, razorContent: String? = nil, cssContent: String? = nil, jsContent: String? = nil, cssFiles: String? = nil, jsFiles: String? = nil, razorGeneratedCode: String? = nil, cSharpGeneratedCode: String? = nil, precompiledLogicSize: Int? = nil, precompiledLogicSizeLong: Int64? = nil, precompiledViewSize: Int? = nil, precompiledViewSizeLong: Int64? = nil, precompiledLogicViewSize: Int? = nil, template: Bool? = nil, _default: Bool? = nil, enable: Bool? = nil, enableComments: Bool? = nil, displaySocialBox: Bool? = nil, published: Bool? = nil, inTrashCan: Bool? = nil, systemLocked: Bool? = nil, allowPingbacks: Bool? = nil, allowTrackbacks: Bool? = nil, cornerstoneContent: Bool? = nil, isEssentialContent: Bool? = nil, allowSearchEngineIndexing: Bool? = nil, webTemplateId: String? = nil, parentWebContentId: String? = nil, isHomePage: Bool? = nil, isStorePage: Bool? = nil, isCartPage: Bool? = nil, isBlogPage: Bool? = nil, isAccountPage: Bool? = nil, isCheckoutPage: Bool? = nil, isWishListsPage: Bool? = nil, isContactPage: Bool? = nil, isPrivacyPolicyPage: Bool? = nil, isTermsOfServicePage: Bool? = nil) {
+    public init(order: Int? = nil, slug: String? = nil, name: String? = nil, title: String? = nil, excerpt: String? = nil, password: String? = nil, description: String? = nil, highlightImage: String? = nil, canonicalUrl: String? = nil, seoTitle: String? = nil, seoKeyWords: String? = nil, seoKeyPhrases: String? = nil, metaDescription: String? = nil, twitterImage: String? = nil, twitterTitle: String? = nil, twitterDescription: String? = nil, facebookImage: String? = nil, facebookTitle: String? = nil, facebookDescription: String? = nil, featuredImageUrl: String? = nil, content: String? = nil, code: String? = nil, namespace: String? = nil, typeName: String? = nil, generatedCode: String? = nil, compilationPath: String? = nil, htmlContent: String? = nil, codeType: CodeType? = nil, cSharpContent: String? = nil, razorContent: String? = nil, cssContent: String? = nil, jsContent: String? = nil, cssFiles: String? = nil, jsFiles: String? = nil, razorGeneratedCode: String? = nil, cSharpGeneratedCode: String? = nil, precompiledLogicSize: Int? = nil, precompiledLogicSizeLong: Int64? = nil, precompiledViewSize: Int? = nil, precompiledViewSizeLong: Int64? = nil, precompiledLogicViewSize: Int? = nil, template: Bool? = nil, _default: Bool? = nil, enable: Bool? = nil, enableComments: Bool? = nil, displaySocialBox: Bool? = nil, published: Bool? = nil, inTrashCan: Bool? = nil, systemLocked: Bool? = nil, allowPingbacks: Bool? = nil, allowTrackbacks: Bool? = nil, cornerstoneContent: Bool? = nil, isEssentialContent: Bool? = nil, allowSearchEngineIndexing: Bool? = nil, webPortalId: String? = nil, webTemplateId: String? = nil, parentWebContentId: String? = nil, isHomePage: Bool? = nil, isStorePage: Bool? = nil, isCartPage: Bool? = nil, isBlogPage: Bool? = nil, isAccountPage: Bool? = nil, isCheckoutPage: Bool? = nil, isWishListsPage: Bool? = nil, isContactPage: Bool? = nil, isPrivacyPolicyPage: Bool? = nil, isTermsOfServicePage: Bool? = nil) {
         self.order = order
         self.slug = slug
         self.name = name
@@ -143,6 +144,7 @@ public struct WebPageUpdateDto: Codable, JSONEncodable, Hashable {
         self.cornerstoneContent = cornerstoneContent
         self.isEssentialContent = isEssentialContent
         self.allowSearchEngineIndexing = allowSearchEngineIndexing
+        self.webPortalId = webPortalId
         self.webTemplateId = webTemplateId
         self.parentWebContentId = parentWebContentId
         self.isHomePage = isHomePage
@@ -212,6 +214,7 @@ public struct WebPageUpdateDto: Codable, JSONEncodable, Hashable {
         case cornerstoneContent
         case isEssentialContent
         case allowSearchEngineIndexing
+        case webPortalId
         case webTemplateId
         case parentWebContentId
         case isHomePage
@@ -284,6 +287,7 @@ public struct WebPageUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(cornerstoneContent, forKey: .cornerstoneContent)
         try container.encodeIfPresent(isEssentialContent, forKey: .isEssentialContent)
         try container.encodeIfPresent(allowSearchEngineIndexing, forKey: .allowSearchEngineIndexing)
+        try container.encodeIfPresent(webPortalId, forKey: .webPortalId)
         try container.encodeIfPresent(webTemplateId, forKey: .webTemplateId)
         try container.encodeIfPresent(parentWebContentId, forKey: .parentWebContentId)
         try container.encodeIfPresent(isHomePage, forKey: .isHomePage)

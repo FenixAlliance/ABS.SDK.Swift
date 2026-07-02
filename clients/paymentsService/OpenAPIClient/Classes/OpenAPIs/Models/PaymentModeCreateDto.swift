@@ -18,12 +18,14 @@ public struct PaymentModeCreateDto: Codable, JSONEncodable, Hashable {
     public var timestamp: Date?
     public var name: String
     public var description: String?
+    public var paymentMeansCode: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, name: String, description: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, name: String, description: String? = nil, paymentMeansCode: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
         self.description = description
+        self.paymentMeansCode = paymentMeansCode
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -31,6 +33,7 @@ public struct PaymentModeCreateDto: Codable, JSONEncodable, Hashable {
         case timestamp
         case name
         case description
+        case paymentMeansCode
     }
 
     // Encodable protocol methods
@@ -41,6 +44,7 @@ public struct PaymentModeCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encode(name, forKey: .name)
         try container.encodeIfPresent(description, forKey: .description)
+        try container.encodeIfPresent(paymentMeansCode, forKey: .paymentMeansCode)
     }
 }
 

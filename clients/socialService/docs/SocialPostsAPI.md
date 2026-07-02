@@ -1,6 +1,6 @@
 # SocialPostsAPI
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://absuite.net*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -105,7 +105,7 @@ let socialPostId = 987 // UUID |
 let socialProfileId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let socialPostAttachmentCreateDto = SocialPostAttachmentCreateDto(id: 123, timestamp: Date(), notes: "notes_example", title: "title_example", author: "author_example", isFolder: false, fileName: "fileName_example", abstract: "abstract_example", keyWords: "keyWords_example", validResponse: false, parentFileUploadId: "parentFileUploadId_example", filePath: "filePath_example", socialPostId: "socialPostId_example") // SocialPostAttachmentCreateDto |  (optional)
+let socialPostAttachmentCreateDto = SocialPostAttachmentCreateDto(id: 123, timestamp: Date(), notes: "notes_example", title: "title_example", author: "author_example", isFolder: false, fileName: "fileName_example", abstract: "abstract_example", keyWords: "keyWords_example", validResponse: false, parentFileUploadId: "parentFileUploadId_example", filePath: "filePath_example", publicAccessType: "publicAccessType_example", socialPostId: "socialPostId_example") // SocialPostAttachmentCreateDto |  (optional)
 
 // Create a social post attachment
 SocialPostsAPI.createSocialPostAttachmentAsync(socialPostId: socialPostId, socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialPostAttachmentCreateDto: socialPostAttachmentCreateDto) { (response, error) in
@@ -163,7 +163,7 @@ let socialProfileId = 987 // UUID |
 let socialPostId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let socialPostCommentCreateDto = SocialPostCommentCreateDto(id: 123, timestamp: Date(), message: "message_example", parentCommentId: "parentCommentId_example", socialProfileId: "socialProfileId_example", socialFeedPostId: "socialFeedPostId_example", socialPostId: "socialPostId_example") // SocialPostCommentCreateDto |  (optional)
+let socialPostCommentCreateDto = SocialPostCommentCreateDto(id: 123, timestamp: Date(), message: "message_example", bodyHtml: "bodyHtml_example", bodyFormat: "bodyFormat_example", parentCommentId: "parentCommentId_example", socialProfileId: "socialProfileId_example", socialFeedPostId: "socialFeedPostId_example", socialPostId: "socialPostId_example") // SocialPostCommentCreateDto |  (optional)
 
 // Create a social post comment
 SocialPostsAPI.createSocialPostCommentAsync(socialProfileId: socialProfileId, socialPostId: socialPostId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialPostCommentCreateDto: socialPostCommentCreateDto) { (response, error) in

@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 **id** | **String** |  | [optional] 
 **timestamp** | **Date** |  | [optional] 
 **name** | **String** |  | [optional] 
+**unECECode** | **String** |  | [optional] 
 **unitGroupId** | **String** |  | [optional] 
 **baseUnitAmount** | **Double** |  | [optional] 
 **baseUnitId** | **String** |  | [optional] 

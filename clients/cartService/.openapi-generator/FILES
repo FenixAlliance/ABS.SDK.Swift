@@ -6,8 +6,7 @@ OpenAPIClient/Classes/OpenAPIs/APIHelper.swift
 OpenAPIClient/Classes/OpenAPIs/APIs.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/CartsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/CompareAPI.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/CompletionsAPI.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/FenixAlliancePortalsWebsiteAPI.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/FenixAllianceABSWebAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/RecordsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/WishListsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/CodableHelper.swift
@@ -70,7 +69,6 @@ docs/CartDtoEnvelope.md
 docs/CartUpdateRequest.md
 docs/CartsAPI.md
 docs/CompareAPI.md
-docs/CompletionsAPI.md
 docs/CountryDto.md
 docs/CountryDtoEnvelope.md
 docs/CountrySwitchRequest.md
@@ -79,7 +77,7 @@ docs/CurrencyDtoEnvelope.md
 docs/CurrencySwitchRequest.md
 docs/EmptyEnvelope.md
 docs/ErrorEnvelope.md
-docs/FenixAlliancePortalsWebsiteAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/ForgotPasswordRequest.md
 docs/HttpValidationProblemDetails.md
 docs/InfoRequest.md

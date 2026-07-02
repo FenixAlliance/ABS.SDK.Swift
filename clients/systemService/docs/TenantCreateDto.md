@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **UUID** |  | [optional] 
 **timestamp** | **Date** |  | [optional] 
+**kind** | **String** |  | [optional] 
 **name** | **String** |  | 
 **legalName** | **String** |  | [optional] 
 **email** | **String** |  | 

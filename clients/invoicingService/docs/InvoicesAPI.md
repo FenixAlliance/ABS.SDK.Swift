@@ -1,6 +1,6 @@
 # InvoicesAPI
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://absuite.net*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -40,6 +40,8 @@ Method | HTTP request | Description
 [**getInvoiceReferencesCount**](InvoicesAPI.md#getinvoicereferencescount) | **GET** /api/v2/InvoicingService/Invoices/{invoiceId}/References/Count | Get the count of invoice references.
 [**getInvoices**](InvoicesAPI.md#getinvoices) | **GET** /api/v2/InvoicingService/Invoices | Get a list of invoices.
 [**getInvoicesCount**](InvoicesAPI.md#getinvoicescount) | **GET** /api/v2/InvoicingService/Invoices/Count | Get the count of invoices.
+[**getPurchaseInvoicesSum**](InvoicesAPI.md#getpurchaseinvoicessum) | **GET** /api/v2/InvoicingService/Invoices/PurchaseInvoices/Sum | Sum tenant purchase-invoice totals.
+[**getSalesInvoicesSum**](InvoicesAPI.md#getsalesinvoicessum) | **GET** /api/v2/InvoicingService/Invoices/SalesInvoices/Sum | Sum tenant sales-invoice totals.
 [**patchInvoice**](InvoicesAPI.md#patchinvoice) | **PATCH** /api/v2/InvoicingService/Invoices/{invoiceId} | Patch an invoice.
 [**patchInvoiceAdjustment**](InvoicesAPI.md#patchinvoiceadjustment) | **PATCH** /api/v2/InvoicingService/Invoices/{invoiceId}/Adjustments/{invoiceAdjustmentId} | Patch an invoice adjustment.
 [**patchInvoiceLine**](InvoicesAPI.md#patchinvoiceline) | **PATCH** /api/v2/InvoicingService/Invoices/{invoiceId}/Lines/{invoiceLineId} | Patch an invoice line.
@@ -1950,6 +1952,106 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Int32Envelope**](Int32Envelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getPurchaseInvoicesSum**
+```swift
+    open class func getPurchaseInvoicesSum(tenantId: UUID, completion: @escaping (_ data: DecimalEnvelope?, _ error: Error?) -> Void)
+```
+
+Sum tenant purchase-invoice totals.
+
+Returns SUM(Invoice.TotalAmountInUSD) for invoices with InvoiceType == PurchaseInvoice, filtered by the supplied OData date range.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+
+// Sum tenant purchase-invoice totals.
+InvoicesAPI.getPurchaseInvoicesSum(tenantId: tenantId) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+
+### Return type
+
+[**DecimalEnvelope**](DecimalEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getSalesInvoicesSum**
+```swift
+    open class func getSalesInvoicesSum(tenantId: UUID, completion: @escaping (_ data: DecimalEnvelope?, _ error: Error?) -> Void)
+```
+
+Sum tenant sales-invoice totals.
+
+Returns SUM(Invoice.TotalAmountInUSD) for invoices with InvoiceType == SalesInvoice, filtered by the supplied OData date range.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+
+// Sum tenant sales-invoice totals.
+InvoicesAPI.getSalesInvoicesSum(tenantId: tenantId) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+
+### Return type
+
+[**DecimalEnvelope**](DecimalEnvelope.md)
 
 ### Authorization
 

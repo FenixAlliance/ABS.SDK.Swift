@@ -12,6 +12,10 @@ import AnyCodable
 
 public struct TenantCreateDto: Codable, JSONEncodable, Hashable {
 
+    public enum Kind: String, Codable, CaseIterable {
+        case organization = "Organization"
+        case individual = "Individual"
+    }
     static let nameRule = StringRule(minLength: 1, maxLength: 100, pattern: nil)
     static let legalNameRule = StringRule(minLength: nil, maxLength: 100, pattern: nil)
     static let emailRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
@@ -24,6 +28,7 @@ public struct TenantCreateDto: Codable, JSONEncodable, Hashable {
     static let countryIdRule = StringRule(minLength: 1, maxLength: nil, pattern: "/^[A-Z]{3}$/")
     public var id: UUID?
     public var timestamp: Date?
+    public var kind: Kind?
     public var name: String
     public var legalName: String?
     public var email: String
@@ -46,9 +51,10 @@ public struct TenantCreateDto: Codable, JSONEncodable, Hashable {
     public var businessIndustryId: String?
     public var businessSizeId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, name: String, legalName: String? = nil, email: String, phone: String? = nil, webUrl: String? = nil, handler: String? = nil, about: String? = nil, slogan: String? = nil, currencyId: String, duns: String? = nil, taxId: String? = nil, avatarUrl: String? = nil, countryId: String, stateId: String? = nil, cityId: String? = nil, languageId: String? = nil, timezoneId: String? = nil, businessTypeId: String? = nil, businessSegmentId: String? = nil, businessIndustryId: String? = nil, businessSizeId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, kind: Kind? = nil, name: String, legalName: String? = nil, email: String, phone: String? = nil, webUrl: String? = nil, handler: String? = nil, about: String? = nil, slogan: String? = nil, currencyId: String, duns: String? = nil, taxId: String? = nil, avatarUrl: String? = nil, countryId: String, stateId: String? = nil, cityId: String? = nil, languageId: String? = nil, timezoneId: String? = nil, businessTypeId: String? = nil, businessSegmentId: String? = nil, businessIndustryId: String? = nil, businessSizeId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
+        self.kind = kind
         self.name = name
         self.legalName = legalName
         self.email = email
@@ -75,6 +81,7 @@ public struct TenantCreateDto: Codable, JSONEncodable, Hashable {
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
+        case kind
         case name
         case legalName
         case email
@@ -104,6 +111,7 @@ public struct TenantCreateDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
+        try container.encodeIfPresent(kind, forKey: .kind)
         try container.encode(name, forKey: .name)
         try container.encodeIfPresent(legalName, forKey: .legalName)
         try container.encode(email, forKey: .email)

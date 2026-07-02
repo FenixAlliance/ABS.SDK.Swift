@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **validResponse** | **Bool** |  | [optional] 
 **parentFileUploadId** | **String** |  | [optional] 
 **filePath** | **String** |  | [optional] 
+**publicAccessType** | **String** |  | [optional] 
 **metadata** | **String** |  | [optional] 
 **supportRequestId** | **String** |  | [optional] 
 

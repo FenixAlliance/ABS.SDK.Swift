@@ -7,12 +7,10 @@ OpenAPIClient/Classes/OpenAPIs/APIs.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/AntiforgeryAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/BusinessDomainsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/CartsAPI.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/CompletionsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/ContactOptionsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/EmailsAPI.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/FenixAlliancePortalsWebsiteAPI.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/FenixAllianceABSWebAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/IPLookupsAPI.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/LicensesAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/LicensingAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/MigrationsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/ModulesAPI.swift
@@ -30,7 +28,6 @@ OpenAPIClient/Classes/OpenAPIs/JSONDataEncoding.swift
 OpenAPIClient/Classes/OpenAPIs/JSONEncodingHelper.swift
 OpenAPIClient/Classes/OpenAPIs/Models.swift
 OpenAPIClient/Classes/OpenAPIs/Models/AccessTokenResponse.swift
-OpenAPIClient/Classes/OpenAPIs/Models/AdditionalAttribute.swift
 OpenAPIClient/Classes/OpenAPIs/Models/BooleanEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/BusinessDomainDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/BusinessDomainDtoEnvelope.swift
@@ -61,12 +58,6 @@ OpenAPIClient/Classes/OpenAPIs/Models/IValidationFailureListEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/InfoRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/InfoResponse.swift
 OpenAPIClient/Classes/OpenAPIs/Models/Int32Envelope.swift
-OpenAPIClient/Classes/OpenAPIs/Models/LicenseAttributesListEnvelope.swift
-OpenAPIClient/Classes/OpenAPIs/Models/LicenseFeature.swift
-OpenAPIClient/Classes/OpenAPIs/Models/LicenseKey.swift
-OpenAPIClient/Classes/OpenAPIs/Models/LicenseKeyRequest.swift
-OpenAPIClient/Classes/OpenAPIs/Models/LicenseValidationError.swift
-OpenAPIClient/Classes/OpenAPIs/Models/LicenseValidationErrorListEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/LicenseValidationRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/LoginRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/Module.swift
@@ -83,7 +74,6 @@ OpenAPIClient/Classes/OpenAPIs/Models/RegisterRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ResendConfirmationEmailRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ResetPasswordRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/SocialProfileDto.swift
-OpenAPIClient/Classes/OpenAPIs/Models/StringEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/StringListEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/StudioModule.swift
 OpenAPIClient/Classes/OpenAPIs/Models/StudioModuleListEnvelope.swift
@@ -120,7 +110,6 @@ OpenAPIClient/Classes/OpenAPIs/Validation.swift
 Package.swift
 README.md
 docs/AccessTokenResponse.md
-docs/AdditionalAttribute.md
 docs/AntiforgeryAPI.md
 docs/BooleanEnvelope.md
 docs/BusinessDomainDto.md
@@ -131,7 +120,6 @@ docs/CartDto.md
 docs/CartDtoEnvelope.md
 docs/CartDtoListEnvelope.md
 docs/CartsAPI.md
-docs/CompletionsAPI.md
 docs/ContactOptionsAPI.md
 docs/EmailDispatchRequest.md
 docs/EmailsAPI.md
@@ -143,7 +131,7 @@ docs/ExtendedTenantDtoListEnvelope.md
 docs/ExtendedUserDto.md
 docs/ExtendedUserDtoEnvelope.md
 docs/ExtendedUserDtoListEnvelope.md
-docs/FenixAlliancePortalsWebsiteAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/ForgotPasswordRequest.md
 docs/HttpValidationProblemDetails.md
 docs/IPLookupDto.md
@@ -159,14 +147,7 @@ docs/IValidationFailureListEnvelope.md
 docs/InfoRequest.md
 docs/InfoResponse.md
 docs/Int32Envelope.md
-docs/LicenseAttributesListEnvelope.md
-docs/LicenseFeature.md
-docs/LicenseKey.md
-docs/LicenseKeyRequest.md
-docs/LicenseValidationError.md
-docs/LicenseValidationErrorListEnvelope.md
 docs/LicenseValidationRequest.md
-docs/LicensesAPI.md
 docs/LicensingAPI.md
 docs/LoginRequest.md
 docs/MigrationsAPI.md
@@ -188,7 +169,6 @@ docs/RegisterRequest.md
 docs/ResendConfirmationEmailRequest.md
 docs/ResetPasswordRequest.md
 docs/SocialProfileDto.md
-docs/StringEnvelope.md
 docs/StringListEnvelope.md
 docs/StudioModule.md
 docs/StudioModuleListEnvelope.md

@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**kind** | **String** |  | [optional] 
 **name** | **String** |  | 
 **legalName** | **String** |  | [optional] 
 **email** | **String** |  | 
