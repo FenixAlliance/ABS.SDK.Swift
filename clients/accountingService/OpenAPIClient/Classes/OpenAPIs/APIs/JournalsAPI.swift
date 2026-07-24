@@ -17,7 +17,7 @@ open class JournalsAPI {
      
      - parameter tenantId: (query)  
      - parameter journalId: (path)  
-     - parameter currencyId: (query)  (optional)
+     - parameter currencyId: (query)  (optional, default to "USD.USA")
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
@@ -41,7 +41,7 @@ open class JournalsAPI {
      - Returns the sum of all credit amounts for entries in the specified journal, normalized to the target currency.
      - parameter tenantId: (query)  
      - parameter journalId: (path)  
-     - parameter currencyId: (query)  (optional)
+     - parameter currencyId: (query)  (optional, default to "USD.USA")
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<MoneyEnvelope> 
@@ -77,7 +77,7 @@ open class JournalsAPI {
      
      - parameter tenantId: (query)  
      - parameter journalId: (path)  
-     - parameter currencyId: (query)  (optional)
+     - parameter currencyId: (query)  (optional, default to "USD.USA")
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
@@ -101,7 +101,7 @@ open class JournalsAPI {
      - Returns the sum of all debit amounts for entries in the specified journal, normalized to the target currency.
      - parameter tenantId: (query)  
      - parameter journalId: (path)  
-     - parameter currencyId: (query)  (optional)
+     - parameter currencyId: (query)  (optional, default to "USD.USA")
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<MoneyEnvelope> 
@@ -590,6 +590,68 @@ open class JournalsAPI {
     }
 
     /**
+     Get journal entry by ID
+     
+     - parameter tenantId: (query)  
+     - parameter journalId: (path)  
+     - parameter entryId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getJournalEntryDetailsAsync(tenantId: UUID, journalId: UUID, entryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: JournalEntryDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getJournalEntryDetailsAsyncWithRequestBuilder(tenantId: tenantId, journalId: journalId, entryId: entryId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get journal entry by ID
+     - GET /api/v2/AccountingService/Journals/{journalId}/Entries/{entryId}
+     - Retrieves a single journal entry WITH its hydrated posting lines — each line's account, direction, description and currency facets (transaction / functional / account / USD).
+     - parameter tenantId: (query)  
+     - parameter journalId: (path)  
+     - parameter entryId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<JournalEntryDtoEnvelope> 
+     */
+    open class func getJournalEntryDetailsAsyncWithRequestBuilder(tenantId: UUID, journalId: UUID, entryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<JournalEntryDtoEnvelope> {
+        var localVariablePath = "/api/v2/AccountingService/Journals/{journalId}/Entries/{entryId}"
+        let journalIdPreEscape = "\(APIHelper.mapValueToPathItem(journalId))"
+        let journalIdPostEscape = journalIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{journalId}", with: journalIdPostEscape, options: .literal, range: nil)
+        let entryIdPreEscape = "\(APIHelper.mapValueToPathItem(entryId))"
+        let entryIdPostEscape = entryIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{entryId}", with: entryIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<JournalEntryDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
      Get all journals
      
      - parameter tenantId: (query)  
@@ -764,6 +826,133 @@ open class JournalsAPI {
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Post a draft journal entry
+     
+     - parameter tenantId: (query)  
+     - parameter journalId: (path)  
+     - parameter entryId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func postJournalEntryAsync(tenantId: UUID, journalId: UUID, entryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return postJournalEntryAsyncWithRequestBuilder(tenantId: tenantId, journalId: journalId, entryId: entryId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Post a draft journal entry
+     - POST /api/v2/AccountingService/Journals/{journalId}/Entries/{entryId}/Post
+     - Posts a DRAFT journal entry into its own open fiscal period. Enforces the balanced-entry invariant and the open-period gate, then seals the entry (immutable — correct via reversal, never edit/delete). An unbalanced draft or a closed period is rejected. Requires the journals_post permission.
+     - parameter tenantId: (query)  
+     - parameter journalId: (path)  
+     - parameter entryId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func postJournalEntryAsyncWithRequestBuilder(tenantId: UUID, journalId: UUID, entryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/AccountingService/Journals/{journalId}/Entries/{entryId}/Post"
+        let journalIdPreEscape = "\(APIHelper.mapValueToPathItem(journalId))"
+        let journalIdPostEscape = journalIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{journalId}", with: journalIdPostEscape, options: .literal, range: nil)
+        let entryIdPreEscape = "\(APIHelper.mapValueToPathItem(entryId))"
+        let entryIdPostEscape = entryIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{entryId}", with: entryIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Reverse a posted journal entry
+     
+     - parameter tenantId: (query)  
+     - parameter journalId: (path)  
+     - parameter entryId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter reverseJournalEntryRequest: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func reverseJournalEntryAsync(tenantId: UUID, journalId: UUID, entryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, reverseJournalEntryRequest: ReverseJournalEntryRequest? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return reverseJournalEntryAsyncWithRequestBuilder(tenantId: tenantId, journalId: journalId, entryId: entryId, apiVersion: apiVersion, xApiVersion: xApiVersion, reverseJournalEntryRequest: reverseJournalEntryRequest).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Reverse a posted journal entry
+     - POST /api/v2/AccountingService/Journals/{journalId}/Entries/{entryId}/Reverse
+     - Reverses a POSTED journal entry by writing a balanced compensating counter-entry into the supplied open fiscal period and marking the original Reversed — one atomic operation (append-only audit trail). Requires the journals_reverse permission.
+     - parameter tenantId: (query)  
+     - parameter journalId: (path)  
+     - parameter entryId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter reverseJournalEntryRequest: (body)  (optional)
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func reverseJournalEntryAsyncWithRequestBuilder(tenantId: UUID, journalId: UUID, entryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, reverseJournalEntryRequest: ReverseJournalEntryRequest? = nil) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/AccountingService/Journals/{journalId}/Entries/{entryId}/Reverse"
+        let journalIdPreEscape = "\(APIHelper.mapValueToPathItem(journalId))"
+        let journalIdPostEscape = journalIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{journalId}", with: journalIdPostEscape, options: .literal, range: nil)
+        let entryIdPreEscape = "\(APIHelper.mapValueToPathItem(entryId))"
+        let entryIdPostEscape = entryIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{entryId}", with: entryIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: reverseJournalEntryRequest)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**

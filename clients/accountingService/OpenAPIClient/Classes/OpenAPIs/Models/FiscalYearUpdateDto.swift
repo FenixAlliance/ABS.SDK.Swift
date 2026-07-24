@@ -12,14 +12,16 @@ import AnyCodable
 
 public struct FiscalYearUpdateDto: Codable, JSONEncodable, Hashable {
 
-    public var name: String?
+    static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let fiscalAuthorityIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    public var name: String
     public var description: String?
     public var closed: Bool?
     public var endDate: Date?
     public var startDate: Date?
-    public var fiscalAuthorityId: String?
+    public var fiscalAuthorityId: String
 
-    public init(name: String? = nil, description: String? = nil, closed: Bool? = nil, endDate: Date? = nil, startDate: Date? = nil, fiscalAuthorityId: String? = nil) {
+    public init(name: String, description: String? = nil, closed: Bool? = nil, endDate: Date? = nil, startDate: Date? = nil, fiscalAuthorityId: String) {
         self.name = name
         self.description = description
         self.closed = closed
@@ -41,12 +43,12 @@ public struct FiscalYearUpdateDto: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(name, forKey: .name)
+        try container.encode(name, forKey: .name)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(closed, forKey: .closed)
         try container.encodeIfPresent(endDate, forKey: .endDate)
         try container.encodeIfPresent(startDate, forKey: .startDate)
-        try container.encodeIfPresent(fiscalAuthorityId, forKey: .fiscalAuthorityId)
+        try container.encode(fiscalAuthorityId, forKey: .fiscalAuthorityId)
     }
 }
 

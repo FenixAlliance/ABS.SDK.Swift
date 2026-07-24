@@ -15,10 +15,8 @@ public struct LedgerTypeUpdateDto: Codable, JSONEncodable, Hashable {
     public enum LedgerClass: String, Codable, CaseIterable {
         case assets = "Assets"
         case equity = "Equity"
-        case gains = "Gains"
-        case losses = "Losses"
         case revenue = "Revenue"
-        case expenses = "Expenses"
+        case expense = "Expense"
         case liabilities = "Liabilities"
     }
     static let nameRule = StringRule(minLength: 0, maxLength: 50, pattern: nil)

@@ -1966,7 +1966,7 @@ No authorization required
 
 # **getPurchaseInvoicesSum**
 ```swift
-    open class func getPurchaseInvoicesSum(tenantId: UUID, completion: @escaping (_ data: DecimalEnvelope?, _ error: Error?) -> Void)
+    open class func getPurchaseInvoicesSum(tenantId: UUID, completion: @escaping (_ data: MoneyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Sum tenant purchase-invoice totals.
@@ -2001,7 +2001,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DecimalEnvelope**](DecimalEnvelope.md)
+[**MoneyEnvelope**](MoneyEnvelope.md)
 
 ### Authorization
 
@@ -2016,7 +2016,7 @@ No authorization required
 
 # **getSalesInvoicesSum**
 ```swift
-    open class func getSalesInvoicesSum(tenantId: UUID, completion: @escaping (_ data: DecimalEnvelope?, _ error: Error?) -> Void)
+    open class func getSalesInvoicesSum(tenantId: UUID, completion: @escaping (_ data: MoneyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Sum tenant sales-invoice totals.
@@ -2051,7 +2051,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DecimalEnvelope**](DecimalEnvelope.md)
+[**MoneyEnvelope**](MoneyEnvelope.md)
 
 ### Authorization
 

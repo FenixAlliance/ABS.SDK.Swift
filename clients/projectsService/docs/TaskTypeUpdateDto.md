@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **title** | **String** |  | [optional] 
+**taskCategoryId** | **String** |  | [optional] 
 **displayInTimeTracker** | **Bool** |  | [optional] 
 **requiresDescription** | **Bool** |  | [optional] 
 

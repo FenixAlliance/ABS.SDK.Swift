@@ -19,6 +19,12 @@ public struct AccountUpdateDto: Codable, JSONEncodable, Hashable {
         case expense = "Expense"
         case liabilities = "Liabilities"
     }
+    public enum IncomeStatementSubType: String, Codable, CaseIterable {
+        case operatingRevenue = "OperatingRevenue"
+        case gain = "Gain"
+        case operatingExpense = "OperatingExpense"
+        case loss = "Loss"
+    }
     static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     static let currencyIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     public var group: Bool?
@@ -32,8 +38,11 @@ public struct AccountUpdateDto: Codable, JSONEncodable, Hashable {
     public var accountTypeId: String?
     public var parentAccountId: String?
     public var accountCategory: AccountCategory?
+    public var isContra: Bool?
+    public var isMonetary: Bool?
+    public var incomeStatementSubType: IncomeStatementSubType?
 
-    public init(group: Bool? = nil, frozen: Bool? = nil, name: String, code: String? = nil, path: String? = nil, _prefix: String? = nil, currencyId: String, contactId: String? = nil, accountTypeId: String? = nil, parentAccountId: String? = nil, accountCategory: AccountCategory? = nil) {
+    public init(group: Bool? = nil, frozen: Bool? = nil, name: String, code: String? = nil, path: String? = nil, _prefix: String? = nil, currencyId: String, contactId: String? = nil, accountTypeId: String? = nil, parentAccountId: String? = nil, accountCategory: AccountCategory? = nil, isContra: Bool? = nil, isMonetary: Bool? = nil, incomeStatementSubType: IncomeStatementSubType? = nil) {
         self.group = group
         self.frozen = frozen
         self.name = name
@@ -45,6 +54,9 @@ public struct AccountUpdateDto: Codable, JSONEncodable, Hashable {
         self.accountTypeId = accountTypeId
         self.parentAccountId = parentAccountId
         self.accountCategory = accountCategory
+        self.isContra = isContra
+        self.isMonetary = isMonetary
+        self.incomeStatementSubType = incomeStatementSubType
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -59,6 +71,9 @@ public struct AccountUpdateDto: Codable, JSONEncodable, Hashable {
         case accountTypeId
         case parentAccountId
         case accountCategory
+        case isContra
+        case isMonetary
+        case incomeStatementSubType
     }
 
     // Encodable protocol methods
@@ -76,6 +91,9 @@ public struct AccountUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(accountTypeId, forKey: .accountTypeId)
         try container.encodeIfPresent(parentAccountId, forKey: .parentAccountId)
         try container.encodeIfPresent(accountCategory, forKey: .accountCategory)
+        try container.encodeIfPresent(isContra, forKey: .isContra)
+        try container.encodeIfPresent(isMonetary, forKey: .isMonetary)
+        try container.encodeIfPresent(incomeStatementSubType, forKey: .incomeStatementSubType)
     }
 }
 

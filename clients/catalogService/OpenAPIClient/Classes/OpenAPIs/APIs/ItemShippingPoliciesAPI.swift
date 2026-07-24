@@ -78,8 +78,8 @@ open class ItemShippingPoliciesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getItemShippingPoliciesAsync(tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemShippingPolicyDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getItemShippingPoliciesAsyncWithRequestBuilder(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCatalogItemShippingPoliciesAsync(tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemShippingPolicyDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCatalogItemShippingPoliciesAsyncWithRequestBuilder(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -99,7 +99,7 @@ open class ItemShippingPoliciesAPI {
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<ItemShippingPolicyDtoListEnvelope> 
      */
-    open class func getItemShippingPoliciesAsyncWithRequestBuilder(tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemShippingPolicyDtoListEnvelope> {
+    open class func getCatalogItemShippingPoliciesAsyncWithRequestBuilder(tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemShippingPolicyDtoListEnvelope> {
         let localVariablePath = "/api/v2/CatalogService/ItemShippingPolicies"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -134,8 +134,8 @@ open class ItemShippingPoliciesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getItemShippingPolicyByIdAsync(itemShippingPolicyId: UUID, tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemShippingPolicyDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getItemShippingPolicyByIdAsyncWithRequestBuilder(itemShippingPolicyId: itemShippingPolicyId, tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCatalogItemShippingPolicyByIdAsync(itemShippingPolicyId: UUID, tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemShippingPolicyDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCatalogItemShippingPolicyByIdAsyncWithRequestBuilder(itemShippingPolicyId: itemShippingPolicyId, tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -156,7 +156,7 @@ open class ItemShippingPoliciesAPI {
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<ItemShippingPolicyDtoEnvelope> 
      */
-    open class func getItemShippingPolicyByIdAsyncWithRequestBuilder(itemShippingPolicyId: UUID, tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemShippingPolicyDtoEnvelope> {
+    open class func getCatalogItemShippingPolicyByIdAsyncWithRequestBuilder(itemShippingPolicyId: UUID, tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemShippingPolicyDtoEnvelope> {
         var localVariablePath = "/api/v2/CatalogService/ItemShippingPolicies/{itemShippingPolicyId}"
         let itemShippingPolicyIdPreEscape = "\(APIHelper.mapValueToPathItem(itemShippingPolicyId))"
         let itemShippingPolicyIdPostEscape = itemShippingPolicyIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""

@@ -31,6 +31,7 @@ Class | Method | HTTP request | Description
 *FenixAllianceABSWebAPI* | [**accountManageDownloadPersonalDataPost**](docs/FenixAllianceABSWebAPI.md#accountmanagedownloadpersonaldatapost) | **POST** /Account/Manage/DownloadPersonalData | 
 *FenixAllianceABSWebAPI* | [**accountManageLinkExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#accountmanagelinkexternalloginpost) | **POST** /Account/Manage/LinkExternalLogin | 
 *FenixAllianceABSWebAPI* | [**accountPerformExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#accountperformexternalloginpost) | **POST** /Account/PerformExternalLogin | 
+*FenixAllianceABSWebAPI* | [**apiV2AIServiceAgentsAgentIdAguiPost**](docs/FenixAllianceABSWebAPI.md#apiv2aiserviceagentsagentidaguipost) | **POST** /api/v2/AIService/Agents/{agentId}/agui | 
 *FenixAllianceABSWebAPI* | [**forgotPasswordPost**](docs/FenixAllianceABSWebAPI.md#forgotpasswordpost) | **POST** /forgotPassword | 
 *FenixAllianceABSWebAPI* | [**healthGet**](docs/FenixAllianceABSWebAPI.md#healthget) | **GET** /health | 
 *FenixAllianceABSWebAPI* | [**helloGet**](docs/FenixAllianceABSWebAPI.md#helloget) | **GET** /hello | 
@@ -100,7 +101,6 @@ Class | Method | HTTP request | Description
 
  - [AccessTokenResponse](docs/AccessTokenResponse.md)
  - [CurrencyId](docs/CurrencyId.md)
- - [DecimalEnvelope](docs/DecimalEnvelope.md)
  - [EmailDispatchRequest](docs/EmailDispatchRequest.md)
  - [EmptyEnvelope](docs/EmptyEnvelope.md)
  - [Envelope](docs/Envelope.md)

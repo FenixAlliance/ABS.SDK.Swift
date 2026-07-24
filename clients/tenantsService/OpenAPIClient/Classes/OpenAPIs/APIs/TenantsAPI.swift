@@ -289,6 +289,60 @@ open class TenantsAPI {
     }
 
     /**
+     Get a tenant's default cart
+     
+     - parameter tenantId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getCartForTenantAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CartDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCartForTenantAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get a tenant's default cart
+     - GET /api/v2/TenantsService/Tenants/{tenantId}/Cart
+     - Get a tenant's default cart
+     - parameter tenantId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<CartDtoEnvelope> 
+     */
+    open class func getCartForTenantAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<CartDtoEnvelope> {
+        var localVariablePath = "/api/v2/TenantsService/Tenants/{tenantId}/Cart"
+        let tenantIdPreEscape = "\(APIHelper.mapValueToPathItem(tenantId))"
+        let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{tenantId}", with: tenantIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<CartDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
      Get the user's current default tenant
      
      - parameter tenantId: (query)  
@@ -788,60 +842,6 @@ open class TenantsAPI {
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
-    }
-
-    /**
-     Get a tenant's default cart
-     
-     - parameter tenantId: (path)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func getTenantCartAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CartDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getTenantCartAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     Get a tenant's default cart
-     - GET /api/v2/TenantsService/Tenants/{tenantId}/Cart
-     - Get a tenant's default cart
-     - parameter tenantId: (path)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - returns: RequestBuilder<CartDtoEnvelope> 
-     */
-    open class func getTenantCartAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<CartDtoEnvelope> {
-        var localVariablePath = "/api/v2/TenantsService/Tenants/{tenantId}/Cart"
-        let tenantIdPreEscape = "\(APIHelper.mapValueToPathItem(tenantId))"
-        let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{tenantId}", with: tenantIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            "x-api-version": xApiVersion?.encodeToJSON(),
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<CartDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
@@ -1729,68 +1729,6 @@ open class TenantsAPI {
     }
 
     /**
-     Update a tenant's avatar
-     
-     - parameter tenantId: (path)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - parameter avatar: (form)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func updateAvatarAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, avatar: URL? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return updateAvatarAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, avatar: avatar).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     Update a tenant's avatar
-     - POST /api/v2/TenantsService/Tenants/{tenantId}/Avatar
-     - Update a tenant's avatar
-     - parameter tenantId: (path)  
-     - parameter apiVersion: (query)  (optional)
-     - parameter xApiVersion: (header)  (optional)
-     - parameter avatar: (form)  (optional)
-     - returns: RequestBuilder<EmptyEnvelope> 
-     */
-    open class func updateAvatarAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, avatar: URL? = nil) -> RequestBuilder<EmptyEnvelope> {
-        var localVariablePath = "/api/v2/TenantsService/Tenants/{tenantId}/Avatar"
-        let tenantIdPreEscape = "\(APIHelper.mapValueToPathItem(tenantId))"
-        let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{tenantId}", with: tenantIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableFormParams: [String: Any?] = [
-            "avatar": avatar?.encodeToJSON(),
-        ]
-
-        let localVariableNonNullParameters = APIHelper.rejectNil(localVariableFormParams)
-        let localVariableParameters = APIHelper.convertBoolToString(localVariableNonNullParameters)
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            "Content-Type": "multipart/form-data",
-            "x-api-version": xApiVersion?.encodeToJSON(),
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
-    }
-
-    /**
      Update a tenant's profile
      
      - parameter tenantId: (path)  
@@ -1845,6 +1783,68 @@ open class TenantsAPI {
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Update a tenant's avatar
+     
+     - parameter tenantId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter avatar: (form)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func updateTenantAvatarAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, avatar: URL? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return updateTenantAvatarAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, avatar: avatar).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Update a tenant's avatar
+     - POST /api/v2/TenantsService/Tenants/{tenantId}/Avatar
+     - Update a tenant's avatar
+     - parameter tenantId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter avatar: (form)  (optional)
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func updateTenantAvatarAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, avatar: URL? = nil) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/TenantsService/Tenants/{tenantId}/Avatar"
+        let tenantIdPreEscape = "\(APIHelper.mapValueToPathItem(tenantId))"
+        let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{tenantId}", with: tenantIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableFormParams: [String: Any?] = [
+            "avatar": avatar?.encodeToJSON(),
+        ]
+
+        let localVariableNonNullParameters = APIHelper.rejectNil(localVariableFormParams)
+        let localVariableParameters = APIHelper.convertBoolToString(localVariableNonNullParameters)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "multipart/form-data",
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**

@@ -21,8 +21,8 @@ open class ThemesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getLatestCurrencyRatesModelAsync(apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
-        return getLatestCurrencyRatesModelAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func updateThemesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return updateThemesAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 completion((), nil)
@@ -40,7 +40,7 @@ open class ThemesAPI {
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<Void> 
      */
-    open class func getLatestCurrencyRatesModelAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Void> {
+    open class func updateThemesAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Void> {
         let localVariablePath = "/api/v2/ContentService/Themes/Update"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil

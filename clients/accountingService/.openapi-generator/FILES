@@ -5,8 +5,8 @@ OpenAPIClient.podspec
 OpenAPIClient/Classes/OpenAPIs/APIHelper.swift
 OpenAPIClient/Classes/OpenAPIs/APIs.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/AccountGroupsAPI.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/AccountingEntriesAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/AccountingPeriodsAPI.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/AccountingSummaryAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/AccountsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/BankProfilesAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/BankingAPI.swift
@@ -30,13 +30,13 @@ OpenAPIClient/Classes/OpenAPIs/APIs/FiscalResponsibilityRecordsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/FiscalYearsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/GrantsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/InvoiceEnumerationRangesAPI.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/JournalEntriesAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/JournalTypesAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/JournalsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/LedgerTypesAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/LedgersAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/LoansAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/ReceiptsAPI.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/ReportsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/SharesAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/TaxClassesAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/TaxPoliciesAPI.swift
@@ -229,6 +229,7 @@ OpenAPIClient/Classes/OpenAPIs/Models/JournalDtoEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/JournalDtoIReadOnlyListEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/JournalEntryCreateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/JournalEntryDto.swift
+OpenAPIClient/Classes/OpenAPIs/Models/JournalEntryDtoEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/JournalEntryDtoIReadOnlyListEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/JournalEntryUpdateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/JournalTypeCreateDto.swift
@@ -277,6 +278,7 @@ OpenAPIClient/Classes/OpenAPIs/Models/RefreshRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/RegisterRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ResendConfirmationEmailRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ResetPasswordRequest.swift
+OpenAPIClient/Classes/OpenAPIs/Models/ReverseJournalEntryRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/SeedChartOfAccountsRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ShareClassCreateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ShareClassDto.swift
@@ -323,6 +325,9 @@ OpenAPIClient/Classes/OpenAPIs/Models/TransactionDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/TransactionDtoEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/TransactionDtoListEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/TransactionUpdateDto.swift
+OpenAPIClient/Classes/OpenAPIs/Models/TrialBalanceDto.swift
+OpenAPIClient/Classes/OpenAPIs/Models/TrialBalanceDtoEnvelope.swift
+OpenAPIClient/Classes/OpenAPIs/Models/TrialBalanceRowDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/TwoFactorRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/TwoFactorResponse.swift
 OpenAPIClient/Classes/OpenAPIs/Models/UpdateLedgerDto.swift
@@ -354,7 +359,6 @@ docs/AccountTypeDtoEnvelope.md
 docs/AccountTypeDtoListEnvelope.md
 docs/AccountTypeUpdateDto.md
 docs/AccountUpdateDto.md
-docs/AccountingEntriesAPI.md
 docs/AccountingEntryCreateDto.md
 docs/AccountingEntryDto.md
 docs/AccountingEntryDtoEnvelope.md
@@ -366,6 +370,7 @@ docs/AccountingPeriodDtoEnvelope.md
 docs/AccountingPeriodDtoListEnvelope.md
 docs/AccountingPeriodUpdateDto.md
 docs/AccountingPeriodsAPI.md
+docs/AccountingSummaryAPI.md
 docs/AccountsAPI.md
 docs/AppliedItemTaxRecordCreateDto.md
 docs/AppliedItemTaxRecordDto.md
@@ -537,9 +542,9 @@ docs/JournalCreateDto.md
 docs/JournalDto.md
 docs/JournalDtoEnvelope.md
 docs/JournalDtoIReadOnlyListEnvelope.md
-docs/JournalEntriesAPI.md
 docs/JournalEntryCreateDto.md
 docs/JournalEntryDto.md
+docs/JournalEntryDtoEnvelope.md
 docs/JournalEntryDtoIReadOnlyListEnvelope.md
 docs/JournalEntryUpdateDto.md
 docs/JournalTypeCreateDto.md
@@ -592,8 +597,10 @@ docs/ReceiptUpdateDto.md
 docs/ReceiptsAPI.md
 docs/RefreshRequest.md
 docs/RegisterRequest.md
+docs/ReportsAPI.md
 docs/ResendConfirmationEmailRequest.md
 docs/ResetPasswordRequest.md
+docs/ReverseJournalEntryRequest.md
 docs/SeedChartOfAccountsRequest.md
 docs/ShareClassCreateDto.md
 docs/ShareClassDto.md
@@ -645,6 +652,9 @@ docs/TransactionDtoEnvelope.md
 docs/TransactionDtoListEnvelope.md
 docs/TransactionUpdateDto.md
 docs/TransactionsAPI.md
+docs/TrialBalanceDto.md
+docs/TrialBalanceDtoEnvelope.md
+docs/TrialBalanceRowDto.md
 docs/TwoFactorRequest.md
 docs/TwoFactorResponse.md
 docs/UpdateLedgerDto.md

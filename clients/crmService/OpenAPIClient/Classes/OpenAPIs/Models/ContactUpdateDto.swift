@@ -40,8 +40,6 @@ public struct ContactUpdateDto: Codable, JSONEncodable, Hashable {
     public var jobTitle: String?
     public var countryId: String?
     public var parentContactId: String?
-    public var addressLine1: String?
-    public var addressLine2: String?
     public var postalCode: String?
     public var stateId: String?
     public var cityId: String?
@@ -68,7 +66,7 @@ public struct ContactUpdateDto: Codable, JSONEncodable, Hashable {
     public var stackOverflowUrl: String?
     public var faxNumber: String?
 
-    public init(type: ModelType, birthday: Date? = nil, duns: String? = nil, taxId: String? = nil, email: String, firstName: String, lastName: String? = nil, primaryContactId: String? = nil, qualifiedName: String? = nil, about: String? = nil, mobilePhone: String? = nil, businessPhone: String? = nil, jobTitle: String? = nil, countryId: String? = nil, parentContactId: String? = nil, addressLine1: String? = nil, addressLine2: String? = nil, postalCode: String? = nil, stateId: String? = nil, cityId: String? = nil, streetLine1: String? = nil, streetLine2: String? = nil, currencyId: String? = nil, languageId: String? = nil, timezoneId: String? = nil, coverUrl: String? = nil, githubUsername: String? = nil, instagramUsername: String? = nil, webUrl: String? = nil, twitchUrl: String? = nil, redditUrl: String? = nil, gitHubUrl: String? = nil, tikTokUrl: String? = nil, twitterUrl: String? = nil, youTubeUrl: String? = nil, facebookUrl: String? = nil, linkedInUrl: String? = nil, instagramUrl: String? = nil, tikTokUsername: String? = nil, stackExchangeUrl: String? = nil, stackOverflowUrl: String? = nil, faxNumber: String? = nil) {
+    public init(type: ModelType, birthday: Date? = nil, duns: String? = nil, taxId: String? = nil, email: String, firstName: String, lastName: String? = nil, primaryContactId: String? = nil, qualifiedName: String? = nil, about: String? = nil, mobilePhone: String? = nil, businessPhone: String? = nil, jobTitle: String? = nil, countryId: String? = nil, parentContactId: String? = nil, postalCode: String? = nil, stateId: String? = nil, cityId: String? = nil, streetLine1: String? = nil, streetLine2: String? = nil, currencyId: String? = nil, languageId: String? = nil, timezoneId: String? = nil, coverUrl: String? = nil, githubUsername: String? = nil, instagramUsername: String? = nil, webUrl: String? = nil, twitchUrl: String? = nil, redditUrl: String? = nil, gitHubUrl: String? = nil, tikTokUrl: String? = nil, twitterUrl: String? = nil, youTubeUrl: String? = nil, facebookUrl: String? = nil, linkedInUrl: String? = nil, instagramUrl: String? = nil, tikTokUsername: String? = nil, stackExchangeUrl: String? = nil, stackOverflowUrl: String? = nil, faxNumber: String? = nil) {
         self.type = type
         self.birthday = birthday
         self.duns = duns
@@ -84,8 +82,6 @@ public struct ContactUpdateDto: Codable, JSONEncodable, Hashable {
         self.jobTitle = jobTitle
         self.countryId = countryId
         self.parentContactId = parentContactId
-        self.addressLine1 = addressLine1
-        self.addressLine2 = addressLine2
         self.postalCode = postalCode
         self.stateId = stateId
         self.cityId = cityId
@@ -129,8 +125,6 @@ public struct ContactUpdateDto: Codable, JSONEncodable, Hashable {
         case jobTitle
         case countryId
         case parentContactId
-        case addressLine1
-        case addressLine2
         case postalCode
         case stateId
         case cityId
@@ -177,8 +171,6 @@ public struct ContactUpdateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(jobTitle, forKey: .jobTitle)
         try container.encodeIfPresent(countryId, forKey: .countryId)
         try container.encodeIfPresent(parentContactId, forKey: .parentContactId)
-        try container.encodeIfPresent(addressLine1, forKey: .addressLine1)
-        try container.encodeIfPresent(addressLine2, forKey: .addressLine2)
         try container.encodeIfPresent(postalCode, forKey: .postalCode)
         try container.encodeIfPresent(stateId, forKey: .stateId)
         try container.encodeIfPresent(cityId, forKey: .cityId)

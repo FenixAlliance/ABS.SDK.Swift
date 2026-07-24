@@ -12,6 +12,27 @@ import AnyCodable
 
 public struct FileUploadDto: Codable, JSONEncodable, Hashable {
 
+    public enum ScanStatus: String, Codable, CaseIterable {
+        case notRequired = "NotRequired"
+        case pending = "Pending"
+        case clean = "Clean"
+        case infected = "Infected"
+        case failed = "Failed"
+        case quarantined = "Quarantined"
+    }
+    public enum ThumbnailStatus: String, Codable, CaseIterable {
+        case notRequired = "NotRequired"
+        case pending = "Pending"
+        case ready = "Ready"
+        case failed = "Failed"
+        case unsupported = "Unsupported"
+    }
+    public enum PublicAccessType: String, Codable, CaseIterable {
+        case _false = "false"
+        case container = "Container"
+        case blob = "Blob"
+        case unknown = "Unknown"
+    }
     public var id: String?
     public var timestamp: Date?
     public var notes: String?
@@ -21,6 +42,8 @@ public struct FileUploadDto: Codable, JSONEncodable, Hashable {
     public var hash: String?
     public var fileUrl: String?
     public var filePath: String?
+    public var storageKey: String?
+    public var storageProviderKey: String?
     public var fileName: String?
     public var abstract: String?
     public var keyWords: String?
@@ -34,8 +57,16 @@ public struct FileUploadDto: Codable, JSONEncodable, Hashable {
     public var enrollmentId: String?
     public var socialProfileId: String?
     public var folderPath: String?
+    public var scanStatus: ScanStatus?
+    public var thumbnailStatus: ThumbnailStatus?
+    public var hasThumbnail: Bool?
+    public var thumbnailStorageKey: String?
+    public var thumbnailContentType: String?
+    public var thumbnailWidth: Int?
+    public var thumbnailHeight: Int?
+    public var publicAccessType: PublicAccessType?
 
-    public init(id: String? = nil, timestamp: Date? = nil, notes: String? = nil, title: String? = nil, author: String? = nil, isFolder: Bool? = nil, hash: String? = nil, fileUrl: String? = nil, filePath: String? = nil, fileName: String? = nil, abstract: String? = nil, keyWords: String? = nil, metadata: String? = nil, fileLength: Int64? = nil, contentType: String? = nil, parentFileId: String? = nil, validResponse: Bool? = nil, userId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil, socialProfileId: String? = nil, folderPath: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, notes: String? = nil, title: String? = nil, author: String? = nil, isFolder: Bool? = nil, hash: String? = nil, fileUrl: String? = nil, filePath: String? = nil, storageKey: String? = nil, storageProviderKey: String? = nil, fileName: String? = nil, abstract: String? = nil, keyWords: String? = nil, metadata: String? = nil, fileLength: Int64? = nil, contentType: String? = nil, parentFileId: String? = nil, validResponse: Bool? = nil, userId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil, socialProfileId: String? = nil, folderPath: String? = nil, scanStatus: ScanStatus? = nil, thumbnailStatus: ThumbnailStatus? = nil, hasThumbnail: Bool? = nil, thumbnailStorageKey: String? = nil, thumbnailContentType: String? = nil, thumbnailWidth: Int? = nil, thumbnailHeight: Int? = nil, publicAccessType: PublicAccessType? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.notes = notes
@@ -45,6 +76,8 @@ public struct FileUploadDto: Codable, JSONEncodable, Hashable {
         self.hash = hash
         self.fileUrl = fileUrl
         self.filePath = filePath
+        self.storageKey = storageKey
+        self.storageProviderKey = storageProviderKey
         self.fileName = fileName
         self.abstract = abstract
         self.keyWords = keyWords
@@ -58,6 +91,14 @@ public struct FileUploadDto: Codable, JSONEncodable, Hashable {
         self.enrollmentId = enrollmentId
         self.socialProfileId = socialProfileId
         self.folderPath = folderPath
+        self.scanStatus = scanStatus
+        self.thumbnailStatus = thumbnailStatus
+        self.hasThumbnail = hasThumbnail
+        self.thumbnailStorageKey = thumbnailStorageKey
+        self.thumbnailContentType = thumbnailContentType
+        self.thumbnailWidth = thumbnailWidth
+        self.thumbnailHeight = thumbnailHeight
+        self.publicAccessType = publicAccessType
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -70,6 +111,8 @@ public struct FileUploadDto: Codable, JSONEncodable, Hashable {
         case hash
         case fileUrl
         case filePath
+        case storageKey
+        case storageProviderKey
         case fileName
         case abstract
         case keyWords
@@ -83,6 +126,14 @@ public struct FileUploadDto: Codable, JSONEncodable, Hashable {
         case enrollmentId
         case socialProfileId
         case folderPath
+        case scanStatus
+        case thumbnailStatus
+        case hasThumbnail
+        case thumbnailStorageKey
+        case thumbnailContentType
+        case thumbnailWidth
+        case thumbnailHeight
+        case publicAccessType
     }
 
     // Encodable protocol methods
@@ -98,6 +149,8 @@ public struct FileUploadDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(hash, forKey: .hash)
         try container.encodeIfPresent(fileUrl, forKey: .fileUrl)
         try container.encodeIfPresent(filePath, forKey: .filePath)
+        try container.encodeIfPresent(storageKey, forKey: .storageKey)
+        try container.encodeIfPresent(storageProviderKey, forKey: .storageProviderKey)
         try container.encodeIfPresent(fileName, forKey: .fileName)
         try container.encodeIfPresent(abstract, forKey: .abstract)
         try container.encodeIfPresent(keyWords, forKey: .keyWords)
@@ -111,6 +164,14 @@ public struct FileUploadDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(socialProfileId, forKey: .socialProfileId)
         try container.encodeIfPresent(folderPath, forKey: .folderPath)
+        try container.encodeIfPresent(scanStatus, forKey: .scanStatus)
+        try container.encodeIfPresent(thumbnailStatus, forKey: .thumbnailStatus)
+        try container.encodeIfPresent(hasThumbnail, forKey: .hasThumbnail)
+        try container.encodeIfPresent(thumbnailStorageKey, forKey: .thumbnailStorageKey)
+        try container.encodeIfPresent(thumbnailContentType, forKey: .thumbnailContentType)
+        try container.encodeIfPresent(thumbnailWidth, forKey: .thumbnailWidth)
+        try container.encodeIfPresent(thumbnailHeight, forKey: .thumbnailHeight)
+        try container.encodeIfPresent(publicAccessType, forKey: .publicAccessType)
     }
 }
 

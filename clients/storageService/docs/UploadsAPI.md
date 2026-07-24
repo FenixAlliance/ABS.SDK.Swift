@@ -1,6 +1,6 @@
 # UploadsAPI
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://absuite.net*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -9,12 +9,12 @@ Method | HTTP request | Description
 
 # **saveFileAsync**
 ```swift
-    open class func saveFileAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, notes: String? = nil, title: String? = nil, author: String? = nil, isFolder: Bool? = nil, fileName: String? = nil, abstract: String? = nil, keyWords: String? = nil, validResponse: Bool? = nil, parentFileUploadId: String? = nil, filePath: String? = nil, appFileContent: Data? = nil, appFileSha256: String? = nil, appFileCreatedAtUtc: Date? = nil, appFileUserIdValue: UUID? = nil, appFileTenantIdValue: UUID? = nil, appFileEnrollmentIdValue: UUID? = nil, appFileSource: AppFileSource_saveFileAsync? = nil, appFileLength: Int64? = nil, appFileName: String? = nil, appFileFileName: String? = nil, appFileLastModified: Date? = nil, appFileSize: Int64? = nil, appFileContentType: String? = nil, appFileContentDisposition: String? = nil, appFileHeaders: [String: String]? = nil, id: UUID? = nil, timestamp: Date? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func saveFileAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, file: URL? = nil, notes: String? = nil, title: String? = nil, author: String? = nil, isFolder: Bool? = nil, fileName: String? = nil, abstract: String? = nil, keyWords: String? = nil, validResponse: Bool? = nil, parentFileUploadId: String? = nil, filePath: String? = nil, publicAccessType: PublicAccessType_saveFileAsync? = nil, purpose: Purpose_saveFileAsync? = nil, socialProfileIdValue: UUID? = nil, appFileContent: Data? = nil, appFileSha256: String? = nil, appFileCreatedAtUtc: Date? = nil, appFileUserIdValue: UUID? = nil, appFileTenantIdValue: UUID? = nil, appFileEnrollmentIdValue: UUID? = nil, appFileSource: AppFileSource_saveFileAsync? = nil, appFileLength: Int64? = nil, appFileName: String? = nil, appFileFileName: String? = nil, appFileLastModified: Date? = nil, appFileSize: Int64? = nil, appFileContentType: String? = nil, appFileContentDisposition: String? = nil, appFileHeaders: [String: String]? = nil, id: UUID? = nil, timestamp: Date? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Upload a file
 
-Uploads a file to tenant or user storage.
+Uploads a file to tenant or user storage, scanned and catalogued through the storage spine.
 
 ### Example
 ```swift
@@ -24,6 +24,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let file = URL(string: "https://example.com")! // URL |  (optional)
 let notes = "notes_example" // String |  (optional)
 let title = "title_example" // String |  (optional)
 let author = "author_example" // String |  (optional)
@@ -34,6 +35,9 @@ let keyWords = "keyWords_example" // String |  (optional)
 let validResponse = true // Bool |  (optional)
 let parentFileUploadId = "parentFileUploadId_example" // String |  (optional)
 let filePath = "filePath_example" // String |  (optional)
+let publicAccessType = "publicAccessType_example" // String |  (optional)
+let purpose = "purpose_example" // String |  (optional)
+let socialProfileIdValue = 987 // UUID |  (optional)
 let appFileContent = Data([9, 8, 7]) // Data |  (optional)
 let appFileSha256 = "appFileSha256_example" // String |  (optional)
 let appFileCreatedAtUtc = Date() // Date |  (optional)
@@ -53,7 +57,7 @@ let id = 987 // UUID |  (optional)
 let timestamp = Date() // Date |  (optional)
 
 // Upload a file
-UploadsAPI.saveFileAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, notes: notes, title: title, author: author, isFolder: isFolder, fileName: fileName, abstract: abstract, keyWords: keyWords, validResponse: validResponse, parentFileUploadId: parentFileUploadId, filePath: filePath, appFileContent: appFileContent, appFileSha256: appFileSha256, appFileCreatedAtUtc: appFileCreatedAtUtc, appFileUserIdValue: appFileUserIdValue, appFileTenantIdValue: appFileTenantIdValue, appFileEnrollmentIdValue: appFileEnrollmentIdValue, appFileSource: appFileSource, appFileLength: appFileLength, appFileName: appFileName, appFileFileName: appFileFileName, appFileLastModified: appFileLastModified, appFileSize: appFileSize, appFileContentType: appFileContentType, appFileContentDisposition: appFileContentDisposition, appFileHeaders: appFileHeaders, id: id, timestamp: timestamp) { (response, error) in
+UploadsAPI.saveFileAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, file: file, notes: notes, title: title, author: author, isFolder: isFolder, fileName: fileName, abstract: abstract, keyWords: keyWords, validResponse: validResponse, parentFileUploadId: parentFileUploadId, filePath: filePath, publicAccessType: publicAccessType, purpose: purpose, socialProfileIdValue: socialProfileIdValue, appFileContent: appFileContent, appFileSha256: appFileSha256, appFileCreatedAtUtc: appFileCreatedAtUtc, appFileUserIdValue: appFileUserIdValue, appFileTenantIdValue: appFileTenantIdValue, appFileEnrollmentIdValue: appFileEnrollmentIdValue, appFileSource: appFileSource, appFileLength: appFileLength, appFileName: appFileName, appFileFileName: appFileFileName, appFileLastModified: appFileLastModified, appFileSize: appFileSize, appFileContentType: appFileContentType, appFileContentDisposition: appFileContentDisposition, appFileHeaders: appFileHeaders, id: id, timestamp: timestamp) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -72,6 +76,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **file** | **URL** |  | [optional] 
  **notes** | **String** |  | [optional] 
  **title** | **String** |  | [optional] 
  **author** | **String** |  | [optional] 
@@ -82,6 +87,9 @@ Name | Type | Description  | Notes
  **validResponse** | **Bool** |  | [optional] 
  **parentFileUploadId** | **String** |  | [optional] 
  **filePath** | **String** |  | [optional] 
+ **publicAccessType** | **String** |  | [optional] 
+ **purpose** | **String** |  | [optional] 
+ **socialProfileIdValue** | **UUID** |  | [optional] 
  **appFileContent** | **Data** |  | [optional] 
  **appFileSha256** | **String** |  | [optional] 
  **appFileCreatedAtUtc** | **Date** |  | [optional] 

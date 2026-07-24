@@ -3,18 +3,12 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**group** | **Bool** |  | [optional] 
-**opening** | **Bool** |  | [optional] 
+**fiscalPeriodId** | **String** |  | 
+**transactionCurrencyId** | **String** |  | 
 **description** | **String** |  | 
-**date** | **Date** |  | 
-**debit** | **Double** |  | [optional] 
-**credit** | **Double** |  | [optional] 
-**journalId** | **String** |  | 
-**currencyId** | **String** |  | 
-**invoiceCode** | **String** |  | [optional] 
-**debitAccountId** | **String** |  | 
-**creditAccountId** | **String** |  | 
-**parentJournalEntryId** | **String** |  | [optional] 
+**sourceDocumentType** | **String** |  | [optional] 
+**sourceDocumentId** | **String** |  | [optional] 
+**isOpeningBalance** | **Bool** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -16,12 +16,12 @@ public struct FiscalPeriodCreateDto: Codable, JSONEncodable, Hashable {
     static let fiscalYearIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
-    public var name: String?
+    public var name: String
     public var fromDate: Date?
     public var toDate: Date?
-    public var fiscalYearId: String?
+    public var fiscalYearId: String
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil, fromDate: Date? = nil, toDate: Date? = nil, fiscalYearId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, name: String, fromDate: Date? = nil, toDate: Date? = nil, fiscalYearId: String) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
@@ -45,10 +45,10 @@ public struct FiscalPeriodCreateDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
-        try container.encodeIfPresent(name, forKey: .name)
+        try container.encode(name, forKey: .name)
         try container.encodeIfPresent(fromDate, forKey: .fromDate)
         try container.encodeIfPresent(toDate, forKey: .toDate)
-        try container.encodeIfPresent(fiscalYearId, forKey: .fiscalYearId)
+        try container.encode(fiscalYearId, forKey: .fiscalYearId)
     }
 }
 

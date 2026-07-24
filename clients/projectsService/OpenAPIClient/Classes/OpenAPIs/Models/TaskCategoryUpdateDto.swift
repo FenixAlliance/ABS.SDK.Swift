@@ -13,13 +13,16 @@ import AnyCodable
 public struct TaskCategoryUpdateDto: Codable, JSONEncodable, Hashable {
 
     public var title: String?
+    public var projectId: String?
 
-    public init(title: String? = nil) {
+    public init(title: String? = nil, projectId: String? = nil) {
         self.title = title
+        self.projectId = projectId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case title
+        case projectId
     }
 
     // Encodable protocol methods
@@ -27,6 +30,7 @@ public struct TaskCategoryUpdateDto: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(title, forKey: .title)
+        try container.encodeIfPresent(projectId, forKey: .projectId)
     }
 }
 

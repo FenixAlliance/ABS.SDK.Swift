@@ -16,14 +16,22 @@ public struct ProjectDto: Codable, JSONEncodable, Hashable {
     public var timestamp: Date?
     public var title: String?
     public var description: String?
+    public var individualId: String?
+    public var organizationId: String?
+    public var tenantId: String?
+    public var enrollmentId: String?
     public var projectStartDate: Date?
     public var projectEndDate: Date?
 
-    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil, projectStartDate: Date? = nil, projectEndDate: Date? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil, individualId: String? = nil, organizationId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil, projectStartDate: Date? = nil, projectEndDate: Date? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
         self.description = description
+        self.individualId = individualId
+        self.organizationId = organizationId
+        self.tenantId = tenantId
+        self.enrollmentId = enrollmentId
         self.projectStartDate = projectStartDate
         self.projectEndDate = projectEndDate
     }
@@ -33,6 +41,10 @@ public struct ProjectDto: Codable, JSONEncodable, Hashable {
         case timestamp
         case title
         case description
+        case individualId
+        case organizationId
+        case tenantId
+        case enrollmentId
         case projectStartDate
         case projectEndDate
     }
@@ -45,6 +57,10 @@ public struct ProjectDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(description, forKey: .description)
+        try container.encodeIfPresent(individualId, forKey: .individualId)
+        try container.encodeIfPresent(organizationId, forKey: .organizationId)
+        try container.encodeIfPresent(tenantId, forKey: .tenantId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(projectStartDate, forKey: .projectStartDate)
         try container.encodeIfPresent(projectEndDate, forKey: .projectEndDate)
     }

@@ -63,7 +63,7 @@ Returns the sum of all account balances matching OData filters, normalized to th
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let currencyId = "currencyId_example" // String |  (optional)
+let currencyId = "currencyId_example" // String |  (optional) (default to "USD.USA")
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
@@ -85,7 +85,7 @@ AccountsAPI.aggregateAccountsBalanceAsync(tenantId: tenantId, currencyId: curren
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
- **currencyId** | **String** |  | [optional] 
+ **currencyId** | **String** |  | [optional] [default to &quot;USD.USA&quot;]
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 
@@ -231,7 +231,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let accountCreateDto = AccountCreateDto(id: 123, timestamp: Date(), group: false, frozen: false, name: "name_example", code: "code_example", path: "path_example", _prefix: "_prefix_example", currencyId: "currencyId_example", contactId: "contactId_example", accountTypeId: "accountTypeId_example", parentAccountId: "parentAccountId_example", accountCategory: "accountCategory_example") // AccountCreateDto |  (optional)
+let accountCreateDto = AccountCreateDto(id: 123, timestamp: Date(), group: false, frozen: false, name: "name_example", code: "code_example", path: "path_example", _prefix: "_prefix_example", currencyId: "currencyId_example", contactId: "contactId_example", accountTypeId: "accountTypeId_example", parentAccountId: "parentAccountId_example", accountCategory: "accountCategory_example", isContra: false, isMonetary: false, incomeStatementSubType: "incomeStatementSubType_example") // AccountCreateDto |  (optional)
 
 // Get root accounts
 AccountsAPI.createAccountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountCreateDto: accountCreateDto) { (response, error) in
@@ -288,7 +288,7 @@ let tenantId = 987 // UUID |
 let accountId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let accountingEntryCreateDto = AccountingEntryCreateDto(id: 123, timestamp: Date(), description: "description_example", date: Date(), amount: 123, currencyId: "currencyId_example", debitAccountId: "debitAccountId_example", creditAccountId: "creditAccountId_example", journalEntryId: "journalEntryId_example", accountingEntryType: "accountingEntryType_example") // AccountingEntryCreateDto |  (optional)
+let accountingEntryCreateDto = AccountingEntryCreateDto(id: 123, timestamp: Date(), journalEntryId: "journalEntryId_example", accountId: "accountId_example", direction: "direction_example", transactionAmount: 123, transactionCurrencyId: "transactionCurrencyId_example", description: "description_example") // AccountingEntryCreateDto |  (optional)
 
 // Create account credit
 AccountsAPI.createAccountCreditAsync(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountingEntryCreateDto: accountingEntryCreateDto) { (response, error) in
@@ -346,7 +346,7 @@ let tenantId = 987 // UUID |
 let accountId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let accountingEntryCreateDto = AccountingEntryCreateDto(id: 123, timestamp: Date(), description: "description_example", date: Date(), amount: 123, currencyId: "currencyId_example", debitAccountId: "debitAccountId_example", creditAccountId: "creditAccountId_example", journalEntryId: "journalEntryId_example", accountingEntryType: "accountingEntryType_example") // AccountingEntryCreateDto |  (optional)
+let accountingEntryCreateDto = AccountingEntryCreateDto(id: 123, timestamp: Date(), journalEntryId: "journalEntryId_example", accountId: "accountId_example", direction: "direction_example", transactionAmount: 123, transactionCurrencyId: "transactionCurrencyId_example", description: "description_example") // AccountingEntryCreateDto |  (optional)
 
 // Create account debit
 AccountsAPI.createAccountDebitAsync(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountingEntryCreateDto: accountingEntryCreateDto) { (response, error) in
@@ -404,7 +404,7 @@ let tenantId = 987 // UUID |
 let accountId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let accountingEntryCreateDto = AccountingEntryCreateDto(id: 123, timestamp: Date(), description: "description_example", date: Date(), amount: 123, currencyId: "currencyId_example", debitAccountId: "debitAccountId_example", creditAccountId: "creditAccountId_example", journalEntryId: "journalEntryId_example", accountingEntryType: "accountingEntryType_example") // AccountingEntryCreateDto |  (optional)
+let accountingEntryCreateDto = AccountingEntryCreateDto(id: 123, timestamp: Date(), journalEntryId: "journalEntryId_example", accountId: "accountId_example", direction: "direction_example", transactionAmount: 123, transactionCurrencyId: "transactionCurrencyId_example", description: "description_example") // AccountingEntryCreateDto |  (optional)
 
 // Create account entry
 AccountsAPI.createAccountEntryAsync(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountingEntryCreateDto: accountingEntryCreateDto) { (response, error) in
@@ -801,10 +801,10 @@ Get account aggregate.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let currencyId = "currencyId_example" // String |  (optional)
+let currencyId = "currencyId_example" // String |  (optional) (default to "USD.USA")
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let accountDto = [AccountDto(id: "id_example", timestamp: Date(), group: false, frozen: false, name: "name_example", code: "code_example", path: "path_example", title: "title_example", _prefix: "_prefix_example", balance: 123, currencyId: "currencyId_example", contactId: "contactId_example", accountType: "accountType_example", qualifiedName: "qualifiedName_example", accountTypeId: "accountTypeId_example", debitsBalance: 123, creditsBalance: 123, balanceInUsd: 123, debitsBalanceInUsd: 123, creditsBalanceInUsd: 123, forexRate: 123, parentAccountId: "parentAccountId_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example", childrenAccountsCount: 123, accountCategory: "accountCategory_example", balanceAmount: Money(amount: 123, currency: CurrencyId(value: "value_example", code: "code_example", country: "country_example")), creditsBalanceAmount: nil, debitsBalanceAmount: nil, balanceAmountInUsd: nil, debitsBalanceAmountInUsd: nil, creditsBalanceAmountInUsd: nil)] // [AccountDto] |  (optional)
+let accountDto = [AccountDto(id: "id_example", timestamp: Date(), group: false, frozen: false, name: "name_example", code: "code_example", path: "path_example", title: "title_example", _prefix: "_prefix_example", balance: 123, currencyId: "currencyId_example", contactId: "contactId_example", accountType: "accountType_example", qualifiedName: "qualifiedName_example", accountTypeId: "accountTypeId_example", debitsBalance: 123, creditsBalance: 123, balanceInUsd: 123, debitsBalanceInUsd: 123, creditsBalanceInUsd: 123, forexRate: 123, parentAccountId: "parentAccountId_example", tenantId: "tenantId_example", enrollmentId: "enrollmentId_example", childrenAccountsCount: 123, accountCategory: "accountCategory_example", isContra: false, isMonetary: false, incomeStatementSubType: "incomeStatementSubType_example", normalBalance: "normalBalance_example", balanceAmount: Money(amount: 123, currency: CurrencyId(value: "value_example", code: "code_example", country: "country_example")), creditsBalanceAmount: nil, debitsBalanceAmount: nil, balanceAmountInUsd: nil, debitsBalanceAmountInUsd: nil, creditsBalanceAmountInUsd: nil)] // [AccountDto] |  (optional)
 
 // Get account aggregate
 AccountsAPI.getAccountAggregateAsync(tenantId: tenantId, currencyId: currencyId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountDto: accountDto) { (response, error) in
@@ -824,7 +824,7 @@ AccountsAPI.getAccountAggregateAsync(tenantId: tenantId, currencyId: currencyId,
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
- **currencyId** | **String** |  | [optional] 
+ **currencyId** | **String** |  | [optional] [default to &quot;USD.USA&quot;]
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
  **accountDto** | [**[AccountDto]**](AccountDto.md) |  | [optional] 
@@ -2206,7 +2206,7 @@ let tenantId = 987 // UUID |
 let accountId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let accountUpdateDto = AccountUpdateDto(group: false, frozen: false, name: "name_example", code: "code_example", path: "path_example", _prefix: "_prefix_example", currencyId: "currencyId_example", contactId: "contactId_example", accountTypeId: "accountTypeId_example", parentAccountId: "parentAccountId_example", accountCategory: "accountCategory_example") // AccountUpdateDto |  (optional)
+let accountUpdateDto = AccountUpdateDto(group: false, frozen: false, name: "name_example", code: "code_example", path: "path_example", _prefix: "_prefix_example", currencyId: "currencyId_example", contactId: "contactId_example", accountTypeId: "accountTypeId_example", parentAccountId: "parentAccountId_example", accountCategory: "accountCategory_example", isContra: false, isMonetary: false, incomeStatementSubType: "incomeStatementSubType_example") // AccountUpdateDto |  (optional)
 
 // Update an account
 AccountsAPI.updateAccountAsync(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountUpdateDto: accountUpdateDto) { (response, error) in
@@ -2265,7 +2265,7 @@ let accountId = 987 // UUID |
 let entryId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let accountingEntryUpdateDto = AccountingEntryUpdateDto(description: "description_example", amount: 123, date: Date(), currencyId: "currencyId_example", debitAccountId: "debitAccountId_example", creditAccountId: "creditAccountId_example", journalEntryId: "journalEntryId_example", accountingEntryType: "accountingEntryType_example") // AccountingEntryUpdateDto |  (optional)
+let accountingEntryUpdateDto = AccountingEntryUpdateDto(journalEntryId: "journalEntryId_example", accountId: "accountId_example", direction: "direction_example", transactionAmount: 123, transactionCurrencyId: "transactionCurrencyId_example", description: "description_example") // AccountingEntryUpdateDto |  (optional)
 
 // Update account entry
 AccountsAPI.updateAccountEntryAsync(tenantId: tenantId, accountId: accountId, entryId: entryId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountingEntryUpdateDto: accountingEntryUpdateDto) { (response, error) in

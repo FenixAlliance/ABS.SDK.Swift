@@ -6,8 +6,8 @@ OpenAPIClient/Classes/OpenAPIs/APIHelper.swift
 OpenAPIClient/Classes/OpenAPIs/APIs.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/AvatarsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/BlobsAPI.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/CompletionsAPI.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/FenixAlliancePortalsWebsiteAPI.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/EditorAssetsAPI.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/FenixAllianceABSWebAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/FilesAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/RadzenEditorAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/UploadsAPI.swift
@@ -29,6 +29,7 @@ OpenAPIClient/Classes/OpenAPIs/Models/HttpValidationProblemDetails.swift
 OpenAPIClient/Classes/OpenAPIs/Models/InfoRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/InfoResponse.swift
 OpenAPIClient/Classes/OpenAPIs/Models/LoginRequest.swift
+OpenAPIClient/Classes/OpenAPIs/Models/ProblemDetails.swift
 OpenAPIClient/Classes/OpenAPIs/Models/RefreshRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/RegisterRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ResendConfirmationEmailRequest.swift
@@ -46,10 +47,10 @@ docs/AvatarsAPI.md
 docs/Blob.md
 docs/BlobEnvelope.md
 docs/BlobsAPI.md
-docs/CompletionsAPI.md
+docs/EditorAssetsAPI.md
 docs/EmptyEnvelope.md
 docs/ErrorEnvelope.md
-docs/FenixAlliancePortalsWebsiteAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/FileUploadDto.md
 docs/FileUploadDtoEnvelope.md
 docs/FilesAPI.md
@@ -58,6 +59,7 @@ docs/HttpValidationProblemDetails.md
 docs/InfoRequest.md
 docs/InfoResponse.md
 docs/LoginRequest.md
+docs/ProblemDetails.md
 docs/RadzenEditorAPI.md
 docs/RefreshRequest.md
 docs/RegisterRequest.md

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **id** | **UUID** |  | [optional] 
 **timestamp** | **Date** |  | [optional] 
 **title** | **String** |  | [optional] 
-**taskCategoryID** | **String** |  | [optional] 
+**taskCategoryId** | **String** |  | [optional] 
 **displayInTimeTracker** | **Bool** |  | [optional] 
 **requiresDescription** | **Bool** |  | [optional] 
 

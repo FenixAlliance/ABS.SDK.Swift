@@ -185,15 +185,14 @@ open class WebsiteThemesAPI {
      Get all website themes
      
      - parameter tenantId: (query)  
-     - parameter oDataQueryOptions: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getWebsiteThemesAsync(tenantId: UUID, oDataQueryOptions: WebsiteThemeDtoODataQueryOptions? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: WebsiteThemeDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getWebsiteThemesAsyncWithRequestBuilder(tenantId: tenantId, oDataQueryOptions: oDataQueryOptions, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getWebsiteThemesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: WebsiteThemeDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getWebsiteThemesAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -208,12 +207,11 @@ open class WebsiteThemesAPI {
      - GET /api/v2/ContentService/WebsiteThemes
      - Retrieves all website themes for the specified tenant.
      - parameter tenantId: (query)  
-     - parameter oDataQueryOptions: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<WebsiteThemeDtoListEnvelope> 
      */
-    open class func getWebsiteThemesAsyncWithRequestBuilder(tenantId: UUID, oDataQueryOptions: WebsiteThemeDtoODataQueryOptions? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<WebsiteThemeDtoListEnvelope> {
+    open class func getWebsiteThemesAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<WebsiteThemeDtoListEnvelope> {
         let localVariablePath = "/api/v2/ContentService/WebsiteThemes"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -221,7 +219,6 @@ open class WebsiteThemesAPI {
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-            "oDataQueryOptions": (wrappedValue: oDataQueryOptions?.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 
@@ -240,15 +237,14 @@ open class WebsiteThemesAPI {
      Get website themes count
      
      - parameter tenantId: (query)  
-     - parameter oDataQueryOptions: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getWebsiteThemesCountAsync(tenantId: UUID, oDataQueryOptions: WebsiteThemeDtoODataQueryOptions? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getWebsiteThemesCountAsyncWithRequestBuilder(tenantId: tenantId, oDataQueryOptions: oDataQueryOptions, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getWebsiteThemesCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getWebsiteThemesCountAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -263,12 +259,11 @@ open class WebsiteThemesAPI {
      - GET /api/v2/ContentService/WebsiteThemes/Count
      - Returns the count of website themes for the specified tenant.
      - parameter tenantId: (query)  
-     - parameter oDataQueryOptions: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getWebsiteThemesCountAsyncWithRequestBuilder(tenantId: UUID, oDataQueryOptions: WebsiteThemeDtoODataQueryOptions? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getWebsiteThemesCountAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/ContentService/WebsiteThemes/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -276,7 +271,6 @@ open class WebsiteThemesAPI {
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-            "oDataQueryOptions": (wrappedValue: oDataQueryOptions?.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 

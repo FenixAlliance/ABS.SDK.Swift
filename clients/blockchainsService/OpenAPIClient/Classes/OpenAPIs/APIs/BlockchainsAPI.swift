@@ -310,15 +310,14 @@ open class BlockchainsAPI {
      
      - parameter tenantId: (query)  
      - parameter blockchainId: (path)  
-     - parameter oDataQueryOptions: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getBlockchainBlocksAsync(tenantId: UUID, blockchainId: UUID, oDataQueryOptions: BlockchainBlockDtoODataQueryOptions? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BlockchainBlockDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getBlockchainBlocksAsyncWithRequestBuilder(tenantId: tenantId, blockchainId: blockchainId, oDataQueryOptions: oDataQueryOptions, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getBlockchainBlocksAsync(tenantId: UUID, blockchainId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BlockchainBlockDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getBlockchainBlocksAsyncWithRequestBuilder(tenantId: tenantId, blockchainId: blockchainId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -333,12 +332,11 @@ open class BlockchainsAPI {
      - GET /api/v2/BlockchainsService/Blockchains/{blockchainId}/Blocks
      - parameter tenantId: (query)  
      - parameter blockchainId: (path)  
-     - parameter oDataQueryOptions: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<BlockchainBlockDtoListEnvelope> 
      */
-    open class func getBlockchainBlocksAsyncWithRequestBuilder(tenantId: UUID, blockchainId: UUID, oDataQueryOptions: BlockchainBlockDtoODataQueryOptions? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<BlockchainBlockDtoListEnvelope> {
+    open class func getBlockchainBlocksAsyncWithRequestBuilder(tenantId: UUID, blockchainId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<BlockchainBlockDtoListEnvelope> {
         var localVariablePath = "/api/v2/BlockchainsService/Blockchains/{blockchainId}/Blocks"
         let blockchainIdPreEscape = "\(APIHelper.mapValueToPathItem(blockchainId))"
         let blockchainIdPostEscape = blockchainIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -349,7 +347,6 @@ open class BlockchainsAPI {
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-            "oDataQueryOptions": (wrappedValue: oDataQueryOptions?.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 
@@ -369,15 +366,14 @@ open class BlockchainsAPI {
      
      - parameter tenantId: (query)  
      - parameter blockchainId: (path)  
-     - parameter oDataQueryOptions: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getBlockchainBlocksCountAsync(tenantId: UUID, blockchainId: UUID, oDataQueryOptions: BlockchainBlockDtoODataQueryOptions? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getBlockchainBlocksCountAsyncWithRequestBuilder(tenantId: tenantId, blockchainId: blockchainId, oDataQueryOptions: oDataQueryOptions, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getBlockchainBlocksCountAsync(tenantId: UUID, blockchainId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getBlockchainBlocksCountAsyncWithRequestBuilder(tenantId: tenantId, blockchainId: blockchainId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -392,12 +388,11 @@ open class BlockchainsAPI {
      - GET /api/v2/BlockchainsService/Blockchains/{blockchainId}/Blocks/Count
      - parameter tenantId: (query)  
      - parameter blockchainId: (path)  
-     - parameter oDataQueryOptions: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getBlockchainBlocksCountAsyncWithRequestBuilder(tenantId: UUID, blockchainId: UUID, oDataQueryOptions: BlockchainBlockDtoODataQueryOptions? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getBlockchainBlocksCountAsyncWithRequestBuilder(tenantId: UUID, blockchainId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/BlockchainsService/Blockchains/{blockchainId}/Blocks/Count"
         let blockchainIdPreEscape = "\(APIHelper.mapValueToPathItem(blockchainId))"
         let blockchainIdPostEscape = blockchainIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -408,7 +403,6 @@ open class BlockchainsAPI {
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-            "oDataQueryOptions": (wrappedValue: oDataQueryOptions?.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 
@@ -484,15 +478,14 @@ open class BlockchainsAPI {
      Get all blockchains
      
      - parameter tenantId: (query)  
-     - parameter oDataQueryOptions: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getBlockchainsAsync(tenantId: UUID, oDataQueryOptions: BlockchainDtoODataQueryOptions? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BlockchainDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getBlockchainsAsyncWithRequestBuilder(tenantId: tenantId, oDataQueryOptions: oDataQueryOptions, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getBlockchainsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BlockchainDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getBlockchainsAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -507,12 +500,11 @@ open class BlockchainsAPI {
      - GET /api/v2/BlockchainsService/Blockchains
      - Retrieves all blockchains for the specified tenant.
      - parameter tenantId: (query)  
-     - parameter oDataQueryOptions: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<BlockchainDtoListEnvelope> 
      */
-    open class func getBlockchainsAsyncWithRequestBuilder(tenantId: UUID, oDataQueryOptions: BlockchainDtoODataQueryOptions? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<BlockchainDtoListEnvelope> {
+    open class func getBlockchainsAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<BlockchainDtoListEnvelope> {
         let localVariablePath = "/api/v2/BlockchainsService/Blockchains"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -520,7 +512,6 @@ open class BlockchainsAPI {
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-            "oDataQueryOptions": (wrappedValue: oDataQueryOptions?.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 
@@ -539,15 +530,14 @@ open class BlockchainsAPI {
      Get blockchains count
      
      - parameter tenantId: (query)  
-     - parameter oDataQueryOptions: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getBlockchainsCountAsync(tenantId: UUID, oDataQueryOptions: BlockchainDtoODataQueryOptions? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getBlockchainsCountAsyncWithRequestBuilder(tenantId: tenantId, oDataQueryOptions: oDataQueryOptions, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getBlockchainsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getBlockchainsCountAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -562,12 +552,11 @@ open class BlockchainsAPI {
      - GET /api/v2/BlockchainsService/Blockchains/Count
      - Returns the count of blockchains for the specified tenant.
      - parameter tenantId: (query)  
-     - parameter oDataQueryOptions: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getBlockchainsCountAsyncWithRequestBuilder(tenantId: UUID, oDataQueryOptions: BlockchainDtoODataQueryOptions? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getBlockchainsCountAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/BlockchainsService/Blockchains/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -575,7 +564,6 @@ open class BlockchainsAPI {
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-            "oDataQueryOptions": (wrappedValue: oDataQueryOptions?.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 

@@ -69,6 +69,11 @@ OpenAPIClient/Classes/OpenAPIs/Models/MarketingListUpdateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/NewsletterCreateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/NewsletterDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/NewsletterDtoEnvelope.swift
+OpenAPIClient/Classes/OpenAPIs/Models/NewsletterSubscriptionCreateDto.swift
+OpenAPIClient/Classes/OpenAPIs/Models/NewsletterSubscriptionDto.swift
+OpenAPIClient/Classes/OpenAPIs/Models/NewsletterSubscriptionDtoEnvelope.swift
+OpenAPIClient/Classes/OpenAPIs/Models/NewsletterSubscriptionDtoListEnvelope.swift
+OpenAPIClient/Classes/OpenAPIs/Models/NewsletterSubscriptionUpdateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/NewsletterUpdateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/Operation.swift
 OpenAPIClient/Classes/OpenAPIs/Models/OrderDto.swift
@@ -149,6 +154,11 @@ docs/MarketingListsAPI.md
 docs/NewsletterCreateDto.md
 docs/NewsletterDto.md
 docs/NewsletterDtoEnvelope.md
+docs/NewsletterSubscriptionCreateDto.md
+docs/NewsletterSubscriptionDto.md
+docs/NewsletterSubscriptionDtoEnvelope.md
+docs/NewsletterSubscriptionDtoListEnvelope.md
+docs/NewsletterSubscriptionUpdateDto.md
 docs/NewsletterSubscriptionsAPI.md
 docs/NewsletterUpdateDto.md
 docs/NewslettersAPI.md

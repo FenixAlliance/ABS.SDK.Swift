@@ -13,12 +13,51 @@ import AnyCodable
 open class FilesAPI {
 
     /**
+     * enum for parameter publicAccessType
+     */
+    public enum PublicAccessType_createFileAsync: String, CaseIterable {
+        case _false = "false"
+        case container = "Container"
+        case blob = "Blob"
+        case unknown = "Unknown"
+    }
+
+    /**
+     * enum for parameter purpose
+     */
+    public enum Purpose_createFileAsync: String, CaseIterable {
+        case unknown = "Unknown"
+        case identityAvatar = "IdentityAvatar"
+        case identityBanner = "IdentityBanner"
+        case profileAsset = "ProfileAsset"
+        case engagementInline = "EngagementInline"
+        case engagementAttachment = "EngagementAttachment"
+        case messageAttachment = "MessageAttachment"
+        case socialPost = "SocialPost"
+        case recordAttachment = "RecordAttachment"
+        case aiGenerated = "AiGenerated"
+        case systemArtifact = "SystemArtifact"
+        case temporary = "Temporary"
+    }
+
+    /**
+     * enum for parameter appFileSource
+     */
+    public enum AppFileSource_createFileAsync: String, CaseIterable {
+        case unknown = "Unknown"
+        case httpUpload = "HttpUpload"
+        case integration = "Integration"
+        case internalProcess = "InternalProcess"
+        case apiClient = "ApiClient"
+        case workflowEngine = "WorkflowEngine"
+    }
+
+    /**
 
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter id: (form)  (optional)
-     - parameter timestamp: (form)  (optional)
+     - parameter file: (form)  (optional)
      - parameter notes: (form)  (optional)
      - parameter title: (form)  (optional)
      - parameter author: (form)  (optional)
@@ -29,13 +68,32 @@ open class FilesAPI {
      - parameter validResponse: (form)  (optional)
      - parameter parentFileUploadId: (form)  (optional)
      - parameter filePath: (form)  (optional)
-     - parameter file: (form)  (optional)
+     - parameter publicAccessType: (form)  (optional)
+     - parameter purpose: (form)  (optional)
+     - parameter socialProfileIdValue: (form)  (optional)
+     - parameter appFileContent: (form)  (optional)
+     - parameter appFileSha256: (form)  (optional)
+     - parameter appFileCreatedAtUtc: (form)  (optional)
+     - parameter appFileUserIdValue: (form)  (optional)
+     - parameter appFileTenantIdValue: (form)  (optional)
+     - parameter appFileEnrollmentIdValue: (form)  (optional)
+     - parameter appFileSource: (form)  (optional)
+     - parameter appFileLength: (form)  (optional)
+     - parameter appFileName: (form)  (optional)
+     - parameter appFileFileName: (form)  (optional)
+     - parameter appFileLastModified: (form)  (optional)
+     - parameter appFileSize: (form)  (optional)
+     - parameter appFileContentType: (form)  (optional)
+     - parameter appFileContentDisposition: (form)  (optional)
+     - parameter appFileHeaders: (form)  (optional)
+     - parameter id: (form)  (optional)
+     - parameter timestamp: (form)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func createFileAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, id: UUID? = nil, timestamp: Date? = nil, notes: String? = nil, title: String? = nil, author: String? = nil, isFolder: Bool? = nil, fileName: String? = nil, abstract: String? = nil, keyWords: String? = nil, validResponse: Bool? = nil, parentFileUploadId: String? = nil, filePath: String? = nil, file: URL? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return createFileAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, id: id, timestamp: timestamp, notes: notes, title: title, author: author, isFolder: isFolder, fileName: fileName, abstract: abstract, keyWords: keyWords, validResponse: validResponse, parentFileUploadId: parentFileUploadId, filePath: filePath, file: file).execute(apiResponseQueue) { result in
+    open class func createFileAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, file: URL? = nil, notes: String? = nil, title: String? = nil, author: String? = nil, isFolder: Bool? = nil, fileName: String? = nil, abstract: String? = nil, keyWords: String? = nil, validResponse: Bool? = nil, parentFileUploadId: String? = nil, filePath: String? = nil, publicAccessType: PublicAccessType_createFileAsync? = nil, purpose: Purpose_createFileAsync? = nil, socialProfileIdValue: UUID? = nil, appFileContent: Data? = nil, appFileSha256: String? = nil, appFileCreatedAtUtc: Date? = nil, appFileUserIdValue: UUID? = nil, appFileTenantIdValue: UUID? = nil, appFileEnrollmentIdValue: UUID? = nil, appFileSource: AppFileSource_createFileAsync? = nil, appFileLength: Int64? = nil, appFileName: String? = nil, appFileFileName: String? = nil, appFileLastModified: Date? = nil, appFileSize: Int64? = nil, appFileContentType: String? = nil, appFileContentDisposition: String? = nil, appFileHeaders: [String: String]? = nil, id: UUID? = nil, timestamp: Date? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return createFileAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, file: file, notes: notes, title: title, author: author, isFolder: isFolder, fileName: fileName, abstract: abstract, keyWords: keyWords, validResponse: validResponse, parentFileUploadId: parentFileUploadId, filePath: filePath, publicAccessType: publicAccessType, purpose: purpose, socialProfileIdValue: socialProfileIdValue, appFileContent: appFileContent, appFileSha256: appFileSha256, appFileCreatedAtUtc: appFileCreatedAtUtc, appFileUserIdValue: appFileUserIdValue, appFileTenantIdValue: appFileTenantIdValue, appFileEnrollmentIdValue: appFileEnrollmentIdValue, appFileSource: appFileSource, appFileLength: appFileLength, appFileName: appFileName, appFileFileName: appFileFileName, appFileLastModified: appFileLastModified, appFileSize: appFileSize, appFileContentType: appFileContentType, appFileContentDisposition: appFileContentDisposition, appFileHeaders: appFileHeaders, id: id, timestamp: timestamp).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -50,8 +108,7 @@ open class FilesAPI {
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter id: (form)  (optional)
-     - parameter timestamp: (form)  (optional)
+     - parameter file: (form)  (optional)
      - parameter notes: (form)  (optional)
      - parameter title: (form)  (optional)
      - parameter author: (form)  (optional)
@@ -62,15 +119,33 @@ open class FilesAPI {
      - parameter validResponse: (form)  (optional)
      - parameter parentFileUploadId: (form)  (optional)
      - parameter filePath: (form)  (optional)
-     - parameter file: (form)  (optional)
+     - parameter publicAccessType: (form)  (optional)
+     - parameter purpose: (form)  (optional)
+     - parameter socialProfileIdValue: (form)  (optional)
+     - parameter appFileContent: (form)  (optional)
+     - parameter appFileSha256: (form)  (optional)
+     - parameter appFileCreatedAtUtc: (form)  (optional)
+     - parameter appFileUserIdValue: (form)  (optional)
+     - parameter appFileTenantIdValue: (form)  (optional)
+     - parameter appFileEnrollmentIdValue: (form)  (optional)
+     - parameter appFileSource: (form)  (optional)
+     - parameter appFileLength: (form)  (optional)
+     - parameter appFileName: (form)  (optional)
+     - parameter appFileFileName: (form)  (optional)
+     - parameter appFileLastModified: (form)  (optional)
+     - parameter appFileSize: (form)  (optional)
+     - parameter appFileContentType: (form)  (optional)
+     - parameter appFileContentDisposition: (form)  (optional)
+     - parameter appFileHeaders: (form)  (optional)
+     - parameter id: (form)  (optional)
+     - parameter timestamp: (form)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func createFileAsyncWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, id: UUID? = nil, timestamp: Date? = nil, notes: String? = nil, title: String? = nil, author: String? = nil, isFolder: Bool? = nil, fileName: String? = nil, abstract: String? = nil, keyWords: String? = nil, validResponse: Bool? = nil, parentFileUploadId: String? = nil, filePath: String? = nil, file: URL? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func createFileAsyncWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, file: URL? = nil, notes: String? = nil, title: String? = nil, author: String? = nil, isFolder: Bool? = nil, fileName: String? = nil, abstract: String? = nil, keyWords: String? = nil, validResponse: Bool? = nil, parentFileUploadId: String? = nil, filePath: String? = nil, publicAccessType: PublicAccessType_createFileAsync? = nil, purpose: Purpose_createFileAsync? = nil, socialProfileIdValue: UUID? = nil, appFileContent: Data? = nil, appFileSha256: String? = nil, appFileCreatedAtUtc: Date? = nil, appFileUserIdValue: UUID? = nil, appFileTenantIdValue: UUID? = nil, appFileEnrollmentIdValue: UUID? = nil, appFileSource: AppFileSource_createFileAsync? = nil, appFileLength: Int64? = nil, appFileName: String? = nil, appFileFileName: String? = nil, appFileLastModified: Date? = nil, appFileSize: Int64? = nil, appFileContentType: String? = nil, appFileContentDisposition: String? = nil, appFileHeaders: [String: String]? = nil, id: UUID? = nil, timestamp: Date? = nil) -> RequestBuilder<EmptyEnvelope> {
         let localVariablePath = "/api/v2/StorageService/Files"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableFormParams: [String: Any?] = [
-            "id": id?.encodeToJSON(),
-            "timestamp": timestamp?.encodeToJSON(),
+            "file": file?.encodeToJSON(),
             "notes": notes?.encodeToJSON(),
             "title": title?.encodeToJSON(),
             "author": author?.encodeToJSON(),
@@ -81,7 +156,26 @@ open class FilesAPI {
             "validResponse": validResponse?.encodeToJSON(),
             "parentFileUploadId": parentFileUploadId?.encodeToJSON(),
             "filePath": filePath?.encodeToJSON(),
-            "file": file?.encodeToJSON(),
+            "publicAccessType": publicAccessType?.encodeToJSON(),
+            "purpose": purpose?.encodeToJSON(),
+            "socialProfileId.value": socialProfileIdValue?.encodeToJSON(),
+            "appFile.content": appFileContent?.encodeToJSON(),
+            "appFile.sha256": appFileSha256?.encodeToJSON(),
+            "appFile.createdAtUtc": appFileCreatedAtUtc?.encodeToJSON(),
+            "appFile.userId.value": appFileUserIdValue?.encodeToJSON(),
+            "appFile.tenantId.value": appFileTenantIdValue?.encodeToJSON(),
+            "appFile.enrollmentId.value": appFileEnrollmentIdValue?.encodeToJSON(),
+            "appFile.source": appFileSource?.encodeToJSON(),
+            "appFile.length": appFileLength?.encodeToJSON(),
+            "appFile.name": appFileName?.encodeToJSON(),
+            "appFile.fileName": appFileFileName?.encodeToJSON(),
+            "appFile.lastModified": appFileLastModified?.encodeToJSON(),
+            "appFile.size": appFileSize?.encodeToJSON(),
+            "appFile.contentType": appFileContentType?.encodeToJSON(),
+            "appFile.contentDisposition": appFileContentDisposition?.encodeToJSON(),
+            "appFile.headers": appFileHeaders?.encodeToJSON(),
+            "id": id?.encodeToJSON(),
+            "timestamp": timestamp?.encodeToJSON(),
         ]
 
         let localVariableNonNullParameters = APIHelper.rejectNil(localVariableFormParams)
@@ -115,7 +209,7 @@ open class FilesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func deleteFileAsync(fileId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: FileUploadDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func deleteFileAsync(fileId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
         return deleteFileAsyncWithRequestBuilder(fileId: fileId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -132,9 +226,9 @@ open class FilesAPI {
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - returns: RequestBuilder<FileUploadDtoEnvelope> 
+     - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func deleteFileAsyncWithRequestBuilder(fileId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<FileUploadDtoEnvelope> {
+    open class func deleteFileAsyncWithRequestBuilder(fileId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/StorageService/Files/{fileId}"
         let fileIdPreEscape = "\(APIHelper.mapValueToPathItem(fileId))"
         let fileIdPostEscape = fileIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -154,7 +248,7 @@ open class FilesAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<FileUploadDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
@@ -269,6 +363,60 @@ open class FilesAPI {
 
     /**
 
+     - parameter fileId: (path)  
+     - parameter tenantId: (query)  (optional)
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getFileThumbnailAsync(fileId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: URL?, _ error: Error?) -> Void)) -> RequestTask {
+        return getFileThumbnailAsyncWithRequestBuilder(fileId: fileId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     - GET /api/v2/StorageService/Files/{fileId}/Thumbnail
+     - parameter fileId: (path)  
+     - parameter tenantId: (query)  (optional)
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<URL> 
+     */
+    open class func getFileThumbnailAsyncWithRequestBuilder(fileId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<URL> {
+        var localVariablePath = "/api/v2/StorageService/Files/{fileId}/Thumbnail"
+        let fileIdPreEscape = "\(APIHelper.mapValueToPathItem(fileId))"
+        let fileIdPostEscape = fileIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{fileId}", with: fileIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<URL>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
@@ -318,10 +466,72 @@ open class FilesAPI {
 
     /**
 
+     - parameter tenantId: (query)  (optional)
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getFilesCountAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int64?, _ error: Error?) -> Void)) -> RequestTask {
+        return getFilesCountAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     - GET /api/v2/StorageService/Files/Count
+     - parameter tenantId: (query)  (optional)
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<Int64> 
+     */
+    open class func getFilesCountAsyncWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int64> {
+        let localVariablePath = "/api/v2/StorageService/Files/Count"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId?.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Int64>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     * enum for parameter appFileSource
+     */
+    public enum AppFileSource_updateFileAsync: String, CaseIterable {
+        case unknown = "Unknown"
+        case httpUpload = "HttpUpload"
+        case integration = "Integration"
+        case internalProcess = "InternalProcess"
+        case apiClient = "ApiClient"
+        case workflowEngine = "WorkflowEngine"
+    }
+
+    /**
+
      - parameter fileId: (path)  
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter file: (form)  (optional)
      - parameter notes: (form)  (optional)
      - parameter metadata: (form)  (optional)
      - parameter title: (form)  (optional)
@@ -333,13 +543,27 @@ open class FilesAPI {
      - parameter validResponse: (form)  (optional)
      - parameter parentFileUploadID: (form)  (optional)
      - parameter filePath: (form)  (optional)
-     - parameter file: (form)  (optional)
+     - parameter appFileContent: (form)  (optional)
+     - parameter appFileSha256: (form)  (optional)
+     - parameter appFileCreatedAtUtc: (form)  (optional)
+     - parameter appFileUserIdValue: (form)  (optional)
+     - parameter appFileTenantIdValue: (form)  (optional)
+     - parameter appFileEnrollmentIdValue: (form)  (optional)
+     - parameter appFileSource: (form)  (optional)
+     - parameter appFileLength: (form)  (optional)
+     - parameter appFileName: (form)  (optional)
+     - parameter appFileFileName: (form)  (optional)
+     - parameter appFileLastModified: (form)  (optional)
+     - parameter appFileSize: (form)  (optional)
+     - parameter appFileContentType: (form)  (optional)
+     - parameter appFileContentDisposition: (form)  (optional)
+     - parameter appFileHeaders: (form)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func updateFileAsync(fileId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, notes: String? = nil, metadata: String? = nil, title: String? = nil, author: String? = nil, isFolder: Bool? = nil, fileName: String? = nil, abstract: String? = nil, keyWords: String? = nil, validResponse: Bool? = nil, parentFileUploadID: String? = nil, filePath: String? = nil, file: URL? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: FileUploadDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return updateFileAsyncWithRequestBuilder(fileId: fileId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, notes: notes, metadata: metadata, title: title, author: author, isFolder: isFolder, fileName: fileName, abstract: abstract, keyWords: keyWords, validResponse: validResponse, parentFileUploadID: parentFileUploadID, filePath: filePath, file: file).execute(apiResponseQueue) { result in
+    open class func updateFileAsync(fileId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, file: URL? = nil, notes: String? = nil, metadata: String? = nil, title: String? = nil, author: String? = nil, isFolder: Bool? = nil, fileName: String? = nil, abstract: String? = nil, keyWords: String? = nil, validResponse: Bool? = nil, parentFileUploadID: String? = nil, filePath: String? = nil, appFileContent: Data? = nil, appFileSha256: String? = nil, appFileCreatedAtUtc: Date? = nil, appFileUserIdValue: UUID? = nil, appFileTenantIdValue: UUID? = nil, appFileEnrollmentIdValue: UUID? = nil, appFileSource: AppFileSource_updateFileAsync? = nil, appFileLength: Int64? = nil, appFileName: String? = nil, appFileFileName: String? = nil, appFileLastModified: Date? = nil, appFileSize: Int64? = nil, appFileContentType: String? = nil, appFileContentDisposition: String? = nil, appFileHeaders: [String: String]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return updateFileAsyncWithRequestBuilder(fileId: fileId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, file: file, notes: notes, metadata: metadata, title: title, author: author, isFolder: isFolder, fileName: fileName, abstract: abstract, keyWords: keyWords, validResponse: validResponse, parentFileUploadID: parentFileUploadID, filePath: filePath, appFileContent: appFileContent, appFileSha256: appFileSha256, appFileCreatedAtUtc: appFileCreatedAtUtc, appFileUserIdValue: appFileUserIdValue, appFileTenantIdValue: appFileTenantIdValue, appFileEnrollmentIdValue: appFileEnrollmentIdValue, appFileSource: appFileSource, appFileLength: appFileLength, appFileName: appFileName, appFileFileName: appFileFileName, appFileLastModified: appFileLastModified, appFileSize: appFileSize, appFileContentType: appFileContentType, appFileContentDisposition: appFileContentDisposition, appFileHeaders: appFileHeaders).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -355,6 +579,7 @@ open class FilesAPI {
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter file: (form)  (optional)
      - parameter notes: (form)  (optional)
      - parameter metadata: (form)  (optional)
      - parameter title: (form)  (optional)
@@ -366,16 +591,31 @@ open class FilesAPI {
      - parameter validResponse: (form)  (optional)
      - parameter parentFileUploadID: (form)  (optional)
      - parameter filePath: (form)  (optional)
-     - parameter file: (form)  (optional)
-     - returns: RequestBuilder<FileUploadDtoEnvelope> 
+     - parameter appFileContent: (form)  (optional)
+     - parameter appFileSha256: (form)  (optional)
+     - parameter appFileCreatedAtUtc: (form)  (optional)
+     - parameter appFileUserIdValue: (form)  (optional)
+     - parameter appFileTenantIdValue: (form)  (optional)
+     - parameter appFileEnrollmentIdValue: (form)  (optional)
+     - parameter appFileSource: (form)  (optional)
+     - parameter appFileLength: (form)  (optional)
+     - parameter appFileName: (form)  (optional)
+     - parameter appFileFileName: (form)  (optional)
+     - parameter appFileLastModified: (form)  (optional)
+     - parameter appFileSize: (form)  (optional)
+     - parameter appFileContentType: (form)  (optional)
+     - parameter appFileContentDisposition: (form)  (optional)
+     - parameter appFileHeaders: (form)  (optional)
+     - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func updateFileAsyncWithRequestBuilder(fileId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, notes: String? = nil, metadata: String? = nil, title: String? = nil, author: String? = nil, isFolder: Bool? = nil, fileName: String? = nil, abstract: String? = nil, keyWords: String? = nil, validResponse: Bool? = nil, parentFileUploadID: String? = nil, filePath: String? = nil, file: URL? = nil) -> RequestBuilder<FileUploadDtoEnvelope> {
+    open class func updateFileAsyncWithRequestBuilder(fileId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, file: URL? = nil, notes: String? = nil, metadata: String? = nil, title: String? = nil, author: String? = nil, isFolder: Bool? = nil, fileName: String? = nil, abstract: String? = nil, keyWords: String? = nil, validResponse: Bool? = nil, parentFileUploadID: String? = nil, filePath: String? = nil, appFileContent: Data? = nil, appFileSha256: String? = nil, appFileCreatedAtUtc: Date? = nil, appFileUserIdValue: UUID? = nil, appFileTenantIdValue: UUID? = nil, appFileEnrollmentIdValue: UUID? = nil, appFileSource: AppFileSource_updateFileAsync? = nil, appFileLength: Int64? = nil, appFileName: String? = nil, appFileFileName: String? = nil, appFileLastModified: Date? = nil, appFileSize: Int64? = nil, appFileContentType: String? = nil, appFileContentDisposition: String? = nil, appFileHeaders: [String: String]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/StorageService/Files/{fileId}"
         let fileIdPreEscape = "\(APIHelper.mapValueToPathItem(fileId))"
         let fileIdPostEscape = fileIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{fileId}", with: fileIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableFormParams: [String: Any?] = [
+            "file": file?.encodeToJSON(),
             "notes": notes?.encodeToJSON(),
             "metadata": metadata?.encodeToJSON(),
             "title": title?.encodeToJSON(),
@@ -387,7 +627,21 @@ open class FilesAPI {
             "validResponse": validResponse?.encodeToJSON(),
             "parentFileUploadID": parentFileUploadID?.encodeToJSON(),
             "filePath": filePath?.encodeToJSON(),
-            "file": file?.encodeToJSON(),
+            "appFile.content": appFileContent?.encodeToJSON(),
+            "appFile.sha256": appFileSha256?.encodeToJSON(),
+            "appFile.createdAtUtc": appFileCreatedAtUtc?.encodeToJSON(),
+            "appFile.userId.value": appFileUserIdValue?.encodeToJSON(),
+            "appFile.tenantId.value": appFileTenantIdValue?.encodeToJSON(),
+            "appFile.enrollmentId.value": appFileEnrollmentIdValue?.encodeToJSON(),
+            "appFile.source": appFileSource?.encodeToJSON(),
+            "appFile.length": appFileLength?.encodeToJSON(),
+            "appFile.name": appFileName?.encodeToJSON(),
+            "appFile.fileName": appFileFileName?.encodeToJSON(),
+            "appFile.lastModified": appFileLastModified?.encodeToJSON(),
+            "appFile.size": appFileSize?.encodeToJSON(),
+            "appFile.contentType": appFileContentType?.encodeToJSON(),
+            "appFile.contentDisposition": appFileContentDisposition?.encodeToJSON(),
+            "appFile.headers": appFileHeaders?.encodeToJSON(),
         ]
 
         let localVariableNonNullParameters = APIHelper.rejectNil(localVariableFormParams)
@@ -406,7 +660,7 @@ open class FilesAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<FileUploadDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }

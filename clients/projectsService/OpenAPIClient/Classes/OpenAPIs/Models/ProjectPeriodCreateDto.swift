@@ -16,14 +16,14 @@ public struct ProjectPeriodCreateDto: Codable, JSONEncodable, Hashable {
     public var timestamp: Date?
     public var periodStartDate: Date?
     public var periodEndDate: Date?
-    public var projectID: String?
+    public var projectId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, periodStartDate: Date? = nil, periodEndDate: Date? = nil, projectID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, periodStartDate: Date? = nil, periodEndDate: Date? = nil, projectId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.periodStartDate = periodStartDate
         self.periodEndDate = periodEndDate
-        self.projectID = projectID
+        self.projectId = projectId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -31,7 +31,7 @@ public struct ProjectPeriodCreateDto: Codable, JSONEncodable, Hashable {
         case timestamp
         case periodStartDate
         case periodEndDate
-        case projectID
+        case projectId
     }
 
     // Encodable protocol methods
@@ -42,7 +42,7 @@ public struct ProjectPeriodCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(periodStartDate, forKey: .periodStartDate)
         try container.encodeIfPresent(periodEndDate, forKey: .periodEndDate)
-        try container.encodeIfPresent(projectID, forKey: .projectID)
+        try container.encodeIfPresent(projectId, forKey: .projectId)
     }
 }
 

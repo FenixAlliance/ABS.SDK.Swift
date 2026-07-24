@@ -16,7 +16,7 @@ open class AccountsAPI {
      Aggregate accounts balance
      
      - parameter tenantId: (query)  
-     - parameter currencyId: (query)  (optional)
+     - parameter currencyId: (query)  (optional, default to "USD.USA")
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
@@ -39,7 +39,7 @@ open class AccountsAPI {
      - GET /api/v2/AccountingService/Accounts/Aggregate/Balance
      - Returns the sum of all account balances matching OData filters, normalized to the target currency using stored USD values.
      - parameter tenantId: (query)  
-     - parameter currencyId: (query)  (optional)
+     - parameter currencyId: (query)  (optional, default to "USD.USA")
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<MoneyEnvelope> 
@@ -764,7 +764,7 @@ open class AccountsAPI {
      Get account aggregate
      
      - parameter tenantId: (query)  
-     - parameter currencyId: (query)  (optional)
+     - parameter currencyId: (query)  (optional, default to "USD.USA")
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter accountDto: (body)  (optional)
@@ -788,7 +788,7 @@ open class AccountsAPI {
      - POST /api/v2/AccountingService/Accounts/Aggregate
      - Get account aggregate.
      - parameter tenantId: (query)  
-     - parameter currencyId: (query)  (optional)
+     - parameter currencyId: (query)  (optional, default to "USD.USA")
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter accountDto: (body)  (optional)

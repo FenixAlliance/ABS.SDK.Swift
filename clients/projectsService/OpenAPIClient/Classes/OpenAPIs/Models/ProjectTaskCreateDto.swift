@@ -18,16 +18,16 @@ public struct ProjectTaskCreateDto: Codable, JSONEncodable, Hashable {
     public var description: String?
     public var startDate: Date?
     public var dueLine: Date?
-    public var projectID: String?
+    public var projectId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil, startDate: Date? = nil, dueLine: Date? = nil, projectID: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil, startDate: Date? = nil, dueLine: Date? = nil, projectId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
         self.description = description
         self.startDate = startDate
         self.dueLine = dueLine
-        self.projectID = projectID
+        self.projectId = projectId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -37,7 +37,7 @@ public struct ProjectTaskCreateDto: Codable, JSONEncodable, Hashable {
         case description
         case startDate
         case dueLine
-        case projectID
+        case projectId
     }
 
     // Encodable protocol methods
@@ -50,7 +50,7 @@ public struct ProjectTaskCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(startDate, forKey: .startDate)
         try container.encodeIfPresent(dueLine, forKey: .dueLine)
-        try container.encodeIfPresent(projectID, forKey: .projectID)
+        try container.encodeIfPresent(projectId, forKey: .projectId)
     }
 }
 

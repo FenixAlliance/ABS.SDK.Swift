@@ -312,6 +312,60 @@ open class TaskCategoriesAPI {
     }
 
     /**
+     Patches a task category
+     
+     - parameter taskCategoryId: (path)  
+     - parameter tenantId: (query)  
+     - parameter operation: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func patchTaskCategoryAsync(taskCategoryId: UUID, tenantId: UUID, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchTaskCategoryAsyncWithRequestBuilder(taskCategoryId: taskCategoryId, tenantId: tenantId, operation: operation).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Patches a task category
+     - PATCH /api/v2/ProjectsService/TaskCategories/{taskCategoryId}
+     - Partially updates the specified task category.
+     - parameter taskCategoryId: (path)  
+     - parameter tenantId: (query)  
+     - parameter operation: (body)  (optional)
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func patchTaskCategoryAsyncWithRequestBuilder(taskCategoryId: UUID, tenantId: UUID, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/ProjectsService/TaskCategories/{taskCategoryId}"
+        let taskCategoryIdPreEscape = "\(APIHelper.mapValueToPathItem(taskCategoryId))"
+        let taskCategoryIdPostEscape = taskCategoryIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{taskCategoryId}", with: taskCategoryIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
      Updates a task category
      
      - parameter taskCategoryId: (path)  

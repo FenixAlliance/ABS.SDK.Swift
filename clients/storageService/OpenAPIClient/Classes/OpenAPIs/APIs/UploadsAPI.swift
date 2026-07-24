@@ -13,6 +13,34 @@ import AnyCodable
 open class UploadsAPI {
 
     /**
+     * enum for parameter publicAccessType
+     */
+    public enum PublicAccessType_saveFileAsync: String, CaseIterable {
+        case _false = "false"
+        case container = "Container"
+        case blob = "Blob"
+        case unknown = "Unknown"
+    }
+
+    /**
+     * enum for parameter purpose
+     */
+    public enum Purpose_saveFileAsync: String, CaseIterable {
+        case unknown = "Unknown"
+        case identityAvatar = "IdentityAvatar"
+        case identityBanner = "IdentityBanner"
+        case profileAsset = "ProfileAsset"
+        case engagementInline = "EngagementInline"
+        case engagementAttachment = "EngagementAttachment"
+        case messageAttachment = "MessageAttachment"
+        case socialPost = "SocialPost"
+        case recordAttachment = "RecordAttachment"
+        case aiGenerated = "AiGenerated"
+        case systemArtifact = "SystemArtifact"
+        case temporary = "Temporary"
+    }
+
+    /**
      * enum for parameter appFileSource
      */
     public enum AppFileSource_saveFileAsync: String, CaseIterable {
@@ -30,6 +58,7 @@ open class UploadsAPI {
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter file: (form)  (optional)
      - parameter notes: (form)  (optional)
      - parameter title: (form)  (optional)
      - parameter author: (form)  (optional)
@@ -40,6 +69,9 @@ open class UploadsAPI {
      - parameter validResponse: (form)  (optional)
      - parameter parentFileUploadId: (form)  (optional)
      - parameter filePath: (form)  (optional)
+     - parameter publicAccessType: (form)  (optional)
+     - parameter purpose: (form)  (optional)
+     - parameter socialProfileIdValue: (form)  (optional)
      - parameter appFileContent: (form)  (optional)
      - parameter appFileSha256: (form)  (optional)
      - parameter appFileCreatedAtUtc: (form)  (optional)
@@ -61,8 +93,8 @@ open class UploadsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func saveFileAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, notes: String? = nil, title: String? = nil, author: String? = nil, isFolder: Bool? = nil, fileName: String? = nil, abstract: String? = nil, keyWords: String? = nil, validResponse: Bool? = nil, parentFileUploadId: String? = nil, filePath: String? = nil, appFileContent: Data? = nil, appFileSha256: String? = nil, appFileCreatedAtUtc: Date? = nil, appFileUserIdValue: UUID? = nil, appFileTenantIdValue: UUID? = nil, appFileEnrollmentIdValue: UUID? = nil, appFileSource: AppFileSource_saveFileAsync? = nil, appFileLength: Int64? = nil, appFileName: String? = nil, appFileFileName: String? = nil, appFileLastModified: Date? = nil, appFileSize: Int64? = nil, appFileContentType: String? = nil, appFileContentDisposition: String? = nil, appFileHeaders: [String: String]? = nil, id: UUID? = nil, timestamp: Date? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return saveFileAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, notes: notes, title: title, author: author, isFolder: isFolder, fileName: fileName, abstract: abstract, keyWords: keyWords, validResponse: validResponse, parentFileUploadId: parentFileUploadId, filePath: filePath, appFileContent: appFileContent, appFileSha256: appFileSha256, appFileCreatedAtUtc: appFileCreatedAtUtc, appFileUserIdValue: appFileUserIdValue, appFileTenantIdValue: appFileTenantIdValue, appFileEnrollmentIdValue: appFileEnrollmentIdValue, appFileSource: appFileSource, appFileLength: appFileLength, appFileName: appFileName, appFileFileName: appFileFileName, appFileLastModified: appFileLastModified, appFileSize: appFileSize, appFileContentType: appFileContentType, appFileContentDisposition: appFileContentDisposition, appFileHeaders: appFileHeaders, id: id, timestamp: timestamp).execute(apiResponseQueue) { result in
+    open class func saveFileAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, file: URL? = nil, notes: String? = nil, title: String? = nil, author: String? = nil, isFolder: Bool? = nil, fileName: String? = nil, abstract: String? = nil, keyWords: String? = nil, validResponse: Bool? = nil, parentFileUploadId: String? = nil, filePath: String? = nil, publicAccessType: PublicAccessType_saveFileAsync? = nil, purpose: Purpose_saveFileAsync? = nil, socialProfileIdValue: UUID? = nil, appFileContent: Data? = nil, appFileSha256: String? = nil, appFileCreatedAtUtc: Date? = nil, appFileUserIdValue: UUID? = nil, appFileTenantIdValue: UUID? = nil, appFileEnrollmentIdValue: UUID? = nil, appFileSource: AppFileSource_saveFileAsync? = nil, appFileLength: Int64? = nil, appFileName: String? = nil, appFileFileName: String? = nil, appFileLastModified: Date? = nil, appFileSize: Int64? = nil, appFileContentType: String? = nil, appFileContentDisposition: String? = nil, appFileHeaders: [String: String]? = nil, id: UUID? = nil, timestamp: Date? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return saveFileAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, file: file, notes: notes, title: title, author: author, isFolder: isFolder, fileName: fileName, abstract: abstract, keyWords: keyWords, validResponse: validResponse, parentFileUploadId: parentFileUploadId, filePath: filePath, publicAccessType: publicAccessType, purpose: purpose, socialProfileIdValue: socialProfileIdValue, appFileContent: appFileContent, appFileSha256: appFileSha256, appFileCreatedAtUtc: appFileCreatedAtUtc, appFileUserIdValue: appFileUserIdValue, appFileTenantIdValue: appFileTenantIdValue, appFileEnrollmentIdValue: appFileEnrollmentIdValue, appFileSource: appFileSource, appFileLength: appFileLength, appFileName: appFileName, appFileFileName: appFileFileName, appFileLastModified: appFileLastModified, appFileSize: appFileSize, appFileContentType: appFileContentType, appFileContentDisposition: appFileContentDisposition, appFileHeaders: appFileHeaders, id: id, timestamp: timestamp).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -75,10 +107,11 @@ open class UploadsAPI {
     /**
      Upload a file
      - POST /api/v2/StorageService/Uploads
-     - Uploads a file to tenant or user storage.
+     - Uploads a file to tenant or user storage, scanned and catalogued through the storage spine.
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter file: (form)  (optional)
      - parameter notes: (form)  (optional)
      - parameter title: (form)  (optional)
      - parameter author: (form)  (optional)
@@ -89,6 +122,9 @@ open class UploadsAPI {
      - parameter validResponse: (form)  (optional)
      - parameter parentFileUploadId: (form)  (optional)
      - parameter filePath: (form)  (optional)
+     - parameter publicAccessType: (form)  (optional)
+     - parameter purpose: (form)  (optional)
+     - parameter socialProfileIdValue: (form)  (optional)
      - parameter appFileContent: (form)  (optional)
      - parameter appFileSha256: (form)  (optional)
      - parameter appFileCreatedAtUtc: (form)  (optional)
@@ -108,10 +144,11 @@ open class UploadsAPI {
      - parameter timestamp: (form)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func saveFileAsyncWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, notes: String? = nil, title: String? = nil, author: String? = nil, isFolder: Bool? = nil, fileName: String? = nil, abstract: String? = nil, keyWords: String? = nil, validResponse: Bool? = nil, parentFileUploadId: String? = nil, filePath: String? = nil, appFileContent: Data? = nil, appFileSha256: String? = nil, appFileCreatedAtUtc: Date? = nil, appFileUserIdValue: UUID? = nil, appFileTenantIdValue: UUID? = nil, appFileEnrollmentIdValue: UUID? = nil, appFileSource: AppFileSource_saveFileAsync? = nil, appFileLength: Int64? = nil, appFileName: String? = nil, appFileFileName: String? = nil, appFileLastModified: Date? = nil, appFileSize: Int64? = nil, appFileContentType: String? = nil, appFileContentDisposition: String? = nil, appFileHeaders: [String: String]? = nil, id: UUID? = nil, timestamp: Date? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func saveFileAsyncWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, file: URL? = nil, notes: String? = nil, title: String? = nil, author: String? = nil, isFolder: Bool? = nil, fileName: String? = nil, abstract: String? = nil, keyWords: String? = nil, validResponse: Bool? = nil, parentFileUploadId: String? = nil, filePath: String? = nil, publicAccessType: PublicAccessType_saveFileAsync? = nil, purpose: Purpose_saveFileAsync? = nil, socialProfileIdValue: UUID? = nil, appFileContent: Data? = nil, appFileSha256: String? = nil, appFileCreatedAtUtc: Date? = nil, appFileUserIdValue: UUID? = nil, appFileTenantIdValue: UUID? = nil, appFileEnrollmentIdValue: UUID? = nil, appFileSource: AppFileSource_saveFileAsync? = nil, appFileLength: Int64? = nil, appFileName: String? = nil, appFileFileName: String? = nil, appFileLastModified: Date? = nil, appFileSize: Int64? = nil, appFileContentType: String? = nil, appFileContentDisposition: String? = nil, appFileHeaders: [String: String]? = nil, id: UUID? = nil, timestamp: Date? = nil) -> RequestBuilder<EmptyEnvelope> {
         let localVariablePath = "/api/v2/StorageService/Uploads"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableFormParams: [String: Any?] = [
+            "file": file?.encodeToJSON(),
             "notes": notes?.encodeToJSON(),
             "title": title?.encodeToJSON(),
             "author": author?.encodeToJSON(),
@@ -122,6 +159,9 @@ open class UploadsAPI {
             "validResponse": validResponse?.encodeToJSON(),
             "parentFileUploadId": parentFileUploadId?.encodeToJSON(),
             "filePath": filePath?.encodeToJSON(),
+            "publicAccessType": publicAccessType?.encodeToJSON(),
+            "purpose": purpose?.encodeToJSON(),
+            "socialProfileId.value": socialProfileIdValue?.encodeToJSON(),
             "appFile.content": appFileContent?.encodeToJSON(),
             "appFile.sha256": appFileSha256?.encodeToJSON(),
             "appFile.createdAtUtc": appFileCreatedAtUtc?.encodeToJSON(),

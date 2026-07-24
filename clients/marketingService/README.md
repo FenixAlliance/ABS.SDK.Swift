@@ -52,6 +52,7 @@ Class | Method | HTTP request | Description
 *FenixAllianceABSWebAPI* | [**accountManageDownloadPersonalDataPost**](docs/FenixAllianceABSWebAPI.md#accountmanagedownloadpersonaldatapost) | **POST** /Account/Manage/DownloadPersonalData | 
 *FenixAllianceABSWebAPI* | [**accountManageLinkExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#accountmanagelinkexternalloginpost) | **POST** /Account/Manage/LinkExternalLogin | 
 *FenixAllianceABSWebAPI* | [**accountPerformExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#accountperformexternalloginpost) | **POST** /Account/PerformExternalLogin | 
+*FenixAllianceABSWebAPI* | [**apiV2AIServiceAgentsAgentIdAguiPost**](docs/FenixAllianceABSWebAPI.md#apiv2aiserviceagentsagentidaguipost) | **POST** /api/v2/AIService/Agents/{agentId}/agui | 
 *FenixAllianceABSWebAPI* | [**forgotPasswordPost**](docs/FenixAllianceABSWebAPI.md#forgotpasswordpost) | **POST** /forgotPassword | 
 *FenixAllianceABSWebAPI* | [**healthGet**](docs/FenixAllianceABSWebAPI.md#healthget) | **GET** /health | 
 *FenixAllianceABSWebAPI* | [**helloGet**](docs/FenixAllianceABSWebAPI.md#helloget) | **GET** /hello | 
@@ -93,7 +94,12 @@ Class | Method | HTTP request | Description
 *MarketingListsAPI* | [**getMarketingListsCountAsync**](docs/MarketingListsAPI.md#getmarketinglistscountasync) | **GET** /api/v2/MarketingService/MarketingLists/Count | Get marketing lists count
 *MarketingListsAPI* | [**patchMarketingListAsync**](docs/MarketingListsAPI.md#patchmarketinglistasync) | **PATCH** /api/v2/MarketingService/MarketingLists/{marketinglistId} | Patch a marketing list
 *MarketingListsAPI* | [**updateMarketingListAsync**](docs/MarketingListsAPI.md#updatemarketinglistasync) | **PUT** /api/v2/MarketingService/MarketingLists/{marketinglistId} | Update a marketing list
+*NewsletterSubscriptionsAPI* | [**createNewsletterSubscriptionAsync**](docs/NewsletterSubscriptionsAPI.md#createnewslettersubscriptionasync) | **POST** /api/v2/MarketingService/NewsletterSubscriptions | Create a newsletter subscription
+*NewsletterSubscriptionsAPI* | [**deleteNewsletterSubscriptionAsync**](docs/NewsletterSubscriptionsAPI.md#deletenewslettersubscriptionasync) | **DELETE** /api/v2/MarketingService/NewsletterSubscriptions/{newsletterSubscriptionId} | Delete a newsletter subscription
+*NewsletterSubscriptionsAPI* | [**getNewsletterSubscriptionByIdAsync**](docs/NewsletterSubscriptionsAPI.md#getnewslettersubscriptionbyidasync) | **GET** /api/v2/MarketingService/NewsletterSubscriptions/{newsletterSubscriptionId} | Get newsletter subscription by ID
+*NewsletterSubscriptionsAPI* | [**getNewsletterSubscriptionsAsync**](docs/NewsletterSubscriptionsAPI.md#getnewslettersubscriptionsasync) | **GET** /api/v2/MarketingService/NewsletterSubscriptions | Get newsletter subscriptions
 *NewsletterSubscriptionsAPI* | [**getNewsletterSubscriptionsCountAsync**](docs/NewsletterSubscriptionsAPI.md#getnewslettersubscriptionscountasync) | **GET** /api/v2/MarketingService/NewsletterSubscriptions/Count | Get newsletter subscriptions count
+*NewsletterSubscriptionsAPI* | [**updateNewsletterSubscriptionAsync**](docs/NewsletterSubscriptionsAPI.md#updatenewslettersubscriptionasync) | **PUT** /api/v2/MarketingService/NewsletterSubscriptions/{newsletterSubscriptionId} | Update a newsletter subscription
 *NewslettersAPI* | [**createNewsletterAsync**](docs/NewslettersAPI.md#createnewsletterasync) | **POST** /api/v2/MarketingService/Newsletters | Create a newsletter
 *NewslettersAPI* | [**deleteNewsletterAsync**](docs/NewslettersAPI.md#deletenewsletterasync) | **DELETE** /api/v2/MarketingService/Newsletters/{newsletterId} | Delete a newsletter
 *NewslettersAPI* | [**getNewsletterDetailsAsync**](docs/NewslettersAPI.md#getnewsletterdetailsasync) | **GET** /api/v2/MarketingService/Newsletters/{newsletterId} | Get newsletter by ID
@@ -166,6 +172,11 @@ Class | Method | HTTP request | Description
  - [NewsletterCreateDto](docs/NewsletterCreateDto.md)
  - [NewsletterDto](docs/NewsletterDto.md)
  - [NewsletterDtoEnvelope](docs/NewsletterDtoEnvelope.md)
+ - [NewsletterSubscriptionCreateDto](docs/NewsletterSubscriptionCreateDto.md)
+ - [NewsletterSubscriptionDto](docs/NewsletterSubscriptionDto.md)
+ - [NewsletterSubscriptionDtoEnvelope](docs/NewsletterSubscriptionDtoEnvelope.md)
+ - [NewsletterSubscriptionDtoListEnvelope](docs/NewsletterSubscriptionDtoListEnvelope.md)
+ - [NewsletterSubscriptionUpdateDto](docs/NewsletterSubscriptionUpdateDto.md)
  - [NewsletterUpdateDto](docs/NewsletterUpdateDto.md)
  - [Operation](docs/Operation.md)
  - [OrderDto](docs/OrderDto.md)

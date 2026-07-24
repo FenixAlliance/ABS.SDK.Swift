@@ -16,14 +16,18 @@ public struct ProjectPeriodDto: Codable, JSONEncodable, Hashable {
     public var timestamp: Date?
     public var periodStartDate: Date?
     public var periodEndDate: Date?
-    public var projectID: String?
+    public var projectId: String?
+    public var tenantId: String?
+    public var enrollmentId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, periodStartDate: Date? = nil, periodEndDate: Date? = nil, projectID: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, periodStartDate: Date? = nil, periodEndDate: Date? = nil, projectId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.periodStartDate = periodStartDate
         self.periodEndDate = periodEndDate
-        self.projectID = projectID
+        self.projectId = projectId
+        self.tenantId = tenantId
+        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -31,7 +35,9 @@ public struct ProjectPeriodDto: Codable, JSONEncodable, Hashable {
         case timestamp
         case periodStartDate
         case periodEndDate
-        case projectID
+        case projectId
+        case tenantId
+        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -42,7 +48,9 @@ public struct ProjectPeriodDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(periodStartDate, forKey: .periodStartDate)
         try container.encodeIfPresent(periodEndDate, forKey: .periodEndDate)
-        try container.encodeIfPresent(projectID, forKey: .projectID)
+        try container.encodeIfPresent(projectId, forKey: .projectId)
+        try container.encodeIfPresent(tenantId, forKey: .tenantId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

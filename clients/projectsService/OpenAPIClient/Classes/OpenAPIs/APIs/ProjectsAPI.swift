@@ -125,8 +125,8 @@ open class ProjectsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func createProjectTaskAsync(projectId: UUID, tenantId: UUID, projectTaskCreateDto: ProjectTaskCreateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return createProjectTaskAsyncWithRequestBuilder(projectId: projectId, tenantId: tenantId, projectTaskCreateDto: projectTaskCreateDto).execute(apiResponseQueue) { result in
+    open class func createTaskForProjectAsync(projectId: UUID, tenantId: UUID, projectTaskCreateDto: ProjectTaskCreateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return createTaskForProjectAsyncWithRequestBuilder(projectId: projectId, tenantId: tenantId, projectTaskCreateDto: projectTaskCreateDto).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -145,7 +145,7 @@ open class ProjectsAPI {
      - parameter projectTaskCreateDto: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func createProjectTaskAsyncWithRequestBuilder(projectId: UUID, tenantId: UUID, projectTaskCreateDto: ProjectTaskCreateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func createTaskForProjectAsyncWithRequestBuilder(projectId: UUID, tenantId: UUID, projectTaskCreateDto: ProjectTaskCreateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/ProjectsService/Projects/{projectId}/Tasks"
         let projectIdPreEscape = "\(APIHelper.mapValueToPathItem(projectId))"
         let projectIdPostEscape = projectIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -288,8 +288,8 @@ open class ProjectsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func deleteProjectTaskAsync(tenantId: UUID, projectId: UUID, projectTaskId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return deleteProjectTaskAsyncWithRequestBuilder(tenantId: tenantId, projectId: projectId, projectTaskId: projectTaskId).execute(apiResponseQueue) { result in
+    open class func deleteTaskForProjectAsync(tenantId: UUID, projectId: UUID, projectTaskId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return deleteTaskForProjectAsyncWithRequestBuilder(tenantId: tenantId, projectId: projectId, projectTaskId: projectTaskId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -308,7 +308,7 @@ open class ProjectsAPI {
      - parameter projectTaskId: (path)  
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func deleteProjectTaskAsyncWithRequestBuilder(tenantId: UUID, projectId: UUID, projectTaskId: UUID) -> RequestBuilder<EmptyEnvelope> {
+    open class func deleteTaskForProjectAsyncWithRequestBuilder(tenantId: UUID, projectId: UUID, projectTaskId: UUID) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/ProjectsService/Projects/{projectId}/Tasks/{projectTaskId}"
         let projectIdPreEscape = "\(APIHelper.mapValueToPathItem(projectId))"
         let projectIdPostEscape = projectIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -544,162 +544,6 @@ open class ProjectsAPI {
     }
 
     /**
-     Retrieves project tasks
-     
-     - parameter projectId: (path)  
-     - parameter tenantId: (query)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func getProjectTasksAsync(projectId: UUID, tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ProjectTaskDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getProjectTasksAsyncWithRequestBuilder(projectId: projectId, tenantId: tenantId).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     Retrieves project tasks
-     - GET /api/v2/ProjectsService/Projects/{projectId}/Tasks
-     - Gets all tasks for a specific project with OData support.
-     - parameter projectId: (path)  
-     - parameter tenantId: (query)  
-     - returns: RequestBuilder<ProjectTaskDtoListEnvelope> 
-     */
-    open class func getProjectTasksAsyncWithRequestBuilder(projectId: UUID, tenantId: UUID) -> RequestBuilder<ProjectTaskDtoListEnvelope> {
-        var localVariablePath = "/api/v2/ProjectsService/Projects/{projectId}/Tasks"
-        let projectIdPreEscape = "\(APIHelper.mapValueToPathItem(projectId))"
-        let projectIdPostEscape = projectIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{projectId}", with: projectIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<ProjectTaskDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
-    }
-
-    /**
-     Counts project tasks
-     
-     - parameter projectId: (path)  
-     - parameter tenantId: (query)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func getProjectTasksCountAsync(projectId: UUID, tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getProjectTasksCountAsyncWithRequestBuilder(projectId: projectId, tenantId: tenantId).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     Counts project tasks
-     - GET /api/v2/ProjectsService/Projects/{projectId}/Tasks/Count
-     - Gets the count of tasks for a specific project.
-     - parameter projectId: (path)  
-     - parameter tenantId: (query)  
-     - returns: RequestBuilder<Int32Envelope> 
-     */
-    open class func getProjectTasksCountAsyncWithRequestBuilder(projectId: UUID, tenantId: UUID) -> RequestBuilder<Int32Envelope> {
-        var localVariablePath = "/api/v2/ProjectsService/Projects/{projectId}/Tasks/Count"
-        let projectIdPreEscape = "\(APIHelper.mapValueToPathItem(projectId))"
-        let projectIdPostEscape = projectIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{projectId}", with: projectIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
-    }
-
-    /**
-     Retrieves project time logs
-     
-     - parameter projectId: (path)  
-     - parameter tenantId: (query)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func getProjectTimeLogsAsync(projectId: UUID, tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ProjectTimeLogDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getProjectTimeLogsAsyncWithRequestBuilder(projectId: projectId, tenantId: tenantId).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     Retrieves project time logs
-     - GET /api/v2/ProjectsService/Projects/{projectId}/TimeLogs
-     - Gets all time log entries for a specific project with OData support.
-     - parameter projectId: (path)  
-     - parameter tenantId: (query)  
-     - returns: RequestBuilder<ProjectTimeLogDtoListEnvelope> 
-     */
-    open class func getProjectTimeLogsAsyncWithRequestBuilder(projectId: UUID, tenantId: UUID) -> RequestBuilder<ProjectTimeLogDtoListEnvelope> {
-        var localVariablePath = "/api/v2/ProjectsService/Projects/{projectId}/TimeLogs"
-        let projectIdPreEscape = "\(APIHelper.mapValueToPathItem(projectId))"
-        let projectIdPostEscape = projectIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{projectId}", with: projectIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<ProjectTimeLogDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
-    }
-
-    /**
      Counts project time logs
      
      - parameter projectId: (path)  
@@ -846,6 +690,334 @@ open class ProjectsAPI {
     }
 
     /**
+     Retrieves project tasks
+     
+     - parameter projectId: (path)  
+     - parameter tenantId: (query)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getTasksForProjectAsync(projectId: UUID, tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ProjectTaskDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getTasksForProjectAsyncWithRequestBuilder(projectId: projectId, tenantId: tenantId).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Retrieves project tasks
+     - GET /api/v2/ProjectsService/Projects/{projectId}/Tasks
+     - Gets all tasks for a specific project with OData support.
+     - parameter projectId: (path)  
+     - parameter tenantId: (query)  
+     - returns: RequestBuilder<ProjectTaskDtoListEnvelope> 
+     */
+    open class func getTasksForProjectAsyncWithRequestBuilder(projectId: UUID, tenantId: UUID) -> RequestBuilder<ProjectTaskDtoListEnvelope> {
+        var localVariablePath = "/api/v2/ProjectsService/Projects/{projectId}/Tasks"
+        let projectIdPreEscape = "\(APIHelper.mapValueToPathItem(projectId))"
+        let projectIdPostEscape = projectIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{projectId}", with: projectIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<ProjectTaskDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Counts project tasks
+     
+     - parameter projectId: (path)  
+     - parameter tenantId: (query)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getTasksForProjectCountAsync(projectId: UUID, tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getTasksForProjectCountAsyncWithRequestBuilder(projectId: projectId, tenantId: tenantId).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Counts project tasks
+     - GET /api/v2/ProjectsService/Projects/{projectId}/Tasks/Count
+     - Gets the count of tasks for a specific project.
+     - parameter projectId: (path)  
+     - parameter tenantId: (query)  
+     - returns: RequestBuilder<Int32Envelope> 
+     */
+    open class func getTasksForProjectCountAsyncWithRequestBuilder(projectId: UUID, tenantId: UUID) -> RequestBuilder<Int32Envelope> {
+        var localVariablePath = "/api/v2/ProjectsService/Projects/{projectId}/Tasks/Count"
+        let projectIdPreEscape = "\(APIHelper.mapValueToPathItem(projectId))"
+        let projectIdPostEscape = projectIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{projectId}", with: projectIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Retrieves project time logs
+     
+     - parameter projectId: (path)  
+     - parameter tenantId: (query)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getTimeLogsForProjectAsync(projectId: UUID, tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ProjectTimeLogDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getTimeLogsForProjectAsyncWithRequestBuilder(projectId: projectId, tenantId: tenantId).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Retrieves project time logs
+     - GET /api/v2/ProjectsService/Projects/{projectId}/TimeLogs
+     - Gets all time log entries for a specific project with OData support.
+     - parameter projectId: (path)  
+     - parameter tenantId: (query)  
+     - returns: RequestBuilder<ProjectTimeLogDtoListEnvelope> 
+     */
+    open class func getTimeLogsForProjectAsyncWithRequestBuilder(projectId: UUID, tenantId: UUID) -> RequestBuilder<ProjectTimeLogDtoListEnvelope> {
+        var localVariablePath = "/api/v2/ProjectsService/Projects/{projectId}/TimeLogs"
+        let projectIdPreEscape = "\(APIHelper.mapValueToPathItem(projectId))"
+        let projectIdPostEscape = projectIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{projectId}", with: projectIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<ProjectTimeLogDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Patches a project
+     
+     - parameter projectId: (path)  
+     - parameter tenantId: (query)  
+     - parameter operation: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func patchProjectAsync(projectId: UUID, tenantId: UUID, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchProjectAsyncWithRequestBuilder(projectId: projectId, tenantId: tenantId, operation: operation).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Patches a project
+     - PATCH /api/v2/ProjectsService/Projects/{projectId}
+     - Partially updates the specified project.
+     - parameter projectId: (path)  
+     - parameter tenantId: (query)  
+     - parameter operation: (body)  (optional)
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func patchProjectAsyncWithRequestBuilder(projectId: UUID, tenantId: UUID, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/ProjectsService/Projects/{projectId}"
+        let projectIdPreEscape = "\(APIHelper.mapValueToPathItem(projectId))"
+        let projectIdPostEscape = projectIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{projectId}", with: projectIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Patches a project period
+     
+     - parameter projectId: (path)  
+     - parameter projectPeriodId: (path)  
+     - parameter tenantId: (query)  
+     - parameter operation: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func patchProjectPeriodAsync(projectId: UUID, projectPeriodId: UUID, tenantId: UUID, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchProjectPeriodAsyncWithRequestBuilder(projectId: projectId, projectPeriodId: projectPeriodId, tenantId: tenantId, operation: operation).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Patches a project period
+     - PATCH /api/v2/ProjectsService/Projects/{projectId}/Periods/{projectPeriodId}
+     - Partially updates the specified period for a project.
+     - parameter projectId: (path)  
+     - parameter projectPeriodId: (path)  
+     - parameter tenantId: (query)  
+     - parameter operation: (body)  (optional)
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func patchProjectPeriodAsyncWithRequestBuilder(projectId: UUID, projectPeriodId: UUID, tenantId: UUID, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/ProjectsService/Projects/{projectId}/Periods/{projectPeriodId}"
+        let projectIdPreEscape = "\(APIHelper.mapValueToPathItem(projectId))"
+        let projectIdPostEscape = projectIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{projectId}", with: projectIdPostEscape, options: .literal, range: nil)
+        let projectPeriodIdPreEscape = "\(APIHelper.mapValueToPathItem(projectPeriodId))"
+        let projectPeriodIdPostEscape = projectPeriodIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{projectPeriodId}", with: projectPeriodIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Patches a project task
+     
+     - parameter projectId: (path)  
+     - parameter projectTaskId: (path)  
+     - parameter tenantId: (query)  
+     - parameter operation: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func patchTaskForProjectAsync(projectId: UUID, projectTaskId: UUID, tenantId: UUID, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchTaskForProjectAsyncWithRequestBuilder(projectId: projectId, projectTaskId: projectTaskId, tenantId: tenantId, operation: operation).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Patches a project task
+     - PATCH /api/v2/ProjectsService/Projects/{projectId}/Tasks/{projectTaskId}
+     - Partially updates the specified task in a project.
+     - parameter projectId: (path)  
+     - parameter projectTaskId: (path)  
+     - parameter tenantId: (query)  
+     - parameter operation: (body)  (optional)
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func patchTaskForProjectAsyncWithRequestBuilder(projectId: UUID, projectTaskId: UUID, tenantId: UUID, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/ProjectsService/Projects/{projectId}/Tasks/{projectTaskId}"
+        let projectIdPreEscape = "\(APIHelper.mapValueToPathItem(projectId))"
+        let projectIdPostEscape = projectIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{projectId}", with: projectIdPostEscape, options: .literal, range: nil)
+        let projectTaskIdPreEscape = "\(APIHelper.mapValueToPathItem(projectTaskId))"
+        let projectTaskIdPostEscape = projectTaskIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{projectTaskId}", with: projectTaskIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
      Updates a project
      
      - parameter projectId: (path)  
@@ -969,8 +1141,8 @@ open class ProjectsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func updateProjectTaskAsync(projectId: UUID, projectTaskId: UUID, tenantId: UUID, projectTaskUpdateDto: ProjectTaskUpdateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return updateProjectTaskAsyncWithRequestBuilder(projectId: projectId, projectTaskId: projectTaskId, tenantId: tenantId, projectTaskUpdateDto: projectTaskUpdateDto).execute(apiResponseQueue) { result in
+    open class func updateTaskForProjectAsync(projectId: UUID, projectTaskId: UUID, tenantId: UUID, projectTaskUpdateDto: ProjectTaskUpdateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return updateTaskForProjectAsyncWithRequestBuilder(projectId: projectId, projectTaskId: projectTaskId, tenantId: tenantId, projectTaskUpdateDto: projectTaskUpdateDto).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -990,7 +1162,7 @@ open class ProjectsAPI {
      - parameter projectTaskUpdateDto: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func updateProjectTaskAsyncWithRequestBuilder(projectId: UUID, projectTaskId: UUID, tenantId: UUID, projectTaskUpdateDto: ProjectTaskUpdateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func updateTaskForProjectAsyncWithRequestBuilder(projectId: UUID, projectTaskId: UUID, tenantId: UUID, projectTaskUpdateDto: ProjectTaskUpdateDto? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/ProjectsService/Projects/{projectId}/Tasks/{projectTaskId}"
         let projectIdPreEscape = "\(APIHelper.mapValueToPathItem(projectId))"
         let projectIdPostEscape = projectIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""

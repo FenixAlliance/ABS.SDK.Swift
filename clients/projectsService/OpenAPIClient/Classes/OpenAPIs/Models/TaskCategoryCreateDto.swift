@@ -15,17 +15,20 @@ public struct TaskCategoryCreateDto: Codable, JSONEncodable, Hashable {
     public var id: UUID?
     public var timestamp: Date?
     public var title: String?
+    public var projectId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, title: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, title: String? = nil, projectId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
+        self.projectId = projectId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
         case title
+        case projectId
     }
 
     // Encodable protocol methods
@@ -35,6 +38,7 @@ public struct TaskCategoryCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(title, forKey: .title)
+        try container.encodeIfPresent(projectId, forKey: .projectId)
     }
 }
 

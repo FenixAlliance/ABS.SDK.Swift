@@ -62,7 +62,7 @@ No authorization required
 
 # **getAvailableModules**
 ```swift
-    open class func getAvailableModules(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ModuleListEnvelope?, _ error: Error?) -> Void)
+    open class func getAvailableModules(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: SuiteModuleListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all modules available to a tenant user.
@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ModuleListEnvelope**](ModuleListEnvelope.md)
+[**SuiteModuleListEnvelope**](SuiteModuleListEnvelope.md)
 
 ### Authorization
 

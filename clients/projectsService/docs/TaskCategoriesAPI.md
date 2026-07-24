@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**getTaskCategoryByIdAsync**](TaskCategoriesAPI.md#gettaskcategorybyidasync) | **GET** /api/v2/ProjectsService/TaskCategories/{taskCategoryId} | Gets a task category by ID
 [**getTaskCategoryTaskTypesAsync**](TaskCategoriesAPI.md#gettaskcategorytasktypesasync) | **GET** /api/v2/ProjectsService/TaskCategories/{taskCategoryId}/Types | Retrieves task types for a category
 [**getTenantTaskCategoriesAsync**](TaskCategoriesAPI.md#gettenanttaskcategoriesasync) | **GET** /api/v2/ProjectsService/TaskCategories | Retrieves all task categories
+[**patchTaskCategoryAsync**](TaskCategoriesAPI.md#patchtaskcategoryasync) | **PATCH** /api/v2/ProjectsService/TaskCategories/{taskCategoryId} | Patches a task category
 [**updateTaskCategoryAsync**](TaskCategoriesAPI.md#updatetaskcategoryasync) | **PUT** /api/v2/ProjectsService/TaskCategories/{taskCategoryId} | Updates a task category
 
 
@@ -78,7 +79,7 @@ Creates a new task category for the current tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let taskCategoryCreateDto = TaskCategoryCreateDto(id: 123, timestamp: Date(), title: "title_example") // TaskCategoryCreateDto |  (optional)
+let taskCategoryCreateDto = TaskCategoryCreateDto(id: 123, timestamp: Date(), title: "title_example", projectId: "projectId_example") // TaskCategoryCreateDto |  (optional)
 
 // Creates a new task category
 TaskCategoriesAPI.createTaskCategoryAsync(tenantId: tenantId, taskCategoryCreateDto: taskCategoryCreateDto) { (response, error) in
@@ -321,6 +322,60 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchTaskCategoryAsync**
+```swift
+    open class func patchTaskCategoryAsync(taskCategoryId: UUID, tenantId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patches a task category
+
+Partially updates the specified task category.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let taskCategoryId = 987 // UUID | 
+let tenantId = 987 // UUID | 
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patches a task category
+TaskCategoriesAPI.patchTaskCategoryAsync(taskCategoryId: taskCategoryId, tenantId: tenantId, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **taskCategoryId** | **UUID** |  | 
+ **tenantId** | **UUID** |  | 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateTaskCategoryAsync**
 ```swift
     open class func updateTaskCategoryAsync(taskCategoryId: UUID, tenantId: UUID, taskCategoryUpdateDto: TaskCategoryUpdateDto? = nil, completion: @escaping (_ data: TaskCategoryDto?, _ error: Error?) -> Void)
@@ -337,7 +392,7 @@ import OpenAPIClient
 
 let taskCategoryId = 987 // UUID | 
 let tenantId = 987 // UUID | 
-let taskCategoryUpdateDto = TaskCategoryUpdateDto(title: "title_example") // TaskCategoryUpdateDto |  (optional)
+let taskCategoryUpdateDto = TaskCategoryUpdateDto(title: "title_example", projectId: "projectId_example") // TaskCategoryUpdateDto |  (optional)
 
 // Updates a task category
 TaskCategoriesAPI.updateTaskCategoryAsync(taskCategoryId: taskCategoryId, tenantId: tenantId, taskCategoryUpdateDto: taskCategoryUpdateDto) { (response, error) in

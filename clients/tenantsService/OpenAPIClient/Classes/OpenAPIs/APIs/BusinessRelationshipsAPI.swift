@@ -13,6 +13,227 @@ import AnyCodable
 open class BusinessRelationshipsAPI {
 
     /**
+     Create a business relationship
+     
+     - parameter tenantId: (query)  
+     - parameter businessRelationshipCreateDto: (body)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func createBusinessRelationshipAsync(tenantId: UUID, businessRelationshipCreateDto: BusinessRelationshipCreateDto, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return createBusinessRelationshipAsyncWithRequestBuilder(tenantId: tenantId, businessRelationshipCreateDto: businessRelationshipCreateDto, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Create a business relationship
+     - POST /api/v2/TenantsService/BusinessRelationships
+     - Creates a new business relationship owned by the specified parent tenant.
+     - parameter tenantId: (query)  
+     - parameter businessRelationshipCreateDto: (body)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func createBusinessRelationshipAsyncWithRequestBuilder(tenantId: UUID, businessRelationshipCreateDto: BusinessRelationshipCreateDto, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
+        let localVariablePath = "/api/v2/TenantsService/BusinessRelationships"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: businessRelationshipCreateDto)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Delete a business relationship
+     
+     - parameter tenantId: (query)  
+     - parameter businessRelationshipId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func deleteBusinessRelationshipAsync(tenantId: UUID, businessRelationshipId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return deleteBusinessRelationshipAsyncWithRequestBuilder(tenantId: tenantId, businessRelationshipId: businessRelationshipId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Delete a business relationship
+     - DELETE /api/v2/TenantsService/BusinessRelationships/{businessRelationshipId}
+     - Deletes a business relationship by its ID.
+     - parameter tenantId: (query)  
+     - parameter businessRelationshipId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func deleteBusinessRelationshipAsyncWithRequestBuilder(tenantId: UUID, businessRelationshipId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/TenantsService/BusinessRelationships/{businessRelationshipId}"
+        let businessRelationshipIdPreEscape = "\(APIHelper.mapValueToPathItem(businessRelationshipId))"
+        let businessRelationshipIdPostEscape = businessRelationshipIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{businessRelationshipId}", with: businessRelationshipIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Get business relationship by ID
+     
+     - parameter tenantId: (query)  
+     - parameter businessRelationshipId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getBusinessRelationshipByIdAsync(tenantId: UUID, businessRelationshipId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BusinessRelationshipDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getBusinessRelationshipByIdAsyncWithRequestBuilder(tenantId: tenantId, businessRelationshipId: businessRelationshipId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get business relationship by ID
+     - GET /api/v2/TenantsService/BusinessRelationships/{businessRelationshipId}
+     - Retrieves the details of a specific business relationship by its ID.
+     - parameter tenantId: (query)  
+     - parameter businessRelationshipId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<BusinessRelationshipDtoEnvelope> 
+     */
+    open class func getBusinessRelationshipByIdAsyncWithRequestBuilder(tenantId: UUID, businessRelationshipId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<BusinessRelationshipDtoEnvelope> {
+        var localVariablePath = "/api/v2/TenantsService/BusinessRelationships/{businessRelationshipId}"
+        let businessRelationshipIdPreEscape = "\(APIHelper.mapValueToPathItem(businessRelationshipId))"
+        let businessRelationshipIdPostEscape = businessRelationshipIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{businessRelationshipId}", with: businessRelationshipIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<BusinessRelationshipDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Get business relationships
+     
+     - parameter tenantId: (query)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getBusinessRelationshipsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BusinessRelationshipDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getBusinessRelationshipsAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get business relationships
+     - GET /api/v2/TenantsService/BusinessRelationships
+     - Retrieves the child business relationships owned by the specified parent tenant using OData query options.
+     - parameter tenantId: (query)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<BusinessRelationshipDtoListEnvelope> 
+     */
+    open class func getBusinessRelationshipsAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<BusinessRelationshipDtoListEnvelope> {
+        let localVariablePath = "/api/v2/TenantsService/BusinessRelationships"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<BusinessRelationshipDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
      Get business relationships count
      
      - parameter tenantId: (query)  
@@ -62,5 +283,65 @@ open class BusinessRelationshipsAPI {
         let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Update a business relationship
+     
+     - parameter tenantId: (query)  
+     - parameter businessRelationshipId: (path)  
+     - parameter businessRelationshipUpdateDto: (body)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func updateBusinessRelationshipAsync(tenantId: UUID, businessRelationshipId: UUID, businessRelationshipUpdateDto: BusinessRelationshipUpdateDto, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return updateBusinessRelationshipAsyncWithRequestBuilder(tenantId: tenantId, businessRelationshipId: businessRelationshipId, businessRelationshipUpdateDto: businessRelationshipUpdateDto, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Update a business relationship
+     - PUT /api/v2/TenantsService/BusinessRelationships/{businessRelationshipId}
+     - Updates an existing business relationship by its ID.
+     - parameter tenantId: (query)  
+     - parameter businessRelationshipId: (path)  
+     - parameter businessRelationshipUpdateDto: (body)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func updateBusinessRelationshipAsyncWithRequestBuilder(tenantId: UUID, businessRelationshipId: UUID, businessRelationshipUpdateDto: BusinessRelationshipUpdateDto, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/TenantsService/BusinessRelationships/{businessRelationshipId}"
+        let businessRelationshipIdPreEscape = "\(APIHelper.mapValueToPathItem(businessRelationshipId))"
+        let businessRelationshipIdPostEscape = businessRelationshipIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{businessRelationshipId}", with: businessRelationshipIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: businessRelationshipUpdateDto)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 }

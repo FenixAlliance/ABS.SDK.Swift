@@ -19,6 +19,16 @@ public struct AccountDto: Codable, JSONEncodable, Hashable {
         case expense = "Expense"
         case liabilities = "Liabilities"
     }
+    public enum IncomeStatementSubType: String, Codable, CaseIterable {
+        case operatingRevenue = "OperatingRevenue"
+        case gain = "Gain"
+        case operatingExpense = "OperatingExpense"
+        case loss = "Loss"
+    }
+    public enum NormalBalance: String, Codable, CaseIterable {
+        case debit = "Debit"
+        case credit = "Credit"
+    }
     public var id: String?
     public var timestamp: Date?
     public var group: Bool?
@@ -45,6 +55,10 @@ public struct AccountDto: Codable, JSONEncodable, Hashable {
     public var enrollmentId: String?
     public var childrenAccountsCount: Int?
     public var accountCategory: AccountCategory?
+    public var isContra: Bool?
+    public var isMonetary: Bool?
+    public var incomeStatementSubType: IncomeStatementSubType?
+    public var normalBalance: NormalBalance?
     public var balanceAmount: Money?
     public var creditsBalanceAmount: Money?
     public var debitsBalanceAmount: Money?
@@ -52,7 +66,7 @@ public struct AccountDto: Codable, JSONEncodable, Hashable {
     public var debitsBalanceAmountInUsd: Money?
     public var creditsBalanceAmountInUsd: Money?
 
-    public init(id: String? = nil, timestamp: Date? = nil, group: Bool? = nil, frozen: Bool? = nil, name: String? = nil, code: String? = nil, path: String? = nil, title: String? = nil, _prefix: String? = nil, balance: Double? = nil, currencyId: String? = nil, contactId: String? = nil, accountType: String? = nil, qualifiedName: String? = nil, accountTypeId: String? = nil, debitsBalance: Double? = nil, creditsBalance: Double? = nil, balanceInUsd: Double? = nil, debitsBalanceInUsd: Double? = nil, creditsBalanceInUsd: Double? = nil, forexRate: Double? = nil, parentAccountId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil, childrenAccountsCount: Int? = nil, accountCategory: AccountCategory? = nil, balanceAmount: Money? = nil, creditsBalanceAmount: Money? = nil, debitsBalanceAmount: Money? = nil, balanceAmountInUsd: Money? = nil, debitsBalanceAmountInUsd: Money? = nil, creditsBalanceAmountInUsd: Money? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, group: Bool? = nil, frozen: Bool? = nil, name: String? = nil, code: String? = nil, path: String? = nil, title: String? = nil, _prefix: String? = nil, balance: Double? = nil, currencyId: String? = nil, contactId: String? = nil, accountType: String? = nil, qualifiedName: String? = nil, accountTypeId: String? = nil, debitsBalance: Double? = nil, creditsBalance: Double? = nil, balanceInUsd: Double? = nil, debitsBalanceInUsd: Double? = nil, creditsBalanceInUsd: Double? = nil, forexRate: Double? = nil, parentAccountId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil, childrenAccountsCount: Int? = nil, accountCategory: AccountCategory? = nil, isContra: Bool? = nil, isMonetary: Bool? = nil, incomeStatementSubType: IncomeStatementSubType? = nil, normalBalance: NormalBalance? = nil, balanceAmount: Money? = nil, creditsBalanceAmount: Money? = nil, debitsBalanceAmount: Money? = nil, balanceAmountInUsd: Money? = nil, debitsBalanceAmountInUsd: Money? = nil, creditsBalanceAmountInUsd: Money? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.group = group
@@ -79,6 +93,10 @@ public struct AccountDto: Codable, JSONEncodable, Hashable {
         self.enrollmentId = enrollmentId
         self.childrenAccountsCount = childrenAccountsCount
         self.accountCategory = accountCategory
+        self.isContra = isContra
+        self.isMonetary = isMonetary
+        self.incomeStatementSubType = incomeStatementSubType
+        self.normalBalance = normalBalance
         self.balanceAmount = balanceAmount
         self.creditsBalanceAmount = creditsBalanceAmount
         self.debitsBalanceAmount = debitsBalanceAmount
@@ -114,6 +132,10 @@ public struct AccountDto: Codable, JSONEncodable, Hashable {
         case enrollmentId
         case childrenAccountsCount
         case accountCategory
+        case isContra
+        case isMonetary
+        case incomeStatementSubType
+        case normalBalance
         case balanceAmount
         case creditsBalanceAmount
         case debitsBalanceAmount
@@ -152,6 +174,10 @@ public struct AccountDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(childrenAccountsCount, forKey: .childrenAccountsCount)
         try container.encodeIfPresent(accountCategory, forKey: .accountCategory)
+        try container.encodeIfPresent(isContra, forKey: .isContra)
+        try container.encodeIfPresent(isMonetary, forKey: .isMonetary)
+        try container.encodeIfPresent(incomeStatementSubType, forKey: .incomeStatementSubType)
+        try container.encodeIfPresent(normalBalance, forKey: .normalBalance)
         try container.encodeIfPresent(balanceAmount, forKey: .balanceAmount)
         try container.encodeIfPresent(creditsBalanceAmount, forKey: .creditsBalanceAmount)
         try container.encodeIfPresent(debitsBalanceAmount, forKey: .debitsBalanceAmount)

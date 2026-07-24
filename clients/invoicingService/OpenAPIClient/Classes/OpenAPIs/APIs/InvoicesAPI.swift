@@ -1940,7 +1940,7 @@ open class InvoicesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getPurchaseInvoicesSum(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: DecimalEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getPurchaseInvoicesSum(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MoneyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
         return getPurchaseInvoicesSumWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -1956,9 +1956,9 @@ open class InvoicesAPI {
      - GET /api/v2/InvoicingService/Invoices/PurchaseInvoices/Sum
      - Returns SUM(Invoice.TotalAmountInUSD) for invoices with InvoiceType == PurchaseInvoice, filtered by the supplied OData date range.
      - parameter tenantId: (query)  
-     - returns: RequestBuilder<DecimalEnvelope> 
+     - returns: RequestBuilder<MoneyEnvelope> 
      */
-    open class func getPurchaseInvoicesSumWithRequestBuilder(tenantId: UUID) -> RequestBuilder<DecimalEnvelope> {
+    open class func getPurchaseInvoicesSumWithRequestBuilder(tenantId: UUID) -> RequestBuilder<MoneyEnvelope> {
         let localVariablePath = "/api/v2/InvoicingService/Invoices/PurchaseInvoices/Sum"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -1974,7 +1974,7 @@ open class InvoicesAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<DecimalEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<MoneyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
@@ -1987,7 +1987,7 @@ open class InvoicesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getSalesInvoicesSum(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: DecimalEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getSalesInvoicesSum(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MoneyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
         return getSalesInvoicesSumWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -2003,9 +2003,9 @@ open class InvoicesAPI {
      - GET /api/v2/InvoicingService/Invoices/SalesInvoices/Sum
      - Returns SUM(Invoice.TotalAmountInUSD) for invoices with InvoiceType == SalesInvoice, filtered by the supplied OData date range.
      - parameter tenantId: (query)  
-     - returns: RequestBuilder<DecimalEnvelope> 
+     - returns: RequestBuilder<MoneyEnvelope> 
      */
-    open class func getSalesInvoicesSumWithRequestBuilder(tenantId: UUID) -> RequestBuilder<DecimalEnvelope> {
+    open class func getSalesInvoicesSumWithRequestBuilder(tenantId: UUID) -> RequestBuilder<MoneyEnvelope> {
         let localVariablePath = "/api/v2/InvoicingService/Invoices/SalesInvoices/Sum"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -2021,7 +2021,7 @@ open class InvoicesAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<DecimalEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<MoneyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }

@@ -12,16 +12,18 @@ import AnyCodable
 
 public struct FiscalYearCreateDto: Codable, JSONEncodable, Hashable {
 
+    static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let fiscalAuthorityIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
-    public var name: String?
+    public var name: String
     public var description: String?
     public var closed: Bool?
     public var endDate: Date?
     public var startDate: Date?
-    public var fiscalAuthorityId: String?
+    public var fiscalAuthorityId: String
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, name: String? = nil, description: String? = nil, closed: Bool? = nil, endDate: Date? = nil, startDate: Date? = nil, fiscalAuthorityId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, name: String, description: String? = nil, closed: Bool? = nil, endDate: Date? = nil, startDate: Date? = nil, fiscalAuthorityId: String) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
@@ -49,12 +51,12 @@ public struct FiscalYearCreateDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
-        try container.encodeIfPresent(name, forKey: .name)
+        try container.encode(name, forKey: .name)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(closed, forKey: .closed)
         try container.encodeIfPresent(endDate, forKey: .endDate)
         try container.encodeIfPresent(startDate, forKey: .startDate)
-        try container.encodeIfPresent(fiscalAuthorityId, forKey: .fiscalAuthorityId)
+        try container.encode(fiscalAuthorityId, forKey: .fiscalAuthorityId)
     }
 }
 

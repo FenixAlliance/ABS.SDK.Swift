@@ -15,15 +15,15 @@ public struct TaskTypeCreateDto: Codable, JSONEncodable, Hashable {
     public var id: UUID?
     public var timestamp: Date?
     public var title: String?
-    public var taskCategoryID: String?
+    public var taskCategoryId: String?
     public var displayInTimeTracker: Bool?
     public var requiresDescription: Bool?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, title: String? = nil, taskCategoryID: String? = nil, displayInTimeTracker: Bool? = nil, requiresDescription: Bool? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, title: String? = nil, taskCategoryId: String? = nil, displayInTimeTracker: Bool? = nil, requiresDescription: Bool? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
-        self.taskCategoryID = taskCategoryID
+        self.taskCategoryId = taskCategoryId
         self.displayInTimeTracker = displayInTimeTracker
         self.requiresDescription = requiresDescription
     }
@@ -32,7 +32,7 @@ public struct TaskTypeCreateDto: Codable, JSONEncodable, Hashable {
         case id
         case timestamp
         case title
-        case taskCategoryID
+        case taskCategoryId
         case displayInTimeTracker
         case requiresDescription
     }
@@ -44,7 +44,7 @@ public struct TaskTypeCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(title, forKey: .title)
-        try container.encodeIfPresent(taskCategoryID, forKey: .taskCategoryID)
+        try container.encodeIfPresent(taskCategoryId, forKey: .taskCategoryId)
         try container.encodeIfPresent(displayInTimeTracker, forKey: .displayInTimeTracker)
         try container.encodeIfPresent(requiresDescription, forKey: .requiresDescription)
     }

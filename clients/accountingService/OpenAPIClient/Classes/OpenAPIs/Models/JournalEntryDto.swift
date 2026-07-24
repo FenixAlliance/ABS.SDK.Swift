@@ -12,95 +12,110 @@ import AnyCodable
 
 public struct JournalEntryDto: Codable, JSONEncodable, Hashable {
 
+    public enum EntryType: String, Codable, CaseIterable {
+        case simple = "Simple"
+        case compound = "Compound"
+        case adjusting = "Adjusting"
+        case reversing = "Reversing"
+    }
+    public enum Status: String, Codable, CaseIterable {
+        case draft = "Draft"
+        case posted = "Posted"
+        case reversed = "Reversed"
+        case voided = "Voided"
+    }
     public var id: String?
-    public var timestamp: Date?
-    public var group: Bool?
-    public var opening: Bool?
-    public var description: String?
-    public var date: Date?
-    public var forexRatesSnapshot: String?
-    public var forexRate: Double?
-    public var credit: Double?
-    public var debit: Double?
-    public var creditInUsd: Double?
-    public var debitInUsd: Double?
-    public var currencyId: String?
     public var tenantId: String?
     public var enrollmentId: String?
     public var journalId: String?
     public var journalName: String?
     public var journalCode: String?
-    public var creditAccountId: String?
-    public var creditAccountName: String?
-    public var debitAccountId: String?
-    public var debitAccountName: String?
-    public var invoiceCode: String?
-    public var parentJournalEntryId: String?
-    public var creditAmount: Money?
-    public var debitAmount: Money?
-    public var creditAmountInUsd: Money?
-    public var debitAmountInUsd: Money?
+    public var fiscalPeriodId: String?
+    public var financialBookId: String?
+    public var description: String?
+    public var entryType: EntryType?
+    public var status: Status?
+    public var postingDate: Date?
+    public var isOpeningBalance: Bool?
+    public var transactionCurrencyId: String?
+    public var sourceDocumentType: String?
+    public var sourceDocumentId: String?
+    public var idempotencyKey: String?
+    public var reversalOfJournalEntryId: String?
+    public var postedBy: String?
+    public var forexRate: Double?
+    public var forexRatesSnapshot: String?
+    public var timestamp: Date?
+    public var debitInUsd: Double?
+    public var creditInUsd: Double?
+    public var accountingEntries: [AccountingEntryDto]?
+    public var totalDebit: Double?
+    public var totalCredit: Double?
+    public var totalDebitAmount: Money?
+    public var totalCreditAmount: Money?
 
-    public init(id: String? = nil, timestamp: Date? = nil, group: Bool? = nil, opening: Bool? = nil, description: String? = nil, date: Date? = nil, forexRatesSnapshot: String? = nil, forexRate: Double? = nil, credit: Double? = nil, debit: Double? = nil, creditInUsd: Double? = nil, debitInUsd: Double? = nil, currencyId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil, journalId: String? = nil, journalName: String? = nil, journalCode: String? = nil, creditAccountId: String? = nil, creditAccountName: String? = nil, debitAccountId: String? = nil, debitAccountName: String? = nil, invoiceCode: String? = nil, parentJournalEntryId: String? = nil, creditAmount: Money? = nil, debitAmount: Money? = nil, creditAmountInUsd: Money? = nil, debitAmountInUsd: Money? = nil) {
+    public init(id: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil, journalId: String? = nil, journalName: String? = nil, journalCode: String? = nil, fiscalPeriodId: String? = nil, financialBookId: String? = nil, description: String? = nil, entryType: EntryType? = nil, status: Status? = nil, postingDate: Date? = nil, isOpeningBalance: Bool? = nil, transactionCurrencyId: String? = nil, sourceDocumentType: String? = nil, sourceDocumentId: String? = nil, idempotencyKey: String? = nil, reversalOfJournalEntryId: String? = nil, postedBy: String? = nil, forexRate: Double? = nil, forexRatesSnapshot: String? = nil, timestamp: Date? = nil, debitInUsd: Double? = nil, creditInUsd: Double? = nil, accountingEntries: [AccountingEntryDto]? = nil, totalDebit: Double? = nil, totalCredit: Double? = nil, totalDebitAmount: Money? = nil, totalCreditAmount: Money? = nil) {
         self.id = id
-        self.timestamp = timestamp
-        self.group = group
-        self.opening = opening
-        self.description = description
-        self.date = date
-        self.forexRatesSnapshot = forexRatesSnapshot
-        self.forexRate = forexRate
-        self.credit = credit
-        self.debit = debit
-        self.creditInUsd = creditInUsd
-        self.debitInUsd = debitInUsd
-        self.currencyId = currencyId
         self.tenantId = tenantId
         self.enrollmentId = enrollmentId
         self.journalId = journalId
         self.journalName = journalName
         self.journalCode = journalCode
-        self.creditAccountId = creditAccountId
-        self.creditAccountName = creditAccountName
-        self.debitAccountId = debitAccountId
-        self.debitAccountName = debitAccountName
-        self.invoiceCode = invoiceCode
-        self.parentJournalEntryId = parentJournalEntryId
-        self.creditAmount = creditAmount
-        self.debitAmount = debitAmount
-        self.creditAmountInUsd = creditAmountInUsd
-        self.debitAmountInUsd = debitAmountInUsd
+        self.fiscalPeriodId = fiscalPeriodId
+        self.financialBookId = financialBookId
+        self.description = description
+        self.entryType = entryType
+        self.status = status
+        self.postingDate = postingDate
+        self.isOpeningBalance = isOpeningBalance
+        self.transactionCurrencyId = transactionCurrencyId
+        self.sourceDocumentType = sourceDocumentType
+        self.sourceDocumentId = sourceDocumentId
+        self.idempotencyKey = idempotencyKey
+        self.reversalOfJournalEntryId = reversalOfJournalEntryId
+        self.postedBy = postedBy
+        self.forexRate = forexRate
+        self.forexRatesSnapshot = forexRatesSnapshot
+        self.timestamp = timestamp
+        self.debitInUsd = debitInUsd
+        self.creditInUsd = creditInUsd
+        self.accountingEntries = accountingEntries
+        self.totalDebit = totalDebit
+        self.totalCredit = totalCredit
+        self.totalDebitAmount = totalDebitAmount
+        self.totalCreditAmount = totalCreditAmount
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
-        case timestamp
-        case group
-        case opening
-        case description
-        case date
-        case forexRatesSnapshot
-        case forexRate
-        case credit
-        case debit
-        case creditInUsd
-        case debitInUsd
-        case currencyId
         case tenantId
         case enrollmentId
         case journalId
         case journalName
         case journalCode
-        case creditAccountId
-        case creditAccountName
-        case debitAccountId
-        case debitAccountName
-        case invoiceCode
-        case parentJournalEntryId
-        case creditAmount
-        case debitAmount
-        case creditAmountInUsd
-        case debitAmountInUsd
+        case fiscalPeriodId
+        case financialBookId
+        case description
+        case entryType
+        case status
+        case postingDate
+        case isOpeningBalance
+        case transactionCurrencyId
+        case sourceDocumentType
+        case sourceDocumentId
+        case idempotencyKey
+        case reversalOfJournalEntryId
+        case postedBy
+        case forexRate
+        case forexRatesSnapshot
+        case timestamp
+        case debitInUsd
+        case creditInUsd
+        case accountingEntries
+        case totalDebit
+        case totalCredit
+        case totalDebitAmount
+        case totalCreditAmount
     }
 
     // Encodable protocol methods
@@ -108,33 +123,34 @@ public struct JournalEntryDto: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(timestamp, forKey: .timestamp)
-        try container.encodeIfPresent(group, forKey: .group)
-        try container.encodeIfPresent(opening, forKey: .opening)
-        try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(date, forKey: .date)
-        try container.encodeIfPresent(forexRatesSnapshot, forKey: .forexRatesSnapshot)
-        try container.encodeIfPresent(forexRate, forKey: .forexRate)
-        try container.encodeIfPresent(credit, forKey: .credit)
-        try container.encodeIfPresent(debit, forKey: .debit)
-        try container.encodeIfPresent(creditInUsd, forKey: .creditInUsd)
-        try container.encodeIfPresent(debitInUsd, forKey: .debitInUsd)
-        try container.encodeIfPresent(currencyId, forKey: .currencyId)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(journalId, forKey: .journalId)
         try container.encodeIfPresent(journalName, forKey: .journalName)
         try container.encodeIfPresent(journalCode, forKey: .journalCode)
-        try container.encodeIfPresent(creditAccountId, forKey: .creditAccountId)
-        try container.encodeIfPresent(creditAccountName, forKey: .creditAccountName)
-        try container.encodeIfPresent(debitAccountId, forKey: .debitAccountId)
-        try container.encodeIfPresent(debitAccountName, forKey: .debitAccountName)
-        try container.encodeIfPresent(invoiceCode, forKey: .invoiceCode)
-        try container.encodeIfPresent(parentJournalEntryId, forKey: .parentJournalEntryId)
-        try container.encodeIfPresent(creditAmount, forKey: .creditAmount)
-        try container.encodeIfPresent(debitAmount, forKey: .debitAmount)
-        try container.encodeIfPresent(creditAmountInUsd, forKey: .creditAmountInUsd)
-        try container.encodeIfPresent(debitAmountInUsd, forKey: .debitAmountInUsd)
+        try container.encodeIfPresent(fiscalPeriodId, forKey: .fiscalPeriodId)
+        try container.encodeIfPresent(financialBookId, forKey: .financialBookId)
+        try container.encodeIfPresent(description, forKey: .description)
+        try container.encodeIfPresent(entryType, forKey: .entryType)
+        try container.encodeIfPresent(status, forKey: .status)
+        try container.encodeIfPresent(postingDate, forKey: .postingDate)
+        try container.encodeIfPresent(isOpeningBalance, forKey: .isOpeningBalance)
+        try container.encodeIfPresent(transactionCurrencyId, forKey: .transactionCurrencyId)
+        try container.encodeIfPresent(sourceDocumentType, forKey: .sourceDocumentType)
+        try container.encodeIfPresent(sourceDocumentId, forKey: .sourceDocumentId)
+        try container.encodeIfPresent(idempotencyKey, forKey: .idempotencyKey)
+        try container.encodeIfPresent(reversalOfJournalEntryId, forKey: .reversalOfJournalEntryId)
+        try container.encodeIfPresent(postedBy, forKey: .postedBy)
+        try container.encodeIfPresent(forexRate, forKey: .forexRate)
+        try container.encodeIfPresent(forexRatesSnapshot, forKey: .forexRatesSnapshot)
+        try container.encodeIfPresent(timestamp, forKey: .timestamp)
+        try container.encodeIfPresent(debitInUsd, forKey: .debitInUsd)
+        try container.encodeIfPresent(creditInUsd, forKey: .creditInUsd)
+        try container.encodeIfPresent(accountingEntries, forKey: .accountingEntries)
+        try container.encodeIfPresent(totalDebit, forKey: .totalDebit)
+        try container.encodeIfPresent(totalCredit, forKey: .totalCredit)
+        try container.encodeIfPresent(totalDebitAmount, forKey: .totalDebitAmount)
+        try container.encodeIfPresent(totalCreditAmount, forKey: .totalCreditAmount)
     }
 }
 

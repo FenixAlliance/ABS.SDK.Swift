@@ -4,18 +4,21 @@ All URIs are relative to *https://absuite.net*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**createLocationForWalletAsync**](WalletsAPI.md#createlocationforwalletasync) | **POST** /api/v2/WalletsService/Wallets/{walletId}/Locations | Create Wallet Location
 [**createWalletBankAccountAsync**](WalletsAPI.md#createwalletbankaccountasync) | **POST** /api/v2/WalletsService/Wallets/{walletId}/BankAccounts | Create Wallet Bank Account
-[**createWalletLocationAsync**](WalletsAPI.md#createwalletlocationasync) | **POST** /api/v2/WalletsService/Wallets/{walletId}/Locations | Create Wallet Location
 [**createWalletPaymentAsync**](WalletsAPI.md#createwalletpaymentasync) | **POST** /api/v2/WalletsService/Wallets/{walletId}/Payments | Create Wallet Payment
 [**createWalletTokenAsync**](WalletsAPI.md#createwallettokenasync) | **POST** /api/v2/WalletsService/Wallets/{walletId}/Tokens | Create Wallet Token
 [**createWalletWithdrawRequestAsync**](WalletsAPI.md#createwalletwithdrawrequestasync) | **POST** /api/v2/WalletsService/Wallets/{walletId}/Withdraws | Create Wallet Withdraw Request
+[**deleteLocationForWalletAsync**](WalletsAPI.md#deletelocationforwalletasync) | **DELETE** /api/v2/WalletsService/Wallets/{walletId}/Locations/{locationId} | Delete Wallet Location
 [**deleteWalletBankAccountAsync**](WalletsAPI.md#deletewalletbankaccountasync) | **DELETE** /api/v2/WalletsService/Wallets/{walletId}/BankAccounts/{bankAccountId} | Delete Wallet Bank Account
-[**deleteWalletLocationAsync**](WalletsAPI.md#deletewalletlocationasync) | **DELETE** /api/v2/WalletsService/Wallets/{walletId}/Locations/{locationId} | Delete Wallet Location
 [**deleteWalletTokenAsync**](WalletsAPI.md#deletewallettokenasync) | **DELETE** /api/v2/WalletsService/Wallets/{walletId}/Tokens/{tokenId} | Delete Wallet Token
 [**getIncomingPaymentsAsync**](WalletsAPI.md#getincomingpaymentsasync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Payments/Incoming | Get Incoming Payments
 [**getIncomingPaymentsCountAsync**](WalletsAPI.md#getincomingpaymentscountasync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Payments/Incoming/Count | Get Incoming Payments Count
 [**getIncomingWalletInvoicesAsync**](WalletsAPI.md#getincomingwalletinvoicesasync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Invoices/Incoming | Get Incoming Wallet Invoices
 [**getIncomingWalletInvoicesCountAsync**](WalletsAPI.md#getincomingwalletinvoicescountasync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Invoices/Incoming/Count | Get Incoming Wallet Invoices Count
+[**getLocationForWalletAsync**](WalletsAPI.md#getlocationforwalletasync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Locations/{locationId} | Get Wallet Location
+[**getLocationsForWalletAsync**](WalletsAPI.md#getlocationsforwalletasync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Locations | Get Wallet Locations
+[**getLocationsForWalletCountAsync**](WalletsAPI.md#getlocationsforwalletcountasync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Locations/Count | Get Wallet Locations Count
 [**getOutgoingPaymentsAsync**](WalletsAPI.md#getoutgoingpaymentsasync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Payments/Outgoing | Get Outgoing Payments
 [**getOutgoingPaymentsCountAsync**](WalletsAPI.md#getoutgoingpaymentscountasync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Payments/Outgoing/Count | Get Outgoing Payments Count
 [**getOutgoingWalletInvoicesAsync**](WalletsAPI.md#getoutgoingwalletinvoicesasync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Invoices/Outgoing | Get Outgoing Wallet Invoices
@@ -29,9 +32,6 @@ Method | HTTP request | Description
 [**getWalletExtendedOrdersAsync**](WalletsAPI.md#getwalletextendedordersasync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Orders/Extended | Get Wallet Extended Orders
 [**getWalletInvoicesAsync**](WalletsAPI.md#getwalletinvoicesasync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Invoices | Get Wallet Invoices
 [**getWalletInvoicesCountAsync**](WalletsAPI.md#getwalletinvoicescountasync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Invoices/Count | Get Wallet Invoices Count
-[**getWalletLocationAsync**](WalletsAPI.md#getwalletlocationasync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Locations/{locationId} | Get Wallet Location
-[**getWalletLocationsAsync**](WalletsAPI.md#getwalletlocationsasync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Locations | Get Wallet Locations
-[**getWalletLocationsCountAsync**](WalletsAPI.md#getwalletlocationscountasync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Locations/Count | Get Wallet Locations Count
 [**getWalletOrdersAsync**](WalletsAPI.md#getwalletordersasync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Orders | Get Wallet Orders
 [**getWalletOrdersCountAsync**](WalletsAPI.md#getwalletorderscountasync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Orders/Count | Get Wallet Orders Count
 [**getWalletPaymentsAsync**](WalletsAPI.md#getwalletpaymentsasync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Payments | Get Wallet Payments
@@ -49,10 +49,66 @@ Method | HTTP request | Description
 [**getWalletWithdrawsCountAsync**](WalletsAPI.md#getwalletwithdrawscountasync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Withdraws/Count | Get Wallet Withdraws Count
 [**patchWalletBankAccountAsync**](WalletsAPI.md#patchwalletbankaccountasync) | **PATCH** /api/v2/WalletsService/Wallets/{walletId}/BankAccounts/{bankAccountId} | Patch Wallet Bank Account
 [**patchWalletTokenAsync**](WalletsAPI.md#patchwallettokenasync) | **PATCH** /api/v2/WalletsService/Wallets/{walletId}/Tokens/{tokenId} | Patch Wallet Token
+[**updateLocationForWalletAsync**](WalletsAPI.md#updatelocationforwalletasync) | **PUT** /api/v2/WalletsService/Wallets/{walletId}/Locations/{locationId} | Update Wallet Location
 [**updateWalletBankAccountAsync**](WalletsAPI.md#updatewalletbankaccountasync) | **PUT** /api/v2/WalletsService/Wallets/{walletId}/BankAccounts/{bankAccountId} | Update Wallet Bank Account
-[**updateWalletLocationAsync**](WalletsAPI.md#updatewalletlocationasync) | **PUT** /api/v2/WalletsService/Wallets/{walletId}/Locations/{locationId} | Update Wallet Location
 [**updateWalletTokenAsync**](WalletsAPI.md#updatewallettokenasync) | **PUT** /api/v2/WalletsService/Wallets/{walletId}/Tokens/{tokenId} | Update Wallet Token
 
+
+# **createLocationForWalletAsync**
+```swift
+    open class func createLocationForWalletAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, locationCreateDto: LocationCreateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Create Wallet Location
+
+Create a new location for a specific wallet by ID.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let walletId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let locationCreateDto = LocationCreateDto(id: 123, timestamp: Date(), title: "title_example", email: "email_example", phone: "phone_example", fax: "fax_example", address1: "address1_example", address2: "address2_example", address3: "address3_example", unit: "unit_example", cityId: "cityId_example", stateId: "stateId_example", postalCode: "postalCode_example", countryId: "countryId_example", longitude: 123, latitude: 123, isRoutable: false, isGlobalPrimary: false, isCountryPrimary: false, canGenerateLabels: false, isDefaultSenderAddress: false, isDefaultReturnAddress: false, isDefaultSuppingLocation: false) // LocationCreateDto |  (optional)
+
+// Create Wallet Location
+WalletsAPI.createLocationForWalletAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, locationCreateDto: locationCreateDto) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **walletId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **locationCreateDto** | [**LocationCreateDto**](LocationCreateDto.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **createWalletBankAccountAsync**
 ```swift
@@ -94,62 +150,6 @@ Name | Type | Description  | Notes
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
  **bankAccountCreateDto** | [**BankAccountCreateDto**](BankAccountCreateDto.md) |  | [optional] 
-
-### Return type
-
-[**EmptyEnvelope**](EmptyEnvelope.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json, application/xml
- - **Accept**: application/json, application/xml
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **createWalletLocationAsync**
-```swift
-    open class func createWalletLocationAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, locationCreateDto: LocationCreateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
-```
-
-Create Wallet Location
-
-Create a new location for a specific wallet by ID.
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
-
-let walletId = 987 // UUID | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
-let locationCreateDto = LocationCreateDto(id: 123, timestamp: Date(), title: "title_example", email: "email_example", phone: "phone_example", fax: "fax_example", address1: "address1_example", address2: "address2_example", address3: "address3_example", unit: "unit_example", cityId: "cityId_example", stateId: "stateId_example", postalCode: "postalCode_example", countryId: "countryId_example", longitude: 123, latitude: 123, isRoutable: false, isGlobalPrimary: false, isCountryPrimary: false, canGenerateLabels: false, isDefaultSenderAddress: false, isDefaultReturnAddress: false, isDefaultSuppingLocation: false) // LocationCreateDto |  (optional)
-
-// Create Wallet Location
-WalletsAPI.createWalletLocationAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, locationCreateDto: locationCreateDto) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **walletId** | **UUID** |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
- **locationCreateDto** | [**LocationCreateDto**](LocationCreateDto.md) |  | [optional] 
 
 ### Return type
 
@@ -334,6 +334,62 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **deleteLocationForWalletAsync**
+```swift
+    open class func deleteLocationForWalletAsync(walletId: UUID, locationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Delete Wallet Location
+
+Delete a specific location of a specific wallet by ID.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let walletId = 987 // UUID | 
+let locationId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Delete Wallet Location
+WalletsAPI.deleteLocationForWalletAsync(walletId: walletId, locationId: locationId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **walletId** | **UUID** |  | 
+ **locationId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **deleteWalletBankAccountAsync**
 ```swift
     open class func deleteWalletBankAccountAsync(walletId: UUID, bankAccountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
@@ -372,62 +428,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **walletId** | **UUID** |  | 
  **bankAccountId** | **UUID** |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
-
-### Return type
-
-[**EmptyEnvelope**](EmptyEnvelope.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/xml
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **deleteWalletLocationAsync**
-```swift
-    open class func deleteWalletLocationAsync(walletId: UUID, locationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
-```
-
-Delete Wallet Location
-
-Delete a specific location of a specific wallet by ID.
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
-
-let walletId = 987 // UUID | 
-let locationId = 987 // UUID | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
-
-// Delete Wallet Location
-WalletsAPI.deleteWalletLocationAsync(walletId: walletId, locationId: locationId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **walletId** | **UUID** |  | 
- **locationId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 
@@ -684,6 +684,170 @@ let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Get Incoming Wallet Invoices Count
 WalletsAPI.getIncomingWalletInvoicesCountAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **walletId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**Int32Envelope**](Int32Envelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getLocationForWalletAsync**
+```swift
+    open class func getLocationForWalletAsync(walletId: UUID, locationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: LocationDtoEnvelope?, _ error: Error?) -> Void)
+```
+
+Get Wallet Location
+
+Get a specific location of a specific wallet by ID.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let walletId = 987 // UUID | 
+let locationId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Get Wallet Location
+WalletsAPI.getLocationForWalletAsync(walletId: walletId, locationId: locationId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **walletId** | **UUID** |  | 
+ **locationId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**LocationDtoEnvelope**](LocationDtoEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getLocationsForWalletAsync**
+```swift
+    open class func getLocationsForWalletAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: LocationDtoListEnvelope?, _ error: Error?) -> Void)
+```
+
+Get Wallet Locations
+
+Get locations of a specific wallet by ID.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let walletId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Get Wallet Locations
+WalletsAPI.getLocationsForWalletAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **walletId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**LocationDtoListEnvelope**](LocationDtoListEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getLocationsForWalletCountAsync**
+```swift
+    open class func getLocationsForWalletCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+```
+
+Get Wallet Locations Count
+
+Get locations count of a specific wallet by ID.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let walletId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Get Wallet Locations Count
+WalletsAPI.getLocationsForWalletCountAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1388,170 +1552,6 @@ let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Get Wallet Invoices Count
 WalletsAPI.getWalletInvoicesCountAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **walletId** | **UUID** |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
-
-### Return type
-
-[**Int32Envelope**](Int32Envelope.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/xml
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getWalletLocationAsync**
-```swift
-    open class func getWalletLocationAsync(walletId: UUID, locationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: LocationDtoEnvelope?, _ error: Error?) -> Void)
-```
-
-Get Wallet Location
-
-Get a specific location of a specific wallet by ID.
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
-
-let walletId = 987 // UUID | 
-let locationId = 987 // UUID | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
-
-// Get Wallet Location
-WalletsAPI.getWalletLocationAsync(walletId: walletId, locationId: locationId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **walletId** | **UUID** |  | 
- **locationId** | **UUID** |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
-
-### Return type
-
-[**LocationDtoEnvelope**](LocationDtoEnvelope.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/xml
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getWalletLocationsAsync**
-```swift
-    open class func getWalletLocationsAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: LocationDtoListEnvelope?, _ error: Error?) -> Void)
-```
-
-Get Wallet Locations
-
-Get locations of a specific wallet by ID.
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
-
-let walletId = 987 // UUID | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
-
-// Get Wallet Locations
-WalletsAPI.getWalletLocationsAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **walletId** | **UUID** |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
-
-### Return type
-
-[**LocationDtoListEnvelope**](LocationDtoListEnvelope.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/xml
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getWalletLocationsCountAsync**
-```swift
-    open class func getWalletLocationsCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
-```
-
-Get Wallet Locations Count
-
-Get locations count of a specific wallet by ID.
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
-
-let walletId = 987 // UUID | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
-
-// Get Wallet Locations Count
-WalletsAPI.getWalletLocationsCountAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2514,6 +2514,64 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **updateLocationForWalletAsync**
+```swift
+    open class func updateLocationForWalletAsync(walletId: UUID, locationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, locationUpdateDto: LocationUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Update Wallet Location
+
+Update a specific location of a specific wallet by ID.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let walletId = 987 // UUID | 
+let locationId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let locationUpdateDto = LocationUpdateDto(title: "title_example", email: "email_example", phone: "phone_example", fax: "fax_example", address1: "address1_example", address2: "address2_example", address3: "address3_example", unit: "unit_example", cityId: "cityId_example", stateId: "stateId_example", postalCode: "postalCode_example", countryId: "countryId_example", longitude: 123, latitude: 123, isRoutable: false, isGlobalPrimary: false, isCountryPrimary: false, canGenerateLabels: false, isDefaultSenderAddress: false, isDefaultReturnAddress: false, isDefaultSuppingLocation: false) // LocationUpdateDto |  (optional)
+
+// Update Wallet Location
+WalletsAPI.updateLocationForWalletAsync(walletId: walletId, locationId: locationId, apiVersion: apiVersion, xApiVersion: xApiVersion, locationUpdateDto: locationUpdateDto) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **walletId** | **UUID** |  | 
+ **locationId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **locationUpdateDto** | [**LocationUpdateDto**](LocationUpdateDto.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateWalletBankAccountAsync**
 ```swift
     open class func updateWalletBankAccountAsync(walletId: UUID, bankAccountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, bankAccountUpdateDto: BankAccountUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
@@ -2556,64 +2614,6 @@ Name | Type | Description  | Notes
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
  **bankAccountUpdateDto** | [**BankAccountUpdateDto**](BankAccountUpdateDto.md) |  | [optional] 
-
-### Return type
-
-[**EmptyEnvelope**](EmptyEnvelope.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json, application/xml
- - **Accept**: application/json, application/xml
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **updateWalletLocationAsync**
-```swift
-    open class func updateWalletLocationAsync(walletId: UUID, locationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, locationUpdateDto: LocationUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
-```
-
-Update Wallet Location
-
-Update a specific location of a specific wallet by ID.
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
-
-let walletId = 987 // UUID | 
-let locationId = 987 // UUID | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
-let locationUpdateDto = LocationUpdateDto(title: "title_example", email: "email_example", phone: "phone_example", fax: "fax_example", address1: "address1_example", address2: "address2_example", address3: "address3_example", unit: "unit_example", cityId: "cityId_example", stateId: "stateId_example", postalCode: "postalCode_example", countryId: "countryId_example", longitude: 123, latitude: 123, isRoutable: false, isGlobalPrimary: false, isCountryPrimary: false, canGenerateLabels: false, isDefaultSenderAddress: false, isDefaultReturnAddress: false, isDefaultSuppingLocation: false) // LocationUpdateDto |  (optional)
-
-// Update Wallet Location
-WalletsAPI.updateWalletLocationAsync(walletId: walletId, locationId: locationId, apiVersion: apiVersion, xApiVersion: xApiVersion, locationUpdateDto: locationUpdateDto) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **walletId** | **UUID** |  | 
- **locationId** | **UUID** |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
- **locationUpdateDto** | [**LocationUpdateDto**](LocationUpdateDto.md) |  | [optional] 
 
 ### Return type
 

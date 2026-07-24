@@ -185,15 +185,14 @@ open class NonFungibleTokensAPI {
      Get all non-fungible tokens
      
      - parameter tenantId: (query)  
-     - parameter oDataQueryOptions: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getNonFungibleTokensAsync(tenantId: UUID, oDataQueryOptions: NonFungibleTokenDtoODataQueryOptions? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: NonFungibleTokenDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getNonFungibleTokensAsyncWithRequestBuilder(tenantId: tenantId, oDataQueryOptions: oDataQueryOptions, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getNonFungibleTokensAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: NonFungibleTokenDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getNonFungibleTokensAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -208,12 +207,11 @@ open class NonFungibleTokensAPI {
      - GET /api/v2/BlockchainsService/NonFungibleTokens
      - Retrieves all NFTs for the specified tenant.
      - parameter tenantId: (query)  
-     - parameter oDataQueryOptions: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<NonFungibleTokenDtoListEnvelope> 
      */
-    open class func getNonFungibleTokensAsyncWithRequestBuilder(tenantId: UUID, oDataQueryOptions: NonFungibleTokenDtoODataQueryOptions? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<NonFungibleTokenDtoListEnvelope> {
+    open class func getNonFungibleTokensAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<NonFungibleTokenDtoListEnvelope> {
         let localVariablePath = "/api/v2/BlockchainsService/NonFungibleTokens"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -221,7 +219,6 @@ open class NonFungibleTokensAPI {
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-            "oDataQueryOptions": (wrappedValue: oDataQueryOptions?.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 
@@ -240,15 +237,14 @@ open class NonFungibleTokensAPI {
      Get NFTs count
      
      - parameter tenantId: (query)  
-     - parameter oDataQueryOptions: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getNonFungibleTokensCountAsync(tenantId: UUID, oDataQueryOptions: NonFungibleTokenDtoODataQueryOptions? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getNonFungibleTokensCountAsyncWithRequestBuilder(tenantId: tenantId, oDataQueryOptions: oDataQueryOptions, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getNonFungibleTokensCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getNonFungibleTokensCountAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -263,12 +259,11 @@ open class NonFungibleTokensAPI {
      - GET /api/v2/BlockchainsService/NonFungibleTokens/Count
      - Returns the count of NFTs for the specified tenant.
      - parameter tenantId: (query)  
-     - parameter oDataQueryOptions: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getNonFungibleTokensCountAsyncWithRequestBuilder(tenantId: UUID, oDataQueryOptions: NonFungibleTokenDtoODataQueryOptions? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getNonFungibleTokensCountAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/BlockchainsService/NonFungibleTokens/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -276,7 +271,6 @@ open class NonFungibleTokensAPI {
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
-            "oDataQueryOptions": (wrappedValue: oDataQueryOptions?.encodeToJSON(), isExplode: true),
             "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
         ])
 

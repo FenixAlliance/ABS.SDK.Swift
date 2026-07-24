@@ -5,7 +5,11 @@ All URIs are relative to *https://absuite.net*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createContactAsync**](ContactsAPI.md#createcontactasync) | **POST** /api/v2/CrmService/Contacts | Create a new contact
+[**createContactEmailAsync**](ContactsAPI.md#createcontactemailasync) | **POST** /api/v2/CrmService/Contacts/{contactId}/Emails/Addresses | Add an email address to a contact
+[**createProfileForContactAsync**](ContactsAPI.md#createprofileforcontactasync) | **POST** /api/v2/CrmService/Contacts/{contactId}/Profiles | Create a contact profile
 [**deleteContactAsync**](ContactsAPI.md#deletecontactasync) | **DELETE** /api/v2/CrmService/Contacts/{contactId} | Delete a contact
+[**deleteContactEmailAsync**](ContactsAPI.md#deletecontactemailasync) | **DELETE** /api/v2/CrmService/Contacts/{contactId}/Emails/{emailId} | Delete a contact email address
+[**deleteProfileForContactAsync**](ContactsAPI.md#deleteprofileforcontactasync) | **DELETE** /api/v2/CrmService/Contacts/{contactId}/Profiles/{profileId} | Delete a contact profile
 [**getBusinessOwnedIndividualAsync**](ContactsAPI.md#getbusinessownedindividualasync) | **GET** /api/v2/CrmService/Contacts/Individuals/{contactId} | Get a Contact of type Individual by ID
 [**getBusinessOwnedIndividualsAsync**](ContactsAPI.md#getbusinessownedindividualsasync) | **GET** /api/v2/CrmService/Contacts/Individuals | Get all contacts of type individual
 [**getBusinessOwnedIndividualsCountAsync**](ContactsAPI.md#getbusinessownedindividualscountasync) | **GET** /api/v2/CrmService/Contacts/Individuals/Count | Get all contacts of type individual count
@@ -15,7 +19,8 @@ Method | HTTP request | Description
 [**getContactAsync**](ContactsAPI.md#getcontactasync) | **GET** /api/v2/CrmService/Contacts/{contactId} | Get a contact by ID
 [**getContactAvatarAsync**](ContactsAPI.md#getcontactavatarasync) | **GET** /api/v2/CrmService/Contacts/{contactId}/Avatar | Get a contact&#39;s avatar
 [**getContactCartAsync**](ContactsAPI.md#getcontactcartasync) | **GET** /api/v2/CrmService/Contacts/{contactId}/Cart | Get a contact&#39;s cart
-[**getContactProfilesAsync**](ContactsAPI.md#getcontactprofilesasync) | **GET** /api/v2/CrmService/Contacts/{contactId}/Profiles | Get a contact&#39;s social profiles
+[**getContactEmailsAsync**](ContactsAPI.md#getcontactemailsasync) | **GET** /api/v2/CrmService/Contacts/{contactId}/Emails | Get a contact&#39;s email addresses
+[**getContactEmailsCountAsync**](ContactsAPI.md#getcontactemailscountasync) | **GET** /api/v2/CrmService/Contacts/{contactId}/Emails/Count | Get contact email addresses count
 [**getContactSocialProfileAsync**](ContactsAPI.md#getcontactsocialprofileasync) | **GET** /api/v2/CrmService/Contacts/{contactId}/SocialProfile | Get a contact&#39;s social profile
 [**getContactWalletAsync**](ContactsAPI.md#getcontactwalletasync) | **GET** /api/v2/CrmService/Contacts/{contactId}/Wallet | Get a contact&#39;s wallet
 [**getContactsAsync**](ContactsAPI.md#getcontactsasync) | **GET** /api/v2/CrmService/Contacts | Get all business owned contacts
@@ -28,13 +33,19 @@ Method | HTTP request | Description
 [**getIndividualRelatedOrganizationsAsync**](ContactsAPI.md#getindividualrelatedorganizationsasync) | **GET** /api/v2/CrmService/Contacts/Individuals/{contactId}/Organizations | Get individual related organizations
 [**getOrganizationRelatedIndividualsAsync**](ContactsAPI.md#getorganizationrelatedindividualsasync) | **GET** /api/v2/CrmService/Contacts/Organizations/{contactId}/Individuals | Get organization related individuals
 [**getOrganizationRelatedOrganizationsAsync**](ContactsAPI.md#getorganizationrelatedorganizationsasync) | **GET** /api/v2/CrmService/Contacts/Organizations/{contactId}/Organizations | Get organization related organizations
+[**getProfilesForContactAsync**](ContactsAPI.md#getprofilesforcontactasync) | **GET** /api/v2/CrmService/Contacts/{contactId}/Profiles | Get a contact&#39;s social profiles
+[**getProfilesForContactCountAsync**](ContactsAPI.md#getprofilesforcontactcountasync) | **GET** /api/v2/CrmService/Contacts/{contactId}/Profiles/Count | Get contact profiles count
 [**patchContactAsync**](ContactsAPI.md#patchcontactasync) | **PATCH** /api/v2/CrmService/Contacts/{contactId} | Patch a contact
+[**patchContactEmailAsync**](ContactsAPI.md#patchcontactemailasync) | **PATCH** /api/v2/CrmService/Contacts/{contactId}/Emails/{emailId} | Patch a contact email address
 [**previewContactEmailTemplate**](ContactsAPI.md#previewcontactemailtemplate) | **POST** /api/v2/CrmService/Contacts/{contactId}/Emails/Preview | Preview the rendered email for a contact.
 [**sendContactEmail**](ContactsAPI.md#sendcontactemail) | **POST** /api/v2/CrmService/Contacts/{contactId}/Emails/Send | Send an email to a contact.
 [**updateContactAsync**](ContactsAPI.md#updatecontactasync) | **PUT** /api/v2/CrmService/Contacts/{contactId} | Update a contact
 [**updateContactAvatarAsync**](ContactsAPI.md#updatecontactavatarasync) | **POST** /api/v2/CrmService/Contacts/{contactId}/Avatar | Update a contact&#39;s avatar
+[**updateContactEmailAsync**](ContactsAPI.md#updatecontactemailasync) | **PUT** /api/v2/CrmService/Contacts/{contactId}/Emails/{emailId} | Update a contact email address
+[**updateProfileForContactAsync**](ContactsAPI.md#updateprofileforcontactasync) | **PUT** /api/v2/CrmService/Contacts/{contactId}/Profiles/{profileId} | Update a contact profile
 [**upsertTenantOntoAnotherTenantContactListAsync**](ContactsAPI.md#upserttenantontoanothertenantcontactlistasync) | **POST** /api/v2/CrmService/Contacts/Organizations/Upsert | Upsert a tenant onto another tenant&#39;s contact list
 [**upsertUserOntoAnotherTenantContactListAsync**](ContactsAPI.md#upsertuserontoanothertenantcontactlistasync) | **POST** /api/v2/CrmService/Contacts/Individuals/Upsert | Upsert a user onto a tenant&#39;s contact list
+[**verifyContactEmailAsync**](ContactsAPI.md#verifycontactemailasync) | **POST** /api/v2/CrmService/Contacts/{contactId}/Emails/{emailId}/Verify | Verify a contact email address
 
 
 # **createContactAsync**
@@ -93,6 +104,122 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **createContactEmailAsync**
+```swift
+    open class func createContactEmailAsync(tenantId: UUID, contactId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, contactEmailCreateDto: ContactEmailCreateDto? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+```
+
+Add an email address to a contact
+
+Creates a new email address for the specified contact.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let contactId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let contactEmailCreateDto = ContactEmailCreateDto(id: 123, timestamp: Date(), contactId: "contactId_example", address: "address_example", label: "label_example", isPrimary: false) // ContactEmailCreateDto |  (optional)
+
+// Add an email address to a contact
+ContactsAPI.createContactEmailAsync(tenantId: tenantId, contactId: contactId, apiVersion: apiVersion, xApiVersion: xApiVersion, contactEmailCreateDto: contactEmailCreateDto) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **contactId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **contactEmailCreateDto** | [**ContactEmailCreateDto**](ContactEmailCreateDto.md) |  | [optional] 
+
+### Return type
+
+Void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **createProfileForContactAsync**
+```swift
+    open class func createProfileForContactAsync(tenantId: UUID, contactId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, contactProfileCreateDto: ContactProfileCreateDto? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+```
+
+Create a contact profile
+
+Creates a new profile for the specified contact.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let contactId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let contactProfileCreateDto = ContactProfileCreateDto(id: 123, timestamp: Date(), type: "type_example", contactId: "contactId_example", contact: ContactCreateDto(id: 123, timestamp: Date(), type: "type_example", firstName: "firstName_example", lastName: "lastName_example", email: "email_example", taxId: "taxId_example", primaryContactId: "primaryContactId_example", qualifiedName: "qualifiedName_example", about: "about_example", countryId: "countryId_example", stateId: "stateId_example", cityId: "cityId_example", mobilePhone: "mobilePhone_example", businessPhone: "businessPhone_example", postalCode: "postalCode_example", duns: "duns_example", jobTitle: "jobTitle_example", webUrl: "webUrl_example", currencyId: "currencyId_example", languageId: "languageId_example", timezoneId: "timezoneId_example", birthday: Date(), streetLine1: "streetLine1_example", streetLine2: "streetLine2_example", gitHubUrl: "gitHubUrl_example", twitchUrl: "twitchUrl_example", redditUrl: "redditUrl_example", tikTokUrl: "tikTokUrl_example", websiteUrl: "websiteUrl_example", twitterUrl: "twitterUrl_example", facebookUrl: "facebookUrl_example", youTubeUrl: "youTubeUrl_example", linkedInUrl: "linkedInUrl_example", instagramUrl: "instagramUrl_example", githubUsername: "githubUsername_example", instagramUsername: "instagramUsername_example", tikTokUsername: "tikTokUsername_example", stackExchangeUrl: "stackExchangeUrl_example", stackOverflowUrl: "stackOverflowUrl_example", parentContactId: "parentContactId_example", faxNumber: "faxNumber_example"), about: "about_example", avatarUrl: "avatarUrl_example", data: "data_example", dataLabel: "dataLabel_example", data1: "data1_example", data1Label: "data1Label_example", data2: "data2_example", data2Label: "data2Label_example", data3: "data3_example", data3Label: "data3Label_example", data4: "data4_example", data4Label: "data4Label_example", data5: "data5_example", data5Label: "data5Label_example", data6: "data6_example", data6Label: "data6Label_example", data7: "data7_example", data7Label: "data7Label_example", data8: "data8_example", data8Label: "data8Label_example", data9: "data9_example", data9Label: "data9Label_example") // ContactProfileCreateDto |  (optional)
+
+// Create a contact profile
+ContactsAPI.createProfileForContactAsync(tenantId: tenantId, contactId: contactId, apiVersion: apiVersion, xApiVersion: xApiVersion, contactProfileCreateDto: contactProfileCreateDto) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **contactId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **contactProfileCreateDto** | [**ContactProfileCreateDto**](ContactProfileCreateDto.md) |  | [optional] 
+
+### Return type
+
+Void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **deleteContactAsync**
 ```swift
     open class func deleteContactAsync(tenantId: UUID, contactId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
@@ -137,6 +264,122 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deleteContactEmailAsync**
+```swift
+    open class func deleteContactEmailAsync(tenantId: UUID, contactId: UUID, emailId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+```
+
+Delete a contact email address
+
+Deletes an email address from the specified contact.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let contactId = 987 // UUID | 
+let emailId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Delete a contact email address
+ContactsAPI.deleteContactEmailAsync(tenantId: tenantId, contactId: contactId, emailId: emailId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **contactId** | **UUID** |  | 
+ **emailId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+Void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deleteProfileForContactAsync**
+```swift
+    open class func deleteProfileForContactAsync(tenantId: UUID, contactId: UUID, profileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+```
+
+Delete a contact profile
+
+Deletes a profile for the specified contact.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let contactId = 987 // UUID | 
+let profileId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Delete a contact profile
+ContactsAPI.deleteProfileForContactAsync(tenantId: tenantId, contactId: contactId, profileId: profileId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **contactId** | **UUID** |  | 
+ **profileId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+Void (empty response body)
 
 ### Authorization
 
@@ -645,14 +888,14 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getContactProfilesAsync**
+# **getContactEmailsAsync**
 ```swift
-    open class func getContactProfilesAsync(tenantId: UUID, contactId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ContactProfileDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getContactEmailsAsync(tenantId: UUID, contactId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ContactEmailDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
-Get a contact's social profiles
+Get a contact's email addresses
 
-Get a contact's social profiles
+Get all email addresses for the specified contact.
 
 ### Example
 ```swift
@@ -664,8 +907,8 @@ let contactId = 987 // UUID |
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
-// Get a contact's social profiles
-ContactsAPI.getContactProfilesAsync(tenantId: tenantId, contactId: contactId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+// Get a contact's email addresses
+ContactsAPI.getContactEmailsAsync(tenantId: tenantId, contactId: contactId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -688,7 +931,63 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ContactProfileDtoListEnvelope**](ContactProfileDtoListEnvelope.md)
+[**ContactEmailDtoListEnvelope**](ContactEmailDtoListEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getContactEmailsCountAsync**
+```swift
+    open class func getContactEmailsCountAsync(tenantId: UUID, contactId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+```
+
+Get contact email addresses count
+
+Returns the count of email addresses for the specified contact.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let contactId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Get contact email addresses count
+ContactsAPI.getContactEmailsCountAsync(tenantId: tenantId, contactId: contactId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **contactId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**Int32Envelope**](Int32Envelope.md)
 
 ### Authorization
 
@@ -1363,6 +1662,118 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **getProfilesForContactAsync**
+```swift
+    open class func getProfilesForContactAsync(tenantId: UUID, contactId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ContactProfileDtoListEnvelope?, _ error: Error?) -> Void)
+```
+
+Get a contact's social profiles
+
+Get a contact's social profiles
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let contactId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Get a contact's social profiles
+ContactsAPI.getProfilesForContactAsync(tenantId: tenantId, contactId: contactId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **contactId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**ContactProfileDtoListEnvelope**](ContactProfileDtoListEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getProfilesForContactCountAsync**
+```swift
+    open class func getProfilesForContactCountAsync(tenantId: UUID, contactId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+```
+
+Get contact profiles count
+
+Returns the count of profiles for the specified contact.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let contactId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Get contact profiles count
+ContactsAPI.getProfilesForContactCountAsync(tenantId: tenantId, contactId: contactId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **contactId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**Int32Envelope**](Int32Envelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **patchContactAsync**
 ```swift
     open class func patchContactAsync(tenantId: UUID, contactId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
@@ -1409,6 +1820,66 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchContactEmailAsync**
+```swift
+    open class func patchContactEmailAsync(tenantId: UUID, contactId: UUID, emailId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+```
+
+Patch a contact email address
+
+Partially updates an existing email address for the specified contact.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let contactId = 987 // UUID | 
+let emailId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a contact email address
+ContactsAPI.patchContactEmailAsync(tenantId: tenantId, contactId: contactId, emailId: emailId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **contactId** | **UUID** |  | 
+ **emailId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+Void (empty response body)
 
 ### Authorization
 
@@ -1551,7 +2022,7 @@ let tenantId = 987 // UUID |
 let contactId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let contactUpdateDto = ContactUpdateDto(type: "type_example", birthday: Date(), duns: "duns_example", taxId: "taxId_example", email: "email_example", firstName: "firstName_example", lastName: "lastName_example", primaryContactId: "primaryContactId_example", qualifiedName: "qualifiedName_example", about: "about_example", mobilePhone: "mobilePhone_example", businessPhone: "businessPhone_example", jobTitle: "jobTitle_example", countryId: "countryId_example", parentContactId: "parentContactId_example", addressLine1: "addressLine1_example", addressLine2: "addressLine2_example", postalCode: "postalCode_example", stateId: "stateId_example", cityId: "cityId_example", streetLine1: "streetLine1_example", streetLine2: "streetLine2_example", currencyId: "currencyId_example", languageId: "languageId_example", timezoneId: "timezoneId_example", coverUrl: "coverUrl_example", githubUsername: "githubUsername_example", instagramUsername: "instagramUsername_example", webUrl: "webUrl_example", twitchUrl: "twitchUrl_example", redditUrl: "redditUrl_example", gitHubUrl: "gitHubUrl_example", tikTokUrl: "tikTokUrl_example", twitterUrl: "twitterUrl_example", youTubeUrl: "youTubeUrl_example", facebookUrl: "facebookUrl_example", linkedInUrl: "linkedInUrl_example", instagramUrl: "instagramUrl_example", tikTokUsername: "tikTokUsername_example", stackExchangeUrl: "stackExchangeUrl_example", stackOverflowUrl: "stackOverflowUrl_example", faxNumber: "faxNumber_example") // ContactUpdateDto |  (optional)
+let contactUpdateDto = ContactUpdateDto(type: "type_example", birthday: Date(), duns: "duns_example", taxId: "taxId_example", email: "email_example", firstName: "firstName_example", lastName: "lastName_example", primaryContactId: "primaryContactId_example", qualifiedName: "qualifiedName_example", about: "about_example", mobilePhone: "mobilePhone_example", businessPhone: "businessPhone_example", jobTitle: "jobTitle_example", countryId: "countryId_example", parentContactId: "parentContactId_example", postalCode: "postalCode_example", stateId: "stateId_example", cityId: "cityId_example", streetLine1: "streetLine1_example", streetLine2: "streetLine2_example", currencyId: "currencyId_example", languageId: "languageId_example", timezoneId: "timezoneId_example", coverUrl: "coverUrl_example", githubUsername: "githubUsername_example", instagramUsername: "instagramUsername_example", webUrl: "webUrl_example", twitchUrl: "twitchUrl_example", redditUrl: "redditUrl_example", gitHubUrl: "gitHubUrl_example", tikTokUrl: "tikTokUrl_example", twitterUrl: "twitterUrl_example", youTubeUrl: "youTubeUrl_example", facebookUrl: "facebookUrl_example", linkedInUrl: "linkedInUrl_example", instagramUrl: "instagramUrl_example", tikTokUsername: "tikTokUsername_example", stackExchangeUrl: "stackExchangeUrl_example", stackOverflowUrl: "stackOverflowUrl_example", faxNumber: "faxNumber_example") // ContactUpdateDto |  (optional)
 
 // Update a contact
 ContactsAPI.updateContactAsync(tenantId: tenantId, contactId: contactId, apiVersion: apiVersion, xApiVersion: xApiVersion, contactUpdateDto: contactUpdateDto) { (response, error) in
@@ -1645,6 +2116,126 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data, application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **updateContactEmailAsync**
+```swift
+    open class func updateContactEmailAsync(tenantId: UUID, contactId: UUID, emailId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, contactEmailUpdateDto: ContactEmailUpdateDto? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+```
+
+Update a contact email address
+
+Updates an existing email address for the specified contact.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let contactId = 987 // UUID | 
+let emailId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let contactEmailUpdateDto = ContactEmailUpdateDto(address: "address_example", label: "label_example", isPrimary: false) // ContactEmailUpdateDto |  (optional)
+
+// Update a contact email address
+ContactsAPI.updateContactEmailAsync(tenantId: tenantId, contactId: contactId, emailId: emailId, apiVersion: apiVersion, xApiVersion: xApiVersion, contactEmailUpdateDto: contactEmailUpdateDto) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **contactId** | **UUID** |  | 
+ **emailId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **contactEmailUpdateDto** | [**ContactEmailUpdateDto**](ContactEmailUpdateDto.md) |  | [optional] 
+
+### Return type
+
+Void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **updateProfileForContactAsync**
+```swift
+    open class func updateProfileForContactAsync(tenantId: UUID, contactId: UUID, profileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, contactProfileUpdateDto: ContactProfileUpdateDto? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+```
+
+Update a contact profile
+
+Updates an existing profile for the specified contact.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let contactId = 987 // UUID | 
+let profileId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let contactProfileUpdateDto = ContactProfileUpdateDto(type: "type_example", contactId: "contactId_example", about: "about_example", avatarUrl: "avatarUrl_example", data: "data_example", dataLabel: "dataLabel_example", data1: "data1_example", data1Label: "data1Label_example", data2: "data2_example", data2Label: "data2Label_example", data3: "data3_example", data3Label: "data3Label_example", data4: "data4_example", data4Label: "data4Label_example", data5: "data5_example", data5Label: "data5Label_example", data6: "data6_example", data6Label: "data6Label_example", data7: "data7_example", data7Label: "data7Label_example", data8: "data8_example", data8Label: "data8Label_example", data9: "data9_example", data9Label: "data9Label_example") // ContactProfileUpdateDto |  (optional)
+
+// Update a contact profile
+ContactsAPI.updateProfileForContactAsync(tenantId: tenantId, contactId: contactId, profileId: profileId, apiVersion: apiVersion, xApiVersion: xApiVersion, contactProfileUpdateDto: contactProfileUpdateDto) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **contactId** | **UUID** |  | 
+ **profileId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **contactProfileUpdateDto** | [**ContactProfileUpdateDto**](ContactProfileUpdateDto.md) |  | [optional] 
+
+### Return type
+
+Void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1749,6 +2340,64 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ContactDtoEnvelope**](ContactDtoEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **verifyContactEmailAsync**
+```swift
+    open class func verifyContactEmailAsync(tenantId: UUID, contactId: UUID, emailId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+```
+
+Verify a contact email address
+
+Marks an email address as verified on the specified contact.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let contactId = 987 // UUID | 
+let emailId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Verify a contact email address
+ContactsAPI.verifyContactEmailAsync(tenantId: tenantId, contactId: contactId, emailId: emailId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **contactId** | **UUID** |  | 
+ **emailId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+Void (empty response body)
 
 ### Authorization
 

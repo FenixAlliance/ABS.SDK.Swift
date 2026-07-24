@@ -15,10 +15,8 @@ public struct LedgerTypeDto: Codable, JSONEncodable, Hashable {
     public enum LedgerClass: String, Codable, CaseIterable {
         case assets = "Assets"
         case equity = "Equity"
-        case gains = "Gains"
-        case losses = "Losses"
         case revenue = "Revenue"
-        case expenses = "Expenses"
+        case expense = "Expense"
         case liabilities = "Liabilities"
     }
     public var id: String?

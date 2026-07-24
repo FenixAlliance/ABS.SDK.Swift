@@ -15,26 +15,32 @@ public struct TaskTypeDto: Codable, JSONEncodable, Hashable {
     public var id: String?
     public var timestamp: Date?
     public var title: String?
-    public var taskCategoryID: String?
+    public var taskCategoryId: String?
     public var displayInTimeTracker: Bool?
     public var requiresDescription: Bool?
+    public var tenantId: String?
+    public var enrollmentId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, taskCategoryID: String? = nil, displayInTimeTracker: Bool? = nil, requiresDescription: Bool? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, taskCategoryId: String? = nil, displayInTimeTracker: Bool? = nil, requiresDescription: Bool? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
-        self.taskCategoryID = taskCategoryID
+        self.taskCategoryId = taskCategoryId
         self.displayInTimeTracker = displayInTimeTracker
         self.requiresDescription = requiresDescription
+        self.tenantId = tenantId
+        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
         case title
-        case taskCategoryID
+        case taskCategoryId
         case displayInTimeTracker
         case requiresDescription
+        case tenantId
+        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -44,9 +50,11 @@ public struct TaskTypeDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(title, forKey: .title)
-        try container.encodeIfPresent(taskCategoryID, forKey: .taskCategoryID)
+        try container.encodeIfPresent(taskCategoryId, forKey: .taskCategoryId)
         try container.encodeIfPresent(displayInTimeTracker, forKey: .displayInTimeTracker)
         try container.encodeIfPresent(requiresDescription, forKey: .requiresDescription)
+        try container.encodeIfPresent(tenantId, forKey: .tenantId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

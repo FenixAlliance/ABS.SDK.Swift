@@ -388,6 +388,136 @@ open class OptionsAPI {
     }
 
     /**
+     Patch a contact option
+     
+     - parameter tenantId: (query)  
+     - parameter contactId: (path)  
+     - parameter optionId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter operation: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func patchContactOptionAsync(tenantId: UUID, contactId: UUID, optionId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchContactOptionAsyncWithRequestBuilder(tenantId: tenantId, contactId: contactId, optionId: optionId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Patch a contact option
+     - PATCH /api/v2/CrmService/Contacts/{contactId}/Options/{optionId}
+     - Patch a contact option
+     - parameter tenantId: (query)  
+     - parameter contactId: (path)  
+     - parameter optionId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter operation: (body)  (optional)
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func patchContactOptionAsyncWithRequestBuilder(tenantId: UUID, contactId: UUID, optionId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/CrmService/Contacts/{contactId}/Options/{optionId}"
+        let contactIdPreEscape = "\(APIHelper.mapValueToPathItem(contactId))"
+        let contactIdPostEscape = contactIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{contactId}", with: contactIdPostEscape, options: .literal, range: nil)
+        let optionIdPreEscape = "\(APIHelper.mapValueToPathItem(optionId))"
+        let optionIdPostEscape = optionIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{optionId}", with: optionIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Patch a contact option by key
+     
+     - parameter tenantId: (query)  
+     - parameter contactId: (path)  
+     - parameter key: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter operation: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func patchContactOptionByKeyAsync(tenantId: UUID, contactId: UUID, key: String, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchContactOptionByKeyAsyncWithRequestBuilder(tenantId: tenantId, contactId: contactId, key: key, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Patch a contact option by key
+     - PATCH /api/v2/CrmService/Contacts/{contactId}/Options/Key/{key}
+     - Patch a contact option by key
+     - parameter tenantId: (query)  
+     - parameter contactId: (path)  
+     - parameter key: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter operation: (body)  (optional)
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func patchContactOptionByKeyAsyncWithRequestBuilder(tenantId: UUID, contactId: UUID, key: String, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/CrmService/Contacts/{contactId}/Options/Key/{key}"
+        let contactIdPreEscape = "\(APIHelper.mapValueToPathItem(contactId))"
+        let contactIdPostEscape = contactIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{contactId}", with: contactIdPostEscape, options: .literal, range: nil)
+        let keyPreEscape = "\(APIHelper.mapValueToPathItem(key))"
+        let keyPostEscape = keyPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{key}", with: keyPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
      Update a contact option
      
      - parameter tenantId: (query)  

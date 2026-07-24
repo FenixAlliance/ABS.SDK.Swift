@@ -5,8 +5,8 @@ All URIs are relative to *https://absuite.net*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**countItemShippingPoliciesAsync**](ItemShippingPoliciesAPI.md#countitemshippingpoliciesasync) | **GET** /api/v2/CatalogService/ItemShippingPolicies/Count | Count item shipping policies
-[**getItemShippingPoliciesAsync**](ItemShippingPoliciesAPI.md#getitemshippingpoliciesasync) | **GET** /api/v2/CatalogService/ItemShippingPolicies | Get item shipping policies
-[**getItemShippingPolicyByIdAsync**](ItemShippingPoliciesAPI.md#getitemshippingpolicybyidasync) | **GET** /api/v2/CatalogService/ItemShippingPolicies/{itemShippingPolicyId} | Get item shipping policy by ID
+[**getCatalogItemShippingPoliciesAsync**](ItemShippingPoliciesAPI.md#getcatalogitemshippingpoliciesasync) | **GET** /api/v2/CatalogService/ItemShippingPolicies | Get item shipping policies
+[**getCatalogItemShippingPolicyByIdAsync**](ItemShippingPoliciesAPI.md#getcatalogitemshippingpolicybyidasync) | **GET** /api/v2/CatalogService/ItemShippingPolicies/{itemShippingPolicyId} | Get item shipping policy by ID
 [**relateItemToShippingPolicyAsync**](ItemShippingPoliciesAPI.md#relateitemtoshippingpolicyasync) | **POST** /api/v2/CatalogService/ItemShippingPolicies | Relate item to shipping policy
 [**removeShippingPolicyFromItemAsync**](ItemShippingPoliciesAPI.md#removeshippingpolicyfromitemasync) | **DELETE** /api/v2/CatalogService/ItemShippingPolicies/{itemShippingPolicyId} | Remove shipping policy from item
 
@@ -67,9 +67,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getItemShippingPoliciesAsync**
+# **getCatalogItemShippingPoliciesAsync**
 ```swift
-    open class func getItemShippingPoliciesAsync(tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemShippingPolicyDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getCatalogItemShippingPoliciesAsync(tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemShippingPolicyDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get item shipping policies
@@ -87,7 +87,7 @@ let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Get item shipping policies
-ItemShippingPoliciesAPI.getItemShippingPoliciesAsync(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemShippingPoliciesAPI.getCatalogItemShippingPoliciesAsync(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -123,9 +123,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getItemShippingPolicyByIdAsync**
+# **getCatalogItemShippingPolicyByIdAsync**
 ```swift
-    open class func getItemShippingPolicyByIdAsync(itemShippingPolicyId: UUID, tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemShippingPolicyDtoEnvelope?, _ error: Error?) -> Void)
+    open class func getCatalogItemShippingPolicyByIdAsync(itemShippingPolicyId: UUID, tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemShippingPolicyDtoEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get item shipping policy by ID
@@ -144,7 +144,7 @@ let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Get item shipping policy by ID
-ItemShippingPoliciesAPI.getItemShippingPolicyByIdAsync(itemShippingPolicyId: itemShippingPolicyId, tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemShippingPoliciesAPI.getCatalogItemShippingPolicyByIdAsync(itemShippingPolicyId: itemShippingPolicyId, tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return

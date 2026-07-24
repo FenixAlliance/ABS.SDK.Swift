@@ -7,6 +7,10 @@ Name | Type | Description | Notes
 **timestamp** | **Date** |  | [optional] 
 **title** | **String** |  | [optional] 
 **description** | **String** |  | [optional] 
+**individualId** | **String** |  | [optional] 
+**organizationId** | **String** |  | [optional] 
+**tenantId** | **String** |  | [optional] 
+**enrollmentId** | **String** |  | [optional] 
 **projectStartDate** | **Date** |  | [optional] 
 **projectEndDate** | **Date** |  | [optional] 
 

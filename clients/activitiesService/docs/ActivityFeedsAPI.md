@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**getActivityFeedAsync**](ActivityFeedsAPI.md#getactivityfeedasync) | **GET** /api/v2/ActivitiesService/ActivityFeeds/{activityFeedId} | Get activity feed by ID
 [**getActivityFeedsAsync**](ActivityFeedsAPI.md#getactivityfeedsasync) | **GET** /api/v2/ActivitiesService/ActivityFeeds | Get activity feeds
 [**getActivityFeedsCountAsync**](ActivityFeedsAPI.md#getactivityfeedscountasync) | **GET** /api/v2/ActivitiesService/ActivityFeeds/Count | Count activity feeds
+[**getActivityRecordsCountAsync**](ActivityFeedsAPI.md#getactivityrecordscountasync) | **GET** /api/v2/ActivitiesService/Activities/Count | Count activity records
 [**getActivityTypeByIdAsync**](ActivityFeedsAPI.md#getactivitytypebyidasync) | **GET** /api/v2/ActivitiesService/ActivityTypes/{activityTypeId} | Get Activity Type
 [**getActivityTypesAsync**](ActivityFeedsAPI.md#getactivitytypesasync) | **GET** /api/v2/ActivitiesService/ActivityTypes | Get Activity Types
 [**patchActivityAsync**](ActivityFeedsAPI.md#patchactivityasync) | **PATCH** /api/v2/ActivitiesService/ActivityFeeds/{activityFeedId}/Activities/{activityId} | Patch an activity
@@ -605,6 +606,60 @@ let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Count activity feeds
 ActivityFeedsAPI.getActivityFeedsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**Int32Envelope**](Int32Envelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getActivityRecordsCountAsync**
+```swift
+    open class func getActivityRecordsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+```
+
+Count activity records
+
+Returns the tenant-wide count of activity records across all feeds owned by the tenant.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Count activity records
+ActivityFeedsAPI.getActivityRecordsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return

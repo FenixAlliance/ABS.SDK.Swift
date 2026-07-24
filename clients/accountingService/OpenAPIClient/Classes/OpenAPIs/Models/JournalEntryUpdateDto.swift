@@ -12,70 +12,44 @@ import AnyCodable
 
 public struct JournalEntryUpdateDto: Codable, JSONEncodable, Hashable {
 
-    static let descriptionRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    static let journalIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    static let currencyIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    static let debitAccountIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    static let creditAccountIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    public var group: Bool?
-    public var opening: Bool?
+    static let fiscalPeriodIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let transactionCurrencyIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let descriptionRule = StringRule(minLength: 1, maxLength: 300, pattern: nil)
+    public var fiscalPeriodId: String
+    public var transactionCurrencyId: String
     public var description: String
-    public var date: Date
-    public var debit: Double?
-    public var credit: Double?
-    public var journalId: String
-    public var currencyId: String
-    public var invoiceCode: String?
-    public var debitAccountId: String
-    public var creditAccountId: String
-    public var parentJournalEntryId: String?
+    public var sourceDocumentType: String?
+    public var sourceDocumentId: String?
+    public var isOpeningBalance: Bool?
 
-    public init(group: Bool? = nil, opening: Bool? = nil, description: String, date: Date, debit: Double? = nil, credit: Double? = nil, journalId: String, currencyId: String, invoiceCode: String? = nil, debitAccountId: String, creditAccountId: String, parentJournalEntryId: String? = nil) {
-        self.group = group
-        self.opening = opening
+    public init(fiscalPeriodId: String, transactionCurrencyId: String, description: String, sourceDocumentType: String? = nil, sourceDocumentId: String? = nil, isOpeningBalance: Bool? = nil) {
+        self.fiscalPeriodId = fiscalPeriodId
+        self.transactionCurrencyId = transactionCurrencyId
         self.description = description
-        self.date = date
-        self.debit = debit
-        self.credit = credit
-        self.journalId = journalId
-        self.currencyId = currencyId
-        self.invoiceCode = invoiceCode
-        self.debitAccountId = debitAccountId
-        self.creditAccountId = creditAccountId
-        self.parentJournalEntryId = parentJournalEntryId
+        self.sourceDocumentType = sourceDocumentType
+        self.sourceDocumentId = sourceDocumentId
+        self.isOpeningBalance = isOpeningBalance
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case group
-        case opening
+        case fiscalPeriodId
+        case transactionCurrencyId
         case description
-        case date
-        case debit
-        case credit
-        case journalId
-        case currencyId
-        case invoiceCode
-        case debitAccountId
-        case creditAccountId
-        case parentJournalEntryId
+        case sourceDocumentType
+        case sourceDocumentId
+        case isOpeningBalance
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(group, forKey: .group)
-        try container.encodeIfPresent(opening, forKey: .opening)
+        try container.encode(fiscalPeriodId, forKey: .fiscalPeriodId)
+        try container.encode(transactionCurrencyId, forKey: .transactionCurrencyId)
         try container.encode(description, forKey: .description)
-        try container.encode(date, forKey: .date)
-        try container.encodeIfPresent(debit, forKey: .debit)
-        try container.encodeIfPresent(credit, forKey: .credit)
-        try container.encode(journalId, forKey: .journalId)
-        try container.encode(currencyId, forKey: .currencyId)
-        try container.encodeIfPresent(invoiceCode, forKey: .invoiceCode)
-        try container.encode(debitAccountId, forKey: .debitAccountId)
-        try container.encode(creditAccountId, forKey: .creditAccountId)
-        try container.encodeIfPresent(parentJournalEntryId, forKey: .parentJournalEntryId)
+        try container.encodeIfPresent(sourceDocumentType, forKey: .sourceDocumentType)
+        try container.encodeIfPresent(sourceDocumentId, forKey: .sourceDocumentId)
+        try container.encodeIfPresent(isOpeningBalance, forKey: .isOpeningBalance)
     }
 }
 

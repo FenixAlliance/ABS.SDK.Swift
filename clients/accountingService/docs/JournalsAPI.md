@@ -14,9 +14,12 @@ Method | HTTP request | Description
 [**getJournalDetailsAsync**](JournalsAPI.md#getjournaldetailsasync) | **GET** /api/v2/AccountingService/Journals/{journalId} | Get journal by ID
 [**getJournalEntriesAsync**](JournalsAPI.md#getjournalentriesasync) | **GET** /api/v2/AccountingService/Journals/{journalId}/Entries | Get journal entries
 [**getJournalEntriesCountAsync**](JournalsAPI.md#getjournalentriescountasync) | **GET** /api/v2/AccountingService/Journals/{journalId}/Entries/Count | Count journal entries
+[**getJournalEntryDetailsAsync**](JournalsAPI.md#getjournalentrydetailsasync) | **GET** /api/v2/AccountingService/Journals/{journalId}/Entries/{entryId} | Get journal entry by ID
 [**getJournalsAsync**](JournalsAPI.md#getjournalsasync) | **GET** /api/v2/AccountingService/Journals | Get all journals
 [**patchJournalAsync**](JournalsAPI.md#patchjournalasync) | **PATCH** /api/v2/AccountingService/Journals/{journalId} | Patch a journal
 [**patchJournalEntryAsync**](JournalsAPI.md#patchjournalentryasync) | **PATCH** /api/v2/AccountingService/Journals/{journalId}/Entries/{entryId} | Patch a journal entry
+[**postJournalEntryAsync**](JournalsAPI.md#postjournalentryasync) | **POST** /api/v2/AccountingService/Journals/{journalId}/Entries/{entryId}/Post | Post a draft journal entry
+[**reverseJournalEntryAsync**](JournalsAPI.md#reversejournalentryasync) | **POST** /api/v2/AccountingService/Journals/{journalId}/Entries/{entryId}/Reverse | Reverse a posted journal entry
 [**updateJournalAsync**](JournalsAPI.md#updatejournalasync) | **PUT** /api/v2/AccountingService/Journals/{journalId} | Update journal
 [**updateJournalEntryAsync**](JournalsAPI.md#updatejournalentryasync) | **PUT** /api/v2/AccountingService/Journals/{journalId}/Entries/{entryId} | Update journal entry
 
@@ -37,7 +40,7 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let journalId = 987 // UUID | 
-let currencyId = "currencyId_example" // String |  (optional)
+let currencyId = "currencyId_example" // String |  (optional) (default to "USD.USA")
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
@@ -60,7 +63,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **journalId** | **UUID** |  | 
- **currencyId** | **String** |  | [optional] 
+ **currencyId** | **String** |  | [optional] [default to &quot;USD.USA&quot;]
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 
@@ -95,7 +98,7 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let journalId = 987 // UUID | 
-let currencyId = "currencyId_example" // String |  (optional)
+let currencyId = "currencyId_example" // String |  (optional) (default to "USD.USA")
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
@@ -118,7 +121,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **journalId** | **UUID** |  | 
- **currencyId** | **String** |  | [optional] 
+ **currencyId** | **String** |  | [optional] [default to &quot;USD.USA&quot;]
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 
@@ -265,7 +268,7 @@ let tenantId = 987 // UUID |
 let journalId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let journalEntryCreateDto = JournalEntryCreateDto(id: 123, timestamp: Date(), group: false, opening: false, description: "description_example", date: Date(), debit: 123, credit: 123, journalId: "journalId_example", currencyId: "currencyId_example", debitAccountId: "debitAccountId_example", creditAccountId: "creditAccountId_example", parentJournalEntryId: "parentJournalEntryId_example", invoiceCode: "invoiceCode_example") // JournalEntryCreateDto |  (optional)
+let journalEntryCreateDto = JournalEntryCreateDto(id: 123, timestamp: Date(), journalId: "journalId_example", fiscalPeriodId: "fiscalPeriodId_example", transactionCurrencyId: "transactionCurrencyId_example", description: "description_example", sourceDocumentType: "sourceDocumentType_example", sourceDocumentId: "sourceDocumentId_example", idempotencyKey: "idempotencyKey_example", isOpeningBalance: false, accountingEntries: [AccountingEntryCreateDto(id: 123, timestamp: Date(), journalEntryId: "journalEntryId_example", accountId: "accountId_example", direction: "direction_example", transactionAmount: 123, transactionCurrencyId: "transactionCurrencyId_example", description: "description_example")]) // JournalEntryCreateDto |  (optional)
 
 // Create journal entry
 JournalsAPI.createJournalEntryAsync(tenantId: tenantId, journalId: journalId, apiVersion: apiVersion, xApiVersion: xApiVersion, journalEntryCreateDto: journalEntryCreateDto) { (response, error) in
@@ -587,6 +590,64 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **getJournalEntryDetailsAsync**
+```swift
+    open class func getJournalEntryDetailsAsync(tenantId: UUID, journalId: UUID, entryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: JournalEntryDtoEnvelope?, _ error: Error?) -> Void)
+```
+
+Get journal entry by ID
+
+Retrieves a single journal entry WITH its hydrated posting lines — each line's account, direction, description and currency facets (transaction / functional / account / USD).
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let journalId = 987 // UUID | 
+let entryId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Get journal entry by ID
+JournalsAPI.getJournalEntryDetailsAsync(tenantId: tenantId, journalId: journalId, entryId: entryId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **journalId** | **UUID** |  | 
+ **entryId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**JournalEntryDtoEnvelope**](JournalEntryDtoEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **getJournalsAsync**
 ```swift
     open class func getJournalsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: JournalDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
@@ -759,6 +820,124 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **postJournalEntryAsync**
+```swift
+    open class func postJournalEntryAsync(tenantId: UUID, journalId: UUID, entryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Post a draft journal entry
+
+Posts a DRAFT journal entry into its own open fiscal period. Enforces the balanced-entry invariant and the open-period gate, then seals the entry (immutable — correct via reversal, never edit/delete). An unbalanced draft or a closed period is rejected. Requires the journals_post permission.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let journalId = 987 // UUID | 
+let entryId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Post a draft journal entry
+JournalsAPI.postJournalEntryAsync(tenantId: tenantId, journalId: journalId, entryId: entryId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **journalId** | **UUID** |  | 
+ **entryId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **reverseJournalEntryAsync**
+```swift
+    open class func reverseJournalEntryAsync(tenantId: UUID, journalId: UUID, entryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, reverseJournalEntryRequest: ReverseJournalEntryRequest? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Reverse a posted journal entry
+
+Reverses a POSTED journal entry by writing a balanced compensating counter-entry into the supplied open fiscal period and marking the original Reversed — one atomic operation (append-only audit trail). Requires the journals_reverse permission.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let journalId = 987 // UUID | 
+let entryId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let reverseJournalEntryRequest = ReverseJournalEntryRequest(reversalPeriodId: "reversalPeriodId_example") // ReverseJournalEntryRequest |  (optional)
+
+// Reverse a posted journal entry
+JournalsAPI.reverseJournalEntryAsync(tenantId: tenantId, journalId: journalId, entryId: entryId, apiVersion: apiVersion, xApiVersion: xApiVersion, reverseJournalEntryRequest: reverseJournalEntryRequest) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **journalId** | **UUID** |  | 
+ **entryId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **reverseJournalEntryRequest** | [**ReverseJournalEntryRequest**](ReverseJournalEntryRequest.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateJournalAsync**
 ```swift
     open class func updateJournalAsync(tenantId: UUID, journalId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, journalUpdateDto: JournalUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
@@ -836,7 +1015,7 @@ let journalId = 987 // UUID |
 let entryId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let journalEntryUpdateDto = JournalEntryUpdateDto(group: false, opening: false, description: "description_example", date: Date(), debit: 123, credit: 123, journalId: "journalId_example", currencyId: "currencyId_example", invoiceCode: "invoiceCode_example", debitAccountId: "debitAccountId_example", creditAccountId: "creditAccountId_example", parentJournalEntryId: "parentJournalEntryId_example") // JournalEntryUpdateDto |  (optional)
+let journalEntryUpdateDto = JournalEntryUpdateDto(fiscalPeriodId: "fiscalPeriodId_example", transactionCurrencyId: "transactionCurrencyId_example", description: "description_example", sourceDocumentType: "sourceDocumentType_example", sourceDocumentId: "sourceDocumentId_example", isOpeningBalance: false) // JournalEntryUpdateDto |  (optional)
 
 // Update journal entry
 JournalsAPI.updateJournalEntryAsync(tenantId: tenantId, journalId: journalId, entryId: entryId, apiVersion: apiVersion, xApiVersion: xApiVersion, journalEntryUpdateDto: journalEntryUpdateDto) { (response, error) in

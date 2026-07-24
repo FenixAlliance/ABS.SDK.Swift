@@ -14,6 +14,9 @@ Name | Type | Description | Notes
 **accountTypeId** | **String** |  | [optional] 
 **parentAccountId** | **String** |  | [optional] 
 **accountCategory** | **String** |  | [optional] 
+**isContra** | **Bool** |  | [optional] 
+**isMonetary** | **Bool** |  | [optional] 
+**incomeStatementSubType** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

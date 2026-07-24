@@ -5,7 +5,6 @@ OpenAPIClient.podspec
 OpenAPIClient/Classes/OpenAPIs/APIHelper.swift
 OpenAPIClient/Classes/OpenAPIs/APIs.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/ActivityFeedsAPI.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/ActivityRecordsAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/FenixAllianceABSWebAPI.swift
 OpenAPIClient/Classes/OpenAPIs/CodableHelper.swift
 OpenAPIClient/Classes/OpenAPIs/Configuration.swift
@@ -59,7 +58,6 @@ docs/ActivityRecordDto.md
 docs/ActivityRecordDtoEnvelope.md
 docs/ActivityRecordDtoListEnvelope.md
 docs/ActivityRecordUpdateDto.md
-docs/ActivityRecordsAPI.md
 docs/ActivityTypeCreateDto.md
 docs/ActivityTypeDto.md
 docs/ActivityTypeDtoEnvelope.md

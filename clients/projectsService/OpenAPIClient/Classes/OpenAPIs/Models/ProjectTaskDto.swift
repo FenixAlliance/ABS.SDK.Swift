@@ -14,27 +14,39 @@ public struct ProjectTaskDto: Codable, JSONEncodable, Hashable {
 
     public var id: String?
     public var timestamp: Date?
+    public var title: String?
+    public var description: String?
     public var startDate: Date?
     public var dueLine: Date?
-    public var projectID: String?
-    public var projectTaskBucketID: String?
+    public var projectId: String?
+    public var projectTaskBucketId: String?
+    public var tenantId: String?
+    public var enrollmentId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, startDate: Date? = nil, dueLine: Date? = nil, projectID: String? = nil, projectTaskBucketID: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, description: String? = nil, startDate: Date? = nil, dueLine: Date? = nil, projectId: String? = nil, projectTaskBucketId: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
+        self.title = title
+        self.description = description
         self.startDate = startDate
         self.dueLine = dueLine
-        self.projectID = projectID
-        self.projectTaskBucketID = projectTaskBucketID
+        self.projectId = projectId
+        self.projectTaskBucketId = projectTaskBucketId
+        self.tenantId = tenantId
+        self.enrollmentId = enrollmentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
+        case title
+        case description
         case startDate
         case dueLine
-        case projectID
-        case projectTaskBucketID
+        case projectId
+        case projectTaskBucketId
+        case tenantId
+        case enrollmentId
     }
 
     // Encodable protocol methods
@@ -43,10 +55,14 @@ public struct ProjectTaskDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
+        try container.encodeIfPresent(title, forKey: .title)
+        try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(startDate, forKey: .startDate)
         try container.encodeIfPresent(dueLine, forKey: .dueLine)
-        try container.encodeIfPresent(projectID, forKey: .projectID)
-        try container.encodeIfPresent(projectTaskBucketID, forKey: .projectTaskBucketID)
+        try container.encodeIfPresent(projectId, forKey: .projectId)
+        try container.encodeIfPresent(projectTaskBucketId, forKey: .projectTaskBucketId)
+        try container.encodeIfPresent(tenantId, forKey: .tenantId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
     }
 }
 

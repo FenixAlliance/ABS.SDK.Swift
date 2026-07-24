@@ -32,6 +32,11 @@ OpenAPIClient/Classes/OpenAPIs/JSONEncodingHelper.swift
 OpenAPIClient/Classes/OpenAPIs/Models.swift
 OpenAPIClient/Classes/OpenAPIs/Models/AccessTokenResponse.swift
 OpenAPIClient/Classes/OpenAPIs/Models/BooleanEnvelope.swift
+OpenAPIClient/Classes/OpenAPIs/Models/BusinessRelationshipCreateDto.swift
+OpenAPIClient/Classes/OpenAPIs/Models/BusinessRelationshipDto.swift
+OpenAPIClient/Classes/OpenAPIs/Models/BusinessRelationshipDtoEnvelope.swift
+OpenAPIClient/Classes/OpenAPIs/Models/BusinessRelationshipDtoListEnvelope.swift
+OpenAPIClient/Classes/OpenAPIs/Models/BusinessRelationshipUpdateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/CartDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/CartDtoEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/EmptyEnvelope.swift
@@ -157,7 +162,7 @@ OpenAPIClient/Classes/OpenAPIs/Models/UnitGroupDtoEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/UnitGroupDtoListEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/UnitGroupUpdateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/UnitUpdateDto.swift
-OpenAPIClient/Classes/OpenAPIs/Models/UpdateAvatarAsyncRequest.swift
+OpenAPIClient/Classes/OpenAPIs/Models/UpdateTenantAvatarAsyncRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/UserDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/UserDtoListEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/WalletDto.swift
@@ -172,6 +177,11 @@ Package.swift
 README.md
 docs/AccessTokenResponse.md
 docs/BooleanEnvelope.md
+docs/BusinessRelationshipCreateDto.md
+docs/BusinessRelationshipDto.md
+docs/BusinessRelationshipDtoEnvelope.md
+docs/BusinessRelationshipDtoListEnvelope.md
+docs/BusinessRelationshipUpdateDto.md
 docs/BusinessRelationshipsAPI.md
 docs/CartDto.md
 docs/CartDtoEnvelope.md
@@ -317,7 +327,7 @@ docs/UnitGroupUpdateDto.md
 docs/UnitGroupsAPI.md
 docs/UnitUpdateDto.md
 docs/UnitsAPI.md
-docs/UpdateAvatarAsyncRequest.md
+docs/UpdateTenantAvatarAsyncRequest.md
 docs/UserDto.md
 docs/UserDtoListEnvelope.md
 docs/WalletDto.md

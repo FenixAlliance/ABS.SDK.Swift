@@ -12,73 +12,87 @@ import AnyCodable
 
 public struct AccountingEntryDto: Codable, JSONEncodable, Hashable {
 
-    public enum AccountingEntryType: String, Codable, CaseIterable {
-        case _none = "None"
+    public enum Direction: String, Codable, CaseIterable {
         case debit = "Debit"
         case credit = "Credit"
     }
     public var id: String?
+    public var tenantId: String?
+    public var enrollmentId: String?
+    public var journalEntryId: String?
+    public var accountId: String?
+    public var accountName: String?
+    public var direction: Direction?
+    public var description: String?
+    public var transactionAmount: Double?
+    public var transactionCurrencyId: String?
+    public var functionalAmount: Double?
+    public var functionalCurrencyId: String?
+    public var accountAmount: Double?
+    public var accountCurrencyId: String?
+    public var reportingAmountInUsd: Double?
+    public var forexRate: Double?
+    public var forexRatesSnapshot: String?
+    public var costCentreId: String?
+    public var projectId: String?
     public var timestamp: Date?
     public var debit: Double?
     public var credit: Double?
-    public var description: String?
-    public var forexRate: Double?
-    public var accountId: String?
-    public var tenantId: String?
-    public var date: Date?
-    public var enrollmentId: String?
-    public var currencyId: String?
-    public var debitAccountId: String?
-    public var creditAccountId: String?
-    public var journalEntryId: String?
-    public var debitAccountName: String?
-    public var creditAccountName: String?
-    public var accountingEntryType: AccountingEntryType?
-    public var debitAmount: Money?
-    public var creditAmount: Money?
+    public var amount: Money?
+    public var amountInUsd: Money?
 
-    public init(id: String? = nil, timestamp: Date? = nil, debit: Double? = nil, credit: Double? = nil, description: String? = nil, forexRate: Double? = nil, accountId: String? = nil, tenantId: String? = nil, date: Date? = nil, enrollmentId: String? = nil, currencyId: String? = nil, debitAccountId: String? = nil, creditAccountId: String? = nil, journalEntryId: String? = nil, debitAccountName: String? = nil, creditAccountName: String? = nil, accountingEntryType: AccountingEntryType? = nil, debitAmount: Money? = nil, creditAmount: Money? = nil) {
+    public init(id: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil, journalEntryId: String? = nil, accountId: String? = nil, accountName: String? = nil, direction: Direction? = nil, description: String? = nil, transactionAmount: Double? = nil, transactionCurrencyId: String? = nil, functionalAmount: Double? = nil, functionalCurrencyId: String? = nil, accountAmount: Double? = nil, accountCurrencyId: String? = nil, reportingAmountInUsd: Double? = nil, forexRate: Double? = nil, forexRatesSnapshot: String? = nil, costCentreId: String? = nil, projectId: String? = nil, timestamp: Date? = nil, debit: Double? = nil, credit: Double? = nil, amount: Money? = nil, amountInUsd: Money? = nil) {
         self.id = id
+        self.tenantId = tenantId
+        self.enrollmentId = enrollmentId
+        self.journalEntryId = journalEntryId
+        self.accountId = accountId
+        self.accountName = accountName
+        self.direction = direction
+        self.description = description
+        self.transactionAmount = transactionAmount
+        self.transactionCurrencyId = transactionCurrencyId
+        self.functionalAmount = functionalAmount
+        self.functionalCurrencyId = functionalCurrencyId
+        self.accountAmount = accountAmount
+        self.accountCurrencyId = accountCurrencyId
+        self.reportingAmountInUsd = reportingAmountInUsd
+        self.forexRate = forexRate
+        self.forexRatesSnapshot = forexRatesSnapshot
+        self.costCentreId = costCentreId
+        self.projectId = projectId
         self.timestamp = timestamp
         self.debit = debit
         self.credit = credit
-        self.description = description
-        self.forexRate = forexRate
-        self.accountId = accountId
-        self.tenantId = tenantId
-        self.date = date
-        self.enrollmentId = enrollmentId
-        self.currencyId = currencyId
-        self.debitAccountId = debitAccountId
-        self.creditAccountId = creditAccountId
-        self.journalEntryId = journalEntryId
-        self.debitAccountName = debitAccountName
-        self.creditAccountName = creditAccountName
-        self.accountingEntryType = accountingEntryType
-        self.debitAmount = debitAmount
-        self.creditAmount = creditAmount
+        self.amount = amount
+        self.amountInUsd = amountInUsd
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
+        case tenantId
+        case enrollmentId
+        case journalEntryId
+        case accountId
+        case accountName
+        case direction
+        case description
+        case transactionAmount
+        case transactionCurrencyId
+        case functionalAmount
+        case functionalCurrencyId
+        case accountAmount
+        case accountCurrencyId
+        case reportingAmountInUsd
+        case forexRate
+        case forexRatesSnapshot
+        case costCentreId
+        case projectId
         case timestamp
         case debit
         case credit
-        case description
-        case forexRate
-        case accountId
-        case tenantId
-        case date
-        case enrollmentId
-        case currencyId
-        case debitAccountId
-        case creditAccountId
-        case journalEntryId
-        case debitAccountName
-        case creditAccountName
-        case accountingEntryType
-        case debitAmount
-        case creditAmount
+        case amount
+        case amountInUsd
     }
 
     // Encodable protocol methods
@@ -86,24 +100,29 @@ public struct AccountingEntryDto: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
+        try container.encodeIfPresent(tenantId, forKey: .tenantId)
+        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
+        try container.encodeIfPresent(journalEntryId, forKey: .journalEntryId)
+        try container.encodeIfPresent(accountId, forKey: .accountId)
+        try container.encodeIfPresent(accountName, forKey: .accountName)
+        try container.encodeIfPresent(direction, forKey: .direction)
+        try container.encodeIfPresent(description, forKey: .description)
+        try container.encodeIfPresent(transactionAmount, forKey: .transactionAmount)
+        try container.encodeIfPresent(transactionCurrencyId, forKey: .transactionCurrencyId)
+        try container.encodeIfPresent(functionalAmount, forKey: .functionalAmount)
+        try container.encodeIfPresent(functionalCurrencyId, forKey: .functionalCurrencyId)
+        try container.encodeIfPresent(accountAmount, forKey: .accountAmount)
+        try container.encodeIfPresent(accountCurrencyId, forKey: .accountCurrencyId)
+        try container.encodeIfPresent(reportingAmountInUsd, forKey: .reportingAmountInUsd)
+        try container.encodeIfPresent(forexRate, forKey: .forexRate)
+        try container.encodeIfPresent(forexRatesSnapshot, forKey: .forexRatesSnapshot)
+        try container.encodeIfPresent(costCentreId, forKey: .costCentreId)
+        try container.encodeIfPresent(projectId, forKey: .projectId)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(debit, forKey: .debit)
         try container.encodeIfPresent(credit, forKey: .credit)
-        try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(forexRate, forKey: .forexRate)
-        try container.encodeIfPresent(accountId, forKey: .accountId)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(date, forKey: .date)
-        try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
-        try container.encodeIfPresent(currencyId, forKey: .currencyId)
-        try container.encodeIfPresent(debitAccountId, forKey: .debitAccountId)
-        try container.encodeIfPresent(creditAccountId, forKey: .creditAccountId)
-        try container.encodeIfPresent(journalEntryId, forKey: .journalEntryId)
-        try container.encodeIfPresent(debitAccountName, forKey: .debitAccountName)
-        try container.encodeIfPresent(creditAccountName, forKey: .creditAccountName)
-        try container.encodeIfPresent(accountingEntryType, forKey: .accountingEntryType)
-        try container.encodeIfPresent(debitAmount, forKey: .debitAmount)
-        try container.encodeIfPresent(creditAmount, forKey: .creditAmount)
+        try container.encodeIfPresent(amount, forKey: .amount)
+        try container.encodeIfPresent(amountInUsd, forKey: .amountInUsd)
     }
 }
 

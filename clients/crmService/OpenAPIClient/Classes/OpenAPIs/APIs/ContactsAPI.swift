@@ -68,6 +68,126 @@ open class ContactsAPI {
     }
 
     /**
+     Add an email address to a contact
+     
+     - parameter tenantId: (query)  
+     - parameter contactId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter contactEmailCreateDto: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func createContactEmailAsync(tenantId: UUID, contactId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, contactEmailCreateDto: ContactEmailCreateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return createContactEmailAsyncWithRequestBuilder(tenantId: tenantId, contactId: contactId, apiVersion: apiVersion, xApiVersion: xApiVersion, contactEmailCreateDto: contactEmailCreateDto).execute(apiResponseQueue) { result in
+            switch result {
+            case .success:
+                completion((), nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Add an email address to a contact
+     - POST /api/v2/CrmService/Contacts/{contactId}/Emails/Addresses
+     - Creates a new email address for the specified contact.
+     - parameter tenantId: (query)  
+     - parameter contactId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter contactEmailCreateDto: (body)  (optional)
+     - returns: RequestBuilder<Void> 
+     */
+    open class func createContactEmailAsyncWithRequestBuilder(tenantId: UUID, contactId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, contactEmailCreateDto: ContactEmailCreateDto? = nil) -> RequestBuilder<Void> {
+        var localVariablePath = "/api/v2/CrmService/Contacts/{contactId}/Emails/Addresses"
+        let contactIdPreEscape = "\(APIHelper.mapValueToPathItem(contactId))"
+        let contactIdPostEscape = contactIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{contactId}", with: contactIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: contactEmailCreateDto)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Create a contact profile
+     
+     - parameter tenantId: (query)  
+     - parameter contactId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter contactProfileCreateDto: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func createProfileForContactAsync(tenantId: UUID, contactId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, contactProfileCreateDto: ContactProfileCreateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return createProfileForContactAsyncWithRequestBuilder(tenantId: tenantId, contactId: contactId, apiVersion: apiVersion, xApiVersion: xApiVersion, contactProfileCreateDto: contactProfileCreateDto).execute(apiResponseQueue) { result in
+            switch result {
+            case .success:
+                completion((), nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Create a contact profile
+     - POST /api/v2/CrmService/Contacts/{contactId}/Profiles
+     - Creates a new profile for the specified contact.
+     - parameter tenantId: (query)  
+     - parameter contactId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter contactProfileCreateDto: (body)  (optional)
+     - returns: RequestBuilder<Void> 
+     */
+    open class func createProfileForContactAsyncWithRequestBuilder(tenantId: UUID, contactId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, contactProfileCreateDto: ContactProfileCreateDto? = nil) -> RequestBuilder<Void> {
+        var localVariablePath = "/api/v2/CrmService/Contacts/{contactId}/Profiles"
+        let contactIdPreEscape = "\(APIHelper.mapValueToPathItem(contactId))"
+        let contactIdPostEscape = contactIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{contactId}", with: contactIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: contactProfileCreateDto)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
      Delete a contact
      
      - parameter tenantId: (query)  
@@ -120,6 +240,130 @@ open class ContactsAPI {
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Delete a contact email address
+     
+     - parameter tenantId: (query)  
+     - parameter contactId: (path)  
+     - parameter emailId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func deleteContactEmailAsync(tenantId: UUID, contactId: UUID, emailId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return deleteContactEmailAsyncWithRequestBuilder(tenantId: tenantId, contactId: contactId, emailId: emailId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case .success:
+                completion((), nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Delete a contact email address
+     - DELETE /api/v2/CrmService/Contacts/{contactId}/Emails/{emailId}
+     - Deletes an email address from the specified contact.
+     - parameter tenantId: (query)  
+     - parameter contactId: (path)  
+     - parameter emailId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<Void> 
+     */
+    open class func deleteContactEmailAsyncWithRequestBuilder(tenantId: UUID, contactId: UUID, emailId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Void> {
+        var localVariablePath = "/api/v2/CrmService/Contacts/{contactId}/Emails/{emailId}"
+        let contactIdPreEscape = "\(APIHelper.mapValueToPathItem(contactId))"
+        let contactIdPostEscape = contactIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{contactId}", with: contactIdPostEscape, options: .literal, range: nil)
+        let emailIdPreEscape = "\(APIHelper.mapValueToPathItem(emailId))"
+        let emailIdPostEscape = emailIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{emailId}", with: emailIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Delete a contact profile
+     
+     - parameter tenantId: (query)  
+     - parameter contactId: (path)  
+     - parameter profileId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func deleteProfileForContactAsync(tenantId: UUID, contactId: UUID, profileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return deleteProfileForContactAsyncWithRequestBuilder(tenantId: tenantId, contactId: contactId, profileId: profileId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case .success:
+                completion((), nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Delete a contact profile
+     - DELETE /api/v2/CrmService/Contacts/{contactId}/Profiles/{profileId}
+     - Deletes a profile for the specified contact.
+     - parameter tenantId: (query)  
+     - parameter contactId: (path)  
+     - parameter profileId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<Void> 
+     */
+    open class func deleteProfileForContactAsyncWithRequestBuilder(tenantId: UUID, contactId: UUID, profileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Void> {
+        var localVariablePath = "/api/v2/CrmService/Contacts/{contactId}/Profiles/{profileId}"
+        let contactIdPreEscape = "\(APIHelper.mapValueToPathItem(contactId))"
+        let contactIdPostEscape = contactIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{contactId}", with: contactIdPostEscape, options: .literal, range: nil)
+        let profileIdPreEscape = "\(APIHelper.mapValueToPathItem(profileId))"
+        let profileIdPostEscape = profileIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{profileId}", with: profileIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
@@ -618,7 +862,7 @@ open class ContactsAPI {
     }
 
     /**
-     Get a contact's social profiles
+     Get a contact's email addresses
      
      - parameter tenantId: (query)  
      - parameter contactId: (path)  
@@ -628,8 +872,8 @@ open class ContactsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getContactProfilesAsync(tenantId: UUID, contactId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ContactProfileDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getContactProfilesAsyncWithRequestBuilder(tenantId: tenantId, contactId: contactId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getContactEmailsAsync(tenantId: UUID, contactId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ContactEmailDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getContactEmailsAsyncWithRequestBuilder(tenantId: tenantId, contactId: contactId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -640,17 +884,17 @@ open class ContactsAPI {
     }
 
     /**
-     Get a contact's social profiles
-     - GET /api/v2/CrmService/Contacts/{contactId}/Profiles
-     - Get a contact's social profiles
+     Get a contact's email addresses
+     - GET /api/v2/CrmService/Contacts/{contactId}/Emails
+     - Get all email addresses for the specified contact.
      - parameter tenantId: (query)  
      - parameter contactId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - returns: RequestBuilder<ContactProfileDtoListEnvelope> 
+     - returns: RequestBuilder<ContactEmailDtoListEnvelope> 
      */
-    open class func getContactProfilesAsyncWithRequestBuilder(tenantId: UUID, contactId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ContactProfileDtoListEnvelope> {
-        var localVariablePath = "/api/v2/CrmService/Contacts/{contactId}/Profiles"
+    open class func getContactEmailsAsyncWithRequestBuilder(tenantId: UUID, contactId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ContactEmailDtoListEnvelope> {
+        var localVariablePath = "/api/v2/CrmService/Contacts/{contactId}/Emails"
         let contactIdPreEscape = "\(APIHelper.mapValueToPathItem(contactId))"
         let contactIdPostEscape = contactIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{contactId}", with: contactIdPostEscape, options: .literal, range: nil)
@@ -669,7 +913,64 @@ open class ContactsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ContactProfileDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<ContactEmailDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Get contact email addresses count
+     
+     - parameter tenantId: (query)  
+     - parameter contactId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getContactEmailsCountAsync(tenantId: UUID, contactId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getContactEmailsCountAsyncWithRequestBuilder(tenantId: tenantId, contactId: contactId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get contact email addresses count
+     - GET /api/v2/CrmService/Contacts/{contactId}/Emails/Count
+     - Returns the count of email addresses for the specified contact.
+     - parameter tenantId: (query)  
+     - parameter contactId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<Int32Envelope> 
+     */
+    open class func getContactEmailsCountAsyncWithRequestBuilder(tenantId: UUID, contactId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+        var localVariablePath = "/api/v2/CrmService/Contacts/{contactId}/Emails/Count"
+        let contactIdPreEscape = "\(APIHelper.mapValueToPathItem(contactId))"
+        let contactIdPostEscape = contactIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{contactId}", with: contactIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
@@ -1334,6 +1635,120 @@ open class ContactsAPI {
     }
 
     /**
+     Get a contact's social profiles
+     
+     - parameter tenantId: (query)  
+     - parameter contactId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getProfilesForContactAsync(tenantId: UUID, contactId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ContactProfileDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getProfilesForContactAsyncWithRequestBuilder(tenantId: tenantId, contactId: contactId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get a contact's social profiles
+     - GET /api/v2/CrmService/Contacts/{contactId}/Profiles
+     - Get a contact's social profiles
+     - parameter tenantId: (query)  
+     - parameter contactId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<ContactProfileDtoListEnvelope> 
+     */
+    open class func getProfilesForContactAsyncWithRequestBuilder(tenantId: UUID, contactId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ContactProfileDtoListEnvelope> {
+        var localVariablePath = "/api/v2/CrmService/Contacts/{contactId}/Profiles"
+        let contactIdPreEscape = "\(APIHelper.mapValueToPathItem(contactId))"
+        let contactIdPostEscape = contactIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{contactId}", with: contactIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<ContactProfileDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Get contact profiles count
+     
+     - parameter tenantId: (query)  
+     - parameter contactId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getProfilesForContactCountAsync(tenantId: UUID, contactId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getProfilesForContactCountAsyncWithRequestBuilder(tenantId: tenantId, contactId: contactId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get contact profiles count
+     - GET /api/v2/CrmService/Contacts/{contactId}/Profiles/Count
+     - Returns the count of profiles for the specified contact.
+     - parameter tenantId: (query)  
+     - parameter contactId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<Int32Envelope> 
+     */
+    open class func getProfilesForContactCountAsyncWithRequestBuilder(tenantId: UUID, contactId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+        var localVariablePath = "/api/v2/CrmService/Contacts/{contactId}/Profiles/Count"
+        let contactIdPreEscape = "\(APIHelper.mapValueToPathItem(contactId))"
+        let contactIdPostEscape = contactIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{contactId}", with: contactIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Int32Envelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
      Patch a contact
      
      - parameter tenantId: (query)  
@@ -1389,6 +1804,71 @@ open class ContactsAPI {
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Patch a contact email address
+     
+     - parameter tenantId: (query)  
+     - parameter contactId: (path)  
+     - parameter emailId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter operation: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func patchContactEmailAsync(tenantId: UUID, contactId: UUID, emailId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchContactEmailAsyncWithRequestBuilder(tenantId: tenantId, contactId: contactId, emailId: emailId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation).execute(apiResponseQueue) { result in
+            switch result {
+            case .success:
+                completion((), nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Patch a contact email address
+     - PATCH /api/v2/CrmService/Contacts/{contactId}/Emails/{emailId}
+     - Partially updates an existing email address for the specified contact.
+     - parameter tenantId: (query)  
+     - parameter contactId: (path)  
+     - parameter emailId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter operation: (body)  (optional)
+     - returns: RequestBuilder<Void> 
+     */
+    open class func patchContactEmailAsyncWithRequestBuilder(tenantId: UUID, contactId: UUID, emailId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil) -> RequestBuilder<Void> {
+        var localVariablePath = "/api/v2/CrmService/Contacts/{contactId}/Emails/{emailId}"
+        let contactIdPreEscape = "\(APIHelper.mapValueToPathItem(contactId))"
+        let contactIdPostEscape = contactIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{contactId}", with: contactIdPostEscape, options: .literal, range: nil)
+        let emailIdPreEscape = "\(APIHelper.mapValueToPathItem(emailId))"
+        let emailIdPostEscape = emailIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{emailId}", with: emailIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
@@ -1633,6 +2113,136 @@ open class ContactsAPI {
     }
 
     /**
+     Update a contact email address
+     
+     - parameter tenantId: (query)  
+     - parameter contactId: (path)  
+     - parameter emailId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter contactEmailUpdateDto: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func updateContactEmailAsync(tenantId: UUID, contactId: UUID, emailId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, contactEmailUpdateDto: ContactEmailUpdateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return updateContactEmailAsyncWithRequestBuilder(tenantId: tenantId, contactId: contactId, emailId: emailId, apiVersion: apiVersion, xApiVersion: xApiVersion, contactEmailUpdateDto: contactEmailUpdateDto).execute(apiResponseQueue) { result in
+            switch result {
+            case .success:
+                completion((), nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Update a contact email address
+     - PUT /api/v2/CrmService/Contacts/{contactId}/Emails/{emailId}
+     - Updates an existing email address for the specified contact.
+     - parameter tenantId: (query)  
+     - parameter contactId: (path)  
+     - parameter emailId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter contactEmailUpdateDto: (body)  (optional)
+     - returns: RequestBuilder<Void> 
+     */
+    open class func updateContactEmailAsyncWithRequestBuilder(tenantId: UUID, contactId: UUID, emailId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, contactEmailUpdateDto: ContactEmailUpdateDto? = nil) -> RequestBuilder<Void> {
+        var localVariablePath = "/api/v2/CrmService/Contacts/{contactId}/Emails/{emailId}"
+        let contactIdPreEscape = "\(APIHelper.mapValueToPathItem(contactId))"
+        let contactIdPostEscape = contactIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{contactId}", with: contactIdPostEscape, options: .literal, range: nil)
+        let emailIdPreEscape = "\(APIHelper.mapValueToPathItem(emailId))"
+        let emailIdPostEscape = emailIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{emailId}", with: emailIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: contactEmailUpdateDto)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Update a contact profile
+     
+     - parameter tenantId: (query)  
+     - parameter contactId: (path)  
+     - parameter profileId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter contactProfileUpdateDto: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func updateProfileForContactAsync(tenantId: UUID, contactId: UUID, profileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, contactProfileUpdateDto: ContactProfileUpdateDto? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return updateProfileForContactAsyncWithRequestBuilder(tenantId: tenantId, contactId: contactId, profileId: profileId, apiVersion: apiVersion, xApiVersion: xApiVersion, contactProfileUpdateDto: contactProfileUpdateDto).execute(apiResponseQueue) { result in
+            switch result {
+            case .success:
+                completion((), nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Update a contact profile
+     - PUT /api/v2/CrmService/Contacts/{contactId}/Profiles/{profileId}
+     - Updates an existing profile for the specified contact.
+     - parameter tenantId: (query)  
+     - parameter contactId: (path)  
+     - parameter profileId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter contactProfileUpdateDto: (body)  (optional)
+     - returns: RequestBuilder<Void> 
+     */
+    open class func updateProfileForContactAsyncWithRequestBuilder(tenantId: UUID, contactId: UUID, profileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, contactProfileUpdateDto: ContactProfileUpdateDto? = nil) -> RequestBuilder<Void> {
+        var localVariablePath = "/api/v2/CrmService/Contacts/{contactId}/Profiles/{profileId}"
+        let contactIdPreEscape = "\(APIHelper.mapValueToPathItem(contactId))"
+        let contactIdPostEscape = contactIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{contactId}", with: contactIdPostEscape, options: .literal, range: nil)
+        let profileIdPreEscape = "\(APIHelper.mapValueToPathItem(profileId))"
+        let profileIdPostEscape = profileIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{profileId}", with: profileIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: contactProfileUpdateDto)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
      Upsert a tenant onto another tenant's contact list
      
      - parameter tenantId: (query)  
@@ -1738,6 +2348,68 @@ open class ContactsAPI {
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         let localVariableRequestBuilder: RequestBuilder<ContactDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Verify a contact email address
+     
+     - parameter tenantId: (query)  
+     - parameter contactId: (path)  
+     - parameter emailId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func verifyContactEmailAsync(tenantId: UUID, contactId: UUID, emailId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return verifyContactEmailAsyncWithRequestBuilder(tenantId: tenantId, contactId: contactId, emailId: emailId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+            switch result {
+            case .success:
+                completion((), nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Verify a contact email address
+     - POST /api/v2/CrmService/Contacts/{contactId}/Emails/{emailId}/Verify
+     - Marks an email address as verified on the specified contact.
+     - parameter tenantId: (query)  
+     - parameter contactId: (path)  
+     - parameter emailId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - returns: RequestBuilder<Void> 
+     */
+    open class func verifyContactEmailAsyncWithRequestBuilder(tenantId: UUID, contactId: UUID, emailId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Void> {
+        var localVariablePath = "/api/v2/CrmService/Contacts/{contactId}/Emails/{emailId}/Verify"
+        let contactIdPreEscape = "\(APIHelper.mapValueToPathItem(contactId))"
+        let contactIdPostEscape = contactIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{contactId}", with: contactIdPostEscape, options: .literal, range: nil)
+        let emailIdPreEscape = "\(APIHelper.mapValueToPathItem(emailId))"
+        let emailIdPostEscape = emailIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{emailId}", with: emailIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }

@@ -14,12 +14,12 @@ public struct FiscalPeriodUpdateDto: Codable, JSONEncodable, Hashable {
 
     static let nameRule = StringRule(minLength: 0, maxLength: 50, pattern: nil)
     static let fiscalYearIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
-    public var name: String?
+    public var name: String
     public var fromDate: Date?
     public var toDate: Date?
-    public var fiscalYearId: String?
+    public var fiscalYearId: String
 
-    public init(name: String? = nil, fromDate: Date? = nil, toDate: Date? = nil, fiscalYearId: String? = nil) {
+    public init(name: String, fromDate: Date? = nil, toDate: Date? = nil, fiscalYearId: String) {
         self.name = name
         self.fromDate = fromDate
         self.toDate = toDate
@@ -37,10 +37,10 @@ public struct FiscalPeriodUpdateDto: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(name, forKey: .name)
+        try container.encode(name, forKey: .name)
         try container.encodeIfPresent(fromDate, forKey: .fromDate)
         try container.encodeIfPresent(toDate, forKey: .toDate)
-        try container.encodeIfPresent(fiscalYearId, forKey: .fiscalYearId)
+        try container.encode(fiscalYearId, forKey: .fiscalYearId)
     }
 }
 

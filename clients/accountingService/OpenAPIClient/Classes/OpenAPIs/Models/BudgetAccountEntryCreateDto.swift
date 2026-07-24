@@ -12,37 +12,28 @@ import AnyCodable
 
 public struct BudgetAccountEntryCreateDto: Codable, JSONEncodable, Hashable {
 
-    public enum AccountingEntryType: String, Codable, CaseIterable {
-        case _none = "None"
-        case debit = "Debit"
-        case credit = "Credit"
-    }
     static let descriptionRule = StringRule(minLength: 1, maxLength: 300, pattern: nil)
     static let currencyIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    static let budgetIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
+    static let debitAccountIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let creditAccountIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let budgetIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var description: String
-    public var date: Date?
-    public var amount: Double?
+    public var plannedAmount: Double?
     public var currencyId: String
-    public var debitAccountId: String?
-    public var creditAccountId: String?
-    public var journalEntryId: String?
-    public var accountingEntryType: AccountingEntryType?
-    public var budgetId: String?
+    public var debitAccountId: String
+    public var creditAccountId: String
+    public var budgetId: String
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, description: String, date: Date? = nil, amount: Double? = nil, currencyId: String, debitAccountId: String? = nil, creditAccountId: String? = nil, journalEntryId: String? = nil, accountingEntryType: AccountingEntryType? = nil, budgetId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, description: String, plannedAmount: Double? = nil, currencyId: String, debitAccountId: String, creditAccountId: String, budgetId: String) {
         self.id = id
         self.timestamp = timestamp
         self.description = description
-        self.date = date
-        self.amount = amount
+        self.plannedAmount = plannedAmount
         self.currencyId = currencyId
         self.debitAccountId = debitAccountId
         self.creditAccountId = creditAccountId
-        self.journalEntryId = journalEntryId
-        self.accountingEntryType = accountingEntryType
         self.budgetId = budgetId
     }
 
@@ -50,13 +41,10 @@ public struct BudgetAccountEntryCreateDto: Codable, JSONEncodable, Hashable {
         case id
         case timestamp
         case description
-        case date
-        case amount
+        case plannedAmount
         case currencyId
         case debitAccountId
         case creditAccountId
-        case journalEntryId
-        case accountingEntryType
         case budgetId
     }
 
@@ -67,14 +55,11 @@ public struct BudgetAccountEntryCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encode(description, forKey: .description)
-        try container.encodeIfPresent(date, forKey: .date)
-        try container.encodeIfPresent(amount, forKey: .amount)
+        try container.encodeIfPresent(plannedAmount, forKey: .plannedAmount)
         try container.encode(currencyId, forKey: .currencyId)
-        try container.encodeIfPresent(debitAccountId, forKey: .debitAccountId)
-        try container.encodeIfPresent(creditAccountId, forKey: .creditAccountId)
-        try container.encodeIfPresent(journalEntryId, forKey: .journalEntryId)
-        try container.encodeIfPresent(accountingEntryType, forKey: .accountingEntryType)
-        try container.encodeIfPresent(budgetId, forKey: .budgetId)
+        try container.encode(debitAccountId, forKey: .debitAccountId)
+        try container.encode(creditAccountId, forKey: .creditAccountId)
+        try container.encode(budgetId, forKey: .budgetId)
     }
 }
 

@@ -12,58 +12,47 @@ import AnyCodable
 
 public struct AccountingEntryUpdateDto: Codable, JSONEncodable, Hashable {
 
-    public enum AccountingEntryType: String, Codable, CaseIterable {
-        case _none = "None"
+    public enum Direction: String, Codable, CaseIterable {
         case debit = "Debit"
         case credit = "Credit"
     }
-    static let descriptionRule = StringRule(minLength: 1, maxLength: 1000, pattern: nil)
-    static let amountRule = NumericRule<Double>(minimum: 0.01, exclusiveMinimum: false, maximum: 999999999999999, exclusiveMaximum: false, multipleOf: nil)
-    static let creditAccountIdRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
-    static let journalEntryIdRule = StringRule(minLength: 36, maxLength: 36, pattern: nil)
-    public var description: String?
-    public var amount: Double?
-    public var date: Date?
-    public var currencyId: String?
-    public var debitAccountId: String?
-    public var creditAccountId: String?
+    static let transactionAmountRule = NumericRule<Double>(minimum: 1.0E-16, exclusiveMinimum: false, maximum: 9.999999999999999E+20, exclusiveMaximum: false, multipleOf: nil)
+    static let descriptionRule = StringRule(minLength: 1, maxLength: 300, pattern: nil)
     public var journalEntryId: String?
-    public var accountingEntryType: AccountingEntryType?
+    public var accountId: String?
+    public var direction: Direction?
+    public var transactionAmount: Double?
+    public var transactionCurrencyId: String?
+    public var description: String?
 
-    public init(description: String? = nil, amount: Double? = nil, date: Date? = nil, currencyId: String? = nil, debitAccountId: String? = nil, creditAccountId: String? = nil, journalEntryId: String? = nil, accountingEntryType: AccountingEntryType? = nil) {
-        self.description = description
-        self.amount = amount
-        self.date = date
-        self.currencyId = currencyId
-        self.debitAccountId = debitAccountId
-        self.creditAccountId = creditAccountId
+    public init(journalEntryId: String? = nil, accountId: String? = nil, direction: Direction? = nil, transactionAmount: Double? = nil, transactionCurrencyId: String? = nil, description: String? = nil) {
         self.journalEntryId = journalEntryId
-        self.accountingEntryType = accountingEntryType
+        self.accountId = accountId
+        self.direction = direction
+        self.transactionAmount = transactionAmount
+        self.transactionCurrencyId = transactionCurrencyId
+        self.description = description
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case description
-        case amount
-        case date
-        case currencyId
-        case debitAccountId
-        case creditAccountId
         case journalEntryId
-        case accountingEntryType
+        case accountId
+        case direction
+        case transactionAmount
+        case transactionCurrencyId
+        case description
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(amount, forKey: .amount)
-        try container.encodeIfPresent(date, forKey: .date)
-        try container.encodeIfPresent(currencyId, forKey: .currencyId)
-        try container.encodeIfPresent(debitAccountId, forKey: .debitAccountId)
-        try container.encodeIfPresent(creditAccountId, forKey: .creditAccountId)
         try container.encodeIfPresent(journalEntryId, forKey: .journalEntryId)
-        try container.encodeIfPresent(accountingEntryType, forKey: .accountingEntryType)
+        try container.encodeIfPresent(accountId, forKey: .accountId)
+        try container.encodeIfPresent(direction, forKey: .direction)
+        try container.encodeIfPresent(transactionAmount, forKey: .transactionAmount)
+        try container.encodeIfPresent(transactionCurrencyId, forKey: .transactionCurrencyId)
+        try container.encodeIfPresent(description, forKey: .description)
     }
 }
 

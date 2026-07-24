@@ -13,17 +13,20 @@ import AnyCodable
 public struct TaskTypeUpdateDto: Codable, JSONEncodable, Hashable {
 
     public var title: String?
+    public var taskCategoryId: String?
     public var displayInTimeTracker: Bool?
     public var requiresDescription: Bool?
 
-    public init(title: String? = nil, displayInTimeTracker: Bool? = nil, requiresDescription: Bool? = nil) {
+    public init(title: String? = nil, taskCategoryId: String? = nil, displayInTimeTracker: Bool? = nil, requiresDescription: Bool? = nil) {
         self.title = title
+        self.taskCategoryId = taskCategoryId
         self.displayInTimeTracker = displayInTimeTracker
         self.requiresDescription = requiresDescription
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case title
+        case taskCategoryId
         case displayInTimeTracker
         case requiresDescription
     }
@@ -33,6 +36,7 @@ public struct TaskTypeUpdateDto: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(title, forKey: .title)
+        try container.encodeIfPresent(taskCategoryId, forKey: .taskCategoryId)
         try container.encodeIfPresent(displayInTimeTracker, forKey: .displayInTimeTracker)
         try container.encodeIfPresent(requiresDescription, forKey: .requiresDescription)
     }

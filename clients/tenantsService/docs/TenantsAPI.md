@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**deSelectTenantAsync**](TenantsAPI.md#deselecttenantasync) | **POST** /api/v2/TenantsService/Tenants/Deselect | Deselect the user&#39;s default tenant
 [**deleteTenantAsync**](TenantsAPI.md#deletetenantasync) | **DELETE** /api/v2/TenantsService/Tenants | Delete a tenant
 [**getAccessibleFeaturesAsync**](TenantsAPI.md#getaccessiblefeaturesasync) | **GET** /api/v2/TenantsService/Tenants/{tenantId}/Enrollments/{enrollmentId}/Features | Get the list of features accessible to a specific enrollment
+[**getCartForTenantAsync**](TenantsAPI.md#getcartfortenantasync) | **GET** /api/v2/TenantsService/Tenants/{tenantId}/Cart | Get a tenant&#39;s default cart
 [**getCurrentTenantAsync**](TenantsAPI.md#getcurrenttenantasync) | **GET** /api/v2/TenantsService/Tenants/Current | Get the user&#39;s current default tenant
 [**getEnrollmentLicenseByIdAsync**](TenantsAPI.md#getenrollmentlicensebyidasync) | **GET** /api/v2/TenantsService/Tenants/{tenantId}/Enrollments/{enrollmentId}/Licenses/{licenseId} | Get a specific license for an enrollment
 [**getEnrollmentLicensesAsync**](TenantsAPI.md#getenrollmentlicensesasync) | **GET** /api/v2/TenantsService/Tenants/{tenantId}/Enrollments/{enrollmentId}/Licenses | Get the list of licenses available to a specific enrollment
@@ -18,7 +19,6 @@ Method | HTTP request | Description
 [**getRootTenantAsync**](TenantsAPI.md#getroottenantasync) | **GET** /api/v2/TenantsService/Tenants/Root | Get the root tenant of the platform
 [**getTenantAsync**](TenantsAPI.md#gettenantasync) | **GET** /api/v2/TenantsService/Tenants/{tenantId} | Get a specific tenant by ID
 [**getTenantAvatarAsync**](TenantsAPI.md#gettenantavatarasync) | **GET** /api/v2/TenantsService/Tenants/{tenantId}/Avatar | Get a tenant&#39;s avatar
-[**getTenantCartAsync**](TenantsAPI.md#gettenantcartasync) | **GET** /api/v2/TenantsService/Tenants/{tenantId}/Cart | Get a tenant&#39;s default cart
 [**getTenantEnrollmentAsync**](TenantsAPI.md#gettenantenrollmentasync) | **GET** /api/v2/TenantsService/Tenants/{tenantId}/Enrollments/{enrollmentId} | Get a specific tenant enrollment
 [**getTenantEnrollmentsAsync**](TenantsAPI.md#gettenantenrollmentsasync) | **GET** /api/v2/TenantsService/Tenants/{tenantId}/Enrollments | Get the list of user enrollments for a tenant
 [**getTenantInvitationsAsync**](TenantsAPI.md#gettenantinvitationsasync) | **GET** /api/v2/TenantsService/Tenants/{tenantId}/Invitations | Get the list of invitations issued by a tenant
@@ -35,8 +35,8 @@ Method | HTTP request | Description
 [**patchTenantAsync**](TenantsAPI.md#patchtenantasync) | **PATCH** /api/v2/TenantsService/Tenants/{tenantId} | Patch a tenant&#39;s profile
 [**revokeLicenseAsync**](TenantsAPI.md#revokelicenseasync) | **DELETE** /api/v2/TenantsService/Tenants/{tenantId}/Enrollments/{enrollmentId}/Licenses/{licenseId} | Revoke a license from a specific enrollment
 [**selectTenantAsync**](TenantsAPI.md#selecttenantasync) | **POST** /api/v2/TenantsService/Tenants/{tenantId}/Select | Select a business tenant as the user&#39;s default tenant
-[**updateAvatarAsync**](TenantsAPI.md#updateavatarasync) | **POST** /api/v2/TenantsService/Tenants/{tenantId}/Avatar | Update a tenant&#39;s avatar
 [**updateTenantAsync**](TenantsAPI.md#updatetenantasync) | **PUT** /api/v2/TenantsService/Tenants/{tenantId} | Update a tenant&#39;s profile
+[**updateTenantAvatarAsync**](TenantsAPI.md#updatetenantavatarasync) | **POST** /api/v2/TenantsService/Tenants/{tenantId}/Avatar | Update a tenant&#39;s avatar
 [**validateEnrollmentFeatureAccess**](TenantsAPI.md#validateenrollmentfeatureaccess) | **GET** /api/v2/TenantsService/Tenants/{tenantId}/Enrollments/{enrollmentId}/HasAccess | Validate the access to a specific feature for a specific enrollment
 [**validateEnrollmentPermissionsAsync**](TenantsAPI.md#validateenrollmentpermissionsasync) | **GET** /api/v2/TenantsService/Tenants/{tenantId}/Enrollments/{enrollmentId}/Permissions/Validate | Validate the existence of a list of roles and permissions for a specific enrollment
 
@@ -303,6 +303,60 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**SuiteLicenseFeatureDtoListEnvelope**](SuiteLicenseFeatureDtoListEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getCartForTenantAsync**
+```swift
+    open class func getCartForTenantAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: CartDtoEnvelope?, _ error: Error?) -> Void)
+```
+
+Get a tenant's default cart
+
+Get a tenant's default cart
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Get a tenant's default cart
+TenantsAPI.getCartForTenantAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**CartDtoEnvelope**](CartDtoEnvelope.md)
 
 ### Authorization
 
@@ -797,60 +851,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**EmptyEnvelope**](EmptyEnvelope.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/xml
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getTenantCartAsync**
-```swift
-    open class func getTenantCartAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: CartDtoEnvelope?, _ error: Error?) -> Void)
-```
-
-Get a tenant's default cart
-
-Get a tenant's default cart
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
-
-let tenantId = 987 // UUID | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
-
-// Get a tenant's default cart
-TenantsAPI.getTenantCartAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **tenantId** | **UUID** |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
-
-### Return type
-
-[**CartDtoEnvelope**](CartDtoEnvelope.md)
 
 ### Authorization
 
@@ -1735,62 +1735,6 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **updateAvatarAsync**
-```swift
-    open class func updateAvatarAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, avatar: URL? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
-```
-
-Update a tenant's avatar
-
-Update a tenant's avatar
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
-
-let tenantId = 987 // UUID | 
-let apiVersion = "apiVersion_example" // String |  (optional)
-let xApiVersion = "xApiVersion_example" // String |  (optional)
-let avatar = URL(string: "https://example.com")! // URL |  (optional)
-
-// Update a tenant's avatar
-TenantsAPI.updateAvatarAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, avatar: avatar) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **tenantId** | **UUID** |  | 
- **apiVersion** | **String** |  | [optional] 
- **xApiVersion** | **String** |  | [optional] 
- **avatar** | **URL** |  | [optional] 
-
-### Return type
-
-[**EmptyEnvelope**](EmptyEnvelope.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: multipart/form-data, application/json, application/xml
- - **Accept**: image/png, application/json, application/xml
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **updateTenantAsync**
 ```swift
     open class func updateTenantAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, tenantUpdateDto: TenantUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
@@ -1844,6 +1788,62 @@ No authorization required
 
  - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **updateTenantAvatarAsync**
+```swift
+    open class func updateTenantAvatarAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, avatar: URL? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Update a tenant's avatar
+
+Update a tenant's avatar
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let avatar = URL(string: "https://example.com")! // URL |  (optional)
+
+// Update a tenant's avatar
+TenantsAPI.updateTenantAvatarAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, avatar: avatar) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **avatar** | **URL** |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data, application/json, application/xml
+ - **Accept**: image/png, application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

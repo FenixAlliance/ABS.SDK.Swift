@@ -4,12 +4,12 @@ All URIs are relative to *https://absuite.net*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getLatestCurrencyRatesModelAsync**](ThemesAPI.md#getlatestcurrencyratesmodelasync) | **GET** /api/v2/ContentService/Themes/Update | Update base web content themes
+[**updateThemesAsync**](ThemesAPI.md#updatethemesasync) | **GET** /api/v2/ContentService/Themes/Update | Update base web content themes
 
 
-# **getLatestCurrencyRatesModelAsync**
+# **updateThemesAsync**
 ```swift
-    open class func getLatestCurrencyRatesModelAsync(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func updateThemesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
 Update base web content themes
@@ -25,7 +25,7 @@ let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Update base web content themes
-ThemesAPI.getLatestCurrencyRatesModelAsync(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ThemesAPI.updateThemesAsync(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return

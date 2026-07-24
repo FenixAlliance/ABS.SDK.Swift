@@ -12,58 +12,48 @@ import AnyCodable
 
 public struct JournalEntryCreateDto: Codable, JSONEncodable, Hashable {
 
-    static let descriptionRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     static let journalIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    static let currencyIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    static let debitAccountIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    static let creditAccountIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let fiscalPeriodIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let transactionCurrencyIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let descriptionRule = StringRule(minLength: 1, maxLength: 300, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
-    public var group: Bool?
-    public var opening: Bool?
-    public var description: String
-    public var date: Date
-    public var debit: Double?
-    public var credit: Double?
     public var journalId: String
-    public var currencyId: String
-    public var debitAccountId: String
-    public var creditAccountId: String
-    public var parentJournalEntryId: String?
-    public var invoiceCode: String?
+    public var fiscalPeriodId: String
+    public var transactionCurrencyId: String
+    public var description: String
+    public var sourceDocumentType: String?
+    public var sourceDocumentId: String?
+    public var idempotencyKey: String?
+    public var isOpeningBalance: Bool?
+    public var accountingEntries: [AccountingEntryCreateDto]?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, group: Bool? = nil, opening: Bool? = nil, description: String, date: Date, debit: Double? = nil, credit: Double? = nil, journalId: String, currencyId: String, debitAccountId: String, creditAccountId: String, parentJournalEntryId: String? = nil, invoiceCode: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, journalId: String, fiscalPeriodId: String, transactionCurrencyId: String, description: String, sourceDocumentType: String? = nil, sourceDocumentId: String? = nil, idempotencyKey: String? = nil, isOpeningBalance: Bool? = nil, accountingEntries: [AccountingEntryCreateDto]? = nil) {
         self.id = id
         self.timestamp = timestamp
-        self.group = group
-        self.opening = opening
-        self.description = description
-        self.date = date
-        self.debit = debit
-        self.credit = credit
         self.journalId = journalId
-        self.currencyId = currencyId
-        self.debitAccountId = debitAccountId
-        self.creditAccountId = creditAccountId
-        self.parentJournalEntryId = parentJournalEntryId
-        self.invoiceCode = invoiceCode
+        self.fiscalPeriodId = fiscalPeriodId
+        self.transactionCurrencyId = transactionCurrencyId
+        self.description = description
+        self.sourceDocumentType = sourceDocumentType
+        self.sourceDocumentId = sourceDocumentId
+        self.idempotencyKey = idempotencyKey
+        self.isOpeningBalance = isOpeningBalance
+        self.accountingEntries = accountingEntries
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
-        case group
-        case opening
-        case description
-        case date
-        case debit
-        case credit
         case journalId
-        case currencyId
-        case debitAccountId
-        case creditAccountId
-        case parentJournalEntryId
-        case invoiceCode
+        case fiscalPeriodId
+        case transactionCurrencyId
+        case description
+        case sourceDocumentType
+        case sourceDocumentId
+        case idempotencyKey
+        case isOpeningBalance
+        case accountingEntries
     }
 
     // Encodable protocol methods
@@ -72,18 +62,15 @@ public struct JournalEntryCreateDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
-        try container.encodeIfPresent(group, forKey: .group)
-        try container.encodeIfPresent(opening, forKey: .opening)
-        try container.encode(description, forKey: .description)
-        try container.encode(date, forKey: .date)
-        try container.encodeIfPresent(debit, forKey: .debit)
-        try container.encodeIfPresent(credit, forKey: .credit)
         try container.encode(journalId, forKey: .journalId)
-        try container.encode(currencyId, forKey: .currencyId)
-        try container.encode(debitAccountId, forKey: .debitAccountId)
-        try container.encode(creditAccountId, forKey: .creditAccountId)
-        try container.encodeIfPresent(parentJournalEntryId, forKey: .parentJournalEntryId)
-        try container.encodeIfPresent(invoiceCode, forKey: .invoiceCode)
+        try container.encode(fiscalPeriodId, forKey: .fiscalPeriodId)
+        try container.encode(transactionCurrencyId, forKey: .transactionCurrencyId)
+        try container.encode(description, forKey: .description)
+        try container.encodeIfPresent(sourceDocumentType, forKey: .sourceDocumentType)
+        try container.encodeIfPresent(sourceDocumentId, forKey: .sourceDocumentId)
+        try container.encodeIfPresent(idempotencyKey, forKey: .idempotencyKey)
+        try container.encodeIfPresent(isOpeningBalance, forKey: .isOpeningBalance)
+        try container.encodeIfPresent(accountingEntries, forKey: .accountingEntries)
     }
 }
 

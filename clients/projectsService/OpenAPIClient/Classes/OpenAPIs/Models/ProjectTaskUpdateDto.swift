@@ -12,15 +12,21 @@ import AnyCodable
 
 public struct ProjectTaskUpdateDto: Codable, JSONEncodable, Hashable {
 
+    public var title: String?
+    public var description: String?
     public var startDate: Date?
     public var dueLine: Date?
 
-    public init(startDate: Date? = nil, dueLine: Date? = nil) {
+    public init(title: String? = nil, description: String? = nil, startDate: Date? = nil, dueLine: Date? = nil) {
+        self.title = title
+        self.description = description
         self.startDate = startDate
         self.dueLine = dueLine
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case title
+        case description
         case startDate
         case dueLine
     }
@@ -29,6 +35,8 @@ public struct ProjectTaskUpdateDto: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(title, forKey: .title)
+        try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(startDate, forKey: .startDate)
         try container.encodeIfPresent(dueLine, forKey: .dueLine)
     }

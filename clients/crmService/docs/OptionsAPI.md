@@ -10,6 +10,8 @@ Method | HTTP request | Description
 [**getContactOptionByKey**](OptionsAPI.md#getcontactoptionbykey) | **GET** /api/v2/CrmService/Contacts/{contactId}/Options/Key/{key} | Retrieve a single contact option by its key
 [**getContactOptions**](OptionsAPI.md#getcontactoptions) | **GET** /api/v2/CrmService/Contacts/{contactId}/Options | Retrieve a list of contact options
 [**getContactOptionsCount**](OptionsAPI.md#getcontactoptionscount) | **GET** /api/v2/CrmService/Contacts/{contactId}/Options/Count | Get the count of contact options
+[**patchContactOptionAsync**](OptionsAPI.md#patchcontactoptionasync) | **PATCH** /api/v2/CrmService/Contacts/{contactId}/Options/{optionId} | Patch a contact option
+[**patchContactOptionByKeyAsync**](OptionsAPI.md#patchcontactoptionbykeyasync) | **PATCH** /api/v2/CrmService/Contacts/{contactId}/Options/Key/{key} | Patch a contact option by key
 [**updateContactOption**](OptionsAPI.md#updatecontactoption) | **PUT** /api/v2/CrmService/Contacts/{contactId}/Options/{optionId} | Update a contact option
 [**upsertContactOption**](OptionsAPI.md#upsertcontactoption) | **PUT** /api/v2/CrmService/Contacts/{contactId}/Options/Upsert/{key} | Create or update a contact option by key
 
@@ -364,6 +366,126 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchContactOptionAsync**
+```swift
+    open class func patchContactOptionAsync(tenantId: UUID, contactId: UUID, optionId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a contact option
+
+Patch a contact option
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let contactId = 987 // UUID | 
+let optionId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a contact option
+OptionsAPI.patchContactOptionAsync(tenantId: tenantId, contactId: contactId, optionId: optionId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **contactId** | **UUID** |  | 
+ **optionId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchContactOptionByKeyAsync**
+```swift
+    open class func patchContactOptionByKeyAsync(tenantId: UUID, contactId: UUID, key: String, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Patch a contact option by key
+
+Patch a contact option by key
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let contactId = 987 // UUID | 
+let key = "key_example" // String | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+
+// Patch a contact option by key
+OptionsAPI.patchContactOptionByKeyAsync(tenantId: tenantId, contactId: contactId, key: key, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **contactId** | **UUID** |  | 
+ **key** | **String** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
