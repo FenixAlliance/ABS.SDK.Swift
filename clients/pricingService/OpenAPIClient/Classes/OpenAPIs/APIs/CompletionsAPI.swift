@@ -33,14 +33,14 @@ open class CompletionsAPI {
     }
 
     /**
-     - GET /api/v2/AiService/Completions/Complete
+     - GET /api/v2/IntelligenceService/Completions/Complete
      - parameter tenantId: (query)  
      - parameter conversationId: (query)  (optional)
      - parameter message: (query)  (optional)
      - returns: RequestBuilder<Void> 
      */
     open class func apiV2AiServiceCompletionsCompleteGetWithRequestBuilder(tenantId: UUID, conversationId: String? = nil, message: String? = nil) -> RequestBuilder<Void> {
-        let localVariablePath = "/api/v2/AiService/Completions/Complete"
+        let localVariablePath = "/api/v2/IntelligenceService/Completions/Complete"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
