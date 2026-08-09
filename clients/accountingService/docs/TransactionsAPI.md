@@ -302,7 +302,7 @@ No authorization required
 
 # **getTransactionCategories**
 ```swift
-    open class func getTransactionCategories(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: TransactionCategoryDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getTransactionCategories(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, transactionCategoryDtoCollectionQueryParameters: TransactionCategoryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: TransactionCategoryDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all transaction categories
@@ -317,9 +317,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let transactionCategoryDtoCollectionQueryParameters = TransactionCategoryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // TransactionCategoryDtoCollectionQueryParameters |  (optional)
 
 // Get all transaction categories
-TransactionsAPI.getTransactionCategories(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+TransactionsAPI.getTransactionCategories(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, transactionCategoryDtoCollectionQueryParameters: transactionCategoryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -338,6 +339,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **transactionCategoryDtoCollectionQueryParameters** | [**TransactionCategoryDtoCollectionQueryParameters**](TransactionCategoryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -349,14 +351,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getTransactionCategoriesCount**
 ```swift
-    open class func getTransactionCategoriesCount(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getTransactionCategoriesCount(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, transactionCategoryDtoCollectionQueryParameters: TransactionCategoryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get transaction categories count
@@ -371,9 +373,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let transactionCategoryDtoCollectionQueryParameters = TransactionCategoryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // TransactionCategoryDtoCollectionQueryParameters |  (optional)
 
 // Get transaction categories count
-TransactionsAPI.getTransactionCategoriesCount(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+TransactionsAPI.getTransactionCategoriesCount(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, transactionCategoryDtoCollectionQueryParameters: transactionCategoryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -392,6 +395,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **transactionCategoryDtoCollectionQueryParameters** | [**TransactionCategoryDtoCollectionQueryParameters**](TransactionCategoryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -403,7 +407,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -466,7 +470,7 @@ No authorization required
 
 # **getTransactions**
 ```swift
-    open class func getTransactions(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: TransactionDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getTransactions(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, transactionDtoCollectionQueryParameters: TransactionDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: TransactionDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all transactions for a tenant
@@ -481,9 +485,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let transactionDtoCollectionQueryParameters = TransactionDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // TransactionDtoCollectionQueryParameters |  (optional)
 
 // Get all transactions for a tenant
-TransactionsAPI.getTransactions(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+TransactionsAPI.getTransactions(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, transactionDtoCollectionQueryParameters: transactionDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -502,6 +507,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **transactionDtoCollectionQueryParameters** | [**TransactionDtoCollectionQueryParameters**](TransactionDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -513,14 +519,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getTransactionsCount**
 ```swift
-    open class func getTransactionsCount(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getTransactionsCount(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, transactionDtoCollectionQueryParameters: TransactionDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get transactions count
@@ -535,9 +541,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let transactionDtoCollectionQueryParameters = TransactionDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // TransactionDtoCollectionQueryParameters |  (optional)
 
 // Get transactions count
-TransactionsAPI.getTransactionsCount(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+TransactionsAPI.getTransactionsCount(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, transactionDtoCollectionQueryParameters: transactionDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -556,6 +563,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **transactionDtoCollectionQueryParameters** | [**TransactionDtoCollectionQueryParameters**](TransactionDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -567,14 +575,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchTransaction**
 ```swift
-    open class func patchTransaction(tenantId: UUID, transactionId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchTransaction(tenantId: UUID, transactionId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a transaction
@@ -590,10 +598,10 @@ let tenantId = 987 // UUID |
 let transactionId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a transaction
-TransactionsAPI.patchTransaction(tenantId: tenantId, transactionId: transactionId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+TransactionsAPI.patchTransaction(tenantId: tenantId, transactionId: transactionId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -613,7 +621,7 @@ Name | Type | Description  | Notes
  **transactionId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -632,7 +640,7 @@ No authorization required
 
 # **patchTransactionCategory**
 ```swift
-    open class func patchTransactionCategory(tenantId: UUID, categoryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchTransactionCategory(tenantId: UUID, categoryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a transaction category
@@ -648,10 +656,10 @@ let tenantId = 987 // UUID |
 let categoryId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a transaction category
-TransactionsAPI.patchTransactionCategory(tenantId: tenantId, categoryId: categoryId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+TransactionsAPI.patchTransactionCategory(tenantId: tenantId, categoryId: categoryId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -671,7 +679,7 @@ Name | Type | Description  | Notes
  **categoryId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

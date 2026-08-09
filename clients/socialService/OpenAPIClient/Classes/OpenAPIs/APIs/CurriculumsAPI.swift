@@ -197,12 +197,13 @@ open class CurriculumsAPI {
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter curriculumDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCurriculumsAsync(socialProfileId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CurriculumDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCurriculumsAsyncWithRequestBuilder(socialProfileId: socialProfileId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCurriculumsAsync(socialProfileId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, curriculumDtoCollectionQueryParameters: CurriculumDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CurriculumDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCurriculumsAsyncWithRequestBuilder(socialProfileId: socialProfileId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, curriculumDtoCollectionQueryParameters: curriculumDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -220,12 +221,13 @@ open class CurriculumsAPI {
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter curriculumDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<CurriculumDtoListEnvelope> 
      */
-    open class func getCurriculumsAsyncWithRequestBuilder(socialProfileId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<CurriculumDtoListEnvelope> {
+    open class func getCurriculumsAsyncWithRequestBuilder(socialProfileId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, curriculumDtoCollectionQueryParameters: CurriculumDtoCollectionQueryParameters? = nil) -> RequestBuilder<CurriculumDtoListEnvelope> {
         let localVariablePath = "/api/v2/SocialService/Curriculums"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: curriculumDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -235,6 +237,7 @@ open class CurriculumsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -252,12 +255,13 @@ open class CurriculumsAPI {
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter curriculumDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCurriculumsCountAsync(socialProfileId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCurriculumsCountAsyncWithRequestBuilder(socialProfileId: socialProfileId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCurriculumsCountAsync(socialProfileId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, curriculumDtoCollectionQueryParameters: CurriculumDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCurriculumsCountAsyncWithRequestBuilder(socialProfileId: socialProfileId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, curriculumDtoCollectionQueryParameters: curriculumDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -275,12 +279,13 @@ open class CurriculumsAPI {
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter curriculumDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getCurriculumsCountAsyncWithRequestBuilder(socialProfileId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getCurriculumsCountAsyncWithRequestBuilder(socialProfileId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, curriculumDtoCollectionQueryParameters: CurriculumDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/SocialService/Curriculums/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: curriculumDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -290,6 +295,7 @@ open class CurriculumsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -308,13 +314,13 @@ open class CurriculumsAPI {
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchCurriculumAsync(socialProfileId: UUID, curriculumId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchCurriculumAsyncWithRequestBuilder(socialProfileId: socialProfileId, curriculumId: curriculumId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchCurriculumAsync(socialProfileId: UUID, curriculumId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchCurriculumAsyncWithRequestBuilder(socialProfileId: socialProfileId, curriculumId: curriculumId, tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -333,16 +339,16 @@ open class CurriculumsAPI {
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchCurriculumAsyncWithRequestBuilder(socialProfileId: UUID, curriculumId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchCurriculumAsyncWithRequestBuilder(socialProfileId: UUID, curriculumId: UUID, tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/SocialService/Curriculums/{curriculumId}"
         let curriculumIdPreEscape = "\(APIHelper.mapValueToPathItem(curriculumId))"
         let curriculumIdPostEscape = curriculumIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{curriculumId}", with: curriculumIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

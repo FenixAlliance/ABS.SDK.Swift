@@ -24,7 +24,7 @@ Method | HTTP request | Description
 
 # **countCallingCodesByCountryAsync**
 ```swift
-    open class func countCallingCodesByCountryAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countCallingCodesByCountryAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, countryCallingCodeDtoCollectionQueryParameters: CountryCallingCodeDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count calling codes for a country
@@ -39,9 +39,10 @@ import OpenAPIClient
 let countryId = "countryId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let countryCallingCodeDtoCollectionQueryParameters = CountryCallingCodeDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CountryCallingCodeDtoCollectionQueryParameters |  (optional)
 
 // Count calling codes for a country
-CountriesAPI.countCallingCodesByCountryAsync(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CountriesAPI.countCallingCodesByCountryAsync(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion, countryCallingCodeDtoCollectionQueryParameters: countryCallingCodeDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -60,6 +61,7 @@ Name | Type | Description  | Notes
  **countryId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **countryCallingCodeDtoCollectionQueryParameters** | [**CountryCallingCodeDtoCollectionQueryParameters**](CountryCallingCodeDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -71,14 +73,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **countCitiesByStateAsync**
 ```swift
-    open class func countCitiesByStateAsync(countryStateId: String, countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countCitiesByStateAsync(countryStateId: String, countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, cityDtoCollectionQueryParameters: CityDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count cities for a state
@@ -94,9 +96,10 @@ let countryStateId = "countryStateId_example" // String |
 let countryId = "countryId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let cityDtoCollectionQueryParameters = CityDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CityDtoCollectionQueryParameters |  (optional)
 
 // Count cities for a state
-CountriesAPI.countCitiesByStateAsync(countryStateId: countryStateId, countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CountriesAPI.countCitiesByStateAsync(countryStateId: countryStateId, countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion, cityDtoCollectionQueryParameters: cityDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -116,6 +119,7 @@ Name | Type | Description  | Notes
  **countryId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **cityDtoCollectionQueryParameters** | [**CityDtoCollectionQueryParameters**](CityDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -127,14 +131,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **countCountries**
 ```swift
-    open class func countCountries(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countCountries(apiVersion: String? = nil, xApiVersion: String? = nil, countryDtoCollectionQueryParameters: CountryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count countries
@@ -148,9 +152,10 @@ import OpenAPIClient
 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let countryDtoCollectionQueryParameters = CountryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CountryDtoCollectionQueryParameters |  (optional)
 
 // Count countries
-CountriesAPI.countCountries(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CountriesAPI.countCountries(apiVersion: apiVersion, xApiVersion: xApiVersion, countryDtoCollectionQueryParameters: countryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -168,6 +173,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **countryDtoCollectionQueryParameters** | [**CountryDtoCollectionQueryParameters**](CountryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -179,14 +185,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **countCountryStatesAsync**
 ```swift
-    open class func countCountryStatesAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countCountryStatesAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, countryStateDtoCollectionQueryParameters: CountryStateDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count states for a country
@@ -201,9 +207,10 @@ import OpenAPIClient
 let countryId = "countryId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let countryStateDtoCollectionQueryParameters = CountryStateDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CountryStateDtoCollectionQueryParameters |  (optional)
 
 // Count states for a country
-CountriesAPI.countCountryStatesAsync(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CountriesAPI.countCountryStatesAsync(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion, countryStateDtoCollectionQueryParameters: countryStateDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -222,6 +229,7 @@ Name | Type | Description  | Notes
  **countryId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **countryStateDtoCollectionQueryParameters** | [**CountryStateDtoCollectionQueryParameters**](CountryStateDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -233,14 +241,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **countTimezonesByCountryAsync**
 ```swift
-    open class func countTimezonesByCountryAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countTimezonesByCountryAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, timezoneDtoCollectionQueryParameters: TimezoneDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count timezones for a country
@@ -255,9 +263,10 @@ import OpenAPIClient
 let countryId = "countryId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let timezoneDtoCollectionQueryParameters = TimezoneDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // TimezoneDtoCollectionQueryParameters |  (optional)
 
 // Count timezones for a country
-CountriesAPI.countTimezonesByCountryAsync(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CountriesAPI.countTimezonesByCountryAsync(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion, timezoneDtoCollectionQueryParameters: timezoneDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -276,6 +285,7 @@ Name | Type | Description  | Notes
  **countryId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **timezoneDtoCollectionQueryParameters** | [**TimezoneDtoCollectionQueryParameters**](TimezoneDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -287,14 +297,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **countTopLevelDomainsByCountryAsync**
 ```swift
-    open class func countTopLevelDomainsByCountryAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countTopLevelDomainsByCountryAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, countryTopLevelDomainDtoCollectionQueryParameters: CountryTopLevelDomainDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count top-level domains for a country
@@ -309,9 +319,10 @@ import OpenAPIClient
 let countryId = "countryId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let countryTopLevelDomainDtoCollectionQueryParameters = CountryTopLevelDomainDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CountryTopLevelDomainDtoCollectionQueryParameters |  (optional)
 
 // Count top-level domains for a country
-CountriesAPI.countTopLevelDomainsByCountryAsync(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CountriesAPI.countTopLevelDomainsByCountryAsync(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion, countryTopLevelDomainDtoCollectionQueryParameters: countryTopLevelDomainDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -330,6 +341,7 @@ Name | Type | Description  | Notes
  **countryId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **countryTopLevelDomainDtoCollectionQueryParameters** | [**CountryTopLevelDomainDtoCollectionQueryParameters**](CountryTopLevelDomainDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -341,14 +353,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getAllCountries**
 ```swift
-    open class func getAllCountries(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: CountryDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getAllCountries(apiVersion: String? = nil, xApiVersion: String? = nil, countryDtoCollectionQueryParameters: CountryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: CountryDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all countries
@@ -362,9 +374,10 @@ import OpenAPIClient
 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let countryDtoCollectionQueryParameters = CountryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CountryDtoCollectionQueryParameters |  (optional)
 
 // Get all countries
-CountriesAPI.getAllCountries(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CountriesAPI.getAllCountries(apiVersion: apiVersion, xApiVersion: xApiVersion, countryDtoCollectionQueryParameters: countryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -382,6 +395,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **countryDtoCollectionQueryParameters** | [**CountryDtoCollectionQueryParameters**](CountryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -393,14 +407,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCallingCodesByCountryIdAsync**
 ```swift
-    open class func getCallingCodesByCountryIdAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: CountryCallingCodeDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getCallingCodesByCountryIdAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, countryCallingCodeDtoCollectionQueryParameters: CountryCallingCodeDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: CountryCallingCodeDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get calling codes for a country
@@ -415,9 +429,10 @@ import OpenAPIClient
 let countryId = "countryId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let countryCallingCodeDtoCollectionQueryParameters = CountryCallingCodeDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CountryCallingCodeDtoCollectionQueryParameters |  (optional)
 
 // Get calling codes for a country
-CountriesAPI.getCallingCodesByCountryIdAsync(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CountriesAPI.getCallingCodesByCountryIdAsync(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion, countryCallingCodeDtoCollectionQueryParameters: countryCallingCodeDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -436,6 +451,7 @@ Name | Type | Description  | Notes
  **countryId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **countryCallingCodeDtoCollectionQueryParameters** | [**CountryCallingCodeDtoCollectionQueryParameters**](CountryCallingCodeDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -447,14 +463,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCitiesByCountryStateIdAsync**
 ```swift
-    open class func getCitiesByCountryStateIdAsync(countryStateId: String, countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: CityDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getCitiesByCountryStateIdAsync(countryStateId: String, countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, cityDtoCollectionQueryParameters: CityDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: CityDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get cities for a state
@@ -470,9 +486,10 @@ let countryStateId = "countryStateId_example" // String |
 let countryId = "countryId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let cityDtoCollectionQueryParameters = CityDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CityDtoCollectionQueryParameters |  (optional)
 
 // Get cities for a state
-CountriesAPI.getCitiesByCountryStateIdAsync(countryStateId: countryStateId, countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CountriesAPI.getCitiesByCountryStateIdAsync(countryStateId: countryStateId, countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion, cityDtoCollectionQueryParameters: cityDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -492,6 +509,7 @@ Name | Type | Description  | Notes
  **countryId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **cityDtoCollectionQueryParameters** | [**CityDtoCollectionQueryParameters**](CityDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -503,7 +521,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -564,7 +582,7 @@ No authorization required
 
 # **getCountryStateByIdAsync**
 ```swift
-    open class func getCountryStateByIdAsync(countryStateId: String, countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: CountryStateDtoEnvelope?, _ error: Error?) -> Void)
+    open class func getCountryStateByIdAsync(countryStateId: String, countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, countryStateDtoCollectionQueryParameters: CountryStateDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: CountryStateDtoEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get state by ID
@@ -580,9 +598,10 @@ let countryStateId = "countryStateId_example" // String |
 let countryId = "countryId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let countryStateDtoCollectionQueryParameters = CountryStateDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CountryStateDtoCollectionQueryParameters |  (optional)
 
 // Get state by ID
-CountriesAPI.getCountryStateByIdAsync(countryStateId: countryStateId, countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CountriesAPI.getCountryStateByIdAsync(countryStateId: countryStateId, countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion, countryStateDtoCollectionQueryParameters: countryStateDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -602,6 +621,7 @@ Name | Type | Description  | Notes
  **countryId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **countryStateDtoCollectionQueryParameters** | [**CountryStateDtoCollectionQueryParameters**](CountryStateDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -613,14 +633,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCountryStatesAsync**
 ```swift
-    open class func getCountryStatesAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: CountryStateDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getCountryStatesAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, countryStateDtoCollectionQueryParameters: CountryStateDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: CountryStateDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get states for a country
@@ -635,9 +655,10 @@ import OpenAPIClient
 let countryId = "countryId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let countryStateDtoCollectionQueryParameters = CountryStateDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CountryStateDtoCollectionQueryParameters |  (optional)
 
 // Get states for a country
-CountriesAPI.getCountryStatesAsync(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CountriesAPI.getCountryStatesAsync(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion, countryStateDtoCollectionQueryParameters: countryStateDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -656,6 +677,7 @@ Name | Type | Description  | Notes
  **countryId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **countryStateDtoCollectionQueryParameters** | [**CountryStateDtoCollectionQueryParameters**](CountryStateDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -667,14 +689,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getEnabledCurrenciesByCountryIdAsync**
 ```swift
-    open class func getEnabledCurrenciesByCountryIdAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: CurrencyDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getEnabledCurrenciesByCountryIdAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, currencyDtoCollectionQueryParameters: CurrencyDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: CurrencyDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get currencies for a country
@@ -689,9 +711,10 @@ import OpenAPIClient
 let countryId = "countryId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let currencyDtoCollectionQueryParameters = CurrencyDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CurrencyDtoCollectionQueryParameters |  (optional)
 
 // Get currencies for a country
-CountriesAPI.getEnabledCurrenciesByCountryIdAsync(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CountriesAPI.getEnabledCurrenciesByCountryIdAsync(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion, currencyDtoCollectionQueryParameters: currencyDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -710,6 +733,7 @@ Name | Type | Description  | Notes
  **countryId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **currencyDtoCollectionQueryParameters** | [**CurrencyDtoCollectionQueryParameters**](CurrencyDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -721,14 +745,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getTimeZonesByCountryIdAsync**
 ```swift
-    open class func getTimeZonesByCountryIdAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: TimezoneDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getTimeZonesByCountryIdAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, timezoneDtoCollectionQueryParameters: TimezoneDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: TimezoneDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get timezones for a country
@@ -743,9 +767,10 @@ import OpenAPIClient
 let countryId = "countryId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let timezoneDtoCollectionQueryParameters = TimezoneDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // TimezoneDtoCollectionQueryParameters |  (optional)
 
 // Get timezones for a country
-CountriesAPI.getTimeZonesByCountryIdAsync(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CountriesAPI.getTimeZonesByCountryIdAsync(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion, timezoneDtoCollectionQueryParameters: timezoneDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -764,6 +789,7 @@ Name | Type | Description  | Notes
  **countryId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **timezoneDtoCollectionQueryParameters** | [**TimezoneDtoCollectionQueryParameters**](TimezoneDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -775,14 +801,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getTopLevelDomainsByCountryIdAsync**
 ```swift
-    open class func getTopLevelDomainsByCountryIdAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: CountryTopLevelDomainDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getTopLevelDomainsByCountryIdAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, countryTopLevelDomainDtoCollectionQueryParameters: CountryTopLevelDomainDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: CountryTopLevelDomainDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get top-level domains for a country
@@ -797,9 +823,10 @@ import OpenAPIClient
 let countryId = "countryId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let countryTopLevelDomainDtoCollectionQueryParameters = CountryTopLevelDomainDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CountryTopLevelDomainDtoCollectionQueryParameters |  (optional)
 
 // Get top-level domains for a country
-CountriesAPI.getTopLevelDomainsByCountryIdAsync(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CountriesAPI.getTopLevelDomainsByCountryIdAsync(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion, countryTopLevelDomainDtoCollectionQueryParameters: countryTopLevelDomainDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -818,6 +845,7 @@ Name | Type | Description  | Notes
  **countryId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **countryTopLevelDomainDtoCollectionQueryParameters** | [**CountryTopLevelDomainDtoCollectionQueryParameters**](CountryTopLevelDomainDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -829,7 +857,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

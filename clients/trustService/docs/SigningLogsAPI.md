@@ -67,7 +67,7 @@ No authorization required
 
 # **getSigningLogsAsync**
 ```swift
-    open class func getSigningLogsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: SigningLogDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getSigningLogsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, signingLogDtoCollectionQueryParameters: SigningLogDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: SigningLogDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all signing logs
@@ -82,9 +82,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let signingLogDtoCollectionQueryParameters = SigningLogDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SigningLogDtoCollectionQueryParameters |  (optional)
 
 // Get all signing logs
-SigningLogsAPI.getSigningLogsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SigningLogsAPI.getSigningLogsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, signingLogDtoCollectionQueryParameters: signingLogDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -103,6 +104,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **signingLogDtoCollectionQueryParameters** | [**SigningLogDtoCollectionQueryParameters**](SigningLogDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -114,14 +116,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getSigningLogsCountAsync**
 ```swift
-    open class func getSigningLogsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getSigningLogsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, signingLogDtoCollectionQueryParameters: SigningLogDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get signing logs count
@@ -136,9 +138,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let signingLogDtoCollectionQueryParameters = SigningLogDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SigningLogDtoCollectionQueryParameters |  (optional)
 
 // Get signing logs count
-SigningLogsAPI.getSigningLogsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SigningLogsAPI.getSigningLogsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, signingLogDtoCollectionQueryParameters: signingLogDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -157,6 +160,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **signingLogDtoCollectionQueryParameters** | [**SigningLogDtoCollectionQueryParameters**](SigningLogDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -168,7 +172,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

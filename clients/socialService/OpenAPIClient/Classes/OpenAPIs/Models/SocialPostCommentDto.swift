@@ -12,9 +12,24 @@ import AnyCodable
 
 public struct SocialPostCommentDto: Codable, JSONEncodable, Hashable {
 
+    public enum SocialProfileType: String, Codable, CaseIterable {
+        case user = "User"
+        case tenant = "Tenant"
+        case contact = "Contact"
+    }
     public enum BodyFormat: String, Codable, CaseIterable {
         case plainText = "PlainText"
         case html = "Html"
+    }
+    public enum MyReaction: String, Codable, CaseIterable {
+        case like = "Like"
+        case happy = "Happy"
+        case haHa = "HaHa"
+        case love = "Love"
+        case sad = "Sad"
+        case angry = "Angry"
+        case wow = "Wow"
+        case afraid = "Afraid"
     }
     public var id: String?
     public var timestamp: Date?
@@ -24,11 +39,17 @@ public struct SocialPostCommentDto: Codable, JSONEncodable, Hashable {
     public var socialFeedPostId: String?
     public var socialProfileName: String?
     public var socialProfileAvatarUrl: String?
+    public var socialProfileType: SocialProfileType?
     public var bodyHtml: String?
     public var bodyFormat: BodyFormat?
+    public var replyCount: Int?
+    public var reactionsCount: Int?
     public var socialPostId: String?
+    public var facepile: [SocialPostReactionFacepileDto]?
+    public var myReaction: MyReaction?
+    public var myReactionId: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, message: String? = nil, parentCommentId: String? = nil, socialProfileId: String? = nil, socialFeedPostId: String? = nil, socialProfileName: String? = nil, socialProfileAvatarUrl: String? = nil, bodyHtml: String? = nil, bodyFormat: BodyFormat? = nil, socialPostId: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, message: String? = nil, parentCommentId: String? = nil, socialProfileId: String? = nil, socialFeedPostId: String? = nil, socialProfileName: String? = nil, socialProfileAvatarUrl: String? = nil, socialProfileType: SocialProfileType? = nil, bodyHtml: String? = nil, bodyFormat: BodyFormat? = nil, replyCount: Int? = nil, reactionsCount: Int? = nil, socialPostId: String? = nil, facepile: [SocialPostReactionFacepileDto]? = nil, myReaction: MyReaction? = nil, myReactionId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.message = message
@@ -37,9 +58,15 @@ public struct SocialPostCommentDto: Codable, JSONEncodable, Hashable {
         self.socialFeedPostId = socialFeedPostId
         self.socialProfileName = socialProfileName
         self.socialProfileAvatarUrl = socialProfileAvatarUrl
+        self.socialProfileType = socialProfileType
         self.bodyHtml = bodyHtml
         self.bodyFormat = bodyFormat
+        self.replyCount = replyCount
+        self.reactionsCount = reactionsCount
         self.socialPostId = socialPostId
+        self.facepile = facepile
+        self.myReaction = myReaction
+        self.myReactionId = myReactionId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -51,9 +78,15 @@ public struct SocialPostCommentDto: Codable, JSONEncodable, Hashable {
         case socialFeedPostId
         case socialProfileName
         case socialProfileAvatarUrl
+        case socialProfileType
         case bodyHtml
         case bodyFormat
+        case replyCount
+        case reactionsCount
         case socialPostId
+        case facepile
+        case myReaction
+        case myReactionId
     }
 
     // Encodable protocol methods
@@ -68,9 +101,15 @@ public struct SocialPostCommentDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(socialFeedPostId, forKey: .socialFeedPostId)
         try container.encodeIfPresent(socialProfileName, forKey: .socialProfileName)
         try container.encodeIfPresent(socialProfileAvatarUrl, forKey: .socialProfileAvatarUrl)
+        try container.encodeIfPresent(socialProfileType, forKey: .socialProfileType)
         try container.encodeIfPresent(bodyHtml, forKey: .bodyHtml)
         try container.encodeIfPresent(bodyFormat, forKey: .bodyFormat)
+        try container.encodeIfPresent(replyCount, forKey: .replyCount)
+        try container.encodeIfPresent(reactionsCount, forKey: .reactionsCount)
         try container.encodeIfPresent(socialPostId, forKey: .socialPostId)
+        try container.encodeIfPresent(facepile, forKey: .facepile)
+        try container.encodeIfPresent(myReaction, forKey: .myReaction)
+        try container.encodeIfPresent(myReactionId, forKey: .myReactionId)
     }
 }
 

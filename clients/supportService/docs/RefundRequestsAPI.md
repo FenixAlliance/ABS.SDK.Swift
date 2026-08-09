@@ -177,7 +177,7 @@ No authorization required
 
 # **getRefundRequestsAsync**
 ```swift
-    open class func getRefundRequestsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: RefundRequestDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getRefundRequestsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, refundRequestDtoCollectionQueryParameters: RefundRequestDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: RefundRequestDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Retrieve refund requests
@@ -190,9 +190,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let refundRequestDtoCollectionQueryParameters = RefundRequestDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // RefundRequestDtoCollectionQueryParameters |  (optional)
 
 // Retrieve refund requests
-RefundRequestsAPI.getRefundRequestsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+RefundRequestsAPI.getRefundRequestsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, refundRequestDtoCollectionQueryParameters: refundRequestDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -211,6 +212,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **refundRequestDtoCollectionQueryParameters** | [**RefundRequestDtoCollectionQueryParameters**](RefundRequestDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -222,14 +224,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getRefundRequestsCountAsync**
 ```swift
-    open class func getRefundRequestsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getRefundRequestsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, refundRequestDtoCollectionQueryParameters: RefundRequestDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get refund requests count
@@ -242,9 +244,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let refundRequestDtoCollectionQueryParameters = RefundRequestDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // RefundRequestDtoCollectionQueryParameters |  (optional)
 
 // Get refund requests count
-RefundRequestsAPI.getRefundRequestsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+RefundRequestsAPI.getRefundRequestsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, refundRequestDtoCollectionQueryParameters: refundRequestDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -263,6 +266,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **refundRequestDtoCollectionQueryParameters** | [**RefundRequestDtoCollectionQueryParameters**](RefundRequestDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -274,14 +278,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchRefundRequestAsync**
 ```swift
-    open class func patchRefundRequestAsync(tenantId: UUID, refundRequestId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchRefundRequestAsync(tenantId: UUID, refundRequestId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a refund request
@@ -297,10 +301,10 @@ let tenantId = 987 // UUID |
 let refundRequestId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a refund request
-RefundRequestsAPI.patchRefundRequestAsync(tenantId: tenantId, refundRequestId: refundRequestId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+RefundRequestsAPI.patchRefundRequestAsync(tenantId: tenantId, refundRequestId: refundRequestId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -320,7 +324,7 @@ Name | Type | Description  | Notes
  **refundRequestId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

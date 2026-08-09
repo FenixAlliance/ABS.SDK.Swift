@@ -362,12 +362,13 @@ open class RoadWaybillsAPI {
      - parameter waybillId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter waybillLineDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getRoadWaybillLinesAsync(tenantId: UUID, waybillId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: WaybillLineDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getRoadWaybillLinesAsyncWithRequestBuilder(tenantId: tenantId, waybillId: waybillId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getRoadWaybillLinesAsync(tenantId: UUID, waybillId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, waybillLineDtoCollectionQueryParameters: WaybillLineDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: WaybillLineDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getRoadWaybillLinesAsyncWithRequestBuilder(tenantId: tenantId, waybillId: waybillId, apiVersion: apiVersion, xApiVersion: xApiVersion, waybillLineDtoCollectionQueryParameters: waybillLineDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -385,15 +386,16 @@ open class RoadWaybillsAPI {
      - parameter waybillId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter waybillLineDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<WaybillLineDtoListEnvelope> 
      */
-    open class func getRoadWaybillLinesAsyncWithRequestBuilder(tenantId: UUID, waybillId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<WaybillLineDtoListEnvelope> {
+    open class func getRoadWaybillLinesAsyncWithRequestBuilder(tenantId: UUID, waybillId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, waybillLineDtoCollectionQueryParameters: WaybillLineDtoCollectionQueryParameters? = nil) -> RequestBuilder<WaybillLineDtoListEnvelope> {
         var localVariablePath = "/api/v2/LogisticsService/RoadWaybills/{waybillId}/Lines"
         let waybillIdPreEscape = "\(APIHelper.mapValueToPathItem(waybillId))"
         let waybillIdPostEscape = waybillIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{waybillId}", with: waybillIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: waybillLineDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -402,6 +404,7 @@ open class RoadWaybillsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -419,12 +422,13 @@ open class RoadWaybillsAPI {
      - parameter waybillId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter waybillLineDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getRoadWaybillLinesCountAsync(tenantId: UUID, waybillId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getRoadWaybillLinesCountAsyncWithRequestBuilder(tenantId: tenantId, waybillId: waybillId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getRoadWaybillLinesCountAsync(tenantId: UUID, waybillId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, waybillLineDtoCollectionQueryParameters: WaybillLineDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getRoadWaybillLinesCountAsyncWithRequestBuilder(tenantId: tenantId, waybillId: waybillId, apiVersion: apiVersion, xApiVersion: xApiVersion, waybillLineDtoCollectionQueryParameters: waybillLineDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -442,15 +446,16 @@ open class RoadWaybillsAPI {
      - parameter waybillId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter waybillLineDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getRoadWaybillLinesCountAsyncWithRequestBuilder(tenantId: UUID, waybillId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getRoadWaybillLinesCountAsyncWithRequestBuilder(tenantId: UUID, waybillId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, waybillLineDtoCollectionQueryParameters: WaybillLineDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/LogisticsService/RoadWaybills/{waybillId}/Lines/Count"
         let waybillIdPreEscape = "\(APIHelper.mapValueToPathItem(waybillId))"
         let waybillIdPostEscape = waybillIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{waybillId}", with: waybillIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: waybillLineDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -459,6 +464,7 @@ open class RoadWaybillsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -475,12 +481,13 @@ open class RoadWaybillsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter roadWaybillDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getRoadWaybillsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: RoadWaybillDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getRoadWaybillsAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getRoadWaybillsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, roadWaybillDtoCollectionQueryParameters: RoadWaybillDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: RoadWaybillDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getRoadWaybillsAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, roadWaybillDtoCollectionQueryParameters: roadWaybillDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -497,12 +504,13 @@ open class RoadWaybillsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter roadWaybillDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<RoadWaybillDtoListEnvelope> 
      */
-    open class func getRoadWaybillsAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<RoadWaybillDtoListEnvelope> {
+    open class func getRoadWaybillsAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, roadWaybillDtoCollectionQueryParameters: RoadWaybillDtoCollectionQueryParameters? = nil) -> RequestBuilder<RoadWaybillDtoListEnvelope> {
         let localVariablePath = "/api/v2/LogisticsService/RoadWaybills"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: roadWaybillDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -511,6 +519,7 @@ open class RoadWaybillsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -527,12 +536,13 @@ open class RoadWaybillsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter roadWaybillDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getRoadWaybillsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getRoadWaybillsCountAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getRoadWaybillsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, roadWaybillDtoCollectionQueryParameters: RoadWaybillDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getRoadWaybillsCountAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, roadWaybillDtoCollectionQueryParameters: roadWaybillDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -549,12 +559,13 @@ open class RoadWaybillsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter roadWaybillDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getRoadWaybillsCountAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getRoadWaybillsCountAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, roadWaybillDtoCollectionQueryParameters: RoadWaybillDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/LogisticsService/RoadWaybills/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: roadWaybillDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -563,6 +574,7 @@ open class RoadWaybillsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -751,13 +763,13 @@ open class RoadWaybillsAPI {
      - parameter waybillId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchRoadWaybillAsync(tenantId: UUID, waybillId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchRoadWaybillAsyncWithRequestBuilder(tenantId: tenantId, waybillId: waybillId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchRoadWaybillAsync(tenantId: UUID, waybillId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchRoadWaybillAsyncWithRequestBuilder(tenantId: tenantId, waybillId: waybillId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -775,16 +787,16 @@ open class RoadWaybillsAPI {
      - parameter waybillId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchRoadWaybillAsyncWithRequestBuilder(tenantId: UUID, waybillId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchRoadWaybillAsyncWithRequestBuilder(tenantId: UUID, waybillId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/LogisticsService/RoadWaybills/{waybillId}"
         let waybillIdPreEscape = "\(APIHelper.mapValueToPathItem(waybillId))"
         let waybillIdPostEscape = waybillIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{waybillId}", with: waybillIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -812,13 +824,13 @@ open class RoadWaybillsAPI {
      - parameter lineId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchRoadWaybillLineAsync(tenantId: UUID, waybillId: UUID, lineId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchRoadWaybillLineAsyncWithRequestBuilder(tenantId: tenantId, waybillId: waybillId, lineId: lineId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchRoadWaybillLineAsync(tenantId: UUID, waybillId: UUID, lineId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchRoadWaybillLineAsyncWithRequestBuilder(tenantId: tenantId, waybillId: waybillId, lineId: lineId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -837,10 +849,10 @@ open class RoadWaybillsAPI {
      - parameter lineId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchRoadWaybillLineAsyncWithRequestBuilder(tenantId: UUID, waybillId: UUID, lineId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchRoadWaybillLineAsyncWithRequestBuilder(tenantId: UUID, waybillId: UUID, lineId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/LogisticsService/RoadWaybills/{waybillId}/Lines/{lineId}"
         let waybillIdPreEscape = "\(APIHelper.mapValueToPathItem(waybillId))"
         let waybillIdPostEscape = waybillIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -849,7 +861,7 @@ open class RoadWaybillsAPI {
         let lineIdPostEscape = lineIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{lineId}", with: lineIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

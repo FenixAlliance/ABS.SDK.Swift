@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 # **getCreditsSumAsync**
 ```swift
-    open class func getCreditsSumAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: DecimalEnvelope?, _ error: Error?) -> Void)
+    open class func getCreditsSumAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountingEntryDtoCollectionQueryParameters: AccountingEntryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: DecimalEnvelope?, _ error: Error?) -> Void)
 ```
 
 Sum tenant accounting-entry credits
@@ -27,9 +27,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let accountingEntryDtoCollectionQueryParameters = AccountingEntryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // AccountingEntryDtoCollectionQueryParameters |  (optional)
 
 // Sum tenant accounting-entry credits
-AccountingSummaryAPI.getCreditsSumAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+AccountingSummaryAPI.getCreditsSumAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountingEntryDtoCollectionQueryParameters: accountingEntryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -48,6 +49,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **accountingEntryDtoCollectionQueryParameters** | [**AccountingEntryDtoCollectionQueryParameters**](AccountingEntryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -59,14 +61,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getDebitsSumAsync**
 ```swift
-    open class func getDebitsSumAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: DecimalEnvelope?, _ error: Error?) -> Void)
+    open class func getDebitsSumAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountingEntryDtoCollectionQueryParameters: AccountingEntryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: DecimalEnvelope?, _ error: Error?) -> Void)
 ```
 
 Sum tenant accounting-entry debits
@@ -81,9 +83,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let accountingEntryDtoCollectionQueryParameters = AccountingEntryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // AccountingEntryDtoCollectionQueryParameters |  (optional)
 
 // Sum tenant accounting-entry debits
-AccountingSummaryAPI.getDebitsSumAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+AccountingSummaryAPI.getDebitsSumAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountingEntryDtoCollectionQueryParameters: accountingEntryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -102,6 +105,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **accountingEntryDtoCollectionQueryParameters** | [**AccountingEntryDtoCollectionQueryParameters**](AccountingEntryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -113,14 +117,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getExpensesSumAsync**
 ```swift
-    open class func getExpensesSumAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: MoneyEnvelope?, _ error: Error?) -> Void)
+    open class func getExpensesSumAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, journalEntryDtoCollectionQueryParameters: JournalEntryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: MoneyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Sum tenant expenses
@@ -135,9 +139,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let journalEntryDtoCollectionQueryParameters = JournalEntryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // JournalEntryDtoCollectionQueryParameters |  (optional)
 
 // Sum tenant expenses
-AccountingSummaryAPI.getExpensesSumAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+AccountingSummaryAPI.getExpensesSumAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, journalEntryDtoCollectionQueryParameters: journalEntryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -156,6 +161,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **journalEntryDtoCollectionQueryParameters** | [**JournalEntryDtoCollectionQueryParameters**](JournalEntryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -167,14 +173,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getIncomesSumAsync**
 ```swift
-    open class func getIncomesSumAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: MoneyEnvelope?, _ error: Error?) -> Void)
+    open class func getIncomesSumAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, journalEntryDtoCollectionQueryParameters: JournalEntryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: MoneyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Sum tenant incomes
@@ -189,9 +195,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let journalEntryDtoCollectionQueryParameters = JournalEntryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // JournalEntryDtoCollectionQueryParameters |  (optional)
 
 // Sum tenant incomes
-AccountingSummaryAPI.getIncomesSumAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+AccountingSummaryAPI.getIncomesSumAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, journalEntryDtoCollectionQueryParameters: journalEntryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -210,6 +217,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **journalEntryDtoCollectionQueryParameters** | [**JournalEntryDtoCollectionQueryParameters**](JournalEntryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -221,7 +229,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

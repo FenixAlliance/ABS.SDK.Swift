@@ -337,12 +337,13 @@ open class OrdersAPI {
      Gets a list of extended orders for a tenant.
      
      - parameter tenantId: (query)  
+     - parameter extendedOrderDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getExtendedOrders(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ExtendedOrderDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getExtendedOrdersWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+    open class func getExtendedOrders(tenantId: UUID, extendedOrderDtoCollectionQueryParameters: ExtendedOrderDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ExtendedOrderDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getExtendedOrdersWithRequestBuilder(tenantId: tenantId, extendedOrderDtoCollectionQueryParameters: extendedOrderDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -357,12 +358,13 @@ open class OrdersAPI {
      - GET /api/v2/OrdersService/Orders/Extended
      - Retrieves a list of extended order details for the specified tenant.
      - parameter tenantId: (query)  
+     - parameter extendedOrderDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<ExtendedOrderDtoListEnvelope> 
      */
-    open class func getExtendedOrdersWithRequestBuilder(tenantId: UUID) -> RequestBuilder<ExtendedOrderDtoListEnvelope> {
+    open class func getExtendedOrdersWithRequestBuilder(tenantId: UUID, extendedOrderDtoCollectionQueryParameters: ExtendedOrderDtoCollectionQueryParameters? = nil) -> RequestBuilder<ExtendedOrderDtoListEnvelope> {
         let localVariablePath = "/api/v2/OrdersService/Orders/Extended"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: extendedOrderDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -370,7 +372,7 @@ open class OrdersAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -495,12 +497,13 @@ open class OrdersAPI {
      - parameter tenantId: (query)  
      - parameter orderId: (path)  
      - parameter itemId: (query)  (optional)
+     - parameter orderLineDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getOrderLines(tenantId: UUID, orderId: UUID, itemId: UUID? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: OrderLineDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getOrderLinesWithRequestBuilder(tenantId: tenantId, orderId: orderId, itemId: itemId).execute(apiResponseQueue) { result in
+    open class func getOrderLines(tenantId: UUID, orderId: UUID, itemId: UUID? = nil, orderLineDtoCollectionQueryParameters: OrderLineDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: OrderLineDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getOrderLinesWithRequestBuilder(tenantId: tenantId, orderId: orderId, itemId: itemId, orderLineDtoCollectionQueryParameters: orderLineDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -517,15 +520,16 @@ open class OrdersAPI {
      - parameter tenantId: (query)  
      - parameter orderId: (path)  
      - parameter itemId: (query)  (optional)
+     - parameter orderLineDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<OrderLineDtoListEnvelope> 
      */
-    open class func getOrderLinesWithRequestBuilder(tenantId: UUID, orderId: UUID, itemId: UUID? = nil) -> RequestBuilder<OrderLineDtoListEnvelope> {
+    open class func getOrderLinesWithRequestBuilder(tenantId: UUID, orderId: UUID, itemId: UUID? = nil, orderLineDtoCollectionQueryParameters: OrderLineDtoCollectionQueryParameters? = nil) -> RequestBuilder<OrderLineDtoListEnvelope> {
         var localVariablePath = "/api/v2/OrdersService/Orders/{orderId}/Lines"
         let orderIdPreEscape = "\(APIHelper.mapValueToPathItem(orderId))"
         let orderIdPostEscape = orderIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{orderId}", with: orderIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: orderLineDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -534,7 +538,7 @@ open class OrdersAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -549,12 +553,13 @@ open class OrdersAPI {
      
      - parameter tenantId: (query)  
      - parameter orderId: (path)  
+     - parameter orderLineDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getOrderLinesCount(tenantId: UUID, orderId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getOrderLinesCountWithRequestBuilder(tenantId: tenantId, orderId: orderId).execute(apiResponseQueue) { result in
+    open class func getOrderLinesCount(tenantId: UUID, orderId: UUID, orderLineDtoCollectionQueryParameters: OrderLineDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getOrderLinesCountWithRequestBuilder(tenantId: tenantId, orderId: orderId, orderLineDtoCollectionQueryParameters: orderLineDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -570,15 +575,16 @@ open class OrdersAPI {
      - Retrieves the total number of lines for the specified order.
      - parameter tenantId: (query)  
      - parameter orderId: (path)  
+     - parameter orderLineDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getOrderLinesCountWithRequestBuilder(tenantId: UUID, orderId: UUID) -> RequestBuilder<Int32Envelope> {
+    open class func getOrderLinesCountWithRequestBuilder(tenantId: UUID, orderId: UUID, orderLineDtoCollectionQueryParameters: OrderLineDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/OrdersService/Orders/{orderId}/Lines/Count"
         let orderIdPreEscape = "\(APIHelper.mapValueToPathItem(orderId))"
         let orderIdPostEscape = orderIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{orderId}", with: orderIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: orderLineDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -586,7 +592,7 @@ open class OrdersAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -600,12 +606,13 @@ open class OrdersAPI {
      Gets a list of orders for a tenant.
      
      - parameter tenantId: (query)  
+     - parameter orderDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getOrders(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: OrderDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getOrdersWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+    open class func getOrders(tenantId: UUID, orderDtoCollectionQueryParameters: OrderDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: OrderDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getOrdersWithRequestBuilder(tenantId: tenantId, orderDtoCollectionQueryParameters: orderDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -620,12 +627,13 @@ open class OrdersAPI {
      - GET /api/v2/OrdersService/Orders
      - Retrieves a list of orders for the specified tenant.
      - parameter tenantId: (query)  
+     - parameter orderDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<OrderDtoListEnvelope> 
      */
-    open class func getOrdersWithRequestBuilder(tenantId: UUID) -> RequestBuilder<OrderDtoListEnvelope> {
+    open class func getOrdersWithRequestBuilder(tenantId: UUID, orderDtoCollectionQueryParameters: OrderDtoCollectionQueryParameters? = nil) -> RequestBuilder<OrderDtoListEnvelope> {
         let localVariablePath = "/api/v2/OrdersService/Orders"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: orderDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -633,7 +641,7 @@ open class OrdersAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -647,12 +655,13 @@ open class OrdersAPI {
      Gets the count of orders for a tenant.
      
      - parameter tenantId: (query)  
+     - parameter orderDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getOrdersCount(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getOrdersCountWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+    open class func getOrdersCount(tenantId: UUID, orderDtoCollectionQueryParameters: OrderDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getOrdersCountWithRequestBuilder(tenantId: tenantId, orderDtoCollectionQueryParameters: orderDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -667,12 +676,13 @@ open class OrdersAPI {
      - GET /api/v2/OrdersService/Orders/Count
      - Retrieves the total number of orders for the specified tenant.
      - parameter tenantId: (query)  
+     - parameter orderDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getOrdersCountWithRequestBuilder(tenantId: UUID) -> RequestBuilder<Int32Envelope> {
+    open class func getOrdersCountWithRequestBuilder(tenantId: UUID, orderDtoCollectionQueryParameters: OrderDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/OrdersService/Orders/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: orderDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -680,7 +690,7 @@ open class OrdersAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -695,13 +705,13 @@ open class OrdersAPI {
      
      - parameter tenantId: (query)  
      - parameter orderId: (path)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchOrder(tenantId: UUID, orderId: UUID, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchOrderWithRequestBuilder(tenantId: tenantId, orderId: orderId, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchOrder(tenantId: UUID, orderId: UUID, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchOrderWithRequestBuilder(tenantId: tenantId, orderId: orderId, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -717,16 +727,16 @@ open class OrdersAPI {
      - Applies a JSON Patch document to partially update an existing order.
      - parameter tenantId: (query)  
      - parameter orderId: (path)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchOrderWithRequestBuilder(tenantId: UUID, orderId: UUID, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchOrderWithRequestBuilder(tenantId: UUID, orderId: UUID, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/OrdersService/Orders/{orderId}"
         let orderIdPreEscape = "\(APIHelper.mapValueToPathItem(orderId))"
         let orderIdPostEscape = orderIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{orderId}", with: orderIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -750,13 +760,13 @@ open class OrdersAPI {
      - parameter tenantId: (query)  
      - parameter orderId: (path)  
      - parameter orderLineId: (path)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchOrderLine(tenantId: UUID, orderId: UUID, orderLineId: UUID, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchOrderLineWithRequestBuilder(tenantId: tenantId, orderId: orderId, orderLineId: orderLineId, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchOrderLine(tenantId: UUID, orderId: UUID, orderLineId: UUID, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchOrderLineWithRequestBuilder(tenantId: tenantId, orderId: orderId, orderLineId: orderLineId, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -773,10 +783,10 @@ open class OrdersAPI {
      - parameter tenantId: (query)  
      - parameter orderId: (path)  
      - parameter orderLineId: (path)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchOrderLineWithRequestBuilder(tenantId: UUID, orderId: UUID, orderLineId: UUID, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchOrderLineWithRequestBuilder(tenantId: UUID, orderId: UUID, orderLineId: UUID, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/OrdersService/Orders/{orderId}/Lines/{orderLineId}"
         let orderIdPreEscape = "\(APIHelper.mapValueToPathItem(orderId))"
         let orderIdPostEscape = orderIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -785,7 +795,7 @@ open class OrdersAPI {
         let orderLineIdPostEscape = orderLineIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{orderLineId}", with: orderLineIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

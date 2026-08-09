@@ -169,12 +169,13 @@ open class AssetTransfersAPI {
      Gets a list of asset transfers
      
      - parameter tenantId: (query)  
+     - parameter assetTransferDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getAssetTransfersAsync(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AssetTransferDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getAssetTransfersAsyncWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+    open class func getAssetTransfersAsync(tenantId: UUID, assetTransferDtoCollectionQueryParameters: AssetTransferDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AssetTransferDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getAssetTransfersAsyncWithRequestBuilder(tenantId: tenantId, assetTransferDtoCollectionQueryParameters: assetTransferDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -189,12 +190,13 @@ open class AssetTransfersAPI {
      - GET /api/v2/AssetsService/AssetTransfers
      - Retrieves all asset transfers for the authenticated tenant.
      - parameter tenantId: (query)  
+     - parameter assetTransferDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<AssetTransferDtoListEnvelope> 
      */
-    open class func getAssetTransfersAsyncWithRequestBuilder(tenantId: UUID) -> RequestBuilder<AssetTransferDtoListEnvelope> {
+    open class func getAssetTransfersAsyncWithRequestBuilder(tenantId: UUID, assetTransferDtoCollectionQueryParameters: AssetTransferDtoCollectionQueryParameters? = nil) -> RequestBuilder<AssetTransferDtoListEnvelope> {
         let localVariablePath = "/api/v2/AssetsService/AssetTransfers"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: assetTransferDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -202,7 +204,7 @@ open class AssetTransfersAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -216,12 +218,13 @@ open class AssetTransfersAPI {
      Gets the count of asset transfers
      
      - parameter tenantId: (query)  
+     - parameter assetTransferDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getAssetTransfersCountAsync(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getAssetTransfersCountAsyncWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+    open class func getAssetTransfersCountAsync(tenantId: UUID, assetTransferDtoCollectionQueryParameters: AssetTransferDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getAssetTransfersCountAsyncWithRequestBuilder(tenantId: tenantId, assetTransferDtoCollectionQueryParameters: assetTransferDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -236,12 +239,13 @@ open class AssetTransfersAPI {
      - GET /api/v2/AssetsService/AssetTransfers/Count
      - Returns the total number of asset transfers for the authenticated tenant.
      - parameter tenantId: (query)  
+     - parameter assetTransferDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getAssetTransfersCountAsyncWithRequestBuilder(tenantId: UUID) -> RequestBuilder<Int32Envelope> {
+    open class func getAssetTransfersCountAsyncWithRequestBuilder(tenantId: UUID, assetTransferDtoCollectionQueryParameters: AssetTransferDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/AssetsService/AssetTransfers/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: assetTransferDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -249,7 +253,7 @@ open class AssetTransfersAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -264,13 +268,13 @@ open class AssetTransfersAPI {
      
      - parameter tenantId: (query)  
      - parameter transferId: (path)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchAssetTransferAsync(tenantId: UUID, transferId: UUID, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchAssetTransferAsyncWithRequestBuilder(tenantId: tenantId, transferId: transferId, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchAssetTransferAsync(tenantId: UUID, transferId: UUID, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchAssetTransferAsyncWithRequestBuilder(tenantId: tenantId, transferId: transferId, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -286,16 +290,16 @@ open class AssetTransfersAPI {
      - Applies a JSON Patch document to an existing asset transfer for the authenticated tenant.
      - parameter tenantId: (query)  
      - parameter transferId: (path)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchAssetTransferAsyncWithRequestBuilder(tenantId: UUID, transferId: UUID, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchAssetTransferAsyncWithRequestBuilder(tenantId: UUID, transferId: UUID, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/AssetsService/AssetTransfers/{transferId}"
         let transferIdPreEscape = "\(APIHelper.mapValueToPathItem(transferId))"
         let transferIdPostEscape = transferIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{transferId}", with: transferIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

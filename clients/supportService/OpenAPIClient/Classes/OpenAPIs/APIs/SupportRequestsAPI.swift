@@ -250,12 +250,13 @@ open class SupportRequestsAPI {
      - parameter supportRequestId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter supportRequestAttachmentDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getSupportRequestAttachmentsByRequest(tenantId: UUID, supportRequestId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SupportRequestAttachmentDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getSupportRequestAttachmentsByRequestWithRequestBuilder(tenantId: tenantId, supportRequestId: supportRequestId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getSupportRequestAttachmentsByRequest(tenantId: UUID, supportRequestId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, supportRequestAttachmentDtoCollectionQueryParameters: SupportRequestAttachmentDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SupportRequestAttachmentDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getSupportRequestAttachmentsByRequestWithRequestBuilder(tenantId: tenantId, supportRequestId: supportRequestId, apiVersion: apiVersion, xApiVersion: xApiVersion, supportRequestAttachmentDtoCollectionQueryParameters: supportRequestAttachmentDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -273,15 +274,16 @@ open class SupportRequestsAPI {
      - parameter supportRequestId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter supportRequestAttachmentDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<SupportRequestAttachmentDtoListEnvelope> 
      */
-    open class func getSupportRequestAttachmentsByRequestWithRequestBuilder(tenantId: UUID, supportRequestId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SupportRequestAttachmentDtoListEnvelope> {
+    open class func getSupportRequestAttachmentsByRequestWithRequestBuilder(tenantId: UUID, supportRequestId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, supportRequestAttachmentDtoCollectionQueryParameters: SupportRequestAttachmentDtoCollectionQueryParameters? = nil) -> RequestBuilder<SupportRequestAttachmentDtoListEnvelope> {
         var localVariablePath = "/api/v2/SupportService/SupportRequests/{supportRequestId}/Attachments"
         let supportRequestIdPreEscape = "\(APIHelper.mapValueToPathItem(supportRequestId))"
         let supportRequestIdPostEscape = supportRequestIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{supportRequestId}", with: supportRequestIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: supportRequestAttachmentDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -290,6 +292,7 @@ open class SupportRequestsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -307,12 +310,13 @@ open class SupportRequestsAPI {
      - parameter supportRequestId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter supportRequestAttachmentDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getSupportRequestAttachmentsCountByRequest(tenantId: UUID, supportRequestId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getSupportRequestAttachmentsCountByRequestWithRequestBuilder(tenantId: tenantId, supportRequestId: supportRequestId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getSupportRequestAttachmentsCountByRequest(tenantId: UUID, supportRequestId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, supportRequestAttachmentDtoCollectionQueryParameters: SupportRequestAttachmentDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getSupportRequestAttachmentsCountByRequestWithRequestBuilder(tenantId: tenantId, supportRequestId: supportRequestId, apiVersion: apiVersion, xApiVersion: xApiVersion, supportRequestAttachmentDtoCollectionQueryParameters: supportRequestAttachmentDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -330,15 +334,16 @@ open class SupportRequestsAPI {
      - parameter supportRequestId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter supportRequestAttachmentDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getSupportRequestAttachmentsCountByRequestWithRequestBuilder(tenantId: UUID, supportRequestId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getSupportRequestAttachmentsCountByRequestWithRequestBuilder(tenantId: UUID, supportRequestId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, supportRequestAttachmentDtoCollectionQueryParameters: SupportRequestAttachmentDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/SupportService/SupportRequests/{supportRequestId}/Attachments/Count"
         let supportRequestIdPreEscape = "\(APIHelper.mapValueToPathItem(supportRequestId))"
         let supportRequestIdPostEscape = supportRequestIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{supportRequestId}", with: supportRequestIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: supportRequestAttachmentDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -347,6 +352,7 @@ open class SupportRequestsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -364,12 +370,13 @@ open class SupportRequestsAPI {
      - parameter supportRequestId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter supportTicketDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getSupportRequestTicketsAsync(tenantId: UUID, supportRequestId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SupportTicketDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getSupportRequestTicketsAsyncWithRequestBuilder(tenantId: tenantId, supportRequestId: supportRequestId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getSupportRequestTicketsAsync(tenantId: UUID, supportRequestId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, supportTicketDtoCollectionQueryParameters: SupportTicketDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SupportTicketDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getSupportRequestTicketsAsyncWithRequestBuilder(tenantId: tenantId, supportRequestId: supportRequestId, apiVersion: apiVersion, xApiVersion: xApiVersion, supportTicketDtoCollectionQueryParameters: supportTicketDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -387,15 +394,16 @@ open class SupportRequestsAPI {
      - parameter supportRequestId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter supportTicketDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<SupportTicketDtoListEnvelope> 
      */
-    open class func getSupportRequestTicketsAsyncWithRequestBuilder(tenantId: UUID, supportRequestId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SupportTicketDtoListEnvelope> {
+    open class func getSupportRequestTicketsAsyncWithRequestBuilder(tenantId: UUID, supportRequestId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, supportTicketDtoCollectionQueryParameters: SupportTicketDtoCollectionQueryParameters? = nil) -> RequestBuilder<SupportTicketDtoListEnvelope> {
         var localVariablePath = "/api/v2/SupportService/SupportRequests/{supportRequestId}/Tickets"
         let supportRequestIdPreEscape = "\(APIHelper.mapValueToPathItem(supportRequestId))"
         let supportRequestIdPostEscape = supportRequestIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{supportRequestId}", with: supportRequestIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: supportTicketDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -404,6 +412,7 @@ open class SupportRequestsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -420,12 +429,13 @@ open class SupportRequestsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter supportRequestDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getSupportRequestsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SupportRequestDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getSupportRequestsAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getSupportRequestsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, supportRequestDtoCollectionQueryParameters: SupportRequestDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SupportRequestDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getSupportRequestsAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, supportRequestDtoCollectionQueryParameters: supportRequestDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -442,12 +452,13 @@ open class SupportRequestsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter supportRequestDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<SupportRequestDtoListEnvelope> 
      */
-    open class func getSupportRequestsAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SupportRequestDtoListEnvelope> {
+    open class func getSupportRequestsAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, supportRequestDtoCollectionQueryParameters: SupportRequestDtoCollectionQueryParameters? = nil) -> RequestBuilder<SupportRequestDtoListEnvelope> {
         let localVariablePath = "/api/v2/SupportService/SupportRequests"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: supportRequestDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -456,6 +467,7 @@ open class SupportRequestsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -472,12 +484,13 @@ open class SupportRequestsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter supportRequestDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getSupportRequestsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getSupportRequestsCountAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getSupportRequestsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, supportRequestDtoCollectionQueryParameters: SupportRequestDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getSupportRequestsCountAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, supportRequestDtoCollectionQueryParameters: supportRequestDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -494,12 +507,13 @@ open class SupportRequestsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter supportRequestDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getSupportRequestsCountAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getSupportRequestsCountAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, supportRequestDtoCollectionQueryParameters: SupportRequestDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/SupportService/SupportRequests/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: supportRequestDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -508,6 +522,7 @@ open class SupportRequestsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -525,13 +540,13 @@ open class SupportRequestsAPI {
      - parameter supportRequestId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchSupportRequestAsync(tenantId: UUID, supportRequestId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchSupportRequestAsyncWithRequestBuilder(tenantId: tenantId, supportRequestId: supportRequestId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchSupportRequestAsync(tenantId: UUID, supportRequestId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchSupportRequestAsyncWithRequestBuilder(tenantId: tenantId, supportRequestId: supportRequestId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -549,16 +564,16 @@ open class SupportRequestsAPI {
      - parameter supportRequestId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchSupportRequestAsyncWithRequestBuilder(tenantId: UUID, supportRequestId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchSupportRequestAsyncWithRequestBuilder(tenantId: UUID, supportRequestId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/SupportService/SupportRequests/{supportRequestId}"
         let supportRequestIdPreEscape = "\(APIHelper.mapValueToPathItem(supportRequestId))"
         let supportRequestIdPostEscape = supportRequestIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{supportRequestId}", with: supportRequestIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

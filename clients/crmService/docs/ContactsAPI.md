@@ -450,7 +450,7 @@ No authorization required
 
 # **getBusinessOwnedIndividualsAsync**
 ```swift
-    open class func getBusinessOwnedIndividualsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ContactDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getBusinessOwnedIndividualsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, contactDtoCollectionQueryParameters: ContactDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ContactDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all contacts of type individual
@@ -465,9 +465,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let contactDtoCollectionQueryParameters = ContactDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ContactDtoCollectionQueryParameters |  (optional)
 
 // Get all contacts of type individual
-ContactsAPI.getBusinessOwnedIndividualsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ContactsAPI.getBusinessOwnedIndividualsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, contactDtoCollectionQueryParameters: contactDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -486,6 +487,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **contactDtoCollectionQueryParameters** | [**ContactDtoCollectionQueryParameters**](ContactDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -497,14 +499,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getBusinessOwnedIndividualsCountAsync**
 ```swift
-    open class func getBusinessOwnedIndividualsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ContactDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getBusinessOwnedIndividualsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, contactDtoCollectionQueryParameters: ContactDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ContactDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all contacts of type individual count
@@ -519,9 +521,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let contactDtoCollectionQueryParameters = ContactDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ContactDtoCollectionQueryParameters |  (optional)
 
 // Get all contacts of type individual count
-ContactsAPI.getBusinessOwnedIndividualsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ContactsAPI.getBusinessOwnedIndividualsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, contactDtoCollectionQueryParameters: contactDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -540,6 +543,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **contactDtoCollectionQueryParameters** | [**ContactDtoCollectionQueryParameters**](ContactDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -551,7 +555,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -614,7 +618,7 @@ No authorization required
 
 # **getBusinessOwnedOrganizationsAsync**
 ```swift
-    open class func getBusinessOwnedOrganizationsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: [ContactDto]?, _ error: Error?) -> Void)
+    open class func getBusinessOwnedOrganizationsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, contactDtoCollectionQueryParameters: ContactDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: [ContactDto]?, _ error: Error?) -> Void)
 ```
 
 Get all contacts of type organization
@@ -629,9 +633,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let contactDtoCollectionQueryParameters = ContactDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ContactDtoCollectionQueryParameters |  (optional)
 
 // Get all contacts of type organization
-ContactsAPI.getBusinessOwnedOrganizationsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ContactsAPI.getBusinessOwnedOrganizationsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, contactDtoCollectionQueryParameters: contactDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -650,6 +655,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **contactDtoCollectionQueryParameters** | [**ContactDtoCollectionQueryParameters**](ContactDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -661,14 +667,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getBusinessOwnedOrganizationsCountAsync**
 ```swift
-    open class func getBusinessOwnedOrganizationsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ContactDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getBusinessOwnedOrganizationsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, contactDtoCollectionQueryParameters: ContactDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ContactDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all contacts of type organization count
@@ -683,9 +689,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let contactDtoCollectionQueryParameters = ContactDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ContactDtoCollectionQueryParameters |  (optional)
 
 // Get all contacts of type organization count
-ContactsAPI.getBusinessOwnedOrganizationsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ContactsAPI.getBusinessOwnedOrganizationsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, contactDtoCollectionQueryParameters: contactDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -704,6 +711,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **contactDtoCollectionQueryParameters** | [**ContactDtoCollectionQueryParameters**](ContactDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -715,7 +723,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -890,7 +898,7 @@ No authorization required
 
 # **getContactEmailsAsync**
 ```swift
-    open class func getContactEmailsAsync(tenantId: UUID, contactId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ContactEmailDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getContactEmailsAsync(tenantId: UUID, contactId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, contactEmailDtoCollectionQueryParameters: ContactEmailDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ContactEmailDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get a contact's email addresses
@@ -906,9 +914,10 @@ let tenantId = 987 // UUID |
 let contactId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let contactEmailDtoCollectionQueryParameters = ContactEmailDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ContactEmailDtoCollectionQueryParameters |  (optional)
 
 // Get a contact's email addresses
-ContactsAPI.getContactEmailsAsync(tenantId: tenantId, contactId: contactId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ContactsAPI.getContactEmailsAsync(tenantId: tenantId, contactId: contactId, apiVersion: apiVersion, xApiVersion: xApiVersion, contactEmailDtoCollectionQueryParameters: contactEmailDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -928,6 +937,7 @@ Name | Type | Description  | Notes
  **contactId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **contactEmailDtoCollectionQueryParameters** | [**ContactEmailDtoCollectionQueryParameters**](ContactEmailDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -939,14 +949,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getContactEmailsCountAsync**
 ```swift
-    open class func getContactEmailsCountAsync(tenantId: UUID, contactId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getContactEmailsCountAsync(tenantId: UUID, contactId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, contactEmailDtoCollectionQueryParameters: ContactEmailDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get contact email addresses count
@@ -962,9 +972,10 @@ let tenantId = 987 // UUID |
 let contactId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let contactEmailDtoCollectionQueryParameters = ContactEmailDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ContactEmailDtoCollectionQueryParameters |  (optional)
 
 // Get contact email addresses count
-ContactsAPI.getContactEmailsCountAsync(tenantId: tenantId, contactId: contactId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ContactsAPI.getContactEmailsCountAsync(tenantId: tenantId, contactId: contactId, apiVersion: apiVersion, xApiVersion: xApiVersion, contactEmailDtoCollectionQueryParameters: contactEmailDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -984,6 +995,7 @@ Name | Type | Description  | Notes
  **contactId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **contactEmailDtoCollectionQueryParameters** | [**ContactEmailDtoCollectionQueryParameters**](ContactEmailDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -995,7 +1007,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1114,7 +1126,7 @@ No authorization required
 
 # **getContactsAsync**
 ```swift
-    open class func getContactsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ContactDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getContactsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, contactDtoCollectionQueryParameters: ContactDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ContactDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all business owned contacts
@@ -1129,9 +1141,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let contactDtoCollectionQueryParameters = ContactDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ContactDtoCollectionQueryParameters |  (optional)
 
 // Get all business owned contacts
-ContactsAPI.getContactsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ContactsAPI.getContactsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, contactDtoCollectionQueryParameters: contactDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1150,6 +1163,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **contactDtoCollectionQueryParameters** | [**ContactDtoCollectionQueryParameters**](ContactDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1161,14 +1175,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getContactsCountAsync**
 ```swift
-    open class func getContactsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ContactDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getContactsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, contactDtoCollectionQueryParameters: ContactDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ContactDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all business owned contacts count
@@ -1183,9 +1197,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let contactDtoCollectionQueryParameters = ContactDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ContactDtoCollectionQueryParameters |  (optional)
 
 // Get all business owned contacts count
-ContactsAPI.getContactsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ContactsAPI.getContactsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, contactDtoCollectionQueryParameters: contactDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1204,6 +1219,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **contactDtoCollectionQueryParameters** | [**ContactDtoCollectionQueryParameters**](ContactDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1215,14 +1231,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getExtendedBusinessOwnedIndividualsAsync**
 ```swift
-    open class func getExtendedBusinessOwnedIndividualsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ExtendedContactDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getExtendedBusinessOwnedIndividualsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, extendedContactDtoCollectionQueryParameters: ExtendedContactDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ExtendedContactDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all contacts of type individual
@@ -1237,9 +1253,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let extendedContactDtoCollectionQueryParameters = ExtendedContactDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ExtendedContactDtoCollectionQueryParameters |  (optional)
 
 // Get all contacts of type individual
-ContactsAPI.getExtendedBusinessOwnedIndividualsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ContactsAPI.getExtendedBusinessOwnedIndividualsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, extendedContactDtoCollectionQueryParameters: extendedContactDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1258,6 +1275,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **extendedContactDtoCollectionQueryParameters** | [**ExtendedContactDtoCollectionQueryParameters**](ExtendedContactDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1269,14 +1287,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getExtendedBusinessOwnedOrganizationsAsync**
 ```swift
-    open class func getExtendedBusinessOwnedOrganizationsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ExtendedContactDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getExtendedBusinessOwnedOrganizationsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, extendedContactDtoCollectionQueryParameters: ExtendedContactDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ExtendedContactDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all contacts of type organization
@@ -1291,9 +1309,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let extendedContactDtoCollectionQueryParameters = ExtendedContactDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ExtendedContactDtoCollectionQueryParameters |  (optional)
 
 // Get all contacts of type organization
-ContactsAPI.getExtendedBusinessOwnedOrganizationsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ContactsAPI.getExtendedBusinessOwnedOrganizationsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, extendedContactDtoCollectionQueryParameters: extendedContactDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1312,6 +1331,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **extendedContactDtoCollectionQueryParameters** | [**ExtendedContactDtoCollectionQueryParameters**](ExtendedContactDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1323,7 +1343,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1386,7 +1406,7 @@ No authorization required
 
 # **getExtendedContactsAsync**
 ```swift
-    open class func getExtendedContactsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ExtendedContactDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getExtendedContactsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, extendedContactDtoCollectionQueryParameters: ExtendedContactDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ExtendedContactDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all business owned contacts
@@ -1401,9 +1421,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let extendedContactDtoCollectionQueryParameters = ExtendedContactDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ExtendedContactDtoCollectionQueryParameters |  (optional)
 
 // Get all business owned contacts
-ContactsAPI.getExtendedContactsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ContactsAPI.getExtendedContactsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, extendedContactDtoCollectionQueryParameters: extendedContactDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1422,6 +1443,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **extendedContactDtoCollectionQueryParameters** | [**ExtendedContactDtoCollectionQueryParameters**](ExtendedContactDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1433,7 +1455,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1720,7 +1742,7 @@ No authorization required
 
 # **getProfilesForContactCountAsync**
 ```swift
-    open class func getProfilesForContactCountAsync(tenantId: UUID, contactId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getProfilesForContactCountAsync(tenantId: UUID, contactId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, contactProfileDtoCollectionQueryParameters: ContactProfileDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get contact profiles count
@@ -1736,9 +1758,10 @@ let tenantId = 987 // UUID |
 let contactId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let contactProfileDtoCollectionQueryParameters = ContactProfileDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ContactProfileDtoCollectionQueryParameters |  (optional)
 
 // Get contact profiles count
-ContactsAPI.getProfilesForContactCountAsync(tenantId: tenantId, contactId: contactId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ContactsAPI.getProfilesForContactCountAsync(tenantId: tenantId, contactId: contactId, apiVersion: apiVersion, xApiVersion: xApiVersion, contactProfileDtoCollectionQueryParameters: contactProfileDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1758,6 +1781,7 @@ Name | Type | Description  | Notes
  **contactId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **contactProfileDtoCollectionQueryParameters** | [**ContactProfileDtoCollectionQueryParameters**](ContactProfileDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1769,14 +1793,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchContactAsync**
 ```swift
-    open class func patchContactAsync(tenantId: UUID, contactId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchContactAsync(tenantId: UUID, contactId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a contact
@@ -1792,10 +1816,10 @@ let tenantId = 987 // UUID |
 let contactId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a contact
-ContactsAPI.patchContactAsync(tenantId: tenantId, contactId: contactId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+ContactsAPI.patchContactAsync(tenantId: tenantId, contactId: contactId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1815,7 +1839,7 @@ Name | Type | Description  | Notes
  **contactId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -1834,7 +1858,7 @@ No authorization required
 
 # **patchContactEmailAsync**
 ```swift
-    open class func patchContactEmailAsync(tenantId: UUID, contactId: UUID, emailId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func patchContactEmailAsync(tenantId: UUID, contactId: UUID, emailId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
 Patch a contact email address
@@ -1851,10 +1875,10 @@ let contactId = 987 // UUID |
 let emailId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a contact email address
-ContactsAPI.patchContactEmailAsync(tenantId: tenantId, contactId: contactId, emailId: emailId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+ContactsAPI.patchContactEmailAsync(tenantId: tenantId, contactId: contactId, emailId: emailId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1875,7 +1899,7 @@ Name | Type | Description  | Notes
  **emailId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

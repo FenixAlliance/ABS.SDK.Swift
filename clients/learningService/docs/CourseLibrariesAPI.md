@@ -127,7 +127,7 @@ No authorization required
 
 # **getCourseLibrariesAsync**
 ```swift
-    open class func getCourseLibrariesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: [CourseLibraryDto]?, _ error: Error?) -> Void)
+    open class func getCourseLibrariesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, courseLibraryDtoCollectionQueryParameters: CourseLibraryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: [CourseLibraryDto]?, _ error: Error?) -> Void)
 ```
 
 Get all course libraries
@@ -142,9 +142,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseLibraryDtoCollectionQueryParameters = CourseLibraryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseLibraryDtoCollectionQueryParameters |  (optional)
 
 // Get all course libraries
-CourseLibrariesAPI.getCourseLibrariesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CourseLibrariesAPI.getCourseLibrariesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseLibraryDtoCollectionQueryParameters: courseLibraryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -163,6 +164,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseLibraryDtoCollectionQueryParameters** | [**CourseLibraryDtoCollectionQueryParameters**](CourseLibraryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -174,14 +176,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCourseLibrariesCountAsync**
 ```swift
-    open class func getCourseLibrariesCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
+    open class func getCourseLibrariesCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, courseLibraryDtoCollectionQueryParameters: CourseLibraryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
 ```
 
 Get course libraries count
@@ -196,9 +198,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseLibraryDtoCollectionQueryParameters = CourseLibraryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseLibraryDtoCollectionQueryParameters |  (optional)
 
 // Get course libraries count
-CourseLibrariesAPI.getCourseLibrariesCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CourseLibrariesAPI.getCourseLibrariesCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseLibraryDtoCollectionQueryParameters: courseLibraryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -217,6 +220,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseLibraryDtoCollectionQueryParameters** | [**CourseLibraryDtoCollectionQueryParameters**](CourseLibraryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -228,7 +232,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -289,7 +293,7 @@ No authorization required
 
 # **patchCourseLibraryAsync**
 ```swift
-    open class func patchCourseLibraryAsync(tenantId: UUID, libraryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func patchCourseLibraryAsync(tenantId: UUID, libraryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
 Patch a course library
@@ -305,10 +309,10 @@ let tenantId = 987 // UUID |
 let libraryId = "libraryId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a course library
-CourseLibrariesAPI.patchCourseLibraryAsync(tenantId: tenantId, libraryId: libraryId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+CourseLibrariesAPI.patchCourseLibraryAsync(tenantId: tenantId, libraryId: libraryId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -328,7 +332,7 @@ Name | Type | Description  | Notes
  **libraryId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

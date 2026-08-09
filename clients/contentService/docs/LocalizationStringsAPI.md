@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 # **countLocalizationStringsAsync**
 ```swift
-    open class func countLocalizationStringsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countLocalizationStringsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, localizationStringDtoCollectionQueryParameters: LocalizationStringDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count localization strings
@@ -29,9 +29,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let localizationStringDtoCollectionQueryParameters = LocalizationStringDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // LocalizationStringDtoCollectionQueryParameters |  (optional)
 
 // Count localization strings
-LocalizationStringsAPI.countLocalizationStringsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+LocalizationStringsAPI.countLocalizationStringsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, localizationStringDtoCollectionQueryParameters: localizationStringDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -50,6 +51,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **localizationStringDtoCollectionQueryParameters** | [**LocalizationStringDtoCollectionQueryParameters**](LocalizationStringDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -61,7 +63,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -236,7 +238,7 @@ No authorization required
 
 # **getLocalizationStringsAsync**
 ```swift
-    open class func getLocalizationStringsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: LocalizationStringDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getLocalizationStringsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, localizationStringDtoCollectionQueryParameters: LocalizationStringDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: LocalizationStringDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get localization strings
@@ -251,9 +253,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let localizationStringDtoCollectionQueryParameters = LocalizationStringDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // LocalizationStringDtoCollectionQueryParameters |  (optional)
 
 // Get localization strings
-LocalizationStringsAPI.getLocalizationStringsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+LocalizationStringsAPI.getLocalizationStringsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, localizationStringDtoCollectionQueryParameters: localizationStringDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -272,6 +275,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **localizationStringDtoCollectionQueryParameters** | [**LocalizationStringDtoCollectionQueryParameters**](LocalizationStringDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -283,7 +287,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

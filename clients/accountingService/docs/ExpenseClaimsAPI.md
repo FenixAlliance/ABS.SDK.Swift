@@ -183,7 +183,7 @@ No authorization required
 
 # **getExpenseClaims**
 ```swift
-    open class func getExpenseClaims(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ExpenseClaimDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getExpenseClaims(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, expenseClaimDtoCollectionQueryParameters: ExpenseClaimDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ExpenseClaimDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all expense claims for a tenant
@@ -198,9 +198,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let expenseClaimDtoCollectionQueryParameters = ExpenseClaimDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ExpenseClaimDtoCollectionQueryParameters |  (optional)
 
 // Get all expense claims for a tenant
-ExpenseClaimsAPI.getExpenseClaims(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ExpenseClaimsAPI.getExpenseClaims(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, expenseClaimDtoCollectionQueryParameters: expenseClaimDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -219,6 +220,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **expenseClaimDtoCollectionQueryParameters** | [**ExpenseClaimDtoCollectionQueryParameters**](ExpenseClaimDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -230,14 +232,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getExpenseClaimsCount**
 ```swift
-    open class func getExpenseClaimsCount(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getExpenseClaimsCount(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, expenseClaimDtoCollectionQueryParameters: ExpenseClaimDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get the count of expense claims for a tenant
@@ -252,9 +254,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let expenseClaimDtoCollectionQueryParameters = ExpenseClaimDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ExpenseClaimDtoCollectionQueryParameters |  (optional)
 
 // Get the count of expense claims for a tenant
-ExpenseClaimsAPI.getExpenseClaimsCount(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ExpenseClaimsAPI.getExpenseClaimsCount(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, expenseClaimDtoCollectionQueryParameters: expenseClaimDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -273,6 +276,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **expenseClaimDtoCollectionQueryParameters** | [**ExpenseClaimDtoCollectionQueryParameters**](ExpenseClaimDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -284,14 +288,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchExpenseClaim**
 ```swift
-    open class func patchExpenseClaim(tenantId: UUID, expenseClaimId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchExpenseClaim(tenantId: UUID, expenseClaimId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch an expense claim
@@ -307,10 +311,10 @@ let tenantId = 987 // UUID |
 let expenseClaimId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch an expense claim
-ExpenseClaimsAPI.patchExpenseClaim(tenantId: tenantId, expenseClaimId: expenseClaimId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+ExpenseClaimsAPI.patchExpenseClaim(tenantId: tenantId, expenseClaimId: expenseClaimId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -330,7 +334,7 @@ Name | Type | Description  | Notes
  **expenseClaimId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

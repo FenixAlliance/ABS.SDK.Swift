@@ -183,7 +183,7 @@ No authorization required
 
 # **getLedgersAsync**
 ```swift
-    open class func getLedgersAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: LedgerDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
+    open class func getLedgersAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, ledgerDtoCollectionQueryParameters: LedgerDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: LedgerDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Retrieves all ledgers
@@ -198,9 +198,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let ledgerDtoCollectionQueryParameters = LedgerDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // LedgerDtoCollectionQueryParameters |  (optional)
 
 // Retrieves all ledgers
-LedgersAPI.getLedgersAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+LedgersAPI.getLedgersAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, ledgerDtoCollectionQueryParameters: ledgerDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -219,6 +220,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **ledgerDtoCollectionQueryParameters** | [**LedgerDtoCollectionQueryParameters**](LedgerDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -230,14 +232,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getLedgersCountAsync**
 ```swift
-    open class func getLedgersCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getLedgersCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, ledgerDtoCollectionQueryParameters: LedgerDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Counts ledgers
@@ -252,9 +254,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let ledgerDtoCollectionQueryParameters = LedgerDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // LedgerDtoCollectionQueryParameters |  (optional)
 
 // Counts ledgers
-LedgersAPI.getLedgersCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+LedgersAPI.getLedgersCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, ledgerDtoCollectionQueryParameters: ledgerDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -273,6 +276,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **ledgerDtoCollectionQueryParameters** | [**LedgerDtoCollectionQueryParameters**](LedgerDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -284,14 +288,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchLedgerAsync**
 ```swift
-    open class func patchLedgerAsync(tenantId: UUID, ledgerId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchLedgerAsync(tenantId: UUID, ledgerId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patches a ledger
@@ -307,10 +311,10 @@ let tenantId = 987 // UUID |
 let ledgerId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patches a ledger
-LedgersAPI.patchLedgerAsync(tenantId: tenantId, ledgerId: ledgerId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+LedgersAPI.patchLedgerAsync(tenantId: tenantId, ledgerId: ledgerId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -330,7 +334,7 @@ Name | Type | Description  | Notes
  **ledgerId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

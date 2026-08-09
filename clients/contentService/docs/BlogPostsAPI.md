@@ -398,7 +398,7 @@ No authorization required
 
 # **getBlogPostsAsync**
 ```swift
-    open class func getBlogPostsAsync(tenantId: UUID? = nil, completion: @escaping (_ data: BlogPostDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getBlogPostsAsync(tenantId: UUID? = nil, blogPostDtoCollectionQueryParameters: BlogPostDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: BlogPostDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Retrieve a list of blog posts
@@ -411,9 +411,10 @@ Retrieves all blog posts, optionally filtered by tenant using OData query option
 import OpenAPIClient
 
 let tenantId = 987 // UUID |  (optional)
+let blogPostDtoCollectionQueryParameters = BlogPostDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // BlogPostDtoCollectionQueryParameters |  (optional)
 
 // Retrieve a list of blog posts
-BlogPostsAPI.getBlogPostsAsync(tenantId: tenantId) { (response, error) in
+BlogPostsAPI.getBlogPostsAsync(tenantId: tenantId, blogPostDtoCollectionQueryParameters: blogPostDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -430,6 +431,7 @@ BlogPostsAPI.getBlogPostsAsync(tenantId: tenantId) { (response, error) in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | [optional] 
+ **blogPostDtoCollectionQueryParameters** | [**BlogPostDtoCollectionQueryParameters**](BlogPostDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -441,14 +443,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getBlogPostsCountAsync**
 ```swift
-    open class func getBlogPostsCountAsync(tenantId: UUID? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getBlogPostsCountAsync(tenantId: UUID? = nil, blogPostDtoCollectionQueryParameters: BlogPostDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get the count of blog posts
@@ -461,9 +463,10 @@ Returns the total count of blog posts, optionally filtered by tenant using OData
 import OpenAPIClient
 
 let tenantId = 987 // UUID |  (optional)
+let blogPostDtoCollectionQueryParameters = BlogPostDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // BlogPostDtoCollectionQueryParameters |  (optional)
 
 // Get the count of blog posts
-BlogPostsAPI.getBlogPostsCountAsync(tenantId: tenantId) { (response, error) in
+BlogPostsAPI.getBlogPostsCountAsync(tenantId: tenantId, blogPostDtoCollectionQueryParameters: blogPostDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -480,6 +483,7 @@ BlogPostsAPI.getBlogPostsCountAsync(tenantId: tenantId) { (response, error) in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | [optional] 
+ **blogPostDtoCollectionQueryParameters** | [**BlogPostDtoCollectionQueryParameters**](BlogPostDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -491,14 +495,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCategoriesForBlogPostAsync**
 ```swift
-    open class func getCategoriesForBlogPostAsync(blogPostId: UUID, completion: @escaping (_ data: BlogPostCategoryDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getCategoriesForBlogPostAsync(blogPostId: UUID, blogPostCategoryDtoCollectionQueryParameters: BlogPostCategoryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: BlogPostCategoryDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get categories for a blog post
@@ -511,9 +515,10 @@ Retrieves all categories related to a specific blog post.
 import OpenAPIClient
 
 let blogPostId = 987 // UUID | 
+let blogPostCategoryDtoCollectionQueryParameters = BlogPostCategoryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // BlogPostCategoryDtoCollectionQueryParameters |  (optional)
 
 // Get categories for a blog post
-BlogPostsAPI.getCategoriesForBlogPostAsync(blogPostId: blogPostId) { (response, error) in
+BlogPostsAPI.getCategoriesForBlogPostAsync(blogPostId: blogPostId, blogPostCategoryDtoCollectionQueryParameters: blogPostCategoryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -530,6 +535,7 @@ BlogPostsAPI.getCategoriesForBlogPostAsync(blogPostId: blogPostId) { (response, 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **blogPostId** | **UUID** |  | 
+ **blogPostCategoryDtoCollectionQueryParameters** | [**BlogPostCategoryDtoCollectionQueryParameters**](BlogPostCategoryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -541,14 +547,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCommentsForBlogPostAsync**
 ```swift
-    open class func getCommentsForBlogPostAsync(blogPostId: UUID, completion: @escaping (_ data: BlogPostCommentDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getCommentsForBlogPostAsync(blogPostId: UUID, blogPostCommentDtoCollectionQueryParameters: BlogPostCommentDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: BlogPostCommentDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get comments for a blog post
@@ -561,9 +567,10 @@ Retrieves all comments for a specific blog post.
 import OpenAPIClient
 
 let blogPostId = 987 // UUID | 
+let blogPostCommentDtoCollectionQueryParameters = BlogPostCommentDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // BlogPostCommentDtoCollectionQueryParameters |  (optional)
 
 // Get comments for a blog post
-BlogPostsAPI.getCommentsForBlogPostAsync(blogPostId: blogPostId) { (response, error) in
+BlogPostsAPI.getCommentsForBlogPostAsync(blogPostId: blogPostId, blogPostCommentDtoCollectionQueryParameters: blogPostCommentDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -580,6 +587,7 @@ BlogPostsAPI.getCommentsForBlogPostAsync(blogPostId: blogPostId) { (response, er
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **blogPostId** | **UUID** |  | 
+ **blogPostCommentDtoCollectionQueryParameters** | [**BlogPostCommentDtoCollectionQueryParameters**](BlogPostCommentDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -591,14 +599,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getRepliesForCommentAsync**
 ```swift
-    open class func getRepliesForCommentAsync(commentId: UUID, blogPostId: String, completion: @escaping (_ data: BlogPostCommentDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getRepliesForCommentAsync(commentId: UUID, blogPostId: String, blogPostCommentDtoCollectionQueryParameters: BlogPostCommentDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: BlogPostCommentDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get replies for a comment
@@ -612,9 +620,10 @@ import OpenAPIClient
 
 let commentId = 987 // UUID | 
 let blogPostId = "blogPostId_example" // String | 
+let blogPostCommentDtoCollectionQueryParameters = BlogPostCommentDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // BlogPostCommentDtoCollectionQueryParameters |  (optional)
 
 // Get replies for a comment
-BlogPostsAPI.getRepliesForCommentAsync(commentId: commentId, blogPostId: blogPostId) { (response, error) in
+BlogPostsAPI.getRepliesForCommentAsync(commentId: commentId, blogPostId: blogPostId, blogPostCommentDtoCollectionQueryParameters: blogPostCommentDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -632,6 +641,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **commentId** | **UUID** |  | 
  **blogPostId** | **String** |  | 
+ **blogPostCommentDtoCollectionQueryParameters** | [**BlogPostCommentDtoCollectionQueryParameters**](BlogPostCommentDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -643,14 +653,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getTagsForBlogPostAsync**
 ```swift
-    open class func getTagsForBlogPostAsync(blogPostId: UUID, completion: @escaping (_ data: BlogPostTagDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getTagsForBlogPostAsync(blogPostId: UUID, blogPostTagDtoCollectionQueryParameters: BlogPostTagDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: BlogPostTagDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get tags for a blog post
@@ -663,9 +673,10 @@ Retrieves all tags related to a specific blog post.
 import OpenAPIClient
 
 let blogPostId = 987 // UUID | 
+let blogPostTagDtoCollectionQueryParameters = BlogPostTagDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // BlogPostTagDtoCollectionQueryParameters |  (optional)
 
 // Get tags for a blog post
-BlogPostsAPI.getTagsForBlogPostAsync(blogPostId: blogPostId) { (response, error) in
+BlogPostsAPI.getTagsForBlogPostAsync(blogPostId: blogPostId, blogPostTagDtoCollectionQueryParameters: blogPostTagDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -682,6 +693,7 @@ BlogPostsAPI.getTagsForBlogPostAsync(blogPostId: blogPostId) { (response, error)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **blogPostId** | **UUID** |  | 
+ **blogPostTagDtoCollectionQueryParameters** | [**BlogPostTagDtoCollectionQueryParameters**](BlogPostTagDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -693,14 +705,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchBlogPostAsync**
 ```swift
-    open class func patchBlogPostAsync(tenantId: UUID, blogPostId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchBlogPostAsync(tenantId: UUID, blogPostId: UUID, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a blog post
@@ -714,10 +726,10 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let blogPostId = 987 // UUID | 
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a blog post
-BlogPostsAPI.patchBlogPostAsync(tenantId: tenantId, blogPostId: blogPostId, operation: operation) { (response, error) in
+BlogPostsAPI.patchBlogPostAsync(tenantId: tenantId, blogPostId: blogPostId, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -735,7 +747,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **blogPostId** | **UUID** |  | 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

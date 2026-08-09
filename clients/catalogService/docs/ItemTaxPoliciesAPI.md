@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 # **countItemTaxPoliciesAsync**
 ```swift
-    open class func countItemTaxPoliciesAsync(tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countItemTaxPoliciesAsync(tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, itemTaxPolicyDtoCollectionQueryParameters: ItemTaxPolicyDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count item tax policies
@@ -29,9 +29,10 @@ let tenantId = 987 // UUID |  (optional)
 let itemId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let itemTaxPolicyDtoCollectionQueryParameters = ItemTaxPolicyDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ItemTaxPolicyDtoCollectionQueryParameters |  (optional)
 
 // Count item tax policies
-ItemTaxPoliciesAPI.countItemTaxPoliciesAsync(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemTaxPoliciesAPI.countItemTaxPoliciesAsync(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemTaxPolicyDtoCollectionQueryParameters: itemTaxPolicyDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -51,6 +52,7 @@ Name | Type | Description  | Notes
  **itemId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **itemTaxPolicyDtoCollectionQueryParameters** | [**ItemTaxPolicyDtoCollectionQueryParameters**](ItemTaxPolicyDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -62,14 +64,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getItemTaxPoliciesAsync**
 ```swift
-    open class func getItemTaxPoliciesAsync(tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemTaxPolicyDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getItemTaxPoliciesAsync(tenantId: UUID? = nil, itemId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, itemTaxPolicyDtoCollectionQueryParameters: ItemTaxPolicyDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ItemTaxPolicyDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get item tax policies
@@ -85,9 +87,10 @@ let tenantId = 987 // UUID |  (optional)
 let itemId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let itemTaxPolicyDtoCollectionQueryParameters = ItemTaxPolicyDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ItemTaxPolicyDtoCollectionQueryParameters |  (optional)
 
 // Get item tax policies
-ItemTaxPoliciesAPI.getItemTaxPoliciesAsync(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemTaxPoliciesAPI.getItemTaxPoliciesAsync(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemTaxPolicyDtoCollectionQueryParameters: itemTaxPolicyDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -107,6 +110,7 @@ Name | Type | Description  | Notes
  **itemId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **itemTaxPolicyDtoCollectionQueryParameters** | [**ItemTaxPolicyDtoCollectionQueryParameters**](ItemTaxPolicyDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -118,7 +122,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -169,7 +169,7 @@ No authorization required
 
 # **patchTaskTypeAsync**
 ```swift
-    open class func patchTaskTypeAsync(taskTypeId: UUID, tenantId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchTaskTypeAsync(taskTypeId: UUID, tenantId: UUID, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patches a task type
@@ -183,10 +183,10 @@ import OpenAPIClient
 
 let taskTypeId = 987 // UUID | 
 let tenantId = 987 // UUID | 
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patches a task type
-TaskTypesAPI.patchTaskTypeAsync(taskTypeId: taskTypeId, tenantId: tenantId, operation: operation) { (response, error) in
+TaskTypesAPI.patchTaskTypeAsync(taskTypeId: taskTypeId, tenantId: tenantId, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -204,7 +204,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **taskTypeId** | **UUID** |  | 
  **tenantId** | **UUID** |  | 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

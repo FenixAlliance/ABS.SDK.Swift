@@ -366,7 +366,7 @@ No authorization required
 
 # **getSupportTicketConversationsAsync**
 ```swift
-    open class func getSupportTicketConversationsAsync(tenantId: UUID, supportTicketId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: SupportTicketConversationDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getSupportTicketConversationsAsync(tenantId: UUID, supportTicketId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, supportTicketConversationDtoCollectionQueryParameters: SupportTicketConversationDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: SupportTicketConversationDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Retrieve conversations for a support ticket
@@ -382,9 +382,10 @@ let tenantId = 987 // UUID |
 let supportTicketId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let supportTicketConversationDtoCollectionQueryParameters = SupportTicketConversationDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SupportTicketConversationDtoCollectionQueryParameters |  (optional)
 
 // Retrieve conversations for a support ticket
-SupportTicketsAPI.getSupportTicketConversationsAsync(tenantId: tenantId, supportTicketId: supportTicketId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SupportTicketsAPI.getSupportTicketConversationsAsync(tenantId: tenantId, supportTicketId: supportTicketId, apiVersion: apiVersion, xApiVersion: xApiVersion, supportTicketConversationDtoCollectionQueryParameters: supportTicketConversationDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -404,6 +405,7 @@ Name | Type | Description  | Notes
  **supportTicketId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **supportTicketConversationDtoCollectionQueryParameters** | [**SupportTicketConversationDtoCollectionQueryParameters**](SupportTicketConversationDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -415,14 +417,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getSupportTicketsAsync**
 ```swift
-    open class func getSupportTicketsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: SupportTicketDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getSupportTicketsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, supportTicketDtoCollectionQueryParameters: SupportTicketDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: SupportTicketDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Retrieve a list of support tickets
@@ -437,9 +439,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let supportTicketDtoCollectionQueryParameters = SupportTicketDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SupportTicketDtoCollectionQueryParameters |  (optional)
 
 // Retrieve a list of support tickets
-SupportTicketsAPI.getSupportTicketsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SupportTicketsAPI.getSupportTicketsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, supportTicketDtoCollectionQueryParameters: supportTicketDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -458,6 +461,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **supportTicketDtoCollectionQueryParameters** | [**SupportTicketDtoCollectionQueryParameters**](SupportTicketDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -469,14 +473,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getSupportTicketsCountAsync**
 ```swift
-    open class func getSupportTicketsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getSupportTicketsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, supportTicketDtoCollectionQueryParameters: SupportTicketDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get the count of support tickets
@@ -491,9 +495,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let supportTicketDtoCollectionQueryParameters = SupportTicketDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SupportTicketDtoCollectionQueryParameters |  (optional)
 
 // Get the count of support tickets
-SupportTicketsAPI.getSupportTicketsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SupportTicketsAPI.getSupportTicketsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, supportTicketDtoCollectionQueryParameters: supportTicketDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -512,6 +517,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **supportTicketDtoCollectionQueryParameters** | [**SupportTicketDtoCollectionQueryParameters**](SupportTicketDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -523,14 +529,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchSupportTicketAsync**
 ```swift
-    open class func patchSupportTicketAsync(tenantId: UUID, supportTicketId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchSupportTicketAsync(tenantId: UUID, supportTicketId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a support ticket
@@ -546,10 +552,10 @@ let tenantId = 987 // UUID |
 let supportTicketId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a support ticket
-SupportTicketsAPI.patchSupportTicketAsync(tenantId: tenantId, supportTicketId: supportTicketId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+SupportTicketsAPI.patchSupportTicketAsync(tenantId: tenantId, supportTicketId: supportTicketId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -569,7 +575,7 @@ Name | Type | Description  | Notes
  **supportTicketId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

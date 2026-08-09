@@ -462,7 +462,7 @@ No authorization required
 
 # **patchOAuthApplicationAsync**
 ```swift
-    open class func patchOAuthApplicationAsync(tenantId: UUID, applicationId: String, operation: [Operation], apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchOAuthApplicationAsync(tenantId: UUID, applicationId: String, patchOperation: [PatchOperation], apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch an existing OAuth application
@@ -476,12 +476,12 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let applicationId = "applicationId_example" // String | 
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] | 
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Patch an existing OAuth application
-OAuthApplicationsAPI.patchOAuthApplicationAsync(tenantId: tenantId, applicationId: applicationId, operation: operation, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+OAuthApplicationsAPI.patchOAuthApplicationAsync(tenantId: tenantId, applicationId: applicationId, patchOperation: patchOperation, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -499,7 +499,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **applicationId** | **String** |  | 
- **operation** | [**[Operation]**](Operation.md) |  | 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 

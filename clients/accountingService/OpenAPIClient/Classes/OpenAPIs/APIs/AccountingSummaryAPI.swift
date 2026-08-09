@@ -18,12 +18,13 @@ open class AccountingSummaryAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter accountingEntryDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCreditsSumAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: DecimalEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCreditsSumAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCreditsSumAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountingEntryDtoCollectionQueryParameters: AccountingEntryDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: DecimalEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCreditsSumAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountingEntryDtoCollectionQueryParameters: accountingEntryDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -40,12 +41,13 @@ open class AccountingSummaryAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter accountingEntryDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<DecimalEnvelope> 
      */
-    open class func getCreditsSumAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<DecimalEnvelope> {
+    open class func getCreditsSumAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountingEntryDtoCollectionQueryParameters: AccountingEntryDtoCollectionQueryParameters? = nil) -> RequestBuilder<DecimalEnvelope> {
         let localVariablePath = "/api/v2/AccountingService/Summary/Credits/Sum"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: accountingEntryDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -54,6 +56,7 @@ open class AccountingSummaryAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -70,12 +73,13 @@ open class AccountingSummaryAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter accountingEntryDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getDebitsSumAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: DecimalEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getDebitsSumAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getDebitsSumAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountingEntryDtoCollectionQueryParameters: AccountingEntryDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: DecimalEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getDebitsSumAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountingEntryDtoCollectionQueryParameters: accountingEntryDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -92,12 +96,13 @@ open class AccountingSummaryAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter accountingEntryDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<DecimalEnvelope> 
      */
-    open class func getDebitsSumAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<DecimalEnvelope> {
+    open class func getDebitsSumAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountingEntryDtoCollectionQueryParameters: AccountingEntryDtoCollectionQueryParameters? = nil) -> RequestBuilder<DecimalEnvelope> {
         let localVariablePath = "/api/v2/AccountingService/Summary/Debits/Sum"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: accountingEntryDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -106,6 +111,7 @@ open class AccountingSummaryAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -122,12 +128,13 @@ open class AccountingSummaryAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter journalEntryDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getExpensesSumAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MoneyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getExpensesSumAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getExpensesSumAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, journalEntryDtoCollectionQueryParameters: JournalEntryDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MoneyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getExpensesSumAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, journalEntryDtoCollectionQueryParameters: journalEntryDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -144,12 +151,13 @@ open class AccountingSummaryAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter journalEntryDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<MoneyEnvelope> 
      */
-    open class func getExpensesSumAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<MoneyEnvelope> {
+    open class func getExpensesSumAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, journalEntryDtoCollectionQueryParameters: JournalEntryDtoCollectionQueryParameters? = nil) -> RequestBuilder<MoneyEnvelope> {
         let localVariablePath = "/api/v2/AccountingService/Summary/Expenses/Sum"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: journalEntryDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -158,6 +166,7 @@ open class AccountingSummaryAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -174,12 +183,13 @@ open class AccountingSummaryAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter journalEntryDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getIncomesSumAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MoneyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getIncomesSumAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getIncomesSumAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, journalEntryDtoCollectionQueryParameters: JournalEntryDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MoneyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getIncomesSumAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, journalEntryDtoCollectionQueryParameters: journalEntryDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -196,12 +206,13 @@ open class AccountingSummaryAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter journalEntryDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<MoneyEnvelope> 
      */
-    open class func getIncomesSumAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<MoneyEnvelope> {
+    open class func getIncomesSumAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, journalEntryDtoCollectionQueryParameters: JournalEntryDtoCollectionQueryParameters? = nil) -> RequestBuilder<MoneyEnvelope> {
         let localVariablePath = "/api/v2/AccountingService/Summary/Incomes/Sum"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: journalEntryDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -210,6 +221,7 @@ open class AccountingSummaryAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 

@@ -187,12 +187,13 @@ open class SupportRequestAttachmentsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter supportRequestAttachmentDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getSupportRequestAttachmentsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SupportRequestAttachmentDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getSupportRequestAttachmentsAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getSupportRequestAttachmentsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, supportRequestAttachmentDtoCollectionQueryParameters: SupportRequestAttachmentDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SupportRequestAttachmentDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getSupportRequestAttachmentsAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, supportRequestAttachmentDtoCollectionQueryParameters: supportRequestAttachmentDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -209,12 +210,13 @@ open class SupportRequestAttachmentsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter supportRequestAttachmentDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<SupportRequestAttachmentDtoListEnvelope> 
      */
-    open class func getSupportRequestAttachmentsAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SupportRequestAttachmentDtoListEnvelope> {
+    open class func getSupportRequestAttachmentsAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, supportRequestAttachmentDtoCollectionQueryParameters: SupportRequestAttachmentDtoCollectionQueryParameters? = nil) -> RequestBuilder<SupportRequestAttachmentDtoListEnvelope> {
         let localVariablePath = "/api/v2/SupportService/SupportRequestAttachments"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: supportRequestAttachmentDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -223,6 +225,7 @@ open class SupportRequestAttachmentsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -239,12 +242,13 @@ open class SupportRequestAttachmentsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter supportRequestAttachmentDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getSupportRequestAttachmentsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getSupportRequestAttachmentsCountAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getSupportRequestAttachmentsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, supportRequestAttachmentDtoCollectionQueryParameters: SupportRequestAttachmentDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getSupportRequestAttachmentsCountAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, supportRequestAttachmentDtoCollectionQueryParameters: supportRequestAttachmentDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -261,12 +265,13 @@ open class SupportRequestAttachmentsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter supportRequestAttachmentDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getSupportRequestAttachmentsCountAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getSupportRequestAttachmentsCountAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, supportRequestAttachmentDtoCollectionQueryParameters: SupportRequestAttachmentDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/SupportService/SupportRequestAttachments/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: supportRequestAttachmentDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -275,6 +280,7 @@ open class SupportRequestAttachmentsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -292,13 +298,13 @@ open class SupportRequestAttachmentsAPI {
      - parameter supportRequestAttachmentId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchSupportRequestAttachmentAsync(tenantId: UUID, supportRequestAttachmentId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchSupportRequestAttachmentAsyncWithRequestBuilder(tenantId: tenantId, supportRequestAttachmentId: supportRequestAttachmentId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchSupportRequestAttachmentAsync(tenantId: UUID, supportRequestAttachmentId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchSupportRequestAttachmentAsyncWithRequestBuilder(tenantId: tenantId, supportRequestAttachmentId: supportRequestAttachmentId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -316,16 +322,16 @@ open class SupportRequestAttachmentsAPI {
      - parameter supportRequestAttachmentId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchSupportRequestAttachmentAsyncWithRequestBuilder(tenantId: UUID, supportRequestAttachmentId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchSupportRequestAttachmentAsyncWithRequestBuilder(tenantId: UUID, supportRequestAttachmentId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/SupportService/SupportRequestAttachments/{supportRequestAttachmentId}"
         let supportRequestAttachmentIdPreEscape = "\(APIHelper.mapValueToPathItem(supportRequestAttachmentId))"
         let supportRequestAttachmentIdPostEscape = supportRequestAttachmentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{supportRequestAttachmentId}", with: supportRequestAttachmentIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

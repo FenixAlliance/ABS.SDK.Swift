@@ -184,12 +184,13 @@ open class CourseTeamMembershipsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseTeamMembershipDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCourseTeamMembershipsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CourseTeamMembershipDto]?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCourseTeamMembershipsAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCourseTeamMembershipsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, courseTeamMembershipDtoCollectionQueryParameters: CourseTeamMembershipDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CourseTeamMembershipDto]?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCourseTeamMembershipsAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseTeamMembershipDtoCollectionQueryParameters: courseTeamMembershipDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -206,12 +207,13 @@ open class CourseTeamMembershipsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseTeamMembershipDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<[CourseTeamMembershipDto]> 
      */
-    open class func getCourseTeamMembershipsAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<[CourseTeamMembershipDto]> {
+    open class func getCourseTeamMembershipsAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, courseTeamMembershipDtoCollectionQueryParameters: CourseTeamMembershipDtoCollectionQueryParameters? = nil) -> RequestBuilder<[CourseTeamMembershipDto]> {
         let localVariablePath = "/api/v2/LearningService/CourseTeamMemberships"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseTeamMembershipDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -220,6 +222,7 @@ open class CourseTeamMembershipsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -236,12 +239,13 @@ open class CourseTeamMembershipsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseTeamMembershipDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCourseTeamMembershipsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCourseTeamMembershipsCountAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCourseTeamMembershipsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, courseTeamMembershipDtoCollectionQueryParameters: CourseTeamMembershipDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCourseTeamMembershipsCountAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseTeamMembershipDtoCollectionQueryParameters: courseTeamMembershipDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -258,12 +262,13 @@ open class CourseTeamMembershipsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseTeamMembershipDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int> 
      */
-    open class func getCourseTeamMembershipsCountAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int> {
+    open class func getCourseTeamMembershipsCountAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, courseTeamMembershipDtoCollectionQueryParameters: CourseTeamMembershipDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int> {
         let localVariablePath = "/api/v2/LearningService/CourseTeamMemberships/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseTeamMembershipDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -272,6 +277,7 @@ open class CourseTeamMembershipsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -289,13 +295,13 @@ open class CourseTeamMembershipsAPI {
      - parameter membershipId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchCourseTeamMembershipAsync(tenantId: UUID, membershipId: String, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchCourseTeamMembershipAsyncWithRequestBuilder(tenantId: tenantId, membershipId: membershipId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchCourseTeamMembershipAsync(tenantId: UUID, membershipId: String, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchCourseTeamMembershipAsyncWithRequestBuilder(tenantId: tenantId, membershipId: membershipId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -313,16 +319,16 @@ open class CourseTeamMembershipsAPI {
      - parameter membershipId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchCourseTeamMembershipAsyncWithRequestBuilder(tenantId: UUID, membershipId: String, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchCourseTeamMembershipAsyncWithRequestBuilder(tenantId: UUID, membershipId: String, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/LearningService/CourseTeamMemberships/{membershipId}"
         let membershipIdPreEscape = "\(APIHelper.mapValueToPathItem(membershipId))"
         let membershipIdPostEscape = membershipIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{membershipId}", with: membershipIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

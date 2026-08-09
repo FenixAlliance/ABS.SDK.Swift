@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 # **countBlogPostCategoriesAsync**
 ```swift
-    open class func countBlogPostCategoriesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countBlogPostCategoriesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, blogPostCategoryDtoCollectionQueryParameters: BlogPostCategoryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count blog post categories
@@ -30,9 +30,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let blogPostCategoryDtoCollectionQueryParameters = BlogPostCategoryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // BlogPostCategoryDtoCollectionQueryParameters |  (optional)
 
 // Count blog post categories
-BlogPostCategoriesAPI.countBlogPostCategoriesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+BlogPostCategoriesAPI.countBlogPostCategoriesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, blogPostCategoryDtoCollectionQueryParameters: blogPostCategoryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -51,6 +52,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **blogPostCategoryDtoCollectionQueryParameters** | [**BlogPostCategoryDtoCollectionQueryParameters**](BlogPostCategoryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -62,7 +64,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -181,7 +183,7 @@ No authorization required
 
 # **getBlogPostCategoriesAsync**
 ```swift
-    open class func getBlogPostCategoriesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: BlogPostCategoryDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getBlogPostCategoriesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, blogPostCategoryDtoCollectionQueryParameters: BlogPostCategoryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: BlogPostCategoryDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get blog post categories
@@ -196,9 +198,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let blogPostCategoryDtoCollectionQueryParameters = BlogPostCategoryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // BlogPostCategoryDtoCollectionQueryParameters |  (optional)
 
 // Get blog post categories
-BlogPostCategoriesAPI.getBlogPostCategoriesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+BlogPostCategoriesAPI.getBlogPostCategoriesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, blogPostCategoryDtoCollectionQueryParameters: blogPostCategoryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -217,6 +220,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **blogPostCategoryDtoCollectionQueryParameters** | [**BlogPostCategoryDtoCollectionQueryParameters**](BlogPostCategoryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -228,7 +232,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -291,7 +295,7 @@ No authorization required
 
 # **patchBlogPostCategoryAsync**
 ```swift
-    open class func patchBlogPostCategoryAsync(tenantId: UUID, blogPostCategoryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchBlogPostCategoryAsync(tenantId: UUID, blogPostCategoryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a blog post category
@@ -307,10 +311,10 @@ let tenantId = 987 // UUID |
 let blogPostCategoryId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a blog post category
-BlogPostCategoriesAPI.patchBlogPostCategoryAsync(tenantId: tenantId, blogPostCategoryId: blogPostCategoryId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+BlogPostCategoriesAPI.patchBlogPostCategoryAsync(tenantId: tenantId, blogPostCategoryId: blogPostCategoryId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -330,7 +334,7 @@ Name | Type | Description  | Notes
  **blogPostCategoryId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

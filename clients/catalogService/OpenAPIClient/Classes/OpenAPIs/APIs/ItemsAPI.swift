@@ -129,12 +129,13 @@ open class ItemsAPI {
      - parameter itemId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemTagDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func countStockItemTagsByItemId(tenantId: UUID, itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return countStockItemTagsByItemIdWithRequestBuilder(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func countStockItemTagsByItemId(tenantId: UUID, itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemTagDtoCollectionQueryParameters: ItemTagDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return countStockItemTagsByItemIdWithRequestBuilder(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemTagDtoCollectionQueryParameters: itemTagDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -152,15 +153,16 @@ open class ItemsAPI {
      - parameter itemId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemTagDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func countStockItemTagsByItemIdWithRequestBuilder(tenantId: UUID, itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func countStockItemTagsByItemIdWithRequestBuilder(tenantId: UUID, itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemTagDtoCollectionQueryParameters: ItemTagDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/CatalogService/Items/{itemId}/Tags/Count"
         let itemIdPreEscape = "\(APIHelper.mapValueToPathItem(itemId))"
         let itemIdPostEscape = itemIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{itemId}", with: itemIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: itemTagDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -169,6 +171,7 @@ open class ItemsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -185,12 +188,13 @@ open class ItemsAPI {
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter catalogItemDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func countStockItemsByBusiness(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return countStockItemsByBusinessWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func countStockItemsByBusiness(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, catalogItemDtoCollectionQueryParameters: CatalogItemDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return countStockItemsByBusinessWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, catalogItemDtoCollectionQueryParameters: catalogItemDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -207,12 +211,13 @@ open class ItemsAPI {
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter catalogItemDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func countStockItemsByBusinessWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func countStockItemsByBusinessWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, catalogItemDtoCollectionQueryParameters: CatalogItemDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/CatalogService/Items/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: catalogItemDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -221,6 +226,7 @@ open class ItemsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -516,12 +522,13 @@ open class ItemsAPI {
      - parameter itemId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemAttachmentDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getStockItemAttachmentsByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemAttachmentDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getStockItemAttachmentsByItemIdWithRequestBuilder(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getStockItemAttachmentsByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemAttachmentDtoCollectionQueryParameters: ItemAttachmentDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemAttachmentDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getStockItemAttachmentsByItemIdWithRequestBuilder(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemAttachmentDtoCollectionQueryParameters: itemAttachmentDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -538,15 +545,16 @@ open class ItemsAPI {
      - parameter itemId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemAttachmentDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<ItemAttachmentDtoListEnvelope> 
      */
-    open class func getStockItemAttachmentsByItemIdWithRequestBuilder(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemAttachmentDtoListEnvelope> {
+    open class func getStockItemAttachmentsByItemIdWithRequestBuilder(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemAttachmentDtoCollectionQueryParameters: ItemAttachmentDtoCollectionQueryParameters? = nil) -> RequestBuilder<ItemAttachmentDtoListEnvelope> {
         var localVariablePath = "/api/v2/CatalogService/Items/{itemId}/Attachments"
         let itemIdPreEscape = "\(APIHelper.mapValueToPathItem(itemId))"
         let itemIdPostEscape = itemIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{itemId}", with: itemIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: itemAttachmentDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -554,6 +562,7 @@ open class ItemsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -742,12 +751,13 @@ open class ItemsAPI {
      - parameter itemId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemBrandDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getStockItemBrandsByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemBrandDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getStockItemBrandsByItemIdWithRequestBuilder(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getStockItemBrandsByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemBrandDtoCollectionQueryParameters: ItemBrandDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemBrandDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getStockItemBrandsByItemIdWithRequestBuilder(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemBrandDtoCollectionQueryParameters: itemBrandDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -764,15 +774,16 @@ open class ItemsAPI {
      - parameter itemId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemBrandDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<ItemBrandDtoListEnvelope> 
      */
-    open class func getStockItemBrandsByItemIdWithRequestBuilder(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemBrandDtoListEnvelope> {
+    open class func getStockItemBrandsByItemIdWithRequestBuilder(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemBrandDtoCollectionQueryParameters: ItemBrandDtoCollectionQueryParameters? = nil) -> RequestBuilder<ItemBrandDtoListEnvelope> {
         var localVariablePath = "/api/v2/CatalogService/Items/{itemId}/Brands"
         let itemIdPreEscape = "\(APIHelper.mapValueToPathItem(itemId))"
         let itemIdPostEscape = itemIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{itemId}", with: itemIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: itemBrandDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -780,6 +791,7 @@ open class ItemsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -850,12 +862,13 @@ open class ItemsAPI {
      - parameter itemId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemCategoryDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getStockItemCategoriesByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemCategoryDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getStockItemCategoriesByItemIdWithRequestBuilder(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getStockItemCategoriesByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemCategoryDtoCollectionQueryParameters: ItemCategoryDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemCategoryDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getStockItemCategoriesByItemIdWithRequestBuilder(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemCategoryDtoCollectionQueryParameters: itemCategoryDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -872,15 +885,16 @@ open class ItemsAPI {
      - parameter itemId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemCategoryDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<ItemCategoryDtoListEnvelope> 
      */
-    open class func getStockItemCategoriesByItemIdWithRequestBuilder(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemCategoryDtoListEnvelope> {
+    open class func getStockItemCategoriesByItemIdWithRequestBuilder(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemCategoryDtoCollectionQueryParameters: ItemCategoryDtoCollectionQueryParameters? = nil) -> RequestBuilder<ItemCategoryDtoListEnvelope> {
         var localVariablePath = "/api/v2/CatalogService/Items/{itemId}/Categories"
         let itemIdPreEscape = "\(APIHelper.mapValueToPathItem(itemId))"
         let itemIdPostEscape = itemIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{itemId}", with: itemIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: itemCategoryDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -888,6 +902,7 @@ open class ItemsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -963,12 +978,13 @@ open class ItemsAPI {
      - parameter itemId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemGoogleCategoryDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getStockItemGoogleCategoriesByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemGoogleCategoryDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getStockItemGoogleCategoriesByItemIdWithRequestBuilder(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getStockItemGoogleCategoriesByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemGoogleCategoryDtoCollectionQueryParameters: ItemGoogleCategoryDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemGoogleCategoryDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getStockItemGoogleCategoriesByItemIdWithRequestBuilder(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemGoogleCategoryDtoCollectionQueryParameters: itemGoogleCategoryDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -985,15 +1001,16 @@ open class ItemsAPI {
      - parameter itemId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemGoogleCategoryDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<ItemGoogleCategoryDtoListEnvelope> 
      */
-    open class func getStockItemGoogleCategoriesByItemIdWithRequestBuilder(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemGoogleCategoryDtoListEnvelope> {
+    open class func getStockItemGoogleCategoriesByItemIdWithRequestBuilder(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemGoogleCategoryDtoCollectionQueryParameters: ItemGoogleCategoryDtoCollectionQueryParameters? = nil) -> RequestBuilder<ItemGoogleCategoryDtoListEnvelope> {
         var localVariablePath = "/api/v2/CatalogService/Items/{itemId}/GoogleCategories"
         let itemIdPreEscape = "\(APIHelper.mapValueToPathItem(itemId))"
         let itemIdPostEscape = itemIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{itemId}", with: itemIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: itemGoogleCategoryDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1001,6 +1018,7 @@ open class ItemsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1135,12 +1153,13 @@ open class ItemsAPI {
      - parameter itemId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemImageDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getStockItemImagesByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemImageDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getStockItemImagesByItemIdWithRequestBuilder(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getStockItemImagesByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemImageDtoCollectionQueryParameters: ItemImageDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemImageDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getStockItemImagesByItemIdWithRequestBuilder(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemImageDtoCollectionQueryParameters: itemImageDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1157,15 +1176,16 @@ open class ItemsAPI {
      - parameter itemId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemImageDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<ItemImageDtoListEnvelope> 
      */
-    open class func getStockItemImagesByItemIdWithRequestBuilder(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemImageDtoListEnvelope> {
+    open class func getStockItemImagesByItemIdWithRequestBuilder(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemImageDtoCollectionQueryParameters: ItemImageDtoCollectionQueryParameters? = nil) -> RequestBuilder<ItemImageDtoListEnvelope> {
         var localVariablePath = "/api/v2/CatalogService/Items/{itemId}/Images"
         let itemIdPreEscape = "\(APIHelper.mapValueToPathItem(itemId))"
         let itemIdPostEscape = itemIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{itemId}", with: itemIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: itemImageDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1173,6 +1193,7 @@ open class ItemsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1361,12 +1382,13 @@ open class ItemsAPI {
      - parameter itemId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemQuestionDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getStockItemQuestionsByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemQuestionDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getStockItemQuestionsByItemIdWithRequestBuilder(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getStockItemQuestionsByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemQuestionDtoCollectionQueryParameters: ItemQuestionDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemQuestionDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getStockItemQuestionsByItemIdWithRequestBuilder(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemQuestionDtoCollectionQueryParameters: itemQuestionDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1383,15 +1405,16 @@ open class ItemsAPI {
      - parameter itemId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemQuestionDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<ItemQuestionDtoListEnvelope> 
      */
-    open class func getStockItemQuestionsByItemIdWithRequestBuilder(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemQuestionDtoListEnvelope> {
+    open class func getStockItemQuestionsByItemIdWithRequestBuilder(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemQuestionDtoCollectionQueryParameters: ItemQuestionDtoCollectionQueryParameters? = nil) -> RequestBuilder<ItemQuestionDtoListEnvelope> {
         var localVariablePath = "/api/v2/CatalogService/Items/{itemId}/Questions"
         let itemIdPreEscape = "\(APIHelper.mapValueToPathItem(itemId))"
         let itemIdPostEscape = itemIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{itemId}", with: itemIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: itemQuestionDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1399,6 +1422,7 @@ open class ItemsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1415,12 +1439,13 @@ open class ItemsAPI {
      - parameter itemId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemRefundPolicyDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getStockItemRefundPoliciesByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemRefundPolicyDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getStockItemRefundPoliciesByItemIdWithRequestBuilder(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getStockItemRefundPoliciesByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemRefundPolicyDtoCollectionQueryParameters: ItemRefundPolicyDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemRefundPolicyDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getStockItemRefundPoliciesByItemIdWithRequestBuilder(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemRefundPolicyDtoCollectionQueryParameters: itemRefundPolicyDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1437,15 +1462,16 @@ open class ItemsAPI {
      - parameter itemId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemRefundPolicyDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<ItemRefundPolicyDtoListEnvelope> 
      */
-    open class func getStockItemRefundPoliciesByItemIdWithRequestBuilder(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemRefundPolicyDtoListEnvelope> {
+    open class func getStockItemRefundPoliciesByItemIdWithRequestBuilder(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemRefundPolicyDtoCollectionQueryParameters: ItemRefundPolicyDtoCollectionQueryParameters? = nil) -> RequestBuilder<ItemRefundPolicyDtoListEnvelope> {
         var localVariablePath = "/api/v2/CatalogService/Items/{itemId}/RefundPolicies"
         let itemIdPreEscape = "\(APIHelper.mapValueToPathItem(itemId))"
         let itemIdPostEscape = itemIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{itemId}", with: itemIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: itemRefundPolicyDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1453,6 +1479,7 @@ open class ItemsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1528,12 +1555,13 @@ open class ItemsAPI {
      - parameter itemId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemReturnPolicyDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getStockItemReturnPoliciesByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemReturnPolicyDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getStockItemReturnPoliciesByItemIdWithRequestBuilder(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getStockItemReturnPoliciesByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemReturnPolicyDtoCollectionQueryParameters: ItemReturnPolicyDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemReturnPolicyDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getStockItemReturnPoliciesByItemIdWithRequestBuilder(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemReturnPolicyDtoCollectionQueryParameters: itemReturnPolicyDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1550,15 +1578,16 @@ open class ItemsAPI {
      - parameter itemId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemReturnPolicyDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<ItemReturnPolicyDtoListEnvelope> 
      */
-    open class func getStockItemReturnPoliciesByItemIdWithRequestBuilder(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemReturnPolicyDtoListEnvelope> {
+    open class func getStockItemReturnPoliciesByItemIdWithRequestBuilder(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemReturnPolicyDtoCollectionQueryParameters: ItemReturnPolicyDtoCollectionQueryParameters? = nil) -> RequestBuilder<ItemReturnPolicyDtoListEnvelope> {
         var localVariablePath = "/api/v2/CatalogService/Items/{itemId}/ReturnPolicies"
         let itemIdPreEscape = "\(APIHelper.mapValueToPathItem(itemId))"
         let itemIdPostEscape = itemIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{itemId}", with: itemIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: itemReturnPolicyDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1566,6 +1595,7 @@ open class ItemsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1700,12 +1730,13 @@ open class ItemsAPI {
      - parameter itemId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemReviewDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getStockItemReviewsByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemReviewDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getStockItemReviewsByItemIdWithRequestBuilder(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getStockItemReviewsByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemReviewDtoCollectionQueryParameters: ItemReviewDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemReviewDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getStockItemReviewsByItemIdWithRequestBuilder(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemReviewDtoCollectionQueryParameters: itemReviewDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1722,15 +1753,16 @@ open class ItemsAPI {
      - parameter itemId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemReviewDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<ItemReviewDtoListEnvelope> 
      */
-    open class func getStockItemReviewsByItemIdWithRequestBuilder(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemReviewDtoListEnvelope> {
+    open class func getStockItemReviewsByItemIdWithRequestBuilder(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemReviewDtoCollectionQueryParameters: ItemReviewDtoCollectionQueryParameters? = nil) -> RequestBuilder<ItemReviewDtoListEnvelope> {
         var localVariablePath = "/api/v2/CatalogService/Items/{itemId}/Reviews"
         let itemIdPreEscape = "\(APIHelper.mapValueToPathItem(itemId))"
         let itemIdPostEscape = itemIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{itemId}", with: itemIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: itemReviewDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1738,6 +1770,7 @@ open class ItemsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1754,12 +1787,13 @@ open class ItemsAPI {
      - parameter itemId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemShippingPolicyDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getStockItemShippingPoliciesByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemShippingPolicyDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getStockItemShippingPoliciesByItemIdWithRequestBuilder(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getStockItemShippingPoliciesByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemShippingPolicyDtoCollectionQueryParameters: ItemShippingPolicyDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemShippingPolicyDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getStockItemShippingPoliciesByItemIdWithRequestBuilder(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemShippingPolicyDtoCollectionQueryParameters: itemShippingPolicyDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1776,15 +1810,16 @@ open class ItemsAPI {
      - parameter itemId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemShippingPolicyDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<ItemShippingPolicyDtoListEnvelope> 
      */
-    open class func getStockItemShippingPoliciesByItemIdWithRequestBuilder(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemShippingPolicyDtoListEnvelope> {
+    open class func getStockItemShippingPoliciesByItemIdWithRequestBuilder(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemShippingPolicyDtoCollectionQueryParameters: ItemShippingPolicyDtoCollectionQueryParameters? = nil) -> RequestBuilder<ItemShippingPolicyDtoListEnvelope> {
         var localVariablePath = "/api/v2/CatalogService/Items/{itemId}/ShippingPolicies"
         let itemIdPreEscape = "\(APIHelper.mapValueToPathItem(itemId))"
         let itemIdPostEscape = itemIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{itemId}", with: itemIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: itemShippingPolicyDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1792,6 +1827,7 @@ open class ItemsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1930,12 +1966,13 @@ open class ItemsAPI {
      - parameter itemId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemTagDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getStockItemTagsByItemId(tenantId: UUID, itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemTagDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getStockItemTagsByItemIdWithRequestBuilder(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getStockItemTagsByItemId(tenantId: UUID, itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemTagDtoCollectionQueryParameters: ItemTagDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemTagDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getStockItemTagsByItemIdWithRequestBuilder(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemTagDtoCollectionQueryParameters: itemTagDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1953,15 +1990,16 @@ open class ItemsAPI {
      - parameter itemId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemTagDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<ItemTagDtoListEnvelope> 
      */
-    open class func getStockItemTagsByItemIdWithRequestBuilder(tenantId: UUID, itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemTagDtoListEnvelope> {
+    open class func getStockItemTagsByItemIdWithRequestBuilder(tenantId: UUID, itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemTagDtoCollectionQueryParameters: ItemTagDtoCollectionQueryParameters? = nil) -> RequestBuilder<ItemTagDtoListEnvelope> {
         var localVariablePath = "/api/v2/CatalogService/Items/{itemId}/Tags"
         let itemIdPreEscape = "\(APIHelper.mapValueToPathItem(itemId))"
         let itemIdPostEscape = itemIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{itemId}", with: itemIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: itemTagDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1970,6 +2008,7 @@ open class ItemsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1986,12 +2025,13 @@ open class ItemsAPI {
      - parameter itemId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemTaxPolicyDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getStockItemTaxPoliciesByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemTaxPolicyDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getStockItemTaxPoliciesByItemIdWithRequestBuilder(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getStockItemTaxPoliciesByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemTaxPolicyDtoCollectionQueryParameters: ItemTaxPolicyDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemTaxPolicyDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getStockItemTaxPoliciesByItemIdWithRequestBuilder(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemTaxPolicyDtoCollectionQueryParameters: itemTaxPolicyDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -2008,15 +2048,16 @@ open class ItemsAPI {
      - parameter itemId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemTaxPolicyDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<ItemTaxPolicyDtoListEnvelope> 
      */
-    open class func getStockItemTaxPoliciesByItemIdWithRequestBuilder(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemTaxPolicyDtoListEnvelope> {
+    open class func getStockItemTaxPoliciesByItemIdWithRequestBuilder(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemTaxPolicyDtoCollectionQueryParameters: ItemTaxPolicyDtoCollectionQueryParameters? = nil) -> RequestBuilder<ItemTaxPolicyDtoListEnvelope> {
         var localVariablePath = "/api/v2/CatalogService/Items/{itemId}/TaxPolicies"
         let itemIdPreEscape = "\(APIHelper.mapValueToPathItem(itemId))"
         let itemIdPostEscape = itemIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{itemId}", with: itemIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: itemTaxPolicyDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -2024,6 +2065,7 @@ open class ItemsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -2162,12 +2204,13 @@ open class ItemsAPI {
      - parameter itemId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemTypeDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getStockItemTypesByItemId(tenantId: UUID, itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemTypeDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getStockItemTypesByItemIdWithRequestBuilder(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getStockItemTypesByItemId(tenantId: UUID, itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemTypeDtoCollectionQueryParameters: ItemTypeDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemTypeDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getStockItemTypesByItemIdWithRequestBuilder(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemTypeDtoCollectionQueryParameters: itemTypeDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -2185,15 +2228,16 @@ open class ItemsAPI {
      - parameter itemId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemTypeDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<ItemTypeDtoListEnvelope> 
      */
-    open class func getStockItemTypesByItemIdWithRequestBuilder(tenantId: UUID, itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemTypeDtoListEnvelope> {
+    open class func getStockItemTypesByItemIdWithRequestBuilder(tenantId: UUID, itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemTypeDtoCollectionQueryParameters: ItemTypeDtoCollectionQueryParameters? = nil) -> RequestBuilder<ItemTypeDtoListEnvelope> {
         var localVariablePath = "/api/v2/CatalogService/Items/{itemId}/Types"
         let itemIdPreEscape = "\(APIHelper.mapValueToPathItem(itemId))"
         let itemIdPostEscape = itemIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{itemId}", with: itemIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: itemTypeDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -2202,6 +2246,7 @@ open class ItemsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -2218,12 +2263,13 @@ open class ItemsAPI {
      - parameter itemId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemWarrantyPolicyDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getStockItemWarrantyPoliciesByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemWarrantyPolicyDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getStockItemWarrantyPoliciesByItemIdWithRequestBuilder(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getStockItemWarrantyPoliciesByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemWarrantyPolicyDtoCollectionQueryParameters: ItemWarrantyPolicyDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemWarrantyPolicyDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getStockItemWarrantyPoliciesByItemIdWithRequestBuilder(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemWarrantyPolicyDtoCollectionQueryParameters: itemWarrantyPolicyDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -2240,15 +2286,16 @@ open class ItemsAPI {
      - parameter itemId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemWarrantyPolicyDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<ItemWarrantyPolicyDtoListEnvelope> 
      */
-    open class func getStockItemWarrantyPoliciesByItemIdWithRequestBuilder(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemWarrantyPolicyDtoListEnvelope> {
+    open class func getStockItemWarrantyPoliciesByItemIdWithRequestBuilder(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemWarrantyPolicyDtoCollectionQueryParameters: ItemWarrantyPolicyDtoCollectionQueryParameters? = nil) -> RequestBuilder<ItemWarrantyPolicyDtoListEnvelope> {
         var localVariablePath = "/api/v2/CatalogService/Items/{itemId}/WarrantyPolicies"
         let itemIdPreEscape = "\(APIHelper.mapValueToPathItem(itemId))"
         let itemIdPostEscape = itemIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{itemId}", with: itemIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: itemWarrantyPolicyDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -2256,6 +2303,7 @@ open class ItemsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -2331,12 +2379,13 @@ open class ItemsAPI {
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter catalogItemDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getStockItemsOdataMaxPrice(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MoneyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getStockItemsOdataMaxPriceWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getStockItemsOdataMaxPrice(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, catalogItemDtoCollectionQueryParameters: CatalogItemDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MoneyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getStockItemsOdataMaxPriceWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, catalogItemDtoCollectionQueryParameters: catalogItemDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -2353,12 +2402,13 @@ open class ItemsAPI {
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter catalogItemDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<MoneyEnvelope> 
      */
-    open class func getStockItemsOdataMaxPriceWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<MoneyEnvelope> {
+    open class func getStockItemsOdataMaxPriceWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, catalogItemDtoCollectionQueryParameters: CatalogItemDtoCollectionQueryParameters? = nil) -> RequestBuilder<MoneyEnvelope> {
         let localVariablePath = "/api/v2/CatalogService/Items/MaxPrice"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: catalogItemDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -2367,6 +2417,7 @@ open class ItemsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -2383,12 +2434,13 @@ open class ItemsAPI {
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter catalogItemDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getStockItemsOdataMinPrice(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MoneyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getStockItemsOdataMinPriceWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getStockItemsOdataMinPrice(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, catalogItemDtoCollectionQueryParameters: CatalogItemDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MoneyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getStockItemsOdataMinPriceWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, catalogItemDtoCollectionQueryParameters: catalogItemDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -2405,12 +2457,13 @@ open class ItemsAPI {
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter catalogItemDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<MoneyEnvelope> 
      */
-    open class func getStockItemsOdataMinPriceWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<MoneyEnvelope> {
+    open class func getStockItemsOdataMinPriceWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, catalogItemDtoCollectionQueryParameters: CatalogItemDtoCollectionQueryParameters? = nil) -> RequestBuilder<MoneyEnvelope> {
         let localVariablePath = "/api/v2/CatalogService/Items/MinPrice"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: catalogItemDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -2419,6 +2472,7 @@ open class ItemsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -2435,12 +2489,13 @@ open class ItemsAPI {
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter catalogItemDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getStockItemsQuery(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CatalogItemDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getStockItemsQueryWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getStockItemsQuery(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, catalogItemDtoCollectionQueryParameters: CatalogItemDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CatalogItemDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getStockItemsQueryWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, catalogItemDtoCollectionQueryParameters: catalogItemDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -2457,12 +2512,13 @@ open class ItemsAPI {
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter catalogItemDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<CatalogItemDtoListEnvelope> 
      */
-    open class func getStockItemsQueryWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<CatalogItemDtoListEnvelope> {
+    open class func getStockItemsQueryWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, catalogItemDtoCollectionQueryParameters: CatalogItemDtoCollectionQueryParameters? = nil) -> RequestBuilder<CatalogItemDtoListEnvelope> {
         let localVariablePath = "/api/v2/CatalogService/Items"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: catalogItemDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -2471,6 +2527,7 @@ open class ItemsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -2488,13 +2545,13 @@ open class ItemsAPI {
      - parameter itemId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchStockItem(tenantId: UUID, itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchStockItemWithRequestBuilder(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchStockItem(tenantId: UUID, itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchStockItemWithRequestBuilder(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 completion((), nil)
@@ -2512,16 +2569,16 @@ open class ItemsAPI {
      - parameter itemId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
-    open class func patchStockItemWithRequestBuilder(tenantId: UUID, itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil) -> RequestBuilder<Void> {
+    open class func patchStockItemWithRequestBuilder(tenantId: UUID, itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<Void> {
         var localVariablePath = "/api/v2/CatalogService/Items/{itemId}"
         let itemIdPreEscape = "\(APIHelper.mapValueToPathItem(itemId))"
         let itemIdPostEscape = itemIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{itemId}", with: itemIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 # **countSalesLiteraturesAsync**
 ```swift
-    open class func countSalesLiteraturesAsync(tenantId: UUID, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countSalesLiteraturesAsync(tenantId: UUID, salesLiteratureDtoCollectionQueryParameters: SalesLiteratureDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get sales literatures count
@@ -29,9 +29,10 @@ Returns the total count of sales literatures for the specified tenant with OData
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
+let salesLiteratureDtoCollectionQueryParameters = SalesLiteratureDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SalesLiteratureDtoCollectionQueryParameters |  (optional)
 
 // Get sales literatures count
-SalesLiteraturesAPI.countSalesLiteraturesAsync(tenantId: tenantId) { (response, error) in
+SalesLiteraturesAPI.countSalesLiteraturesAsync(tenantId: tenantId, salesLiteratureDtoCollectionQueryParameters: salesLiteratureDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -48,6 +49,7 @@ SalesLiteraturesAPI.countSalesLiteraturesAsync(tenantId: tenantId) { (response, 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
+ **salesLiteratureDtoCollectionQueryParameters** | [**SalesLiteratureDtoCollectionQueryParameters**](SalesLiteratureDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -59,7 +61,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -170,7 +172,7 @@ No authorization required
 
 # **getExtendedSalesLiteraturesAsync**
 ```swift
-    open class func getExtendedSalesLiteraturesAsync(tenantId: UUID, completion: @escaping (_ data: ExtendedSalesLiteratureDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getExtendedSalesLiteraturesAsync(tenantId: UUID, extendedSalesLiteratureDtoCollectionQueryParameters: ExtendedSalesLiteratureDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ExtendedSalesLiteratureDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get extended sales literatures
@@ -183,9 +185,10 @@ Retrieves a list of sales literatures with extended details for the specified te
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
+let extendedSalesLiteratureDtoCollectionQueryParameters = ExtendedSalesLiteratureDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ExtendedSalesLiteratureDtoCollectionQueryParameters |  (optional)
 
 // Get extended sales literatures
-SalesLiteraturesAPI.getExtendedSalesLiteraturesAsync(tenantId: tenantId) { (response, error) in
+SalesLiteraturesAPI.getExtendedSalesLiteraturesAsync(tenantId: tenantId, extendedSalesLiteratureDtoCollectionQueryParameters: extendedSalesLiteratureDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -202,6 +205,7 @@ SalesLiteraturesAPI.getExtendedSalesLiteraturesAsync(tenantId: tenantId) { (resp
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
+ **extendedSalesLiteratureDtoCollectionQueryParameters** | [**ExtendedSalesLiteratureDtoCollectionQueryParameters**](ExtendedSalesLiteratureDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -213,7 +217,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -272,7 +276,7 @@ No authorization required
 
 # **getSalesLiteraturesAsync**
 ```swift
-    open class func getSalesLiteraturesAsync(tenantId: UUID, completion: @escaping (_ data: SalesLiteratureDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getSalesLiteraturesAsync(tenantId: UUID, salesLiteratureDtoCollectionQueryParameters: SalesLiteratureDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: SalesLiteratureDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get sales literatures
@@ -285,9 +289,10 @@ Retrieves a list of sales literatures for the specified tenant with OData query 
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
+let salesLiteratureDtoCollectionQueryParameters = SalesLiteratureDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SalesLiteratureDtoCollectionQueryParameters |  (optional)
 
 // Get sales literatures
-SalesLiteraturesAPI.getSalesLiteraturesAsync(tenantId: tenantId) { (response, error) in
+SalesLiteraturesAPI.getSalesLiteraturesAsync(tenantId: tenantId, salesLiteratureDtoCollectionQueryParameters: salesLiteratureDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -304,6 +309,7 @@ SalesLiteraturesAPI.getSalesLiteraturesAsync(tenantId: tenantId) { (response, er
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
+ **salesLiteratureDtoCollectionQueryParameters** | [**SalesLiteratureDtoCollectionQueryParameters**](SalesLiteratureDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -315,14 +321,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchSalesLiteratureAsync**
 ```swift
-    open class func patchSalesLiteratureAsync(tenantId: UUID, salesLiteratureId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchSalesLiteratureAsync(tenantId: UUID, salesLiteratureId: UUID, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a sales literature
@@ -336,10 +342,10 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let salesLiteratureId = 987 // UUID | 
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a sales literature
-SalesLiteraturesAPI.patchSalesLiteratureAsync(tenantId: tenantId, salesLiteratureId: salesLiteratureId, operation: operation) { (response, error) in
+SalesLiteraturesAPI.patchSalesLiteratureAsync(tenantId: tenantId, salesLiteratureId: salesLiteratureId, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -357,7 +363,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **salesLiteratureId** | **UUID** |  | 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

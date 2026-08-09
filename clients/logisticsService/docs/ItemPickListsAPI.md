@@ -306,7 +306,7 @@ No authorization required
 
 # **getItemPickListEntriesAsync**
 ```swift
-    open class func getItemPickListEntriesAsync(tenantId: UUID, pickListId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemPickListEntryDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getItemPickListEntriesAsync(tenantId: UUID, pickListId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemPickListEntryDtoCollectionQueryParameters: ItemPickListEntryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ItemPickListEntryDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get pick list entries
@@ -322,9 +322,10 @@ let tenantId = 987 // UUID |
 let pickListId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let itemPickListEntryDtoCollectionQueryParameters = ItemPickListEntryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ItemPickListEntryDtoCollectionQueryParameters |  (optional)
 
 // Get pick list entries
-ItemPickListsAPI.getItemPickListEntriesAsync(tenantId: tenantId, pickListId: pickListId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemPickListsAPI.getItemPickListEntriesAsync(tenantId: tenantId, pickListId: pickListId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemPickListEntryDtoCollectionQueryParameters: itemPickListEntryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -344,6 +345,7 @@ Name | Type | Description  | Notes
  **pickListId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **itemPickListEntryDtoCollectionQueryParameters** | [**ItemPickListEntryDtoCollectionQueryParameters**](ItemPickListEntryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -355,14 +357,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getItemPickListEntriesCountAsync**
 ```swift
-    open class func getItemPickListEntriesCountAsync(tenantId: UUID, pickListId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getItemPickListEntriesCountAsync(tenantId: UUID, pickListId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemPickListEntryDtoCollectionQueryParameters: ItemPickListEntryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get pick list entries count
@@ -378,9 +380,10 @@ let tenantId = 987 // UUID |
 let pickListId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let itemPickListEntryDtoCollectionQueryParameters = ItemPickListEntryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ItemPickListEntryDtoCollectionQueryParameters |  (optional)
 
 // Get pick list entries count
-ItemPickListsAPI.getItemPickListEntriesCountAsync(tenantId: tenantId, pickListId: pickListId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemPickListsAPI.getItemPickListEntriesCountAsync(tenantId: tenantId, pickListId: pickListId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemPickListEntryDtoCollectionQueryParameters: itemPickListEntryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -400,6 +403,7 @@ Name | Type | Description  | Notes
  **pickListId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **itemPickListEntryDtoCollectionQueryParameters** | [**ItemPickListEntryDtoCollectionQueryParameters**](ItemPickListEntryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -411,7 +415,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -476,7 +480,7 @@ No authorization required
 
 # **getItemPickListsAsync**
 ```swift
-    open class func getItemPickListsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemPickListDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getItemPickListsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemPickListDtoCollectionQueryParameters: ItemPickListDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ItemPickListDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all item pick lists
@@ -491,9 +495,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let itemPickListDtoCollectionQueryParameters = ItemPickListDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ItemPickListDtoCollectionQueryParameters |  (optional)
 
 // Get all item pick lists
-ItemPickListsAPI.getItemPickListsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemPickListsAPI.getItemPickListsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemPickListDtoCollectionQueryParameters: itemPickListDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -512,6 +517,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **itemPickListDtoCollectionQueryParameters** | [**ItemPickListDtoCollectionQueryParameters**](ItemPickListDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -523,14 +529,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getItemPickListsCountAsync**
 ```swift
-    open class func getItemPickListsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getItemPickListsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemPickListDtoCollectionQueryParameters: ItemPickListDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get item pick lists count
@@ -545,9 +551,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let itemPickListDtoCollectionQueryParameters = ItemPickListDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ItemPickListDtoCollectionQueryParameters |  (optional)
 
 // Get item pick lists count
-ItemPickListsAPI.getItemPickListsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemPickListsAPI.getItemPickListsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemPickListDtoCollectionQueryParameters: itemPickListDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -566,6 +573,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **itemPickListDtoCollectionQueryParameters** | [**ItemPickListDtoCollectionQueryParameters**](ItemPickListDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -577,14 +585,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchItemPickListAsync**
 ```swift
-    open class func patchItemPickListAsync(tenantId: UUID, pickListId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchItemPickListAsync(tenantId: UUID, pickListId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch an item pick list
@@ -600,10 +608,10 @@ let tenantId = 987 // UUID |
 let pickListId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch an item pick list
-ItemPickListsAPI.patchItemPickListAsync(tenantId: tenantId, pickListId: pickListId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+ItemPickListsAPI.patchItemPickListAsync(tenantId: tenantId, pickListId: pickListId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -623,7 +631,7 @@ Name | Type | Description  | Notes
  **pickListId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -642,7 +650,7 @@ No authorization required
 
 # **patchItemPickListEntryAsync**
 ```swift
-    open class func patchItemPickListEntryAsync(tenantId: UUID, pickListId: UUID, entryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchItemPickListEntryAsync(tenantId: UUID, pickListId: UUID, entryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a pick list entry
@@ -659,10 +667,10 @@ let pickListId = 987 // UUID |
 let entryId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a pick list entry
-ItemPickListsAPI.patchItemPickListEntryAsync(tenantId: tenantId, pickListId: pickListId, entryId: entryId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+ItemPickListsAPI.patchItemPickListEntryAsync(tenantId: tenantId, pickListId: pickListId, entryId: entryId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -683,7 +691,7 @@ Name | Type | Description  | Notes
  **entryId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

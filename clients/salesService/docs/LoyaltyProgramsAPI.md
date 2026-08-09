@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 # **countLoyaltyProgramsAsync**
 ```swift
-    open class func countLoyaltyProgramsAsync(tenantId: UUID, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countLoyaltyProgramsAsync(tenantId: UUID, loyaltyProgramDtoCollectionQueryParameters: LoyaltyProgramDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get loyalty programs count
@@ -28,9 +28,10 @@ Returns the total count of loyalty programs for the specified tenant with OData 
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
+let loyaltyProgramDtoCollectionQueryParameters = LoyaltyProgramDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // LoyaltyProgramDtoCollectionQueryParameters |  (optional)
 
 // Get loyalty programs count
-LoyaltyProgramsAPI.countLoyaltyProgramsAsync(tenantId: tenantId) { (response, error) in
+LoyaltyProgramsAPI.countLoyaltyProgramsAsync(tenantId: tenantId, loyaltyProgramDtoCollectionQueryParameters: loyaltyProgramDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -47,6 +48,7 @@ LoyaltyProgramsAPI.countLoyaltyProgramsAsync(tenantId: tenantId) { (response, er
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
+ **loyaltyProgramDtoCollectionQueryParameters** | [**LoyaltyProgramDtoCollectionQueryParameters**](LoyaltyProgramDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -58,7 +60,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -221,7 +223,7 @@ No authorization required
 
 # **getLoyaltyProgramsAsync**
 ```swift
-    open class func getLoyaltyProgramsAsync(tenantId: UUID, completion: @escaping (_ data: LoyaltyProgramDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getLoyaltyProgramsAsync(tenantId: UUID, loyaltyProgramDtoCollectionQueryParameters: LoyaltyProgramDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: LoyaltyProgramDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get loyalty programs
@@ -234,9 +236,10 @@ Retrieves a list of loyalty programs for the specified tenant with OData query s
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
+let loyaltyProgramDtoCollectionQueryParameters = LoyaltyProgramDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // LoyaltyProgramDtoCollectionQueryParameters |  (optional)
 
 // Get loyalty programs
-LoyaltyProgramsAPI.getLoyaltyProgramsAsync(tenantId: tenantId) { (response, error) in
+LoyaltyProgramsAPI.getLoyaltyProgramsAsync(tenantId: tenantId, loyaltyProgramDtoCollectionQueryParameters: loyaltyProgramDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -253,6 +256,7 @@ LoyaltyProgramsAPI.getLoyaltyProgramsAsync(tenantId: tenantId) { (response, erro
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
+ **loyaltyProgramDtoCollectionQueryParameters** | [**LoyaltyProgramDtoCollectionQueryParameters**](LoyaltyProgramDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -264,14 +268,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchLoyaltyProgramAsync**
 ```swift
-    open class func patchLoyaltyProgramAsync(tenantId: UUID, loyaltyProgramId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchLoyaltyProgramAsync(tenantId: UUID, loyaltyProgramId: UUID, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a loyalty program
@@ -285,10 +289,10 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let loyaltyProgramId = 987 // UUID | 
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a loyalty program
-LoyaltyProgramsAPI.patchLoyaltyProgramAsync(tenantId: tenantId, loyaltyProgramId: loyaltyProgramId, operation: operation) { (response, error) in
+LoyaltyProgramsAPI.patchLoyaltyProgramAsync(tenantId: tenantId, loyaltyProgramId: loyaltyProgramId, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -306,7 +310,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **loyaltyProgramId** | **UUID** |  | 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

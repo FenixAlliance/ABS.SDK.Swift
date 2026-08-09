@@ -130,7 +130,7 @@ No authorization required
 
 # **getBillableLineTaxes**
 ```swift
-    open class func getBillableLineTaxes(tenantId: UUID, billableLineId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: AppliedItemTaxRecordDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
+    open class func getBillableLineTaxes(tenantId: UUID, billableLineId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, appliedItemTaxRecordDtoCollectionQueryParameters: AppliedItemTaxRecordDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: AppliedItemTaxRecordDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get taxes for a billable line.
@@ -146,9 +146,10 @@ let tenantId = 987 // UUID |
 let billableLineId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let appliedItemTaxRecordDtoCollectionQueryParameters = AppliedItemTaxRecordDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // AppliedItemTaxRecordDtoCollectionQueryParameters |  (optional)
 
 // Get taxes for a billable line.
-BillableLineTaxesAPI.getBillableLineTaxes(tenantId: tenantId, billableLineId: billableLineId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+BillableLineTaxesAPI.getBillableLineTaxes(tenantId: tenantId, billableLineId: billableLineId, apiVersion: apiVersion, xApiVersion: xApiVersion, appliedItemTaxRecordDtoCollectionQueryParameters: appliedItemTaxRecordDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -168,6 +169,7 @@ Name | Type | Description  | Notes
  **billableLineId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **appliedItemTaxRecordDtoCollectionQueryParameters** | [**AppliedItemTaxRecordDtoCollectionQueryParameters**](AppliedItemTaxRecordDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -179,14 +181,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getBillableLineTaxesCount**
 ```swift
-    open class func getBillableLineTaxesCount(tenantId: UUID, billableLineId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getBillableLineTaxesCount(tenantId: UUID, billableLineId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, appliedItemTaxRecordDtoCollectionQueryParameters: AppliedItemTaxRecordDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get the count of taxes for a billable line.
@@ -202,9 +204,10 @@ let tenantId = 987 // UUID |
 let billableLineId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let appliedItemTaxRecordDtoCollectionQueryParameters = AppliedItemTaxRecordDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // AppliedItemTaxRecordDtoCollectionQueryParameters |  (optional)
 
 // Get the count of taxes for a billable line.
-BillableLineTaxesAPI.getBillableLineTaxesCount(tenantId: tenantId, billableLineId: billableLineId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+BillableLineTaxesAPI.getBillableLineTaxesCount(tenantId: tenantId, billableLineId: billableLineId, apiVersion: apiVersion, xApiVersion: xApiVersion, appliedItemTaxRecordDtoCollectionQueryParameters: appliedItemTaxRecordDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -224,6 +227,7 @@ Name | Type | Description  | Notes
  **billableLineId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **appliedItemTaxRecordDtoCollectionQueryParameters** | [**AppliedItemTaxRecordDtoCollectionQueryParameters**](AppliedItemTaxRecordDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -235,14 +239,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchBillableLineTaxAsync**
 ```swift
-    open class func patchBillableLineTaxAsync(tenantId: UUID, billableLineId: UUID, taxId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchBillableLineTaxAsync(tenantId: UUID, billableLineId: UUID, taxId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a billable line tax
@@ -259,10 +263,10 @@ let billableLineId = 987 // UUID |
 let taxId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a billable line tax
-BillableLineTaxesAPI.patchBillableLineTaxAsync(tenantId: tenantId, billableLineId: billableLineId, taxId: taxId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+BillableLineTaxesAPI.patchBillableLineTaxAsync(tenantId: tenantId, billableLineId: billableLineId, taxId: taxId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -283,7 +287,7 @@ Name | Type | Description  | Notes
  **taxId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

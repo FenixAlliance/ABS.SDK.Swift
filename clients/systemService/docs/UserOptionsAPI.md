@@ -187,7 +187,7 @@ No authorization required
 
 # **getSystemUserOptions**
 ```swift
-    open class func getSystemUserOptions(userId: UUID, portalId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: OptionDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getSystemUserOptions(userId: UUID, portalId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, optionDtoCollectionQueryParameters: OptionDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: OptionDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Retrieve a list of user options (admin)
@@ -203,9 +203,10 @@ let userId = 987 // UUID |
 let portalId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let optionDtoCollectionQueryParameters = OptionDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // OptionDtoCollectionQueryParameters |  (optional)
 
 // Retrieve a list of user options (admin)
-UserOptionsAPI.getSystemUserOptions(userId: userId, portalId: portalId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+UserOptionsAPI.getSystemUserOptions(userId: userId, portalId: portalId, apiVersion: apiVersion, xApiVersion: xApiVersion, optionDtoCollectionQueryParameters: optionDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -225,6 +226,7 @@ Name | Type | Description  | Notes
  **portalId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **optionDtoCollectionQueryParameters** | [**OptionDtoCollectionQueryParameters**](OptionDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -236,14 +238,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getSystemUserOptionsCount**
 ```swift
-    open class func getSystemUserOptionsCount(userId: UUID, portalId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getSystemUserOptionsCount(userId: UUID, portalId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, optionDtoCollectionQueryParameters: OptionDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get the count of user options (admin)
@@ -259,9 +261,10 @@ let userId = 987 // UUID |
 let portalId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let optionDtoCollectionQueryParameters = OptionDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // OptionDtoCollectionQueryParameters |  (optional)
 
 // Get the count of user options (admin)
-UserOptionsAPI.getSystemUserOptionsCount(userId: userId, portalId: portalId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+UserOptionsAPI.getSystemUserOptionsCount(userId: userId, portalId: portalId, apiVersion: apiVersion, xApiVersion: xApiVersion, optionDtoCollectionQueryParameters: optionDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -281,6 +284,7 @@ Name | Type | Description  | Notes
  **portalId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **optionDtoCollectionQueryParameters** | [**OptionDtoCollectionQueryParameters**](OptionDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -292,14 +296,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchSystemUserOption**
 ```swift
-    open class func patchSystemUserOption(userId: UUID, optionId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchSystemUserOption(userId: UUID, optionId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Partially update a user option (admin)
@@ -315,10 +319,10 @@ let userId = 987 // UUID |
 let optionId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Partially update a user option (admin)
-UserOptionsAPI.patchSystemUserOption(userId: userId, optionId: optionId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+UserOptionsAPI.patchSystemUserOption(userId: userId, optionId: optionId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -338,7 +342,7 @@ Name | Type | Description  | Notes
  **optionId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

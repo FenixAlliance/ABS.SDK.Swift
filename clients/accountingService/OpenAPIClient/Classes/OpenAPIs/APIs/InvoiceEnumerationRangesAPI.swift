@@ -187,12 +187,13 @@ open class InvoiceEnumerationRangesAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter invoiceEnumerationRangeDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getInvoiceEnumerationRangesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: InvoiceEnumerationRangeDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getInvoiceEnumerationRangesAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getInvoiceEnumerationRangesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, invoiceEnumerationRangeDtoCollectionQueryParameters: InvoiceEnumerationRangeDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: InvoiceEnumerationRangeDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getInvoiceEnumerationRangesAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, invoiceEnumerationRangeDtoCollectionQueryParameters: invoiceEnumerationRangeDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -209,12 +210,13 @@ open class InvoiceEnumerationRangesAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter invoiceEnumerationRangeDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<InvoiceEnumerationRangeDtoListEnvelope> 
      */
-    open class func getInvoiceEnumerationRangesAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<InvoiceEnumerationRangeDtoListEnvelope> {
+    open class func getInvoiceEnumerationRangesAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, invoiceEnumerationRangeDtoCollectionQueryParameters: InvoiceEnumerationRangeDtoCollectionQueryParameters? = nil) -> RequestBuilder<InvoiceEnumerationRangeDtoListEnvelope> {
         let localVariablePath = "/api/v2/AccountingService/InvoiceEnumerationRanges"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: invoiceEnumerationRangeDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -223,6 +225,7 @@ open class InvoiceEnumerationRangesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -240,13 +243,13 @@ open class InvoiceEnumerationRangesAPI {
      - parameter rangeId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchInvoiceEnumerationRangeAsync(tenantId: UUID, rangeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchInvoiceEnumerationRangeAsyncWithRequestBuilder(tenantId: tenantId, rangeId: rangeId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchInvoiceEnumerationRangeAsync(tenantId: UUID, rangeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchInvoiceEnumerationRangeAsyncWithRequestBuilder(tenantId: tenantId, rangeId: rangeId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -264,16 +267,16 @@ open class InvoiceEnumerationRangesAPI {
      - parameter rangeId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchInvoiceEnumerationRangeAsyncWithRequestBuilder(tenantId: UUID, rangeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchInvoiceEnumerationRangeAsyncWithRequestBuilder(tenantId: UUID, rangeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/InvoiceEnumerationRanges/{rangeId}"
         let rangeIdPreEscape = "\(APIHelper.mapValueToPathItem(rangeId))"
         let rangeIdPostEscape = rangeIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{rangeId}", with: rangeIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

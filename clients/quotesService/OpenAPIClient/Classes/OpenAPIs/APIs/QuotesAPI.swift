@@ -441,12 +441,13 @@ open class QuotesAPI {
      Get a list of extended quotes.
      
      - parameter tenantId: (query)  
+     - parameter extendedQuoteDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getExtendedQuotes(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ExtendedQuoteDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getExtendedQuotesWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+    open class func getExtendedQuotes(tenantId: UUID, extendedQuoteDtoCollectionQueryParameters: ExtendedQuoteDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ExtendedQuoteDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getExtendedQuotesWithRequestBuilder(tenantId: tenantId, extendedQuoteDtoCollectionQueryParameters: extendedQuoteDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -461,12 +462,13 @@ open class QuotesAPI {
      - GET /api/v2/QuotesService/Quotes/Extended
      - Retrieves a list of extended quotes for the specified tenant, supporting OData query options.
      - parameter tenantId: (query)  
+     - parameter extendedQuoteDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<ExtendedQuoteDtoListEnvelope> 
      */
-    open class func getExtendedQuotesWithRequestBuilder(tenantId: UUID) -> RequestBuilder<ExtendedQuoteDtoListEnvelope> {
+    open class func getExtendedQuotesWithRequestBuilder(tenantId: UUID, extendedQuoteDtoCollectionQueryParameters: ExtendedQuoteDtoCollectionQueryParameters? = nil) -> RequestBuilder<ExtendedQuoteDtoListEnvelope> {
         let localVariablePath = "/api/v2/QuotesService/Quotes/Extended"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: extendedQuoteDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -474,7 +476,7 @@ open class QuotesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -599,12 +601,13 @@ open class QuotesAPI {
      - parameter tenantId: (query)  
      - parameter quoteId: (path)  
      - parameter itemId: (query)  (optional)
+     - parameter quoteLineDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getQuoteLines(tenantId: UUID, quoteId: UUID, itemId: UUID? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: QuoteLineDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getQuoteLinesWithRequestBuilder(tenantId: tenantId, quoteId: quoteId, itemId: itemId).execute(apiResponseQueue) { result in
+    open class func getQuoteLines(tenantId: UUID, quoteId: UUID, itemId: UUID? = nil, quoteLineDtoCollectionQueryParameters: QuoteLineDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: QuoteLineDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getQuoteLinesWithRequestBuilder(tenantId: tenantId, quoteId: quoteId, itemId: itemId, quoteLineDtoCollectionQueryParameters: quoteLineDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -621,15 +624,16 @@ open class QuotesAPI {
      - parameter tenantId: (query)  
      - parameter quoteId: (path)  
      - parameter itemId: (query)  (optional)
+     - parameter quoteLineDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<QuoteLineDtoListEnvelope> 
      */
-    open class func getQuoteLinesWithRequestBuilder(tenantId: UUID, quoteId: UUID, itemId: UUID? = nil) -> RequestBuilder<QuoteLineDtoListEnvelope> {
+    open class func getQuoteLinesWithRequestBuilder(tenantId: UUID, quoteId: UUID, itemId: UUID? = nil, quoteLineDtoCollectionQueryParameters: QuoteLineDtoCollectionQueryParameters? = nil) -> RequestBuilder<QuoteLineDtoListEnvelope> {
         var localVariablePath = "/api/v2/QuotesService/Quotes/{quoteId}/Lines"
         let quoteIdPreEscape = "\(APIHelper.mapValueToPathItem(quoteId))"
         let quoteIdPostEscape = quoteIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{quoteId}", with: quoteIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: quoteLineDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -638,7 +642,7 @@ open class QuotesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -653,12 +657,13 @@ open class QuotesAPI {
      
      - parameter tenantId: (query)  
      - parameter quoteId: (path)  
+     - parameter quoteLineDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getQuoteLinesCount(tenantId: UUID, quoteId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getQuoteLinesCountWithRequestBuilder(tenantId: tenantId, quoteId: quoteId).execute(apiResponseQueue) { result in
+    open class func getQuoteLinesCount(tenantId: UUID, quoteId: UUID, quoteLineDtoCollectionQueryParameters: QuoteLineDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getQuoteLinesCountWithRequestBuilder(tenantId: tenantId, quoteId: quoteId, quoteLineDtoCollectionQueryParameters: quoteLineDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -674,15 +679,16 @@ open class QuotesAPI {
      - Retrieves the total count of quote lines for the specified quote and tenant.
      - parameter tenantId: (query)  
      - parameter quoteId: (path)  
+     - parameter quoteLineDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getQuoteLinesCountWithRequestBuilder(tenantId: UUID, quoteId: UUID) -> RequestBuilder<Int32Envelope> {
+    open class func getQuoteLinesCountWithRequestBuilder(tenantId: UUID, quoteId: UUID, quoteLineDtoCollectionQueryParameters: QuoteLineDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/QuotesService/Quotes/{quoteId}/Lines/Count"
         let quoteIdPreEscape = "\(APIHelper.mapValueToPathItem(quoteId))"
         let quoteIdPostEscape = quoteIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{quoteId}", with: quoteIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: quoteLineDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -690,7 +696,7 @@ open class QuotesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -704,12 +710,13 @@ open class QuotesAPI {
      Get a list of quotes.
      
      - parameter tenantId: (query)  
+     - parameter quoteDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getQuotes(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: QuoteDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getQuotesWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+    open class func getQuotes(tenantId: UUID, quoteDtoCollectionQueryParameters: QuoteDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: QuoteDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getQuotesWithRequestBuilder(tenantId: tenantId, quoteDtoCollectionQueryParameters: quoteDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -724,12 +731,13 @@ open class QuotesAPI {
      - GET /api/v2/QuotesService/Quotes
      - Retrieves a list of quotes for the specified tenant, supporting OData query options.
      - parameter tenantId: (query)  
+     - parameter quoteDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<QuoteDtoListEnvelope> 
      */
-    open class func getQuotesWithRequestBuilder(tenantId: UUID) -> RequestBuilder<QuoteDtoListEnvelope> {
+    open class func getQuotesWithRequestBuilder(tenantId: UUID, quoteDtoCollectionQueryParameters: QuoteDtoCollectionQueryParameters? = nil) -> RequestBuilder<QuoteDtoListEnvelope> {
         let localVariablePath = "/api/v2/QuotesService/Quotes"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: quoteDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -737,7 +745,7 @@ open class QuotesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -751,12 +759,13 @@ open class QuotesAPI {
      Get the count of quotes.
      
      - parameter tenantId: (query)  
+     - parameter quoteDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getQuotesCount(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getQuotesCountWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+    open class func getQuotesCount(tenantId: UUID, quoteDtoCollectionQueryParameters: QuoteDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getQuotesCountWithRequestBuilder(tenantId: tenantId, quoteDtoCollectionQueryParameters: quoteDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -771,12 +780,13 @@ open class QuotesAPI {
      - GET /api/v2/QuotesService/Quotes/Count
      - Retrieves the total count of quotes for the specified tenant, supporting OData query options.
      - parameter tenantId: (query)  
+     - parameter quoteDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getQuotesCountWithRequestBuilder(tenantId: UUID) -> RequestBuilder<Int32Envelope> {
+    open class func getQuotesCountWithRequestBuilder(tenantId: UUID, quoteDtoCollectionQueryParameters: QuoteDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/QuotesService/Quotes/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: quoteDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -784,7 +794,7 @@ open class QuotesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -799,13 +809,13 @@ open class QuotesAPI {
      
      - parameter tenantId: (query)  
      - parameter quoteId: (path)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchQuoteAsync(tenantId: UUID, quoteId: UUID, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchQuoteAsyncWithRequestBuilder(tenantId: tenantId, quoteId: quoteId, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchQuoteAsync(tenantId: UUID, quoteId: UUID, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchQuoteAsyncWithRequestBuilder(tenantId: tenantId, quoteId: quoteId, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -821,16 +831,16 @@ open class QuotesAPI {
      - Partially updates an existing quote for the specified tenant and quote ID using a JSON Patch document.
      - parameter tenantId: (query)  
      - parameter quoteId: (path)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchQuoteAsyncWithRequestBuilder(tenantId: UUID, quoteId: UUID, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchQuoteAsyncWithRequestBuilder(tenantId: UUID, quoteId: UUID, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/QuotesService/Quotes/{quoteId}"
         let quoteIdPreEscape = "\(APIHelper.mapValueToPathItem(quoteId))"
         let quoteIdPostEscape = quoteIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{quoteId}", with: quoteIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -854,13 +864,13 @@ open class QuotesAPI {
      - parameter tenantId: (query)  
      - parameter quoteId: (path)  
      - parameter quoteLineId: (path)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchQuoteLineAsync(tenantId: UUID, quoteId: UUID, quoteLineId: UUID, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchQuoteLineAsyncWithRequestBuilder(tenantId: tenantId, quoteId: quoteId, quoteLineId: quoteLineId, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchQuoteLineAsync(tenantId: UUID, quoteId: UUID, quoteLineId: UUID, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchQuoteLineAsyncWithRequestBuilder(tenantId: tenantId, quoteId: quoteId, quoteLineId: quoteLineId, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -877,10 +887,10 @@ open class QuotesAPI {
      - parameter tenantId: (query)  
      - parameter quoteId: (path)  
      - parameter quoteLineId: (path)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchQuoteLineAsyncWithRequestBuilder(tenantId: UUID, quoteId: UUID, quoteLineId: UUID, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchQuoteLineAsyncWithRequestBuilder(tenantId: UUID, quoteId: UUID, quoteLineId: UUID, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/QuotesService/Quotes/{quoteId}/Lines/{quoteLineId}"
         let quoteIdPreEscape = "\(APIHelper.mapValueToPathItem(quoteId))"
         let quoteIdPostEscape = quoteIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -889,7 +899,7 @@ open class QuotesAPI {
         let quoteLineIdPostEscape = quoteLineIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{quoteLineId}", with: quoteLineIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

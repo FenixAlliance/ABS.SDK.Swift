@@ -340,7 +340,7 @@ No authorization required
 
 # **getDealUnitFlowStagesAsync**
 ```swift
-    open class func getDealUnitFlowStagesAsync(tenantId: UUID, dealUnitFlowId: UUID, completion: @escaping (_ data: DealUnitFlowStageDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getDealUnitFlowStagesAsync(tenantId: UUID, dealUnitFlowId: UUID, dealUnitFlowStageDtoCollectionQueryParameters: DealUnitFlowStageDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: DealUnitFlowStageDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get stages for a deal unit flow
@@ -354,9 +354,10 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let dealUnitFlowId = 987 // UUID | 
+let dealUnitFlowStageDtoCollectionQueryParameters = DealUnitFlowStageDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // DealUnitFlowStageDtoCollectionQueryParameters |  (optional)
 
 // Get stages for a deal unit flow
-DealUnitFlowsAPI.getDealUnitFlowStagesAsync(tenantId: tenantId, dealUnitFlowId: dealUnitFlowId) { (response, error) in
+DealUnitFlowsAPI.getDealUnitFlowStagesAsync(tenantId: tenantId, dealUnitFlowId: dealUnitFlowId, dealUnitFlowStageDtoCollectionQueryParameters: dealUnitFlowStageDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -374,6 +375,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **dealUnitFlowId** | **UUID** |  | 
+ **dealUnitFlowStageDtoCollectionQueryParameters** | [**DealUnitFlowStageDtoCollectionQueryParameters**](DealUnitFlowStageDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -385,14 +387,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getDealUnitFlowStagesCountAsync**
 ```swift
-    open class func getDealUnitFlowStagesCountAsync(tenantId: UUID, dealUnitFlowId: UUID, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getDealUnitFlowStagesCountAsync(tenantId: UUID, dealUnitFlowId: UUID, dealUnitFlowStageDtoCollectionQueryParameters: DealUnitFlowStageDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get stages count for a deal unit flow
@@ -406,9 +408,10 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let dealUnitFlowId = 987 // UUID | 
+let dealUnitFlowStageDtoCollectionQueryParameters = DealUnitFlowStageDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // DealUnitFlowStageDtoCollectionQueryParameters |  (optional)
 
 // Get stages count for a deal unit flow
-DealUnitFlowsAPI.getDealUnitFlowStagesCountAsync(tenantId: tenantId, dealUnitFlowId: dealUnitFlowId) { (response, error) in
+DealUnitFlowsAPI.getDealUnitFlowStagesCountAsync(tenantId: tenantId, dealUnitFlowId: dealUnitFlowId, dealUnitFlowStageDtoCollectionQueryParameters: dealUnitFlowStageDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -426,6 +429,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **dealUnitFlowId** | **UUID** |  | 
+ **dealUnitFlowStageDtoCollectionQueryParameters** | [**DealUnitFlowStageDtoCollectionQueryParameters**](DealUnitFlowStageDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -437,14 +441,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getDealUnitFlowsAsync**
 ```swift
-    open class func getDealUnitFlowsAsync(tenantId: UUID, completion: @escaping (_ data: DealUnitFlowDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getDealUnitFlowsAsync(tenantId: UUID, dealUnitFlowDtoCollectionQueryParameters: DealUnitFlowDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: DealUnitFlowDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get deal unit flows
@@ -457,9 +461,10 @@ Retrieves a list of deal unit flows for the specified tenant with OData query su
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
+let dealUnitFlowDtoCollectionQueryParameters = DealUnitFlowDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // DealUnitFlowDtoCollectionQueryParameters |  (optional)
 
 // Get deal unit flows
-DealUnitFlowsAPI.getDealUnitFlowsAsync(tenantId: tenantId) { (response, error) in
+DealUnitFlowsAPI.getDealUnitFlowsAsync(tenantId: tenantId, dealUnitFlowDtoCollectionQueryParameters: dealUnitFlowDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -476,6 +481,7 @@ DealUnitFlowsAPI.getDealUnitFlowsAsync(tenantId: tenantId) { (response, error) i
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
+ **dealUnitFlowDtoCollectionQueryParameters** | [**DealUnitFlowDtoCollectionQueryParameters**](DealUnitFlowDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -487,14 +493,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getDealUnitFlowsCountAsync**
 ```swift
-    open class func getDealUnitFlowsCountAsync(tenantId: UUID, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getDealUnitFlowsCountAsync(tenantId: UUID, dealUnitFlowDtoCollectionQueryParameters: DealUnitFlowDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get deal unit flows count
@@ -507,9 +513,10 @@ Returns the total count of deal unit flows for the specified tenant with OData f
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
+let dealUnitFlowDtoCollectionQueryParameters = DealUnitFlowDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // DealUnitFlowDtoCollectionQueryParameters |  (optional)
 
 // Get deal unit flows count
-DealUnitFlowsAPI.getDealUnitFlowsCountAsync(tenantId: tenantId) { (response, error) in
+DealUnitFlowsAPI.getDealUnitFlowsCountAsync(tenantId: tenantId, dealUnitFlowDtoCollectionQueryParameters: dealUnitFlowDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -526,6 +533,7 @@ DealUnitFlowsAPI.getDealUnitFlowsCountAsync(tenantId: tenantId) { (response, err
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
+ **dealUnitFlowDtoCollectionQueryParameters** | [**DealUnitFlowDtoCollectionQueryParameters**](DealUnitFlowDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -537,14 +545,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchDealUnitFlowAsync**
 ```swift
-    open class func patchDealUnitFlowAsync(tenantId: UUID, dealUnitFlowId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchDealUnitFlowAsync(tenantId: UUID, dealUnitFlowId: UUID, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a deal unit flow
@@ -558,10 +566,10 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let dealUnitFlowId = 987 // UUID | 
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a deal unit flow
-DealUnitFlowsAPI.patchDealUnitFlowAsync(tenantId: tenantId, dealUnitFlowId: dealUnitFlowId, operation: operation) { (response, error) in
+DealUnitFlowsAPI.patchDealUnitFlowAsync(tenantId: tenantId, dealUnitFlowId: dealUnitFlowId, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -579,7 +587,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **dealUnitFlowId** | **UUID** |  | 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -598,7 +606,7 @@ No authorization required
 
 # **patchDealUnitFlowStageAsync**
 ```swift
-    open class func patchDealUnitFlowStageAsync(tenantId: UUID, dealUnitFlowId: UUID, dealUnitFlowStageId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchDealUnitFlowStageAsync(tenantId: UUID, dealUnitFlowId: UUID, dealUnitFlowStageId: UUID, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a deal unit flow stage
@@ -613,10 +621,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let dealUnitFlowId = 987 // UUID | 
 let dealUnitFlowStageId = 987 // UUID | 
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a deal unit flow stage
-DealUnitFlowsAPI.patchDealUnitFlowStageAsync(tenantId: tenantId, dealUnitFlowId: dealUnitFlowId, dealUnitFlowStageId: dealUnitFlowStageId, operation: operation) { (response, error) in
+DealUnitFlowsAPI.patchDealUnitFlowStageAsync(tenantId: tenantId, dealUnitFlowId: dealUnitFlowId, dealUnitFlowStageId: dealUnitFlowStageId, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -635,7 +643,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **dealUnitFlowId** | **UUID** |  | 
  **dealUnitFlowStageId** | **UUID** |  | 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

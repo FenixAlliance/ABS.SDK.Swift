@@ -71,12 +71,13 @@ open class MerchantsAPI {
      
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter merchantDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getMerchants(apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MerchantDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getMerchantsWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getMerchants(apiVersion: String? = nil, xApiVersion: String? = nil, merchantDtoCollectionQueryParameters: MerchantDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MerchantDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getMerchantsWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion, merchantDtoCollectionQueryParameters: merchantDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -92,12 +93,13 @@ open class MerchantsAPI {
      - Retrieves all merchants, optionally filtered by OData query options.
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter merchantDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<MerchantDtoListEnvelope> 
      */
-    open class func getMerchantsWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<MerchantDtoListEnvelope> {
+    open class func getMerchantsWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil, merchantDtoCollectionQueryParameters: MerchantDtoCollectionQueryParameters? = nil) -> RequestBuilder<MerchantDtoListEnvelope> {
         let localVariablePath = "/api/v2/CatalogService/Merchants"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: merchantDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -105,6 +107,7 @@ open class MerchantsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -120,12 +123,13 @@ open class MerchantsAPI {
      
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter merchantDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getMerchantsCount(apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getMerchantsCountWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getMerchantsCount(apiVersion: String? = nil, xApiVersion: String? = nil, merchantDtoCollectionQueryParameters: MerchantDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getMerchantsCountWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion, merchantDtoCollectionQueryParameters: merchantDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -141,12 +145,13 @@ open class MerchantsAPI {
      - Counts the number of merchants, optionally filtered by OData query options.
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter merchantDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getMerchantsCountWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getMerchantsCountWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil, merchantDtoCollectionQueryParameters: MerchantDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/CatalogService/Merchants/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: merchantDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -154,6 +159,7 @@ open class MerchantsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 

@@ -19,12 +19,13 @@ open class AccountsAPI {
      - parameter currencyId: (query)  (optional, default to "USD.USA")
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter accountDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func aggregateAccountsBalanceAsync(tenantId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MoneyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return aggregateAccountsBalanceAsyncWithRequestBuilder(tenantId: tenantId, currencyId: currencyId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func aggregateAccountsBalanceAsync(tenantId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, accountDtoCollectionQueryParameters: AccountDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MoneyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return aggregateAccountsBalanceAsyncWithRequestBuilder(tenantId: tenantId, currencyId: currencyId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountDtoCollectionQueryParameters: accountDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -42,12 +43,13 @@ open class AccountsAPI {
      - parameter currencyId: (query)  (optional, default to "USD.USA")
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter accountDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<MoneyEnvelope> 
      */
-    open class func aggregateAccountsBalanceAsyncWithRequestBuilder(tenantId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<MoneyEnvelope> {
+    open class func aggregateAccountsBalanceAsyncWithRequestBuilder(tenantId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, accountDtoCollectionQueryParameters: AccountDtoCollectionQueryParameters? = nil) -> RequestBuilder<MoneyEnvelope> {
         let localVariablePath = "/api/v2/AccountingService/Accounts/Aggregate/Balance"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: accountDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -57,6 +59,7 @@ open class AccountsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -825,12 +828,13 @@ open class AccountsAPI {
      - parameter accountId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter accountingEntryDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getAccountCreditsAsync(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountingEntryDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getAccountCreditsAsyncWithRequestBuilder(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getAccountCreditsAsync(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountingEntryDtoCollectionQueryParameters: AccountingEntryDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountingEntryDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getAccountCreditsAsyncWithRequestBuilder(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountingEntryDtoCollectionQueryParameters: accountingEntryDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -848,15 +852,16 @@ open class AccountsAPI {
      - parameter accountId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter accountingEntryDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<AccountingEntryDtoListEnvelope> 
      */
-    open class func getAccountCreditsAsyncWithRequestBuilder(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<AccountingEntryDtoListEnvelope> {
+    open class func getAccountCreditsAsyncWithRequestBuilder(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountingEntryDtoCollectionQueryParameters: AccountingEntryDtoCollectionQueryParameters? = nil) -> RequestBuilder<AccountingEntryDtoListEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/Accounts/{accountId}/Credits"
         let accountIdPreEscape = "\(APIHelper.mapValueToPathItem(accountId))"
         let accountIdPostEscape = accountIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{accountId}", with: accountIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: accountingEntryDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -865,6 +870,7 @@ open class AccountsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -882,12 +888,13 @@ open class AccountsAPI {
      - parameter accountId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter accountingEntryDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getAccountCreditsCountAsync(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getAccountCreditsCountAsyncWithRequestBuilder(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getAccountCreditsCountAsync(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountingEntryDtoCollectionQueryParameters: AccountingEntryDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getAccountCreditsCountAsyncWithRequestBuilder(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountingEntryDtoCollectionQueryParameters: accountingEntryDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -905,15 +912,16 @@ open class AccountsAPI {
      - parameter accountId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter accountingEntryDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getAccountCreditsCountAsyncWithRequestBuilder(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getAccountCreditsCountAsyncWithRequestBuilder(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountingEntryDtoCollectionQueryParameters: AccountingEntryDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/AccountingService/Accounts/{accountId}/Credits/Count"
         let accountIdPreEscape = "\(APIHelper.mapValueToPathItem(accountId))"
         let accountIdPostEscape = accountIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{accountId}", with: accountIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: accountingEntryDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -922,6 +930,7 @@ open class AccountsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -939,12 +948,13 @@ open class AccountsAPI {
      - parameter accountId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter accountingEntryDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getAccountDebitsAsync(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountingEntryDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getAccountDebitsAsyncWithRequestBuilder(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getAccountDebitsAsync(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountingEntryDtoCollectionQueryParameters: AccountingEntryDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountingEntryDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getAccountDebitsAsyncWithRequestBuilder(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountingEntryDtoCollectionQueryParameters: accountingEntryDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -962,15 +972,16 @@ open class AccountsAPI {
      - parameter accountId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter accountingEntryDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<AccountingEntryDtoListEnvelope> 
      */
-    open class func getAccountDebitsAsyncWithRequestBuilder(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<AccountingEntryDtoListEnvelope> {
+    open class func getAccountDebitsAsyncWithRequestBuilder(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountingEntryDtoCollectionQueryParameters: AccountingEntryDtoCollectionQueryParameters? = nil) -> RequestBuilder<AccountingEntryDtoListEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/Accounts/{accountId}/Debits"
         let accountIdPreEscape = "\(APIHelper.mapValueToPathItem(accountId))"
         let accountIdPostEscape = accountIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{accountId}", with: accountIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: accountingEntryDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -979,6 +990,7 @@ open class AccountsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -996,12 +1008,13 @@ open class AccountsAPI {
      - parameter accountId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter accountingEntryDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getAccountDebitsCountAsync(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getAccountDebitsCountAsyncWithRequestBuilder(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getAccountDebitsCountAsync(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountingEntryDtoCollectionQueryParameters: AccountingEntryDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getAccountDebitsCountAsyncWithRequestBuilder(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountingEntryDtoCollectionQueryParameters: accountingEntryDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1019,15 +1032,16 @@ open class AccountsAPI {
      - parameter accountId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter accountingEntryDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getAccountDebitsCountAsyncWithRequestBuilder(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getAccountDebitsCountAsyncWithRequestBuilder(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountingEntryDtoCollectionQueryParameters: AccountingEntryDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/AccountingService/Accounts/{accountId}/Debits/Count"
         let accountIdPreEscape = "\(APIHelper.mapValueToPathItem(accountId))"
         let accountIdPostEscape = accountIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{accountId}", with: accountIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: accountingEntryDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1036,6 +1050,7 @@ open class AccountsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1110,12 +1125,13 @@ open class AccountsAPI {
      - parameter accountId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter accountingEntryDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getAccountEntriesAsync(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountingEntryDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getAccountEntriesAsyncWithRequestBuilder(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getAccountEntriesAsync(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountingEntryDtoCollectionQueryParameters: AccountingEntryDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountingEntryDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getAccountEntriesAsyncWithRequestBuilder(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountingEntryDtoCollectionQueryParameters: accountingEntryDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1133,15 +1149,16 @@ open class AccountsAPI {
      - parameter accountId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter accountingEntryDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<AccountingEntryDtoListEnvelope> 
      */
-    open class func getAccountEntriesAsyncWithRequestBuilder(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<AccountingEntryDtoListEnvelope> {
+    open class func getAccountEntriesAsyncWithRequestBuilder(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountingEntryDtoCollectionQueryParameters: AccountingEntryDtoCollectionQueryParameters? = nil) -> RequestBuilder<AccountingEntryDtoListEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/Accounts/{accountId}/Entries"
         let accountIdPreEscape = "\(APIHelper.mapValueToPathItem(accountId))"
         let accountIdPostEscape = accountIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{accountId}", with: accountIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: accountingEntryDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1150,6 +1167,7 @@ open class AccountsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1229,12 +1247,13 @@ open class AccountsAPI {
      - parameter accountId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter accountRelationDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getAccountRelationsAsync(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountRelationDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getAccountRelationsAsyncWithRequestBuilder(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getAccountRelationsAsync(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountRelationDtoCollectionQueryParameters: AccountRelationDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountRelationDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getAccountRelationsAsyncWithRequestBuilder(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountRelationDtoCollectionQueryParameters: accountRelationDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1252,12 +1271,13 @@ open class AccountsAPI {
      - parameter accountId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter accountRelationDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<AccountRelationDtoListEnvelope> 
      */
-    open class func getAccountRelationsAsyncWithRequestBuilder(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<AccountRelationDtoListEnvelope> {
+    open class func getAccountRelationsAsyncWithRequestBuilder(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountRelationDtoCollectionQueryParameters: AccountRelationDtoCollectionQueryParameters? = nil) -> RequestBuilder<AccountRelationDtoListEnvelope> {
         let localVariablePath = "/api/v2/AccountingService/Accounts/Relations"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: accountRelationDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1267,6 +1287,7 @@ open class AccountsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1284,12 +1305,13 @@ open class AccountsAPI {
      - parameter accountId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter accountRelationDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getAccountRelationsCountAsync(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getAccountRelationsCountAsyncWithRequestBuilder(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getAccountRelationsCountAsync(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountRelationDtoCollectionQueryParameters: AccountRelationDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getAccountRelationsCountAsyncWithRequestBuilder(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountRelationDtoCollectionQueryParameters: accountRelationDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1307,12 +1329,13 @@ open class AccountsAPI {
      - parameter accountId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter accountRelationDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getAccountRelationsCountAsyncWithRequestBuilder(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getAccountRelationsCountAsyncWithRequestBuilder(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountRelationDtoCollectionQueryParameters: AccountRelationDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/AccountingService/Accounts/Relations/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: accountRelationDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1322,6 +1345,7 @@ open class AccountsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1395,12 +1419,13 @@ open class AccountsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter accountTypeDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getAccountTypesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountTypeDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getAccountTypesAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getAccountTypesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountTypeDtoCollectionQueryParameters: AccountTypeDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountTypeDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getAccountTypesAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountTypeDtoCollectionQueryParameters: accountTypeDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1417,12 +1442,13 @@ open class AccountsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter accountTypeDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<AccountTypeDtoListEnvelope> 
      */
-    open class func getAccountTypesAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<AccountTypeDtoListEnvelope> {
+    open class func getAccountTypesAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountTypeDtoCollectionQueryParameters: AccountTypeDtoCollectionQueryParameters? = nil) -> RequestBuilder<AccountTypeDtoListEnvelope> {
         let localVariablePath = "/api/v2/AccountingService/Accounts/Types"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: accountTypeDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1431,6 +1457,7 @@ open class AccountsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1447,12 +1474,13 @@ open class AccountsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter accountTypeDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getAccountTypesCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getAccountTypesCountAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getAccountTypesCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountTypeDtoCollectionQueryParameters: AccountTypeDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getAccountTypesCountAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountTypeDtoCollectionQueryParameters: accountTypeDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1469,12 +1497,13 @@ open class AccountsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter accountTypeDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getAccountTypesCountAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getAccountTypesCountAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountTypeDtoCollectionQueryParameters: AccountTypeDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/AccountingService/Accounts/Types/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: accountTypeDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1483,6 +1512,7 @@ open class AccountsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1499,12 +1529,13 @@ open class AccountsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter accountDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getAccountsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getAccountsAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getAccountsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountDtoCollectionQueryParameters: AccountDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getAccountsAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountDtoCollectionQueryParameters: accountDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1521,12 +1552,13 @@ open class AccountsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter accountDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<AccountDtoListEnvelope> 
      */
-    open class func getAccountsAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<AccountDtoListEnvelope> {
+    open class func getAccountsAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountDtoCollectionQueryParameters: AccountDtoCollectionQueryParameters? = nil) -> RequestBuilder<AccountDtoListEnvelope> {
         let localVariablePath = "/api/v2/AccountingService/Accounts"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: accountDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1535,6 +1567,7 @@ open class AccountsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1551,12 +1584,13 @@ open class AccountsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter accountDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getAccountsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getAccountsCountAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getAccountsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountDtoCollectionQueryParameters: AccountDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getAccountsCountAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountDtoCollectionQueryParameters: accountDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1573,12 +1607,13 @@ open class AccountsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter accountDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getAccountsCountAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getAccountsCountAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountDtoCollectionQueryParameters: AccountDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/AccountingService/Accounts/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: accountDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1587,6 +1622,7 @@ open class AccountsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1710,12 +1746,13 @@ open class AccountsAPI {
      - parameter accountId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter accountingEntryDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCreditAccountEntriesAsync(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountingEntryDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCreditAccountEntriesAsyncWithRequestBuilder(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCreditAccountEntriesAsync(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountingEntryDtoCollectionQueryParameters: AccountingEntryDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountingEntryDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCreditAccountEntriesAsyncWithRequestBuilder(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountingEntryDtoCollectionQueryParameters: accountingEntryDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1733,15 +1770,16 @@ open class AccountsAPI {
      - parameter accountId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter accountingEntryDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<AccountingEntryDtoListEnvelope> 
      */
-    open class func getCreditAccountEntriesAsyncWithRequestBuilder(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<AccountingEntryDtoListEnvelope> {
+    open class func getCreditAccountEntriesAsyncWithRequestBuilder(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountingEntryDtoCollectionQueryParameters: AccountingEntryDtoCollectionQueryParameters? = nil) -> RequestBuilder<AccountingEntryDtoListEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/Accounts/{accountId}/Entries/Credit"
         let accountIdPreEscape = "\(APIHelper.mapValueToPathItem(accountId))"
         let accountIdPostEscape = accountIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{accountId}", with: accountIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: accountingEntryDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1750,6 +1788,7 @@ open class AccountsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1767,12 +1806,13 @@ open class AccountsAPI {
      - parameter accountId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter accountingEntryDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getDebitAccountEntriesAsync(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountingEntryDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getDebitAccountEntriesAsyncWithRequestBuilder(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getDebitAccountEntriesAsync(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountingEntryDtoCollectionQueryParameters: AccountingEntryDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountingEntryDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getDebitAccountEntriesAsyncWithRequestBuilder(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountingEntryDtoCollectionQueryParameters: accountingEntryDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1790,15 +1830,16 @@ open class AccountsAPI {
      - parameter accountId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter accountingEntryDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<AccountingEntryDtoListEnvelope> 
      */
-    open class func getDebitAccountEntriesAsyncWithRequestBuilder(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<AccountingEntryDtoListEnvelope> {
+    open class func getDebitAccountEntriesAsyncWithRequestBuilder(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountingEntryDtoCollectionQueryParameters: AccountingEntryDtoCollectionQueryParameters? = nil) -> RequestBuilder<AccountingEntryDtoListEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/Accounts/{accountId}/Entries/Debit"
         let accountIdPreEscape = "\(APIHelper.mapValueToPathItem(accountId))"
         let accountIdPostEscape = accountIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{accountId}", with: accountIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: accountingEntryDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1807,6 +1848,7 @@ open class AccountsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1823,12 +1865,13 @@ open class AccountsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter accountDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getRootAccountsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getRootAccountsAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getRootAccountsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountDtoCollectionQueryParameters: AccountDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getRootAccountsAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountDtoCollectionQueryParameters: accountDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1845,12 +1888,13 @@ open class AccountsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter accountDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<AccountDtoListEnvelope> 
      */
-    open class func getRootAccountsAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<AccountDtoListEnvelope> {
+    open class func getRootAccountsAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountDtoCollectionQueryParameters: AccountDtoCollectionQueryParameters? = nil) -> RequestBuilder<AccountDtoListEnvelope> {
         let localVariablePath = "/api/v2/AccountingService/Accounts/Root"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: accountDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1859,6 +1903,7 @@ open class AccountsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1876,13 +1921,13 @@ open class AccountsAPI {
      - parameter accountId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchAccountAsync(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchAccountAsyncWithRequestBuilder(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchAccountAsync(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchAccountAsyncWithRequestBuilder(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1900,16 +1945,16 @@ open class AccountsAPI {
      - parameter accountId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchAccountAsyncWithRequestBuilder(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchAccountAsyncWithRequestBuilder(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/Accounts/{accountId}"
         let accountIdPreEscape = "\(APIHelper.mapValueToPathItem(accountId))"
         let accountIdPostEscape = accountIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{accountId}", with: accountIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1937,13 +1982,13 @@ open class AccountsAPI {
      - parameter entryId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchAccountEntryAsync(tenantId: UUID, accountId: UUID, entryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchAccountEntryAsyncWithRequestBuilder(tenantId: tenantId, accountId: accountId, entryId: entryId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchAccountEntryAsync(tenantId: UUID, accountId: UUID, entryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchAccountEntryAsyncWithRequestBuilder(tenantId: tenantId, accountId: accountId, entryId: entryId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1962,10 +2007,10 @@ open class AccountsAPI {
      - parameter entryId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchAccountEntryAsyncWithRequestBuilder(tenantId: UUID, accountId: UUID, entryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchAccountEntryAsyncWithRequestBuilder(tenantId: UUID, accountId: UUID, entryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/Accounts/{accountId}/Entries/{entryId}"
         let accountIdPreEscape = "\(APIHelper.mapValueToPathItem(accountId))"
         let accountIdPostEscape = accountIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -1974,7 +2019,7 @@ open class AccountsAPI {
         let entryIdPostEscape = entryIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{entryId}", with: entryIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -2002,13 +2047,13 @@ open class AccountsAPI {
      - parameter accountId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchAccountRelationAsync(tenantId: UUID, accountRelationId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchAccountRelationAsyncWithRequestBuilder(tenantId: tenantId, accountRelationId: accountRelationId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchAccountRelationAsync(tenantId: UUID, accountRelationId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchAccountRelationAsyncWithRequestBuilder(tenantId: tenantId, accountRelationId: accountRelationId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -2027,16 +2072,16 @@ open class AccountsAPI {
      - parameter accountId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchAccountRelationAsyncWithRequestBuilder(tenantId: UUID, accountRelationId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchAccountRelationAsyncWithRequestBuilder(tenantId: UUID, accountRelationId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/Accounts/Relations/{accountRelationId}"
         let accountRelationIdPreEscape = "\(APIHelper.mapValueToPathItem(accountRelationId))"
         let accountRelationIdPostEscape = accountRelationIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{accountRelationId}", with: accountRelationIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -2064,13 +2109,13 @@ open class AccountsAPI {
      - parameter accountTypeId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchAccountTypeAsync(tenantId: UUID, accountTypeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchAccountTypeAsyncWithRequestBuilder(tenantId: tenantId, accountTypeId: accountTypeId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchAccountTypeAsync(tenantId: UUID, accountTypeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchAccountTypeAsyncWithRequestBuilder(tenantId: tenantId, accountTypeId: accountTypeId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -2088,16 +2133,16 @@ open class AccountsAPI {
      - parameter accountTypeId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchAccountTypeAsyncWithRequestBuilder(tenantId: UUID, accountTypeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchAccountTypeAsyncWithRequestBuilder(tenantId: UUID, accountTypeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/Accounts/Types/{accountTypeId}"
         let accountTypeIdPreEscape = "\(APIHelper.mapValueToPathItem(accountTypeId))"
         let accountTypeIdPostEscape = accountTypeIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{accountTypeId}", with: accountTypeIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

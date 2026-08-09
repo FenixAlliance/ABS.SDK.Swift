@@ -307,7 +307,7 @@ No authorization required
 
 # **getRailWaybillLinesAsync**
 ```swift
-    open class func getRailWaybillLinesAsync(tenantId: UUID, waybillId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: WaybillLineDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getRailWaybillLinesAsync(tenantId: UUID, waybillId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, waybillLineDtoCollectionQueryParameters: WaybillLineDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: WaybillLineDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get rail waybill lines
@@ -323,9 +323,10 @@ let tenantId = 987 // UUID |
 let waybillId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let waybillLineDtoCollectionQueryParameters = WaybillLineDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // WaybillLineDtoCollectionQueryParameters |  (optional)
 
 // Get rail waybill lines
-RailWaybillsAPI.getRailWaybillLinesAsync(tenantId: tenantId, waybillId: waybillId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+RailWaybillsAPI.getRailWaybillLinesAsync(tenantId: tenantId, waybillId: waybillId, apiVersion: apiVersion, xApiVersion: xApiVersion, waybillLineDtoCollectionQueryParameters: waybillLineDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -345,6 +346,7 @@ Name | Type | Description  | Notes
  **waybillId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **waybillLineDtoCollectionQueryParameters** | [**WaybillLineDtoCollectionQueryParameters**](WaybillLineDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -356,14 +358,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getRailWaybillLinesCountAsync**
 ```swift
-    open class func getRailWaybillLinesCountAsync(tenantId: UUID, waybillId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getRailWaybillLinesCountAsync(tenantId: UUID, waybillId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, waybillLineDtoCollectionQueryParameters: WaybillLineDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get rail waybill lines count
@@ -379,9 +381,10 @@ let tenantId = 987 // UUID |
 let waybillId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let waybillLineDtoCollectionQueryParameters = WaybillLineDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // WaybillLineDtoCollectionQueryParameters |  (optional)
 
 // Get rail waybill lines count
-RailWaybillsAPI.getRailWaybillLinesCountAsync(tenantId: tenantId, waybillId: waybillId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+RailWaybillsAPI.getRailWaybillLinesCountAsync(tenantId: tenantId, waybillId: waybillId, apiVersion: apiVersion, xApiVersion: xApiVersion, waybillLineDtoCollectionQueryParameters: waybillLineDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -401,6 +404,7 @@ Name | Type | Description  | Notes
  **waybillId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **waybillLineDtoCollectionQueryParameters** | [**WaybillLineDtoCollectionQueryParameters**](WaybillLineDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -412,14 +416,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getRailWaybillsAsync**
 ```swift
-    open class func getRailWaybillsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: RailWaybillDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getRailWaybillsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, railWaybillDtoCollectionQueryParameters: RailWaybillDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: RailWaybillDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all rail waybills
@@ -434,9 +438,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let railWaybillDtoCollectionQueryParameters = RailWaybillDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // RailWaybillDtoCollectionQueryParameters |  (optional)
 
 // Get all rail waybills
-RailWaybillsAPI.getRailWaybillsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+RailWaybillsAPI.getRailWaybillsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, railWaybillDtoCollectionQueryParameters: railWaybillDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -455,6 +460,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **railWaybillDtoCollectionQueryParameters** | [**RailWaybillDtoCollectionQueryParameters**](RailWaybillDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -466,14 +472,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getRailWaybillsCountAsync**
 ```swift
-    open class func getRailWaybillsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getRailWaybillsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, railWaybillDtoCollectionQueryParameters: RailWaybillDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get rail waybills count
@@ -488,9 +494,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let railWaybillDtoCollectionQueryParameters = RailWaybillDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // RailWaybillDtoCollectionQueryParameters |  (optional)
 
 // Get rail waybills count
-RailWaybillsAPI.getRailWaybillsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+RailWaybillsAPI.getRailWaybillsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, railWaybillDtoCollectionQueryParameters: railWaybillDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -509,6 +516,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **railWaybillDtoCollectionQueryParameters** | [**RailWaybillDtoCollectionQueryParameters**](RailWaybillDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -520,7 +528,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -695,7 +703,7 @@ No authorization required
 
 # **patchRailWaybillAsync**
 ```swift
-    open class func patchRailWaybillAsync(tenantId: UUID, waybillId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchRailWaybillAsync(tenantId: UUID, waybillId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a rail waybill
@@ -711,10 +719,10 @@ let tenantId = 987 // UUID |
 let waybillId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a rail waybill
-RailWaybillsAPI.patchRailWaybillAsync(tenantId: tenantId, waybillId: waybillId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+RailWaybillsAPI.patchRailWaybillAsync(tenantId: tenantId, waybillId: waybillId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -734,7 +742,7 @@ Name | Type | Description  | Notes
  **waybillId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -753,7 +761,7 @@ No authorization required
 
 # **patchRailWaybillLineAsync**
 ```swift
-    open class func patchRailWaybillLineAsync(tenantId: UUID, waybillId: UUID, lineId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchRailWaybillLineAsync(tenantId: UUID, waybillId: UUID, lineId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a rail waybill line
@@ -770,10 +778,10 @@ let waybillId = 987 // UUID |
 let lineId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a rail waybill line
-RailWaybillsAPI.patchRailWaybillLineAsync(tenantId: tenantId, waybillId: waybillId, lineId: lineId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+RailWaybillsAPI.patchRailWaybillLineAsync(tenantId: tenantId, waybillId: waybillId, lineId: lineId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -794,7 +802,7 @@ Name | Type | Description  | Notes
  **lineId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

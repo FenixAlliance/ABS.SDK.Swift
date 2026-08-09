@@ -16,12 +16,13 @@ open class TaskCategoriesAPI {
      Counts task categories
      
      - parameter tenantId: (query)  
+     - parameter taskCategoryDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func countTenantTaskCategoriesAsync(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return countTenantTaskCategoriesAsyncWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+    open class func countTenantTaskCategoriesAsync(tenantId: UUID, taskCategoryDtoCollectionQueryParameters: TaskCategoryDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return countTenantTaskCategoriesAsyncWithRequestBuilder(tenantId: tenantId, taskCategoryDtoCollectionQueryParameters: taskCategoryDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -36,12 +37,13 @@ open class TaskCategoriesAPI {
      - GET /api/v2/ProjectsService/TaskCategories/Count
      - Gets the count of task categories for the current tenant.
      - parameter tenantId: (query)  
+     - parameter taskCategoryDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func countTenantTaskCategoriesAsyncWithRequestBuilder(tenantId: UUID) -> RequestBuilder<Int32Envelope> {
+    open class func countTenantTaskCategoriesAsyncWithRequestBuilder(tenantId: UUID, taskCategoryDtoCollectionQueryParameters: TaskCategoryDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/ProjectsService/TaskCategories/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: taskCategoryDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -49,7 +51,7 @@ open class TaskCategoriesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -268,12 +270,13 @@ open class TaskCategoriesAPI {
      Retrieves all task categories
      
      - parameter tenantId: (query)  
+     - parameter taskCategoryDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getTenantTaskCategoriesAsync(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TaskCategoryDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getTenantTaskCategoriesAsyncWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+    open class func getTenantTaskCategoriesAsync(tenantId: UUID, taskCategoryDtoCollectionQueryParameters: TaskCategoryDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TaskCategoryDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getTenantTaskCategoriesAsyncWithRequestBuilder(tenantId: tenantId, taskCategoryDtoCollectionQueryParameters: taskCategoryDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -288,12 +291,13 @@ open class TaskCategoriesAPI {
      - GET /api/v2/ProjectsService/TaskCategories
      - Gets all task categories for the current tenant with OData support.
      - parameter tenantId: (query)  
+     - parameter taskCategoryDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<TaskCategoryDtoListEnvelope> 
      */
-    open class func getTenantTaskCategoriesAsyncWithRequestBuilder(tenantId: UUID) -> RequestBuilder<TaskCategoryDtoListEnvelope> {
+    open class func getTenantTaskCategoriesAsyncWithRequestBuilder(tenantId: UUID, taskCategoryDtoCollectionQueryParameters: TaskCategoryDtoCollectionQueryParameters? = nil) -> RequestBuilder<TaskCategoryDtoListEnvelope> {
         let localVariablePath = "/api/v2/ProjectsService/TaskCategories"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: taskCategoryDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -301,7 +305,7 @@ open class TaskCategoriesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -316,13 +320,13 @@ open class TaskCategoriesAPI {
      
      - parameter taskCategoryId: (path)  
      - parameter tenantId: (query)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchTaskCategoryAsync(taskCategoryId: UUID, tenantId: UUID, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchTaskCategoryAsyncWithRequestBuilder(taskCategoryId: taskCategoryId, tenantId: tenantId, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchTaskCategoryAsync(taskCategoryId: UUID, tenantId: UUID, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchTaskCategoryAsyncWithRequestBuilder(taskCategoryId: taskCategoryId, tenantId: tenantId, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -338,16 +342,16 @@ open class TaskCategoriesAPI {
      - Partially updates the specified task category.
      - parameter taskCategoryId: (path)  
      - parameter tenantId: (query)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchTaskCategoryAsyncWithRequestBuilder(taskCategoryId: UUID, tenantId: UUID, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchTaskCategoryAsyncWithRequestBuilder(taskCategoryId: UUID, tenantId: UUID, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/ProjectsService/TaskCategories/{taskCategoryId}"
         let taskCategoryIdPreEscape = "\(APIHelper.mapValueToPathItem(taskCategoryId))"
         let taskCategoryIdPostEscape = taskCategoryIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{taskCategoryId}", with: taskCategoryIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

@@ -305,12 +305,13 @@ open class SeawayBillsAPI {
      - parameter billId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter waybillLineDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getSeawayBillLinesAsync(tenantId: UUID, billId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: WaybillLineDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getSeawayBillLinesAsyncWithRequestBuilder(tenantId: tenantId, billId: billId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getSeawayBillLinesAsync(tenantId: UUID, billId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, waybillLineDtoCollectionQueryParameters: WaybillLineDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: WaybillLineDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getSeawayBillLinesAsyncWithRequestBuilder(tenantId: tenantId, billId: billId, apiVersion: apiVersion, xApiVersion: xApiVersion, waybillLineDtoCollectionQueryParameters: waybillLineDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -328,15 +329,16 @@ open class SeawayBillsAPI {
      - parameter billId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter waybillLineDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<WaybillLineDtoListEnvelope> 
      */
-    open class func getSeawayBillLinesAsyncWithRequestBuilder(tenantId: UUID, billId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<WaybillLineDtoListEnvelope> {
+    open class func getSeawayBillLinesAsyncWithRequestBuilder(tenantId: UUID, billId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, waybillLineDtoCollectionQueryParameters: WaybillLineDtoCollectionQueryParameters? = nil) -> RequestBuilder<WaybillLineDtoListEnvelope> {
         var localVariablePath = "/api/v2/LogisticsService/SeawayBills/{billId}/Lines"
         let billIdPreEscape = "\(APIHelper.mapValueToPathItem(billId))"
         let billIdPostEscape = billIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{billId}", with: billIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: waybillLineDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -345,6 +347,7 @@ open class SeawayBillsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -362,12 +365,13 @@ open class SeawayBillsAPI {
      - parameter billId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter waybillLineDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getSeawayBillLinesCountAsync(tenantId: UUID, billId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getSeawayBillLinesCountAsyncWithRequestBuilder(tenantId: tenantId, billId: billId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getSeawayBillLinesCountAsync(tenantId: UUID, billId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, waybillLineDtoCollectionQueryParameters: WaybillLineDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getSeawayBillLinesCountAsyncWithRequestBuilder(tenantId: tenantId, billId: billId, apiVersion: apiVersion, xApiVersion: xApiVersion, waybillLineDtoCollectionQueryParameters: waybillLineDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -385,15 +389,16 @@ open class SeawayBillsAPI {
      - parameter billId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter waybillLineDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getSeawayBillLinesCountAsyncWithRequestBuilder(tenantId: UUID, billId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getSeawayBillLinesCountAsyncWithRequestBuilder(tenantId: UUID, billId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, waybillLineDtoCollectionQueryParameters: WaybillLineDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/LogisticsService/SeawayBills/{billId}/Lines/Count"
         let billIdPreEscape = "\(APIHelper.mapValueToPathItem(billId))"
         let billIdPostEscape = billIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{billId}", with: billIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: waybillLineDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -402,6 +407,7 @@ open class SeawayBillsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -418,12 +424,13 @@ open class SeawayBillsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter seawayBillDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getSeawayBillsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SeawayBillDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getSeawayBillsAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getSeawayBillsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, seawayBillDtoCollectionQueryParameters: SeawayBillDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SeawayBillDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getSeawayBillsAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, seawayBillDtoCollectionQueryParameters: seawayBillDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -440,12 +447,13 @@ open class SeawayBillsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter seawayBillDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<SeawayBillDtoListEnvelope> 
      */
-    open class func getSeawayBillsAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SeawayBillDtoListEnvelope> {
+    open class func getSeawayBillsAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, seawayBillDtoCollectionQueryParameters: SeawayBillDtoCollectionQueryParameters? = nil) -> RequestBuilder<SeawayBillDtoListEnvelope> {
         let localVariablePath = "/api/v2/LogisticsService/SeawayBills"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: seawayBillDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -454,6 +462,7 @@ open class SeawayBillsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -470,12 +479,13 @@ open class SeawayBillsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter seawayBillDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getSeawayBillsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getSeawayBillsCountAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getSeawayBillsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, seawayBillDtoCollectionQueryParameters: SeawayBillDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getSeawayBillsCountAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, seawayBillDtoCollectionQueryParameters: seawayBillDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -492,12 +502,13 @@ open class SeawayBillsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter seawayBillDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getSeawayBillsCountAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getSeawayBillsCountAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, seawayBillDtoCollectionQueryParameters: SeawayBillDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/LogisticsService/SeawayBills/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: seawayBillDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -506,6 +517,7 @@ open class SeawayBillsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -694,13 +706,13 @@ open class SeawayBillsAPI {
      - parameter billId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchSeawayBillAsync(tenantId: UUID, billId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchSeawayBillAsyncWithRequestBuilder(tenantId: tenantId, billId: billId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchSeawayBillAsync(tenantId: UUID, billId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchSeawayBillAsyncWithRequestBuilder(tenantId: tenantId, billId: billId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -718,16 +730,16 @@ open class SeawayBillsAPI {
      - parameter billId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchSeawayBillAsyncWithRequestBuilder(tenantId: UUID, billId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchSeawayBillAsyncWithRequestBuilder(tenantId: UUID, billId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/LogisticsService/SeawayBills/{billId}"
         let billIdPreEscape = "\(APIHelper.mapValueToPathItem(billId))"
         let billIdPostEscape = billIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{billId}", with: billIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -755,13 +767,13 @@ open class SeawayBillsAPI {
      - parameter lineId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchSeawayBillLineAsync(tenantId: UUID, billId: UUID, lineId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchSeawayBillLineAsyncWithRequestBuilder(tenantId: tenantId, billId: billId, lineId: lineId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchSeawayBillLineAsync(tenantId: UUID, billId: UUID, lineId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchSeawayBillLineAsyncWithRequestBuilder(tenantId: tenantId, billId: billId, lineId: lineId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -780,10 +792,10 @@ open class SeawayBillsAPI {
      - parameter lineId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchSeawayBillLineAsyncWithRequestBuilder(tenantId: UUID, billId: UUID, lineId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchSeawayBillLineAsyncWithRequestBuilder(tenantId: UUID, billId: UUID, lineId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/LogisticsService/SeawayBills/{billId}/Lines/{lineId}"
         let billIdPreEscape = "\(APIHelper.mapValueToPathItem(billId))"
         let billIdPostEscape = billIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -792,7 +804,7 @@ open class SeawayBillsAPI {
         let lineIdPostEscape = lineIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{lineId}", with: lineIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

@@ -25,6 +25,7 @@ public struct JournalEntryDto: Codable, JSONEncodable, Hashable {
         case voided = "Voided"
     }
     public var id: String?
+    public var timestamp: Date?
     public var tenantId: String?
     public var enrollmentId: String?
     public var journalId: String?
@@ -45,7 +46,6 @@ public struct JournalEntryDto: Codable, JSONEncodable, Hashable {
     public var postedBy: String?
     public var forexRate: Double?
     public var forexRatesSnapshot: String?
-    public var timestamp: Date?
     public var debitInUsd: Double?
     public var creditInUsd: Double?
     public var accountingEntries: [AccountingEntryDto]?
@@ -53,9 +53,12 @@ public struct JournalEntryDto: Codable, JSONEncodable, Hashable {
     public var totalCredit: Double?
     public var totalDebitAmount: Money?
     public var totalCreditAmount: Money?
+    public var debitInUsdAmount: Money?
+    public var creditInUsdAmount: Money?
 
-    public init(id: String? = nil, tenantId: String? = nil, enrollmentId: String? = nil, journalId: String? = nil, journalName: String? = nil, journalCode: String? = nil, fiscalPeriodId: String? = nil, financialBookId: String? = nil, description: String? = nil, entryType: EntryType? = nil, status: Status? = nil, postingDate: Date? = nil, isOpeningBalance: Bool? = nil, transactionCurrencyId: String? = nil, sourceDocumentType: String? = nil, sourceDocumentId: String? = nil, idempotencyKey: String? = nil, reversalOfJournalEntryId: String? = nil, postedBy: String? = nil, forexRate: Double? = nil, forexRatesSnapshot: String? = nil, timestamp: Date? = nil, debitInUsd: Double? = nil, creditInUsd: Double? = nil, accountingEntries: [AccountingEntryDto]? = nil, totalDebit: Double? = nil, totalCredit: Double? = nil, totalDebitAmount: Money? = nil, totalCreditAmount: Money? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, tenantId: String? = nil, enrollmentId: String? = nil, journalId: String? = nil, journalName: String? = nil, journalCode: String? = nil, fiscalPeriodId: String? = nil, financialBookId: String? = nil, description: String? = nil, entryType: EntryType? = nil, status: Status? = nil, postingDate: Date? = nil, isOpeningBalance: Bool? = nil, transactionCurrencyId: String? = nil, sourceDocumentType: String? = nil, sourceDocumentId: String? = nil, idempotencyKey: String? = nil, reversalOfJournalEntryId: String? = nil, postedBy: String? = nil, forexRate: Double? = nil, forexRatesSnapshot: String? = nil, debitInUsd: Double? = nil, creditInUsd: Double? = nil, accountingEntries: [AccountingEntryDto]? = nil, totalDebit: Double? = nil, totalCredit: Double? = nil, totalDebitAmount: Money? = nil, totalCreditAmount: Money? = nil, debitInUsdAmount: Money? = nil, creditInUsdAmount: Money? = nil) {
         self.id = id
+        self.timestamp = timestamp
         self.tenantId = tenantId
         self.enrollmentId = enrollmentId
         self.journalId = journalId
@@ -76,7 +79,6 @@ public struct JournalEntryDto: Codable, JSONEncodable, Hashable {
         self.postedBy = postedBy
         self.forexRate = forexRate
         self.forexRatesSnapshot = forexRatesSnapshot
-        self.timestamp = timestamp
         self.debitInUsd = debitInUsd
         self.creditInUsd = creditInUsd
         self.accountingEntries = accountingEntries
@@ -84,10 +86,13 @@ public struct JournalEntryDto: Codable, JSONEncodable, Hashable {
         self.totalCredit = totalCredit
         self.totalDebitAmount = totalDebitAmount
         self.totalCreditAmount = totalCreditAmount
+        self.debitInUsdAmount = debitInUsdAmount
+        self.creditInUsdAmount = creditInUsdAmount
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
+        case timestamp
         case tenantId
         case enrollmentId
         case journalId
@@ -108,7 +113,6 @@ public struct JournalEntryDto: Codable, JSONEncodable, Hashable {
         case postedBy
         case forexRate
         case forexRatesSnapshot
-        case timestamp
         case debitInUsd
         case creditInUsd
         case accountingEntries
@@ -116,6 +120,8 @@ public struct JournalEntryDto: Codable, JSONEncodable, Hashable {
         case totalCredit
         case totalDebitAmount
         case totalCreditAmount
+        case debitInUsdAmount
+        case creditInUsdAmount
     }
 
     // Encodable protocol methods
@@ -123,6 +129,7 @@ public struct JournalEntryDto: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
+        try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(journalId, forKey: .journalId)
@@ -143,7 +150,6 @@ public struct JournalEntryDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(postedBy, forKey: .postedBy)
         try container.encodeIfPresent(forexRate, forKey: .forexRate)
         try container.encodeIfPresent(forexRatesSnapshot, forKey: .forexRatesSnapshot)
-        try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(debitInUsd, forKey: .debitInUsd)
         try container.encodeIfPresent(creditInUsd, forKey: .creditInUsd)
         try container.encodeIfPresent(accountingEntries, forKey: .accountingEntries)
@@ -151,6 +157,8 @@ public struct JournalEntryDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(totalCredit, forKey: .totalCredit)
         try container.encodeIfPresent(totalDebitAmount, forKey: .totalDebitAmount)
         try container.encodeIfPresent(totalCreditAmount, forKey: .totalCreditAmount)
+        try container.encodeIfPresent(debitInUsdAmount, forKey: .debitInUsdAmount)
+        try container.encodeIfPresent(creditInUsdAmount, forKey: .creditInUsdAmount)
     }
 }
 

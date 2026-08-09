@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 # **getProvidersAsync**
 ```swift
-    open class func getProvidersAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: TrustSigningProviderDescriptorDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getProvidersAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, trustSigningProviderDescriptorDtoCollectionQueryParameters: TrustSigningProviderDescriptorDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: TrustSigningProviderDescriptorDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 List signing providers
@@ -26,9 +26,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let trustSigningProviderDescriptorDtoCollectionQueryParameters = TrustSigningProviderDescriptorDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // TrustSigningProviderDescriptorDtoCollectionQueryParameters |  (optional)
 
 // List signing providers
-SigningEngineAPI.getProvidersAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SigningEngineAPI.getProvidersAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, trustSigningProviderDescriptorDtoCollectionQueryParameters: trustSigningProviderDescriptorDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -47,6 +48,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **trustSigningProviderDescriptorDtoCollectionQueryParameters** | [**TrustSigningProviderDescriptorDtoCollectionQueryParameters**](TrustSigningProviderDescriptorDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -58,14 +60,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getProvidersCountAsync**
 ```swift
-    open class func getProvidersCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getProvidersCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, trustSigningProviderDescriptorDtoCollectionQueryParameters: TrustSigningProviderDescriptorDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count signing providers
@@ -80,9 +82,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let trustSigningProviderDescriptorDtoCollectionQueryParameters = TrustSigningProviderDescriptorDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // TrustSigningProviderDescriptorDtoCollectionQueryParameters |  (optional)
 
 // Count signing providers
-SigningEngineAPI.getProvidersCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SigningEngineAPI.getProvidersCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, trustSigningProviderDescriptorDtoCollectionQueryParameters: trustSigningProviderDescriptorDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -101,6 +104,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **trustSigningProviderDescriptorDtoCollectionQueryParameters** | [**TrustSigningProviderDescriptorDtoCollectionQueryParameters**](TrustSigningProviderDescriptorDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -112,7 +116,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

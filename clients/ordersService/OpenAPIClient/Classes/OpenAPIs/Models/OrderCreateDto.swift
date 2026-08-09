@@ -52,6 +52,7 @@ public struct OrderCreateDto: Codable, JSONEncodable, Hashable {
     public var individualId: String?
     public var paymentTermId: String?
     public var organizationId: String?
+    public var receiverTenantId: String?
     public var firstName: String?
     public var lastName: String?
     public var companyName: String?
@@ -100,7 +101,6 @@ public struct OrderCreateDto: Codable, JSONEncodable, Hashable {
     public var orderStatus: OrderStatus?
     public var quoteStatus: QuoteStatus?
     public var freightTerms: FreightTerms?
-    public var receiverTenantId: String?
     public var shippingLocationId: String?
     public var qualifiedIdentifier: String?
     public var totalTaxesInUsd: Double?
@@ -113,7 +113,7 @@ public struct OrderCreateDto: Codable, JSONEncodable, Hashable {
     public var effectiveFrom: Date?
     public var orderLines: [OrderLineCreateDto]?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, closed: Bool? = nil, title: String? = nil, priceListId: String? = nil, description: String? = nil, individualId: String? = nil, paymentTermId: String? = nil, organizationId: String? = nil, firstName: String? = nil, lastName: String? = nil, companyName: String? = nil, billingEmail: String? = nil, addressLine1: String? = nil, addressLine2: String? = nil, postalCode: String? = nil, countryId: String? = nil, stateId: String? = nil, cityId: String? = nil, forexRate: Double? = nil, currencyId: String? = nil, totalDetail: Double? = nil, totalDetailCurrencyId: String? = nil, totalProfit: Double? = nil, totalProfitCurrencyId: String? = nil, totalDiscounts: Double? = nil, totalDiscountsCurrencyId: String? = nil, totalSurcharges: Double? = nil, totalSurchargesCurrencyId: String? = nil, totalShippingCost: Double? = nil, totalShippingCostCurrencyId: String? = nil, totalShippingTax: Double? = nil, totalShippingTaxCurrencyId: String? = nil, totalWithheldTax: Double? = nil, totalWithheldTaxCurrencyId: String? = nil, totalTaxBase: Double? = nil, totalTaxBaseCurrencyId: String? = nil, totalTaxes: Double? = nil, totalTaxesCurrencyId: String? = nil, totalGlobalSurcharges: Double? = nil, totalGlobalSurchargesCurrencyId: String? = nil, totalGlobalDiscounts: Double? = nil, totalGlobalDiscountsCurrencyId: String? = nil, total: Double? = nil, totalCurrencyId: String? = nil, costCalculationMethod: CostCalculationMethod? = nil, taxCalculationMethod: TaxCalculationMethod? = nil, cartId: String? = nil, quoteId: String? = nil, walletId: String? = nil, parentOrderId: String? = nil, shippingMethodId: String? = nil, billingLocationId: String? = nil, customerNotes: String? = nil, orderStatus: OrderStatus? = nil, quoteStatus: QuoteStatus? = nil, freightTerms: FreightTerms? = nil, receiverTenantId: String? = nil, shippingLocationId: String? = nil, qualifiedIdentifier: String? = nil, totalTaxesInUsd: Double? = nil, totalDiscountsInUsd: Double? = nil, totalSurchargesInUsd: Double? = nil, totalShippingCostInUsd: Double? = nil, totalShippingTaxInUsd: Double? = nil, totalAmountInUsd: Double? = nil, effectiveTo: Date? = nil, effectiveFrom: Date? = nil, orderLines: [OrderLineCreateDto]? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, closed: Bool? = nil, title: String? = nil, priceListId: String? = nil, description: String? = nil, individualId: String? = nil, paymentTermId: String? = nil, organizationId: String? = nil, receiverTenantId: String? = nil, firstName: String? = nil, lastName: String? = nil, companyName: String? = nil, billingEmail: String? = nil, addressLine1: String? = nil, addressLine2: String? = nil, postalCode: String? = nil, countryId: String? = nil, stateId: String? = nil, cityId: String? = nil, forexRate: Double? = nil, currencyId: String? = nil, totalDetail: Double? = nil, totalDetailCurrencyId: String? = nil, totalProfit: Double? = nil, totalProfitCurrencyId: String? = nil, totalDiscounts: Double? = nil, totalDiscountsCurrencyId: String? = nil, totalSurcharges: Double? = nil, totalSurchargesCurrencyId: String? = nil, totalShippingCost: Double? = nil, totalShippingCostCurrencyId: String? = nil, totalShippingTax: Double? = nil, totalShippingTaxCurrencyId: String? = nil, totalWithheldTax: Double? = nil, totalWithheldTaxCurrencyId: String? = nil, totalTaxBase: Double? = nil, totalTaxBaseCurrencyId: String? = nil, totalTaxes: Double? = nil, totalTaxesCurrencyId: String? = nil, totalGlobalSurcharges: Double? = nil, totalGlobalSurchargesCurrencyId: String? = nil, totalGlobalDiscounts: Double? = nil, totalGlobalDiscountsCurrencyId: String? = nil, total: Double? = nil, totalCurrencyId: String? = nil, costCalculationMethod: CostCalculationMethod? = nil, taxCalculationMethod: TaxCalculationMethod? = nil, cartId: String? = nil, quoteId: String? = nil, walletId: String? = nil, parentOrderId: String? = nil, shippingMethodId: String? = nil, billingLocationId: String? = nil, customerNotes: String? = nil, orderStatus: OrderStatus? = nil, quoteStatus: QuoteStatus? = nil, freightTerms: FreightTerms? = nil, shippingLocationId: String? = nil, qualifiedIdentifier: String? = nil, totalTaxesInUsd: Double? = nil, totalDiscountsInUsd: Double? = nil, totalSurchargesInUsd: Double? = nil, totalShippingCostInUsd: Double? = nil, totalShippingTaxInUsd: Double? = nil, totalAmountInUsd: Double? = nil, effectiveTo: Date? = nil, effectiveFrom: Date? = nil, orderLines: [OrderLineCreateDto]? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.closed = closed
@@ -123,6 +123,7 @@ public struct OrderCreateDto: Codable, JSONEncodable, Hashable {
         self.individualId = individualId
         self.paymentTermId = paymentTermId
         self.organizationId = organizationId
+        self.receiverTenantId = receiverTenantId
         self.firstName = firstName
         self.lastName = lastName
         self.companyName = companyName
@@ -171,7 +172,6 @@ public struct OrderCreateDto: Codable, JSONEncodable, Hashable {
         self.orderStatus = orderStatus
         self.quoteStatus = quoteStatus
         self.freightTerms = freightTerms
-        self.receiverTenantId = receiverTenantId
         self.shippingLocationId = shippingLocationId
         self.qualifiedIdentifier = qualifiedIdentifier
         self.totalTaxesInUsd = totalTaxesInUsd
@@ -195,6 +195,7 @@ public struct OrderCreateDto: Codable, JSONEncodable, Hashable {
         case individualId
         case paymentTermId
         case organizationId
+        case receiverTenantId
         case firstName
         case lastName
         case companyName
@@ -243,7 +244,6 @@ public struct OrderCreateDto: Codable, JSONEncodable, Hashable {
         case orderStatus
         case quoteStatus
         case freightTerms
-        case receiverTenantId
         case shippingLocationId
         case qualifiedIdentifier
         case totalTaxesInUsd
@@ -270,6 +270,7 @@ public struct OrderCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(individualId, forKey: .individualId)
         try container.encodeIfPresent(paymentTermId, forKey: .paymentTermId)
         try container.encodeIfPresent(organizationId, forKey: .organizationId)
+        try container.encodeIfPresent(receiverTenantId, forKey: .receiverTenantId)
         try container.encodeIfPresent(firstName, forKey: .firstName)
         try container.encodeIfPresent(lastName, forKey: .lastName)
         try container.encodeIfPresent(companyName, forKey: .companyName)
@@ -318,7 +319,6 @@ public struct OrderCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(orderStatus, forKey: .orderStatus)
         try container.encodeIfPresent(quoteStatus, forKey: .quoteStatus)
         try container.encodeIfPresent(freightTerms, forKey: .freightTerms)
-        try container.encodeIfPresent(receiverTenantId, forKey: .receiverTenantId)
         try container.encodeIfPresent(shippingLocationId, forKey: .shippingLocationId)
         try container.encodeIfPresent(qualifiedIdentifier, forKey: .qualifiedIdentifier)
         try container.encodeIfPresent(totalTaxesInUsd, forKey: .totalTaxesInUsd)

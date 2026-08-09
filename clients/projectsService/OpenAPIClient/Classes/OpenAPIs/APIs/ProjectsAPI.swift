@@ -444,12 +444,13 @@ open class ProjectsAPI {
      
      - parameter projectId: (path)  
      - parameter tenantId: (query)  
+     - parameter taskCategoryDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getProjectTaskCategoriesAsync(projectId: UUID, tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TaskCategoryDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getProjectTaskCategoriesAsyncWithRequestBuilder(projectId: projectId, tenantId: tenantId).execute(apiResponseQueue) { result in
+    open class func getProjectTaskCategoriesAsync(projectId: UUID, tenantId: UUID, taskCategoryDtoCollectionQueryParameters: TaskCategoryDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TaskCategoryDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getProjectTaskCategoriesAsyncWithRequestBuilder(projectId: projectId, tenantId: tenantId, taskCategoryDtoCollectionQueryParameters: taskCategoryDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -465,15 +466,16 @@ open class ProjectsAPI {
      - Gets all task categories for a specific project with OData support.
      - parameter projectId: (path)  
      - parameter tenantId: (query)  
+     - parameter taskCategoryDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<TaskCategoryDtoListEnvelope> 
      */
-    open class func getProjectTaskCategoriesAsyncWithRequestBuilder(projectId: UUID, tenantId: UUID) -> RequestBuilder<TaskCategoryDtoListEnvelope> {
+    open class func getProjectTaskCategoriesAsyncWithRequestBuilder(projectId: UUID, tenantId: UUID, taskCategoryDtoCollectionQueryParameters: TaskCategoryDtoCollectionQueryParameters? = nil) -> RequestBuilder<TaskCategoryDtoListEnvelope> {
         var localVariablePath = "/api/v2/ProjectsService/Projects/{projectId}/TaskCategories"
         let projectIdPreEscape = "\(APIHelper.mapValueToPathItem(projectId))"
         let projectIdPostEscape = projectIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{projectId}", with: projectIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: taskCategoryDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -481,7 +483,7 @@ open class ProjectsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -496,12 +498,13 @@ open class ProjectsAPI {
      
      - parameter projectId: (path)  
      - parameter tenantId: (query)  
+     - parameter taskCategoryDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getProjectTaskCategoriesCountAsync(projectId: UUID, tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getProjectTaskCategoriesCountAsyncWithRequestBuilder(projectId: projectId, tenantId: tenantId).execute(apiResponseQueue) { result in
+    open class func getProjectTaskCategoriesCountAsync(projectId: UUID, tenantId: UUID, taskCategoryDtoCollectionQueryParameters: TaskCategoryDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getProjectTaskCategoriesCountAsyncWithRequestBuilder(projectId: projectId, tenantId: tenantId, taskCategoryDtoCollectionQueryParameters: taskCategoryDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -517,15 +520,16 @@ open class ProjectsAPI {
      - Gets the count of task categories for a specific project.
      - parameter projectId: (path)  
      - parameter tenantId: (query)  
+     - parameter taskCategoryDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getProjectTaskCategoriesCountAsyncWithRequestBuilder(projectId: UUID, tenantId: UUID) -> RequestBuilder<Int32Envelope> {
+    open class func getProjectTaskCategoriesCountAsyncWithRequestBuilder(projectId: UUID, tenantId: UUID, taskCategoryDtoCollectionQueryParameters: TaskCategoryDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/ProjectsService/Projects/{projectId}/TaskCategories/Count"
         let projectIdPreEscape = "\(APIHelper.mapValueToPathItem(projectId))"
         let projectIdPostEscape = projectIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{projectId}", with: projectIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: taskCategoryDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -533,7 +537,7 @@ open class ProjectsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -548,12 +552,13 @@ open class ProjectsAPI {
      
      - parameter projectId: (path)  
      - parameter tenantId: (query)  
+     - parameter projectTimeLogDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getProjectTimeLogsCountAsync(projectId: UUID, tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getProjectTimeLogsCountAsyncWithRequestBuilder(projectId: projectId, tenantId: tenantId).execute(apiResponseQueue) { result in
+    open class func getProjectTimeLogsCountAsync(projectId: UUID, tenantId: UUID, projectTimeLogDtoCollectionQueryParameters: ProjectTimeLogDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getProjectTimeLogsCountAsyncWithRequestBuilder(projectId: projectId, tenantId: tenantId, projectTimeLogDtoCollectionQueryParameters: projectTimeLogDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -569,15 +574,16 @@ open class ProjectsAPI {
      - Gets the count of time log entries for a specific project.
      - parameter projectId: (path)  
      - parameter tenantId: (query)  
+     - parameter projectTimeLogDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getProjectTimeLogsCountAsyncWithRequestBuilder(projectId: UUID, tenantId: UUID) -> RequestBuilder<Int32Envelope> {
+    open class func getProjectTimeLogsCountAsyncWithRequestBuilder(projectId: UUID, tenantId: UUID, projectTimeLogDtoCollectionQueryParameters: ProjectTimeLogDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/ProjectsService/Projects/{projectId}/TimeLogs/Count"
         let projectIdPreEscape = "\(APIHelper.mapValueToPathItem(projectId))"
         let projectIdPostEscape = projectIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{projectId}", with: projectIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: projectTimeLogDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -585,7 +591,7 @@ open class ProjectsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -599,12 +605,13 @@ open class ProjectsAPI {
      Retrieves all projects
      
      - parameter tenantId: (query)  
+     - parameter projectDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getProjectsByTenantIdAsync(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ProjectDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getProjectsByTenantIdAsyncWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+    open class func getProjectsByTenantIdAsync(tenantId: UUID, projectDtoCollectionQueryParameters: ProjectDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ProjectDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getProjectsByTenantIdAsyncWithRequestBuilder(tenantId: tenantId, projectDtoCollectionQueryParameters: projectDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -619,12 +626,13 @@ open class ProjectsAPI {
      - GET /api/v2/ProjectsService/Projects
      - Gets all projects for the current tenant with OData support.
      - parameter tenantId: (query)  
+     - parameter projectDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<ProjectDtoListEnvelope> 
      */
-    open class func getProjectsByTenantIdAsyncWithRequestBuilder(tenantId: UUID) -> RequestBuilder<ProjectDtoListEnvelope> {
+    open class func getProjectsByTenantIdAsyncWithRequestBuilder(tenantId: UUID, projectDtoCollectionQueryParameters: ProjectDtoCollectionQueryParameters? = nil) -> RequestBuilder<ProjectDtoListEnvelope> {
         let localVariablePath = "/api/v2/ProjectsService/Projects"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: projectDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -632,7 +640,7 @@ open class ProjectsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -646,12 +654,13 @@ open class ProjectsAPI {
      Counts projects
      
      - parameter tenantId: (query)  
+     - parameter projectDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getProjectsCountByTenantIdAsync(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getProjectsCountByTenantIdAsyncWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+    open class func getProjectsCountByTenantIdAsync(tenantId: UUID, projectDtoCollectionQueryParameters: ProjectDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getProjectsCountByTenantIdAsyncWithRequestBuilder(tenantId: tenantId, projectDtoCollectionQueryParameters: projectDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -666,12 +675,13 @@ open class ProjectsAPI {
      - GET /api/v2/ProjectsService/Projects/Count
      - Gets the count of projects for the current tenant.
      - parameter tenantId: (query)  
+     - parameter projectDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getProjectsCountByTenantIdAsyncWithRequestBuilder(tenantId: UUID) -> RequestBuilder<Int32Envelope> {
+    open class func getProjectsCountByTenantIdAsyncWithRequestBuilder(tenantId: UUID, projectDtoCollectionQueryParameters: ProjectDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/ProjectsService/Projects/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: projectDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -679,7 +689,7 @@ open class ProjectsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -694,12 +704,13 @@ open class ProjectsAPI {
      
      - parameter projectId: (path)  
      - parameter tenantId: (query)  
+     - parameter projectTaskDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getTasksForProjectAsync(projectId: UUID, tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ProjectTaskDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getTasksForProjectAsyncWithRequestBuilder(projectId: projectId, tenantId: tenantId).execute(apiResponseQueue) { result in
+    open class func getTasksForProjectAsync(projectId: UUID, tenantId: UUID, projectTaskDtoCollectionQueryParameters: ProjectTaskDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ProjectTaskDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getTasksForProjectAsyncWithRequestBuilder(projectId: projectId, tenantId: tenantId, projectTaskDtoCollectionQueryParameters: projectTaskDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -715,15 +726,16 @@ open class ProjectsAPI {
      - Gets all tasks for a specific project with OData support.
      - parameter projectId: (path)  
      - parameter tenantId: (query)  
+     - parameter projectTaskDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<ProjectTaskDtoListEnvelope> 
      */
-    open class func getTasksForProjectAsyncWithRequestBuilder(projectId: UUID, tenantId: UUID) -> RequestBuilder<ProjectTaskDtoListEnvelope> {
+    open class func getTasksForProjectAsyncWithRequestBuilder(projectId: UUID, tenantId: UUID, projectTaskDtoCollectionQueryParameters: ProjectTaskDtoCollectionQueryParameters? = nil) -> RequestBuilder<ProjectTaskDtoListEnvelope> {
         var localVariablePath = "/api/v2/ProjectsService/Projects/{projectId}/Tasks"
         let projectIdPreEscape = "\(APIHelper.mapValueToPathItem(projectId))"
         let projectIdPostEscape = projectIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{projectId}", with: projectIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: projectTaskDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -731,7 +743,7 @@ open class ProjectsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -746,12 +758,13 @@ open class ProjectsAPI {
      
      - parameter projectId: (path)  
      - parameter tenantId: (query)  
+     - parameter projectTaskDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getTasksForProjectCountAsync(projectId: UUID, tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getTasksForProjectCountAsyncWithRequestBuilder(projectId: projectId, tenantId: tenantId).execute(apiResponseQueue) { result in
+    open class func getTasksForProjectCountAsync(projectId: UUID, tenantId: UUID, projectTaskDtoCollectionQueryParameters: ProjectTaskDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getTasksForProjectCountAsyncWithRequestBuilder(projectId: projectId, tenantId: tenantId, projectTaskDtoCollectionQueryParameters: projectTaskDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -767,15 +780,16 @@ open class ProjectsAPI {
      - Gets the count of tasks for a specific project.
      - parameter projectId: (path)  
      - parameter tenantId: (query)  
+     - parameter projectTaskDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getTasksForProjectCountAsyncWithRequestBuilder(projectId: UUID, tenantId: UUID) -> RequestBuilder<Int32Envelope> {
+    open class func getTasksForProjectCountAsyncWithRequestBuilder(projectId: UUID, tenantId: UUID, projectTaskDtoCollectionQueryParameters: ProjectTaskDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/ProjectsService/Projects/{projectId}/Tasks/Count"
         let projectIdPreEscape = "\(APIHelper.mapValueToPathItem(projectId))"
         let projectIdPostEscape = projectIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{projectId}", with: projectIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: projectTaskDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -783,7 +797,7 @@ open class ProjectsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -798,12 +812,13 @@ open class ProjectsAPI {
      
      - parameter projectId: (path)  
      - parameter tenantId: (query)  
+     - parameter projectTimeLogDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getTimeLogsForProjectAsync(projectId: UUID, tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ProjectTimeLogDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getTimeLogsForProjectAsyncWithRequestBuilder(projectId: projectId, tenantId: tenantId).execute(apiResponseQueue) { result in
+    open class func getTimeLogsForProjectAsync(projectId: UUID, tenantId: UUID, projectTimeLogDtoCollectionQueryParameters: ProjectTimeLogDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ProjectTimeLogDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getTimeLogsForProjectAsyncWithRequestBuilder(projectId: projectId, tenantId: tenantId, projectTimeLogDtoCollectionQueryParameters: projectTimeLogDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -819,15 +834,16 @@ open class ProjectsAPI {
      - Gets all time log entries for a specific project with OData support.
      - parameter projectId: (path)  
      - parameter tenantId: (query)  
+     - parameter projectTimeLogDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<ProjectTimeLogDtoListEnvelope> 
      */
-    open class func getTimeLogsForProjectAsyncWithRequestBuilder(projectId: UUID, tenantId: UUID) -> RequestBuilder<ProjectTimeLogDtoListEnvelope> {
+    open class func getTimeLogsForProjectAsyncWithRequestBuilder(projectId: UUID, tenantId: UUID, projectTimeLogDtoCollectionQueryParameters: ProjectTimeLogDtoCollectionQueryParameters? = nil) -> RequestBuilder<ProjectTimeLogDtoListEnvelope> {
         var localVariablePath = "/api/v2/ProjectsService/Projects/{projectId}/TimeLogs"
         let projectIdPreEscape = "\(APIHelper.mapValueToPathItem(projectId))"
         let projectIdPostEscape = projectIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{projectId}", with: projectIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: projectTimeLogDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -835,7 +851,7 @@ open class ProjectsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -850,13 +866,13 @@ open class ProjectsAPI {
      
      - parameter projectId: (path)  
      - parameter tenantId: (query)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchProjectAsync(projectId: UUID, tenantId: UUID, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchProjectAsyncWithRequestBuilder(projectId: projectId, tenantId: tenantId, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchProjectAsync(projectId: UUID, tenantId: UUID, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchProjectAsyncWithRequestBuilder(projectId: projectId, tenantId: tenantId, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -872,16 +888,16 @@ open class ProjectsAPI {
      - Partially updates the specified project.
      - parameter projectId: (path)  
      - parameter tenantId: (query)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchProjectAsyncWithRequestBuilder(projectId: UUID, tenantId: UUID, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchProjectAsyncWithRequestBuilder(projectId: UUID, tenantId: UUID, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/ProjectsService/Projects/{projectId}"
         let projectIdPreEscape = "\(APIHelper.mapValueToPathItem(projectId))"
         let projectIdPostEscape = projectIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{projectId}", with: projectIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -905,13 +921,13 @@ open class ProjectsAPI {
      - parameter projectId: (path)  
      - parameter projectPeriodId: (path)  
      - parameter tenantId: (query)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchProjectPeriodAsync(projectId: UUID, projectPeriodId: UUID, tenantId: UUID, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchProjectPeriodAsyncWithRequestBuilder(projectId: projectId, projectPeriodId: projectPeriodId, tenantId: tenantId, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchProjectPeriodAsync(projectId: UUID, projectPeriodId: UUID, tenantId: UUID, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchProjectPeriodAsyncWithRequestBuilder(projectId: projectId, projectPeriodId: projectPeriodId, tenantId: tenantId, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -928,10 +944,10 @@ open class ProjectsAPI {
      - parameter projectId: (path)  
      - parameter projectPeriodId: (path)  
      - parameter tenantId: (query)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchProjectPeriodAsyncWithRequestBuilder(projectId: UUID, projectPeriodId: UUID, tenantId: UUID, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchProjectPeriodAsyncWithRequestBuilder(projectId: UUID, projectPeriodId: UUID, tenantId: UUID, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/ProjectsService/Projects/{projectId}/Periods/{projectPeriodId}"
         let projectIdPreEscape = "\(APIHelper.mapValueToPathItem(projectId))"
         let projectIdPostEscape = projectIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -940,7 +956,7 @@ open class ProjectsAPI {
         let projectPeriodIdPostEscape = projectPeriodIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{projectPeriodId}", with: projectPeriodIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -964,13 +980,13 @@ open class ProjectsAPI {
      - parameter projectId: (path)  
      - parameter projectTaskId: (path)  
      - parameter tenantId: (query)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchTaskForProjectAsync(projectId: UUID, projectTaskId: UUID, tenantId: UUID, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchTaskForProjectAsyncWithRequestBuilder(projectId: projectId, projectTaskId: projectTaskId, tenantId: tenantId, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchTaskForProjectAsync(projectId: UUID, projectTaskId: UUID, tenantId: UUID, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchTaskForProjectAsyncWithRequestBuilder(projectId: projectId, projectTaskId: projectTaskId, tenantId: tenantId, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -987,10 +1003,10 @@ open class ProjectsAPI {
      - parameter projectId: (path)  
      - parameter projectTaskId: (path)  
      - parameter tenantId: (query)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchTaskForProjectAsyncWithRequestBuilder(projectId: UUID, projectTaskId: UUID, tenantId: UUID, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchTaskForProjectAsyncWithRequestBuilder(projectId: UUID, projectTaskId: UUID, tenantId: UUID, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/ProjectsService/Projects/{projectId}/Tasks/{projectTaskId}"
         let projectIdPreEscape = "\(APIHelper.mapValueToPathItem(projectId))"
         let projectIdPostEscape = projectIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -999,7 +1015,7 @@ open class ProjectsAPI {
         let projectTaskIdPostEscape = projectTaskIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{projectTaskId}", with: projectTaskIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

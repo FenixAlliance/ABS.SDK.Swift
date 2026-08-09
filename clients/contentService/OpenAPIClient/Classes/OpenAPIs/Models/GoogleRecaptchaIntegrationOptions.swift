@@ -17,13 +17,19 @@ public struct GoogleRecaptchaIntegrationOptions: Codable, JSONEncodable, Hashabl
     public var siteKey: String?
     public var secretKey: String?
     public var version: String?
+    public var projectId: String?
+    public var apiKey: String?
+    public var scoreThreshold: Double?
 
-    public init(enable: Bool? = nil, site: String? = nil, siteKey: String? = nil, secretKey: String? = nil, version: String? = nil) {
+    public init(enable: Bool? = nil, site: String? = nil, siteKey: String? = nil, secretKey: String? = nil, version: String? = nil, projectId: String? = nil, apiKey: String? = nil, scoreThreshold: Double? = nil) {
         self.enable = enable
         self.site = site
         self.siteKey = siteKey
         self.secretKey = secretKey
         self.version = version
+        self.projectId = projectId
+        self.apiKey = apiKey
+        self.scoreThreshold = scoreThreshold
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -32,6 +38,9 @@ public struct GoogleRecaptchaIntegrationOptions: Codable, JSONEncodable, Hashabl
         case siteKey
         case secretKey
         case version
+        case projectId
+        case apiKey
+        case scoreThreshold
     }
 
     // Encodable protocol methods
@@ -43,6 +52,9 @@ public struct GoogleRecaptchaIntegrationOptions: Codable, JSONEncodable, Hashabl
         try container.encodeIfPresent(siteKey, forKey: .siteKey)
         try container.encodeIfPresent(secretKey, forKey: .secretKey)
         try container.encodeIfPresent(version, forKey: .version)
+        try container.encodeIfPresent(projectId, forKey: .projectId)
+        try container.encodeIfPresent(apiKey, forKey: .apiKey)
+        try container.encodeIfPresent(scoreThreshold, forKey: .scoreThreshold)
     }
 }
 

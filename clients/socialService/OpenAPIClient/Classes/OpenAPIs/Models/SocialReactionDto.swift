@@ -22,6 +22,11 @@ public struct SocialReactionDto: Codable, JSONEncodable, Hashable {
         case wow = "Wow"
         case afraid = "Afraid"
     }
+    public enum SocialProfileType: String, Codable, CaseIterable {
+        case user = "User"
+        case tenant = "Tenant"
+        case contact = "Contact"
+    }
     public var id: String?
     public var timestamp: Date?
     public var reaction: Reaction?
@@ -29,8 +34,9 @@ public struct SocialReactionDto: Codable, JSONEncodable, Hashable {
     public var socialProfileId: String?
     public var socialProfileName: String?
     public var socialProfileAvatarUrl: String?
+    public var socialProfileType: SocialProfileType?
 
-    public init(id: String? = nil, timestamp: Date? = nil, reaction: Reaction? = nil, reactionValue: String? = nil, socialProfileId: String? = nil, socialProfileName: String? = nil, socialProfileAvatarUrl: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, reaction: Reaction? = nil, reactionValue: String? = nil, socialProfileId: String? = nil, socialProfileName: String? = nil, socialProfileAvatarUrl: String? = nil, socialProfileType: SocialProfileType? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.reaction = reaction
@@ -38,6 +44,7 @@ public struct SocialReactionDto: Codable, JSONEncodable, Hashable {
         self.socialProfileId = socialProfileId
         self.socialProfileName = socialProfileName
         self.socialProfileAvatarUrl = socialProfileAvatarUrl
+        self.socialProfileType = socialProfileType
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -48,6 +55,7 @@ public struct SocialReactionDto: Codable, JSONEncodable, Hashable {
         case socialProfileId
         case socialProfileName
         case socialProfileAvatarUrl
+        case socialProfileType
     }
 
     // Encodable protocol methods
@@ -61,6 +69,7 @@ public struct SocialReactionDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(socialProfileId, forKey: .socialProfileId)
         try container.encodeIfPresent(socialProfileName, forKey: .socialProfileName)
         try container.encodeIfPresent(socialProfileAvatarUrl, forKey: .socialProfileAvatarUrl)
+        try container.encodeIfPresent(socialProfileType, forKey: .socialProfileType)
     }
 }
 

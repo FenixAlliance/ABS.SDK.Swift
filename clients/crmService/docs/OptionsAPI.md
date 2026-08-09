@@ -256,7 +256,7 @@ No authorization required
 
 # **getContactOptions**
 ```swift
-    open class func getContactOptions(tenantId: UUID, contactId: UUID, portalId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: OptionDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getContactOptions(tenantId: UUID, contactId: UUID, portalId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, optionDtoCollectionQueryParameters: OptionDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: OptionDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Retrieve a list of contact options
@@ -273,9 +273,10 @@ let contactId = 987 // UUID |
 let portalId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let optionDtoCollectionQueryParameters = OptionDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // OptionDtoCollectionQueryParameters |  (optional)
 
 // Retrieve a list of contact options
-OptionsAPI.getContactOptions(tenantId: tenantId, contactId: contactId, portalId: portalId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+OptionsAPI.getContactOptions(tenantId: tenantId, contactId: contactId, portalId: portalId, apiVersion: apiVersion, xApiVersion: xApiVersion, optionDtoCollectionQueryParameters: optionDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -296,6 +297,7 @@ Name | Type | Description  | Notes
  **portalId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **optionDtoCollectionQueryParameters** | [**OptionDtoCollectionQueryParameters**](OptionDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -307,14 +309,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getContactOptionsCount**
 ```swift
-    open class func getContactOptionsCount(tenantId: UUID, contactId: UUID, portalId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getContactOptionsCount(tenantId: UUID, contactId: UUID, portalId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, optionDtoCollectionQueryParameters: OptionDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get the count of contact options
@@ -331,9 +333,10 @@ let contactId = 987 // UUID |
 let portalId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let optionDtoCollectionQueryParameters = OptionDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // OptionDtoCollectionQueryParameters |  (optional)
 
 // Get the count of contact options
-OptionsAPI.getContactOptionsCount(tenantId: tenantId, contactId: contactId, portalId: portalId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+OptionsAPI.getContactOptionsCount(tenantId: tenantId, contactId: contactId, portalId: portalId, apiVersion: apiVersion, xApiVersion: xApiVersion, optionDtoCollectionQueryParameters: optionDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -354,6 +357,7 @@ Name | Type | Description  | Notes
  **portalId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **optionDtoCollectionQueryParameters** | [**OptionDtoCollectionQueryParameters**](OptionDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -365,14 +369,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchContactOptionAsync**
 ```swift
-    open class func patchContactOptionAsync(tenantId: UUID, contactId: UUID, optionId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchContactOptionAsync(tenantId: UUID, contactId: UUID, optionId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a contact option
@@ -389,10 +393,10 @@ let contactId = 987 // UUID |
 let optionId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a contact option
-OptionsAPI.patchContactOptionAsync(tenantId: tenantId, contactId: contactId, optionId: optionId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+OptionsAPI.patchContactOptionAsync(tenantId: tenantId, contactId: contactId, optionId: optionId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -413,7 +417,7 @@ Name | Type | Description  | Notes
  **optionId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -432,7 +436,7 @@ No authorization required
 
 # **patchContactOptionByKeyAsync**
 ```swift
-    open class func patchContactOptionByKeyAsync(tenantId: UUID, contactId: UUID, key: String, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchContactOptionByKeyAsync(tenantId: UUID, contactId: UUID, key: String, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a contact option by key
@@ -449,10 +453,10 @@ let contactId = 987 // UUID |
 let key = "key_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a contact option by key
-OptionsAPI.patchContactOptionByKeyAsync(tenantId: tenantId, contactId: contactId, key: key, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+OptionsAPI.patchContactOptionByKeyAsync(tenantId: tenantId, contactId: contactId, key: key, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -473,7 +477,7 @@ Name | Type | Description  | Notes
  **key** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

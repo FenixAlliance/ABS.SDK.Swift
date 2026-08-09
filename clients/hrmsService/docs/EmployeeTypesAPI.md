@@ -183,7 +183,7 @@ No authorization required
 
 # **getEmployeeTypesAsync**
 ```swift
-    open class func getEmployeeTypesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmployeeTypeDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getEmployeeTypesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, employeeTypeDtoCollectionQueryParameters: EmployeeTypeDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: EmployeeTypeDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get employee types
@@ -198,9 +198,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let employeeTypeDtoCollectionQueryParameters = EmployeeTypeDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // EmployeeTypeDtoCollectionQueryParameters |  (optional)
 
 // Get employee types
-EmployeeTypesAPI.getEmployeeTypesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+EmployeeTypesAPI.getEmployeeTypesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, employeeTypeDtoCollectionQueryParameters: employeeTypeDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -219,6 +220,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **employeeTypeDtoCollectionQueryParameters** | [**EmployeeTypeDtoCollectionQueryParameters**](EmployeeTypeDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -230,14 +232,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getEmployeeTypesCountAsync**
 ```swift
-    open class func getEmployeeTypesCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getEmployeeTypesCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, employeeTypeDtoCollectionQueryParameters: EmployeeTypeDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count employee types
@@ -252,9 +254,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let employeeTypeDtoCollectionQueryParameters = EmployeeTypeDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // EmployeeTypeDtoCollectionQueryParameters |  (optional)
 
 // Count employee types
-EmployeeTypesAPI.getEmployeeTypesCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+EmployeeTypesAPI.getEmployeeTypesCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, employeeTypeDtoCollectionQueryParameters: employeeTypeDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -273,6 +276,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **employeeTypeDtoCollectionQueryParameters** | [**EmployeeTypeDtoCollectionQueryParameters**](EmployeeTypeDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -284,14 +288,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchEmployeeTypeAsync**
 ```swift
-    open class func patchEmployeeTypeAsync(tenantId: UUID, employeeTypeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchEmployeeTypeAsync(tenantId: UUID, employeeTypeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch an employee type
@@ -307,10 +311,10 @@ let tenantId = 987 // UUID |
 let employeeTypeId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch an employee type
-EmployeeTypesAPI.patchEmployeeTypeAsync(tenantId: tenantId, employeeTypeId: employeeTypeId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+EmployeeTypesAPI.patchEmployeeTypeAsync(tenantId: tenantId, employeeTypeId: employeeTypeId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -330,7 +334,7 @@ Name | Type | Description  | Notes
  **employeeTypeId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

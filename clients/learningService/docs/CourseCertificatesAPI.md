@@ -574,7 +574,7 @@ No authorization required
 
 # **patchCourseCertificateAsync**
 ```swift
-    open class func patchCourseCertificateAsync(tenantId: UUID, courseCertificateId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchCourseCertificateAsync(tenantId: UUID, courseCertificateId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a course certificate
@@ -590,10 +590,10 @@ let tenantId = 987 // UUID |
 let courseCertificateId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a course certificate
-CourseCertificatesAPI.patchCourseCertificateAsync(tenantId: tenantId, courseCertificateId: courseCertificateId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+CourseCertificatesAPI.patchCourseCertificateAsync(tenantId: tenantId, courseCertificateId: courseCertificateId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -613,7 +613,7 @@ Name | Type | Description  | Notes
  **courseCertificateId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -632,7 +632,7 @@ No authorization required
 
 # **patchCourseCertificateTemplateAsync**
 ```swift
-    open class func patchCourseCertificateTemplateAsync(tenantId: UUID, courseCertificateTemplateId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchCourseCertificateTemplateAsync(tenantId: UUID, courseCertificateTemplateId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a certificate template
@@ -648,10 +648,10 @@ let tenantId = 987 // UUID |
 let courseCertificateTemplateId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a certificate template
-CourseCertificatesAPI.patchCourseCertificateTemplateAsync(tenantId: tenantId, courseCertificateTemplateId: courseCertificateTemplateId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+CourseCertificatesAPI.patchCourseCertificateTemplateAsync(tenantId: tenantId, courseCertificateTemplateId: courseCertificateTemplateId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -671,7 +671,7 @@ Name | Type | Description  | Notes
  **courseCertificateTemplateId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

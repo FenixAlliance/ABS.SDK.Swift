@@ -17,12 +17,13 @@ open class LanguagesAPI {
      
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter countryLanguageDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func countLanguagesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return countLanguagesAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func countLanguagesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, countryLanguageDtoCollectionQueryParameters: CountryLanguageDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return countLanguagesAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion, countryLanguageDtoCollectionQueryParameters: countryLanguageDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -38,12 +39,13 @@ open class LanguagesAPI {
      - Returns the total number of supported languages, with optional OData filtering.
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter countryLanguageDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func countLanguagesAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func countLanguagesAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil, countryLanguageDtoCollectionQueryParameters: CountryLanguageDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/GlobeService/Languages/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: countryLanguageDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -51,6 +53,7 @@ open class LanguagesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -120,12 +123,13 @@ open class LanguagesAPI {
      
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter countryLanguageDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getLanguagesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CountryLanguageDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getLanguagesAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getLanguagesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, countryLanguageDtoCollectionQueryParameters: CountryLanguageDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CountryLanguageDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getLanguagesAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion, countryLanguageDtoCollectionQueryParameters: countryLanguageDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -141,12 +145,13 @@ open class LanguagesAPI {
      - Retrieves the list of all supported languages with optional OData pagination and filtering.
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter countryLanguageDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<CountryLanguageDtoListEnvelope> 
      */
-    open class func getLanguagesAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<CountryLanguageDtoListEnvelope> {
+    open class func getLanguagesAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil, countryLanguageDtoCollectionQueryParameters: CountryLanguageDtoCollectionQueryParameters? = nil) -> RequestBuilder<CountryLanguageDtoListEnvelope> {
         let localVariablePath = "/api/v2/GlobeService/Languages"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: countryLanguageDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -154,6 +159,7 @@ open class LanguagesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 

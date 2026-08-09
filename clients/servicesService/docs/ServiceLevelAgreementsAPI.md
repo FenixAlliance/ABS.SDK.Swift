@@ -183,7 +183,7 @@ No authorization required
 
 # **getServiceLevelAgreementsAsync**
 ```swift
-    open class func getServiceLevelAgreementsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ServiceLevelAgreementDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
+    open class func getServiceLevelAgreementsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, serviceLevelAgreementDtoCollectionQueryParameters: ServiceLevelAgreementDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ServiceLevelAgreementDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all service level agreements
@@ -198,9 +198,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let serviceLevelAgreementDtoCollectionQueryParameters = ServiceLevelAgreementDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ServiceLevelAgreementDtoCollectionQueryParameters |  (optional)
 
 // Get all service level agreements
-ServiceLevelAgreementsAPI.getServiceLevelAgreementsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ServiceLevelAgreementsAPI.getServiceLevelAgreementsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, serviceLevelAgreementDtoCollectionQueryParameters: serviceLevelAgreementDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -219,6 +220,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **serviceLevelAgreementDtoCollectionQueryParameters** | [**ServiceLevelAgreementDtoCollectionQueryParameters**](ServiceLevelAgreementDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -230,14 +232,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getServiceLevelAgreementsCountAsync**
 ```swift
-    open class func getServiceLevelAgreementsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getServiceLevelAgreementsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, serviceLevelAgreementDtoCollectionQueryParameters: ServiceLevelAgreementDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get service level agreements count
@@ -252,9 +254,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let serviceLevelAgreementDtoCollectionQueryParameters = ServiceLevelAgreementDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ServiceLevelAgreementDtoCollectionQueryParameters |  (optional)
 
 // Get service level agreements count
-ServiceLevelAgreementsAPI.getServiceLevelAgreementsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ServiceLevelAgreementsAPI.getServiceLevelAgreementsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, serviceLevelAgreementDtoCollectionQueryParameters: serviceLevelAgreementDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -273,6 +276,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **serviceLevelAgreementDtoCollectionQueryParameters** | [**ServiceLevelAgreementDtoCollectionQueryParameters**](ServiceLevelAgreementDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -284,14 +288,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchServiceLevelAgreementAsync**
 ```swift
-    open class func patchServiceLevelAgreementAsync(tenantId: UUID, serviceLevelAgreementId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: Envelope?, _ error: Error?) -> Void)
+    open class func patchServiceLevelAgreementAsync(tenantId: UUID, serviceLevelAgreementId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: Envelope?, _ error: Error?) -> Void)
 ```
 
 Patch a service level agreement
@@ -307,10 +311,10 @@ let tenantId = 987 // UUID |
 let serviceLevelAgreementId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a service level agreement
-ServiceLevelAgreementsAPI.patchServiceLevelAgreementAsync(tenantId: tenantId, serviceLevelAgreementId: serviceLevelAgreementId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+ServiceLevelAgreementsAPI.patchServiceLevelAgreementAsync(tenantId: tenantId, serviceLevelAgreementId: serviceLevelAgreementId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -330,7 +334,7 @@ Name | Type | Description  | Notes
  **serviceLevelAgreementId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

@@ -16,14 +16,20 @@ public struct ExtendedOrderDtoListEnvelope: Codable, JSONEncodable, Hashable {
     public var errorMessage: String?
     public var correlationId: String?
     public var timestamp: Date?
+    public var httpStatus: Int?
+    public var errorCode: String?
+    public var validationDetails: [String: [String]]?
     public var activityId: String?
     public var result: [ExtendedOrderDto]?
 
-    public init(isSuccess: Bool? = nil, errorMessage: String? = nil, correlationId: String? = nil, timestamp: Date? = nil, activityId: String? = nil, result: [ExtendedOrderDto]? = nil) {
+    public init(isSuccess: Bool? = nil, errorMessage: String? = nil, correlationId: String? = nil, timestamp: Date? = nil, httpStatus: Int? = nil, errorCode: String? = nil, validationDetails: [String: [String]]? = nil, activityId: String? = nil, result: [ExtendedOrderDto]? = nil) {
         self.isSuccess = isSuccess
         self.errorMessage = errorMessage
         self.correlationId = correlationId
         self.timestamp = timestamp
+        self.httpStatus = httpStatus
+        self.errorCode = errorCode
+        self.validationDetails = validationDetails
         self.activityId = activityId
         self.result = result
     }
@@ -33,6 +39,9 @@ public struct ExtendedOrderDtoListEnvelope: Codable, JSONEncodable, Hashable {
         case errorMessage
         case correlationId
         case timestamp
+        case httpStatus
+        case errorCode
+        case validationDetails
         case activityId
         case result
     }
@@ -45,6 +54,9 @@ public struct ExtendedOrderDtoListEnvelope: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(errorMessage, forKey: .errorMessage)
         try container.encodeIfPresent(correlationId, forKey: .correlationId)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
+        try container.encodeIfPresent(httpStatus, forKey: .httpStatus)
+        try container.encodeIfPresent(errorCode, forKey: .errorCode)
+        try container.encodeIfPresent(validationDetails, forKey: .validationDetails)
         try container.encodeIfPresent(activityId, forKey: .activityId)
         try container.encodeIfPresent(result, forKey: .result)
     }

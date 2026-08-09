@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 # **countBlogPostsByAuthorAsync**
 ```swift
-    open class func countBlogPostsByAuthorAsync(authorId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countBlogPostsByAuthorAsync(authorId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, blogPostDtoCollectionQueryParameters: BlogPostDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count blog posts by author
@@ -27,9 +27,10 @@ import OpenAPIClient
 let authorId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let blogPostDtoCollectionQueryParameters = BlogPostDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // BlogPostDtoCollectionQueryParameters |  (optional)
 
 // Count blog posts by author
-BlogPostAuthorsAPI.countBlogPostsByAuthorAsync(authorId: authorId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+BlogPostAuthorsAPI.countBlogPostsByAuthorAsync(authorId: authorId, apiVersion: apiVersion, xApiVersion: xApiVersion, blogPostDtoCollectionQueryParameters: blogPostDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -48,6 +49,7 @@ Name | Type | Description  | Notes
  **authorId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **blogPostDtoCollectionQueryParameters** | [**BlogPostDtoCollectionQueryParameters**](BlogPostDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -59,7 +61,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -120,7 +122,7 @@ No authorization required
 
 # **getBlogAuthorsAsync**
 ```swift
-    open class func getBlogAuthorsAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: BlogAuthorDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getBlogAuthorsAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, blogAuthorDtoCollectionQueryParameters: BlogAuthorDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: BlogAuthorDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get blog authors
@@ -135,9 +137,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let blogAuthorDtoCollectionQueryParameters = BlogAuthorDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // BlogAuthorDtoCollectionQueryParameters |  (optional)
 
 // Get blog authors
-BlogPostAuthorsAPI.getBlogAuthorsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+BlogPostAuthorsAPI.getBlogAuthorsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, blogAuthorDtoCollectionQueryParameters: blogAuthorDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -156,6 +159,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **blogAuthorDtoCollectionQueryParameters** | [**BlogAuthorDtoCollectionQueryParameters**](BlogAuthorDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -167,14 +171,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getBlogPostsByAuthorAsync**
 ```swift
-    open class func getBlogPostsByAuthorAsync(authorId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: BlogPostDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getBlogPostsByAuthorAsync(authorId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, blogPostDtoCollectionQueryParameters: BlogPostDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: BlogPostDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get blog posts by author
@@ -189,9 +193,10 @@ import OpenAPIClient
 let authorId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let blogPostDtoCollectionQueryParameters = BlogPostDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // BlogPostDtoCollectionQueryParameters |  (optional)
 
 // Get blog posts by author
-BlogPostAuthorsAPI.getBlogPostsByAuthorAsync(authorId: authorId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+BlogPostAuthorsAPI.getBlogPostsByAuthorAsync(authorId: authorId, apiVersion: apiVersion, xApiVersion: xApiVersion, blogPostDtoCollectionQueryParameters: blogPostDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -210,6 +215,7 @@ Name | Type | Description  | Notes
  **authorId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **blogPostDtoCollectionQueryParameters** | [**BlogPostDtoCollectionQueryParameters**](BlogPostDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -221,7 +227,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

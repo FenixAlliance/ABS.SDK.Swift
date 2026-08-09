@@ -742,7 +742,7 @@ No authorization required
 
 # **getAssetAssetCategories**
 ```swift
-    open class func getAssetAssetCategories(tenantId: UUID, completion: @escaping (_ data: AssetCategoryDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getAssetAssetCategories(tenantId: UUID, assetCategoryDtoCollectionQueryParameters: AssetCategoryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: AssetCategoryDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Gets all asset categories
@@ -755,9 +755,10 @@ Retrieves all asset categories for the authenticated tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
+let assetCategoryDtoCollectionQueryParameters = AssetCategoryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // AssetCategoryDtoCollectionQueryParameters |  (optional)
 
 // Gets all asset categories
-AssetsAPI.getAssetAssetCategories(tenantId: tenantId) { (response, error) in
+AssetsAPI.getAssetAssetCategories(tenantId: tenantId, assetCategoryDtoCollectionQueryParameters: assetCategoryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -774,6 +775,7 @@ AssetsAPI.getAssetAssetCategories(tenantId: tenantId) { (response, error) in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
+ **assetCategoryDtoCollectionQueryParameters** | [**AssetCategoryDtoCollectionQueryParameters**](AssetCategoryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -785,14 +787,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getAssetAssetCategoriesCount**
 ```swift
-    open class func getAssetAssetCategoriesCount(tenantId: UUID, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getAssetAssetCategoriesCount(tenantId: UUID, assetCategoryDtoCollectionQueryParameters: AssetCategoryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Gets the count of asset categories
@@ -805,9 +807,10 @@ Returns the total number of asset categories for the authenticated tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
+let assetCategoryDtoCollectionQueryParameters = AssetCategoryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // AssetCategoryDtoCollectionQueryParameters |  (optional)
 
 // Gets the count of asset categories
-AssetsAPI.getAssetAssetCategoriesCount(tenantId: tenantId) { (response, error) in
+AssetsAPI.getAssetAssetCategoriesCount(tenantId: tenantId, assetCategoryDtoCollectionQueryParameters: assetCategoryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -824,6 +827,7 @@ AssetsAPI.getAssetAssetCategoriesCount(tenantId: tenantId) { (response, error) i
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
+ **assetCategoryDtoCollectionQueryParameters** | [**AssetCategoryDtoCollectionQueryParameters**](AssetCategoryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -835,7 +839,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -948,7 +952,7 @@ No authorization required
 
 # **getAssetDepreciationRecords**
 ```swift
-    open class func getAssetDepreciationRecords(tenantId: UUID, assetId: UUID, completion: @escaping (_ data: AssetDepreciationRecordDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getAssetDepreciationRecords(tenantId: UUID, assetId: UUID, assetDepreciationRecordDtoCollectionQueryParameters: AssetDepreciationRecordDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: AssetDepreciationRecordDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Gets depreciation records for a specific asset
@@ -962,9 +966,10 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let assetId = 987 // UUID | 
+let assetDepreciationRecordDtoCollectionQueryParameters = AssetDepreciationRecordDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // AssetDepreciationRecordDtoCollectionQueryParameters |  (optional)
 
 // Gets depreciation records for a specific asset
-AssetsAPI.getAssetDepreciationRecords(tenantId: tenantId, assetId: assetId) { (response, error) in
+AssetsAPI.getAssetDepreciationRecords(tenantId: tenantId, assetId: assetId, assetDepreciationRecordDtoCollectionQueryParameters: assetDepreciationRecordDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -982,6 +987,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **assetId** | **UUID** |  | 
+ **assetDepreciationRecordDtoCollectionQueryParameters** | [**AssetDepreciationRecordDtoCollectionQueryParameters**](AssetDepreciationRecordDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -993,14 +999,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getAssetDepreciationRecordsCount**
 ```swift
-    open class func getAssetDepreciationRecordsCount(tenantId: UUID, assetId: UUID, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getAssetDepreciationRecordsCount(tenantId: UUID, assetId: UUID, assetDepreciationRecordDtoCollectionQueryParameters: AssetDepreciationRecordDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Gets count of depreciation records for a specific asset
@@ -1014,9 +1020,10 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let assetId = 987 // UUID | 
+let assetDepreciationRecordDtoCollectionQueryParameters = AssetDepreciationRecordDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // AssetDepreciationRecordDtoCollectionQueryParameters |  (optional)
 
 // Gets count of depreciation records for a specific asset
-AssetsAPI.getAssetDepreciationRecordsCount(tenantId: tenantId, assetId: assetId) { (response, error) in
+AssetsAPI.getAssetDepreciationRecordsCount(tenantId: tenantId, assetId: assetId, assetDepreciationRecordDtoCollectionQueryParameters: assetDepreciationRecordDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1034,6 +1041,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **assetId** | **UUID** |  | 
+ **assetDepreciationRecordDtoCollectionQueryParameters** | [**AssetDepreciationRecordDtoCollectionQueryParameters**](AssetDepreciationRecordDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1045,7 +1053,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1106,7 +1114,7 @@ No authorization required
 
 # **getAssetRepairs**
 ```swift
-    open class func getAssetRepairs(tenantId: UUID, assetId: UUID, completion: @escaping (_ data: AssetRepairDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getAssetRepairs(tenantId: UUID, assetId: UUID, assetRepairDtoCollectionQueryParameters: AssetRepairDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: AssetRepairDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Gets repairs for a specific asset
@@ -1120,9 +1128,10 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let assetId = 987 // UUID | 
+let assetRepairDtoCollectionQueryParameters = AssetRepairDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // AssetRepairDtoCollectionQueryParameters |  (optional)
 
 // Gets repairs for a specific asset
-AssetsAPI.getAssetRepairs(tenantId: tenantId, assetId: assetId) { (response, error) in
+AssetsAPI.getAssetRepairs(tenantId: tenantId, assetId: assetId, assetRepairDtoCollectionQueryParameters: assetRepairDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1140,6 +1149,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **assetId** | **UUID** |  | 
+ **assetRepairDtoCollectionQueryParameters** | [**AssetRepairDtoCollectionQueryParameters**](AssetRepairDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1151,14 +1161,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getAssetRepairsCount**
 ```swift
-    open class func getAssetRepairsCount(tenantId: UUID, assetId: UUID, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getAssetRepairsCount(tenantId: UUID, assetId: UUID, assetRepairDtoCollectionQueryParameters: AssetRepairDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Gets count of repairs for a specific asset
@@ -1172,9 +1182,10 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let assetId = 987 // UUID | 
+let assetRepairDtoCollectionQueryParameters = AssetRepairDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // AssetRepairDtoCollectionQueryParameters |  (optional)
 
 // Gets count of repairs for a specific asset
-AssetsAPI.getAssetRepairsCount(tenantId: tenantId, assetId: assetId) { (response, error) in
+AssetsAPI.getAssetRepairsCount(tenantId: tenantId, assetId: assetId, assetRepairDtoCollectionQueryParameters: assetRepairDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1192,6 +1203,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **assetId** | **UUID** |  | 
+ **assetRepairDtoCollectionQueryParameters** | [**AssetRepairDtoCollectionQueryParameters**](AssetRepairDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1203,7 +1215,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1264,7 +1276,7 @@ No authorization required
 
 # **getAssetTransfers**
 ```swift
-    open class func getAssetTransfers(tenantId: UUID, assetId: UUID, completion: @escaping (_ data: AssetTransferDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getAssetTransfers(tenantId: UUID, assetId: UUID, assetTransferDtoCollectionQueryParameters: AssetTransferDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: AssetTransferDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Gets transfers for a specific asset
@@ -1278,9 +1290,10 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let assetId = 987 // UUID | 
+let assetTransferDtoCollectionQueryParameters = AssetTransferDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // AssetTransferDtoCollectionQueryParameters |  (optional)
 
 // Gets transfers for a specific asset
-AssetsAPI.getAssetTransfers(tenantId: tenantId, assetId: assetId) { (response, error) in
+AssetsAPI.getAssetTransfers(tenantId: tenantId, assetId: assetId, assetTransferDtoCollectionQueryParameters: assetTransferDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1298,6 +1311,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **assetId** | **UUID** |  | 
+ **assetTransferDtoCollectionQueryParameters** | [**AssetTransferDtoCollectionQueryParameters**](AssetTransferDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1309,14 +1323,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getAssetTransfersCount**
 ```swift
-    open class func getAssetTransfersCount(tenantId: UUID, assetId: UUID, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getAssetTransfersCount(tenantId: UUID, assetId: UUID, assetTransferDtoCollectionQueryParameters: AssetTransferDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Gets count of transfers for a specific asset
@@ -1330,9 +1344,10 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let assetId = 987 // UUID | 
+let assetTransferDtoCollectionQueryParameters = AssetTransferDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // AssetTransferDtoCollectionQueryParameters |  (optional)
 
 // Gets count of transfers for a specific asset
-AssetsAPI.getAssetTransfersCount(tenantId: tenantId, assetId: assetId) { (response, error) in
+AssetsAPI.getAssetTransfersCount(tenantId: tenantId, assetId: assetId, assetTransferDtoCollectionQueryParameters: assetTransferDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1350,6 +1365,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **assetId** | **UUID** |  | 
+ **assetTransferDtoCollectionQueryParameters** | [**AssetTransferDtoCollectionQueryParameters**](AssetTransferDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1361,7 +1377,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1422,7 +1438,7 @@ No authorization required
 
 # **getAssetValueAmends**
 ```swift
-    open class func getAssetValueAmends(tenantId: UUID, assetId: UUID, completion: @escaping (_ data: AssetValueAmendDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getAssetValueAmends(tenantId: UUID, assetId: UUID, assetValueAmendDtoCollectionQueryParameters: AssetValueAmendDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: AssetValueAmendDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Gets value amendments for a specific asset
@@ -1436,9 +1452,10 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let assetId = 987 // UUID | 
+let assetValueAmendDtoCollectionQueryParameters = AssetValueAmendDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // AssetValueAmendDtoCollectionQueryParameters |  (optional)
 
 // Gets value amendments for a specific asset
-AssetsAPI.getAssetValueAmends(tenantId: tenantId, assetId: assetId) { (response, error) in
+AssetsAPI.getAssetValueAmends(tenantId: tenantId, assetId: assetId, assetValueAmendDtoCollectionQueryParameters: assetValueAmendDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1456,6 +1473,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **assetId** | **UUID** |  | 
+ **assetValueAmendDtoCollectionQueryParameters** | [**AssetValueAmendDtoCollectionQueryParameters**](AssetValueAmendDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1467,14 +1485,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getAssetValueAmendsCount**
 ```swift
-    open class func getAssetValueAmendsCount(tenantId: UUID, assetId: UUID, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getAssetValueAmendsCount(tenantId: UUID, assetId: UUID, assetValueAmendDtoCollectionQueryParameters: AssetValueAmendDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Gets count of value amendments for a specific asset
@@ -1488,9 +1506,10 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let assetId = 987 // UUID | 
+let assetValueAmendDtoCollectionQueryParameters = AssetValueAmendDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // AssetValueAmendDtoCollectionQueryParameters |  (optional)
 
 // Gets count of value amendments for a specific asset
-AssetsAPI.getAssetValueAmendsCount(tenantId: tenantId, assetId: assetId) { (response, error) in
+AssetsAPI.getAssetValueAmendsCount(tenantId: tenantId, assetId: assetId, assetValueAmendDtoCollectionQueryParameters: assetValueAmendDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1508,6 +1527,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **assetId** | **UUID** |  | 
+ **assetValueAmendDtoCollectionQueryParameters** | [**AssetValueAmendDtoCollectionQueryParameters**](AssetValueAmendDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1519,14 +1539,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getAssets**
 ```swift
-    open class func getAssets(tenantId: UUID, completion: @escaping (_ data: AssetDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getAssets(tenantId: UUID, assetDtoCollectionQueryParameters: AssetDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: AssetDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Gets all assets for the current tenant
@@ -1539,9 +1559,10 @@ Retrieves all assets for the authenticated tenant with optional filtering.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
+let assetDtoCollectionQueryParameters = AssetDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // AssetDtoCollectionQueryParameters |  (optional)
 
 // Gets all assets for the current tenant
-AssetsAPI.getAssets(tenantId: tenantId) { (response, error) in
+AssetsAPI.getAssets(tenantId: tenantId, assetDtoCollectionQueryParameters: assetDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1558,6 +1579,7 @@ AssetsAPI.getAssets(tenantId: tenantId) { (response, error) in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
+ **assetDtoCollectionQueryParameters** | [**AssetDtoCollectionQueryParameters**](AssetDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1569,14 +1591,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getAssetsCount**
 ```swift
-    open class func getAssetsCount(tenantId: UUID, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getAssetsCount(tenantId: UUID, assetDtoCollectionQueryParameters: AssetDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Gets the count of assets
@@ -1589,9 +1611,10 @@ Returns the total number of assets for the authenticated tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
+let assetDtoCollectionQueryParameters = AssetDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // AssetDtoCollectionQueryParameters |  (optional)
 
 // Gets the count of assets
-AssetsAPI.getAssetsCount(tenantId: tenantId) { (response, error) in
+AssetsAPI.getAssetsCount(tenantId: tenantId, assetDtoCollectionQueryParameters: assetDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1608,6 +1631,7 @@ AssetsAPI.getAssetsCount(tenantId: tenantId) { (response, error) in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
+ **assetDtoCollectionQueryParameters** | [**AssetDtoCollectionQueryParameters**](AssetDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1619,14 +1643,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchAsset**
 ```swift
-    open class func patchAsset(tenantId: UUID, assetId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchAsset(tenantId: UUID, assetId: UUID, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Partially updates an existing asset
@@ -1640,10 +1664,10 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let assetId = 987 // UUID | 
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Partially updates an existing asset
-AssetsAPI.patchAsset(tenantId: tenantId, assetId: assetId, operation: operation) { (response, error) in
+AssetsAPI.patchAsset(tenantId: tenantId, assetId: assetId, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1661,7 +1685,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **assetId** | **UUID** |  | 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -1680,7 +1704,7 @@ No authorization required
 
 # **patchAssetAssetCategory**
 ```swift
-    open class func patchAssetAssetCategory(tenantId: UUID, categoryId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchAssetAssetCategory(tenantId: UUID, categoryId: UUID, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Partially updates an existing asset category
@@ -1694,10 +1718,10 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let categoryId = 987 // UUID | 
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Partially updates an existing asset category
-AssetsAPI.patchAssetAssetCategory(tenantId: tenantId, categoryId: categoryId, operation: operation) { (response, error) in
+AssetsAPI.patchAssetAssetCategory(tenantId: tenantId, categoryId: categoryId, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1715,7 +1739,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **categoryId** | **UUID** |  | 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -1734,7 +1758,7 @@ No authorization required
 
 # **patchAssetDepreciationRecord**
 ```swift
-    open class func patchAssetDepreciationRecord(tenantId: UUID, assetId: UUID, recordId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchAssetDepreciationRecord(tenantId: UUID, assetId: UUID, recordId: UUID, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Partially updates a depreciation record for an asset
@@ -1749,10 +1773,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let assetId = 987 // UUID | 
 let recordId = 987 // UUID | 
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Partially updates a depreciation record for an asset
-AssetsAPI.patchAssetDepreciationRecord(tenantId: tenantId, assetId: assetId, recordId: recordId, operation: operation) { (response, error) in
+AssetsAPI.patchAssetDepreciationRecord(tenantId: tenantId, assetId: assetId, recordId: recordId, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1771,7 +1795,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **assetId** | **UUID** |  | 
  **recordId** | **UUID** |  | 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -1790,7 +1814,7 @@ No authorization required
 
 # **patchAssetRepair**
 ```swift
-    open class func patchAssetRepair(tenantId: UUID, assetId: UUID, repairId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchAssetRepair(tenantId: UUID, assetId: UUID, repairId: UUID, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Partially updates a repair for an asset
@@ -1805,10 +1829,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let assetId = 987 // UUID | 
 let repairId = 987 // UUID | 
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Partially updates a repair for an asset
-AssetsAPI.patchAssetRepair(tenantId: tenantId, assetId: assetId, repairId: repairId, operation: operation) { (response, error) in
+AssetsAPI.patchAssetRepair(tenantId: tenantId, assetId: assetId, repairId: repairId, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1827,7 +1851,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **assetId** | **UUID** |  | 
  **repairId** | **UUID** |  | 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -1846,7 +1870,7 @@ No authorization required
 
 # **patchAssetTransfer**
 ```swift
-    open class func patchAssetTransfer(tenantId: UUID, assetId: UUID, transferId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchAssetTransfer(tenantId: UUID, assetId: UUID, transferId: UUID, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Partially updates a transfer for an asset
@@ -1861,10 +1885,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let assetId = 987 // UUID | 
 let transferId = 987 // UUID | 
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Partially updates a transfer for an asset
-AssetsAPI.patchAssetTransfer(tenantId: tenantId, assetId: assetId, transferId: transferId, operation: operation) { (response, error) in
+AssetsAPI.patchAssetTransfer(tenantId: tenantId, assetId: assetId, transferId: transferId, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1883,7 +1907,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **assetId** | **UUID** |  | 
  **transferId** | **UUID** |  | 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -1902,7 +1926,7 @@ No authorization required
 
 # **patchAssetValueAmend**
 ```swift
-    open class func patchAssetValueAmend(tenantId: UUID, assetId: UUID, amendId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchAssetValueAmend(tenantId: UUID, assetId: UUID, amendId: UUID, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Partially updates a value amendment for an asset
@@ -1917,10 +1941,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let assetId = 987 // UUID | 
 let amendId = 987 // UUID | 
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Partially updates a value amendment for an asset
-AssetsAPI.patchAssetValueAmend(tenantId: tenantId, assetId: assetId, amendId: amendId, operation: operation) { (response, error) in
+AssetsAPI.patchAssetValueAmend(tenantId: tenantId, assetId: assetId, amendId: amendId, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1939,7 +1963,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **assetId** | **UUID** |  | 
  **amendId** | **UUID** |  | 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

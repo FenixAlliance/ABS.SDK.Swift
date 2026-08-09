@@ -16,12 +16,13 @@ open class StoresAPI {
      Get stores count
      
      - parameter tenantId: (query)  
+     - parameter storeDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func countStoresAsync(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return countStoresAsyncWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+    open class func countStoresAsync(tenantId: UUID, storeDtoCollectionQueryParameters: StoreDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return countStoresAsyncWithRequestBuilder(tenantId: tenantId, storeDtoCollectionQueryParameters: storeDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -36,12 +37,13 @@ open class StoresAPI {
      - GET /api/v2/SalesService/Stores/Count
      - Returns the total count of stores for the specified tenant with OData filter support.
      - parameter tenantId: (query)  
+     - parameter storeDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func countStoresAsyncWithRequestBuilder(tenantId: UUID) -> RequestBuilder<Int32Envelope> {
+    open class func countStoresAsyncWithRequestBuilder(tenantId: UUID, storeDtoCollectionQueryParameters: StoreDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/SalesService/Stores/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: storeDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -49,7 +51,7 @@ open class StoresAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -216,12 +218,13 @@ open class StoresAPI {
      Get stores
      
      - parameter tenantId: (query)  
+     - parameter storeDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getStoresAsync(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: StoreDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getStoresAsyncWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+    open class func getStoresAsync(tenantId: UUID, storeDtoCollectionQueryParameters: StoreDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: StoreDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getStoresAsyncWithRequestBuilder(tenantId: tenantId, storeDtoCollectionQueryParameters: storeDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -236,12 +239,13 @@ open class StoresAPI {
      - GET /api/v2/SalesService/Stores
      - Retrieves a list of stores for the specified tenant with OData query support.
      - parameter tenantId: (query)  
+     - parameter storeDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<StoreDtoListEnvelope> 
      */
-    open class func getStoresAsyncWithRequestBuilder(tenantId: UUID) -> RequestBuilder<StoreDtoListEnvelope> {
+    open class func getStoresAsyncWithRequestBuilder(tenantId: UUID, storeDtoCollectionQueryParameters: StoreDtoCollectionQueryParameters? = nil) -> RequestBuilder<StoreDtoListEnvelope> {
         let localVariablePath = "/api/v2/SalesService/Stores"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: storeDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -249,7 +253,7 @@ open class StoresAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -264,13 +268,13 @@ open class StoresAPI {
      
      - parameter tenantId: (query)  
      - parameter storeId: (path)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchStoreAsync(tenantId: UUID, storeId: UUID, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchStoreAsyncWithRequestBuilder(tenantId: tenantId, storeId: storeId, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchStoreAsync(tenantId: UUID, storeId: UUID, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchStoreAsyncWithRequestBuilder(tenantId: tenantId, storeId: storeId, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -286,16 +290,16 @@ open class StoresAPI {
      - Partially updates an existing store using a JSON Patch document.
      - parameter tenantId: (query)  
      - parameter storeId: (path)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchStoreAsyncWithRequestBuilder(tenantId: UUID, storeId: UUID, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchStoreAsyncWithRequestBuilder(tenantId: UUID, storeId: UUID, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/SalesService/Stores/{storeId}"
         let storeIdPreEscape = "\(APIHelper.mapValueToPathItem(storeId))"
         let storeIdPostEscape = storeIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{storeId}", with: storeIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

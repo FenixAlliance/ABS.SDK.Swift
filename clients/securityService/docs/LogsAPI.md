@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 # **getLogsAsync**
 ```swift
-    open class func getLogsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: LogDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getLogsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, logDtoCollectionQueryParameters: LogDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: LogDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get tenant logs
@@ -25,9 +25,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let logDtoCollectionQueryParameters = LogDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // LogDtoCollectionQueryParameters |  (optional)
 
 // Get tenant logs
-LogsAPI.getLogsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+LogsAPI.getLogsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, logDtoCollectionQueryParameters: logDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -46,6 +47,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **logDtoCollectionQueryParameters** | [**LogDtoCollectionQueryParameters**](LogDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -57,14 +59,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getLogsCountAsync**
 ```swift
-    open class func getLogsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getLogsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, logDtoCollectionQueryParameters: LogDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get tenant logs count
@@ -79,9 +81,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let logDtoCollectionQueryParameters = LogDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // LogDtoCollectionQueryParameters |  (optional)
 
 // Get tenant logs count
-LogsAPI.getLogsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+LogsAPI.getLogsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, logDtoCollectionQueryParameters: logDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -100,6 +103,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **logDtoCollectionQueryParameters** | [**LogDtoCollectionQueryParameters**](LogDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -111,7 +115,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -187,12 +187,13 @@ open class ItemReviewsAPI {
      - parameter itemId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemReviewDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getItemReviewsAsync(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemReviewDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getItemReviewsAsyncWithRequestBuilder(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getItemReviewsAsync(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemReviewDtoCollectionQueryParameters: ItemReviewDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemReviewDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getItemReviewsAsyncWithRequestBuilder(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemReviewDtoCollectionQueryParameters: itemReviewDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -209,12 +210,13 @@ open class ItemReviewsAPI {
      - parameter itemId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemReviewDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<ItemReviewDtoListEnvelope> 
      */
-    open class func getItemReviewsAsyncWithRequestBuilder(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemReviewDtoListEnvelope> {
+    open class func getItemReviewsAsyncWithRequestBuilder(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemReviewDtoCollectionQueryParameters: ItemReviewDtoCollectionQueryParameters? = nil) -> RequestBuilder<ItemReviewDtoListEnvelope> {
         let localVariablePath = "/api/v2/CatalogService/ItemReviews"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: itemReviewDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -223,6 +225,7 @@ open class ItemReviewsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -240,13 +243,13 @@ open class ItemReviewsAPI {
      - parameter itemReviewId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchItemReviewAsync(tenantId: UUID, itemReviewId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchItemReviewAsyncWithRequestBuilder(tenantId: tenantId, itemReviewId: itemReviewId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchItemReviewAsync(tenantId: UUID, itemReviewId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchItemReviewAsyncWithRequestBuilder(tenantId: tenantId, itemReviewId: itemReviewId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 completion((), nil)
@@ -264,16 +267,16 @@ open class ItemReviewsAPI {
      - parameter itemReviewId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
-    open class func patchItemReviewAsyncWithRequestBuilder(tenantId: UUID, itemReviewId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil) -> RequestBuilder<Void> {
+    open class func patchItemReviewAsyncWithRequestBuilder(tenantId: UUID, itemReviewId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<Void> {
         var localVariablePath = "/api/v2/CatalogService/ItemReviews/{itemReviewId}"
         let itemReviewIdPreEscape = "\(APIHelper.mapValueToPathItem(itemReviewId))"
         let itemReviewIdPostEscape = itemReviewIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{itemReviewId}", with: itemReviewIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

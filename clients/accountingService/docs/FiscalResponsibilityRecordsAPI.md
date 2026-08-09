@@ -187,7 +187,7 @@ No authorization required
 
 # **getFiscalResponsibilityRecords**
 ```swift
-    open class func getFiscalResponsibilityRecords(tenantId: UUID, fiscalAuthorityId: UUID, fiscalResponsibilityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: FiscalResponsibilityRecordDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getFiscalResponsibilityRecords(tenantId: UUID, fiscalAuthorityId: UUID, fiscalResponsibilityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalResponsibilityRecordDtoCollectionQueryParameters: FiscalResponsibilityRecordDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: FiscalResponsibilityRecordDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get fiscal responsibility records
@@ -204,9 +204,10 @@ let fiscalAuthorityId = 987 // UUID |
 let fiscalResponsibilityId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let fiscalResponsibilityRecordDtoCollectionQueryParameters = FiscalResponsibilityRecordDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // FiscalResponsibilityRecordDtoCollectionQueryParameters |  (optional)
 
 // Get fiscal responsibility records
-FiscalResponsibilityRecordsAPI.getFiscalResponsibilityRecords(tenantId: tenantId, fiscalAuthorityId: fiscalAuthorityId, fiscalResponsibilityId: fiscalResponsibilityId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+FiscalResponsibilityRecordsAPI.getFiscalResponsibilityRecords(tenantId: tenantId, fiscalAuthorityId: fiscalAuthorityId, fiscalResponsibilityId: fiscalResponsibilityId, apiVersion: apiVersion, xApiVersion: xApiVersion, fiscalResponsibilityRecordDtoCollectionQueryParameters: fiscalResponsibilityRecordDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -227,6 +228,7 @@ Name | Type | Description  | Notes
  **fiscalResponsibilityId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **fiscalResponsibilityRecordDtoCollectionQueryParameters** | [**FiscalResponsibilityRecordDtoCollectionQueryParameters**](FiscalResponsibilityRecordDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -238,14 +240,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getFiscalResponsibilityRecordsCount**
 ```swift
-    open class func getFiscalResponsibilityRecordsCount(tenantId: UUID, fiscalAuthorityId: UUID, fiscalResponsibilityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getFiscalResponsibilityRecordsCount(tenantId: UUID, fiscalAuthorityId: UUID, fiscalResponsibilityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalResponsibilityRecordDtoCollectionQueryParameters: FiscalResponsibilityRecordDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get fiscal responsibility records count
@@ -262,9 +264,10 @@ let fiscalAuthorityId = 987 // UUID |
 let fiscalResponsibilityId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let fiscalResponsibilityRecordDtoCollectionQueryParameters = FiscalResponsibilityRecordDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // FiscalResponsibilityRecordDtoCollectionQueryParameters |  (optional)
 
 // Get fiscal responsibility records count
-FiscalResponsibilityRecordsAPI.getFiscalResponsibilityRecordsCount(tenantId: tenantId, fiscalAuthorityId: fiscalAuthorityId, fiscalResponsibilityId: fiscalResponsibilityId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+FiscalResponsibilityRecordsAPI.getFiscalResponsibilityRecordsCount(tenantId: tenantId, fiscalAuthorityId: fiscalAuthorityId, fiscalResponsibilityId: fiscalResponsibilityId, apiVersion: apiVersion, xApiVersion: xApiVersion, fiscalResponsibilityRecordDtoCollectionQueryParameters: fiscalResponsibilityRecordDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -285,6 +288,7 @@ Name | Type | Description  | Notes
  **fiscalResponsibilityId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **fiscalResponsibilityRecordDtoCollectionQueryParameters** | [**FiscalResponsibilityRecordDtoCollectionQueryParameters**](FiscalResponsibilityRecordDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -296,14 +300,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchFiscalResponsibilityRecordAsync**
 ```swift
-    open class func patchFiscalResponsibilityRecordAsync(tenantId: UUID, fiscalResponsibilityRecordId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchFiscalResponsibilityRecordAsync(tenantId: UUID, fiscalResponsibilityRecordId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a fiscal responsibility record
@@ -319,10 +323,10 @@ let tenantId = 987 // UUID |
 let fiscalResponsibilityRecordId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a fiscal responsibility record
-FiscalResponsibilityRecordsAPI.patchFiscalResponsibilityRecordAsync(tenantId: tenantId, fiscalResponsibilityRecordId: fiscalResponsibilityRecordId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+FiscalResponsibilityRecordsAPI.patchFiscalResponsibilityRecordAsync(tenantId: tenantId, fiscalResponsibilityRecordId: fiscalResponsibilityRecordId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -342,7 +346,7 @@ Name | Type | Description  | Notes
  **fiscalResponsibilityRecordId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

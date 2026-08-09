@@ -15,6 +15,7 @@ OpenAPIClient/Classes/OpenAPIs/JSONEncodingHelper.swift
 OpenAPIClient/Classes/OpenAPIs/Models.swift
 OpenAPIClient/Classes/OpenAPIs/Models/AccessTokenResponse.swift
 OpenAPIClient/Classes/OpenAPIs/Models/AddressDto.swift
+OpenAPIClient/Classes/OpenAPIs/Models/AddressDtoCollectionQueryParameters.swift
 OpenAPIClient/Classes/OpenAPIs/Models/AddressDtoListEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/CartDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/CartDtoEnvelope.swift
@@ -27,6 +28,7 @@ OpenAPIClient/Classes/OpenAPIs/Models/ExtendedTenantEnrollmentDtoListEnvelope.sw
 OpenAPIClient/Classes/OpenAPIs/Models/ExtendedUserDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ExtendedUserDtoEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/FollowRecordDto.swift
+OpenAPIClient/Classes/OpenAPIs/Models/FollowRecordDtoCollectionQueryParameters.swift
 OpenAPIClient/Classes/OpenAPIs/Models/FollowRecordDtoListEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ForgotPasswordRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/HttpValidationProblemDetails.swift
@@ -35,13 +37,15 @@ OpenAPIClient/Classes/OpenAPIs/Models/InfoResponse.swift
 OpenAPIClient/Classes/OpenAPIs/Models/Int32Envelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/LoginRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/NotificationDto.swift
+OpenAPIClient/Classes/OpenAPIs/Models/NotificationDtoCollectionQueryParameters.swift
 OpenAPIClient/Classes/OpenAPIs/Models/NotificationDtoListEnvelope.swift
-OpenAPIClient/Classes/OpenAPIs/Models/Operation.swift
 OpenAPIClient/Classes/OpenAPIs/Models/OptionCreateDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/OptionDto.swift
+OpenAPIClient/Classes/OpenAPIs/Models/OptionDtoCollectionQueryParameters.swift
 OpenAPIClient/Classes/OpenAPIs/Models/OptionDtoEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/OptionDtoListEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/OptionUpdateDto.swift
+OpenAPIClient/Classes/OpenAPIs/Models/PatchOperation.swift
 OpenAPIClient/Classes/OpenAPIs/Models/RefreshRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/RegisterRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ResendConfirmationEmailRequest.swift
@@ -49,6 +53,7 @@ OpenAPIClient/Classes/OpenAPIs/Models/ResetPasswordRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/SocialProfileDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/SocialProfileDtoEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/TenantDto.swift
+OpenAPIClient/Classes/OpenAPIs/Models/TenantDtoCollectionQueryParameters.swift
 OpenAPIClient/Classes/OpenAPIs/Models/TenantDtoListEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/TenantEnrollmentDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/TenantEnrollmentDtoEnvelope.swift
@@ -74,6 +79,7 @@ Package.swift
 README.md
 docs/AccessTokenResponse.md
 docs/AddressDto.md
+docs/AddressDtoCollectionQueryParameters.md
 docs/AddressDtoListEnvelope.md
 docs/CartDto.md
 docs/CartDtoEnvelope.md
@@ -87,6 +93,7 @@ docs/ExtendedUserDto.md
 docs/ExtendedUserDtoEnvelope.md
 docs/FenixAllianceABSWebAPI.md
 docs/FollowRecordDto.md
+docs/FollowRecordDtoCollectionQueryParameters.md
 docs/FollowRecordDtoListEnvelope.md
 docs/ForgotPasswordRequest.md
 docs/HttpValidationProblemDetails.md
@@ -95,14 +102,16 @@ docs/InfoResponse.md
 docs/Int32Envelope.md
 docs/LoginRequest.md
 docs/NotificationDto.md
+docs/NotificationDtoCollectionQueryParameters.md
 docs/NotificationDtoListEnvelope.md
-docs/Operation.md
 docs/OptionCreateDto.md
 docs/OptionDto.md
+docs/OptionDtoCollectionQueryParameters.md
 docs/OptionDtoEnvelope.md
 docs/OptionDtoListEnvelope.md
 docs/OptionUpdateDto.md
 docs/OptionsAPI.md
+docs/PatchOperation.md
 docs/RefreshRequest.md
 docs/RegisterRequest.md
 docs/ResendConfirmationEmailRequest.md
@@ -110,6 +119,7 @@ docs/ResetPasswordRequest.md
 docs/SocialProfileDto.md
 docs/SocialProfileDtoEnvelope.md
 docs/TenantDto.md
+docs/TenantDtoCollectionQueryParameters.md
 docs/TenantDtoListEnvelope.md
 docs/TenantEnrollmentDto.md
 docs/TenantEnrollmentDtoEnvelope.md

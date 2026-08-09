@@ -183,7 +183,7 @@ No authorization required
 
 # **getServiceQueuesAsync**
 ```swift
-    open class func getServiceQueuesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ServiceQueueDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
+    open class func getServiceQueuesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, serviceQueueDtoCollectionQueryParameters: ServiceQueueDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ServiceQueueDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all service queues
@@ -198,9 +198,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let serviceQueueDtoCollectionQueryParameters = ServiceQueueDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ServiceQueueDtoCollectionQueryParameters |  (optional)
 
 // Get all service queues
-ServiceQueuesAPI.getServiceQueuesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ServiceQueuesAPI.getServiceQueuesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, serviceQueueDtoCollectionQueryParameters: serviceQueueDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -219,6 +220,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **serviceQueueDtoCollectionQueryParameters** | [**ServiceQueueDtoCollectionQueryParameters**](ServiceQueueDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -230,14 +232,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getServiceQueuesCountAsync**
 ```swift
-    open class func getServiceQueuesCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getServiceQueuesCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, serviceQueueDtoCollectionQueryParameters: ServiceQueueDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get service queues count
@@ -252,9 +254,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let serviceQueueDtoCollectionQueryParameters = ServiceQueueDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ServiceQueueDtoCollectionQueryParameters |  (optional)
 
 // Get service queues count
-ServiceQueuesAPI.getServiceQueuesCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ServiceQueuesAPI.getServiceQueuesCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, serviceQueueDtoCollectionQueryParameters: serviceQueueDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -273,6 +276,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **serviceQueueDtoCollectionQueryParameters** | [**ServiceQueueDtoCollectionQueryParameters**](ServiceQueueDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -284,14 +288,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchServiceQueueAsync**
 ```swift
-    open class func patchServiceQueueAsync(tenantId: UUID, serviceQueueId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: Envelope?, _ error: Error?) -> Void)
+    open class func patchServiceQueueAsync(tenantId: UUID, serviceQueueId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: Envelope?, _ error: Error?) -> Void)
 ```
 
 Patch a service queue
@@ -307,10 +311,10 @@ let tenantId = 987 // UUID |
 let serviceQueueId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a service queue
-ServiceQueuesAPI.patchServiceQueueAsync(tenantId: tenantId, serviceQueueId: serviceQueueId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+ServiceQueuesAPI.patchServiceQueueAsync(tenantId: tenantId, serviceQueueId: serviceQueueId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -330,7 +334,7 @@ Name | Type | Description  | Notes
  **serviceQueueId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

@@ -310,12 +310,13 @@ open class ItemPickListsAPI {
      - parameter pickListId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemPickListEntryDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getItemPickListEntriesAsync(tenantId: UUID, pickListId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemPickListEntryDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getItemPickListEntriesAsyncWithRequestBuilder(tenantId: tenantId, pickListId: pickListId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getItemPickListEntriesAsync(tenantId: UUID, pickListId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemPickListEntryDtoCollectionQueryParameters: ItemPickListEntryDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemPickListEntryDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getItemPickListEntriesAsyncWithRequestBuilder(tenantId: tenantId, pickListId: pickListId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemPickListEntryDtoCollectionQueryParameters: itemPickListEntryDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -333,15 +334,16 @@ open class ItemPickListsAPI {
      - parameter pickListId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemPickListEntryDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<ItemPickListEntryDtoListEnvelope> 
      */
-    open class func getItemPickListEntriesAsyncWithRequestBuilder(tenantId: UUID, pickListId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemPickListEntryDtoListEnvelope> {
+    open class func getItemPickListEntriesAsyncWithRequestBuilder(tenantId: UUID, pickListId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemPickListEntryDtoCollectionQueryParameters: ItemPickListEntryDtoCollectionQueryParameters? = nil) -> RequestBuilder<ItemPickListEntryDtoListEnvelope> {
         var localVariablePath = "/api/v2/LogisticsService/ItemPickLists/{pickListId}/Entries"
         let pickListIdPreEscape = "\(APIHelper.mapValueToPathItem(pickListId))"
         let pickListIdPostEscape = pickListIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{pickListId}", with: pickListIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: itemPickListEntryDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -350,6 +352,7 @@ open class ItemPickListsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -367,12 +370,13 @@ open class ItemPickListsAPI {
      - parameter pickListId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemPickListEntryDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getItemPickListEntriesCountAsync(tenantId: UUID, pickListId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getItemPickListEntriesCountAsyncWithRequestBuilder(tenantId: tenantId, pickListId: pickListId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getItemPickListEntriesCountAsync(tenantId: UUID, pickListId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemPickListEntryDtoCollectionQueryParameters: ItemPickListEntryDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getItemPickListEntriesCountAsyncWithRequestBuilder(tenantId: tenantId, pickListId: pickListId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemPickListEntryDtoCollectionQueryParameters: itemPickListEntryDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -390,15 +394,16 @@ open class ItemPickListsAPI {
      - parameter pickListId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemPickListEntryDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getItemPickListEntriesCountAsyncWithRequestBuilder(tenantId: UUID, pickListId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getItemPickListEntriesCountAsyncWithRequestBuilder(tenantId: UUID, pickListId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemPickListEntryDtoCollectionQueryParameters: ItemPickListEntryDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/LogisticsService/ItemPickLists/{pickListId}/Entries/Count"
         let pickListIdPreEscape = "\(APIHelper.mapValueToPathItem(pickListId))"
         let pickListIdPostEscape = pickListIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{pickListId}", with: pickListIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: itemPickListEntryDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -407,6 +412,7 @@ open class ItemPickListsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -485,12 +491,13 @@ open class ItemPickListsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemPickListDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getItemPickListsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemPickListDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getItemPickListsAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getItemPickListsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemPickListDtoCollectionQueryParameters: ItemPickListDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemPickListDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getItemPickListsAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemPickListDtoCollectionQueryParameters: itemPickListDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -507,12 +514,13 @@ open class ItemPickListsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemPickListDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<ItemPickListDtoListEnvelope> 
      */
-    open class func getItemPickListsAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemPickListDtoListEnvelope> {
+    open class func getItemPickListsAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemPickListDtoCollectionQueryParameters: ItemPickListDtoCollectionQueryParameters? = nil) -> RequestBuilder<ItemPickListDtoListEnvelope> {
         let localVariablePath = "/api/v2/LogisticsService/ItemPickLists"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: itemPickListDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -521,6 +529,7 @@ open class ItemPickListsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -537,12 +546,13 @@ open class ItemPickListsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemPickListDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getItemPickListsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getItemPickListsCountAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getItemPickListsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemPickListDtoCollectionQueryParameters: ItemPickListDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getItemPickListsCountAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemPickListDtoCollectionQueryParameters: itemPickListDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -559,12 +569,13 @@ open class ItemPickListsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemPickListDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getItemPickListsCountAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getItemPickListsCountAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemPickListDtoCollectionQueryParameters: ItemPickListDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/LogisticsService/ItemPickLists/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: itemPickListDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -573,6 +584,7 @@ open class ItemPickListsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -590,13 +602,13 @@ open class ItemPickListsAPI {
      - parameter pickListId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchItemPickListAsync(tenantId: UUID, pickListId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchItemPickListAsyncWithRequestBuilder(tenantId: tenantId, pickListId: pickListId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchItemPickListAsync(tenantId: UUID, pickListId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchItemPickListAsyncWithRequestBuilder(tenantId: tenantId, pickListId: pickListId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -614,16 +626,16 @@ open class ItemPickListsAPI {
      - parameter pickListId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchItemPickListAsyncWithRequestBuilder(tenantId: UUID, pickListId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchItemPickListAsyncWithRequestBuilder(tenantId: UUID, pickListId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/LogisticsService/ItemPickLists/{pickListId}"
         let pickListIdPreEscape = "\(APIHelper.mapValueToPathItem(pickListId))"
         let pickListIdPostEscape = pickListIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{pickListId}", with: pickListIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -651,13 +663,13 @@ open class ItemPickListsAPI {
      - parameter entryId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchItemPickListEntryAsync(tenantId: UUID, pickListId: UUID, entryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchItemPickListEntryAsyncWithRequestBuilder(tenantId: tenantId, pickListId: pickListId, entryId: entryId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchItemPickListEntryAsync(tenantId: UUID, pickListId: UUID, entryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchItemPickListEntryAsyncWithRequestBuilder(tenantId: tenantId, pickListId: pickListId, entryId: entryId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -676,10 +688,10 @@ open class ItemPickListsAPI {
      - parameter entryId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchItemPickListEntryAsyncWithRequestBuilder(tenantId: UUID, pickListId: UUID, entryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchItemPickListEntryAsyncWithRequestBuilder(tenantId: UUID, pickListId: UUID, entryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/LogisticsService/ItemPickLists/{pickListId}/Entries/{entryId}"
         let pickListIdPreEscape = "\(APIHelper.mapValueToPathItem(pickListId))"
         let pickListIdPostEscape = pickListIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -688,7 +700,7 @@ open class ItemPickListsAPI {
         let entryIdPostEscape = entryIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{entryId}", with: entryIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

@@ -12,20 +12,32 @@ import AnyCodable
 
 public struct SocialFeedPostCreateDto: Codable, JSONEncodable, Hashable {
 
+    public enum BodyFormat: String, Codable, CaseIterable {
+        case plainText = "PlainText"
+        case html = "Html"
+    }
+    static let bodyHtmlRule = StringRule(minLength: nil, maxLength: 8000, pattern: nil)
+    static let backgroundStyleRule = StringRule(minLength: nil, maxLength: 64, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var title: String?
     public var message: String?
     public var socialFeedId: String?
     public var socialProfileId: String?
+    public var bodyHtml: String?
+    public var bodyFormat: BodyFormat?
+    public var backgroundStyle: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, title: String? = nil, message: String? = nil, socialFeedId: String? = nil, socialProfileId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, title: String? = nil, message: String? = nil, socialFeedId: String? = nil, socialProfileId: String? = nil, bodyHtml: String? = nil, bodyFormat: BodyFormat? = nil, backgroundStyle: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
         self.message = message
         self.socialFeedId = socialFeedId
         self.socialProfileId = socialProfileId
+        self.bodyHtml = bodyHtml
+        self.bodyFormat = bodyFormat
+        self.backgroundStyle = backgroundStyle
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -35,6 +47,9 @@ public struct SocialFeedPostCreateDto: Codable, JSONEncodable, Hashable {
         case message
         case socialFeedId
         case socialProfileId
+        case bodyHtml
+        case bodyFormat
+        case backgroundStyle
     }
 
     // Encodable protocol methods
@@ -47,6 +62,9 @@ public struct SocialFeedPostCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(message, forKey: .message)
         try container.encodeIfPresent(socialFeedId, forKey: .socialFeedId)
         try container.encodeIfPresent(socialProfileId, forKey: .socialProfileId)
+        try container.encodeIfPresent(bodyHtml, forKey: .bodyHtml)
+        try container.encodeIfPresent(bodyFormat, forKey: .bodyFormat)
+        try container.encodeIfPresent(backgroundStyle, forKey: .backgroundStyle)
     }
 }
 

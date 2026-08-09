@@ -25,6 +25,7 @@ Method | HTTP request | Description
 [**getMessagesAsync**](SocialProfilesAPI.md#getmessagesasync) | **GET** /api/v2/SocialService/SocialProfiles/{conversationId}/Messages | Get Messages
 [**getNotificationByIdAsync**](SocialProfilesAPI.md#getnotificationbyidasync) | **GET** /api/v2/SocialService/SocialProfiles/{socialProfileId}/Notifications/{notificationId} | Get Notification
 [**getNotificationsAsync**](SocialProfilesAPI.md#getnotificationsasync) | **GET** /api/v2/SocialService/SocialProfiles/{socialProfileId}/Notifications | Get Notifications
+[**getOrCreateDirectConversationAsync**](SocialProfilesAPI.md#getorcreatedirectconversationasync) | **POST** /api/v2/SocialService/SocialProfiles/{socialProfileId}/Conversations/Direct | Get or Create Direct Conversation
 [**getSocialProfileAsync**](SocialProfilesAPI.md#getsocialprofileasync) | **GET** /api/v2/SocialService/SocialProfiles/{socialProfileId} | Get Social Profile
 [**getSocialProfilesAsync**](SocialProfilesAPI.md#getsocialprofilesasync) | **GET** /api/v2/SocialService/SocialProfiles | Get Social Profiles
 [**unfollowAsync**](SocialProfilesAPI.md#unfollowasync) | **DELETE** /api/v2/SocialService/SocialProfiles/{socialProfileId}/Follows/{followedSocialProfileId} | Unfollow
@@ -33,7 +34,7 @@ Method | HTTP request | Description
 
 # **countConversationsAsync**
 ```swift
-    open class func countConversationsAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countConversationsAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, conversationDtoCollectionQueryParameters: ConversationDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count Conversations
@@ -48,9 +49,10 @@ import OpenAPIClient
 let socialProfileId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let conversationDtoCollectionQueryParameters = ConversationDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ConversationDtoCollectionQueryParameters |  (optional)
 
 // Count Conversations
-SocialProfilesAPI.countConversationsAsync(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SocialProfilesAPI.countConversationsAsync(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, conversationDtoCollectionQueryParameters: conversationDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -69,6 +71,7 @@ Name | Type | Description  | Notes
  **socialProfileId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **conversationDtoCollectionQueryParameters** | [**ConversationDtoCollectionQueryParameters**](ConversationDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -80,14 +83,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **countFollowedProfilesAsync**
 ```swift
-    open class func countFollowedProfilesAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countFollowedProfilesAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialProfileDtoCollectionQueryParameters: SocialProfileDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count Followed Profiles
@@ -102,9 +105,10 @@ import OpenAPIClient
 let socialProfileId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let socialProfileDtoCollectionQueryParameters = SocialProfileDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SocialProfileDtoCollectionQueryParameters |  (optional)
 
 // Count Followed Profiles
-SocialProfilesAPI.countFollowedProfilesAsync(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SocialProfilesAPI.countFollowedProfilesAsync(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialProfileDtoCollectionQueryParameters: socialProfileDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -123,6 +127,7 @@ Name | Type | Description  | Notes
  **socialProfileId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **socialProfileDtoCollectionQueryParameters** | [**SocialProfileDtoCollectionQueryParameters**](SocialProfileDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -134,14 +139,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **countFollowerProfilesAsync**
 ```swift
-    open class func countFollowerProfilesAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countFollowerProfilesAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialProfileDtoCollectionQueryParameters: SocialProfileDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count Follower Profiles
@@ -156,9 +161,10 @@ import OpenAPIClient
 let socialProfileId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let socialProfileDtoCollectionQueryParameters = SocialProfileDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SocialProfileDtoCollectionQueryParameters |  (optional)
 
 // Count Follower Profiles
-SocialProfilesAPI.countFollowerProfilesAsync(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SocialProfilesAPI.countFollowerProfilesAsync(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialProfileDtoCollectionQueryParameters: socialProfileDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -177,6 +183,7 @@ Name | Type | Description  | Notes
  **socialProfileId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **socialProfileDtoCollectionQueryParameters** | [**SocialProfileDtoCollectionQueryParameters**](SocialProfileDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -188,14 +195,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **countFollowersAsync**
 ```swift
-    open class func countFollowersAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countFollowersAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, followRecordDtoCollectionQueryParameters: FollowRecordDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count Followers
@@ -210,9 +217,10 @@ import OpenAPIClient
 let socialProfileId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let followRecordDtoCollectionQueryParameters = FollowRecordDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // FollowRecordDtoCollectionQueryParameters |  (optional)
 
 // Count Followers
-SocialProfilesAPI.countFollowersAsync(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SocialProfilesAPI.countFollowersAsync(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, followRecordDtoCollectionQueryParameters: followRecordDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -231,6 +239,7 @@ Name | Type | Description  | Notes
  **socialProfileId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **followRecordDtoCollectionQueryParameters** | [**FollowRecordDtoCollectionQueryParameters**](FollowRecordDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -242,14 +251,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **countFollowsAsync**
 ```swift
-    open class func countFollowsAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countFollowsAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, followRecordDtoCollectionQueryParameters: FollowRecordDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count Follows
@@ -264,9 +273,10 @@ import OpenAPIClient
 let socialProfileId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let followRecordDtoCollectionQueryParameters = FollowRecordDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // FollowRecordDtoCollectionQueryParameters |  (optional)
 
 // Count Follows
-SocialProfilesAPI.countFollowsAsync(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SocialProfilesAPI.countFollowsAsync(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, followRecordDtoCollectionQueryParameters: followRecordDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -285,6 +295,7 @@ Name | Type | Description  | Notes
  **socialProfileId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **followRecordDtoCollectionQueryParameters** | [**FollowRecordDtoCollectionQueryParameters**](FollowRecordDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -296,14 +307,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **countMessagesAsync**
 ```swift
-    open class func countMessagesAsync(socialProfileId: UUID, conversationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countMessagesAsync(socialProfileId: UUID, conversationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, privateMessageDtoCollectionQueryParameters: PrivateMessageDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count Messages
@@ -319,9 +330,10 @@ let socialProfileId = 987 // UUID |
 let conversationId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let privateMessageDtoCollectionQueryParameters = PrivateMessageDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // PrivateMessageDtoCollectionQueryParameters |  (optional)
 
 // Count Messages
-SocialProfilesAPI.countMessagesAsync(socialProfileId: socialProfileId, conversationId: conversationId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SocialProfilesAPI.countMessagesAsync(socialProfileId: socialProfileId, conversationId: conversationId, apiVersion: apiVersion, xApiVersion: xApiVersion, privateMessageDtoCollectionQueryParameters: privateMessageDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -341,6 +353,7 @@ Name | Type | Description  | Notes
  **conversationId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **privateMessageDtoCollectionQueryParameters** | [**PrivateMessageDtoCollectionQueryParameters**](PrivateMessageDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -352,14 +365,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **countNotificationsAsync**
 ```swift
-    open class func countNotificationsAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countNotificationsAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, notificationDtoCollectionQueryParameters: NotificationDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count Notifications
@@ -374,9 +387,10 @@ import OpenAPIClient
 let socialProfileId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let notificationDtoCollectionQueryParameters = NotificationDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // NotificationDtoCollectionQueryParameters |  (optional)
 
 // Count Notifications
-SocialProfilesAPI.countNotificationsAsync(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SocialProfilesAPI.countNotificationsAsync(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, notificationDtoCollectionQueryParameters: notificationDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -395,6 +409,7 @@ Name | Type | Description  | Notes
  **socialProfileId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **notificationDtoCollectionQueryParameters** | [**NotificationDtoCollectionQueryParameters**](NotificationDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -406,14 +421,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **countSocialProfilesAsync**
 ```swift
-    open class func countSocialProfilesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countSocialProfilesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, socialProfileDtoCollectionQueryParameters: SocialProfileDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count Social Profiles
@@ -427,9 +442,10 @@ import OpenAPIClient
 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let socialProfileDtoCollectionQueryParameters = SocialProfileDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SocialProfileDtoCollectionQueryParameters |  (optional)
 
 // Count Social Profiles
-SocialProfilesAPI.countSocialProfilesAsync(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SocialProfilesAPI.countSocialProfilesAsync(apiVersion: apiVersion, xApiVersion: xApiVersion, socialProfileDtoCollectionQueryParameters: socialProfileDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -447,6 +463,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **socialProfileDtoCollectionQueryParameters** | [**SocialProfileDtoCollectionQueryParameters**](SocialProfileDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -458,7 +475,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -749,7 +766,7 @@ No authorization required
 
 # **getConversationsAsync**
 ```swift
-    open class func getConversationsAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ConversationDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getConversationsAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, conversationDtoCollectionQueryParameters: ConversationDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ConversationDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get Conversations
@@ -764,9 +781,10 @@ import OpenAPIClient
 let socialProfileId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let conversationDtoCollectionQueryParameters = ConversationDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ConversationDtoCollectionQueryParameters |  (optional)
 
 // Get Conversations
-SocialProfilesAPI.getConversationsAsync(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SocialProfilesAPI.getConversationsAsync(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, conversationDtoCollectionQueryParameters: conversationDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -785,6 +803,7 @@ Name | Type | Description  | Notes
  **socialProfileId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **conversationDtoCollectionQueryParameters** | [**ConversationDtoCollectionQueryParameters**](ConversationDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -796,14 +815,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getFollowedProfilesAsync**
 ```swift
-    open class func getFollowedProfilesAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: SocialProfileDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getFollowedProfilesAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialProfileDtoCollectionQueryParameters: SocialProfileDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: SocialProfileDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get Followed Profiles
@@ -818,9 +837,10 @@ import OpenAPIClient
 let socialProfileId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let socialProfileDtoCollectionQueryParameters = SocialProfileDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SocialProfileDtoCollectionQueryParameters |  (optional)
 
 // Get Followed Profiles
-SocialProfilesAPI.getFollowedProfilesAsync(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SocialProfilesAPI.getFollowedProfilesAsync(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialProfileDtoCollectionQueryParameters: socialProfileDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -839,6 +859,7 @@ Name | Type | Description  | Notes
  **socialProfileId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **socialProfileDtoCollectionQueryParameters** | [**SocialProfileDtoCollectionQueryParameters**](SocialProfileDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -850,14 +871,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getFollowerProfilesAsync**
 ```swift
-    open class func getFollowerProfilesAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: SocialProfileDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getFollowerProfilesAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialProfileDtoCollectionQueryParameters: SocialProfileDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: SocialProfileDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get Follower Profiles
@@ -872,9 +893,10 @@ import OpenAPIClient
 let socialProfileId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let socialProfileDtoCollectionQueryParameters = SocialProfileDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SocialProfileDtoCollectionQueryParameters |  (optional)
 
 // Get Follower Profiles
-SocialProfilesAPI.getFollowerProfilesAsync(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SocialProfilesAPI.getFollowerProfilesAsync(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialProfileDtoCollectionQueryParameters: socialProfileDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -893,6 +915,7 @@ Name | Type | Description  | Notes
  **socialProfileId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **socialProfileDtoCollectionQueryParameters** | [**SocialProfileDtoCollectionQueryParameters**](SocialProfileDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -904,14 +927,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getFollowersAsync**
 ```swift
-    open class func getFollowersAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: FollowRecordDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getFollowersAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, followRecordDtoCollectionQueryParameters: FollowRecordDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: FollowRecordDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get Followers
@@ -926,9 +949,10 @@ import OpenAPIClient
 let socialProfileId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let followRecordDtoCollectionQueryParameters = FollowRecordDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // FollowRecordDtoCollectionQueryParameters |  (optional)
 
 // Get Followers
-SocialProfilesAPI.getFollowersAsync(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SocialProfilesAPI.getFollowersAsync(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, followRecordDtoCollectionQueryParameters: followRecordDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -947,6 +971,7 @@ Name | Type | Description  | Notes
  **socialProfileId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **followRecordDtoCollectionQueryParameters** | [**FollowRecordDtoCollectionQueryParameters**](FollowRecordDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -958,14 +983,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getFollowsAsync**
 ```swift
-    open class func getFollowsAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: FollowRecordDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getFollowsAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, followRecordDtoCollectionQueryParameters: FollowRecordDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: FollowRecordDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get Follows
@@ -980,9 +1005,10 @@ import OpenAPIClient
 let socialProfileId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let followRecordDtoCollectionQueryParameters = FollowRecordDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // FollowRecordDtoCollectionQueryParameters |  (optional)
 
 // Get Follows
-SocialProfilesAPI.getFollowsAsync(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SocialProfilesAPI.getFollowsAsync(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, followRecordDtoCollectionQueryParameters: followRecordDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1001,6 +1027,7 @@ Name | Type | Description  | Notes
  **socialProfileId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **followRecordDtoCollectionQueryParameters** | [**FollowRecordDtoCollectionQueryParameters**](FollowRecordDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1012,14 +1039,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getMessagesAsync**
 ```swift
-    open class func getMessagesAsync(socialProfileId: UUID, conversationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: PrivateMessageDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getMessagesAsync(socialProfileId: UUID, conversationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, privateMessageDtoCollectionQueryParameters: PrivateMessageDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: PrivateMessageDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get Messages
@@ -1035,9 +1062,10 @@ let socialProfileId = 987 // UUID |
 let conversationId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let privateMessageDtoCollectionQueryParameters = PrivateMessageDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // PrivateMessageDtoCollectionQueryParameters |  (optional)
 
 // Get Messages
-SocialProfilesAPI.getMessagesAsync(socialProfileId: socialProfileId, conversationId: conversationId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SocialProfilesAPI.getMessagesAsync(socialProfileId: socialProfileId, conversationId: conversationId, apiVersion: apiVersion, xApiVersion: xApiVersion, privateMessageDtoCollectionQueryParameters: privateMessageDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1057,6 +1085,7 @@ Name | Type | Description  | Notes
  **conversationId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **privateMessageDtoCollectionQueryParameters** | [**PrivateMessageDtoCollectionQueryParameters**](PrivateMessageDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1068,7 +1097,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1131,7 +1160,7 @@ No authorization required
 
 # **getNotificationsAsync**
 ```swift
-    open class func getNotificationsAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: NotificationDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getNotificationsAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, notificationDtoCollectionQueryParameters: NotificationDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: NotificationDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get Notifications
@@ -1146,9 +1175,10 @@ import OpenAPIClient
 let socialProfileId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let notificationDtoCollectionQueryParameters = NotificationDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // NotificationDtoCollectionQueryParameters |  (optional)
 
 // Get Notifications
-SocialProfilesAPI.getNotificationsAsync(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SocialProfilesAPI.getNotificationsAsync(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, notificationDtoCollectionQueryParameters: notificationDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1167,6 +1197,7 @@ Name | Type | Description  | Notes
  **socialProfileId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **notificationDtoCollectionQueryParameters** | [**NotificationDtoCollectionQueryParameters**](NotificationDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1178,7 +1209,63 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getOrCreateDirectConversationAsync**
+```swift
+    open class func getOrCreateDirectConversationAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, body: UUID? = nil, completion: @escaping (_ data: ConversationDtoEnvelope?, _ error: Error?) -> Void)
+```
+
+Get or Create Direct Conversation
+
+Get or create the direct two-party conversation between the acting profile and a counterparty.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let socialProfileId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let body = 987 // UUID |  (optional)
+
+// Get or Create Direct Conversation
+SocialProfilesAPI.getOrCreateDirectConversationAsync(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, body: body) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **socialProfileId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **body** | **UUID** |  | [optional] 
+
+### Return type
+
+[**ConversationDtoEnvelope**](ConversationDtoEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1239,7 +1326,7 @@ No authorization required
 
 # **getSocialProfilesAsync**
 ```swift
-    open class func getSocialProfilesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: SocialProfileDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getSocialProfilesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, socialProfileDtoCollectionQueryParameters: SocialProfileDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: SocialProfileDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get Social Profiles
@@ -1253,9 +1340,10 @@ import OpenAPIClient
 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let socialProfileDtoCollectionQueryParameters = SocialProfileDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SocialProfileDtoCollectionQueryParameters |  (optional)
 
 // Get Social Profiles
-SocialProfilesAPI.getSocialProfilesAsync(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SocialProfilesAPI.getSocialProfilesAsync(apiVersion: apiVersion, xApiVersion: xApiVersion, socialProfileDtoCollectionQueryParameters: socialProfileDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1273,6 +1361,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **socialProfileDtoCollectionQueryParameters** | [**SocialProfileDtoCollectionQueryParameters**](SocialProfileDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1284,7 +1373,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

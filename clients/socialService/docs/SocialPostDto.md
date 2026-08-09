@@ -12,6 +12,10 @@ Name | Type | Description | Notes
 **socialProfileAvatarUrl** | **String** |  | [optional] 
 **commentsCount** | **Int** |  | [optional] 
 **reactionsCount** | **Int** |  | [optional] 
+**socialProfileType** | **String** |  | [optional] 
+**bodyHtml** | **String** |  | [optional] 
+**bodyFormat** | **String** |  | [optional] 
+**backgroundStyle** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

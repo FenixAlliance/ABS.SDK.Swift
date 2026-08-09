@@ -1026,7 +1026,7 @@ No authorization required
 
 # **getExtendedInvoices**
 ```swift
-    open class func getExtendedInvoices(tenantId: UUID, completion: @escaping (_ data: ExtendedInvoiceDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getExtendedInvoices(tenantId: UUID, extendedInvoiceDtoCollectionQueryParameters: ExtendedInvoiceDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ExtendedInvoiceDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get a list of extended invoices.
@@ -1039,9 +1039,10 @@ Retrieves a list of extended invoice details for the specified tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
+let extendedInvoiceDtoCollectionQueryParameters = ExtendedInvoiceDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ExtendedInvoiceDtoCollectionQueryParameters |  (optional)
 
 // Get a list of extended invoices.
-InvoicesAPI.getExtendedInvoices(tenantId: tenantId) { (response, error) in
+InvoicesAPI.getExtendedInvoices(tenantId: tenantId, extendedInvoiceDtoCollectionQueryParameters: extendedInvoiceDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1058,6 +1059,7 @@ InvoicesAPI.getExtendedInvoices(tenantId: tenantId) { (response, error) in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
+ **extendedInvoiceDtoCollectionQueryParameters** | [**ExtendedInvoiceDtoCollectionQueryParameters**](ExtendedInvoiceDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1069,14 +1071,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getExtendedInvoicesCount**
 ```swift
-    open class func getExtendedInvoicesCount(tenantId: UUID, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getExtendedInvoicesCount(tenantId: UUID, extendedInvoiceDtoCollectionQueryParameters: ExtendedInvoiceDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get the count of extended invoices.
@@ -1089,9 +1091,10 @@ Retrieves the total count of extended invoices for the specified tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
+let extendedInvoiceDtoCollectionQueryParameters = ExtendedInvoiceDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ExtendedInvoiceDtoCollectionQueryParameters |  (optional)
 
 // Get the count of extended invoices.
-InvoicesAPI.getExtendedInvoicesCount(tenantId: tenantId) { (response, error) in
+InvoicesAPI.getExtendedInvoicesCount(tenantId: tenantId, extendedInvoiceDtoCollectionQueryParameters: extendedInvoiceDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1108,6 +1111,7 @@ InvoicesAPI.getExtendedInvoicesCount(tenantId: tenantId) { (response, error) in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
+ **extendedInvoiceDtoCollectionQueryParameters** | [**ExtendedInvoiceDtoCollectionQueryParameters**](ExtendedInvoiceDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1119,7 +1123,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1232,7 +1236,7 @@ No authorization required
 
 # **getInvoiceAdjustments**
 ```swift
-    open class func getInvoiceAdjustments(tenantId: UUID, invoiceId: UUID, completion: @escaping (_ data: InvoiceAdjustmentDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
+    open class func getInvoiceAdjustments(tenantId: UUID, invoiceId: UUID, invoiceAdjustmentDtoCollectionQueryParameters: InvoiceAdjustmentDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: InvoiceAdjustmentDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get invoice adjustments.
@@ -1246,9 +1250,10 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let invoiceId = 987 // UUID | 
+let invoiceAdjustmentDtoCollectionQueryParameters = InvoiceAdjustmentDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // InvoiceAdjustmentDtoCollectionQueryParameters |  (optional)
 
 // Get invoice adjustments.
-InvoicesAPI.getInvoiceAdjustments(tenantId: tenantId, invoiceId: invoiceId) { (response, error) in
+InvoicesAPI.getInvoiceAdjustments(tenantId: tenantId, invoiceId: invoiceId, invoiceAdjustmentDtoCollectionQueryParameters: invoiceAdjustmentDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1266,6 +1271,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **invoiceId** | **UUID** |  | 
+ **invoiceAdjustmentDtoCollectionQueryParameters** | [**InvoiceAdjustmentDtoCollectionQueryParameters**](InvoiceAdjustmentDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1277,14 +1283,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getInvoiceAdjustmentsCount**
 ```swift
-    open class func getInvoiceAdjustmentsCount(tenantId: UUID, invoiceId: UUID, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getInvoiceAdjustmentsCount(tenantId: UUID, invoiceId: UUID, invoiceAdjustmentDtoCollectionQueryParameters: InvoiceAdjustmentDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get the count of invoice adjustments.
@@ -1298,9 +1304,10 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let invoiceId = 987 // UUID | 
+let invoiceAdjustmentDtoCollectionQueryParameters = InvoiceAdjustmentDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // InvoiceAdjustmentDtoCollectionQueryParameters |  (optional)
 
 // Get the count of invoice adjustments.
-InvoicesAPI.getInvoiceAdjustmentsCount(tenantId: tenantId, invoiceId: invoiceId) { (response, error) in
+InvoicesAPI.getInvoiceAdjustmentsCount(tenantId: tenantId, invoiceId: invoiceId, invoiceAdjustmentDtoCollectionQueryParameters: invoiceAdjustmentDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1318,6 +1325,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **invoiceId** | **UUID** |  | 
+ **invoiceAdjustmentDtoCollectionQueryParameters** | [**InvoiceAdjustmentDtoCollectionQueryParameters**](InvoiceAdjustmentDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1329,7 +1337,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1390,7 +1398,7 @@ No authorization required
 
 # **getInvoiceLineTaxes**
 ```swift
-    open class func getInvoiceLineTaxes(tenantId: UUID, invoiceId: UUID, invoiceLineId: UUID, completion: @escaping (_ data: InvoiceLineAppliedTaxDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
+    open class func getInvoiceLineTaxes(tenantId: UUID, invoiceId: UUID, invoiceLineId: UUID, invoiceLineAppliedTaxDtoCollectionQueryParameters: InvoiceLineAppliedTaxDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: InvoiceLineAppliedTaxDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get taxes for an invoice line.
@@ -1405,9 +1413,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let invoiceId = 987 // UUID | 
 let invoiceLineId = 987 // UUID | 
+let invoiceLineAppliedTaxDtoCollectionQueryParameters = InvoiceLineAppliedTaxDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // InvoiceLineAppliedTaxDtoCollectionQueryParameters |  (optional)
 
 // Get taxes for an invoice line.
-InvoicesAPI.getInvoiceLineTaxes(tenantId: tenantId, invoiceId: invoiceId, invoiceLineId: invoiceLineId) { (response, error) in
+InvoicesAPI.getInvoiceLineTaxes(tenantId: tenantId, invoiceId: invoiceId, invoiceLineId: invoiceLineId, invoiceLineAppliedTaxDtoCollectionQueryParameters: invoiceLineAppliedTaxDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1426,6 +1435,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **invoiceId** | **UUID** |  | 
  **invoiceLineId** | **UUID** |  | 
+ **invoiceLineAppliedTaxDtoCollectionQueryParameters** | [**InvoiceLineAppliedTaxDtoCollectionQueryParameters**](InvoiceLineAppliedTaxDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1437,14 +1447,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getInvoiceLineTaxesCount**
 ```swift
-    open class func getInvoiceLineTaxesCount(tenantId: UUID, invoiceId: UUID, invoiceLineId: UUID, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getInvoiceLineTaxesCount(tenantId: UUID, invoiceId: UUID, invoiceLineId: UUID, invoiceLineAppliedTaxDtoCollectionQueryParameters: InvoiceLineAppliedTaxDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get the count of taxes for an invoice line.
@@ -1459,9 +1469,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let invoiceId = 987 // UUID | 
 let invoiceLineId = 987 // UUID | 
+let invoiceLineAppliedTaxDtoCollectionQueryParameters = InvoiceLineAppliedTaxDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // InvoiceLineAppliedTaxDtoCollectionQueryParameters |  (optional)
 
 // Get the count of taxes for an invoice line.
-InvoicesAPI.getInvoiceLineTaxesCount(tenantId: tenantId, invoiceId: invoiceId, invoiceLineId: invoiceLineId) { (response, error) in
+InvoicesAPI.getInvoiceLineTaxesCount(tenantId: tenantId, invoiceId: invoiceId, invoiceLineId: invoiceLineId, invoiceLineAppliedTaxDtoCollectionQueryParameters: invoiceLineAppliedTaxDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1480,6 +1491,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **invoiceId** | **UUID** |  | 
  **invoiceLineId** | **UUID** |  | 
+ **invoiceLineAppliedTaxDtoCollectionQueryParameters** | [**InvoiceLineAppliedTaxDtoCollectionQueryParameters**](InvoiceLineAppliedTaxDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1491,14 +1503,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getInvoiceLines**
 ```swift
-    open class func getInvoiceLines(tenantId: UUID, invoiceId: UUID, itemId: UUID? = nil, completion: @escaping (_ data: InvoiceLineDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getInvoiceLines(tenantId: UUID, invoiceId: UUID, itemId: UUID? = nil, invoiceLineDtoCollectionQueryParameters: InvoiceLineDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: InvoiceLineDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get invoice lines.
@@ -1513,9 +1525,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let invoiceId = 987 // UUID | 
 let itemId = 987 // UUID |  (optional)
+let invoiceLineDtoCollectionQueryParameters = InvoiceLineDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // InvoiceLineDtoCollectionQueryParameters |  (optional)
 
 // Get invoice lines.
-InvoicesAPI.getInvoiceLines(tenantId: tenantId, invoiceId: invoiceId, itemId: itemId) { (response, error) in
+InvoicesAPI.getInvoiceLines(tenantId: tenantId, invoiceId: invoiceId, itemId: itemId, invoiceLineDtoCollectionQueryParameters: invoiceLineDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1534,6 +1547,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **invoiceId** | **UUID** |  | 
  **itemId** | **UUID** |  | [optional] 
+ **invoiceLineDtoCollectionQueryParameters** | [**InvoiceLineDtoCollectionQueryParameters**](InvoiceLineDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1545,14 +1559,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getInvoiceLinesCount**
 ```swift
-    open class func getInvoiceLinesCount(tenantId: UUID, invoiceId: UUID, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getInvoiceLinesCount(tenantId: UUID, invoiceId: UUID, invoiceLineDtoCollectionQueryParameters: InvoiceLineDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get the count of invoice lines.
@@ -1566,9 +1580,10 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let invoiceId = 987 // UUID | 
+let invoiceLineDtoCollectionQueryParameters = InvoiceLineDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // InvoiceLineDtoCollectionQueryParameters |  (optional)
 
 // Get the count of invoice lines.
-InvoicesAPI.getInvoiceLinesCount(tenantId: tenantId, invoiceId: invoiceId) { (response, error) in
+InvoicesAPI.getInvoiceLinesCount(tenantId: tenantId, invoiceId: invoiceId, invoiceLineDtoCollectionQueryParameters: invoiceLineDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1586,6 +1601,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **invoiceId** | **UUID** |  | 
+ **invoiceLineDtoCollectionQueryParameters** | [**InvoiceLineDtoCollectionQueryParameters**](InvoiceLineDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1597,14 +1613,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getInvoicePayments**
 ```swift
-    open class func getInvoicePayments(tenantId: UUID, invoiceId: UUID, completion: @escaping (_ data: PaymentDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
+    open class func getInvoicePayments(tenantId: UUID, invoiceId: UUID, paymentDtoCollectionQueryParameters: PaymentDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: PaymentDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get payments for an invoice.
@@ -1618,9 +1634,10 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let invoiceId = 987 // UUID | 
+let paymentDtoCollectionQueryParameters = PaymentDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // PaymentDtoCollectionQueryParameters |  (optional)
 
 // Get payments for an invoice.
-InvoicesAPI.getInvoicePayments(tenantId: tenantId, invoiceId: invoiceId) { (response, error) in
+InvoicesAPI.getInvoicePayments(tenantId: tenantId, invoiceId: invoiceId, paymentDtoCollectionQueryParameters: paymentDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1638,6 +1655,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **invoiceId** | **UUID** |  | 
+ **paymentDtoCollectionQueryParameters** | [**PaymentDtoCollectionQueryParameters**](PaymentDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1649,14 +1667,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getInvoicePaymentsCount**
 ```swift
-    open class func getInvoicePaymentsCount(tenantId: UUID, invoiceId: UUID, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getInvoicePaymentsCount(tenantId: UUID, invoiceId: UUID, paymentDtoCollectionQueryParameters: PaymentDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get the count of payments for an invoice.
@@ -1670,9 +1688,10 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let invoiceId = 987 // UUID | 
+let paymentDtoCollectionQueryParameters = PaymentDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // PaymentDtoCollectionQueryParameters |  (optional)
 
 // Get the count of payments for an invoice.
-InvoicesAPI.getInvoicePaymentsCount(tenantId: tenantId, invoiceId: invoiceId) { (response, error) in
+InvoicesAPI.getInvoicePaymentsCount(tenantId: tenantId, invoiceId: invoiceId, paymentDtoCollectionQueryParameters: paymentDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1690,6 +1709,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **invoiceId** | **UUID** |  | 
+ **paymentDtoCollectionQueryParameters** | [**PaymentDtoCollectionQueryParameters**](PaymentDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1701,7 +1721,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1762,7 +1782,7 @@ No authorization required
 
 # **getInvoiceReferences**
 ```swift
-    open class func getInvoiceReferences(tenantId: UUID, invoiceId: UUID, completion: @escaping (_ data: InvoiceReferenceDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
+    open class func getInvoiceReferences(tenantId: UUID, invoiceId: UUID, invoiceReferenceDtoCollectionQueryParameters: InvoiceReferenceDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: InvoiceReferenceDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get invoice references.
@@ -1776,9 +1796,10 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let invoiceId = 987 // UUID | 
+let invoiceReferenceDtoCollectionQueryParameters = InvoiceReferenceDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // InvoiceReferenceDtoCollectionQueryParameters |  (optional)
 
 // Get invoice references.
-InvoicesAPI.getInvoiceReferences(tenantId: tenantId, invoiceId: invoiceId) { (response, error) in
+InvoicesAPI.getInvoiceReferences(tenantId: tenantId, invoiceId: invoiceId, invoiceReferenceDtoCollectionQueryParameters: invoiceReferenceDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1796,6 +1817,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **invoiceId** | **UUID** |  | 
+ **invoiceReferenceDtoCollectionQueryParameters** | [**InvoiceReferenceDtoCollectionQueryParameters**](InvoiceReferenceDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1807,14 +1829,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getInvoiceReferencesCount**
 ```swift
-    open class func getInvoiceReferencesCount(tenantId: UUID, invoiceId: UUID, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getInvoiceReferencesCount(tenantId: UUID, invoiceId: UUID, invoiceReferenceDtoCollectionQueryParameters: InvoiceReferenceDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get the count of invoice references.
@@ -1828,9 +1850,10 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let invoiceId = 987 // UUID | 
+let invoiceReferenceDtoCollectionQueryParameters = InvoiceReferenceDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // InvoiceReferenceDtoCollectionQueryParameters |  (optional)
 
 // Get the count of invoice references.
-InvoicesAPI.getInvoiceReferencesCount(tenantId: tenantId, invoiceId: invoiceId) { (response, error) in
+InvoicesAPI.getInvoiceReferencesCount(tenantId: tenantId, invoiceId: invoiceId, invoiceReferenceDtoCollectionQueryParameters: invoiceReferenceDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1848,6 +1871,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **invoiceId** | **UUID** |  | 
+ **invoiceReferenceDtoCollectionQueryParameters** | [**InvoiceReferenceDtoCollectionQueryParameters**](InvoiceReferenceDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1859,14 +1883,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getInvoices**
 ```swift
-    open class func getInvoices(tenantId: UUID, completion: @escaping (_ data: InvoiceDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getInvoices(tenantId: UUID, invoiceDtoCollectionQueryParameters: InvoiceDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: InvoiceDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get a list of invoices.
@@ -1879,9 +1903,10 @@ Retrieves a list of invoices for the specified tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
+let invoiceDtoCollectionQueryParameters = InvoiceDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // InvoiceDtoCollectionQueryParameters |  (optional)
 
 // Get a list of invoices.
-InvoicesAPI.getInvoices(tenantId: tenantId) { (response, error) in
+InvoicesAPI.getInvoices(tenantId: tenantId, invoiceDtoCollectionQueryParameters: invoiceDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1898,6 +1923,7 @@ InvoicesAPI.getInvoices(tenantId: tenantId) { (response, error) in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
+ **invoiceDtoCollectionQueryParameters** | [**InvoiceDtoCollectionQueryParameters**](InvoiceDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1909,14 +1935,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getInvoicesCount**
 ```swift
-    open class func getInvoicesCount(tenantId: UUID, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getInvoicesCount(tenantId: UUID, invoiceDtoCollectionQueryParameters: InvoiceDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get the count of invoices.
@@ -1929,9 +1955,10 @@ Retrieves the total count of invoices for the specified tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
+let invoiceDtoCollectionQueryParameters = InvoiceDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // InvoiceDtoCollectionQueryParameters |  (optional)
 
 // Get the count of invoices.
-InvoicesAPI.getInvoicesCount(tenantId: tenantId) { (response, error) in
+InvoicesAPI.getInvoicesCount(tenantId: tenantId, invoiceDtoCollectionQueryParameters: invoiceDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1948,6 +1975,7 @@ InvoicesAPI.getInvoicesCount(tenantId: tenantId) { (response, error) in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
+ **invoiceDtoCollectionQueryParameters** | [**InvoiceDtoCollectionQueryParameters**](InvoiceDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1959,14 +1987,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getPurchaseInvoicesSum**
 ```swift
-    open class func getPurchaseInvoicesSum(tenantId: UUID, completion: @escaping (_ data: MoneyEnvelope?, _ error: Error?) -> Void)
+    open class func getPurchaseInvoicesSum(tenantId: UUID, invoiceDtoCollectionQueryParameters: InvoiceDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: MoneyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Sum tenant purchase-invoice totals.
@@ -1979,9 +2007,10 @@ Returns SUM(Invoice.TotalAmountInUSD) for invoices with InvoiceType == PurchaseI
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
+let invoiceDtoCollectionQueryParameters = InvoiceDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // InvoiceDtoCollectionQueryParameters |  (optional)
 
 // Sum tenant purchase-invoice totals.
-InvoicesAPI.getPurchaseInvoicesSum(tenantId: tenantId) { (response, error) in
+InvoicesAPI.getPurchaseInvoicesSum(tenantId: tenantId, invoiceDtoCollectionQueryParameters: invoiceDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1998,6 +2027,7 @@ InvoicesAPI.getPurchaseInvoicesSum(tenantId: tenantId) { (response, error) in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
+ **invoiceDtoCollectionQueryParameters** | [**InvoiceDtoCollectionQueryParameters**](InvoiceDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -2009,14 +2039,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getSalesInvoicesSum**
 ```swift
-    open class func getSalesInvoicesSum(tenantId: UUID, completion: @escaping (_ data: MoneyEnvelope?, _ error: Error?) -> Void)
+    open class func getSalesInvoicesSum(tenantId: UUID, invoiceDtoCollectionQueryParameters: InvoiceDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: MoneyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Sum tenant sales-invoice totals.
@@ -2029,9 +2059,10 @@ Returns SUM(Invoice.TotalAmountInUSD) for invoices with InvoiceType == SalesInvo
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
+let invoiceDtoCollectionQueryParameters = InvoiceDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // InvoiceDtoCollectionQueryParameters |  (optional)
 
 // Sum tenant sales-invoice totals.
-InvoicesAPI.getSalesInvoicesSum(tenantId: tenantId) { (response, error) in
+InvoicesAPI.getSalesInvoicesSum(tenantId: tenantId, invoiceDtoCollectionQueryParameters: invoiceDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2048,6 +2079,7 @@ InvoicesAPI.getSalesInvoicesSum(tenantId: tenantId) { (response, error) in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
+ **invoiceDtoCollectionQueryParameters** | [**InvoiceDtoCollectionQueryParameters**](InvoiceDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -2059,14 +2091,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchInvoice**
 ```swift
-    open class func patchInvoice(tenantId: UUID, invoiceId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchInvoice(tenantId: UUID, invoiceId: UUID, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch an invoice.
@@ -2080,10 +2112,10 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let invoiceId = 987 // UUID | 
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch an invoice.
-InvoicesAPI.patchInvoice(tenantId: tenantId, invoiceId: invoiceId, operation: operation) { (response, error) in
+InvoicesAPI.patchInvoice(tenantId: tenantId, invoiceId: invoiceId, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2101,7 +2133,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **invoiceId** | **UUID** |  | 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -2120,7 +2152,7 @@ No authorization required
 
 # **patchInvoiceAdjustment**
 ```swift
-    open class func patchInvoiceAdjustment(tenantId: UUID, invoiceId: UUID, invoiceAdjustmentId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchInvoiceAdjustment(tenantId: UUID, invoiceId: UUID, invoiceAdjustmentId: UUID, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch an invoice adjustment.
@@ -2135,10 +2167,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let invoiceId = 987 // UUID | 
 let invoiceAdjustmentId = 987 // UUID | 
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch an invoice adjustment.
-InvoicesAPI.patchInvoiceAdjustment(tenantId: tenantId, invoiceId: invoiceId, invoiceAdjustmentId: invoiceAdjustmentId, operation: operation) { (response, error) in
+InvoicesAPI.patchInvoiceAdjustment(tenantId: tenantId, invoiceId: invoiceId, invoiceAdjustmentId: invoiceAdjustmentId, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2157,7 +2189,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **invoiceId** | **UUID** |  | 
  **invoiceAdjustmentId** | **UUID** |  | 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -2176,7 +2208,7 @@ No authorization required
 
 # **patchInvoiceLine**
 ```swift
-    open class func patchInvoiceLine(tenantId: UUID, invoiceId: UUID, invoiceLineId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchInvoiceLine(tenantId: UUID, invoiceId: UUID, invoiceLineId: UUID, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch an invoice line.
@@ -2191,10 +2223,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let invoiceId = 987 // UUID | 
 let invoiceLineId = 987 // UUID | 
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch an invoice line.
-InvoicesAPI.patchInvoiceLine(tenantId: tenantId, invoiceId: invoiceId, invoiceLineId: invoiceLineId, operation: operation) { (response, error) in
+InvoicesAPI.patchInvoiceLine(tenantId: tenantId, invoiceId: invoiceId, invoiceLineId: invoiceLineId, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2213,7 +2245,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **invoiceId** | **UUID** |  | 
  **invoiceLineId** | **UUID** |  | 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -2232,7 +2264,7 @@ No authorization required
 
 # **patchInvoiceLineTax**
 ```swift
-    open class func patchInvoiceLineTax(tenantId: UUID, invoiceId: UUID, invoiceLineId: UUID, invoiceLineTaxId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchInvoiceLineTax(tenantId: UUID, invoiceId: UUID, invoiceLineId: UUID, invoiceLineTaxId: UUID, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a tax for an invoice line.
@@ -2248,10 +2280,10 @@ let tenantId = 987 // UUID |
 let invoiceId = 987 // UUID | 
 let invoiceLineId = 987 // UUID | 
 let invoiceLineTaxId = 987 // UUID | 
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a tax for an invoice line.
-InvoicesAPI.patchInvoiceLineTax(tenantId: tenantId, invoiceId: invoiceId, invoiceLineId: invoiceLineId, invoiceLineTaxId: invoiceLineTaxId, operation: operation) { (response, error) in
+InvoicesAPI.patchInvoiceLineTax(tenantId: tenantId, invoiceId: invoiceId, invoiceLineId: invoiceLineId, invoiceLineTaxId: invoiceLineTaxId, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2271,7 +2303,7 @@ Name | Type | Description  | Notes
  **invoiceId** | **UUID** |  | 
  **invoiceLineId** | **UUID** |  | 
  **invoiceLineTaxId** | **UUID** |  | 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -2290,7 +2322,7 @@ No authorization required
 
 # **patchInvoiceReference**
 ```swift
-    open class func patchInvoiceReference(tenantId: UUID, invoiceId: UUID, invoiceReferenceId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchInvoiceReference(tenantId: UUID, invoiceId: UUID, invoiceReferenceId: UUID, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch an invoice reference.
@@ -2305,10 +2337,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let invoiceId = 987 // UUID | 
 let invoiceReferenceId = 987 // UUID | 
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch an invoice reference.
-InvoicesAPI.patchInvoiceReference(tenantId: tenantId, invoiceId: invoiceId, invoiceReferenceId: invoiceReferenceId, operation: operation) { (response, error) in
+InvoicesAPI.patchInvoiceReference(tenantId: tenantId, invoiceId: invoiceId, invoiceReferenceId: invoiceReferenceId, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2327,7 +2359,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **invoiceId** | **UUID** |  | 
  **invoiceReferenceId** | **UUID** |  | 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

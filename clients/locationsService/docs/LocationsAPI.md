@@ -282,7 +282,7 @@ No authorization required
 
 # **getLocationsAsync**
 ```swift
-    open class func getLocationsAsync(tenantId: UUID, completion: @escaping (_ data: LocationDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
+    open class func getLocationsAsync(tenantId: UUID, locationDtoCollectionQueryParameters: LocationDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: LocationDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get Locations
@@ -295,9 +295,10 @@ Get all locations with OData query support.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
+let locationDtoCollectionQueryParameters = LocationDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // LocationDtoCollectionQueryParameters |  (optional)
 
 // Get Locations
-LocationsAPI.getLocationsAsync(tenantId: tenantId) { (response, error) in
+LocationsAPI.getLocationsAsync(tenantId: tenantId, locationDtoCollectionQueryParameters: locationDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -314,6 +315,7 @@ LocationsAPI.getLocationsAsync(tenantId: tenantId) { (response, error) in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
+ **locationDtoCollectionQueryParameters** | [**LocationDtoCollectionQueryParameters**](LocationDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -325,14 +327,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getLocationsCountAsync**
 ```swift
-    open class func getLocationsCountAsync(tenantId: UUID, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getLocationsCountAsync(tenantId: UUID, locationDtoCollectionQueryParameters: LocationDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get Locations Count
@@ -345,9 +347,10 @@ Get the count of locations with OData query support.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
+let locationDtoCollectionQueryParameters = LocationDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // LocationDtoCollectionQueryParameters |  (optional)
 
 // Get Locations Count
-LocationsAPI.getLocationsCountAsync(tenantId: tenantId) { (response, error) in
+LocationsAPI.getLocationsCountAsync(tenantId: tenantId, locationDtoCollectionQueryParameters: locationDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -364,6 +367,7 @@ LocationsAPI.getLocationsCountAsync(tenantId: tenantId) { (response, error) in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
+ **locationDtoCollectionQueryParameters** | [**LocationDtoCollectionQueryParameters**](LocationDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -375,7 +379,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -434,7 +438,7 @@ No authorization required
 
 # **getWalletLocationsAsync**
 ```swift
-    open class func getWalletLocationsAsync(walletId: UUID, completion: @escaping (_ data: LocationDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
+    open class func getWalletLocationsAsync(walletId: UUID, locationDtoCollectionQueryParameters: LocationDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: LocationDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get Wallet Locations
@@ -447,9 +451,10 @@ Get locations for a specific wallet by ID.
 import OpenAPIClient
 
 let walletId = 987 // UUID | 
+let locationDtoCollectionQueryParameters = LocationDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // LocationDtoCollectionQueryParameters |  (optional)
 
 // Get Wallet Locations
-LocationsAPI.getWalletLocationsAsync(walletId: walletId) { (response, error) in
+LocationsAPI.getWalletLocationsAsync(walletId: walletId, locationDtoCollectionQueryParameters: locationDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -466,6 +471,7 @@ LocationsAPI.getWalletLocationsAsync(walletId: walletId) { (response, error) in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **walletId** | **UUID** |  | 
+ **locationDtoCollectionQueryParameters** | [**LocationDtoCollectionQueryParameters**](LocationDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -477,14 +483,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getWalletLocationsCountAsync**
 ```swift
-    open class func getWalletLocationsCountAsync(walletId: UUID, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getWalletLocationsCountAsync(walletId: UUID, locationDtoCollectionQueryParameters: LocationDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get Wallet Locations Count
@@ -497,9 +503,10 @@ Get the count of locations for a specific wallet by ID.
 import OpenAPIClient
 
 let walletId = 987 // UUID | 
+let locationDtoCollectionQueryParameters = LocationDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // LocationDtoCollectionQueryParameters |  (optional)
 
 // Get Wallet Locations Count
-LocationsAPI.getWalletLocationsCountAsync(walletId: walletId) { (response, error) in
+LocationsAPI.getWalletLocationsCountAsync(walletId: walletId, locationDtoCollectionQueryParameters: locationDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -516,6 +523,7 @@ LocationsAPI.getWalletLocationsCountAsync(walletId: walletId) { (response, error
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **walletId** | **UUID** |  | 
+ **locationDtoCollectionQueryParameters** | [**LocationDtoCollectionQueryParameters**](LocationDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -527,14 +535,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchLocationAsync**
 ```swift
-    open class func patchLocationAsync(tenantId: UUID, locationId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchLocationAsync(tenantId: UUID, locationId: UUID, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a location
@@ -548,10 +556,10 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let locationId = 987 // UUID | 
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a location
-LocationsAPI.patchLocationAsync(tenantId: tenantId, locationId: locationId, operation: operation) { (response, error) in
+LocationsAPI.patchLocationAsync(tenantId: tenantId, locationId: locationId, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -569,7 +577,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **locationId** | **UUID** |  | 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -588,7 +596,7 @@ No authorization required
 
 # **patchWalletLocationAsync**
 ```swift
-    open class func patchWalletLocationAsync(walletId: UUID, locationId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchWalletLocationAsync(walletId: UUID, locationId: UUID, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a wallet location
@@ -602,10 +610,10 @@ import OpenAPIClient
 
 let walletId = 987 // UUID | 
 let locationId = 987 // UUID | 
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a wallet location
-LocationsAPI.patchWalletLocationAsync(walletId: walletId, locationId: locationId, operation: operation) { (response, error) in
+LocationsAPI.patchWalletLocationAsync(walletId: walletId, locationId: locationId, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -623,7 +631,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **walletId** | **UUID** |  | 
  **locationId** | **UUID** |  | 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

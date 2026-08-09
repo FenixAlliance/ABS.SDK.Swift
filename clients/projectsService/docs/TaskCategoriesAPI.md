@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 # **countTenantTaskCategoriesAsync**
 ```swift
-    open class func countTenantTaskCategoriesAsync(tenantId: UUID, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countTenantTaskCategoriesAsync(tenantId: UUID, taskCategoryDtoCollectionQueryParameters: TaskCategoryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Counts task categories
@@ -29,9 +29,10 @@ Gets the count of task categories for the current tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
+let taskCategoryDtoCollectionQueryParameters = TaskCategoryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // TaskCategoryDtoCollectionQueryParameters |  (optional)
 
 // Counts task categories
-TaskCategoriesAPI.countTenantTaskCategoriesAsync(tenantId: tenantId) { (response, error) in
+TaskCategoriesAPI.countTenantTaskCategoriesAsync(tenantId: tenantId, taskCategoryDtoCollectionQueryParameters: taskCategoryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -48,6 +49,7 @@ TaskCategoriesAPI.countTenantTaskCategoriesAsync(tenantId: tenantId) { (response
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
+ **taskCategoryDtoCollectionQueryParameters** | [**TaskCategoryDtoCollectionQueryParameters**](TaskCategoryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -59,7 +61,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -274,7 +276,7 @@ No authorization required
 
 # **getTenantTaskCategoriesAsync**
 ```swift
-    open class func getTenantTaskCategoriesAsync(tenantId: UUID, completion: @escaping (_ data: TaskCategoryDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getTenantTaskCategoriesAsync(tenantId: UUID, taskCategoryDtoCollectionQueryParameters: TaskCategoryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: TaskCategoryDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Retrieves all task categories
@@ -287,9 +289,10 @@ Gets all task categories for the current tenant with OData support.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
+let taskCategoryDtoCollectionQueryParameters = TaskCategoryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // TaskCategoryDtoCollectionQueryParameters |  (optional)
 
 // Retrieves all task categories
-TaskCategoriesAPI.getTenantTaskCategoriesAsync(tenantId: tenantId) { (response, error) in
+TaskCategoriesAPI.getTenantTaskCategoriesAsync(tenantId: tenantId, taskCategoryDtoCollectionQueryParameters: taskCategoryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -306,6 +309,7 @@ TaskCategoriesAPI.getTenantTaskCategoriesAsync(tenantId: tenantId) { (response, 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
+ **taskCategoryDtoCollectionQueryParameters** | [**TaskCategoryDtoCollectionQueryParameters**](TaskCategoryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -317,14 +321,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchTaskCategoryAsync**
 ```swift
-    open class func patchTaskCategoryAsync(taskCategoryId: UUID, tenantId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchTaskCategoryAsync(taskCategoryId: UUID, tenantId: UUID, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patches a task category
@@ -338,10 +342,10 @@ import OpenAPIClient
 
 let taskCategoryId = 987 // UUID | 
 let tenantId = 987 // UUID | 
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patches a task category
-TaskCategoriesAPI.patchTaskCategoryAsync(taskCategoryId: taskCategoryId, tenantId: tenantId, operation: operation) { (response, error) in
+TaskCategoriesAPI.patchTaskCategoryAsync(taskCategoryId: taskCategoryId, tenantId: tenantId, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -359,7 +363,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **taskCategoryId** | **UUID** |  | 
  **tenantId** | **UUID** |  | 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

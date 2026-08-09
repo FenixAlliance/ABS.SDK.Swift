@@ -16,12 +16,13 @@ open class PointOfSalesAPI {
      Get point of sales count
      
      - parameter tenantId: (query)  
+     - parameter pointOfSaleDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func countPointOfSalesAsync(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return countPointOfSalesAsyncWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+    open class func countPointOfSalesAsync(tenantId: UUID, pointOfSaleDtoCollectionQueryParameters: PointOfSaleDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return countPointOfSalesAsyncWithRequestBuilder(tenantId: tenantId, pointOfSaleDtoCollectionQueryParameters: pointOfSaleDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -36,12 +37,13 @@ open class PointOfSalesAPI {
      - GET /api/v2/SalesService/PointOfSales/Count
      - Returns the total count of point of sales for the specified tenant with OData filter support.
      - parameter tenantId: (query)  
+     - parameter pointOfSaleDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func countPointOfSalesAsyncWithRequestBuilder(tenantId: UUID) -> RequestBuilder<Int32Envelope> {
+    open class func countPointOfSalesAsyncWithRequestBuilder(tenantId: UUID, pointOfSaleDtoCollectionQueryParameters: PointOfSaleDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/SalesService/PointOfSales/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: pointOfSaleDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -49,7 +51,7 @@ open class PointOfSalesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -216,12 +218,13 @@ open class PointOfSalesAPI {
      Get point of sales
      
      - parameter tenantId: (query)  
+     - parameter pointOfSaleDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getPointOfSalesAsync(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: PointOfSaleDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getPointOfSalesAsyncWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+    open class func getPointOfSalesAsync(tenantId: UUID, pointOfSaleDtoCollectionQueryParameters: PointOfSaleDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: PointOfSaleDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getPointOfSalesAsyncWithRequestBuilder(tenantId: tenantId, pointOfSaleDtoCollectionQueryParameters: pointOfSaleDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -236,12 +239,13 @@ open class PointOfSalesAPI {
      - GET /api/v2/SalesService/PointOfSales
      - Retrieves a list of point of sales for the specified tenant with OData query support.
      - parameter tenantId: (query)  
+     - parameter pointOfSaleDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<PointOfSaleDtoListEnvelope> 
      */
-    open class func getPointOfSalesAsyncWithRequestBuilder(tenantId: UUID) -> RequestBuilder<PointOfSaleDtoListEnvelope> {
+    open class func getPointOfSalesAsyncWithRequestBuilder(tenantId: UUID, pointOfSaleDtoCollectionQueryParameters: PointOfSaleDtoCollectionQueryParameters? = nil) -> RequestBuilder<PointOfSaleDtoListEnvelope> {
         let localVariablePath = "/api/v2/SalesService/PointOfSales"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: pointOfSaleDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -249,7 +253,7 @@ open class PointOfSalesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -264,13 +268,13 @@ open class PointOfSalesAPI {
      
      - parameter tenantId: (query)  
      - parameter pointOfSaleId: (path)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchPointOfSaleAsync(tenantId: UUID, pointOfSaleId: UUID, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchPointOfSaleAsyncWithRequestBuilder(tenantId: tenantId, pointOfSaleId: pointOfSaleId, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchPointOfSaleAsync(tenantId: UUID, pointOfSaleId: UUID, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchPointOfSaleAsyncWithRequestBuilder(tenantId: tenantId, pointOfSaleId: pointOfSaleId, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -286,16 +290,16 @@ open class PointOfSalesAPI {
      - Partially updates an existing point of sale using a JSON Patch document.
      - parameter tenantId: (query)  
      - parameter pointOfSaleId: (path)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchPointOfSaleAsyncWithRequestBuilder(tenantId: UUID, pointOfSaleId: UUID, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchPointOfSaleAsyncWithRequestBuilder(tenantId: UUID, pointOfSaleId: UUID, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/SalesService/PointOfSales/{pointOfSaleId}"
         let pointOfSaleIdPreEscape = "\(APIHelper.mapValueToPathItem(pointOfSaleId))"
         let pointOfSaleIdPostEscape = pointOfSaleIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{pointOfSaleId}", with: pointOfSaleIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

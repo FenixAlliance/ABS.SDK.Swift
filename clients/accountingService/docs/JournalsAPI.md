@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**aggregateJournalEntryCreditsAsync**](JournalsAPI.md#aggregatejournalentrycreditsasync) | **GET** /api/v2/AccountingService/Journals/{journalId}/Entries/Aggregate/Credits | Aggregate journal entry credits
 [**aggregateJournalEntryDebitsAsync**](JournalsAPI.md#aggregatejournalentrydebitsasync) | **GET** /api/v2/AccountingService/Journals/{journalId}/Entries/Aggregate/Debits | Aggregate journal entry debits
+[**assignJournalToBookAsync**](JournalsAPI.md#assignjournaltobookasync) | **POST** /api/v2/AccountingService/Journals/{journalId}/AssignToBook | Bind a journal to a financial book
 [**countJournalsAsync**](JournalsAPI.md#countjournalsasync) | **GET** /api/v2/AccountingService/Journals/Count | Count journals
 [**createJournalAsync**](JournalsAPI.md#createjournalasync) | **POST** /api/v2/AccountingService/Journals | Create journal
 [**createJournalEntryAsync**](JournalsAPI.md#createjournalentryasync) | **POST** /api/v2/AccountingService/Journals/{journalId}/Entries | Create journal entry
@@ -26,7 +27,7 @@ Method | HTTP request | Description
 
 # **aggregateJournalEntryCreditsAsync**
 ```swift
-    open class func aggregateJournalEntryCreditsAsync(tenantId: UUID, journalId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: MoneyEnvelope?, _ error: Error?) -> Void)
+    open class func aggregateJournalEntryCreditsAsync(tenantId: UUID, journalId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, journalEntryDtoCollectionQueryParameters: JournalEntryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: MoneyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Aggregate journal entry credits
@@ -43,9 +44,10 @@ let journalId = 987 // UUID |
 let currencyId = "currencyId_example" // String |  (optional) (default to "USD.USA")
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let journalEntryDtoCollectionQueryParameters = JournalEntryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // JournalEntryDtoCollectionQueryParameters |  (optional)
 
 // Aggregate journal entry credits
-JournalsAPI.aggregateJournalEntryCreditsAsync(tenantId: tenantId, journalId: journalId, currencyId: currencyId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+JournalsAPI.aggregateJournalEntryCreditsAsync(tenantId: tenantId, journalId: journalId, currencyId: currencyId, apiVersion: apiVersion, xApiVersion: xApiVersion, journalEntryDtoCollectionQueryParameters: journalEntryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -66,6 +68,7 @@ Name | Type | Description  | Notes
  **currencyId** | **String** |  | [optional] [default to &quot;USD.USA&quot;]
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **journalEntryDtoCollectionQueryParameters** | [**JournalEntryDtoCollectionQueryParameters**](JournalEntryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -77,14 +80,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **aggregateJournalEntryDebitsAsync**
 ```swift
-    open class func aggregateJournalEntryDebitsAsync(tenantId: UUID, journalId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: MoneyEnvelope?, _ error: Error?) -> Void)
+    open class func aggregateJournalEntryDebitsAsync(tenantId: UUID, journalId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, journalEntryDtoCollectionQueryParameters: JournalEntryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: MoneyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Aggregate journal entry debits
@@ -101,9 +104,10 @@ let journalId = 987 // UUID |
 let currencyId = "currencyId_example" // String |  (optional) (default to "USD.USA")
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let journalEntryDtoCollectionQueryParameters = JournalEntryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // JournalEntryDtoCollectionQueryParameters |  (optional)
 
 // Aggregate journal entry debits
-JournalsAPI.aggregateJournalEntryDebitsAsync(tenantId: tenantId, journalId: journalId, currencyId: currencyId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+JournalsAPI.aggregateJournalEntryDebitsAsync(tenantId: tenantId, journalId: journalId, currencyId: currencyId, apiVersion: apiVersion, xApiVersion: xApiVersion, journalEntryDtoCollectionQueryParameters: journalEntryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -124,6 +128,7 @@ Name | Type | Description  | Notes
  **currencyId** | **String** |  | [optional] [default to &quot;USD.USA&quot;]
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **journalEntryDtoCollectionQueryParameters** | [**JournalEntryDtoCollectionQueryParameters**](JournalEntryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -135,14 +140,72 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **assignJournalToBookAsync**
+```swift
+    open class func assignJournalToBookAsync(tenantId: UUID, journalId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, assignJournalToBookRequest: AssignJournalToBookRequest? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Bind a journal to a financial book
+
+Establishes the one-way Journal↔FinancialBook binding (finish-line #5): binds an unbound journal to the supplied book and sets its book-scoped code, enforcing (Tenant, Book, Code) uniqueness. Binding an unbound journal or re-affirming the same book succeeds; a duplicate code in the book is rejected (400), and re-homing an already-bound journal to a DIFFERENT book is rejected by the aggregate. Requires the journals_update permission.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let tenantId = 987 // UUID | 
+let journalId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let assignJournalToBookRequest = AssignJournalToBookRequest(financialBookId: "financialBookId_example", code: "code_example") // AssignJournalToBookRequest |  (optional)
+
+// Bind a journal to a financial book
+JournalsAPI.assignJournalToBookAsync(tenantId: tenantId, journalId: journalId, apiVersion: apiVersion, xApiVersion: xApiVersion, assignJournalToBookRequest: assignJournalToBookRequest) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **UUID** |  | 
+ **journalId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **assignJournalToBookRequest** | [**AssignJournalToBookRequest**](AssignJournalToBookRequest.md) |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **countJournalsAsync**
 ```swift
-    open class func countJournalsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countJournalsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, journalDtoCollectionQueryParameters: JournalDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count journals
@@ -157,9 +220,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let journalDtoCollectionQueryParameters = JournalDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // JournalDtoCollectionQueryParameters |  (optional)
 
 // Count journals
-JournalsAPI.countJournalsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+JournalsAPI.countJournalsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, journalDtoCollectionQueryParameters: journalDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -178,6 +242,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **journalDtoCollectionQueryParameters** | [**JournalDtoCollectionQueryParameters**](JournalDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -189,7 +254,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -211,7 +276,7 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let journalCreateDto = JournalCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", dateTime: Date(), parentJournalId: "parentJournalId_example", journalTypeId: "journalTypeId_example", ledgerId: "ledgerId_example") // JournalCreateDto |  (optional)
+let journalCreateDto = JournalCreateDto(id: 123, timestamp: Date(), name: "name_example", description: "description_example", dateTime: Date(), parentJournalId: "parentJournalId_example", journalTypeId: "journalTypeId_example", ledgerId: "ledgerId_example", financialBookId: "financialBookId_example", code: "code_example") // JournalCreateDto |  (optional)
 
 // Create journal
 JournalsAPI.createJournalAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, journalCreateDto: journalCreateDto) { (response, error) in
@@ -480,7 +545,7 @@ No authorization required
 
 # **getJournalEntriesAsync**
 ```swift
-    open class func getJournalEntriesAsync(tenantId: UUID, journalId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: JournalEntryDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
+    open class func getJournalEntriesAsync(tenantId: UUID, journalId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, journalEntryDtoCollectionQueryParameters: JournalEntryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: JournalEntryDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get journal entries
@@ -496,9 +561,10 @@ let tenantId = 987 // UUID |
 let journalId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let journalEntryDtoCollectionQueryParameters = JournalEntryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // JournalEntryDtoCollectionQueryParameters |  (optional)
 
 // Get journal entries
-JournalsAPI.getJournalEntriesAsync(tenantId: tenantId, journalId: journalId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+JournalsAPI.getJournalEntriesAsync(tenantId: tenantId, journalId: journalId, apiVersion: apiVersion, xApiVersion: xApiVersion, journalEntryDtoCollectionQueryParameters: journalEntryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -518,6 +584,7 @@ Name | Type | Description  | Notes
  **journalId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **journalEntryDtoCollectionQueryParameters** | [**JournalEntryDtoCollectionQueryParameters**](JournalEntryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -529,14 +596,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getJournalEntriesCountAsync**
 ```swift
-    open class func getJournalEntriesCountAsync(tenantId: UUID, journalId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getJournalEntriesCountAsync(tenantId: UUID, journalId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, journalEntryDtoCollectionQueryParameters: JournalEntryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count journal entries
@@ -552,9 +619,10 @@ let tenantId = 987 // UUID |
 let journalId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let journalEntryDtoCollectionQueryParameters = JournalEntryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // JournalEntryDtoCollectionQueryParameters |  (optional)
 
 // Count journal entries
-JournalsAPI.getJournalEntriesCountAsync(tenantId: tenantId, journalId: journalId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+JournalsAPI.getJournalEntriesCountAsync(tenantId: tenantId, journalId: journalId, apiVersion: apiVersion, xApiVersion: xApiVersion, journalEntryDtoCollectionQueryParameters: journalEntryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -574,6 +642,7 @@ Name | Type | Description  | Notes
  **journalId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **journalEntryDtoCollectionQueryParameters** | [**JournalEntryDtoCollectionQueryParameters**](JournalEntryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -585,7 +654,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -650,7 +719,7 @@ No authorization required
 
 # **getJournalsAsync**
 ```swift
-    open class func getJournalsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: JournalDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
+    open class func getJournalsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, journalDtoCollectionQueryParameters: JournalDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: JournalDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all journals
@@ -665,9 +734,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let journalDtoCollectionQueryParameters = JournalDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // JournalDtoCollectionQueryParameters |  (optional)
 
 // Get all journals
-JournalsAPI.getJournalsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+JournalsAPI.getJournalsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, journalDtoCollectionQueryParameters: journalDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -686,6 +756,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **journalDtoCollectionQueryParameters** | [**JournalDtoCollectionQueryParameters**](JournalDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -697,14 +768,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchJournalAsync**
 ```swift
-    open class func patchJournalAsync(tenantId: UUID, journalId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchJournalAsync(tenantId: UUID, journalId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a journal
@@ -720,10 +791,10 @@ let tenantId = 987 // UUID |
 let journalId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a journal
-JournalsAPI.patchJournalAsync(tenantId: tenantId, journalId: journalId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+JournalsAPI.patchJournalAsync(tenantId: tenantId, journalId: journalId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -743,7 +814,7 @@ Name | Type | Description  | Notes
  **journalId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -762,7 +833,7 @@ No authorization required
 
 # **patchJournalEntryAsync**
 ```swift
-    open class func patchJournalEntryAsync(tenantId: UUID, journalId: UUID, entryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchJournalEntryAsync(tenantId: UUID, journalId: UUID, entryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a journal entry
@@ -779,10 +850,10 @@ let journalId = 987 // UUID |
 let entryId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a journal entry
-JournalsAPI.patchJournalEntryAsync(tenantId: tenantId, journalId: journalId, entryId: entryId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+JournalsAPI.patchJournalEntryAsync(tenantId: tenantId, journalId: journalId, entryId: entryId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -803,7 +874,7 @@ Name | Type | Description  | Notes
  **entryId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

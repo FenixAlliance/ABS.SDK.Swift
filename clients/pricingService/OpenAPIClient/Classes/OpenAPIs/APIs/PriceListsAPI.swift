@@ -339,12 +339,13 @@ open class PriceListsAPI {
      - parameter tenantId: (query)  
      - parameter priceListId: (path)  
      - parameter itemId: (query)  (optional)
+     - parameter itemPriceDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getPriceListPricesAsync(tenantId: UUID, priceListId: UUID, itemId: UUID? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemPriceDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getPriceListPricesAsyncWithRequestBuilder(tenantId: tenantId, priceListId: priceListId, itemId: itemId).execute(apiResponseQueue) { result in
+    open class func getPriceListPricesAsync(tenantId: UUID, priceListId: UUID, itemId: UUID? = nil, itemPriceDtoCollectionQueryParameters: ItemPriceDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemPriceDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getPriceListPricesAsyncWithRequestBuilder(tenantId: tenantId, priceListId: priceListId, itemId: itemId, itemPriceDtoCollectionQueryParameters: itemPriceDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -361,15 +362,16 @@ open class PriceListsAPI {
      - parameter tenantId: (query)  
      - parameter priceListId: (path)  
      - parameter itemId: (query)  (optional)
+     - parameter itemPriceDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<ItemPriceDtoListEnvelope> 
      */
-    open class func getPriceListPricesAsyncWithRequestBuilder(tenantId: UUID, priceListId: UUID, itemId: UUID? = nil) -> RequestBuilder<ItemPriceDtoListEnvelope> {
+    open class func getPriceListPricesAsyncWithRequestBuilder(tenantId: UUID, priceListId: UUID, itemId: UUID? = nil, itemPriceDtoCollectionQueryParameters: ItemPriceDtoCollectionQueryParameters? = nil) -> RequestBuilder<ItemPriceDtoListEnvelope> {
         var localVariablePath = "/api/v2/PricingService/PriceLists/{priceListId}/Prices"
         let priceListIdPreEscape = "\(APIHelper.mapValueToPathItem(priceListId))"
         let priceListIdPostEscape = priceListIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{priceListId}", with: priceListIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: itemPriceDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -378,7 +380,7 @@ open class PriceListsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -393,12 +395,13 @@ open class PriceListsAPI {
      
      - parameter tenantId: (query)  
      - parameter priceListId: (path)  
+     - parameter itemPriceDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getPriceListPricesCountAsync(tenantId: UUID, priceListId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getPriceListPricesCountAsyncWithRequestBuilder(tenantId: tenantId, priceListId: priceListId).execute(apiResponseQueue) { result in
+    open class func getPriceListPricesCountAsync(tenantId: UUID, priceListId: UUID, itemPriceDtoCollectionQueryParameters: ItemPriceDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getPriceListPricesCountAsyncWithRequestBuilder(tenantId: tenantId, priceListId: priceListId, itemPriceDtoCollectionQueryParameters: itemPriceDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -414,15 +417,16 @@ open class PriceListsAPI {
      - Gets the count of price entries for a specific price list.
      - parameter tenantId: (query)  
      - parameter priceListId: (path)  
+     - parameter itemPriceDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getPriceListPricesCountAsyncWithRequestBuilder(tenantId: UUID, priceListId: UUID) -> RequestBuilder<Int32Envelope> {
+    open class func getPriceListPricesCountAsyncWithRequestBuilder(tenantId: UUID, priceListId: UUID, itemPriceDtoCollectionQueryParameters: ItemPriceDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/PricingService/PriceLists/{priceListId}/Prices/Count"
         let priceListIdPreEscape = "\(APIHelper.mapValueToPathItem(priceListId))"
         let priceListIdPostEscape = priceListIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{priceListId}", with: priceListIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: itemPriceDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -430,7 +434,7 @@ open class PriceListsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -444,12 +448,13 @@ open class PriceListsAPI {
      Retrieves all price lists
      
      - parameter tenantId: (query)  
+     - parameter priceListDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getPriceListsAsync(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: PriceListDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getPriceListsAsyncWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+    open class func getPriceListsAsync(tenantId: UUID, priceListDtoCollectionQueryParameters: PriceListDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: PriceListDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getPriceListsAsyncWithRequestBuilder(tenantId: tenantId, priceListDtoCollectionQueryParameters: priceListDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -464,12 +469,13 @@ open class PriceListsAPI {
      - GET /api/v2/PricingService/PriceLists
      - Gets all price lists for the current tenant with OData support.
      - parameter tenantId: (query)  
+     - parameter priceListDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<PriceListDtoListEnvelope> 
      */
-    open class func getPriceListsAsyncWithRequestBuilder(tenantId: UUID) -> RequestBuilder<PriceListDtoListEnvelope> {
+    open class func getPriceListsAsyncWithRequestBuilder(tenantId: UUID, priceListDtoCollectionQueryParameters: PriceListDtoCollectionQueryParameters? = nil) -> RequestBuilder<PriceListDtoListEnvelope> {
         let localVariablePath = "/api/v2/PricingService/PriceLists"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: priceListDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -477,7 +483,7 @@ open class PriceListsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -491,12 +497,13 @@ open class PriceListsAPI {
      Counts price lists
      
      - parameter tenantId: (query)  
+     - parameter priceListDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getPriceListsCountAsync(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getPriceListsCountAsyncWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+    open class func getPriceListsCountAsync(tenantId: UUID, priceListDtoCollectionQueryParameters: PriceListDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getPriceListsCountAsyncWithRequestBuilder(tenantId: tenantId, priceListDtoCollectionQueryParameters: priceListDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -511,12 +518,13 @@ open class PriceListsAPI {
      - GET /api/v2/PricingService/PriceLists/Count
      - Gets the count of price lists for the current tenant.
      - parameter tenantId: (query)  
+     - parameter priceListDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getPriceListsCountAsyncWithRequestBuilder(tenantId: UUID) -> RequestBuilder<Int32Envelope> {
+    open class func getPriceListsCountAsyncWithRequestBuilder(tenantId: UUID, priceListDtoCollectionQueryParameters: PriceListDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/PricingService/PriceLists/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: priceListDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -524,7 +532,7 @@ open class PriceListsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -539,13 +547,13 @@ open class PriceListsAPI {
      
      - parameter tenantId: (query)  
      - parameter priceListId: (path)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchPriceListAsync(tenantId: UUID, priceListId: UUID, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchPriceListAsyncWithRequestBuilder(tenantId: tenantId, priceListId: priceListId, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchPriceListAsync(tenantId: UUID, priceListId: UUID, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchPriceListAsyncWithRequestBuilder(tenantId: tenantId, priceListId: priceListId, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -561,16 +569,16 @@ open class PriceListsAPI {
      - Partially updates the specified price list using a JSON Patch document.
      - parameter tenantId: (query)  
      - parameter priceListId: (path)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchPriceListAsyncWithRequestBuilder(tenantId: UUID, priceListId: UUID, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchPriceListAsyncWithRequestBuilder(tenantId: UUID, priceListId: UUID, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/PricingService/PriceLists/{priceListId}"
         let priceListIdPreEscape = "\(APIHelper.mapValueToPathItem(priceListId))"
         let priceListIdPostEscape = priceListIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{priceListId}", with: priceListIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -594,13 +602,13 @@ open class PriceListsAPI {
      - parameter tenantId: (query)  
      - parameter priceListId: (path)  
      - parameter priceId: (path)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchPriceListPriceAsync(tenantId: UUID, priceListId: UUID, priceId: UUID, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchPriceListPriceAsyncWithRequestBuilder(tenantId: tenantId, priceListId: priceListId, priceId: priceId, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchPriceListPriceAsync(tenantId: UUID, priceListId: UUID, priceId: UUID, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchPriceListPriceAsyncWithRequestBuilder(tenantId: tenantId, priceListId: priceListId, priceId: priceId, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -617,10 +625,10 @@ open class PriceListsAPI {
      - parameter tenantId: (query)  
      - parameter priceListId: (path)  
      - parameter priceId: (path)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchPriceListPriceAsyncWithRequestBuilder(tenantId: UUID, priceListId: UUID, priceId: UUID, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchPriceListPriceAsyncWithRequestBuilder(tenantId: UUID, priceListId: UUID, priceId: UUID, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/PricingService/PriceLists/{priceListId}/Prices/{priceId}"
         let priceListIdPreEscape = "\(APIHelper.mapValueToPathItem(priceListId))"
         let priceListIdPostEscape = priceListIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -629,7 +637,7 @@ open class PriceListsAPI {
         let priceIdPostEscape = priceIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{priceId}", with: priceIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

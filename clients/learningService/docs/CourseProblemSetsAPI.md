@@ -181,7 +181,7 @@ No authorization required
 
 # **getCourseProblemSetsAsync**
 ```swift
-    open class func getCourseProblemSetsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: [CourseProblemSetDto]?, _ error: Error?) -> Void)
+    open class func getCourseProblemSetsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, courseProblemSetDtoCollectionQueryParameters: CourseProblemSetDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: [CourseProblemSetDto]?, _ error: Error?) -> Void)
 ```
 
 Get all course problem sets
@@ -196,9 +196,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseProblemSetDtoCollectionQueryParameters = CourseProblemSetDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseProblemSetDtoCollectionQueryParameters |  (optional)
 
 // Get all course problem sets
-CourseProblemSetsAPI.getCourseProblemSetsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CourseProblemSetsAPI.getCourseProblemSetsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseProblemSetDtoCollectionQueryParameters: courseProblemSetDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -217,6 +218,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseProblemSetDtoCollectionQueryParameters** | [**CourseProblemSetDtoCollectionQueryParameters**](CourseProblemSetDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -228,14 +230,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCourseProblemSetsCountAsync**
 ```swift
-    open class func getCourseProblemSetsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
+    open class func getCourseProblemSetsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, courseProblemSetDtoCollectionQueryParameters: CourseProblemSetDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
 ```
 
 Get course problem sets count
@@ -250,9 +252,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseProblemSetDtoCollectionQueryParameters = CourseProblemSetDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseProblemSetDtoCollectionQueryParameters |  (optional)
 
 // Get course problem sets count
-CourseProblemSetsAPI.getCourseProblemSetsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CourseProblemSetsAPI.getCourseProblemSetsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseProblemSetDtoCollectionQueryParameters: courseProblemSetDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -271,6 +274,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseProblemSetDtoCollectionQueryParameters** | [**CourseProblemSetDtoCollectionQueryParameters**](CourseProblemSetDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -282,14 +286,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchCourseProblemSetAsync**
 ```swift
-    open class func patchCourseProblemSetAsync(tenantId: UUID, problemSetId: String, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchCourseProblemSetAsync(tenantId: UUID, problemSetId: String, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a course problem set
@@ -305,10 +309,10 @@ let tenantId = 987 // UUID |
 let problemSetId = "problemSetId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a course problem set
-CourseProblemSetsAPI.patchCourseProblemSetAsync(tenantId: tenantId, problemSetId: problemSetId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+CourseProblemSetsAPI.patchCourseProblemSetAsync(tenantId: tenantId, problemSetId: problemSetId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -328,7 +332,7 @@ Name | Type | Description  | Notes
  **problemSetId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

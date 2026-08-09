@@ -186,7 +186,7 @@ No authorization required
 
 # **getSignedDocumentsAsync**
 ```swift
-    open class func getSignedDocumentsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: SignedDocumentDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getSignedDocumentsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, signedDocumentDtoCollectionQueryParameters: SignedDocumentDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: SignedDocumentDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all signed documents
@@ -201,9 +201,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let signedDocumentDtoCollectionQueryParameters = SignedDocumentDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SignedDocumentDtoCollectionQueryParameters |  (optional)
 
 // Get all signed documents
-SignedDocumentsAPI.getSignedDocumentsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SignedDocumentsAPI.getSignedDocumentsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, signedDocumentDtoCollectionQueryParameters: signedDocumentDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -222,6 +223,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **signedDocumentDtoCollectionQueryParameters** | [**SignedDocumentDtoCollectionQueryParameters**](SignedDocumentDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -233,14 +235,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getSignedDocumentsCountAsync**
 ```swift
-    open class func getSignedDocumentsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getSignedDocumentsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, signedDocumentDtoCollectionQueryParameters: SignedDocumentDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get signed documents count
@@ -255,9 +257,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let signedDocumentDtoCollectionQueryParameters = SignedDocumentDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SignedDocumentDtoCollectionQueryParameters |  (optional)
 
 // Get signed documents count
-SignedDocumentsAPI.getSignedDocumentsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SignedDocumentsAPI.getSignedDocumentsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, signedDocumentDtoCollectionQueryParameters: signedDocumentDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -276,6 +279,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **signedDocumentDtoCollectionQueryParameters** | [**SignedDocumentDtoCollectionQueryParameters**](SignedDocumentDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -287,14 +291,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchSignedDocumentAsync**
 ```swift
-    open class func patchSignedDocumentAsync(tenantId: UUID, id: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchSignedDocumentAsync(tenantId: UUID, id: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a signed document
@@ -310,10 +314,10 @@ let tenantId = 987 // UUID |
 let id = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a signed document
-SignedDocumentsAPI.patchSignedDocumentAsync(tenantId: tenantId, id: id, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+SignedDocumentsAPI.patchSignedDocumentAsync(tenantId: tenantId, id: id, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -333,7 +337,7 @@ Name | Type | Description  | Notes
  **id** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

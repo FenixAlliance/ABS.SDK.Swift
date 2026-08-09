@@ -183,7 +183,7 @@ No authorization required
 
 # **getTenantDepartments**
 ```swift
-    open class func getTenantDepartments(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: TenantDepartmentDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getTenantDepartments(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, tenantDepartmentDtoCollectionQueryParameters: TenantDepartmentDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: TenantDepartmentDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Retrieve a list of tenant departments
@@ -198,9 +198,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let tenantDepartmentDtoCollectionQueryParameters = TenantDepartmentDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // TenantDepartmentDtoCollectionQueryParameters |  (optional)
 
 // Retrieve a list of tenant departments
-DepartmentsAPI.getTenantDepartments(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+DepartmentsAPI.getTenantDepartments(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, tenantDepartmentDtoCollectionQueryParameters: tenantDepartmentDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -219,6 +220,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **tenantDepartmentDtoCollectionQueryParameters** | [**TenantDepartmentDtoCollectionQueryParameters**](TenantDepartmentDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -230,14 +232,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getTenantDepartmentsCount**
 ```swift
-    open class func getTenantDepartmentsCount(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getTenantDepartmentsCount(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, tenantDepartmentDtoCollectionQueryParameters: TenantDepartmentDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get the count of tenant departments
@@ -252,9 +254,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let tenantDepartmentDtoCollectionQueryParameters = TenantDepartmentDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // TenantDepartmentDtoCollectionQueryParameters |  (optional)
 
 // Get the count of tenant departments
-DepartmentsAPI.getTenantDepartmentsCount(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+DepartmentsAPI.getTenantDepartmentsCount(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, tenantDepartmentDtoCollectionQueryParameters: tenantDepartmentDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -273,6 +276,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **tenantDepartmentDtoCollectionQueryParameters** | [**TenantDepartmentDtoCollectionQueryParameters**](TenantDepartmentDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -284,14 +288,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchTenantDepartmentAsync**
 ```swift
-    open class func patchTenantDepartmentAsync(tenantId: UUID, tenantDepartmentId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchTenantDepartmentAsync(tenantId: UUID, tenantDepartmentId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a tenant department
@@ -307,10 +311,10 @@ let tenantId = 987 // UUID |
 let tenantDepartmentId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a tenant department
-DepartmentsAPI.patchTenantDepartmentAsync(tenantId: tenantId, tenantDepartmentId: tenantDepartmentId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+DepartmentsAPI.patchTenantDepartmentAsync(tenantId: tenantId, tenantDepartmentId: tenantDepartmentId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -330,7 +334,7 @@ Name | Type | Description  | Notes
  **tenantDepartmentId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

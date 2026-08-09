@@ -65,12 +65,13 @@ open class MeAPI {
      
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseCompletionCertificateDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getMyCertificatesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CourseCompletionCertificateDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getMyCertificatesAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getMyCertificatesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, courseCompletionCertificateDtoCollectionQueryParameters: CourseCompletionCertificateDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CourseCompletionCertificateDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getMyCertificatesAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion, courseCompletionCertificateDtoCollectionQueryParameters: courseCompletionCertificateDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -85,12 +86,13 @@ open class MeAPI {
      - GET /api/v2/LearningService/Me/Certificates
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseCompletionCertificateDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<CourseCompletionCertificateDtoIReadOnlyListEnvelope> 
      */
-    open class func getMyCertificatesAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<CourseCompletionCertificateDtoIReadOnlyListEnvelope> {
+    open class func getMyCertificatesAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil, courseCompletionCertificateDtoCollectionQueryParameters: CourseCompletionCertificateDtoCollectionQueryParameters? = nil) -> RequestBuilder<CourseCompletionCertificateDtoIReadOnlyListEnvelope> {
         let localVariablePath = "/api/v2/LearningService/Me/Certificates"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseCompletionCertificateDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -98,6 +100,7 @@ open class MeAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -113,12 +116,13 @@ open class MeAPI {
      
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseCompletionCertificateDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getMyCertificatesCountAsync(apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
-        return getMyCertificatesCountAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getMyCertificatesCountAsync(apiVersion: String? = nil, xApiVersion: String? = nil, courseCompletionCertificateDtoCollectionQueryParameters: CourseCompletionCertificateDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
+        return getMyCertificatesCountAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion, courseCompletionCertificateDtoCollectionQueryParameters: courseCompletionCertificateDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -133,12 +137,13 @@ open class MeAPI {
      - GET /api/v2/LearningService/Me/Certificates/Count
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseCompletionCertificateDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int> 
      */
-    open class func getMyCertificatesCountAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int> {
+    open class func getMyCertificatesCountAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil, courseCompletionCertificateDtoCollectionQueryParameters: CourseCompletionCertificateDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int> {
         let localVariablePath = "/api/v2/LearningService/Me/Certificates/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseCompletionCertificateDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -146,6 +151,7 @@ open class MeAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -161,12 +167,13 @@ open class MeAPI {
      
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseEnrollmentDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getMyEnrollmentsAsync(apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CourseEnrollmentDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getMyEnrollmentsAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getMyEnrollmentsAsync(apiVersion: String? = nil, xApiVersion: String? = nil, courseEnrollmentDtoCollectionQueryParameters: CourseEnrollmentDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CourseEnrollmentDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getMyEnrollmentsAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion, courseEnrollmentDtoCollectionQueryParameters: courseEnrollmentDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -181,12 +188,13 @@ open class MeAPI {
      - GET /api/v2/LearningService/Me/Enrollments
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseEnrollmentDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<CourseEnrollmentDtoIReadOnlyListEnvelope> 
      */
-    open class func getMyEnrollmentsAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<CourseEnrollmentDtoIReadOnlyListEnvelope> {
+    open class func getMyEnrollmentsAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil, courseEnrollmentDtoCollectionQueryParameters: CourseEnrollmentDtoCollectionQueryParameters? = nil) -> RequestBuilder<CourseEnrollmentDtoIReadOnlyListEnvelope> {
         let localVariablePath = "/api/v2/LearningService/Me/Enrollments"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseEnrollmentDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -194,6 +202,7 @@ open class MeAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -209,12 +218,13 @@ open class MeAPI {
      
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseEnrollmentDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getMyEnrollmentsCountAsync(apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
-        return getMyEnrollmentsCountAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getMyEnrollmentsCountAsync(apiVersion: String? = nil, xApiVersion: String? = nil, courseEnrollmentDtoCollectionQueryParameters: CourseEnrollmentDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
+        return getMyEnrollmentsCountAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion, courseEnrollmentDtoCollectionQueryParameters: courseEnrollmentDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -229,12 +239,13 @@ open class MeAPI {
      - GET /api/v2/LearningService/Me/Enrollments/Count
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseEnrollmentDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int> 
      */
-    open class func getMyEnrollmentsCountAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int> {
+    open class func getMyEnrollmentsCountAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil, courseEnrollmentDtoCollectionQueryParameters: CourseEnrollmentDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int> {
         let localVariablePath = "/api/v2/LearningService/Me/Enrollments/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseEnrollmentDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -242,6 +253,7 @@ open class MeAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -305,12 +317,13 @@ open class MeAPI {
      
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getMyInstructorCoursesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CourseDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getMyInstructorCoursesAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getMyInstructorCoursesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, courseDtoCollectionQueryParameters: CourseDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CourseDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getMyInstructorCoursesAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion, courseDtoCollectionQueryParameters: courseDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -325,12 +338,13 @@ open class MeAPI {
      - GET /api/v2/LearningService/Me/InstructorCourses
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<CourseDtoIReadOnlyListEnvelope> 
      */
-    open class func getMyInstructorCoursesAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<CourseDtoIReadOnlyListEnvelope> {
+    open class func getMyInstructorCoursesAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil, courseDtoCollectionQueryParameters: CourseDtoCollectionQueryParameters? = nil) -> RequestBuilder<CourseDtoIReadOnlyListEnvelope> {
         let localVariablePath = "/api/v2/LearningService/Me/InstructorCourses"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -338,6 +352,7 @@ open class MeAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -353,12 +368,13 @@ open class MeAPI {
      
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getMyInstructorCoursesCountAsync(apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
-        return getMyInstructorCoursesCountAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getMyInstructorCoursesCountAsync(apiVersion: String? = nil, xApiVersion: String? = nil, courseDtoCollectionQueryParameters: CourseDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
+        return getMyInstructorCoursesCountAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion, courseDtoCollectionQueryParameters: courseDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -373,12 +389,13 @@ open class MeAPI {
      - GET /api/v2/LearningService/Me/InstructorCourses/Count
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int> 
      */
-    open class func getMyInstructorCoursesCountAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int> {
+    open class func getMyInstructorCoursesCountAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil, courseDtoCollectionQueryParameters: CourseDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int> {
         let localVariablePath = "/api/v2/LearningService/Me/InstructorCourses/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -386,6 +403,7 @@ open class MeAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -401,12 +419,13 @@ open class MeAPI {
      
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter instructorProfileDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getMyInstructorProfilesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: InstructorProfileDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getMyInstructorProfilesAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getMyInstructorProfilesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, instructorProfileDtoCollectionQueryParameters: InstructorProfileDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: InstructorProfileDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getMyInstructorProfilesAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion, instructorProfileDtoCollectionQueryParameters: instructorProfileDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -421,12 +440,13 @@ open class MeAPI {
      - GET /api/v2/LearningService/Me/InstructorProfiles
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter instructorProfileDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<InstructorProfileDtoIReadOnlyListEnvelope> 
      */
-    open class func getMyInstructorProfilesAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<InstructorProfileDtoIReadOnlyListEnvelope> {
+    open class func getMyInstructorProfilesAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil, instructorProfileDtoCollectionQueryParameters: InstructorProfileDtoCollectionQueryParameters? = nil) -> RequestBuilder<InstructorProfileDtoIReadOnlyListEnvelope> {
         let localVariablePath = "/api/v2/LearningService/Me/InstructorProfiles"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: instructorProfileDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -434,6 +454,7 @@ open class MeAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -449,12 +470,13 @@ open class MeAPI {
      
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter instructorProfileDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getMyInstructorProfilesCountAsync(apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
-        return getMyInstructorProfilesCountAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getMyInstructorProfilesCountAsync(apiVersion: String? = nil, xApiVersion: String? = nil, instructorProfileDtoCollectionQueryParameters: InstructorProfileDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
+        return getMyInstructorProfilesCountAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion, instructorProfileDtoCollectionQueryParameters: instructorProfileDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -469,12 +491,13 @@ open class MeAPI {
      - GET /api/v2/LearningService/Me/InstructorProfiles/Count
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter instructorProfileDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int> 
      */
-    open class func getMyInstructorProfilesCountAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int> {
+    open class func getMyInstructorProfilesCountAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil, instructorProfileDtoCollectionQueryParameters: InstructorProfileDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int> {
         let localVariablePath = "/api/v2/LearningService/Me/InstructorProfiles/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: instructorProfileDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -482,6 +505,7 @@ open class MeAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -545,12 +569,13 @@ open class MeAPI {
      
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getMyStudentCoursesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CourseDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getMyStudentCoursesAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getMyStudentCoursesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, courseDtoCollectionQueryParameters: CourseDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CourseDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getMyStudentCoursesAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion, courseDtoCollectionQueryParameters: courseDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -565,12 +590,13 @@ open class MeAPI {
      - GET /api/v2/LearningService/Me/Courses
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<CourseDtoIReadOnlyListEnvelope> 
      */
-    open class func getMyStudentCoursesAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<CourseDtoIReadOnlyListEnvelope> {
+    open class func getMyStudentCoursesAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil, courseDtoCollectionQueryParameters: CourseDtoCollectionQueryParameters? = nil) -> RequestBuilder<CourseDtoIReadOnlyListEnvelope> {
         let localVariablePath = "/api/v2/LearningService/Me/Courses"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -578,6 +604,7 @@ open class MeAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -593,12 +620,13 @@ open class MeAPI {
      
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getMyStudentCoursesCountAsync(apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
-        return getMyStudentCoursesCountAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getMyStudentCoursesCountAsync(apiVersion: String? = nil, xApiVersion: String? = nil, courseDtoCollectionQueryParameters: CourseDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
+        return getMyStudentCoursesCountAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion, courseDtoCollectionQueryParameters: courseDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -613,12 +641,13 @@ open class MeAPI {
      - GET /api/v2/LearningService/Me/Courses/Count
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int> 
      */
-    open class func getMyStudentCoursesCountAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int> {
+    open class func getMyStudentCoursesCountAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil, courseDtoCollectionQueryParameters: CourseDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int> {
         let localVariablePath = "/api/v2/LearningService/Me/Courses/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -626,6 +655,7 @@ open class MeAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -641,12 +671,13 @@ open class MeAPI {
      
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter studentProfileDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getMyStudentProfilesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: StudentProfileDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getMyStudentProfilesAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getMyStudentProfilesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, studentProfileDtoCollectionQueryParameters: StudentProfileDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: StudentProfileDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getMyStudentProfilesAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion, studentProfileDtoCollectionQueryParameters: studentProfileDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -661,12 +692,13 @@ open class MeAPI {
      - GET /api/v2/LearningService/Me/StudentProfiles
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter studentProfileDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<StudentProfileDtoIReadOnlyListEnvelope> 
      */
-    open class func getMyStudentProfilesAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<StudentProfileDtoIReadOnlyListEnvelope> {
+    open class func getMyStudentProfilesAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil, studentProfileDtoCollectionQueryParameters: StudentProfileDtoCollectionQueryParameters? = nil) -> RequestBuilder<StudentProfileDtoIReadOnlyListEnvelope> {
         let localVariablePath = "/api/v2/LearningService/Me/StudentProfiles"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: studentProfileDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -674,6 +706,7 @@ open class MeAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -689,12 +722,13 @@ open class MeAPI {
      
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter studentProfileDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getMyStudentProfilesCountAsync(apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
-        return getMyStudentProfilesCountAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getMyStudentProfilesCountAsync(apiVersion: String? = nil, xApiVersion: String? = nil, studentProfileDtoCollectionQueryParameters: StudentProfileDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
+        return getMyStudentProfilesCountAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion, studentProfileDtoCollectionQueryParameters: studentProfileDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -709,12 +743,13 @@ open class MeAPI {
      - GET /api/v2/LearningService/Me/StudentProfiles/Count
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter studentProfileDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int> 
      */
-    open class func getMyStudentProfilesCountAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int> {
+    open class func getMyStudentProfilesCountAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil, studentProfileDtoCollectionQueryParameters: StudentProfileDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int> {
         let localVariablePath = "/api/v2/LearningService/Me/StudentProfiles/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: studentProfileDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -722,6 +757,7 @@ open class MeAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 

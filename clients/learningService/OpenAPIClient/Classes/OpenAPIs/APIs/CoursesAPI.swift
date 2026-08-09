@@ -131,12 +131,13 @@ open class CoursesAPI {
      - parameter wikiId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseArticleDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCourseArticlesByCourseWikiAsync(courseId: String, wikiId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CourseArticleDto]?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCourseArticlesByCourseWikiAsyncWithRequestBuilder(courseId: courseId, wikiId: wikiId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCourseArticlesByCourseWikiAsync(courseId: String, wikiId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseArticleDtoCollectionQueryParameters: CourseArticleDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CourseArticleDto]?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCourseArticlesByCourseWikiAsyncWithRequestBuilder(courseId: courseId, wikiId: wikiId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseArticleDtoCollectionQueryParameters: courseArticleDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -154,9 +155,10 @@ open class CoursesAPI {
      - parameter wikiId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseArticleDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<[CourseArticleDto]> 
      */
-    open class func getCourseArticlesByCourseWikiAsyncWithRequestBuilder(courseId: String, wikiId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<[CourseArticleDto]> {
+    open class func getCourseArticlesByCourseWikiAsyncWithRequestBuilder(courseId: String, wikiId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseArticleDtoCollectionQueryParameters: CourseArticleDtoCollectionQueryParameters? = nil) -> RequestBuilder<[CourseArticleDto]> {
         var localVariablePath = "/api/v2/LearningService/Courses/{courseId}/Articles/{wikiId}"
         let courseIdPreEscape = "\(APIHelper.mapValueToPathItem(courseId))"
         let courseIdPostEscape = courseIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -165,7 +167,7 @@ open class CoursesAPI {
         let wikiIdPostEscape = wikiIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{wikiId}", with: wikiIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseArticleDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -173,6 +175,7 @@ open class CoursesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -190,12 +193,13 @@ open class CoursesAPI {
      - parameter wikiId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseArticleDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCourseArticlesByCourseWikiCountAsync(courseId: String, wikiId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCourseArticlesByCourseWikiCountAsyncWithRequestBuilder(courseId: courseId, wikiId: wikiId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCourseArticlesByCourseWikiCountAsync(courseId: String, wikiId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseArticleDtoCollectionQueryParameters: CourseArticleDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCourseArticlesByCourseWikiCountAsyncWithRequestBuilder(courseId: courseId, wikiId: wikiId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseArticleDtoCollectionQueryParameters: courseArticleDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -213,9 +217,10 @@ open class CoursesAPI {
      - parameter wikiId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseArticleDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int> 
      */
-    open class func getCourseArticlesByCourseWikiCountAsyncWithRequestBuilder(courseId: String, wikiId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int> {
+    open class func getCourseArticlesByCourseWikiCountAsyncWithRequestBuilder(courseId: String, wikiId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseArticleDtoCollectionQueryParameters: CourseArticleDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int> {
         var localVariablePath = "/api/v2/LearningService/Courses/{courseId}/Articles/{wikiId}/Count"
         let courseIdPreEscape = "\(APIHelper.mapValueToPathItem(courseId))"
         let courseIdPostEscape = courseIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -224,7 +229,7 @@ open class CoursesAPI {
         let wikiIdPostEscape = wikiIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{wikiId}", with: wikiIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseArticleDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -232,6 +237,7 @@ open class CoursesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -248,12 +254,13 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseAssignmentDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCourseAssignmentsByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CourseAssignmentDto]?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCourseAssignmentsByCourseAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCourseAssignmentsByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseAssignmentDtoCollectionQueryParameters: CourseAssignmentDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CourseAssignmentDto]?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCourseAssignmentsByCourseAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseAssignmentDtoCollectionQueryParameters: courseAssignmentDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -270,15 +277,16 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseAssignmentDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<[CourseAssignmentDto]> 
      */
-    open class func getCourseAssignmentsByCourseAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<[CourseAssignmentDto]> {
+    open class func getCourseAssignmentsByCourseAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseAssignmentDtoCollectionQueryParameters: CourseAssignmentDtoCollectionQueryParameters? = nil) -> RequestBuilder<[CourseAssignmentDto]> {
         var localVariablePath = "/api/v2/LearningService/Courses/{courseId}/Assignments"
         let courseIdPreEscape = "\(APIHelper.mapValueToPathItem(courseId))"
         let courseIdPostEscape = courseIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{courseId}", with: courseIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseAssignmentDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -286,6 +294,7 @@ open class CoursesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -302,12 +311,13 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseAssignmentDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCourseAssignmentsByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCourseAssignmentsByCourseCountAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCourseAssignmentsByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseAssignmentDtoCollectionQueryParameters: CourseAssignmentDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCourseAssignmentsByCourseCountAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseAssignmentDtoCollectionQueryParameters: courseAssignmentDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -324,15 +334,16 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseAssignmentDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int> 
      */
-    open class func getCourseAssignmentsByCourseCountAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int> {
+    open class func getCourseAssignmentsByCourseCountAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseAssignmentDtoCollectionQueryParameters: CourseAssignmentDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int> {
         var localVariablePath = "/api/v2/LearningService/Courses/{courseId}/Assignments/Count"
         let courseIdPreEscape = "\(APIHelper.mapValueToPathItem(courseId))"
         let courseIdPostEscape = courseIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{courseId}", with: courseIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseAssignmentDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -340,6 +351,7 @@ open class CoursesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -413,12 +425,13 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseCategoryDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCourseCategoriesByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CourseCategoryDto]?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCourseCategoriesByCourseAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCourseCategoriesByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseCategoryDtoCollectionQueryParameters: CourseCategoryDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CourseCategoryDto]?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCourseCategoriesByCourseAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseCategoryDtoCollectionQueryParameters: courseCategoryDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -435,15 +448,16 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseCategoryDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<[CourseCategoryDto]> 
      */
-    open class func getCourseCategoriesByCourseAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<[CourseCategoryDto]> {
+    open class func getCourseCategoriesByCourseAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseCategoryDtoCollectionQueryParameters: CourseCategoryDtoCollectionQueryParameters? = nil) -> RequestBuilder<[CourseCategoryDto]> {
         var localVariablePath = "/api/v2/LearningService/Courses/{courseId}/Categories"
         let courseIdPreEscape = "\(APIHelper.mapValueToPathItem(courseId))"
         let courseIdPostEscape = courseIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{courseId}", with: courseIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseCategoryDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -451,6 +465,7 @@ open class CoursesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -467,12 +482,13 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseCategoryDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCourseCategoriesByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCourseCategoriesByCourseCountAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCourseCategoriesByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseCategoryDtoCollectionQueryParameters: CourseCategoryDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCourseCategoriesByCourseCountAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseCategoryDtoCollectionQueryParameters: courseCategoryDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -489,15 +505,16 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseCategoryDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int> 
      */
-    open class func getCourseCategoriesByCourseCountAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int> {
+    open class func getCourseCategoriesByCourseCountAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseCategoryDtoCollectionQueryParameters: CourseCategoryDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int> {
         var localVariablePath = "/api/v2/LearningService/Courses/{courseId}/Categories/Count"
         let courseIdPreEscape = "\(APIHelper.mapValueToPathItem(courseId))"
         let courseIdPostEscape = courseIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{courseId}", with: courseIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseCategoryDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -505,6 +522,7 @@ open class CoursesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -521,12 +539,13 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseCohortDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCourseCohortsByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CourseCohortDto]?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCourseCohortsByCourseAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCourseCohortsByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseCohortDtoCollectionQueryParameters: CourseCohortDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CourseCohortDto]?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCourseCohortsByCourseAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseCohortDtoCollectionQueryParameters: courseCohortDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -543,15 +562,16 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseCohortDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<[CourseCohortDto]> 
      */
-    open class func getCourseCohortsByCourseAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<[CourseCohortDto]> {
+    open class func getCourseCohortsByCourseAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseCohortDtoCollectionQueryParameters: CourseCohortDtoCollectionQueryParameters? = nil) -> RequestBuilder<[CourseCohortDto]> {
         var localVariablePath = "/api/v2/LearningService/Courses/{courseId}/Cohorts"
         let courseIdPreEscape = "\(APIHelper.mapValueToPathItem(courseId))"
         let courseIdPostEscape = courseIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{courseId}", with: courseIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseCohortDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -559,6 +579,7 @@ open class CoursesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -575,12 +596,13 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseCohortDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCourseCohortsByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCourseCohortsByCourseCountAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCourseCohortsByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseCohortDtoCollectionQueryParameters: CourseCohortDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCourseCohortsByCourseCountAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseCohortDtoCollectionQueryParameters: courseCohortDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -597,15 +619,16 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseCohortDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int> 
      */
-    open class func getCourseCohortsByCourseCountAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int> {
+    open class func getCourseCohortsByCourseCountAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseCohortDtoCollectionQueryParameters: CourseCohortDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int> {
         var localVariablePath = "/api/v2/LearningService/Courses/{courseId}/Cohorts/Count"
         let courseIdPreEscape = "\(APIHelper.mapValueToPathItem(courseId))"
         let courseIdPostEscape = courseIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{courseId}", with: courseIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseCohortDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -613,6 +636,7 @@ open class CoursesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -630,12 +654,13 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseEnrollmentDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCourseEnrollmentsByCourseAsync(tenantId: UUID, courseId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CourseEnrollmentDto]?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCourseEnrollmentsByCourseAsyncWithRequestBuilder(tenantId: tenantId, courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCourseEnrollmentsByCourseAsync(tenantId: UUID, courseId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, courseEnrollmentDtoCollectionQueryParameters: CourseEnrollmentDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CourseEnrollmentDto]?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCourseEnrollmentsByCourseAsyncWithRequestBuilder(tenantId: tenantId, courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseEnrollmentDtoCollectionQueryParameters: courseEnrollmentDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -653,15 +678,16 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseEnrollmentDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<[CourseEnrollmentDto]> 
      */
-    open class func getCourseEnrollmentsByCourseAsyncWithRequestBuilder(tenantId: UUID, courseId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<[CourseEnrollmentDto]> {
+    open class func getCourseEnrollmentsByCourseAsyncWithRequestBuilder(tenantId: UUID, courseId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, courseEnrollmentDtoCollectionQueryParameters: CourseEnrollmentDtoCollectionQueryParameters? = nil) -> RequestBuilder<[CourseEnrollmentDto]> {
         var localVariablePath = "/api/v2/LearningService/Courses/{courseId}/Enrollments"
         let courseIdPreEscape = "\(APIHelper.mapValueToPathItem(courseId))"
         let courseIdPostEscape = courseIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{courseId}", with: courseIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseEnrollmentDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -670,6 +696,7 @@ open class CoursesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -686,12 +713,13 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseFileDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCourseFilesByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CourseFileDto]?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCourseFilesByCourseAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCourseFilesByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseFileDtoCollectionQueryParameters: CourseFileDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CourseFileDto]?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCourseFilesByCourseAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseFileDtoCollectionQueryParameters: courseFileDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -708,15 +736,16 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseFileDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<[CourseFileDto]> 
      */
-    open class func getCourseFilesByCourseAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<[CourseFileDto]> {
+    open class func getCourseFilesByCourseAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseFileDtoCollectionQueryParameters: CourseFileDtoCollectionQueryParameters? = nil) -> RequestBuilder<[CourseFileDto]> {
         var localVariablePath = "/api/v2/LearningService/Courses/{courseId}/Files"
         let courseIdPreEscape = "\(APIHelper.mapValueToPathItem(courseId))"
         let courseIdPostEscape = courseIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{courseId}", with: courseIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseFileDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -724,6 +753,7 @@ open class CoursesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -740,12 +770,13 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseFileDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCourseFilesByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCourseFilesByCourseCountAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCourseFilesByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseFileDtoCollectionQueryParameters: CourseFileDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCourseFilesByCourseCountAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseFileDtoCollectionQueryParameters: courseFileDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -762,15 +793,16 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseFileDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int> 
      */
-    open class func getCourseFilesByCourseCountAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int> {
+    open class func getCourseFilesByCourseCountAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseFileDtoCollectionQueryParameters: CourseFileDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int> {
         var localVariablePath = "/api/v2/LearningService/Courses/{courseId}/Files/Count"
         let courseIdPreEscape = "\(APIHelper.mapValueToPathItem(courseId))"
         let courseIdPostEscape = courseIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{courseId}", with: courseIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseFileDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -778,6 +810,7 @@ open class CoursesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -794,12 +827,13 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseForumDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCourseForumsByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CourseForumDto]?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCourseForumsByCourseAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCourseForumsByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseForumDtoCollectionQueryParameters: CourseForumDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CourseForumDto]?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCourseForumsByCourseAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseForumDtoCollectionQueryParameters: courseForumDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -816,15 +850,16 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseForumDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<[CourseForumDto]> 
      */
-    open class func getCourseForumsByCourseAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<[CourseForumDto]> {
+    open class func getCourseForumsByCourseAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseForumDtoCollectionQueryParameters: CourseForumDtoCollectionQueryParameters? = nil) -> RequestBuilder<[CourseForumDto]> {
         var localVariablePath = "/api/v2/LearningService/Courses/{courseId}/Forums"
         let courseIdPreEscape = "\(APIHelper.mapValueToPathItem(courseId))"
         let courseIdPostEscape = courseIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{courseId}", with: courseIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseForumDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -832,6 +867,7 @@ open class CoursesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -848,12 +884,13 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseForumDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCourseForumsByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCourseForumsByCourseCountAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCourseForumsByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseForumDtoCollectionQueryParameters: CourseForumDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCourseForumsByCourseCountAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseForumDtoCollectionQueryParameters: courseForumDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -870,15 +907,16 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseForumDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int> 
      */
-    open class func getCourseForumsByCourseCountAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int> {
+    open class func getCourseForumsByCourseCountAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseForumDtoCollectionQueryParameters: CourseForumDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int> {
         var localVariablePath = "/api/v2/LearningService/Courses/{courseId}/Forums/Count"
         let courseIdPreEscape = "\(APIHelper.mapValueToPathItem(courseId))"
         let courseIdPostEscape = courseIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{courseId}", with: courseIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseForumDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -886,6 +924,7 @@ open class CoursesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -902,12 +941,13 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseHandoutDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCourseHandoutsByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CourseHandoutDto]?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCourseHandoutsByCourseAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCourseHandoutsByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseHandoutDtoCollectionQueryParameters: CourseHandoutDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CourseHandoutDto]?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCourseHandoutsByCourseAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseHandoutDtoCollectionQueryParameters: courseHandoutDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -924,15 +964,16 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseHandoutDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<[CourseHandoutDto]> 
      */
-    open class func getCourseHandoutsByCourseAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<[CourseHandoutDto]> {
+    open class func getCourseHandoutsByCourseAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseHandoutDtoCollectionQueryParameters: CourseHandoutDtoCollectionQueryParameters? = nil) -> RequestBuilder<[CourseHandoutDto]> {
         var localVariablePath = "/api/v2/LearningService/Courses/{courseId}/Handouts"
         let courseIdPreEscape = "\(APIHelper.mapValueToPathItem(courseId))"
         let courseIdPostEscape = courseIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{courseId}", with: courseIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseHandoutDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -940,6 +981,7 @@ open class CoursesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -956,12 +998,13 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseHandoutDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCourseHandoutsByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCourseHandoutsByCourseCountAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCourseHandoutsByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseHandoutDtoCollectionQueryParameters: CourseHandoutDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCourseHandoutsByCourseCountAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseHandoutDtoCollectionQueryParameters: courseHandoutDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -978,15 +1021,16 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseHandoutDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int> 
      */
-    open class func getCourseHandoutsByCourseCountAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int> {
+    open class func getCourseHandoutsByCourseCountAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseHandoutDtoCollectionQueryParameters: CourseHandoutDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int> {
         var localVariablePath = "/api/v2/LearningService/Courses/{courseId}/Handouts/Count"
         let courseIdPreEscape = "\(APIHelper.mapValueToPathItem(courseId))"
         let courseIdPostEscape = courseIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{courseId}", with: courseIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseHandoutDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -994,6 +1038,7 @@ open class CoursesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1010,12 +1055,13 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseLibraryDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCourseLibrariesByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CourseLibraryDto]?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCourseLibrariesByCourseAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCourseLibrariesByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseLibraryDtoCollectionQueryParameters: CourseLibraryDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CourseLibraryDto]?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCourseLibrariesByCourseAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseLibraryDtoCollectionQueryParameters: courseLibraryDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1032,15 +1078,16 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseLibraryDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<[CourseLibraryDto]> 
      */
-    open class func getCourseLibrariesByCourseAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<[CourseLibraryDto]> {
+    open class func getCourseLibrariesByCourseAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseLibraryDtoCollectionQueryParameters: CourseLibraryDtoCollectionQueryParameters? = nil) -> RequestBuilder<[CourseLibraryDto]> {
         var localVariablePath = "/api/v2/LearningService/Courses/{courseId}/Libraries"
         let courseIdPreEscape = "\(APIHelper.mapValueToPathItem(courseId))"
         let courseIdPostEscape = courseIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{courseId}", with: courseIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseLibraryDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1048,6 +1095,7 @@ open class CoursesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1064,12 +1112,13 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseLibraryDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCourseLibrariesByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCourseLibrariesByCourseCountAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCourseLibrariesByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseLibraryDtoCollectionQueryParameters: CourseLibraryDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCourseLibrariesByCourseCountAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseLibraryDtoCollectionQueryParameters: courseLibraryDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1086,15 +1135,16 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseLibraryDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int> 
      */
-    open class func getCourseLibrariesByCourseCountAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int> {
+    open class func getCourseLibrariesByCourseCountAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseLibraryDtoCollectionQueryParameters: CourseLibraryDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int> {
         var localVariablePath = "/api/v2/LearningService/Courses/{courseId}/Libraries/Count"
         let courseIdPreEscape = "\(APIHelper.mapValueToPathItem(courseId))"
         let courseIdPostEscape = courseIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{courseId}", with: courseIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseLibraryDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1102,6 +1152,7 @@ open class CoursesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1118,12 +1169,13 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter coursePageDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCoursePagesByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CoursePageDto]?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCoursePagesByCourseAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCoursePagesByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, coursePageDtoCollectionQueryParameters: CoursePageDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CoursePageDto]?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCoursePagesByCourseAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, coursePageDtoCollectionQueryParameters: coursePageDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1140,15 +1192,16 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter coursePageDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<[CoursePageDto]> 
      */
-    open class func getCoursePagesByCourseAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<[CoursePageDto]> {
+    open class func getCoursePagesByCourseAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, coursePageDtoCollectionQueryParameters: CoursePageDtoCollectionQueryParameters? = nil) -> RequestBuilder<[CoursePageDto]> {
         var localVariablePath = "/api/v2/LearningService/Courses/{courseId}/Pages"
         let courseIdPreEscape = "\(APIHelper.mapValueToPathItem(courseId))"
         let courseIdPostEscape = courseIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{courseId}", with: courseIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: coursePageDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1156,6 +1209,7 @@ open class CoursesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1172,12 +1226,13 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter coursePageDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCoursePagesByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCoursePagesByCourseCountAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCoursePagesByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, coursePageDtoCollectionQueryParameters: CoursePageDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCoursePagesByCourseCountAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, coursePageDtoCollectionQueryParameters: coursePageDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1194,15 +1249,16 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter coursePageDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int> 
      */
-    open class func getCoursePagesByCourseCountAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int> {
+    open class func getCoursePagesByCourseCountAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, coursePageDtoCollectionQueryParameters: CoursePageDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int> {
         var localVariablePath = "/api/v2/LearningService/Courses/{courseId}/Pages/Count"
         let courseIdPreEscape = "\(APIHelper.mapValueToPathItem(courseId))"
         let courseIdPostEscape = courseIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{courseId}", with: courseIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: coursePageDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1210,6 +1266,7 @@ open class CoursesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1226,12 +1283,13 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseProblemSetDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCourseProblemSetsByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CourseProblemSetDto]?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCourseProblemSetsByCourseAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCourseProblemSetsByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseProblemSetDtoCollectionQueryParameters: CourseProblemSetDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CourseProblemSetDto]?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCourseProblemSetsByCourseAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseProblemSetDtoCollectionQueryParameters: courseProblemSetDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1248,15 +1306,16 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseProblemSetDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<[CourseProblemSetDto]> 
      */
-    open class func getCourseProblemSetsByCourseAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<[CourseProblemSetDto]> {
+    open class func getCourseProblemSetsByCourseAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseProblemSetDtoCollectionQueryParameters: CourseProblemSetDtoCollectionQueryParameters? = nil) -> RequestBuilder<[CourseProblemSetDto]> {
         var localVariablePath = "/api/v2/LearningService/Courses/{courseId}/ProblemSets"
         let courseIdPreEscape = "\(APIHelper.mapValueToPathItem(courseId))"
         let courseIdPostEscape = courseIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{courseId}", with: courseIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseProblemSetDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1264,6 +1323,7 @@ open class CoursesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1280,12 +1340,13 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseProblemSetDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCourseProblemSetsByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCourseProblemSetsByCourseCountAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCourseProblemSetsByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseProblemSetDtoCollectionQueryParameters: CourseProblemSetDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCourseProblemSetsByCourseCountAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseProblemSetDtoCollectionQueryParameters: courseProblemSetDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1302,15 +1363,16 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseProblemSetDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int> 
      */
-    open class func getCourseProblemSetsByCourseCountAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int> {
+    open class func getCourseProblemSetsByCourseCountAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseProblemSetDtoCollectionQueryParameters: CourseProblemSetDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int> {
         var localVariablePath = "/api/v2/LearningService/Courses/{courseId}/ProblemSets/Count"
         let courseIdPreEscape = "\(APIHelper.mapValueToPathItem(courseId))"
         let courseIdPostEscape = courseIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{courseId}", with: courseIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseProblemSetDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1318,6 +1380,7 @@ open class CoursesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1334,12 +1397,13 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseSectionDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCourseSectionsByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CourseSectionDto]?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCourseSectionsByCourseAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCourseSectionsByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseSectionDtoCollectionQueryParameters: CourseSectionDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CourseSectionDto]?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCourseSectionsByCourseAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseSectionDtoCollectionQueryParameters: courseSectionDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1356,15 +1420,16 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseSectionDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<[CourseSectionDto]> 
      */
-    open class func getCourseSectionsByCourseAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<[CourseSectionDto]> {
+    open class func getCourseSectionsByCourseAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseSectionDtoCollectionQueryParameters: CourseSectionDtoCollectionQueryParameters? = nil) -> RequestBuilder<[CourseSectionDto]> {
         var localVariablePath = "/api/v2/LearningService/Courses/{courseId}/Sections"
         let courseIdPreEscape = "\(APIHelper.mapValueToPathItem(courseId))"
         let courseIdPostEscape = courseIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{courseId}", with: courseIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseSectionDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1372,6 +1437,7 @@ open class CoursesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1388,12 +1454,13 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseSectionDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCourseSectionsByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCourseSectionsByCourseCountAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCourseSectionsByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseSectionDtoCollectionQueryParameters: CourseSectionDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCourseSectionsByCourseCountAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseSectionDtoCollectionQueryParameters: courseSectionDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1410,15 +1477,16 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseSectionDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int> 
      */
-    open class func getCourseSectionsByCourseCountAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int> {
+    open class func getCourseSectionsByCourseCountAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseSectionDtoCollectionQueryParameters: CourseSectionDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int> {
         var localVariablePath = "/api/v2/LearningService/Courses/{courseId}/Sections/Count"
         let courseIdPreEscape = "\(APIHelper.mapValueToPathItem(courseId))"
         let courseIdPostEscape = courseIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{courseId}", with: courseIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseSectionDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1426,6 +1494,7 @@ open class CoursesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1442,12 +1511,13 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseUnitComponentDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCourseUnitComponentsByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CourseUnitComponentDto]?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCourseUnitComponentsByCourseAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCourseUnitComponentsByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseUnitComponentDtoCollectionQueryParameters: CourseUnitComponentDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CourseUnitComponentDto]?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCourseUnitComponentsByCourseAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseUnitComponentDtoCollectionQueryParameters: courseUnitComponentDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1464,15 +1534,16 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseUnitComponentDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<[CourseUnitComponentDto]> 
      */
-    open class func getCourseUnitComponentsByCourseAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<[CourseUnitComponentDto]> {
+    open class func getCourseUnitComponentsByCourseAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseUnitComponentDtoCollectionQueryParameters: CourseUnitComponentDtoCollectionQueryParameters? = nil) -> RequestBuilder<[CourseUnitComponentDto]> {
         var localVariablePath = "/api/v2/LearningService/Courses/{courseId}/UnitComponents"
         let courseIdPreEscape = "\(APIHelper.mapValueToPathItem(courseId))"
         let courseIdPostEscape = courseIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{courseId}", with: courseIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseUnitComponentDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1480,6 +1551,7 @@ open class CoursesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1496,12 +1568,13 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseUnitComponentDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCourseUnitComponentsByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCourseUnitComponentsByCourseCountAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCourseUnitComponentsByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseUnitComponentDtoCollectionQueryParameters: CourseUnitComponentDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCourseUnitComponentsByCourseCountAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseUnitComponentDtoCollectionQueryParameters: courseUnitComponentDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1518,15 +1591,16 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseUnitComponentDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int> 
      */
-    open class func getCourseUnitComponentsByCourseCountAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int> {
+    open class func getCourseUnitComponentsByCourseCountAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseUnitComponentDtoCollectionQueryParameters: CourseUnitComponentDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int> {
         var localVariablePath = "/api/v2/LearningService/Courses/{courseId}/UnitComponents/Count"
         let courseIdPreEscape = "\(APIHelper.mapValueToPathItem(courseId))"
         let courseIdPostEscape = courseIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{courseId}", with: courseIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseUnitComponentDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1534,6 +1608,7 @@ open class CoursesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1551,12 +1626,13 @@ open class CoursesAPI {
      - parameter sectionId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseUnitDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCourseUnitsBySectionAsync(courseId: String, sectionId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CourseUnitDto]?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCourseUnitsBySectionAsyncWithRequestBuilder(courseId: courseId, sectionId: sectionId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCourseUnitsBySectionAsync(courseId: String, sectionId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseUnitDtoCollectionQueryParameters: CourseUnitDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CourseUnitDto]?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCourseUnitsBySectionAsyncWithRequestBuilder(courseId: courseId, sectionId: sectionId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseUnitDtoCollectionQueryParameters: courseUnitDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1574,9 +1650,10 @@ open class CoursesAPI {
      - parameter sectionId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseUnitDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<[CourseUnitDto]> 
      */
-    open class func getCourseUnitsBySectionAsyncWithRequestBuilder(courseId: String, sectionId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<[CourseUnitDto]> {
+    open class func getCourseUnitsBySectionAsyncWithRequestBuilder(courseId: String, sectionId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseUnitDtoCollectionQueryParameters: CourseUnitDtoCollectionQueryParameters? = nil) -> RequestBuilder<[CourseUnitDto]> {
         var localVariablePath = "/api/v2/LearningService/Courses/{courseId}/Units/{sectionId}"
         let courseIdPreEscape = "\(APIHelper.mapValueToPathItem(courseId))"
         let courseIdPostEscape = courseIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -1585,7 +1662,7 @@ open class CoursesAPI {
         let sectionIdPostEscape = sectionIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{sectionId}", with: sectionIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseUnitDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1593,6 +1670,7 @@ open class CoursesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1610,12 +1688,13 @@ open class CoursesAPI {
      - parameter sectionId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseUnitDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCourseUnitsBySectionCountAsync(courseId: String, sectionId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCourseUnitsBySectionCountAsyncWithRequestBuilder(courseId: courseId, sectionId: sectionId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCourseUnitsBySectionCountAsync(courseId: String, sectionId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseUnitDtoCollectionQueryParameters: CourseUnitDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCourseUnitsBySectionCountAsyncWithRequestBuilder(courseId: courseId, sectionId: sectionId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseUnitDtoCollectionQueryParameters: courseUnitDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1633,9 +1712,10 @@ open class CoursesAPI {
      - parameter sectionId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseUnitDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int> 
      */
-    open class func getCourseUnitsBySectionCountAsyncWithRequestBuilder(courseId: String, sectionId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int> {
+    open class func getCourseUnitsBySectionCountAsyncWithRequestBuilder(courseId: String, sectionId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseUnitDtoCollectionQueryParameters: CourseUnitDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int> {
         var localVariablePath = "/api/v2/LearningService/Courses/{courseId}/Units/{sectionId}/Count"
         let courseIdPreEscape = "\(APIHelper.mapValueToPathItem(courseId))"
         let courseIdPostEscape = courseIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -1644,7 +1724,7 @@ open class CoursesAPI {
         let sectionIdPostEscape = sectionIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{sectionId}", with: sectionIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseUnitDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1652,6 +1732,7 @@ open class CoursesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1668,12 +1749,13 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseNewsDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCourseUpdatesByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CourseNewsDto]?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCourseUpdatesByCourseAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCourseUpdatesByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseNewsDtoCollectionQueryParameters: CourseNewsDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CourseNewsDto]?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCourseUpdatesByCourseAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseNewsDtoCollectionQueryParameters: courseNewsDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1690,15 +1772,16 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseNewsDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<[CourseNewsDto]> 
      */
-    open class func getCourseUpdatesByCourseAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<[CourseNewsDto]> {
+    open class func getCourseUpdatesByCourseAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseNewsDtoCollectionQueryParameters: CourseNewsDtoCollectionQueryParameters? = nil) -> RequestBuilder<[CourseNewsDto]> {
         var localVariablePath = "/api/v2/LearningService/Courses/{courseId}/Updates"
         let courseIdPreEscape = "\(APIHelper.mapValueToPathItem(courseId))"
         let courseIdPostEscape = courseIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{courseId}", with: courseIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseNewsDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1706,6 +1789,7 @@ open class CoursesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1722,12 +1806,13 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseNewsDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCourseUpdatesByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCourseUpdatesByCourseCountAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCourseUpdatesByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseNewsDtoCollectionQueryParameters: CourseNewsDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCourseUpdatesByCourseCountAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseNewsDtoCollectionQueryParameters: courseNewsDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1744,15 +1829,16 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseNewsDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int> 
      */
-    open class func getCourseUpdatesByCourseCountAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int> {
+    open class func getCourseUpdatesByCourseCountAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseNewsDtoCollectionQueryParameters: CourseNewsDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int> {
         var localVariablePath = "/api/v2/LearningService/Courses/{courseId}/Updates/Count"
         let courseIdPreEscape = "\(APIHelper.mapValueToPathItem(courseId))"
         let courseIdPostEscape = courseIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{courseId}", with: courseIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseNewsDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1760,6 +1846,7 @@ open class CoursesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1776,12 +1863,13 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseWikiDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCourseWikisByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CourseWikiDto]?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCourseWikisByCourseAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCourseWikisByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseWikiDtoCollectionQueryParameters: CourseWikiDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CourseWikiDto]?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCourseWikisByCourseAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseWikiDtoCollectionQueryParameters: courseWikiDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1798,15 +1886,16 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseWikiDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<[CourseWikiDto]> 
      */
-    open class func getCourseWikisByCourseAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<[CourseWikiDto]> {
+    open class func getCourseWikisByCourseAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseWikiDtoCollectionQueryParameters: CourseWikiDtoCollectionQueryParameters? = nil) -> RequestBuilder<[CourseWikiDto]> {
         var localVariablePath = "/api/v2/LearningService/Courses/{courseId}/Wikis"
         let courseIdPreEscape = "\(APIHelper.mapValueToPathItem(courseId))"
         let courseIdPostEscape = courseIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{courseId}", with: courseIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseWikiDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1814,6 +1903,7 @@ open class CoursesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1830,12 +1920,13 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseWikiDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCourseWikisByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCourseWikisByCourseCountAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCourseWikisByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseWikiDtoCollectionQueryParameters: CourseWikiDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCourseWikisByCourseCountAsyncWithRequestBuilder(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseWikiDtoCollectionQueryParameters: courseWikiDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1852,15 +1943,16 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseWikiDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int> 
      */
-    open class func getCourseWikisByCourseCountAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int> {
+    open class func getCourseWikisByCourseCountAsyncWithRequestBuilder(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseWikiDtoCollectionQueryParameters: CourseWikiDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int> {
         var localVariablePath = "/api/v2/LearningService/Courses/{courseId}/Wikis/Count"
         let courseIdPreEscape = "\(APIHelper.mapValueToPathItem(courseId))"
         let courseIdPostEscape = courseIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{courseId}", with: courseIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseWikiDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1868,6 +1960,7 @@ open class CoursesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1884,12 +1977,13 @@ open class CoursesAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCoursesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CourseDto]?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCoursesAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCoursesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, courseDtoCollectionQueryParameters: CourseDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CourseDto]?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCoursesAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseDtoCollectionQueryParameters: courseDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1906,12 +2000,13 @@ open class CoursesAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<[CourseDto]> 
      */
-    open class func getCoursesAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<[CourseDto]> {
+    open class func getCoursesAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, courseDtoCollectionQueryParameters: CourseDtoCollectionQueryParameters? = nil) -> RequestBuilder<[CourseDto]> {
         let localVariablePath = "/api/v2/LearningService/Courses"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1920,6 +2015,7 @@ open class CoursesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1936,12 +2032,13 @@ open class CoursesAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCoursesCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCoursesCountAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCoursesCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, courseDtoCollectionQueryParameters: CourseDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCoursesCountAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseDtoCollectionQueryParameters: courseDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1958,12 +2055,13 @@ open class CoursesAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter courseDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int> 
      */
-    open class func getCoursesCountAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int> {
+    open class func getCoursesCountAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, courseDtoCollectionQueryParameters: CourseDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int> {
         let localVariablePath = "/api/v2/LearningService/Courses/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: courseDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1972,6 +2070,7 @@ open class CoursesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -2205,13 +2304,13 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchCourseAsync(tenantId: UUID, courseId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchCourseAsyncWithRequestBuilder(tenantId: tenantId, courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchCourseAsync(tenantId: UUID, courseId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchCourseAsyncWithRequestBuilder(tenantId: tenantId, courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -2229,16 +2328,16 @@ open class CoursesAPI {
      - parameter courseId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchCourseAsyncWithRequestBuilder(tenantId: UUID, courseId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchCourseAsyncWithRequestBuilder(tenantId: UUID, courseId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/LearningService/Courses/{courseId}"
         let courseIdPreEscape = "\(APIHelper.mapValueToPathItem(courseId))"
         let courseIdPostEscape = courseIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{courseId}", with: courseIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

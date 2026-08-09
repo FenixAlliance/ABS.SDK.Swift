@@ -457,15 +457,15 @@ open class OAuthApplicationsAPI {
      
      - parameter tenantId: (query)  
      - parameter applicationId: (path)  
-     - parameter operation: (body)  
+     - parameter patchOperation: (body)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchOAuthApplicationAsync(tenantId: UUID, applicationId: String, operation: [Operation], apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchOAuthApplicationAsyncWithRequestBuilder(tenantId: tenantId, applicationId: applicationId, operation: operation, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func patchOAuthApplicationAsync(tenantId: UUID, applicationId: String, patchOperation: [PatchOperation], apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchOAuthApplicationAsyncWithRequestBuilder(tenantId: tenantId, applicationId: applicationId, patchOperation: patchOperation, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -481,18 +481,18 @@ open class OAuthApplicationsAPI {
      - Partially updates an existing OAuth application using a JSON Patch document.
      - parameter tenantId: (query)  
      - parameter applicationId: (path)  
-     - parameter operation: (body)  
+     - parameter patchOperation: (body)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchOAuthApplicationAsyncWithRequestBuilder(tenantId: UUID, applicationId: String, operation: [Operation], apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchOAuthApplicationAsyncWithRequestBuilder(tenantId: UUID, applicationId: String, patchOperation: [PatchOperation], apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/SecurityService/OAuthApplications/{applicationId}"
         let applicationIdPreEscape = "\(APIHelper.mapValueToPathItem(applicationId))"
         let applicationIdPostEscape = applicationIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{applicationId}", with: applicationIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

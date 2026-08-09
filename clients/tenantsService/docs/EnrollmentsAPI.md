@@ -129,7 +129,7 @@ No authorization required
 
 # **getExtendedTenantEnrollments**
 ```swift
-    open class func getExtendedTenantEnrollments(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: TenantEnrollmentDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getExtendedTenantEnrollments(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, extendedTenantEnrollmentDtoCollectionQueryParameters: ExtendedTenantEnrollmentDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: TenantEnrollmentDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Retrieve a list of tenant enrollments
@@ -144,9 +144,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let extendedTenantEnrollmentDtoCollectionQueryParameters = ExtendedTenantEnrollmentDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ExtendedTenantEnrollmentDtoCollectionQueryParameters |  (optional)
 
 // Retrieve a list of tenant enrollments
-EnrollmentsAPI.getExtendedTenantEnrollments(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+EnrollmentsAPI.getExtendedTenantEnrollments(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, extendedTenantEnrollmentDtoCollectionQueryParameters: extendedTenantEnrollmentDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -165,6 +166,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **extendedTenantEnrollmentDtoCollectionQueryParameters** | [**ExtendedTenantEnrollmentDtoCollectionQueryParameters**](ExtendedTenantEnrollmentDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -176,14 +178,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getExtendedTenantEnrollmentsCount**
 ```swift
-    open class func getExtendedTenantEnrollmentsCount(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getExtendedTenantEnrollmentsCount(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, extendedTenantEnrollmentDtoCollectionQueryParameters: ExtendedTenantEnrollmentDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get the count of tenant enrollments
@@ -198,9 +200,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let extendedTenantEnrollmentDtoCollectionQueryParameters = ExtendedTenantEnrollmentDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ExtendedTenantEnrollmentDtoCollectionQueryParameters |  (optional)
 
 // Get the count of tenant enrollments
-EnrollmentsAPI.getExtendedTenantEnrollmentsCount(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+EnrollmentsAPI.getExtendedTenantEnrollmentsCount(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, extendedTenantEnrollmentDtoCollectionQueryParameters: extendedTenantEnrollmentDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -219,6 +222,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **extendedTenantEnrollmentDtoCollectionQueryParameters** | [**ExtendedTenantEnrollmentDtoCollectionQueryParameters**](ExtendedTenantEnrollmentDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -230,7 +234,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -295,7 +299,7 @@ No authorization required
 
 # **getTenantEnrollments**
 ```swift
-    open class func getTenantEnrollments(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: TenantEnrollmentDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getTenantEnrollments(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, tenantEnrollmentDtoCollectionQueryParameters: TenantEnrollmentDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: TenantEnrollmentDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Retrieve a list of tenant enrollments
@@ -310,9 +314,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let tenantEnrollmentDtoCollectionQueryParameters = TenantEnrollmentDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // TenantEnrollmentDtoCollectionQueryParameters |  (optional)
 
 // Retrieve a list of tenant enrollments
-EnrollmentsAPI.getTenantEnrollments(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+EnrollmentsAPI.getTenantEnrollments(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, tenantEnrollmentDtoCollectionQueryParameters: tenantEnrollmentDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -331,6 +336,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **tenantEnrollmentDtoCollectionQueryParameters** | [**TenantEnrollmentDtoCollectionQueryParameters**](TenantEnrollmentDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -342,14 +348,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getTenantEnrollmentsCount**
 ```swift
-    open class func getTenantEnrollmentsCount(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getTenantEnrollmentsCount(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, tenantEnrollmentDtoCollectionQueryParameters: TenantEnrollmentDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get the count of tenant enrollments
@@ -364,9 +370,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let tenantEnrollmentDtoCollectionQueryParameters = TenantEnrollmentDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // TenantEnrollmentDtoCollectionQueryParameters |  (optional)
 
 // Get the count of tenant enrollments
-EnrollmentsAPI.getTenantEnrollmentsCount(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+EnrollmentsAPI.getTenantEnrollmentsCount(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, tenantEnrollmentDtoCollectionQueryParameters: tenantEnrollmentDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -385,6 +392,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **tenantEnrollmentDtoCollectionQueryParameters** | [**TenantEnrollmentDtoCollectionQueryParameters**](TenantEnrollmentDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -396,14 +404,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchTenantEnrollmentAsync**
 ```swift
-    open class func patchTenantEnrollmentAsync(tenantId: UUID, enrollmentId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchTenantEnrollmentAsync(tenantId: UUID, enrollmentId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a tenant enrollment
@@ -419,10 +427,10 @@ let tenantId = 987 // UUID |
 let enrollmentId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a tenant enrollment
-EnrollmentsAPI.patchTenantEnrollmentAsync(tenantId: tenantId, enrollmentId: enrollmentId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+EnrollmentsAPI.patchTenantEnrollmentAsync(tenantId: tenantId, enrollmentId: enrollmentId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -442,7 +450,7 @@ Name | Type | Description  | Notes
  **enrollmentId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

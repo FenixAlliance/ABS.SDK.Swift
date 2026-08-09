@@ -383,12 +383,13 @@ open class BlogPostsAPI {
      Retrieve a list of blog posts
      
      - parameter tenantId: (query)  (optional)
+     - parameter blogPostDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getBlogPostsAsync(tenantId: UUID? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BlogPostDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getBlogPostsAsyncWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+    open class func getBlogPostsAsync(tenantId: UUID? = nil, blogPostDtoCollectionQueryParameters: BlogPostDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BlogPostDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getBlogPostsAsyncWithRequestBuilder(tenantId: tenantId, blogPostDtoCollectionQueryParameters: blogPostDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -403,12 +404,13 @@ open class BlogPostsAPI {
      - GET /api/v2/ContentService/BlogPosts
      - Retrieves all blog posts, optionally filtered by tenant using OData query options.
      - parameter tenantId: (query)  (optional)
+     - parameter blogPostDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<BlogPostDtoListEnvelope> 
      */
-    open class func getBlogPostsAsyncWithRequestBuilder(tenantId: UUID? = nil) -> RequestBuilder<BlogPostDtoListEnvelope> {
+    open class func getBlogPostsAsyncWithRequestBuilder(tenantId: UUID? = nil, blogPostDtoCollectionQueryParameters: BlogPostDtoCollectionQueryParameters? = nil) -> RequestBuilder<BlogPostDtoListEnvelope> {
         let localVariablePath = "/api/v2/ContentService/BlogPosts"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: blogPostDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -416,7 +418,7 @@ open class BlogPostsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -430,12 +432,13 @@ open class BlogPostsAPI {
      Get the count of blog posts
      
      - parameter tenantId: (query)  (optional)
+     - parameter blogPostDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getBlogPostsCountAsync(tenantId: UUID? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getBlogPostsCountAsyncWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+    open class func getBlogPostsCountAsync(tenantId: UUID? = nil, blogPostDtoCollectionQueryParameters: BlogPostDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getBlogPostsCountAsyncWithRequestBuilder(tenantId: tenantId, blogPostDtoCollectionQueryParameters: blogPostDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -450,12 +453,13 @@ open class BlogPostsAPI {
      - GET /api/v2/ContentService/BlogPosts/Count
      - Returns the total count of blog posts, optionally filtered by tenant using OData query options.
      - parameter tenantId: (query)  (optional)
+     - parameter blogPostDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getBlogPostsCountAsyncWithRequestBuilder(tenantId: UUID? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getBlogPostsCountAsyncWithRequestBuilder(tenantId: UUID? = nil, blogPostDtoCollectionQueryParameters: BlogPostDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/ContentService/BlogPosts/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: blogPostDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -463,7 +467,7 @@ open class BlogPostsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -477,12 +481,13 @@ open class BlogPostsAPI {
      Get categories for a blog post
      
      - parameter blogPostId: (path)  
+     - parameter blogPostCategoryDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCategoriesForBlogPostAsync(blogPostId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BlogPostCategoryDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCategoriesForBlogPostAsyncWithRequestBuilder(blogPostId: blogPostId).execute(apiResponseQueue) { result in
+    open class func getCategoriesForBlogPostAsync(blogPostId: UUID, blogPostCategoryDtoCollectionQueryParameters: BlogPostCategoryDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BlogPostCategoryDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCategoriesForBlogPostAsyncWithRequestBuilder(blogPostId: blogPostId, blogPostCategoryDtoCollectionQueryParameters: blogPostCategoryDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -497,20 +502,21 @@ open class BlogPostsAPI {
      - GET /api/v2/ContentService/BlogPosts/{blogPostId}/Categories
      - Retrieves all categories related to a specific blog post.
      - parameter blogPostId: (path)  
+     - parameter blogPostCategoryDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<BlogPostCategoryDtoListEnvelope> 
      */
-    open class func getCategoriesForBlogPostAsyncWithRequestBuilder(blogPostId: UUID) -> RequestBuilder<BlogPostCategoryDtoListEnvelope> {
+    open class func getCategoriesForBlogPostAsyncWithRequestBuilder(blogPostId: UUID, blogPostCategoryDtoCollectionQueryParameters: BlogPostCategoryDtoCollectionQueryParameters? = nil) -> RequestBuilder<BlogPostCategoryDtoListEnvelope> {
         var localVariablePath = "/api/v2/ContentService/BlogPosts/{blogPostId}/Categories"
         let blogPostIdPreEscape = "\(APIHelper.mapValueToPathItem(blogPostId))"
         let blogPostIdPostEscape = blogPostIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{blogPostId}", with: blogPostIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: blogPostCategoryDtoCollectionQueryParameters)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -524,12 +530,13 @@ open class BlogPostsAPI {
      Get comments for a blog post
      
      - parameter blogPostId: (path)  
+     - parameter blogPostCommentDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCommentsForBlogPostAsync(blogPostId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BlogPostCommentDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCommentsForBlogPostAsyncWithRequestBuilder(blogPostId: blogPostId).execute(apiResponseQueue) { result in
+    open class func getCommentsForBlogPostAsync(blogPostId: UUID, blogPostCommentDtoCollectionQueryParameters: BlogPostCommentDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BlogPostCommentDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCommentsForBlogPostAsyncWithRequestBuilder(blogPostId: blogPostId, blogPostCommentDtoCollectionQueryParameters: blogPostCommentDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -544,20 +551,21 @@ open class BlogPostsAPI {
      - GET /api/v2/ContentService/BlogPosts/{blogPostId}/Comments
      - Retrieves all comments for a specific blog post.
      - parameter blogPostId: (path)  
+     - parameter blogPostCommentDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<BlogPostCommentDtoListEnvelope> 
      */
-    open class func getCommentsForBlogPostAsyncWithRequestBuilder(blogPostId: UUID) -> RequestBuilder<BlogPostCommentDtoListEnvelope> {
+    open class func getCommentsForBlogPostAsyncWithRequestBuilder(blogPostId: UUID, blogPostCommentDtoCollectionQueryParameters: BlogPostCommentDtoCollectionQueryParameters? = nil) -> RequestBuilder<BlogPostCommentDtoListEnvelope> {
         var localVariablePath = "/api/v2/ContentService/BlogPosts/{blogPostId}/Comments"
         let blogPostIdPreEscape = "\(APIHelper.mapValueToPathItem(blogPostId))"
         let blogPostIdPostEscape = blogPostIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{blogPostId}", with: blogPostIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: blogPostCommentDtoCollectionQueryParameters)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -572,12 +580,13 @@ open class BlogPostsAPI {
      
      - parameter commentId: (path)  
      - parameter blogPostId: (path)  
+     - parameter blogPostCommentDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getRepliesForCommentAsync(commentId: UUID, blogPostId: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BlogPostCommentDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getRepliesForCommentAsyncWithRequestBuilder(commentId: commentId, blogPostId: blogPostId).execute(apiResponseQueue) { result in
+    open class func getRepliesForCommentAsync(commentId: UUID, blogPostId: String, blogPostCommentDtoCollectionQueryParameters: BlogPostCommentDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BlogPostCommentDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getRepliesForCommentAsyncWithRequestBuilder(commentId: commentId, blogPostId: blogPostId, blogPostCommentDtoCollectionQueryParameters: blogPostCommentDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -593,9 +602,10 @@ open class BlogPostsAPI {
      - Retrieves all replies for a specific blog post comment.
      - parameter commentId: (path)  
      - parameter blogPostId: (path)  
+     - parameter blogPostCommentDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<BlogPostCommentDtoListEnvelope> 
      */
-    open class func getRepliesForCommentAsyncWithRequestBuilder(commentId: UUID, blogPostId: String) -> RequestBuilder<BlogPostCommentDtoListEnvelope> {
+    open class func getRepliesForCommentAsyncWithRequestBuilder(commentId: UUID, blogPostId: String, blogPostCommentDtoCollectionQueryParameters: BlogPostCommentDtoCollectionQueryParameters? = nil) -> RequestBuilder<BlogPostCommentDtoListEnvelope> {
         var localVariablePath = "/api/v2/ContentService/BlogPosts/{blogPostId}/Comments/{commentId}/Replies"
         let commentIdPreEscape = "\(APIHelper.mapValueToPathItem(commentId))"
         let commentIdPostEscape = commentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -604,12 +614,12 @@ open class BlogPostsAPI {
         let blogPostIdPostEscape = blogPostIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{blogPostId}", with: blogPostIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: blogPostCommentDtoCollectionQueryParameters)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -623,12 +633,13 @@ open class BlogPostsAPI {
      Get tags for a blog post
      
      - parameter blogPostId: (path)  
+     - parameter blogPostTagDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getTagsForBlogPostAsync(blogPostId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BlogPostTagDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getTagsForBlogPostAsyncWithRequestBuilder(blogPostId: blogPostId).execute(apiResponseQueue) { result in
+    open class func getTagsForBlogPostAsync(blogPostId: UUID, blogPostTagDtoCollectionQueryParameters: BlogPostTagDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BlogPostTagDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getTagsForBlogPostAsyncWithRequestBuilder(blogPostId: blogPostId, blogPostTagDtoCollectionQueryParameters: blogPostTagDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -643,20 +654,21 @@ open class BlogPostsAPI {
      - GET /api/v2/ContentService/BlogPosts/{blogPostId}/Tags
      - Retrieves all tags related to a specific blog post.
      - parameter blogPostId: (path)  
+     - parameter blogPostTagDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<BlogPostTagDtoListEnvelope> 
      */
-    open class func getTagsForBlogPostAsyncWithRequestBuilder(blogPostId: UUID) -> RequestBuilder<BlogPostTagDtoListEnvelope> {
+    open class func getTagsForBlogPostAsyncWithRequestBuilder(blogPostId: UUID, blogPostTagDtoCollectionQueryParameters: BlogPostTagDtoCollectionQueryParameters? = nil) -> RequestBuilder<BlogPostTagDtoListEnvelope> {
         var localVariablePath = "/api/v2/ContentService/BlogPosts/{blogPostId}/Tags"
         let blogPostIdPreEscape = "\(APIHelper.mapValueToPathItem(blogPostId))"
         let blogPostIdPostEscape = blogPostIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{blogPostId}", with: blogPostIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: blogPostTagDtoCollectionQueryParameters)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -671,13 +683,13 @@ open class BlogPostsAPI {
      
      - parameter tenantId: (query)  
      - parameter blogPostId: (path)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchBlogPostAsync(tenantId: UUID, blogPostId: UUID, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchBlogPostAsyncWithRequestBuilder(tenantId: tenantId, blogPostId: blogPostId, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchBlogPostAsync(tenantId: UUID, blogPostId: UUID, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchBlogPostAsyncWithRequestBuilder(tenantId: tenantId, blogPostId: blogPostId, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -693,16 +705,16 @@ open class BlogPostsAPI {
      - Partially updates an existing blog post for the specified tenant.
      - parameter tenantId: (query)  
      - parameter blogPostId: (path)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchBlogPostAsyncWithRequestBuilder(tenantId: UUID, blogPostId: UUID, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchBlogPostAsyncWithRequestBuilder(tenantId: UUID, blogPostId: UUID, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/ContentService/BlogPosts/{blogPostId}"
         let blogPostIdPreEscape = "\(APIHelper.mapValueToPathItem(blogPostId))"
         let blogPostIdPostEscape = blogPostIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{blogPostId}", with: blogPostIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

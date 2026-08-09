@@ -14,6 +14,9 @@ Name | Type | Description | Notes
 **sentTimestamp** | **Date** |  | [optional] 
 **readTimestamp** | **Date** |  | [optional] 
 **receivedTimestamp** | **Date** |  | [optional] 
+**socialProfileName** | **String** |  | [optional] 
+**socialProfileAvatarUrl** | **String** |  | [optional] 
+**socialProfileType** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

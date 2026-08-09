@@ -119,7 +119,7 @@ No authorization required
 
 # **getAssetCategories**
 ```swift
-    open class func getAssetCategories(tenantId: UUID, completion: @escaping (_ data: AssetCategoryDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getAssetCategories(tenantId: UUID, assetCategoryDtoCollectionQueryParameters: AssetCategoryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: AssetCategoryDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Gets all asset categories for the current tenant
@@ -132,9 +132,10 @@ Retrieves all asset categories for the authenticated tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
+let assetCategoryDtoCollectionQueryParameters = AssetCategoryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // AssetCategoryDtoCollectionQueryParameters |  (optional)
 
 // Gets all asset categories for the current tenant
-AssetCategoriesAPI.getAssetCategories(tenantId: tenantId) { (response, error) in
+AssetCategoriesAPI.getAssetCategories(tenantId: tenantId, assetCategoryDtoCollectionQueryParameters: assetCategoryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -151,6 +152,7 @@ AssetCategoriesAPI.getAssetCategories(tenantId: tenantId) { (response, error) in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
+ **assetCategoryDtoCollectionQueryParameters** | [**AssetCategoryDtoCollectionQueryParameters**](AssetCategoryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -162,14 +164,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getAssetCategoriesCount**
 ```swift
-    open class func getAssetCategoriesCount(tenantId: UUID, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getAssetCategoriesCount(tenantId: UUID, assetCategoryDtoCollectionQueryParameters: AssetCategoryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Gets the count of asset categories
@@ -182,9 +184,10 @@ Returns the total number of asset categories for the authenticated tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
+let assetCategoryDtoCollectionQueryParameters = AssetCategoryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // AssetCategoryDtoCollectionQueryParameters |  (optional)
 
 // Gets the count of asset categories
-AssetCategoriesAPI.getAssetCategoriesCount(tenantId: tenantId) { (response, error) in
+AssetCategoriesAPI.getAssetCategoriesCount(tenantId: tenantId, assetCategoryDtoCollectionQueryParameters: assetCategoryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -201,6 +204,7 @@ AssetCategoriesAPI.getAssetCategoriesCount(tenantId: tenantId) { (response, erro
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
+ **assetCategoryDtoCollectionQueryParameters** | [**AssetCategoryDtoCollectionQueryParameters**](AssetCategoryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -212,7 +216,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -271,7 +275,7 @@ No authorization required
 
 # **patchAssetCategory**
 ```swift
-    open class func patchAssetCategory(tenantId: UUID, categoryId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchAssetCategory(tenantId: UUID, categoryId: UUID, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Partially updates an existing asset category
@@ -285,10 +289,10 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let categoryId = 987 // UUID | 
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Partially updates an existing asset category
-AssetCategoriesAPI.patchAssetCategory(tenantId: tenantId, categoryId: categoryId, operation: operation) { (response, error) in
+AssetCategoriesAPI.patchAssetCategory(tenantId: tenantId, categoryId: categoryId, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -306,7 +310,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **categoryId** | **UUID** |  | 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

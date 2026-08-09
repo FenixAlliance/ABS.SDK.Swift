@@ -340,7 +340,7 @@ No authorization required
 
 # **getPriceListPricesAsync**
 ```swift
-    open class func getPriceListPricesAsync(tenantId: UUID, priceListId: UUID, itemId: UUID? = nil, completion: @escaping (_ data: ItemPriceDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getPriceListPricesAsync(tenantId: UUID, priceListId: UUID, itemId: UUID? = nil, itemPriceDtoCollectionQueryParameters: ItemPriceDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ItemPriceDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Retrieves prices in a price list
@@ -355,9 +355,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let priceListId = 987 // UUID | 
 let itemId = 987 // UUID |  (optional)
+let itemPriceDtoCollectionQueryParameters = ItemPriceDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ItemPriceDtoCollectionQueryParameters |  (optional)
 
 // Retrieves prices in a price list
-PriceListsAPI.getPriceListPricesAsync(tenantId: tenantId, priceListId: priceListId, itemId: itemId) { (response, error) in
+PriceListsAPI.getPriceListPricesAsync(tenantId: tenantId, priceListId: priceListId, itemId: itemId, itemPriceDtoCollectionQueryParameters: itemPriceDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -376,6 +377,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **priceListId** | **UUID** |  | 
  **itemId** | **UUID** |  | [optional] 
+ **itemPriceDtoCollectionQueryParameters** | [**ItemPriceDtoCollectionQueryParameters**](ItemPriceDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -387,14 +389,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getPriceListPricesCountAsync**
 ```swift
-    open class func getPriceListPricesCountAsync(tenantId: UUID, priceListId: UUID, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getPriceListPricesCountAsync(tenantId: UUID, priceListId: UUID, itemPriceDtoCollectionQueryParameters: ItemPriceDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Counts prices in a price list
@@ -408,9 +410,10 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let priceListId = 987 // UUID | 
+let itemPriceDtoCollectionQueryParameters = ItemPriceDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ItemPriceDtoCollectionQueryParameters |  (optional)
 
 // Counts prices in a price list
-PriceListsAPI.getPriceListPricesCountAsync(tenantId: tenantId, priceListId: priceListId) { (response, error) in
+PriceListsAPI.getPriceListPricesCountAsync(tenantId: tenantId, priceListId: priceListId, itemPriceDtoCollectionQueryParameters: itemPriceDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -428,6 +431,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **priceListId** | **UUID** |  | 
+ **itemPriceDtoCollectionQueryParameters** | [**ItemPriceDtoCollectionQueryParameters**](ItemPriceDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -439,14 +443,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getPriceListsAsync**
 ```swift
-    open class func getPriceListsAsync(tenantId: UUID, completion: @escaping (_ data: PriceListDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getPriceListsAsync(tenantId: UUID, priceListDtoCollectionQueryParameters: PriceListDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: PriceListDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Retrieves all price lists
@@ -459,9 +463,10 @@ Gets all price lists for the current tenant with OData support.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
+let priceListDtoCollectionQueryParameters = PriceListDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // PriceListDtoCollectionQueryParameters |  (optional)
 
 // Retrieves all price lists
-PriceListsAPI.getPriceListsAsync(tenantId: tenantId) { (response, error) in
+PriceListsAPI.getPriceListsAsync(tenantId: tenantId, priceListDtoCollectionQueryParameters: priceListDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -478,6 +483,7 @@ PriceListsAPI.getPriceListsAsync(tenantId: tenantId) { (response, error) in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
+ **priceListDtoCollectionQueryParameters** | [**PriceListDtoCollectionQueryParameters**](PriceListDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -489,14 +495,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getPriceListsCountAsync**
 ```swift
-    open class func getPriceListsCountAsync(tenantId: UUID, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getPriceListsCountAsync(tenantId: UUID, priceListDtoCollectionQueryParameters: PriceListDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Counts price lists
@@ -509,9 +515,10 @@ Gets the count of price lists for the current tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
+let priceListDtoCollectionQueryParameters = PriceListDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // PriceListDtoCollectionQueryParameters |  (optional)
 
 // Counts price lists
-PriceListsAPI.getPriceListsCountAsync(tenantId: tenantId) { (response, error) in
+PriceListsAPI.getPriceListsCountAsync(tenantId: tenantId, priceListDtoCollectionQueryParameters: priceListDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -528,6 +535,7 @@ PriceListsAPI.getPriceListsCountAsync(tenantId: tenantId) { (response, error) in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
+ **priceListDtoCollectionQueryParameters** | [**PriceListDtoCollectionQueryParameters**](PriceListDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -539,14 +547,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchPriceListAsync**
 ```swift
-    open class func patchPriceListAsync(tenantId: UUID, priceListId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchPriceListAsync(tenantId: UUID, priceListId: UUID, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patches a price list
@@ -560,10 +568,10 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let priceListId = 987 // UUID | 
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patches a price list
-PriceListsAPI.patchPriceListAsync(tenantId: tenantId, priceListId: priceListId, operation: operation) { (response, error) in
+PriceListsAPI.patchPriceListAsync(tenantId: tenantId, priceListId: priceListId, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -581,7 +589,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **priceListId** | **UUID** |  | 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -600,7 +608,7 @@ No authorization required
 
 # **patchPriceListPriceAsync**
 ```swift
-    open class func patchPriceListPriceAsync(tenantId: UUID, priceListId: UUID, priceId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchPriceListPriceAsync(tenantId: UUID, priceListId: UUID, priceId: UUID, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patches a price list entry
@@ -615,10 +623,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let priceListId = 987 // UUID | 
 let priceId = 987 // UUID | 
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patches a price list entry
-PriceListsAPI.patchPriceListPriceAsync(tenantId: tenantId, priceListId: priceListId, priceId: priceId, operation: operation) { (response, error) in
+PriceListsAPI.patchPriceListPriceAsync(tenantId: tenantId, priceListId: priceListId, priceId: priceId, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -637,7 +645,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **priceListId** | **UUID** |  | 
  **priceId** | **UUID** |  | 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

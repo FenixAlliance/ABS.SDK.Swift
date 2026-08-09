@@ -26,6 +26,7 @@ public struct ReceiptCreateDto: Codable, JSONEncodable, Hashable {
     }
     public var id: UUID?
     public var timestamp: Date?
+    public var closed: Bool?
     public var title: String?
     public var priceListId: String?
     public var description: String?
@@ -43,6 +44,7 @@ public struct ReceiptCreateDto: Codable, JSONEncodable, Hashable {
     public var countryId: String?
     public var stateId: String?
     public var cityId: String?
+    public var forexRate: Double?
     public var currencyId: String?
     public var totalDetail: Double?
     public var totalDetailCurrencyId: String?
@@ -71,18 +73,17 @@ public struct ReceiptCreateDto: Codable, JSONEncodable, Hashable {
     public var costCalculationMethod: CostCalculationMethod?
     public var taxCalculationMethod: TaxCalculationMethod?
     public var paymentId: String?
-    public var forexRate: Double?
     public var totalAmount: Double?
     public var totalAmountInUSD: Double?
-    public var closed: Bool?
     public var contactId: String?
     public var receiptType: ReceiptType?
     public var orderId: String?
     public var invoiceId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, title: String? = nil, priceListId: String? = nil, description: String? = nil, individualId: String? = nil, paymentTermId: String? = nil, organizationId: String? = nil, receiverTenantId: String? = nil, firstName: String? = nil, lastName: String? = nil, companyName: String? = nil, billingEmail: String? = nil, addressLine1: String? = nil, addressLine2: String? = nil, postalCode: String? = nil, countryId: String? = nil, stateId: String? = nil, cityId: String? = nil, currencyId: String? = nil, totalDetail: Double? = nil, totalDetailCurrencyId: String? = nil, totalProfit: Double? = nil, totalProfitCurrencyId: String? = nil, totalDiscounts: Double? = nil, totalDiscountsCurrencyId: String? = nil, totalSurcharges: Double? = nil, totalSurchargesCurrencyId: String? = nil, totalShippingCost: Double? = nil, totalShippingCostCurrencyId: String? = nil, totalShippingTax: Double? = nil, totalShippingTaxCurrencyId: String? = nil, totalWithheldTax: Double? = nil, totalWithheldTaxCurrencyId: String? = nil, totalTaxBase: Double? = nil, totalTaxBaseCurrencyId: String? = nil, totalTaxes: Double? = nil, totalTaxesCurrencyId: String? = nil, totalGlobalSurcharges: Double? = nil, totalGlobalSurchargesCurrencyId: String? = nil, totalGlobalDiscounts: Double? = nil, totalGlobalDiscountsCurrencyId: String? = nil, total: Double? = nil, totalCurrencyId: String? = nil, costCalculationMethod: CostCalculationMethod? = nil, taxCalculationMethod: TaxCalculationMethod? = nil, paymentId: String? = nil, forexRate: Double? = nil, totalAmount: Double? = nil, totalAmountInUSD: Double? = nil, closed: Bool? = nil, contactId: String? = nil, receiptType: ReceiptType? = nil, orderId: String? = nil, invoiceId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, closed: Bool? = nil, title: String? = nil, priceListId: String? = nil, description: String? = nil, individualId: String? = nil, paymentTermId: String? = nil, organizationId: String? = nil, receiverTenantId: String? = nil, firstName: String? = nil, lastName: String? = nil, companyName: String? = nil, billingEmail: String? = nil, addressLine1: String? = nil, addressLine2: String? = nil, postalCode: String? = nil, countryId: String? = nil, stateId: String? = nil, cityId: String? = nil, forexRate: Double? = nil, currencyId: String? = nil, totalDetail: Double? = nil, totalDetailCurrencyId: String? = nil, totalProfit: Double? = nil, totalProfitCurrencyId: String? = nil, totalDiscounts: Double? = nil, totalDiscountsCurrencyId: String? = nil, totalSurcharges: Double? = nil, totalSurchargesCurrencyId: String? = nil, totalShippingCost: Double? = nil, totalShippingCostCurrencyId: String? = nil, totalShippingTax: Double? = nil, totalShippingTaxCurrencyId: String? = nil, totalWithheldTax: Double? = nil, totalWithheldTaxCurrencyId: String? = nil, totalTaxBase: Double? = nil, totalTaxBaseCurrencyId: String? = nil, totalTaxes: Double? = nil, totalTaxesCurrencyId: String? = nil, totalGlobalSurcharges: Double? = nil, totalGlobalSurchargesCurrencyId: String? = nil, totalGlobalDiscounts: Double? = nil, totalGlobalDiscountsCurrencyId: String? = nil, total: Double? = nil, totalCurrencyId: String? = nil, costCalculationMethod: CostCalculationMethod? = nil, taxCalculationMethod: TaxCalculationMethod? = nil, paymentId: String? = nil, totalAmount: Double? = nil, totalAmountInUSD: Double? = nil, contactId: String? = nil, receiptType: ReceiptType? = nil, orderId: String? = nil, invoiceId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
+        self.closed = closed
         self.title = title
         self.priceListId = priceListId
         self.description = description
@@ -100,6 +101,7 @@ public struct ReceiptCreateDto: Codable, JSONEncodable, Hashable {
         self.countryId = countryId
         self.stateId = stateId
         self.cityId = cityId
+        self.forexRate = forexRate
         self.currencyId = currencyId
         self.totalDetail = totalDetail
         self.totalDetailCurrencyId = totalDetailCurrencyId
@@ -128,10 +130,8 @@ public struct ReceiptCreateDto: Codable, JSONEncodable, Hashable {
         self.costCalculationMethod = costCalculationMethod
         self.taxCalculationMethod = taxCalculationMethod
         self.paymentId = paymentId
-        self.forexRate = forexRate
         self.totalAmount = totalAmount
         self.totalAmountInUSD = totalAmountInUSD
-        self.closed = closed
         self.contactId = contactId
         self.receiptType = receiptType
         self.orderId = orderId
@@ -141,6 +141,7 @@ public struct ReceiptCreateDto: Codable, JSONEncodable, Hashable {
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case timestamp
+        case closed
         case title
         case priceListId
         case description
@@ -158,6 +159,7 @@ public struct ReceiptCreateDto: Codable, JSONEncodable, Hashable {
         case countryId
         case stateId
         case cityId
+        case forexRate
         case currencyId
         case totalDetail
         case totalDetailCurrencyId
@@ -186,10 +188,8 @@ public struct ReceiptCreateDto: Codable, JSONEncodable, Hashable {
         case costCalculationMethod
         case taxCalculationMethod
         case paymentId
-        case forexRate
         case totalAmount
         case totalAmountInUSD
-        case closed
         case contactId
         case receiptType
         case orderId
@@ -202,6 +202,7 @@ public struct ReceiptCreateDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
+        try container.encodeIfPresent(closed, forKey: .closed)
         try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(priceListId, forKey: .priceListId)
         try container.encodeIfPresent(description, forKey: .description)
@@ -219,6 +220,7 @@ public struct ReceiptCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(countryId, forKey: .countryId)
         try container.encodeIfPresent(stateId, forKey: .stateId)
         try container.encodeIfPresent(cityId, forKey: .cityId)
+        try container.encodeIfPresent(forexRate, forKey: .forexRate)
         try container.encodeIfPresent(currencyId, forKey: .currencyId)
         try container.encodeIfPresent(totalDetail, forKey: .totalDetail)
         try container.encodeIfPresent(totalDetailCurrencyId, forKey: .totalDetailCurrencyId)
@@ -247,10 +249,8 @@ public struct ReceiptCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(costCalculationMethod, forKey: .costCalculationMethod)
         try container.encodeIfPresent(taxCalculationMethod, forKey: .taxCalculationMethod)
         try container.encodeIfPresent(paymentId, forKey: .paymentId)
-        try container.encodeIfPresent(forexRate, forKey: .forexRate)
         try container.encodeIfPresent(totalAmount, forKey: .totalAmount)
         try container.encodeIfPresent(totalAmountInUSD, forKey: .totalAmountInUSD)
-        try container.encodeIfPresent(closed, forKey: .closed)
         try container.encodeIfPresent(contactId, forKey: .contactId)
         try container.encodeIfPresent(receiptType, forKey: .receiptType)
         try container.encodeIfPresent(orderId, forKey: .orderId)

@@ -183,7 +183,7 @@ No authorization required
 
 # **getTenantPositions**
 ```swift
-    open class func getTenantPositions(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: TenantPositionDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getTenantPositions(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, tenantPositionDtoCollectionQueryParameters: TenantPositionDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: TenantPositionDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Retrieve a list of tenant positions
@@ -198,9 +198,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let tenantPositionDtoCollectionQueryParameters = TenantPositionDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // TenantPositionDtoCollectionQueryParameters |  (optional)
 
 // Retrieve a list of tenant positions
-PositionsAPI.getTenantPositions(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+PositionsAPI.getTenantPositions(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, tenantPositionDtoCollectionQueryParameters: tenantPositionDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -219,6 +220,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **tenantPositionDtoCollectionQueryParameters** | [**TenantPositionDtoCollectionQueryParameters**](TenantPositionDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -230,14 +232,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getTenantPositionsCount**
 ```swift
-    open class func getTenantPositionsCount(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getTenantPositionsCount(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, tenantPositionDtoCollectionQueryParameters: TenantPositionDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get the count of tenant positions
@@ -252,9 +254,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let tenantPositionDtoCollectionQueryParameters = TenantPositionDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // TenantPositionDtoCollectionQueryParameters |  (optional)
 
 // Get the count of tenant positions
-PositionsAPI.getTenantPositionsCount(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+PositionsAPI.getTenantPositionsCount(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, tenantPositionDtoCollectionQueryParameters: tenantPositionDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -273,6 +276,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **tenantPositionDtoCollectionQueryParameters** | [**TenantPositionDtoCollectionQueryParameters**](TenantPositionDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -284,14 +288,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchTenantPosition**
 ```swift
-    open class func patchTenantPosition(tenantId: UUID, tenantPositionId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchTenantPosition(tenantId: UUID, tenantPositionId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a tenant position
@@ -307,10 +311,10 @@ let tenantId = 987 // UUID |
 let tenantPositionId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a tenant position
-PositionsAPI.patchTenantPosition(tenantId: tenantId, tenantPositionId: tenantPositionId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+PositionsAPI.patchTenantPosition(tenantId: tenantId, tenantPositionId: tenantPositionId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -330,7 +334,7 @@ Name | Type | Description  | Notes
  **tenantPositionId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

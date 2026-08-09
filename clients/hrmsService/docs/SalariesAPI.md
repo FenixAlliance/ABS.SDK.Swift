@@ -127,7 +127,7 @@ No authorization required
 
 # **getSalariesAsync**
 ```swift
-    open class func getSalariesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: SalaryDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getSalariesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, salaryDtoCollectionQueryParameters: SalaryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: SalaryDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get salaries
@@ -142,9 +142,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let salaryDtoCollectionQueryParameters = SalaryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SalaryDtoCollectionQueryParameters |  (optional)
 
 // Get salaries
-SalariesAPI.getSalariesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SalariesAPI.getSalariesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, salaryDtoCollectionQueryParameters: salaryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -163,6 +164,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **salaryDtoCollectionQueryParameters** | [**SalaryDtoCollectionQueryParameters**](SalaryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -174,14 +176,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getSalariesCountAsync**
 ```swift
-    open class func getSalariesCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getSalariesCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, salaryDtoCollectionQueryParameters: SalaryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count salaries
@@ -196,9 +198,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let salaryDtoCollectionQueryParameters = SalaryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SalaryDtoCollectionQueryParameters |  (optional)
 
 // Count salaries
-SalariesAPI.getSalariesCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SalariesAPI.getSalariesCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, salaryDtoCollectionQueryParameters: salaryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -217,6 +220,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **salaryDtoCollectionQueryParameters** | [**SalaryDtoCollectionQueryParameters**](SalaryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -228,7 +232,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -291,7 +295,7 @@ No authorization required
 
 # **patchSalaryAsync**
 ```swift
-    open class func patchSalaryAsync(tenantId: UUID, salaryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchSalaryAsync(tenantId: UUID, salaryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a salary
@@ -307,10 +311,10 @@ let tenantId = 987 // UUID |
 let salaryId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a salary
-SalariesAPI.patchSalaryAsync(tenantId: tenantId, salaryId: salaryId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+SalariesAPI.patchSalaryAsync(tenantId: tenantId, salaryId: salaryId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -330,7 +334,7 @@ Name | Type | Description  | Notes
  **salaryId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

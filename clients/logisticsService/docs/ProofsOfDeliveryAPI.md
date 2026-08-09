@@ -540,7 +540,7 @@ No authorization required
 
 # **getProofOfDeliveryLinesAsync**
 ```swift
-    open class func getProofOfDeliveryLinesAsync(tenantId: UUID, podId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ProofOfDeliveryLineDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getProofOfDeliveryLinesAsync(tenantId: UUID, podId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, proofOfDeliveryLineDtoCollectionQueryParameters: ProofOfDeliveryLineDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ProofOfDeliveryLineDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get proof of delivery lines
@@ -556,9 +556,10 @@ let tenantId = 987 // UUID |
 let podId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let proofOfDeliveryLineDtoCollectionQueryParameters = ProofOfDeliveryLineDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ProofOfDeliveryLineDtoCollectionQueryParameters |  (optional)
 
 // Get proof of delivery lines
-ProofsOfDeliveryAPI.getProofOfDeliveryLinesAsync(tenantId: tenantId, podId: podId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ProofsOfDeliveryAPI.getProofOfDeliveryLinesAsync(tenantId: tenantId, podId: podId, apiVersion: apiVersion, xApiVersion: xApiVersion, proofOfDeliveryLineDtoCollectionQueryParameters: proofOfDeliveryLineDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -578,6 +579,7 @@ Name | Type | Description  | Notes
  **podId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **proofOfDeliveryLineDtoCollectionQueryParameters** | [**ProofOfDeliveryLineDtoCollectionQueryParameters**](ProofOfDeliveryLineDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -589,14 +591,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getProofOfDeliveryLinesCountAsync**
 ```swift
-    open class func getProofOfDeliveryLinesCountAsync(tenantId: UUID, podId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getProofOfDeliveryLinesCountAsync(tenantId: UUID, podId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, proofOfDeliveryLineDtoCollectionQueryParameters: ProofOfDeliveryLineDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get proof of delivery lines count
@@ -612,9 +614,10 @@ let tenantId = 987 // UUID |
 let podId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let proofOfDeliveryLineDtoCollectionQueryParameters = ProofOfDeliveryLineDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ProofOfDeliveryLineDtoCollectionQueryParameters |  (optional)
 
 // Get proof of delivery lines count
-ProofsOfDeliveryAPI.getProofOfDeliveryLinesCountAsync(tenantId: tenantId, podId: podId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ProofsOfDeliveryAPI.getProofOfDeliveryLinesCountAsync(tenantId: tenantId, podId: podId, apiVersion: apiVersion, xApiVersion: xApiVersion, proofOfDeliveryLineDtoCollectionQueryParameters: proofOfDeliveryLineDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -634,6 +637,7 @@ Name | Type | Description  | Notes
  **podId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **proofOfDeliveryLineDtoCollectionQueryParameters** | [**ProofOfDeliveryLineDtoCollectionQueryParameters**](ProofOfDeliveryLineDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -645,14 +649,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getProofsOfDeliveryAsync**
 ```swift
-    open class func getProofsOfDeliveryAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ProofOfDeliveryDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getProofsOfDeliveryAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, proofOfDeliveryDtoCollectionQueryParameters: ProofOfDeliveryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ProofOfDeliveryDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all proofs of delivery
@@ -667,9 +671,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let proofOfDeliveryDtoCollectionQueryParameters = ProofOfDeliveryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ProofOfDeliveryDtoCollectionQueryParameters |  (optional)
 
 // Get all proofs of delivery
-ProofsOfDeliveryAPI.getProofsOfDeliveryAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ProofsOfDeliveryAPI.getProofsOfDeliveryAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, proofOfDeliveryDtoCollectionQueryParameters: proofOfDeliveryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -688,6 +693,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **proofOfDeliveryDtoCollectionQueryParameters** | [**ProofOfDeliveryDtoCollectionQueryParameters**](ProofOfDeliveryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -699,14 +705,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getProofsOfDeliveryCountAsync**
 ```swift
-    open class func getProofsOfDeliveryCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getProofsOfDeliveryCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, proofOfDeliveryDtoCollectionQueryParameters: ProofOfDeliveryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get proofs of delivery count
@@ -721,9 +727,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let proofOfDeliveryDtoCollectionQueryParameters = ProofOfDeliveryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ProofOfDeliveryDtoCollectionQueryParameters |  (optional)
 
 // Get proofs of delivery count
-ProofsOfDeliveryAPI.getProofsOfDeliveryCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ProofsOfDeliveryAPI.getProofsOfDeliveryCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, proofOfDeliveryDtoCollectionQueryParameters: proofOfDeliveryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -742,6 +749,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **proofOfDeliveryDtoCollectionQueryParameters** | [**ProofOfDeliveryDtoCollectionQueryParameters**](ProofOfDeliveryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -753,14 +761,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchProofOfDeliveryAsync**
 ```swift
-    open class func patchProofOfDeliveryAsync(tenantId: UUID, podId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchProofOfDeliveryAsync(tenantId: UUID, podId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a proof of delivery
@@ -776,10 +784,10 @@ let tenantId = 987 // UUID |
 let podId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a proof of delivery
-ProofsOfDeliveryAPI.patchProofOfDeliveryAsync(tenantId: tenantId, podId: podId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+ProofsOfDeliveryAPI.patchProofOfDeliveryAsync(tenantId: tenantId, podId: podId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -799,7 +807,7 @@ Name | Type | Description  | Notes
  **podId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -818,7 +826,7 @@ No authorization required
 
 # **patchProofOfDeliveryLineAsync**
 ```swift
-    open class func patchProofOfDeliveryLineAsync(tenantId: UUID, podId: UUID, lineId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchProofOfDeliveryLineAsync(tenantId: UUID, podId: UUID, lineId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a proof of delivery line
@@ -835,10 +843,10 @@ let podId = 987 // UUID |
 let lineId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a proof of delivery line
-ProofsOfDeliveryAPI.patchProofOfDeliveryLineAsync(tenantId: tenantId, podId: podId, lineId: lineId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+ProofsOfDeliveryAPI.patchProofOfDeliveryLineAsync(tenantId: tenantId, podId: podId, lineId: lineId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -859,7 +867,7 @@ Name | Type | Description  | Notes
  **lineId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

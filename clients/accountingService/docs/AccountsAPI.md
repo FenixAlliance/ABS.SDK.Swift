@@ -50,7 +50,7 @@ Method | HTTP request | Description
 
 # **aggregateAccountsBalanceAsync**
 ```swift
-    open class func aggregateAccountsBalanceAsync(tenantId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: MoneyEnvelope?, _ error: Error?) -> Void)
+    open class func aggregateAccountsBalanceAsync(tenantId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, accountDtoCollectionQueryParameters: AccountDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: MoneyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Aggregate accounts balance
@@ -66,9 +66,10 @@ let tenantId = 987 // UUID |
 let currencyId = "currencyId_example" // String |  (optional) (default to "USD.USA")
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let accountDtoCollectionQueryParameters = AccountDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // AccountDtoCollectionQueryParameters |  (optional)
 
 // Aggregate accounts balance
-AccountsAPI.aggregateAccountsBalanceAsync(tenantId: tenantId, currencyId: currencyId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+AccountsAPI.aggregateAccountsBalanceAsync(tenantId: tenantId, currencyId: currencyId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountDtoCollectionQueryParameters: accountDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -88,6 +89,7 @@ Name | Type | Description  | Notes
  **currencyId** | **String** |  | [optional] [default to &quot;USD.USA&quot;]
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **accountDtoCollectionQueryParameters** | [**AccountDtoCollectionQueryParameters**](AccountDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -99,7 +101,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -846,7 +848,7 @@ No authorization required
 
 # **getAccountCreditsAsync**
 ```swift
-    open class func getAccountCreditsAsync(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: AccountingEntryDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getAccountCreditsAsync(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountingEntryDtoCollectionQueryParameters: AccountingEntryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: AccountingEntryDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get account credits
@@ -862,9 +864,10 @@ let tenantId = 987 // UUID |
 let accountId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let accountingEntryDtoCollectionQueryParameters = AccountingEntryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // AccountingEntryDtoCollectionQueryParameters |  (optional)
 
 // Get account credits
-AccountsAPI.getAccountCreditsAsync(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+AccountsAPI.getAccountCreditsAsync(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountingEntryDtoCollectionQueryParameters: accountingEntryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -884,6 +887,7 @@ Name | Type | Description  | Notes
  **accountId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **accountingEntryDtoCollectionQueryParameters** | [**AccountingEntryDtoCollectionQueryParameters**](AccountingEntryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -895,14 +899,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getAccountCreditsCountAsync**
 ```swift
-    open class func getAccountCreditsCountAsync(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getAccountCreditsCountAsync(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountingEntryDtoCollectionQueryParameters: AccountingEntryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get account credits count
@@ -918,9 +922,10 @@ let tenantId = 987 // UUID |
 let accountId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let accountingEntryDtoCollectionQueryParameters = AccountingEntryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // AccountingEntryDtoCollectionQueryParameters |  (optional)
 
 // Get account credits count
-AccountsAPI.getAccountCreditsCountAsync(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+AccountsAPI.getAccountCreditsCountAsync(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountingEntryDtoCollectionQueryParameters: accountingEntryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -940,6 +945,7 @@ Name | Type | Description  | Notes
  **accountId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **accountingEntryDtoCollectionQueryParameters** | [**AccountingEntryDtoCollectionQueryParameters**](AccountingEntryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -951,14 +957,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getAccountDebitsAsync**
 ```swift
-    open class func getAccountDebitsAsync(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: AccountingEntryDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getAccountDebitsAsync(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountingEntryDtoCollectionQueryParameters: AccountingEntryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: AccountingEntryDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get account debits
@@ -974,9 +980,10 @@ let tenantId = 987 // UUID |
 let accountId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let accountingEntryDtoCollectionQueryParameters = AccountingEntryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // AccountingEntryDtoCollectionQueryParameters |  (optional)
 
 // Get account debits
-AccountsAPI.getAccountDebitsAsync(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+AccountsAPI.getAccountDebitsAsync(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountingEntryDtoCollectionQueryParameters: accountingEntryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -996,6 +1003,7 @@ Name | Type | Description  | Notes
  **accountId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **accountingEntryDtoCollectionQueryParameters** | [**AccountingEntryDtoCollectionQueryParameters**](AccountingEntryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1007,14 +1015,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getAccountDebitsCountAsync**
 ```swift
-    open class func getAccountDebitsCountAsync(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getAccountDebitsCountAsync(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountingEntryDtoCollectionQueryParameters: AccountingEntryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get account debits count
@@ -1030,9 +1038,10 @@ let tenantId = 987 // UUID |
 let accountId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let accountingEntryDtoCollectionQueryParameters = AccountingEntryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // AccountingEntryDtoCollectionQueryParameters |  (optional)
 
 // Get account debits count
-AccountsAPI.getAccountDebitsCountAsync(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+AccountsAPI.getAccountDebitsCountAsync(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountingEntryDtoCollectionQueryParameters: accountingEntryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1052,6 +1061,7 @@ Name | Type | Description  | Notes
  **accountId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **accountingEntryDtoCollectionQueryParameters** | [**AccountingEntryDtoCollectionQueryParameters**](AccountingEntryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1063,7 +1073,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1126,7 +1136,7 @@ No authorization required
 
 # **getAccountEntriesAsync**
 ```swift
-    open class func getAccountEntriesAsync(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: AccountingEntryDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getAccountEntriesAsync(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountingEntryDtoCollectionQueryParameters: AccountingEntryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: AccountingEntryDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get account entries
@@ -1142,9 +1152,10 @@ let tenantId = 987 // UUID |
 let accountId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let accountingEntryDtoCollectionQueryParameters = AccountingEntryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // AccountingEntryDtoCollectionQueryParameters |  (optional)
 
 // Get account entries
-AccountsAPI.getAccountEntriesAsync(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+AccountsAPI.getAccountEntriesAsync(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountingEntryDtoCollectionQueryParameters: accountingEntryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1164,6 +1175,7 @@ Name | Type | Description  | Notes
  **accountId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **accountingEntryDtoCollectionQueryParameters** | [**AccountingEntryDtoCollectionQueryParameters**](AccountingEntryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1175,7 +1187,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1240,7 +1252,7 @@ No authorization required
 
 # **getAccountRelationsAsync**
 ```swift
-    open class func getAccountRelationsAsync(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: AccountRelationDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getAccountRelationsAsync(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountRelationDtoCollectionQueryParameters: AccountRelationDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: AccountRelationDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get account relations
@@ -1256,9 +1268,10 @@ let tenantId = 987 // UUID |
 let accountId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let accountRelationDtoCollectionQueryParameters = AccountRelationDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // AccountRelationDtoCollectionQueryParameters |  (optional)
 
 // Get account relations
-AccountsAPI.getAccountRelationsAsync(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+AccountsAPI.getAccountRelationsAsync(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountRelationDtoCollectionQueryParameters: accountRelationDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1278,6 +1291,7 @@ Name | Type | Description  | Notes
  **accountId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **accountRelationDtoCollectionQueryParameters** | [**AccountRelationDtoCollectionQueryParameters**](AccountRelationDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1289,14 +1303,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getAccountRelationsCountAsync**
 ```swift
-    open class func getAccountRelationsCountAsync(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getAccountRelationsCountAsync(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountRelationDtoCollectionQueryParameters: AccountRelationDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get account relations count
@@ -1312,9 +1326,10 @@ let tenantId = 987 // UUID |
 let accountId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let accountRelationDtoCollectionQueryParameters = AccountRelationDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // AccountRelationDtoCollectionQueryParameters |  (optional)
 
 // Get account relations count
-AccountsAPI.getAccountRelationsCountAsync(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+AccountsAPI.getAccountRelationsCountAsync(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountRelationDtoCollectionQueryParameters: accountRelationDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1334,6 +1349,7 @@ Name | Type | Description  | Notes
  **accountId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **accountRelationDtoCollectionQueryParameters** | [**AccountRelationDtoCollectionQueryParameters**](AccountRelationDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1345,7 +1361,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1408,7 +1424,7 @@ No authorization required
 
 # **getAccountTypesAsync**
 ```swift
-    open class func getAccountTypesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: AccountTypeDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getAccountTypesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountTypeDtoCollectionQueryParameters: AccountTypeDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: AccountTypeDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get account types
@@ -1423,9 +1439,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let accountTypeDtoCollectionQueryParameters = AccountTypeDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // AccountTypeDtoCollectionQueryParameters |  (optional)
 
 // Get account types
-AccountsAPI.getAccountTypesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+AccountsAPI.getAccountTypesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountTypeDtoCollectionQueryParameters: accountTypeDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1444,6 +1461,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **accountTypeDtoCollectionQueryParameters** | [**AccountTypeDtoCollectionQueryParameters**](AccountTypeDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1455,14 +1473,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getAccountTypesCountAsync**
 ```swift
-    open class func getAccountTypesCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getAccountTypesCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountTypeDtoCollectionQueryParameters: AccountTypeDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get account types count
@@ -1477,9 +1495,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let accountTypeDtoCollectionQueryParameters = AccountTypeDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // AccountTypeDtoCollectionQueryParameters |  (optional)
 
 // Get account types count
-AccountsAPI.getAccountTypesCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+AccountsAPI.getAccountTypesCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountTypeDtoCollectionQueryParameters: accountTypeDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1498,6 +1517,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **accountTypeDtoCollectionQueryParameters** | [**AccountTypeDtoCollectionQueryParameters**](AccountTypeDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1509,14 +1529,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getAccountsAsync**
 ```swift
-    open class func getAccountsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: AccountDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getAccountsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountDtoCollectionQueryParameters: AccountDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: AccountDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Creates a new account
@@ -1531,9 +1551,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let accountDtoCollectionQueryParameters = AccountDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // AccountDtoCollectionQueryParameters |  (optional)
 
 // Creates a new account
-AccountsAPI.getAccountsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+AccountsAPI.getAccountsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountDtoCollectionQueryParameters: accountDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1552,6 +1573,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **accountDtoCollectionQueryParameters** | [**AccountDtoCollectionQueryParameters**](AccountDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1563,14 +1585,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getAccountsCountAsync**
 ```swift
-    open class func getAccountsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getAccountsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountDtoCollectionQueryParameters: AccountDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get the number of accounts
@@ -1585,9 +1607,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let accountDtoCollectionQueryParameters = AccountDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // AccountDtoCollectionQueryParameters |  (optional)
 
 // Get the number of accounts
-AccountsAPI.getAccountsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+AccountsAPI.getAccountsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountDtoCollectionQueryParameters: accountDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1606,6 +1629,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **accountDtoCollectionQueryParameters** | [**AccountDtoCollectionQueryParameters**](AccountDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1617,7 +1641,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1732,7 +1756,7 @@ No authorization required
 
 # **getCreditAccountEntriesAsync**
 ```swift
-    open class func getCreditAccountEntriesAsync(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: AccountingEntryDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getCreditAccountEntriesAsync(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountingEntryDtoCollectionQueryParameters: AccountingEntryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: AccountingEntryDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get credit account entries
@@ -1748,9 +1772,10 @@ let tenantId = 987 // UUID |
 let accountId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let accountingEntryDtoCollectionQueryParameters = AccountingEntryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // AccountingEntryDtoCollectionQueryParameters |  (optional)
 
 // Get credit account entries
-AccountsAPI.getCreditAccountEntriesAsync(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+AccountsAPI.getCreditAccountEntriesAsync(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountingEntryDtoCollectionQueryParameters: accountingEntryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1770,6 +1795,7 @@ Name | Type | Description  | Notes
  **accountId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **accountingEntryDtoCollectionQueryParameters** | [**AccountingEntryDtoCollectionQueryParameters**](AccountingEntryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1781,14 +1807,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getDebitAccountEntriesAsync**
 ```swift
-    open class func getDebitAccountEntriesAsync(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: AccountingEntryDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getDebitAccountEntriesAsync(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountingEntryDtoCollectionQueryParameters: AccountingEntryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: AccountingEntryDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get debit account entries
@@ -1804,9 +1830,10 @@ let tenantId = 987 // UUID |
 let accountId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let accountingEntryDtoCollectionQueryParameters = AccountingEntryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // AccountingEntryDtoCollectionQueryParameters |  (optional)
 
 // Get debit account entries
-AccountsAPI.getDebitAccountEntriesAsync(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+AccountsAPI.getDebitAccountEntriesAsync(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountingEntryDtoCollectionQueryParameters: accountingEntryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1826,6 +1853,7 @@ Name | Type | Description  | Notes
  **accountId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **accountingEntryDtoCollectionQueryParameters** | [**AccountingEntryDtoCollectionQueryParameters**](AccountingEntryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1837,14 +1865,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getRootAccountsAsync**
 ```swift
-    open class func getRootAccountsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: AccountDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getRootAccountsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, accountDtoCollectionQueryParameters: AccountDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: AccountDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get root accounts
@@ -1859,9 +1887,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let accountDtoCollectionQueryParameters = AccountDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // AccountDtoCollectionQueryParameters |  (optional)
 
 // Get root accounts
-AccountsAPI.getRootAccountsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+AccountsAPI.getRootAccountsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, accountDtoCollectionQueryParameters: accountDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1880,6 +1909,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **accountDtoCollectionQueryParameters** | [**AccountDtoCollectionQueryParameters**](AccountDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1891,14 +1921,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchAccountAsync**
 ```swift
-    open class func patchAccountAsync(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchAccountAsync(tenantId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch an account
@@ -1914,10 +1944,10 @@ let tenantId = 987 // UUID |
 let accountId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch an account
-AccountsAPI.patchAccountAsync(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+AccountsAPI.patchAccountAsync(tenantId: tenantId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1937,7 +1967,7 @@ Name | Type | Description  | Notes
  **accountId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -1956,7 +1986,7 @@ No authorization required
 
 # **patchAccountEntryAsync**
 ```swift
-    open class func patchAccountEntryAsync(tenantId: UUID, accountId: UUID, entryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchAccountEntryAsync(tenantId: UUID, accountId: UUID, entryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch account entry
@@ -1973,10 +2003,10 @@ let accountId = 987 // UUID |
 let entryId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch account entry
-AccountsAPI.patchAccountEntryAsync(tenantId: tenantId, accountId: accountId, entryId: entryId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+AccountsAPI.patchAccountEntryAsync(tenantId: tenantId, accountId: accountId, entryId: entryId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1997,7 +2027,7 @@ Name | Type | Description  | Notes
  **entryId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -2016,7 +2046,7 @@ No authorization required
 
 # **patchAccountRelationAsync**
 ```swift
-    open class func patchAccountRelationAsync(tenantId: UUID, accountRelationId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchAccountRelationAsync(tenantId: UUID, accountRelationId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch account relation
@@ -2033,10 +2063,10 @@ let accountRelationId = 987 // UUID |
 let accountId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch account relation
-AccountsAPI.patchAccountRelationAsync(tenantId: tenantId, accountRelationId: accountRelationId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+AccountsAPI.patchAccountRelationAsync(tenantId: tenantId, accountRelationId: accountRelationId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2057,7 +2087,7 @@ Name | Type | Description  | Notes
  **accountId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -2076,7 +2106,7 @@ No authorization required
 
 # **patchAccountTypeAsync**
 ```swift
-    open class func patchAccountTypeAsync(tenantId: UUID, accountTypeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchAccountTypeAsync(tenantId: UUID, accountTypeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch account type
@@ -2092,10 +2122,10 @@ let tenantId = 987 // UUID |
 let accountTypeId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch account type
-AccountsAPI.patchAccountTypeAsync(tenantId: tenantId, accountTypeId: accountTypeId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+AccountsAPI.patchAccountTypeAsync(tenantId: tenantId, accountTypeId: accountTypeId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2115,7 +2145,7 @@ Name | Type | Description  | Notes
  **accountTypeId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

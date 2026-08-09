@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 # **countSocialGroupsAsync**
 ```swift
-    open class func countSocialGroupsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countSocialGroupsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialGroupDtoCollectionQueryParameters: SocialGroupDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count social groups
@@ -30,9 +30,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let socialGroupDtoCollectionQueryParameters = SocialGroupDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SocialGroupDtoCollectionQueryParameters |  (optional)
 
 // Count social groups
-SocialGroupsAPI.countSocialGroupsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SocialGroupsAPI.countSocialGroupsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialGroupDtoCollectionQueryParameters: socialGroupDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -51,6 +52,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **socialGroupDtoCollectionQueryParameters** | [**SocialGroupDtoCollectionQueryParameters**](SocialGroupDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -62,7 +64,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -241,7 +243,7 @@ No authorization required
 
 # **getSocialGroupsAsync**
 ```swift
-    open class func getSocialGroupsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: SocialGroupDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getSocialGroupsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialGroupDtoCollectionQueryParameters: SocialGroupDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: SocialGroupDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get social groups
@@ -256,9 +258,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let socialGroupDtoCollectionQueryParameters = SocialGroupDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SocialGroupDtoCollectionQueryParameters |  (optional)
 
 // Get social groups
-SocialGroupsAPI.getSocialGroupsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SocialGroupsAPI.getSocialGroupsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialGroupDtoCollectionQueryParameters: socialGroupDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -277,6 +280,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **socialGroupDtoCollectionQueryParameters** | [**SocialGroupDtoCollectionQueryParameters**](SocialGroupDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -288,14 +292,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchSocialGroupAsync**
 ```swift
-    open class func patchSocialGroupAsync(tenantId: UUID, socialProfileId: UUID, socialGroupId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchSocialGroupAsync(tenantId: UUID, socialProfileId: UUID, socialGroupId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a social group
@@ -312,10 +316,10 @@ let socialProfileId = 987 // UUID |
 let socialGroupId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a social group
-SocialGroupsAPI.patchSocialGroupAsync(tenantId: tenantId, socialProfileId: socialProfileId, socialGroupId: socialGroupId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+SocialGroupsAPI.patchSocialGroupAsync(tenantId: tenantId, socialProfileId: socialProfileId, socialGroupId: socialGroupId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -336,7 +340,7 @@ Name | Type | Description  | Notes
  **socialGroupId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

@@ -20,12 +20,13 @@ open class JournalsAPI {
      - parameter currencyId: (query)  (optional, default to "USD.USA")
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter journalEntryDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func aggregateJournalEntryCreditsAsync(tenantId: UUID, journalId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MoneyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return aggregateJournalEntryCreditsAsyncWithRequestBuilder(tenantId: tenantId, journalId: journalId, currencyId: currencyId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func aggregateJournalEntryCreditsAsync(tenantId: UUID, journalId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, journalEntryDtoCollectionQueryParameters: JournalEntryDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MoneyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return aggregateJournalEntryCreditsAsyncWithRequestBuilder(tenantId: tenantId, journalId: journalId, currencyId: currencyId, apiVersion: apiVersion, xApiVersion: xApiVersion, journalEntryDtoCollectionQueryParameters: journalEntryDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -44,15 +45,16 @@ open class JournalsAPI {
      - parameter currencyId: (query)  (optional, default to "USD.USA")
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter journalEntryDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<MoneyEnvelope> 
      */
-    open class func aggregateJournalEntryCreditsAsyncWithRequestBuilder(tenantId: UUID, journalId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<MoneyEnvelope> {
+    open class func aggregateJournalEntryCreditsAsyncWithRequestBuilder(tenantId: UUID, journalId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, journalEntryDtoCollectionQueryParameters: JournalEntryDtoCollectionQueryParameters? = nil) -> RequestBuilder<MoneyEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/Journals/{journalId}/Entries/Aggregate/Credits"
         let journalIdPreEscape = "\(APIHelper.mapValueToPathItem(journalId))"
         let journalIdPostEscape = journalIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{journalId}", with: journalIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: journalEntryDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -62,6 +64,7 @@ open class JournalsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -80,12 +83,13 @@ open class JournalsAPI {
      - parameter currencyId: (query)  (optional, default to "USD.USA")
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter journalEntryDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func aggregateJournalEntryDebitsAsync(tenantId: UUID, journalId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MoneyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return aggregateJournalEntryDebitsAsyncWithRequestBuilder(tenantId: tenantId, journalId: journalId, currencyId: currencyId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func aggregateJournalEntryDebitsAsync(tenantId: UUID, journalId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, journalEntryDtoCollectionQueryParameters: JournalEntryDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MoneyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return aggregateJournalEntryDebitsAsyncWithRequestBuilder(tenantId: tenantId, journalId: journalId, currencyId: currencyId, apiVersion: apiVersion, xApiVersion: xApiVersion, journalEntryDtoCollectionQueryParameters: journalEntryDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -104,15 +108,16 @@ open class JournalsAPI {
      - parameter currencyId: (query)  (optional, default to "USD.USA")
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter journalEntryDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<MoneyEnvelope> 
      */
-    open class func aggregateJournalEntryDebitsAsyncWithRequestBuilder(tenantId: UUID, journalId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<MoneyEnvelope> {
+    open class func aggregateJournalEntryDebitsAsyncWithRequestBuilder(tenantId: UUID, journalId: UUID, currencyId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, journalEntryDtoCollectionQueryParameters: JournalEntryDtoCollectionQueryParameters? = nil) -> RequestBuilder<MoneyEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/Journals/{journalId}/Entries/Aggregate/Debits"
         let journalIdPreEscape = "\(APIHelper.mapValueToPathItem(journalId))"
         let journalIdPostEscape = journalIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{journalId}", with: journalIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: journalEntryDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -122,6 +127,7 @@ open class JournalsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -133,17 +139,78 @@ open class JournalsAPI {
     }
 
     /**
+     Bind a journal to a financial book
+     
+     - parameter tenantId: (query)  
+     - parameter journalId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter assignJournalToBookRequest: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func assignJournalToBookAsync(tenantId: UUID, journalId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, assignJournalToBookRequest: AssignJournalToBookRequest? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return assignJournalToBookAsyncWithRequestBuilder(tenantId: tenantId, journalId: journalId, apiVersion: apiVersion, xApiVersion: xApiVersion, assignJournalToBookRequest: assignJournalToBookRequest).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Bind a journal to a financial book
+     - POST /api/v2/AccountingService/Journals/{journalId}/AssignToBook
+     - Establishes the one-way Journal↔FinancialBook binding (finish-line #5): binds an unbound journal to the supplied book and sets its book-scoped code, enforcing (Tenant, Book, Code) uniqueness. Binding an unbound journal or re-affirming the same book succeeds; a duplicate code in the book is rejected (400), and re-homing an already-bound journal to a DIFFERENT book is rejected by the aggregate. Requires the journals_update permission.
+     - parameter tenantId: (query)  
+     - parameter journalId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter assignJournalToBookRequest: (body)  (optional)
+     - returns: RequestBuilder<EmptyEnvelope> 
+     */
+    open class func assignJournalToBookAsyncWithRequestBuilder(tenantId: UUID, journalId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, assignJournalToBookRequest: AssignJournalToBookRequest? = nil) -> RequestBuilder<EmptyEnvelope> {
+        var localVariablePath = "/api/v2/AccountingService/Journals/{journalId}/AssignToBook"
+        let journalIdPreEscape = "\(APIHelper.mapValueToPathItem(journalId))"
+        let journalIdPostEscape = journalIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{journalId}", with: journalIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: assignJournalToBookRequest)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(), isExplode: true),
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EmptyEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
      Count journals
      
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter journalDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func countJournalsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return countJournalsAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func countJournalsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, journalDtoCollectionQueryParameters: JournalDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return countJournalsAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, journalDtoCollectionQueryParameters: journalDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -160,12 +227,13 @@ open class JournalsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter journalDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func countJournalsAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func countJournalsAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, journalDtoCollectionQueryParameters: JournalDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/AccountingService/Journals/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: journalDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -174,6 +242,7 @@ open class JournalsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -482,12 +551,13 @@ open class JournalsAPI {
      - parameter journalId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter journalEntryDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getJournalEntriesAsync(tenantId: UUID, journalId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: JournalEntryDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getJournalEntriesAsyncWithRequestBuilder(tenantId: tenantId, journalId: journalId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getJournalEntriesAsync(tenantId: UUID, journalId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, journalEntryDtoCollectionQueryParameters: JournalEntryDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: JournalEntryDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getJournalEntriesAsyncWithRequestBuilder(tenantId: tenantId, journalId: journalId, apiVersion: apiVersion, xApiVersion: xApiVersion, journalEntryDtoCollectionQueryParameters: journalEntryDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -505,15 +575,16 @@ open class JournalsAPI {
      - parameter journalId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter journalEntryDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<JournalEntryDtoIReadOnlyListEnvelope> 
      */
-    open class func getJournalEntriesAsyncWithRequestBuilder(tenantId: UUID, journalId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<JournalEntryDtoIReadOnlyListEnvelope> {
+    open class func getJournalEntriesAsyncWithRequestBuilder(tenantId: UUID, journalId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, journalEntryDtoCollectionQueryParameters: JournalEntryDtoCollectionQueryParameters? = nil) -> RequestBuilder<JournalEntryDtoIReadOnlyListEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/Journals/{journalId}/Entries"
         let journalIdPreEscape = "\(APIHelper.mapValueToPathItem(journalId))"
         let journalIdPostEscape = journalIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{journalId}", with: journalIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: journalEntryDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -522,6 +593,7 @@ open class JournalsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -539,12 +611,13 @@ open class JournalsAPI {
      - parameter journalId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter journalEntryDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getJournalEntriesCountAsync(tenantId: UUID, journalId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getJournalEntriesCountAsyncWithRequestBuilder(tenantId: tenantId, journalId: journalId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getJournalEntriesCountAsync(tenantId: UUID, journalId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, journalEntryDtoCollectionQueryParameters: JournalEntryDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getJournalEntriesCountAsyncWithRequestBuilder(tenantId: tenantId, journalId: journalId, apiVersion: apiVersion, xApiVersion: xApiVersion, journalEntryDtoCollectionQueryParameters: journalEntryDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -562,15 +635,16 @@ open class JournalsAPI {
      - parameter journalId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter journalEntryDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getJournalEntriesCountAsyncWithRequestBuilder(tenantId: UUID, journalId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getJournalEntriesCountAsyncWithRequestBuilder(tenantId: UUID, journalId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, journalEntryDtoCollectionQueryParameters: JournalEntryDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/AccountingService/Journals/{journalId}/Entries/Count"
         let journalIdPreEscape = "\(APIHelper.mapValueToPathItem(journalId))"
         let journalIdPostEscape = journalIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{journalId}", with: journalIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: journalEntryDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -579,6 +653,7 @@ open class JournalsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -657,12 +732,13 @@ open class JournalsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter journalDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getJournalsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: JournalDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getJournalsAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getJournalsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, journalDtoCollectionQueryParameters: JournalDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: JournalDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getJournalsAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, journalDtoCollectionQueryParameters: journalDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -679,12 +755,13 @@ open class JournalsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter journalDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<JournalDtoIReadOnlyListEnvelope> 
      */
-    open class func getJournalsAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<JournalDtoIReadOnlyListEnvelope> {
+    open class func getJournalsAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, journalDtoCollectionQueryParameters: JournalDtoCollectionQueryParameters? = nil) -> RequestBuilder<JournalDtoIReadOnlyListEnvelope> {
         let localVariablePath = "/api/v2/AccountingService/Journals"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: journalDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -693,6 +770,7 @@ open class JournalsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -710,13 +788,13 @@ open class JournalsAPI {
      - parameter journalId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchJournalAsync(tenantId: UUID, journalId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchJournalAsyncWithRequestBuilder(tenantId: tenantId, journalId: journalId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchJournalAsync(tenantId: UUID, journalId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchJournalAsyncWithRequestBuilder(tenantId: tenantId, journalId: journalId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -734,16 +812,16 @@ open class JournalsAPI {
      - parameter journalId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchJournalAsyncWithRequestBuilder(tenantId: UUID, journalId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchJournalAsyncWithRequestBuilder(tenantId: UUID, journalId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/Journals/{journalId}"
         let journalIdPreEscape = "\(APIHelper.mapValueToPathItem(journalId))"
         let journalIdPostEscape = journalIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{journalId}", with: journalIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -771,13 +849,13 @@ open class JournalsAPI {
      - parameter entryId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchJournalEntryAsync(tenantId: UUID, journalId: UUID, entryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchJournalEntryAsyncWithRequestBuilder(tenantId: tenantId, journalId: journalId, entryId: entryId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchJournalEntryAsync(tenantId: UUID, journalId: UUID, entryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchJournalEntryAsyncWithRequestBuilder(tenantId: tenantId, journalId: journalId, entryId: entryId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -796,10 +874,10 @@ open class JournalsAPI {
      - parameter entryId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchJournalEntryAsyncWithRequestBuilder(tenantId: UUID, journalId: UUID, entryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchJournalEntryAsyncWithRequestBuilder(tenantId: UUID, journalId: UUID, entryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/Journals/{journalId}/Entries/{entryId}"
         let journalIdPreEscape = "\(APIHelper.mapValueToPathItem(journalId))"
         let journalIdPostEscape = journalIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -808,7 +886,7 @@ open class JournalsAPI {
         let entryIdPostEscape = entryIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{entryId}", with: entryIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

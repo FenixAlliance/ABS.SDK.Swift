@@ -8,6 +8,9 @@ Name | Type | Description | Notes
 **siteKey** | **String** |  | [optional] 
 **secretKey** | **String** |  | [optional] 
 **version** | **String** |  | [optional] 
+**projectId** | **String** |  | [optional] 
+**apiKey** | **String** |  | [optional] 
+**scoreThreshold** | **Double** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

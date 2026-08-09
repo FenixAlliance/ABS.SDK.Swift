@@ -431,7 +431,7 @@ No authorization required
 
 # **getAppliedTaxPolicyRecords**
 ```swift
-    open class func getAppliedTaxPolicyRecords(tenantId: UUID, taxPolicyId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: AppliedTaxPolicyRecordDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getAppliedTaxPolicyRecords(tenantId: UUID, taxPolicyId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, appliedTaxPolicyRecordDtoCollectionQueryParameters: AppliedTaxPolicyRecordDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: AppliedTaxPolicyRecordDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get applied tax policy records
@@ -447,9 +447,10 @@ let tenantId = 987 // UUID |
 let taxPolicyId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let appliedTaxPolicyRecordDtoCollectionQueryParameters = AppliedTaxPolicyRecordDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // AppliedTaxPolicyRecordDtoCollectionQueryParameters |  (optional)
 
 // Get applied tax policy records
-TaxPoliciesAPI.getAppliedTaxPolicyRecords(tenantId: tenantId, taxPolicyId: taxPolicyId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+TaxPoliciesAPI.getAppliedTaxPolicyRecords(tenantId: tenantId, taxPolicyId: taxPolicyId, apiVersion: apiVersion, xApiVersion: xApiVersion, appliedTaxPolicyRecordDtoCollectionQueryParameters: appliedTaxPolicyRecordDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -469,6 +470,7 @@ Name | Type | Description  | Notes
  **taxPolicyId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **appliedTaxPolicyRecordDtoCollectionQueryParameters** | [**AppliedTaxPolicyRecordDtoCollectionQueryParameters**](AppliedTaxPolicyRecordDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -480,14 +482,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getAppliedTaxPolicyRecordsCount**
 ```swift
-    open class func getAppliedTaxPolicyRecordsCount(tenantId: UUID, taxPolicyId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getAppliedTaxPolicyRecordsCount(tenantId: UUID, taxPolicyId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, appliedTaxPolicyRecordDtoCollectionQueryParameters: AppliedTaxPolicyRecordDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get applied tax policy records count
@@ -503,9 +505,10 @@ let tenantId = 987 // UUID |
 let taxPolicyId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let appliedTaxPolicyRecordDtoCollectionQueryParameters = AppliedTaxPolicyRecordDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // AppliedTaxPolicyRecordDtoCollectionQueryParameters |  (optional)
 
 // Get applied tax policy records count
-TaxPoliciesAPI.getAppliedTaxPolicyRecordsCount(tenantId: tenantId, taxPolicyId: taxPolicyId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+TaxPoliciesAPI.getAppliedTaxPolicyRecordsCount(tenantId: tenantId, taxPolicyId: taxPolicyId, apiVersion: apiVersion, xApiVersion: xApiVersion, appliedTaxPolicyRecordDtoCollectionQueryParameters: appliedTaxPolicyRecordDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -525,6 +528,7 @@ Name | Type | Description  | Notes
  **taxPolicyId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **appliedTaxPolicyRecordDtoCollectionQueryParameters** | [**AppliedTaxPolicyRecordDtoCollectionQueryParameters**](AppliedTaxPolicyRecordDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -536,7 +540,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -601,7 +605,7 @@ No authorization required
 
 # **getItemTaxPolicyRecords**
 ```swift
-    open class func getItemTaxPolicyRecords(tenantId: UUID, taxPolicyId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemTaxPolicyRecordDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getItemTaxPolicyRecords(tenantId: UUID, taxPolicyId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemTaxPolicyRecordDtoCollectionQueryParameters: ItemTaxPolicyRecordDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ItemTaxPolicyRecordDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get item tax policy records
@@ -617,9 +621,10 @@ let tenantId = 987 // UUID |
 let taxPolicyId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let itemTaxPolicyRecordDtoCollectionQueryParameters = ItemTaxPolicyRecordDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ItemTaxPolicyRecordDtoCollectionQueryParameters |  (optional)
 
 // Get item tax policy records
-TaxPoliciesAPI.getItemTaxPolicyRecords(tenantId: tenantId, taxPolicyId: taxPolicyId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+TaxPoliciesAPI.getItemTaxPolicyRecords(tenantId: tenantId, taxPolicyId: taxPolicyId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemTaxPolicyRecordDtoCollectionQueryParameters: itemTaxPolicyRecordDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -639,6 +644,7 @@ Name | Type | Description  | Notes
  **taxPolicyId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **itemTaxPolicyRecordDtoCollectionQueryParameters** | [**ItemTaxPolicyRecordDtoCollectionQueryParameters**](ItemTaxPolicyRecordDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -650,14 +656,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getTaxPolicies**
 ```swift
-    open class func getTaxPolicies(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: TaxPolicyDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getTaxPolicies(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, taxPolicyDtoCollectionQueryParameters: TaxPolicyDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: TaxPolicyDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all tax policies for a tenant
@@ -672,9 +678,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let taxPolicyDtoCollectionQueryParameters = TaxPolicyDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // TaxPolicyDtoCollectionQueryParameters |  (optional)
 
 // Get all tax policies for a tenant
-TaxPoliciesAPI.getTaxPolicies(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+TaxPoliciesAPI.getTaxPolicies(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, taxPolicyDtoCollectionQueryParameters: taxPolicyDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -693,6 +700,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **taxPolicyDtoCollectionQueryParameters** | [**TaxPolicyDtoCollectionQueryParameters**](TaxPolicyDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -704,14 +712,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getTaxPoliciesByAuthority**
 ```swift
-    open class func getTaxPoliciesByAuthority(tenantId: UUID, authorityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: TaxPolicyDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getTaxPoliciesByAuthority(tenantId: UUID, authorityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, taxPolicyDtoCollectionQueryParameters: TaxPolicyDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: TaxPolicyDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get tax policies by fiscal authority
@@ -727,9 +735,10 @@ let tenantId = 987 // UUID |
 let authorityId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let taxPolicyDtoCollectionQueryParameters = TaxPolicyDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // TaxPolicyDtoCollectionQueryParameters |  (optional)
 
 // Get tax policies by fiscal authority
-TaxPoliciesAPI.getTaxPoliciesByAuthority(tenantId: tenantId, authorityId: authorityId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+TaxPoliciesAPI.getTaxPoliciesByAuthority(tenantId: tenantId, authorityId: authorityId, apiVersion: apiVersion, xApiVersion: xApiVersion, taxPolicyDtoCollectionQueryParameters: taxPolicyDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -749,6 +758,7 @@ Name | Type | Description  | Notes
  **authorityId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **taxPolicyDtoCollectionQueryParameters** | [**TaxPolicyDtoCollectionQueryParameters**](TaxPolicyDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -760,14 +770,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getTaxPoliciesCount**
 ```swift
-    open class func getTaxPoliciesCount(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getTaxPoliciesCount(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, taxPolicyDtoCollectionQueryParameters: TaxPolicyDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get tax policies count
@@ -782,9 +792,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let taxPolicyDtoCollectionQueryParameters = TaxPolicyDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // TaxPolicyDtoCollectionQueryParameters |  (optional)
 
 // Get tax policies count
-TaxPoliciesAPI.getTaxPoliciesCount(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+TaxPoliciesAPI.getTaxPoliciesCount(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, taxPolicyDtoCollectionQueryParameters: taxPolicyDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -803,6 +814,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **taxPolicyDtoCollectionQueryParameters** | [**TaxPolicyDtoCollectionQueryParameters**](TaxPolicyDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -814,7 +826,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -877,7 +889,7 @@ No authorization required
 
 # **patchAppliedTaxPolicyRecord**
 ```swift
-    open class func patchAppliedTaxPolicyRecord(tenantId: UUID, taxPolicyId: UUID, appliedTaxPolicyRecordId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchAppliedTaxPolicyRecord(tenantId: UUID, taxPolicyId: UUID, appliedTaxPolicyRecordId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch an applied tax policy record
@@ -894,10 +906,10 @@ let taxPolicyId = 987 // UUID |
 let appliedTaxPolicyRecordId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch an applied tax policy record
-TaxPoliciesAPI.patchAppliedTaxPolicyRecord(tenantId: tenantId, taxPolicyId: taxPolicyId, appliedTaxPolicyRecordId: appliedTaxPolicyRecordId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+TaxPoliciesAPI.patchAppliedTaxPolicyRecord(tenantId: tenantId, taxPolicyId: taxPolicyId, appliedTaxPolicyRecordId: appliedTaxPolicyRecordId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -918,7 +930,7 @@ Name | Type | Description  | Notes
  **appliedTaxPolicyRecordId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -937,7 +949,7 @@ No authorization required
 
 # **patchItemTaxPolicyRecord**
 ```swift
-    open class func patchItemTaxPolicyRecord(tenantId: UUID, taxPolicyId: UUID, itemTaxPolicyRecordId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchItemTaxPolicyRecord(tenantId: UUID, taxPolicyId: UUID, itemTaxPolicyRecordId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch an item tax policy record
@@ -954,10 +966,10 @@ let taxPolicyId = 987 // UUID |
 let itemTaxPolicyRecordId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch an item tax policy record
-TaxPoliciesAPI.patchItemTaxPolicyRecord(tenantId: tenantId, taxPolicyId: taxPolicyId, itemTaxPolicyRecordId: itemTaxPolicyRecordId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+TaxPoliciesAPI.patchItemTaxPolicyRecord(tenantId: tenantId, taxPolicyId: taxPolicyId, itemTaxPolicyRecordId: itemTaxPolicyRecordId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -978,7 +990,7 @@ Name | Type | Description  | Notes
  **itemTaxPolicyRecordId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -997,7 +1009,7 @@ No authorization required
 
 # **patchTaxPolicy**
 ```swift
-    open class func patchTaxPolicy(tenantId: UUID, id: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchTaxPolicy(tenantId: UUID, id: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a tax policy
@@ -1013,10 +1025,10 @@ let tenantId = 987 // UUID |
 let id = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a tax policy
-TaxPoliciesAPI.patchTaxPolicy(tenantId: tenantId, id: id, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+TaxPoliciesAPI.patchTaxPolicy(tenantId: tenantId, id: id, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1036,7 +1048,7 @@ Name | Type | Description  | Notes
  **id** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

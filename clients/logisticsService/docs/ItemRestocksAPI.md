@@ -306,7 +306,7 @@ No authorization required
 
 # **getItemRestockEntriesAsync**
 ```swift
-    open class func getItemRestockEntriesAsync(tenantId: UUID, restockId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemRestockEntryDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getItemRestockEntriesAsync(tenantId: UUID, restockId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemRestockEntryDtoCollectionQueryParameters: ItemRestockEntryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ItemRestockEntryDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get restock entries
@@ -322,9 +322,10 @@ let tenantId = 987 // UUID |
 let restockId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let itemRestockEntryDtoCollectionQueryParameters = ItemRestockEntryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ItemRestockEntryDtoCollectionQueryParameters |  (optional)
 
 // Get restock entries
-ItemRestocksAPI.getItemRestockEntriesAsync(tenantId: tenantId, restockId: restockId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemRestocksAPI.getItemRestockEntriesAsync(tenantId: tenantId, restockId: restockId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemRestockEntryDtoCollectionQueryParameters: itemRestockEntryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -344,6 +345,7 @@ Name | Type | Description  | Notes
  **restockId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **itemRestockEntryDtoCollectionQueryParameters** | [**ItemRestockEntryDtoCollectionQueryParameters**](ItemRestockEntryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -355,14 +357,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getItemRestockEntriesCountAsync**
 ```swift
-    open class func getItemRestockEntriesCountAsync(tenantId: UUID, restockId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getItemRestockEntriesCountAsync(tenantId: UUID, restockId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemRestockEntryDtoCollectionQueryParameters: ItemRestockEntryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get restock entries count
@@ -378,9 +380,10 @@ let tenantId = 987 // UUID |
 let restockId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let itemRestockEntryDtoCollectionQueryParameters = ItemRestockEntryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ItemRestockEntryDtoCollectionQueryParameters |  (optional)
 
 // Get restock entries count
-ItemRestocksAPI.getItemRestockEntriesCountAsync(tenantId: tenantId, restockId: restockId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemRestocksAPI.getItemRestockEntriesCountAsync(tenantId: tenantId, restockId: restockId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemRestockEntryDtoCollectionQueryParameters: itemRestockEntryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -400,6 +403,7 @@ Name | Type | Description  | Notes
  **restockId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **itemRestockEntryDtoCollectionQueryParameters** | [**ItemRestockEntryDtoCollectionQueryParameters**](ItemRestockEntryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -411,7 +415,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -476,7 +480,7 @@ No authorization required
 
 # **getItemRestocksAsync**
 ```swift
-    open class func getItemRestocksAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemRestockDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getItemRestocksAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemRestockDtoCollectionQueryParameters: ItemRestockDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ItemRestockDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all item restocks
@@ -491,9 +495,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let itemRestockDtoCollectionQueryParameters = ItemRestockDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ItemRestockDtoCollectionQueryParameters |  (optional)
 
 // Get all item restocks
-ItemRestocksAPI.getItemRestocksAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemRestocksAPI.getItemRestocksAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemRestockDtoCollectionQueryParameters: itemRestockDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -512,6 +517,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **itemRestockDtoCollectionQueryParameters** | [**ItemRestockDtoCollectionQueryParameters**](ItemRestockDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -523,14 +529,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getItemRestocksCountAsync**
 ```swift
-    open class func getItemRestocksCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getItemRestocksCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemRestockDtoCollectionQueryParameters: ItemRestockDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get item restocks count
@@ -545,9 +551,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let itemRestockDtoCollectionQueryParameters = ItemRestockDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ItemRestockDtoCollectionQueryParameters |  (optional)
 
 // Get item restocks count
-ItemRestocksAPI.getItemRestocksCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemRestocksAPI.getItemRestocksCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemRestockDtoCollectionQueryParameters: itemRestockDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -566,6 +573,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **itemRestockDtoCollectionQueryParameters** | [**ItemRestockDtoCollectionQueryParameters**](ItemRestockDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -577,14 +585,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchItemRestockAsync**
 ```swift
-    open class func patchItemRestockAsync(tenantId: UUID, restockId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchItemRestockAsync(tenantId: UUID, restockId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch an item restock
@@ -600,10 +608,10 @@ let tenantId = 987 // UUID |
 let restockId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch an item restock
-ItemRestocksAPI.patchItemRestockAsync(tenantId: tenantId, restockId: restockId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+ItemRestocksAPI.patchItemRestockAsync(tenantId: tenantId, restockId: restockId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -623,7 +631,7 @@ Name | Type | Description  | Notes
  **restockId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -642,7 +650,7 @@ No authorization required
 
 # **patchItemRestockEntryAsync**
 ```swift
-    open class func patchItemRestockEntryAsync(tenantId: UUID, restockId: UUID, entryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchItemRestockEntryAsync(tenantId: UUID, restockId: UUID, entryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a restock entry
@@ -659,10 +667,10 @@ let restockId = 987 // UUID |
 let entryId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a restock entry
-ItemRestocksAPI.patchItemRestockEntryAsync(tenantId: tenantId, restockId: restockId, entryId: entryId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+ItemRestocksAPI.patchItemRestockEntryAsync(tenantId: tenantId, restockId: restockId, entryId: entryId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -683,7 +691,7 @@ Name | Type | Description  | Notes
  **entryId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

@@ -16,12 +16,13 @@ open class LoyaltyProgramsAPI {
      Get loyalty programs count
      
      - parameter tenantId: (query)  
+     - parameter loyaltyProgramDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func countLoyaltyProgramsAsync(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return countLoyaltyProgramsAsyncWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+    open class func countLoyaltyProgramsAsync(tenantId: UUID, loyaltyProgramDtoCollectionQueryParameters: LoyaltyProgramDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return countLoyaltyProgramsAsyncWithRequestBuilder(tenantId: tenantId, loyaltyProgramDtoCollectionQueryParameters: loyaltyProgramDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -36,12 +37,13 @@ open class LoyaltyProgramsAPI {
      - GET /api/v2/SalesService/LoyaltyPrograms/Count
      - Returns the total count of loyalty programs for the specified tenant with OData filter support.
      - parameter tenantId: (query)  
+     - parameter loyaltyProgramDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func countLoyaltyProgramsAsyncWithRequestBuilder(tenantId: UUID) -> RequestBuilder<Int32Envelope> {
+    open class func countLoyaltyProgramsAsyncWithRequestBuilder(tenantId: UUID, loyaltyProgramDtoCollectionQueryParameters: LoyaltyProgramDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/SalesService/LoyaltyPrograms/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: loyaltyProgramDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -49,7 +51,7 @@ open class LoyaltyProgramsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -216,12 +218,13 @@ open class LoyaltyProgramsAPI {
      Get loyalty programs
      
      - parameter tenantId: (query)  
+     - parameter loyaltyProgramDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getLoyaltyProgramsAsync(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: LoyaltyProgramDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getLoyaltyProgramsAsyncWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+    open class func getLoyaltyProgramsAsync(tenantId: UUID, loyaltyProgramDtoCollectionQueryParameters: LoyaltyProgramDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: LoyaltyProgramDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getLoyaltyProgramsAsyncWithRequestBuilder(tenantId: tenantId, loyaltyProgramDtoCollectionQueryParameters: loyaltyProgramDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -236,12 +239,13 @@ open class LoyaltyProgramsAPI {
      - GET /api/v2/SalesService/LoyaltyPrograms
      - Retrieves a list of loyalty programs for the specified tenant with OData query support.
      - parameter tenantId: (query)  
+     - parameter loyaltyProgramDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<LoyaltyProgramDtoListEnvelope> 
      */
-    open class func getLoyaltyProgramsAsyncWithRequestBuilder(tenantId: UUID) -> RequestBuilder<LoyaltyProgramDtoListEnvelope> {
+    open class func getLoyaltyProgramsAsyncWithRequestBuilder(tenantId: UUID, loyaltyProgramDtoCollectionQueryParameters: LoyaltyProgramDtoCollectionQueryParameters? = nil) -> RequestBuilder<LoyaltyProgramDtoListEnvelope> {
         let localVariablePath = "/api/v2/SalesService/LoyaltyPrograms"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: loyaltyProgramDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -249,7 +253,7 @@ open class LoyaltyProgramsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -264,13 +268,13 @@ open class LoyaltyProgramsAPI {
      
      - parameter tenantId: (query)  
      - parameter loyaltyProgramId: (path)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchLoyaltyProgramAsync(tenantId: UUID, loyaltyProgramId: UUID, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchLoyaltyProgramAsyncWithRequestBuilder(tenantId: tenantId, loyaltyProgramId: loyaltyProgramId, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchLoyaltyProgramAsync(tenantId: UUID, loyaltyProgramId: UUID, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchLoyaltyProgramAsyncWithRequestBuilder(tenantId: tenantId, loyaltyProgramId: loyaltyProgramId, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -286,16 +290,16 @@ open class LoyaltyProgramsAPI {
      - Partially updates an existing loyalty program using a JSON Patch document.
      - parameter tenantId: (query)  
      - parameter loyaltyProgramId: (path)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchLoyaltyProgramAsyncWithRequestBuilder(tenantId: UUID, loyaltyProgramId: UUID, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchLoyaltyProgramAsyncWithRequestBuilder(tenantId: UUID, loyaltyProgramId: UUID, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/SalesService/LoyaltyPrograms/{loyaltyProgramId}"
         let loyaltyProgramIdPreEscape = "\(APIHelper.mapValueToPathItem(loyaltyProgramId))"
         let loyaltyProgramIdPostEscape = loyaltyProgramIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{loyaltyProgramId}", with: loyaltyProgramIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

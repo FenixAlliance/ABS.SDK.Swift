@@ -301,7 +301,7 @@ No authorization required
 
 # **getJobOffersAsync**
 ```swift
-    open class func getJobOffersAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: JobOfferDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getJobOffersAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, jobOfferDtoCollectionQueryParameters: JobOfferDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: JobOfferDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get job offers
@@ -316,9 +316,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let jobOfferDtoCollectionQueryParameters = JobOfferDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // JobOfferDtoCollectionQueryParameters |  (optional)
 
 // Get job offers
-JobOffersAPI.getJobOffersAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+JobOffersAPI.getJobOffersAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, jobOfferDtoCollectionQueryParameters: jobOfferDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -337,6 +338,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **jobOfferDtoCollectionQueryParameters** | [**JobOfferDtoCollectionQueryParameters**](JobOfferDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -348,14 +350,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getJobOffersCountAsync**
 ```swift
-    open class func getJobOffersCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getJobOffersCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, jobOfferDtoCollectionQueryParameters: JobOfferDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count job offers
@@ -370,9 +372,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let jobOfferDtoCollectionQueryParameters = JobOfferDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // JobOfferDtoCollectionQueryParameters |  (optional)
 
 // Count job offers
-JobOffersAPI.getJobOffersCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+JobOffersAPI.getJobOffersCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, jobOfferDtoCollectionQueryParameters: jobOfferDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -391,6 +394,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **jobOfferDtoCollectionQueryParameters** | [**JobOfferDtoCollectionQueryParameters**](JobOfferDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -402,7 +406,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -465,7 +469,7 @@ No authorization required
 
 # **getPublicJobOffersAsync**
 ```swift
-    open class func getPublicJobOffersAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: JobOfferDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getPublicJobOffersAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, jobOfferDtoCollectionQueryParameters: JobOfferDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: JobOfferDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get public job offers
@@ -480,9 +484,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let jobOfferDtoCollectionQueryParameters = JobOfferDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // JobOfferDtoCollectionQueryParameters |  (optional)
 
 // Get public job offers
-JobOffersAPI.getPublicJobOffersAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+JobOffersAPI.getPublicJobOffersAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, jobOfferDtoCollectionQueryParameters: jobOfferDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -501,6 +506,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **jobOfferDtoCollectionQueryParameters** | [**JobOfferDtoCollectionQueryParameters**](JobOfferDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -512,14 +518,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getPublicJobOffersCountAsync**
 ```swift
-    open class func getPublicJobOffersCountAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getPublicJobOffersCountAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, jobOfferDtoCollectionQueryParameters: JobOfferDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count public job offers
@@ -534,9 +540,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let jobOfferDtoCollectionQueryParameters = JobOfferDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // JobOfferDtoCollectionQueryParameters |  (optional)
 
 // Count public job offers
-JobOffersAPI.getPublicJobOffersCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+JobOffersAPI.getPublicJobOffersCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, jobOfferDtoCollectionQueryParameters: jobOfferDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -555,6 +562,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **jobOfferDtoCollectionQueryParameters** | [**JobOfferDtoCollectionQueryParameters**](JobOfferDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -566,14 +574,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchJobOfferAsync**
 ```swift
-    open class func patchJobOfferAsync(tenantId: UUID, jobOfferId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchJobOfferAsync(tenantId: UUID, jobOfferId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a job offer
@@ -589,10 +597,10 @@ let tenantId = 987 // UUID |
 let jobOfferId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a job offer
-JobOffersAPI.patchJobOfferAsync(tenantId: tenantId, jobOfferId: jobOfferId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+JobOffersAPI.patchJobOfferAsync(tenantId: tenantId, jobOfferId: jobOfferId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -612,7 +620,7 @@ Name | Type | Description  | Notes
  **jobOfferId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

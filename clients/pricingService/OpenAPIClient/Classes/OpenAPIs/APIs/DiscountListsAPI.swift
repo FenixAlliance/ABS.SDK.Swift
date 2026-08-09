@@ -281,12 +281,13 @@ open class DiscountListsAPI {
      
      - parameter tenantId: (query)  
      - parameter discountListId: (path)  
+     - parameter discountDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getDiscountListEntries(tenantId: UUID, discountListId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: DiscountDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getDiscountListEntriesWithRequestBuilder(tenantId: tenantId, discountListId: discountListId).execute(apiResponseQueue) { result in
+    open class func getDiscountListEntries(tenantId: UUID, discountListId: UUID, discountDtoCollectionQueryParameters: DiscountDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: DiscountDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getDiscountListEntriesWithRequestBuilder(tenantId: tenantId, discountListId: discountListId, discountDtoCollectionQueryParameters: discountDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -302,15 +303,16 @@ open class DiscountListsAPI {
      - Gets all discount entries for a specific discount list with OData support.
      - parameter tenantId: (query)  
      - parameter discountListId: (path)  
+     - parameter discountDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<DiscountDtoListEnvelope> 
      */
-    open class func getDiscountListEntriesWithRequestBuilder(tenantId: UUID, discountListId: UUID) -> RequestBuilder<DiscountDtoListEnvelope> {
+    open class func getDiscountListEntriesWithRequestBuilder(tenantId: UUID, discountListId: UUID, discountDtoCollectionQueryParameters: DiscountDtoCollectionQueryParameters? = nil) -> RequestBuilder<DiscountDtoListEnvelope> {
         var localVariablePath = "/api/v2/PricingService/DiscountLists/{discountListId}/Discounts"
         let discountListIdPreEscape = "\(APIHelper.mapValueToPathItem(discountListId))"
         let discountListIdPostEscape = discountListIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{discountListId}", with: discountListIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: discountDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -318,7 +320,7 @@ open class DiscountListsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -333,12 +335,13 @@ open class DiscountListsAPI {
      
      - parameter tenantId: (query)  
      - parameter discountListId: (path)  
+     - parameter discountDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getDiscountListEntriesCount(tenantId: UUID, discountListId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getDiscountListEntriesCountWithRequestBuilder(tenantId: tenantId, discountListId: discountListId).execute(apiResponseQueue) { result in
+    open class func getDiscountListEntriesCount(tenantId: UUID, discountListId: UUID, discountDtoCollectionQueryParameters: DiscountDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getDiscountListEntriesCountWithRequestBuilder(tenantId: tenantId, discountListId: discountListId, discountDtoCollectionQueryParameters: discountDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -354,15 +357,16 @@ open class DiscountListsAPI {
      - Gets the count of discount entries for a specific discount list.
      - parameter tenantId: (query)  
      - parameter discountListId: (path)  
+     - parameter discountDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getDiscountListEntriesCountWithRequestBuilder(tenantId: UUID, discountListId: UUID) -> RequestBuilder<Int32Envelope> {
+    open class func getDiscountListEntriesCountWithRequestBuilder(tenantId: UUID, discountListId: UUID, discountDtoCollectionQueryParameters: DiscountDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/PricingService/DiscountLists/{discountListId}/Discounts/Count"
         let discountListIdPreEscape = "\(APIHelper.mapValueToPathItem(discountListId))"
         let discountListIdPostEscape = discountListIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{discountListId}", with: discountListIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: discountDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -370,7 +374,7 @@ open class DiscountListsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -441,12 +445,13 @@ open class DiscountListsAPI {
      Retrieves all discount lists
      
      - parameter tenantId: (query)  
+     - parameter discountListDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getDiscountLists(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: DiscountListDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getDiscountListsWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+    open class func getDiscountLists(tenantId: UUID, discountListDtoCollectionQueryParameters: DiscountListDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: DiscountListDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getDiscountListsWithRequestBuilder(tenantId: tenantId, discountListDtoCollectionQueryParameters: discountListDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -461,12 +466,13 @@ open class DiscountListsAPI {
      - GET /api/v2/PricingService/DiscountLists
      - Gets all discount lists for the current tenant with OData support.
      - parameter tenantId: (query)  
+     - parameter discountListDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<DiscountListDtoListEnvelope> 
      */
-    open class func getDiscountListsWithRequestBuilder(tenantId: UUID) -> RequestBuilder<DiscountListDtoListEnvelope> {
+    open class func getDiscountListsWithRequestBuilder(tenantId: UUID, discountListDtoCollectionQueryParameters: DiscountListDtoCollectionQueryParameters? = nil) -> RequestBuilder<DiscountListDtoListEnvelope> {
         let localVariablePath = "/api/v2/PricingService/DiscountLists"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: discountListDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -474,7 +480,7 @@ open class DiscountListsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -488,12 +494,13 @@ open class DiscountListsAPI {
      Counts discount lists
      
      - parameter tenantId: (query)  
+     - parameter discountListDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getDiscountListsCount(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getDiscountListsCountWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+    open class func getDiscountListsCount(tenantId: UUID, discountListDtoCollectionQueryParameters: DiscountListDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getDiscountListsCountWithRequestBuilder(tenantId: tenantId, discountListDtoCollectionQueryParameters: discountListDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -508,12 +515,13 @@ open class DiscountListsAPI {
      - GET /api/v2/PricingService/DiscountLists/Count
      - Gets the count of discount lists for the current tenant.
      - parameter tenantId: (query)  
+     - parameter discountListDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getDiscountListsCountWithRequestBuilder(tenantId: UUID) -> RequestBuilder<Int32Envelope> {
+    open class func getDiscountListsCountWithRequestBuilder(tenantId: UUID, discountListDtoCollectionQueryParameters: DiscountListDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/PricingService/DiscountLists/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: discountListDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -521,7 +529,7 @@ open class DiscountListsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -536,13 +544,13 @@ open class DiscountListsAPI {
      
      - parameter tenantId: (query)  
      - parameter discountListId: (path)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchDiscountList(tenantId: UUID, discountListId: UUID, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchDiscountListWithRequestBuilder(tenantId: tenantId, discountListId: discountListId, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchDiscountList(tenantId: UUID, discountListId: UUID, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchDiscountListWithRequestBuilder(tenantId: tenantId, discountListId: discountListId, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -558,16 +566,16 @@ open class DiscountListsAPI {
      - Partially updates the specified discount list using a JSON Patch document.
      - parameter tenantId: (query)  
      - parameter discountListId: (path)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchDiscountListWithRequestBuilder(tenantId: UUID, discountListId: UUID, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchDiscountListWithRequestBuilder(tenantId: UUID, discountListId: UUID, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/PricingService/DiscountLists/{discountListId}"
         let discountListIdPreEscape = "\(APIHelper.mapValueToPathItem(discountListId))"
         let discountListIdPostEscape = discountListIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{discountListId}", with: discountListIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -591,13 +599,13 @@ open class DiscountListsAPI {
      - parameter tenantId: (query)  
      - parameter discountListId: (path)  
      - parameter discountListEntryId: (path)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchDiscountListEntry(tenantId: UUID, discountListId: UUID, discountListEntryId: UUID, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchDiscountListEntryWithRequestBuilder(tenantId: tenantId, discountListId: discountListId, discountListEntryId: discountListEntryId, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchDiscountListEntry(tenantId: UUID, discountListId: UUID, discountListEntryId: UUID, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchDiscountListEntryWithRequestBuilder(tenantId: tenantId, discountListId: discountListId, discountListEntryId: discountListEntryId, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -614,10 +622,10 @@ open class DiscountListsAPI {
      - parameter tenantId: (query)  
      - parameter discountListId: (path)  
      - parameter discountListEntryId: (path)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchDiscountListEntryWithRequestBuilder(tenantId: UUID, discountListId: UUID, discountListEntryId: UUID, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchDiscountListEntryWithRequestBuilder(tenantId: UUID, discountListId: UUID, discountListEntryId: UUID, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/PricingService/DiscountLists/{discountListId}/Discounts/{discountListEntryId}"
         let discountListIdPreEscape = "\(APIHelper.mapValueToPathItem(discountListId))"
         let discountListIdPostEscape = discountListIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -626,7 +634,7 @@ open class DiscountListsAPI {
         let discountListEntryIdPostEscape = discountListEntryIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{discountListEntryId}", with: discountListEntryIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

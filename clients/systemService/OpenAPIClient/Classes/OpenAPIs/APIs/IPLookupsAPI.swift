@@ -125,12 +125,13 @@ open class IPLookupsAPI {
      
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter iPLookupDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getSystemIPLookups(apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: IPLookupDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getSystemIPLookupsWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getSystemIPLookups(apiVersion: String? = nil, xApiVersion: String? = nil, iPLookupDtoCollectionQueryParameters: IPLookupDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: IPLookupDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getSystemIPLookupsWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion, iPLookupDtoCollectionQueryParameters: iPLookupDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -146,12 +147,13 @@ open class IPLookupsAPI {
      - Retrieve a list of all IP lookups in the system
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter iPLookupDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<IPLookupDtoListEnvelope> 
      */
-    open class func getSystemIPLookupsWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<IPLookupDtoListEnvelope> {
+    open class func getSystemIPLookupsWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil, iPLookupDtoCollectionQueryParameters: IPLookupDtoCollectionQueryParameters? = nil) -> RequestBuilder<IPLookupDtoListEnvelope> {
         let localVariablePath = "/api/v2/SystemService/IPLookups"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: iPLookupDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -159,6 +161,7 @@ open class IPLookupsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -174,12 +177,13 @@ open class IPLookupsAPI {
      
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter iPLookupDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getSystemIPLookupsCount(apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getSystemIPLookupsCountWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getSystemIPLookupsCount(apiVersion: String? = nil, xApiVersion: String? = nil, iPLookupDtoCollectionQueryParameters: IPLookupDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getSystemIPLookupsCountWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion, iPLookupDtoCollectionQueryParameters: iPLookupDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -195,12 +199,13 @@ open class IPLookupsAPI {
      - Get the count of all IP lookups in the system
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter iPLookupDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getSystemIPLookupsCountWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getSystemIPLookupsCountWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil, iPLookupDtoCollectionQueryParameters: IPLookupDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/SystemService/IPLookups/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: iPLookupDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -208,6 +213,7 @@ open class IPLookupsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 

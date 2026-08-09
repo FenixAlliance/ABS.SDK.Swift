@@ -16,12 +16,13 @@ open class SalesLiteraturesAPI {
      Get sales literatures count
      
      - parameter tenantId: (query)  
+     - parameter salesLiteratureDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func countSalesLiteraturesAsync(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return countSalesLiteraturesAsyncWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+    open class func countSalesLiteraturesAsync(tenantId: UUID, salesLiteratureDtoCollectionQueryParameters: SalesLiteratureDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return countSalesLiteraturesAsyncWithRequestBuilder(tenantId: tenantId, salesLiteratureDtoCollectionQueryParameters: salesLiteratureDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -36,12 +37,13 @@ open class SalesLiteraturesAPI {
      - GET /api/v2/SalesService/SalesLiteratures/Count
      - Returns the total count of sales literatures for the specified tenant with OData filter support.
      - parameter tenantId: (query)  
+     - parameter salesLiteratureDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func countSalesLiteraturesAsyncWithRequestBuilder(tenantId: UUID) -> RequestBuilder<Int32Envelope> {
+    open class func countSalesLiteraturesAsyncWithRequestBuilder(tenantId: UUID, salesLiteratureDtoCollectionQueryParameters: SalesLiteratureDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/SalesService/SalesLiteratures/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: salesLiteratureDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -49,7 +51,7 @@ open class SalesLiteraturesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -164,12 +166,13 @@ open class SalesLiteraturesAPI {
      Get extended sales literatures
      
      - parameter tenantId: (query)  
+     - parameter extendedSalesLiteratureDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getExtendedSalesLiteraturesAsync(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ExtendedSalesLiteratureDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getExtendedSalesLiteraturesAsyncWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+    open class func getExtendedSalesLiteraturesAsync(tenantId: UUID, extendedSalesLiteratureDtoCollectionQueryParameters: ExtendedSalesLiteratureDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ExtendedSalesLiteratureDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getExtendedSalesLiteraturesAsyncWithRequestBuilder(tenantId: tenantId, extendedSalesLiteratureDtoCollectionQueryParameters: extendedSalesLiteratureDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -184,12 +187,13 @@ open class SalesLiteraturesAPI {
      - GET /api/v2/SalesService/SalesLiteratures/Extended
      - Retrieves a list of sales literatures with extended details for the specified tenant with OData query support.
      - parameter tenantId: (query)  
+     - parameter extendedSalesLiteratureDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<ExtendedSalesLiteratureDtoListEnvelope> 
      */
-    open class func getExtendedSalesLiteraturesAsyncWithRequestBuilder(tenantId: UUID) -> RequestBuilder<ExtendedSalesLiteratureDtoListEnvelope> {
+    open class func getExtendedSalesLiteraturesAsyncWithRequestBuilder(tenantId: UUID, extendedSalesLiteratureDtoCollectionQueryParameters: ExtendedSalesLiteratureDtoCollectionQueryParameters? = nil) -> RequestBuilder<ExtendedSalesLiteratureDtoListEnvelope> {
         let localVariablePath = "/api/v2/SalesService/SalesLiteratures/Extended"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: extendedSalesLiteratureDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -197,7 +201,7 @@ open class SalesLiteraturesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -263,12 +267,13 @@ open class SalesLiteraturesAPI {
      Get sales literatures
      
      - parameter tenantId: (query)  
+     - parameter salesLiteratureDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getSalesLiteraturesAsync(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SalesLiteratureDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getSalesLiteraturesAsyncWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+    open class func getSalesLiteraturesAsync(tenantId: UUID, salesLiteratureDtoCollectionQueryParameters: SalesLiteratureDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SalesLiteratureDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getSalesLiteraturesAsyncWithRequestBuilder(tenantId: tenantId, salesLiteratureDtoCollectionQueryParameters: salesLiteratureDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -283,12 +288,13 @@ open class SalesLiteraturesAPI {
      - GET /api/v2/SalesService/SalesLiteratures
      - Retrieves a list of sales literatures for the specified tenant with OData query support.
      - parameter tenantId: (query)  
+     - parameter salesLiteratureDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<SalesLiteratureDtoListEnvelope> 
      */
-    open class func getSalesLiteraturesAsyncWithRequestBuilder(tenantId: UUID) -> RequestBuilder<SalesLiteratureDtoListEnvelope> {
+    open class func getSalesLiteraturesAsyncWithRequestBuilder(tenantId: UUID, salesLiteratureDtoCollectionQueryParameters: SalesLiteratureDtoCollectionQueryParameters? = nil) -> RequestBuilder<SalesLiteratureDtoListEnvelope> {
         let localVariablePath = "/api/v2/SalesService/SalesLiteratures"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: salesLiteratureDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -296,7 +302,7 @@ open class SalesLiteraturesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -311,13 +317,13 @@ open class SalesLiteraturesAPI {
      
      - parameter tenantId: (query)  
      - parameter salesLiteratureId: (path)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchSalesLiteratureAsync(tenantId: UUID, salesLiteratureId: UUID, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchSalesLiteratureAsyncWithRequestBuilder(tenantId: tenantId, salesLiteratureId: salesLiteratureId, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchSalesLiteratureAsync(tenantId: UUID, salesLiteratureId: UUID, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchSalesLiteratureAsyncWithRequestBuilder(tenantId: tenantId, salesLiteratureId: salesLiteratureId, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -333,16 +339,16 @@ open class SalesLiteraturesAPI {
      - Partially updates an existing sales literature using a JSON Patch document.
      - parameter tenantId: (query)  
      - parameter salesLiteratureId: (path)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchSalesLiteratureAsyncWithRequestBuilder(tenantId: UUID, salesLiteratureId: UUID, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchSalesLiteratureAsyncWithRequestBuilder(tenantId: UUID, salesLiteratureId: UUID, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/SalesService/SalesLiteratures/{salesLiteratureId}"
         let salesLiteratureIdPreEscape = "\(APIHelper.mapValueToPathItem(salesLiteratureId))"
         let salesLiteratureIdPostEscape = salesLiteratureIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{salesLiteratureId}", with: salesLiteratureIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

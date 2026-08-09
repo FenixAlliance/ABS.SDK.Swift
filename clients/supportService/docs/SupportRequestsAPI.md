@@ -246,7 +246,7 @@ No authorization required
 
 # **getSupportRequestAttachmentsByRequest**
 ```swift
-    open class func getSupportRequestAttachmentsByRequest(tenantId: UUID, supportRequestId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: SupportRequestAttachmentDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getSupportRequestAttachmentsByRequest(tenantId: UUID, supportRequestId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, supportRequestAttachmentDtoCollectionQueryParameters: SupportRequestAttachmentDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: SupportRequestAttachmentDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Retrieve attachments for a support request
@@ -262,9 +262,10 @@ let tenantId = 987 // UUID |
 let supportRequestId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let supportRequestAttachmentDtoCollectionQueryParameters = SupportRequestAttachmentDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SupportRequestAttachmentDtoCollectionQueryParameters |  (optional)
 
 // Retrieve attachments for a support request
-SupportRequestsAPI.getSupportRequestAttachmentsByRequest(tenantId: tenantId, supportRequestId: supportRequestId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SupportRequestsAPI.getSupportRequestAttachmentsByRequest(tenantId: tenantId, supportRequestId: supportRequestId, apiVersion: apiVersion, xApiVersion: xApiVersion, supportRequestAttachmentDtoCollectionQueryParameters: supportRequestAttachmentDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -284,6 +285,7 @@ Name | Type | Description  | Notes
  **supportRequestId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **supportRequestAttachmentDtoCollectionQueryParameters** | [**SupportRequestAttachmentDtoCollectionQueryParameters**](SupportRequestAttachmentDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -295,14 +297,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getSupportRequestAttachmentsCountByRequest**
 ```swift
-    open class func getSupportRequestAttachmentsCountByRequest(tenantId: UUID, supportRequestId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getSupportRequestAttachmentsCountByRequest(tenantId: UUID, supportRequestId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, supportRequestAttachmentDtoCollectionQueryParameters: SupportRequestAttachmentDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get the count of attachments for a support request
@@ -318,9 +320,10 @@ let tenantId = 987 // UUID |
 let supportRequestId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let supportRequestAttachmentDtoCollectionQueryParameters = SupportRequestAttachmentDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SupportRequestAttachmentDtoCollectionQueryParameters |  (optional)
 
 // Get the count of attachments for a support request
-SupportRequestsAPI.getSupportRequestAttachmentsCountByRequest(tenantId: tenantId, supportRequestId: supportRequestId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SupportRequestsAPI.getSupportRequestAttachmentsCountByRequest(tenantId: tenantId, supportRequestId: supportRequestId, apiVersion: apiVersion, xApiVersion: xApiVersion, supportRequestAttachmentDtoCollectionQueryParameters: supportRequestAttachmentDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -340,6 +343,7 @@ Name | Type | Description  | Notes
  **supportRequestId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **supportRequestAttachmentDtoCollectionQueryParameters** | [**SupportRequestAttachmentDtoCollectionQueryParameters**](SupportRequestAttachmentDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -351,14 +355,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getSupportRequestTicketsAsync**
 ```swift
-    open class func getSupportRequestTicketsAsync(tenantId: UUID, supportRequestId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: SupportTicketDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getSupportRequestTicketsAsync(tenantId: UUID, supportRequestId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, supportTicketDtoCollectionQueryParameters: SupportTicketDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: SupportTicketDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Retrieve tickets for a support request
@@ -374,9 +378,10 @@ let tenantId = 987 // UUID |
 let supportRequestId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let supportTicketDtoCollectionQueryParameters = SupportTicketDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SupportTicketDtoCollectionQueryParameters |  (optional)
 
 // Retrieve tickets for a support request
-SupportRequestsAPI.getSupportRequestTicketsAsync(tenantId: tenantId, supportRequestId: supportRequestId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SupportRequestsAPI.getSupportRequestTicketsAsync(tenantId: tenantId, supportRequestId: supportRequestId, apiVersion: apiVersion, xApiVersion: xApiVersion, supportTicketDtoCollectionQueryParameters: supportTicketDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -396,6 +401,7 @@ Name | Type | Description  | Notes
  **supportRequestId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **supportTicketDtoCollectionQueryParameters** | [**SupportTicketDtoCollectionQueryParameters**](SupportTicketDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -407,14 +413,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getSupportRequestsAsync**
 ```swift
-    open class func getSupportRequestsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: SupportRequestDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getSupportRequestsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, supportRequestDtoCollectionQueryParameters: SupportRequestDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: SupportRequestDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Retrieve a list of support requests
@@ -429,9 +435,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let supportRequestDtoCollectionQueryParameters = SupportRequestDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SupportRequestDtoCollectionQueryParameters |  (optional)
 
 // Retrieve a list of support requests
-SupportRequestsAPI.getSupportRequestsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SupportRequestsAPI.getSupportRequestsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, supportRequestDtoCollectionQueryParameters: supportRequestDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -450,6 +457,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **supportRequestDtoCollectionQueryParameters** | [**SupportRequestDtoCollectionQueryParameters**](SupportRequestDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -461,14 +469,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getSupportRequestsCountAsync**
 ```swift
-    open class func getSupportRequestsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getSupportRequestsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, supportRequestDtoCollectionQueryParameters: SupportRequestDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get the count of support requests
@@ -483,9 +491,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let supportRequestDtoCollectionQueryParameters = SupportRequestDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SupportRequestDtoCollectionQueryParameters |  (optional)
 
 // Get the count of support requests
-SupportRequestsAPI.getSupportRequestsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SupportRequestsAPI.getSupportRequestsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, supportRequestDtoCollectionQueryParameters: supportRequestDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -504,6 +513,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **supportRequestDtoCollectionQueryParameters** | [**SupportRequestDtoCollectionQueryParameters**](SupportRequestDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -515,14 +525,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchSupportRequestAsync**
 ```swift
-    open class func patchSupportRequestAsync(tenantId: UUID, supportRequestId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchSupportRequestAsync(tenantId: UUID, supportRequestId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a support request
@@ -538,10 +548,10 @@ let tenantId = 987 // UUID |
 let supportRequestId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a support request
-SupportRequestsAPI.patchSupportRequestAsync(tenantId: tenantId, supportRequestId: supportRequestId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+SupportRequestsAPI.patchSupportRequestAsync(tenantId: tenantId, supportRequestId: supportRequestId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -561,7 +571,7 @@ Name | Type | Description  | Notes
  **supportRequestId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

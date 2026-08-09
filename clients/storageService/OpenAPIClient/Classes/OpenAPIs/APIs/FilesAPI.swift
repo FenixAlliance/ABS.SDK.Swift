@@ -420,12 +420,21 @@ open class FilesAPI {
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter top: (form)  (optional)
+     - parameter skip: (form)  (optional)
+     - parameter count: (form)  (optional)
+     - parameter filter: (form)  (optional)
+     - parameter orderBy: (form)  (optional)
+     - parameter search: (form)  (optional)
+     - parameter select: (form)  (optional)
+     - parameter expand: (form)  (optional)
+     - parameter isEmpty: (form)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getFilesAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: FileUploadDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getFilesAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getFilesAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, top: Int? = nil, skip: Int? = nil, count: Bool? = nil, filter: String? = nil, orderBy: String? = nil, search: String? = nil, select: String? = nil, expand: String? = nil, isEmpty: Bool? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: FileUploadDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getFilesAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, top: top, skip: skip, count: count, filter: filter, orderBy: orderBy, search: search, select: select, expand: expand, isEmpty: isEmpty).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -440,12 +449,34 @@ open class FilesAPI {
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter top: (form)  (optional)
+     - parameter skip: (form)  (optional)
+     - parameter count: (form)  (optional)
+     - parameter filter: (form)  (optional)
+     - parameter orderBy: (form)  (optional)
+     - parameter search: (form)  (optional)
+     - parameter select: (form)  (optional)
+     - parameter expand: (form)  (optional)
+     - parameter isEmpty: (form)  (optional)
      - returns: RequestBuilder<FileUploadDtoEnvelope> 
      */
-    open class func getFilesAsyncWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<FileUploadDtoEnvelope> {
+    open class func getFilesAsyncWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, top: Int? = nil, skip: Int? = nil, count: Bool? = nil, filter: String? = nil, orderBy: String? = nil, search: String? = nil, select: String? = nil, expand: String? = nil, isEmpty: Bool? = nil) -> RequestBuilder<FileUploadDtoEnvelope> {
         let localVariablePath = "/api/v2/StorageService/Files"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableFormParams: [String: Any?] = [
+            "top": top?.encodeToJSON(),
+            "skip": skip?.encodeToJSON(),
+            "count": count?.encodeToJSON(),
+            "filter": filter?.encodeToJSON(),
+            "orderBy": orderBy?.encodeToJSON(),
+            "search": search?.encodeToJSON(),
+            "select": select?.encodeToJSON(),
+            "expand": expand?.encodeToJSON(),
+            "isEmpty": isEmpty?.encodeToJSON(),
+        ]
+
+        let localVariableNonNullParameters = APIHelper.rejectNil(localVariableFormParams)
+        let localVariableParameters = APIHelper.convertBoolToString(localVariableNonNullParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -454,6 +485,7 @@ open class FilesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "multipart/form-data",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -469,12 +501,21 @@ open class FilesAPI {
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter top: (form)  (optional)
+     - parameter skip: (form)  (optional)
+     - parameter count: (form)  (optional)
+     - parameter filter: (form)  (optional)
+     - parameter orderBy: (form)  (optional)
+     - parameter search: (form)  (optional)
+     - parameter select: (form)  (optional)
+     - parameter expand: (form)  (optional)
+     - parameter isEmpty: (form)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getFilesCountAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int64?, _ error: Error?) -> Void)) -> RequestTask {
-        return getFilesCountAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getFilesCountAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, top: Int? = nil, skip: Int? = nil, count: Bool? = nil, filter: String? = nil, orderBy: String? = nil, search: String? = nil, select: String? = nil, expand: String? = nil, isEmpty: Bool? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int64?, _ error: Error?) -> Void)) -> RequestTask {
+        return getFilesCountAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, top: top, skip: skip, count: count, filter: filter, orderBy: orderBy, search: search, select: select, expand: expand, isEmpty: isEmpty).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -489,12 +530,34 @@ open class FilesAPI {
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter top: (form)  (optional)
+     - parameter skip: (form)  (optional)
+     - parameter count: (form)  (optional)
+     - parameter filter: (form)  (optional)
+     - parameter orderBy: (form)  (optional)
+     - parameter search: (form)  (optional)
+     - parameter select: (form)  (optional)
+     - parameter expand: (form)  (optional)
+     - parameter isEmpty: (form)  (optional)
      - returns: RequestBuilder<Int64> 
      */
-    open class func getFilesCountAsyncWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int64> {
+    open class func getFilesCountAsyncWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, top: Int? = nil, skip: Int? = nil, count: Bool? = nil, filter: String? = nil, orderBy: String? = nil, search: String? = nil, select: String? = nil, expand: String? = nil, isEmpty: Bool? = nil) -> RequestBuilder<Int64> {
         let localVariablePath = "/api/v2/StorageService/Files/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableFormParams: [String: Any?] = [
+            "top": top?.encodeToJSON(),
+            "skip": skip?.encodeToJSON(),
+            "count": count?.encodeToJSON(),
+            "filter": filter?.encodeToJSON(),
+            "orderBy": orderBy?.encodeToJSON(),
+            "search": search?.encodeToJSON(),
+            "select": select?.encodeToJSON(),
+            "expand": expand?.encodeToJSON(),
+            "isEmpty": isEmpty?.encodeToJSON(),
+        ]
+
+        let localVariableNonNullParameters = APIHelper.rejectNil(localVariableFormParams)
+        let localVariableParameters = APIHelper.convertBoolToString(localVariableNonNullParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -503,6 +566,7 @@ open class FilesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "multipart/form-data",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 

@@ -141,12 +141,13 @@ open class BillableLineTaxesAPI {
      - parameter billableLineId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter appliedItemTaxRecordDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getBillableLineTaxes(tenantId: UUID, billableLineId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AppliedItemTaxRecordDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getBillableLineTaxesWithRequestBuilder(tenantId: tenantId, billableLineId: billableLineId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getBillableLineTaxes(tenantId: UUID, billableLineId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, appliedItemTaxRecordDtoCollectionQueryParameters: AppliedItemTaxRecordDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AppliedItemTaxRecordDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getBillableLineTaxesWithRequestBuilder(tenantId: tenantId, billableLineId: billableLineId, apiVersion: apiVersion, xApiVersion: xApiVersion, appliedItemTaxRecordDtoCollectionQueryParameters: appliedItemTaxRecordDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -164,15 +165,16 @@ open class BillableLineTaxesAPI {
      - parameter billableLineId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter appliedItemTaxRecordDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<AppliedItemTaxRecordDtoIReadOnlyListEnvelope> 
      */
-    open class func getBillableLineTaxesWithRequestBuilder(tenantId: UUID, billableLineId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<AppliedItemTaxRecordDtoIReadOnlyListEnvelope> {
+    open class func getBillableLineTaxesWithRequestBuilder(tenantId: UUID, billableLineId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, appliedItemTaxRecordDtoCollectionQueryParameters: AppliedItemTaxRecordDtoCollectionQueryParameters? = nil) -> RequestBuilder<AppliedItemTaxRecordDtoIReadOnlyListEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/BillableLines/{billableLineId}/Taxes"
         let billableLineIdPreEscape = "\(APIHelper.mapValueToPathItem(billableLineId))"
         let billableLineIdPostEscape = billableLineIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{billableLineId}", with: billableLineIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: appliedItemTaxRecordDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -181,6 +183,7 @@ open class BillableLineTaxesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -198,12 +201,13 @@ open class BillableLineTaxesAPI {
      - parameter billableLineId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter appliedItemTaxRecordDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getBillableLineTaxesCount(tenantId: UUID, billableLineId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getBillableLineTaxesCountWithRequestBuilder(tenantId: tenantId, billableLineId: billableLineId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getBillableLineTaxesCount(tenantId: UUID, billableLineId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, appliedItemTaxRecordDtoCollectionQueryParameters: AppliedItemTaxRecordDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getBillableLineTaxesCountWithRequestBuilder(tenantId: tenantId, billableLineId: billableLineId, apiVersion: apiVersion, xApiVersion: xApiVersion, appliedItemTaxRecordDtoCollectionQueryParameters: appliedItemTaxRecordDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -221,15 +225,16 @@ open class BillableLineTaxesAPI {
      - parameter billableLineId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter appliedItemTaxRecordDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getBillableLineTaxesCountWithRequestBuilder(tenantId: UUID, billableLineId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getBillableLineTaxesCountWithRequestBuilder(tenantId: UUID, billableLineId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, appliedItemTaxRecordDtoCollectionQueryParameters: AppliedItemTaxRecordDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/AccountingService/BillableLines/{billableLineId}/Taxes/Count"
         let billableLineIdPreEscape = "\(APIHelper.mapValueToPathItem(billableLineId))"
         let billableLineIdPostEscape = billableLineIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{billableLineId}", with: billableLineIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: appliedItemTaxRecordDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -238,6 +243,7 @@ open class BillableLineTaxesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -256,13 +262,13 @@ open class BillableLineTaxesAPI {
      - parameter taxId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchBillableLineTaxAsync(tenantId: UUID, billableLineId: UUID, taxId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchBillableLineTaxAsyncWithRequestBuilder(tenantId: tenantId, billableLineId: billableLineId, taxId: taxId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchBillableLineTaxAsync(tenantId: UUID, billableLineId: UUID, taxId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchBillableLineTaxAsyncWithRequestBuilder(tenantId: tenantId, billableLineId: billableLineId, taxId: taxId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -281,10 +287,10 @@ open class BillableLineTaxesAPI {
      - parameter taxId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchBillableLineTaxAsyncWithRequestBuilder(tenantId: UUID, billableLineId: UUID, taxId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchBillableLineTaxAsyncWithRequestBuilder(tenantId: UUID, billableLineId: UUID, taxId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/BillableLines/{billableLineId}/Taxes/{taxId}"
         let billableLineIdPreEscape = "\(APIHelper.mapValueToPathItem(billableLineId))"
         let billableLineIdPostEscape = billableLineIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -293,7 +299,7 @@ open class BillableLineTaxesAPI {
         let taxIdPostEscape = taxIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{taxId}", with: taxIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

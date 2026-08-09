@@ -18,12 +18,13 @@ open class CountriesAPI {
      - parameter countryId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter countryCallingCodeDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func countCallingCodesByCountryAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return countCallingCodesByCountryAsyncWithRequestBuilder(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func countCallingCodesByCountryAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, countryCallingCodeDtoCollectionQueryParameters: CountryCallingCodeDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return countCallingCodesByCountryAsyncWithRequestBuilder(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion, countryCallingCodeDtoCollectionQueryParameters: countryCallingCodeDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -40,15 +41,16 @@ open class CountriesAPI {
      - parameter countryId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter countryCallingCodeDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func countCallingCodesByCountryAsyncWithRequestBuilder(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func countCallingCodesByCountryAsyncWithRequestBuilder(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, countryCallingCodeDtoCollectionQueryParameters: CountryCallingCodeDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/GlobeService/Countries/{countryId}/CallingCodes/Count"
         let countryIdPreEscape = "\(APIHelper.mapValueToPathItem(countryId))"
         let countryIdPostEscape = countryIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{countryId}", with: countryIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: countryCallingCodeDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -56,6 +58,7 @@ open class CountriesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -73,12 +76,13 @@ open class CountriesAPI {
      - parameter countryId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter cityDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func countCitiesByStateAsync(countryStateId: String, countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return countCitiesByStateAsyncWithRequestBuilder(countryStateId: countryStateId, countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func countCitiesByStateAsync(countryStateId: String, countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, cityDtoCollectionQueryParameters: CityDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return countCitiesByStateAsyncWithRequestBuilder(countryStateId: countryStateId, countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion, cityDtoCollectionQueryParameters: cityDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -96,9 +100,10 @@ open class CountriesAPI {
      - parameter countryId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter cityDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func countCitiesByStateAsyncWithRequestBuilder(countryStateId: String, countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func countCitiesByStateAsyncWithRequestBuilder(countryStateId: String, countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, cityDtoCollectionQueryParameters: CityDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/GlobeService/Countries/{countryId}/States/{countryStateId}/Cities/Count"
         let countryStateIdPreEscape = "\(APIHelper.mapValueToPathItem(countryStateId))"
         let countryStateIdPostEscape = countryStateIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -107,7 +112,7 @@ open class CountriesAPI {
         let countryIdPostEscape = countryIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{countryId}", with: countryIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: cityDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -115,6 +120,7 @@ open class CountriesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -130,12 +136,13 @@ open class CountriesAPI {
      
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter countryDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func countCountries(apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return countCountriesWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func countCountries(apiVersion: String? = nil, xApiVersion: String? = nil, countryDtoCollectionQueryParameters: CountryDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return countCountriesWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion, countryDtoCollectionQueryParameters: countryDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -151,12 +158,13 @@ open class CountriesAPI {
      - Returns the total number of countries, with optional OData filtering.
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter countryDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func countCountriesWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func countCountriesWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil, countryDtoCollectionQueryParameters: CountryDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/GlobeService/Countries/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: countryDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -164,6 +172,7 @@ open class CountriesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -180,12 +189,13 @@ open class CountriesAPI {
      - parameter countryId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter countryStateDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func countCountryStatesAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return countCountryStatesAsyncWithRequestBuilder(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func countCountryStatesAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, countryStateDtoCollectionQueryParameters: CountryStateDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return countCountryStatesAsyncWithRequestBuilder(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion, countryStateDtoCollectionQueryParameters: countryStateDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -202,15 +212,16 @@ open class CountriesAPI {
      - parameter countryId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter countryStateDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func countCountryStatesAsyncWithRequestBuilder(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func countCountryStatesAsyncWithRequestBuilder(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, countryStateDtoCollectionQueryParameters: CountryStateDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/GlobeService/Countries/{countryId}/States/Count"
         let countryIdPreEscape = "\(APIHelper.mapValueToPathItem(countryId))"
         let countryIdPostEscape = countryIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{countryId}", with: countryIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: countryStateDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -218,6 +229,7 @@ open class CountriesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -234,12 +246,13 @@ open class CountriesAPI {
      - parameter countryId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter timezoneDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func countTimezonesByCountryAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return countTimezonesByCountryAsyncWithRequestBuilder(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func countTimezonesByCountryAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, timezoneDtoCollectionQueryParameters: TimezoneDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return countTimezonesByCountryAsyncWithRequestBuilder(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion, timezoneDtoCollectionQueryParameters: timezoneDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -256,15 +269,16 @@ open class CountriesAPI {
      - parameter countryId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter timezoneDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func countTimezonesByCountryAsyncWithRequestBuilder(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func countTimezonesByCountryAsyncWithRequestBuilder(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, timezoneDtoCollectionQueryParameters: TimezoneDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/GlobeService/Countries/{countryId}/Timezones/Count"
         let countryIdPreEscape = "\(APIHelper.mapValueToPathItem(countryId))"
         let countryIdPostEscape = countryIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{countryId}", with: countryIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: timezoneDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -272,6 +286,7 @@ open class CountriesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -288,12 +303,13 @@ open class CountriesAPI {
      - parameter countryId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter countryTopLevelDomainDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func countTopLevelDomainsByCountryAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return countTopLevelDomainsByCountryAsyncWithRequestBuilder(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func countTopLevelDomainsByCountryAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, countryTopLevelDomainDtoCollectionQueryParameters: CountryTopLevelDomainDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return countTopLevelDomainsByCountryAsyncWithRequestBuilder(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion, countryTopLevelDomainDtoCollectionQueryParameters: countryTopLevelDomainDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -310,15 +326,16 @@ open class CountriesAPI {
      - parameter countryId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter countryTopLevelDomainDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func countTopLevelDomainsByCountryAsyncWithRequestBuilder(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func countTopLevelDomainsByCountryAsyncWithRequestBuilder(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, countryTopLevelDomainDtoCollectionQueryParameters: CountryTopLevelDomainDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/GlobeService/Countries/{countryId}/TopLevelDomains/Count"
         let countryIdPreEscape = "\(APIHelper.mapValueToPathItem(countryId))"
         let countryIdPostEscape = countryIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{countryId}", with: countryIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: countryTopLevelDomainDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -326,6 +343,7 @@ open class CountriesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -341,12 +359,13 @@ open class CountriesAPI {
      
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter countryDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getAllCountries(apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CountryDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getAllCountriesWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getAllCountries(apiVersion: String? = nil, xApiVersion: String? = nil, countryDtoCollectionQueryParameters: CountryDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CountryDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getAllCountriesWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion, countryDtoCollectionQueryParameters: countryDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -362,12 +381,13 @@ open class CountriesAPI {
      - Retrieves a list of all countries with optional OData pagination and filtering.
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter countryDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<CountryDtoListEnvelope> 
      */
-    open class func getAllCountriesWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<CountryDtoListEnvelope> {
+    open class func getAllCountriesWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil, countryDtoCollectionQueryParameters: CountryDtoCollectionQueryParameters? = nil) -> RequestBuilder<CountryDtoListEnvelope> {
         let localVariablePath = "/api/v2/GlobeService/Countries"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: countryDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -375,6 +395,7 @@ open class CountriesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -391,12 +412,13 @@ open class CountriesAPI {
      - parameter countryId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter countryCallingCodeDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCallingCodesByCountryIdAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CountryCallingCodeDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCallingCodesByCountryIdAsyncWithRequestBuilder(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCallingCodesByCountryIdAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, countryCallingCodeDtoCollectionQueryParameters: CountryCallingCodeDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CountryCallingCodeDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCallingCodesByCountryIdAsyncWithRequestBuilder(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion, countryCallingCodeDtoCollectionQueryParameters: countryCallingCodeDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -413,15 +435,16 @@ open class CountriesAPI {
      - parameter countryId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter countryCallingCodeDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<CountryCallingCodeDtoListEnvelope> 
      */
-    open class func getCallingCodesByCountryIdAsyncWithRequestBuilder(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<CountryCallingCodeDtoListEnvelope> {
+    open class func getCallingCodesByCountryIdAsyncWithRequestBuilder(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, countryCallingCodeDtoCollectionQueryParameters: CountryCallingCodeDtoCollectionQueryParameters? = nil) -> RequestBuilder<CountryCallingCodeDtoListEnvelope> {
         var localVariablePath = "/api/v2/GlobeService/Countries/{countryId}/CallingCodes"
         let countryIdPreEscape = "\(APIHelper.mapValueToPathItem(countryId))"
         let countryIdPostEscape = countryIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{countryId}", with: countryIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: countryCallingCodeDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -429,6 +452,7 @@ open class CountriesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -446,12 +470,13 @@ open class CountriesAPI {
      - parameter countryId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter cityDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCitiesByCountryStateIdAsync(countryStateId: String, countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CityDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCitiesByCountryStateIdAsyncWithRequestBuilder(countryStateId: countryStateId, countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCitiesByCountryStateIdAsync(countryStateId: String, countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, cityDtoCollectionQueryParameters: CityDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CityDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCitiesByCountryStateIdAsyncWithRequestBuilder(countryStateId: countryStateId, countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion, cityDtoCollectionQueryParameters: cityDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -469,9 +494,10 @@ open class CountriesAPI {
      - parameter countryId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter cityDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<CityDtoListEnvelope> 
      */
-    open class func getCitiesByCountryStateIdAsyncWithRequestBuilder(countryStateId: String, countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<CityDtoListEnvelope> {
+    open class func getCitiesByCountryStateIdAsyncWithRequestBuilder(countryStateId: String, countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, cityDtoCollectionQueryParameters: CityDtoCollectionQueryParameters? = nil) -> RequestBuilder<CityDtoListEnvelope> {
         var localVariablePath = "/api/v2/GlobeService/Countries/{countryId}/States/{countryStateId}/Cities"
         let countryStateIdPreEscape = "\(APIHelper.mapValueToPathItem(countryStateId))"
         let countryStateIdPostEscape = countryStateIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -480,7 +506,7 @@ open class CountriesAPI {
         let countryIdPostEscape = countryIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{countryId}", with: countryIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: cityDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -488,6 +514,7 @@ open class CountriesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -559,12 +586,13 @@ open class CountriesAPI {
      - parameter countryId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter countryStateDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCountryStateByIdAsync(countryStateId: String, countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CountryStateDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCountryStateByIdAsyncWithRequestBuilder(countryStateId: countryStateId, countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCountryStateByIdAsync(countryStateId: String, countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, countryStateDtoCollectionQueryParameters: CountryStateDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CountryStateDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCountryStateByIdAsyncWithRequestBuilder(countryStateId: countryStateId, countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion, countryStateDtoCollectionQueryParameters: countryStateDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -582,9 +610,10 @@ open class CountriesAPI {
      - parameter countryId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter countryStateDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<CountryStateDtoEnvelope> 
      */
-    open class func getCountryStateByIdAsyncWithRequestBuilder(countryStateId: String, countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<CountryStateDtoEnvelope> {
+    open class func getCountryStateByIdAsyncWithRequestBuilder(countryStateId: String, countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, countryStateDtoCollectionQueryParameters: CountryStateDtoCollectionQueryParameters? = nil) -> RequestBuilder<CountryStateDtoEnvelope> {
         var localVariablePath = "/api/v2/GlobeService/Countries/{countryId}/States/{countryStateId}"
         let countryStateIdPreEscape = "\(APIHelper.mapValueToPathItem(countryStateId))"
         let countryStateIdPostEscape = countryStateIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -593,7 +622,7 @@ open class CountriesAPI {
         let countryIdPostEscape = countryIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{countryId}", with: countryIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: countryStateDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -601,6 +630,7 @@ open class CountriesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -617,12 +647,13 @@ open class CountriesAPI {
      - parameter countryId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter countryStateDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCountryStatesAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CountryStateDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCountryStatesAsyncWithRequestBuilder(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCountryStatesAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, countryStateDtoCollectionQueryParameters: CountryStateDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CountryStateDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCountryStatesAsyncWithRequestBuilder(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion, countryStateDtoCollectionQueryParameters: countryStateDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -639,15 +670,16 @@ open class CountriesAPI {
      - parameter countryId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter countryStateDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<CountryStateDtoListEnvelope> 
      */
-    open class func getCountryStatesAsyncWithRequestBuilder(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<CountryStateDtoListEnvelope> {
+    open class func getCountryStatesAsyncWithRequestBuilder(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, countryStateDtoCollectionQueryParameters: CountryStateDtoCollectionQueryParameters? = nil) -> RequestBuilder<CountryStateDtoListEnvelope> {
         var localVariablePath = "/api/v2/GlobeService/Countries/{countryId}/States"
         let countryIdPreEscape = "\(APIHelper.mapValueToPathItem(countryId))"
         let countryIdPostEscape = countryIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{countryId}", with: countryIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: countryStateDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -655,6 +687,7 @@ open class CountriesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -671,12 +704,13 @@ open class CountriesAPI {
      - parameter countryId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter currencyDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getEnabledCurrenciesByCountryIdAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CurrencyDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getEnabledCurrenciesByCountryIdAsyncWithRequestBuilder(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getEnabledCurrenciesByCountryIdAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, currencyDtoCollectionQueryParameters: CurrencyDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CurrencyDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getEnabledCurrenciesByCountryIdAsyncWithRequestBuilder(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion, currencyDtoCollectionQueryParameters: currencyDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -693,15 +727,16 @@ open class CountriesAPI {
      - parameter countryId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter currencyDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<CurrencyDtoListEnvelope> 
      */
-    open class func getEnabledCurrenciesByCountryIdAsyncWithRequestBuilder(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<CurrencyDtoListEnvelope> {
+    open class func getEnabledCurrenciesByCountryIdAsyncWithRequestBuilder(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, currencyDtoCollectionQueryParameters: CurrencyDtoCollectionQueryParameters? = nil) -> RequestBuilder<CurrencyDtoListEnvelope> {
         var localVariablePath = "/api/v2/GlobeService/Countries/{countryId}/Currencies"
         let countryIdPreEscape = "\(APIHelper.mapValueToPathItem(countryId))"
         let countryIdPostEscape = countryIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{countryId}", with: countryIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: currencyDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -709,6 +744,7 @@ open class CountriesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -725,12 +761,13 @@ open class CountriesAPI {
      - parameter countryId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter timezoneDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getTimeZonesByCountryIdAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TimezoneDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getTimeZonesByCountryIdAsyncWithRequestBuilder(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getTimeZonesByCountryIdAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, timezoneDtoCollectionQueryParameters: TimezoneDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TimezoneDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getTimeZonesByCountryIdAsyncWithRequestBuilder(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion, timezoneDtoCollectionQueryParameters: timezoneDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -747,15 +784,16 @@ open class CountriesAPI {
      - parameter countryId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter timezoneDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<TimezoneDtoListEnvelope> 
      */
-    open class func getTimeZonesByCountryIdAsyncWithRequestBuilder(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<TimezoneDtoListEnvelope> {
+    open class func getTimeZonesByCountryIdAsyncWithRequestBuilder(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, timezoneDtoCollectionQueryParameters: TimezoneDtoCollectionQueryParameters? = nil) -> RequestBuilder<TimezoneDtoListEnvelope> {
         var localVariablePath = "/api/v2/GlobeService/Countries/{countryId}/Timezones"
         let countryIdPreEscape = "\(APIHelper.mapValueToPathItem(countryId))"
         let countryIdPostEscape = countryIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{countryId}", with: countryIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: timezoneDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -763,6 +801,7 @@ open class CountriesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -779,12 +818,13 @@ open class CountriesAPI {
      - parameter countryId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter countryTopLevelDomainDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getTopLevelDomainsByCountryIdAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CountryTopLevelDomainDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getTopLevelDomainsByCountryIdAsyncWithRequestBuilder(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getTopLevelDomainsByCountryIdAsync(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, countryTopLevelDomainDtoCollectionQueryParameters: CountryTopLevelDomainDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CountryTopLevelDomainDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getTopLevelDomainsByCountryIdAsyncWithRequestBuilder(countryId: countryId, apiVersion: apiVersion, xApiVersion: xApiVersion, countryTopLevelDomainDtoCollectionQueryParameters: countryTopLevelDomainDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -801,15 +841,16 @@ open class CountriesAPI {
      - parameter countryId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter countryTopLevelDomainDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<CountryTopLevelDomainDtoListEnvelope> 
      */
-    open class func getTopLevelDomainsByCountryIdAsyncWithRequestBuilder(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<CountryTopLevelDomainDtoListEnvelope> {
+    open class func getTopLevelDomainsByCountryIdAsyncWithRequestBuilder(countryId: String, apiVersion: String? = nil, xApiVersion: String? = nil, countryTopLevelDomainDtoCollectionQueryParameters: CountryTopLevelDomainDtoCollectionQueryParameters? = nil) -> RequestBuilder<CountryTopLevelDomainDtoListEnvelope> {
         var localVariablePath = "/api/v2/GlobeService/Countries/{countryId}/TopLevelDomains"
         let countryIdPreEscape = "\(APIHelper.mapValueToPathItem(countryId))"
         let countryIdPostEscape = countryIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{countryId}", with: countryIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: countryTopLevelDomainDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -817,6 +858,7 @@ open class CountriesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 

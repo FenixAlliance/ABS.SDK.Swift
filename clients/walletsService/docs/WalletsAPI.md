@@ -504,7 +504,7 @@ No authorization required
 
 # **getIncomingPaymentsAsync**
 ```swift
-    open class func getIncomingPaymentsAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: PaymentDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getIncomingPaymentsAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, paymentDtoCollectionQueryParameters: PaymentDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: PaymentDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get Incoming Payments
@@ -519,9 +519,10 @@ import OpenAPIClient
 let walletId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let paymentDtoCollectionQueryParameters = PaymentDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // PaymentDtoCollectionQueryParameters |  (optional)
 
 // Get Incoming Payments
-WalletsAPI.getIncomingPaymentsAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+WalletsAPI.getIncomingPaymentsAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, paymentDtoCollectionQueryParameters: paymentDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -540,6 +541,7 @@ Name | Type | Description  | Notes
  **walletId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **paymentDtoCollectionQueryParameters** | [**PaymentDtoCollectionQueryParameters**](PaymentDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -551,14 +553,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getIncomingPaymentsCountAsync**
 ```swift
-    open class func getIncomingPaymentsCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getIncomingPaymentsCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, paymentDtoCollectionQueryParameters: PaymentDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get Incoming Payments Count
@@ -573,9 +575,10 @@ import OpenAPIClient
 let walletId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let paymentDtoCollectionQueryParameters = PaymentDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // PaymentDtoCollectionQueryParameters |  (optional)
 
 // Get Incoming Payments Count
-WalletsAPI.getIncomingPaymentsCountAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+WalletsAPI.getIncomingPaymentsCountAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, paymentDtoCollectionQueryParameters: paymentDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -594,6 +597,7 @@ Name | Type | Description  | Notes
  **walletId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **paymentDtoCollectionQueryParameters** | [**PaymentDtoCollectionQueryParameters**](PaymentDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -605,14 +609,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getIncomingWalletInvoicesAsync**
 ```swift
-    open class func getIncomingWalletInvoicesAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: InvoiceDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getIncomingWalletInvoicesAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, invoiceDtoCollectionQueryParameters: InvoiceDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: InvoiceDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get Incoming Wallet Invoices
@@ -627,9 +631,10 @@ import OpenAPIClient
 let walletId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let invoiceDtoCollectionQueryParameters = InvoiceDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // InvoiceDtoCollectionQueryParameters |  (optional)
 
 // Get Incoming Wallet Invoices
-WalletsAPI.getIncomingWalletInvoicesAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+WalletsAPI.getIncomingWalletInvoicesAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, invoiceDtoCollectionQueryParameters: invoiceDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -648,6 +653,7 @@ Name | Type | Description  | Notes
  **walletId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **invoiceDtoCollectionQueryParameters** | [**InvoiceDtoCollectionQueryParameters**](InvoiceDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -659,14 +665,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getIncomingWalletInvoicesCountAsync**
 ```swift
-    open class func getIncomingWalletInvoicesCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getIncomingWalletInvoicesCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, invoiceDtoCollectionQueryParameters: InvoiceDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get Incoming Wallet Invoices Count
@@ -681,9 +687,10 @@ import OpenAPIClient
 let walletId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let invoiceDtoCollectionQueryParameters = InvoiceDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // InvoiceDtoCollectionQueryParameters |  (optional)
 
 // Get Incoming Wallet Invoices Count
-WalletsAPI.getIncomingWalletInvoicesCountAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+WalletsAPI.getIncomingWalletInvoicesCountAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, invoiceDtoCollectionQueryParameters: invoiceDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -702,6 +709,7 @@ Name | Type | Description  | Notes
  **walletId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **invoiceDtoCollectionQueryParameters** | [**InvoiceDtoCollectionQueryParameters**](InvoiceDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -713,7 +721,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -776,7 +784,7 @@ No authorization required
 
 # **getLocationsForWalletAsync**
 ```swift
-    open class func getLocationsForWalletAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: LocationDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getLocationsForWalletAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, locationDtoCollectionQueryParameters: LocationDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: LocationDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get Wallet Locations
@@ -791,9 +799,10 @@ import OpenAPIClient
 let walletId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let locationDtoCollectionQueryParameters = LocationDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // LocationDtoCollectionQueryParameters |  (optional)
 
 // Get Wallet Locations
-WalletsAPI.getLocationsForWalletAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+WalletsAPI.getLocationsForWalletAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, locationDtoCollectionQueryParameters: locationDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -812,6 +821,7 @@ Name | Type | Description  | Notes
  **walletId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **locationDtoCollectionQueryParameters** | [**LocationDtoCollectionQueryParameters**](LocationDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -823,14 +833,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getLocationsForWalletCountAsync**
 ```swift
-    open class func getLocationsForWalletCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getLocationsForWalletCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, locationDtoCollectionQueryParameters: LocationDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get Wallet Locations Count
@@ -845,9 +855,10 @@ import OpenAPIClient
 let walletId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let locationDtoCollectionQueryParameters = LocationDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // LocationDtoCollectionQueryParameters |  (optional)
 
 // Get Wallet Locations Count
-WalletsAPI.getLocationsForWalletCountAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+WalletsAPI.getLocationsForWalletCountAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, locationDtoCollectionQueryParameters: locationDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -866,6 +877,7 @@ Name | Type | Description  | Notes
  **walletId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **locationDtoCollectionQueryParameters** | [**LocationDtoCollectionQueryParameters**](LocationDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -877,14 +889,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getOutgoingPaymentsAsync**
 ```swift
-    open class func getOutgoingPaymentsAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: PaymentDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getOutgoingPaymentsAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, paymentDtoCollectionQueryParameters: PaymentDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: PaymentDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get Outgoing Payments
@@ -899,9 +911,10 @@ import OpenAPIClient
 let walletId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let paymentDtoCollectionQueryParameters = PaymentDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // PaymentDtoCollectionQueryParameters |  (optional)
 
 // Get Outgoing Payments
-WalletsAPI.getOutgoingPaymentsAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+WalletsAPI.getOutgoingPaymentsAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, paymentDtoCollectionQueryParameters: paymentDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -920,6 +933,7 @@ Name | Type | Description  | Notes
  **walletId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **paymentDtoCollectionQueryParameters** | [**PaymentDtoCollectionQueryParameters**](PaymentDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -931,14 +945,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getOutgoingPaymentsCountAsync**
 ```swift
-    open class func getOutgoingPaymentsCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getOutgoingPaymentsCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, paymentDtoCollectionQueryParameters: PaymentDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get Outgoing Payments Count
@@ -953,9 +967,10 @@ import OpenAPIClient
 let walletId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let paymentDtoCollectionQueryParameters = PaymentDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // PaymentDtoCollectionQueryParameters |  (optional)
 
 // Get Outgoing Payments Count
-WalletsAPI.getOutgoingPaymentsCountAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+WalletsAPI.getOutgoingPaymentsCountAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, paymentDtoCollectionQueryParameters: paymentDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -974,6 +989,7 @@ Name | Type | Description  | Notes
  **walletId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **paymentDtoCollectionQueryParameters** | [**PaymentDtoCollectionQueryParameters**](PaymentDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -985,14 +1001,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getOutgoingWalletInvoicesAsync**
 ```swift
-    open class func getOutgoingWalletInvoicesAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: InvoiceDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getOutgoingWalletInvoicesAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, invoiceDtoCollectionQueryParameters: InvoiceDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: InvoiceDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get Outgoing Wallet Invoices
@@ -1007,9 +1023,10 @@ import OpenAPIClient
 let walletId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let invoiceDtoCollectionQueryParameters = InvoiceDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // InvoiceDtoCollectionQueryParameters |  (optional)
 
 // Get Outgoing Wallet Invoices
-WalletsAPI.getOutgoingWalletInvoicesAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+WalletsAPI.getOutgoingWalletInvoicesAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, invoiceDtoCollectionQueryParameters: invoiceDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1028,6 +1045,7 @@ Name | Type | Description  | Notes
  **walletId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **invoiceDtoCollectionQueryParameters** | [**InvoiceDtoCollectionQueryParameters**](InvoiceDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1039,14 +1057,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getOutgoingWalletInvoicesCountAsync**
 ```swift
-    open class func getOutgoingWalletInvoicesCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getOutgoingWalletInvoicesCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, invoiceDtoCollectionQueryParameters: InvoiceDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get Outgoing Wallet Invoices Count
@@ -1061,9 +1079,10 @@ import OpenAPIClient
 let walletId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let invoiceDtoCollectionQueryParameters = InvoiceDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // InvoiceDtoCollectionQueryParameters |  (optional)
 
 // Get Outgoing Wallet Invoices Count
-WalletsAPI.getOutgoingWalletInvoicesCountAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+WalletsAPI.getOutgoingWalletInvoicesCountAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, invoiceDtoCollectionQueryParameters: invoiceDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1082,6 +1101,7 @@ Name | Type | Description  | Notes
  **walletId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **invoiceDtoCollectionQueryParameters** | [**InvoiceDtoCollectionQueryParameters**](InvoiceDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1093,7 +1113,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1156,7 +1176,7 @@ No authorization required
 
 # **getWalletBankAccountsAsync**
 ```swift
-    open class func getWalletBankAccountsAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: BankAccountDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getWalletBankAccountsAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, bankAccountDtoCollectionQueryParameters: BankAccountDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: BankAccountDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get Wallet Bank Accounts
@@ -1171,9 +1191,10 @@ import OpenAPIClient
 let walletId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let bankAccountDtoCollectionQueryParameters = BankAccountDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // BankAccountDtoCollectionQueryParameters |  (optional)
 
 // Get Wallet Bank Accounts
-WalletsAPI.getWalletBankAccountsAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+WalletsAPI.getWalletBankAccountsAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, bankAccountDtoCollectionQueryParameters: bankAccountDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1192,6 +1213,7 @@ Name | Type | Description  | Notes
  **walletId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **bankAccountDtoCollectionQueryParameters** | [**BankAccountDtoCollectionQueryParameters**](BankAccountDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1203,14 +1225,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getWalletBankAccountsCountAsync**
 ```swift
-    open class func getWalletBankAccountsCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getWalletBankAccountsCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, bankAccountDtoCollectionQueryParameters: BankAccountDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get Wallet Bank Accounts Count
@@ -1225,9 +1247,10 @@ import OpenAPIClient
 let walletId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let bankAccountDtoCollectionQueryParameters = BankAccountDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // BankAccountDtoCollectionQueryParameters |  (optional)
 
 // Get Wallet Bank Accounts Count
-WalletsAPI.getWalletBankAccountsCountAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+WalletsAPI.getWalletBankAccountsCountAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, bankAccountDtoCollectionQueryParameters: bankAccountDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1246,6 +1269,7 @@ Name | Type | Description  | Notes
  **walletId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **bankAccountDtoCollectionQueryParameters** | [**BankAccountDtoCollectionQueryParameters**](BankAccountDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1257,14 +1281,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getWalletChargebacksAsync**
 ```swift
-    open class func getWalletChargebacksAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: PaymentChargebackDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getWalletChargebacksAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, paymentChargebackDtoCollectionQueryParameters: PaymentChargebackDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: PaymentChargebackDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get Wallet Chargebacks
@@ -1279,9 +1303,10 @@ import OpenAPIClient
 let walletId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let paymentChargebackDtoCollectionQueryParameters = PaymentChargebackDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // PaymentChargebackDtoCollectionQueryParameters |  (optional)
 
 // Get Wallet Chargebacks
-WalletsAPI.getWalletChargebacksAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+WalletsAPI.getWalletChargebacksAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, paymentChargebackDtoCollectionQueryParameters: paymentChargebackDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1300,6 +1325,7 @@ Name | Type | Description  | Notes
  **walletId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **paymentChargebackDtoCollectionQueryParameters** | [**PaymentChargebackDtoCollectionQueryParameters**](PaymentChargebackDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1311,14 +1337,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getWalletChargebacksCountAsync**
 ```swift
-    open class func getWalletChargebacksCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getWalletChargebacksCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, paymentChargebackDtoCollectionQueryParameters: PaymentChargebackDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get Wallet Chargebacks Count
@@ -1333,9 +1359,10 @@ import OpenAPIClient
 let walletId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let paymentChargebackDtoCollectionQueryParameters = PaymentChargebackDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // PaymentChargebackDtoCollectionQueryParameters |  (optional)
 
 // Get Wallet Chargebacks Count
-WalletsAPI.getWalletChargebacksCountAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+WalletsAPI.getWalletChargebacksCountAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, paymentChargebackDtoCollectionQueryParameters: paymentChargebackDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1354,6 +1381,7 @@ Name | Type | Description  | Notes
  **walletId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **paymentChargebackDtoCollectionQueryParameters** | [**PaymentChargebackDtoCollectionQueryParameters**](PaymentChargebackDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1365,7 +1393,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1426,7 +1454,7 @@ No authorization required
 
 # **getWalletExtendedOrdersAsync**
 ```swift
-    open class func getWalletExtendedOrdersAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ExtendedOrderDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getWalletExtendedOrdersAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, extendedOrderDtoCollectionQueryParameters: ExtendedOrderDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ExtendedOrderDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get Wallet Extended Orders
@@ -1441,9 +1469,10 @@ import OpenAPIClient
 let walletId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let extendedOrderDtoCollectionQueryParameters = ExtendedOrderDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ExtendedOrderDtoCollectionQueryParameters |  (optional)
 
 // Get Wallet Extended Orders
-WalletsAPI.getWalletExtendedOrdersAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+WalletsAPI.getWalletExtendedOrdersAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, extendedOrderDtoCollectionQueryParameters: extendedOrderDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1462,6 +1491,7 @@ Name | Type | Description  | Notes
  **walletId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **extendedOrderDtoCollectionQueryParameters** | [**ExtendedOrderDtoCollectionQueryParameters**](ExtendedOrderDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1473,14 +1503,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getWalletInvoicesAsync**
 ```swift
-    open class func getWalletInvoicesAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: InvoiceDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getWalletInvoicesAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, invoiceDtoCollectionQueryParameters: InvoiceDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: InvoiceDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get Wallet Invoices
@@ -1495,9 +1525,10 @@ import OpenAPIClient
 let walletId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let invoiceDtoCollectionQueryParameters = InvoiceDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // InvoiceDtoCollectionQueryParameters |  (optional)
 
 // Get Wallet Invoices
-WalletsAPI.getWalletInvoicesAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+WalletsAPI.getWalletInvoicesAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, invoiceDtoCollectionQueryParameters: invoiceDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1516,6 +1547,7 @@ Name | Type | Description  | Notes
  **walletId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **invoiceDtoCollectionQueryParameters** | [**InvoiceDtoCollectionQueryParameters**](InvoiceDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1527,14 +1559,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getWalletInvoicesCountAsync**
 ```swift
-    open class func getWalletInvoicesCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getWalletInvoicesCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, invoiceDtoCollectionQueryParameters: InvoiceDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get Wallet Invoices Count
@@ -1549,9 +1581,10 @@ import OpenAPIClient
 let walletId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let invoiceDtoCollectionQueryParameters = InvoiceDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // InvoiceDtoCollectionQueryParameters |  (optional)
 
 // Get Wallet Invoices Count
-WalletsAPI.getWalletInvoicesCountAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+WalletsAPI.getWalletInvoicesCountAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, invoiceDtoCollectionQueryParameters: invoiceDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1570,6 +1603,7 @@ Name | Type | Description  | Notes
  **walletId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **invoiceDtoCollectionQueryParameters** | [**InvoiceDtoCollectionQueryParameters**](InvoiceDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1581,14 +1615,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getWalletOrdersAsync**
 ```swift
-    open class func getWalletOrdersAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: OrderDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getWalletOrdersAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, orderDtoCollectionQueryParameters: OrderDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: OrderDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get Wallet Orders
@@ -1603,9 +1637,10 @@ import OpenAPIClient
 let walletId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let orderDtoCollectionQueryParameters = OrderDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // OrderDtoCollectionQueryParameters |  (optional)
 
 // Get Wallet Orders
-WalletsAPI.getWalletOrdersAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+WalletsAPI.getWalletOrdersAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, orderDtoCollectionQueryParameters: orderDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1624,6 +1659,7 @@ Name | Type | Description  | Notes
  **walletId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **orderDtoCollectionQueryParameters** | [**OrderDtoCollectionQueryParameters**](OrderDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1635,14 +1671,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getWalletOrdersCountAsync**
 ```swift
-    open class func getWalletOrdersCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getWalletOrdersCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, orderDtoCollectionQueryParameters: OrderDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get Wallet Orders Count
@@ -1657,9 +1693,10 @@ import OpenAPIClient
 let walletId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let orderDtoCollectionQueryParameters = OrderDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // OrderDtoCollectionQueryParameters |  (optional)
 
 // Get Wallet Orders Count
-WalletsAPI.getWalletOrdersCountAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+WalletsAPI.getWalletOrdersCountAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, orderDtoCollectionQueryParameters: orderDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1678,6 +1715,7 @@ Name | Type | Description  | Notes
  **walletId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **orderDtoCollectionQueryParameters** | [**OrderDtoCollectionQueryParameters**](OrderDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1689,14 +1727,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getWalletPaymentsAsync**
 ```swift
-    open class func getWalletPaymentsAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: PaymentDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getWalletPaymentsAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, paymentDtoCollectionQueryParameters: PaymentDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: PaymentDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get Wallet Payments
@@ -1711,9 +1749,10 @@ import OpenAPIClient
 let walletId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let paymentDtoCollectionQueryParameters = PaymentDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // PaymentDtoCollectionQueryParameters |  (optional)
 
 // Get Wallet Payments
-WalletsAPI.getWalletPaymentsAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+WalletsAPI.getWalletPaymentsAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, paymentDtoCollectionQueryParameters: paymentDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1732,6 +1771,7 @@ Name | Type | Description  | Notes
  **walletId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **paymentDtoCollectionQueryParameters** | [**PaymentDtoCollectionQueryParameters**](PaymentDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1743,14 +1783,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getWalletPaymentsCountAsync**
 ```swift
-    open class func getWalletPaymentsCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getWalletPaymentsCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, paymentDtoCollectionQueryParameters: PaymentDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get Wallet Payments Count
@@ -1765,9 +1805,10 @@ import OpenAPIClient
 let walletId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let paymentDtoCollectionQueryParameters = PaymentDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // PaymentDtoCollectionQueryParameters |  (optional)
 
 // Get Wallet Payments Count
-WalletsAPI.getWalletPaymentsCountAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+WalletsAPI.getWalletPaymentsCountAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, paymentDtoCollectionQueryParameters: paymentDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1786,6 +1827,7 @@ Name | Type | Description  | Notes
  **walletId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **paymentDtoCollectionQueryParameters** | [**PaymentDtoCollectionQueryParameters**](PaymentDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1797,14 +1839,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getWalletQuotesAsync**
 ```swift
-    open class func getWalletQuotesAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: QuoteDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getWalletQuotesAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, quoteDtoCollectionQueryParameters: QuoteDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: QuoteDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get Wallet Quotes
@@ -1819,9 +1861,10 @@ import OpenAPIClient
 let walletId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let quoteDtoCollectionQueryParameters = QuoteDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // QuoteDtoCollectionQueryParameters |  (optional)
 
 // Get Wallet Quotes
-WalletsAPI.getWalletQuotesAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+WalletsAPI.getWalletQuotesAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, quoteDtoCollectionQueryParameters: quoteDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1840,6 +1883,7 @@ Name | Type | Description  | Notes
  **walletId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **quoteDtoCollectionQueryParameters** | [**QuoteDtoCollectionQueryParameters**](QuoteDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1851,14 +1895,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getWalletQuotesCountAsync**
 ```swift
-    open class func getWalletQuotesCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getWalletQuotesCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, quoteDtoCollectionQueryParameters: QuoteDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get Wallet Quotes Count
@@ -1873,9 +1917,10 @@ import OpenAPIClient
 let walletId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let quoteDtoCollectionQueryParameters = QuoteDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // QuoteDtoCollectionQueryParameters |  (optional)
 
 // Get Wallet Quotes Count
-WalletsAPI.getWalletQuotesCountAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+WalletsAPI.getWalletQuotesCountAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, quoteDtoCollectionQueryParameters: quoteDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1894,6 +1939,7 @@ Name | Type | Description  | Notes
  **walletId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **quoteDtoCollectionQueryParameters** | [**QuoteDtoCollectionQueryParameters**](QuoteDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1905,14 +1951,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getWalletRefundsAsync**
 ```swift
-    open class func getWalletRefundsAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: PaymentRefundDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getWalletRefundsAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, paymentRefundDtoCollectionQueryParameters: PaymentRefundDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: PaymentRefundDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get Wallet Refunds
@@ -1927,9 +1973,10 @@ import OpenAPIClient
 let walletId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let paymentRefundDtoCollectionQueryParameters = PaymentRefundDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // PaymentRefundDtoCollectionQueryParameters |  (optional)
 
 // Get Wallet Refunds
-WalletsAPI.getWalletRefundsAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+WalletsAPI.getWalletRefundsAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, paymentRefundDtoCollectionQueryParameters: paymentRefundDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1948,6 +1995,7 @@ Name | Type | Description  | Notes
  **walletId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **paymentRefundDtoCollectionQueryParameters** | [**PaymentRefundDtoCollectionQueryParameters**](PaymentRefundDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1959,14 +2007,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getWalletRefundsCountAsync**
 ```swift
-    open class func getWalletRefundsCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getWalletRefundsCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, paymentRefundDtoCollectionQueryParameters: PaymentRefundDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get Wallet Refunds Count
@@ -1981,9 +2029,10 @@ import OpenAPIClient
 let walletId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let paymentRefundDtoCollectionQueryParameters = PaymentRefundDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // PaymentRefundDtoCollectionQueryParameters |  (optional)
 
 // Get Wallet Refunds Count
-WalletsAPI.getWalletRefundsCountAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+WalletsAPI.getWalletRefundsCountAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, paymentRefundDtoCollectionQueryParameters: paymentRefundDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2002,6 +2051,7 @@ Name | Type | Description  | Notes
  **walletId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **paymentRefundDtoCollectionQueryParameters** | [**PaymentRefundDtoCollectionQueryParameters**](PaymentRefundDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -2013,7 +2063,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -2076,7 +2126,7 @@ No authorization required
 
 # **getWalletTokensAsync**
 ```swift
-    open class func getWalletTokensAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: PaymentTokenDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getWalletTokensAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, paymentTokenDtoCollectionQueryParameters: PaymentTokenDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: PaymentTokenDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get Wallet Tokens
@@ -2091,9 +2141,10 @@ import OpenAPIClient
 let walletId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let paymentTokenDtoCollectionQueryParameters = PaymentTokenDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // PaymentTokenDtoCollectionQueryParameters |  (optional)
 
 // Get Wallet Tokens
-WalletsAPI.getWalletTokensAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+WalletsAPI.getWalletTokensAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, paymentTokenDtoCollectionQueryParameters: paymentTokenDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2112,6 +2163,7 @@ Name | Type | Description  | Notes
  **walletId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **paymentTokenDtoCollectionQueryParameters** | [**PaymentTokenDtoCollectionQueryParameters**](PaymentTokenDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -2123,14 +2175,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getWalletTokensCountAsync**
 ```swift
-    open class func getWalletTokensCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getWalletTokensCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, paymentTokenDtoCollectionQueryParameters: PaymentTokenDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get Wallet Tokens Count
@@ -2145,9 +2197,10 @@ import OpenAPIClient
 let walletId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let paymentTokenDtoCollectionQueryParameters = PaymentTokenDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // PaymentTokenDtoCollectionQueryParameters |  (optional)
 
 // Get Wallet Tokens Count
-WalletsAPI.getWalletTokensCountAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+WalletsAPI.getWalletTokensCountAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, paymentTokenDtoCollectionQueryParameters: paymentTokenDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2166,6 +2219,7 @@ Name | Type | Description  | Notes
  **walletId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **paymentTokenDtoCollectionQueryParameters** | [**PaymentTokenDtoCollectionQueryParameters**](PaymentTokenDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -2177,14 +2231,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getWalletWithdrawRequestsAsync**
 ```swift
-    open class func getWalletWithdrawRequestsAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: WalletWithdrawRequestDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getWalletWithdrawRequestsAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, walletWithdrawRequestDtoCollectionQueryParameters: WalletWithdrawRequestDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: WalletWithdrawRequestDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get Wallet Withdraw Requests
@@ -2199,9 +2253,10 @@ import OpenAPIClient
 let walletId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let walletWithdrawRequestDtoCollectionQueryParameters = WalletWithdrawRequestDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // WalletWithdrawRequestDtoCollectionQueryParameters |  (optional)
 
 // Get Wallet Withdraw Requests
-WalletsAPI.getWalletWithdrawRequestsAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+WalletsAPI.getWalletWithdrawRequestsAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, walletWithdrawRequestDtoCollectionQueryParameters: walletWithdrawRequestDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2220,6 +2275,7 @@ Name | Type | Description  | Notes
  **walletId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **walletWithdrawRequestDtoCollectionQueryParameters** | [**WalletWithdrawRequestDtoCollectionQueryParameters**](WalletWithdrawRequestDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -2231,14 +2287,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getWalletWithdrawRequestsCountAsync**
 ```swift
-    open class func getWalletWithdrawRequestsCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getWalletWithdrawRequestsCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, walletWithdrawRequestDtoCollectionQueryParameters: WalletWithdrawRequestDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get Wallet Withdraw Requests Count
@@ -2253,9 +2309,10 @@ import OpenAPIClient
 let walletId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let walletWithdrawRequestDtoCollectionQueryParameters = WalletWithdrawRequestDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // WalletWithdrawRequestDtoCollectionQueryParameters |  (optional)
 
 // Get Wallet Withdraw Requests Count
-WalletsAPI.getWalletWithdrawRequestsCountAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+WalletsAPI.getWalletWithdrawRequestsCountAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, walletWithdrawRequestDtoCollectionQueryParameters: walletWithdrawRequestDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2274,6 +2331,7 @@ Name | Type | Description  | Notes
  **walletId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **walletWithdrawRequestDtoCollectionQueryParameters** | [**WalletWithdrawRequestDtoCollectionQueryParameters**](WalletWithdrawRequestDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -2285,14 +2343,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getWalletWithdrawsAsync**
 ```swift
-    open class func getWalletWithdrawsAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: WalletWithdrawDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getWalletWithdrawsAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, walletWithdrawDtoCollectionQueryParameters: WalletWithdrawDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: WalletWithdrawDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get Wallet Withdraws
@@ -2307,9 +2365,10 @@ import OpenAPIClient
 let walletId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let walletWithdrawDtoCollectionQueryParameters = WalletWithdrawDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // WalletWithdrawDtoCollectionQueryParameters |  (optional)
 
 // Get Wallet Withdraws
-WalletsAPI.getWalletWithdrawsAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+WalletsAPI.getWalletWithdrawsAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, walletWithdrawDtoCollectionQueryParameters: walletWithdrawDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2328,6 +2387,7 @@ Name | Type | Description  | Notes
  **walletId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **walletWithdrawDtoCollectionQueryParameters** | [**WalletWithdrawDtoCollectionQueryParameters**](WalletWithdrawDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -2339,14 +2399,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getWalletWithdrawsCountAsync**
 ```swift
-    open class func getWalletWithdrawsCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getWalletWithdrawsCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, walletWithdrawDtoCollectionQueryParameters: WalletWithdrawDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get Wallet Withdraws Count
@@ -2361,9 +2421,10 @@ import OpenAPIClient
 let walletId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let walletWithdrawDtoCollectionQueryParameters = WalletWithdrawDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // WalletWithdrawDtoCollectionQueryParameters |  (optional)
 
 // Get Wallet Withdraws Count
-WalletsAPI.getWalletWithdrawsCountAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+WalletsAPI.getWalletWithdrawsCountAsync(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, walletWithdrawDtoCollectionQueryParameters: walletWithdrawDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2382,6 +2443,7 @@ Name | Type | Description  | Notes
  **walletId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **walletWithdrawDtoCollectionQueryParameters** | [**WalletWithdrawDtoCollectionQueryParameters**](WalletWithdrawDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -2393,14 +2455,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchWalletBankAccountAsync**
 ```swift
-    open class func patchWalletBankAccountAsync(walletId: UUID, bankAccountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchWalletBankAccountAsync(walletId: UUID, bankAccountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch Wallet Bank Account
@@ -2416,10 +2478,10 @@ let walletId = 987 // UUID |
 let bankAccountId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch Wallet Bank Account
-WalletsAPI.patchWalletBankAccountAsync(walletId: walletId, bankAccountId: bankAccountId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+WalletsAPI.patchWalletBankAccountAsync(walletId: walletId, bankAccountId: bankAccountId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2439,7 +2501,7 @@ Name | Type | Description  | Notes
  **bankAccountId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -2458,7 +2520,7 @@ No authorization required
 
 # **patchWalletTokenAsync**
 ```swift
-    open class func patchWalletTokenAsync(walletId: UUID, tokenId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchWalletTokenAsync(walletId: UUID, tokenId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch Wallet Token
@@ -2474,10 +2536,10 @@ let walletId = 987 // UUID |
 let tokenId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch Wallet Token
-WalletsAPI.patchWalletTokenAsync(walletId: walletId, tokenId: tokenId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+WalletsAPI.patchWalletTokenAsync(walletId: walletId, tokenId: tokenId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2497,7 +2559,7 @@ Name | Type | Description  | Notes
  **tokenId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

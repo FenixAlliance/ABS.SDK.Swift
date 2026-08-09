@@ -406,7 +406,7 @@ No authorization required
 
 # **getSigningRequestsAsync**
 ```swift
-    open class func getSigningRequestsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: SigningRequestDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getSigningRequestsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, signingRequestDtoCollectionQueryParameters: SigningRequestDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: SigningRequestDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all signing requests
@@ -419,9 +419,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let signingRequestDtoCollectionQueryParameters = SigningRequestDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SigningRequestDtoCollectionQueryParameters |  (optional)
 
 // Get all signing requests
-SigningRequestsAPI.getSigningRequestsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SigningRequestsAPI.getSigningRequestsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, signingRequestDtoCollectionQueryParameters: signingRequestDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -440,6 +441,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **signingRequestDtoCollectionQueryParameters** | [**SigningRequestDtoCollectionQueryParameters**](SigningRequestDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -451,14 +453,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getSigningRequestsCountAsync**
 ```swift
-    open class func getSigningRequestsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getSigningRequestsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, signingRequestDtoCollectionQueryParameters: SigningRequestDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get signing requests count
@@ -471,9 +473,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let signingRequestDtoCollectionQueryParameters = SigningRequestDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SigningRequestDtoCollectionQueryParameters |  (optional)
 
 // Get signing requests count
-SigningRequestsAPI.getSigningRequestsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SigningRequestsAPI.getSigningRequestsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, signingRequestDtoCollectionQueryParameters: signingRequestDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -492,6 +495,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **signingRequestDtoCollectionQueryParameters** | [**SigningRequestDtoCollectionQueryParameters**](SigningRequestDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -503,7 +507,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

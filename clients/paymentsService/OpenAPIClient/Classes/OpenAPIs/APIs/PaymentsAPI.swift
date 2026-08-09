@@ -223,12 +223,13 @@ open class PaymentsAPI {
      Retrieves all payments
      
      - parameter tenantId: (query)  
+     - parameter paymentDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getPaymentsAsync(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: PaymentDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getPaymentsAsyncWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+    open class func getPaymentsAsync(tenantId: UUID, paymentDtoCollectionQueryParameters: PaymentDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: PaymentDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getPaymentsAsyncWithRequestBuilder(tenantId: tenantId, paymentDtoCollectionQueryParameters: paymentDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -243,12 +244,13 @@ open class PaymentsAPI {
      - GET /api/v2/PaymentsService/Payments
      - Gets all payments for the current tenant with OData support.
      - parameter tenantId: (query)  
+     - parameter paymentDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<PaymentDtoListEnvelope> 
      */
-    open class func getPaymentsAsyncWithRequestBuilder(tenantId: UUID) -> RequestBuilder<PaymentDtoListEnvelope> {
+    open class func getPaymentsAsyncWithRequestBuilder(tenantId: UUID, paymentDtoCollectionQueryParameters: PaymentDtoCollectionQueryParameters? = nil) -> RequestBuilder<PaymentDtoListEnvelope> {
         let localVariablePath = "/api/v2/PaymentsService/Payments"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: paymentDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -256,7 +258,7 @@ open class PaymentsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -271,13 +273,13 @@ open class PaymentsAPI {
      
      - parameter tenantId: (query)  
      - parameter paymentId: (path)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchPaymentAsync(tenantId: UUID, paymentId: UUID, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchPaymentAsyncWithRequestBuilder(tenantId: tenantId, paymentId: paymentId, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchPaymentAsync(tenantId: UUID, paymentId: UUID, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchPaymentAsyncWithRequestBuilder(tenantId: tenantId, paymentId: paymentId, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -293,16 +295,16 @@ open class PaymentsAPI {
      - Patch a payment
      - parameter tenantId: (query)  
      - parameter paymentId: (path)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchPaymentAsyncWithRequestBuilder(tenantId: UUID, paymentId: UUID, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchPaymentAsyncWithRequestBuilder(tenantId: UUID, paymentId: UUID, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/PaymentsService/Payments/{paymentId}"
         let paymentIdPreEscape = "\(APIHelper.mapValueToPathItem(paymentId))"
         let paymentIdPostEscape = paymentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{paymentId}", with: paymentIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

@@ -424,12 +424,13 @@ open class VoyagesAPI {
      - parameter voyageId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter voyagePortCallDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getVoyagePortCallsAsync(tenantId: UUID, voyageId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: VoyagePortCallDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getVoyagePortCallsAsyncWithRequestBuilder(tenantId: tenantId, voyageId: voyageId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getVoyagePortCallsAsync(tenantId: UUID, voyageId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, voyagePortCallDtoCollectionQueryParameters: VoyagePortCallDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: VoyagePortCallDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getVoyagePortCallsAsyncWithRequestBuilder(tenantId: tenantId, voyageId: voyageId, apiVersion: apiVersion, xApiVersion: xApiVersion, voyagePortCallDtoCollectionQueryParameters: voyagePortCallDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -447,15 +448,16 @@ open class VoyagesAPI {
      - parameter voyageId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter voyagePortCallDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<VoyagePortCallDtoListEnvelope> 
      */
-    open class func getVoyagePortCallsAsyncWithRequestBuilder(tenantId: UUID, voyageId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<VoyagePortCallDtoListEnvelope> {
+    open class func getVoyagePortCallsAsyncWithRequestBuilder(tenantId: UUID, voyageId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, voyagePortCallDtoCollectionQueryParameters: VoyagePortCallDtoCollectionQueryParameters? = nil) -> RequestBuilder<VoyagePortCallDtoListEnvelope> {
         var localVariablePath = "/api/v2/LogisticsService/Voyages/{voyageId}/PortCalls"
         let voyageIdPreEscape = "\(APIHelper.mapValueToPathItem(voyageId))"
         let voyageIdPostEscape = voyageIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{voyageId}", with: voyageIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: voyagePortCallDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -464,6 +466,7 @@ open class VoyagesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -481,12 +484,13 @@ open class VoyagesAPI {
      - parameter voyageId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter voyagePortCallDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getVoyagePortCallsCountAsync(tenantId: UUID, voyageId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getVoyagePortCallsCountAsyncWithRequestBuilder(tenantId: tenantId, voyageId: voyageId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getVoyagePortCallsCountAsync(tenantId: UUID, voyageId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, voyagePortCallDtoCollectionQueryParameters: VoyagePortCallDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getVoyagePortCallsCountAsyncWithRequestBuilder(tenantId: tenantId, voyageId: voyageId, apiVersion: apiVersion, xApiVersion: xApiVersion, voyagePortCallDtoCollectionQueryParameters: voyagePortCallDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -504,15 +508,16 @@ open class VoyagesAPI {
      - parameter voyageId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter voyagePortCallDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getVoyagePortCallsCountAsyncWithRequestBuilder(tenantId: UUID, voyageId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getVoyagePortCallsCountAsyncWithRequestBuilder(tenantId: UUID, voyageId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, voyagePortCallDtoCollectionQueryParameters: VoyagePortCallDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/LogisticsService/Voyages/{voyageId}/PortCalls/Count"
         let voyageIdPreEscape = "\(APIHelper.mapValueToPathItem(voyageId))"
         let voyageIdPostEscape = voyageIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{voyageId}", with: voyageIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: voyagePortCallDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -521,6 +526,7 @@ open class VoyagesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -537,12 +543,13 @@ open class VoyagesAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter voyageDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getVoyagesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: VoyageDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getVoyagesAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getVoyagesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, voyageDtoCollectionQueryParameters: VoyageDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: VoyageDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getVoyagesAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, voyageDtoCollectionQueryParameters: voyageDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -559,12 +566,13 @@ open class VoyagesAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter voyageDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<VoyageDtoListEnvelope> 
      */
-    open class func getVoyagesAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<VoyageDtoListEnvelope> {
+    open class func getVoyagesAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, voyageDtoCollectionQueryParameters: VoyageDtoCollectionQueryParameters? = nil) -> RequestBuilder<VoyageDtoListEnvelope> {
         let localVariablePath = "/api/v2/LogisticsService/Voyages"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: voyageDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -573,6 +581,7 @@ open class VoyagesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -589,12 +598,13 @@ open class VoyagesAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter voyageDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getVoyagesCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getVoyagesCountAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getVoyagesCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, voyageDtoCollectionQueryParameters: VoyageDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getVoyagesCountAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, voyageDtoCollectionQueryParameters: voyageDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -611,12 +621,13 @@ open class VoyagesAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter voyageDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getVoyagesCountAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getVoyagesCountAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, voyageDtoCollectionQueryParameters: VoyageDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/LogisticsService/Voyages/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: voyageDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -625,6 +636,7 @@ open class VoyagesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -642,13 +654,13 @@ open class VoyagesAPI {
      - parameter voyageId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchVoyageAsync(tenantId: UUID, voyageId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchVoyageAsyncWithRequestBuilder(tenantId: tenantId, voyageId: voyageId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchVoyageAsync(tenantId: UUID, voyageId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchVoyageAsyncWithRequestBuilder(tenantId: tenantId, voyageId: voyageId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -666,16 +678,16 @@ open class VoyagesAPI {
      - parameter voyageId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchVoyageAsyncWithRequestBuilder(tenantId: UUID, voyageId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchVoyageAsyncWithRequestBuilder(tenantId: UUID, voyageId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/LogisticsService/Voyages/{voyageId}"
         let voyageIdPreEscape = "\(APIHelper.mapValueToPathItem(voyageId))"
         let voyageIdPostEscape = voyageIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{voyageId}", with: voyageIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -703,13 +715,13 @@ open class VoyagesAPI {
      - parameter portCallId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchVoyagePortCallAsync(tenantId: UUID, voyageId: UUID, portCallId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchVoyagePortCallAsyncWithRequestBuilder(tenantId: tenantId, voyageId: voyageId, portCallId: portCallId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchVoyagePortCallAsync(tenantId: UUID, voyageId: UUID, portCallId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchVoyagePortCallAsyncWithRequestBuilder(tenantId: tenantId, voyageId: voyageId, portCallId: portCallId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -728,10 +740,10 @@ open class VoyagesAPI {
      - parameter portCallId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchVoyagePortCallAsyncWithRequestBuilder(tenantId: UUID, voyageId: UUID, portCallId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchVoyagePortCallAsyncWithRequestBuilder(tenantId: UUID, voyageId: UUID, portCallId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/LogisticsService/Voyages/{voyageId}/PortCalls/{portCallId}"
         let voyageIdPreEscape = "\(APIHelper.mapValueToPathItem(voyageId))"
         let voyageIdPostEscape = voyageIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -740,7 +752,7 @@ open class VoyagesAPI {
         let portCallIdPostEscape = portCallIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{portCallId}", with: portCallIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

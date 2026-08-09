@@ -310,12 +310,13 @@ open class ItemPackingSlipsAPI {
      - parameter packingSlipId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemPackingSlipEntryDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getItemPackingSlipEntriesAsync(tenantId: UUID, packingSlipId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemPackingSlipEntryDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getItemPackingSlipEntriesAsyncWithRequestBuilder(tenantId: tenantId, packingSlipId: packingSlipId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getItemPackingSlipEntriesAsync(tenantId: UUID, packingSlipId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemPackingSlipEntryDtoCollectionQueryParameters: ItemPackingSlipEntryDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemPackingSlipEntryDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getItemPackingSlipEntriesAsyncWithRequestBuilder(tenantId: tenantId, packingSlipId: packingSlipId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemPackingSlipEntryDtoCollectionQueryParameters: itemPackingSlipEntryDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -333,15 +334,16 @@ open class ItemPackingSlipsAPI {
      - parameter packingSlipId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemPackingSlipEntryDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<ItemPackingSlipEntryDtoListEnvelope> 
      */
-    open class func getItemPackingSlipEntriesAsyncWithRequestBuilder(tenantId: UUID, packingSlipId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemPackingSlipEntryDtoListEnvelope> {
+    open class func getItemPackingSlipEntriesAsyncWithRequestBuilder(tenantId: UUID, packingSlipId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemPackingSlipEntryDtoCollectionQueryParameters: ItemPackingSlipEntryDtoCollectionQueryParameters? = nil) -> RequestBuilder<ItemPackingSlipEntryDtoListEnvelope> {
         var localVariablePath = "/api/v2/LogisticsService/ItemPackingSlips/{packingSlipId}/Entries"
         let packingSlipIdPreEscape = "\(APIHelper.mapValueToPathItem(packingSlipId))"
         let packingSlipIdPostEscape = packingSlipIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{packingSlipId}", with: packingSlipIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: itemPackingSlipEntryDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -350,6 +352,7 @@ open class ItemPackingSlipsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -367,12 +370,13 @@ open class ItemPackingSlipsAPI {
      - parameter packingSlipId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemPackingSlipEntryDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getItemPackingSlipEntriesCountAsync(tenantId: UUID, packingSlipId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getItemPackingSlipEntriesCountAsyncWithRequestBuilder(tenantId: tenantId, packingSlipId: packingSlipId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getItemPackingSlipEntriesCountAsync(tenantId: UUID, packingSlipId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemPackingSlipEntryDtoCollectionQueryParameters: ItemPackingSlipEntryDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getItemPackingSlipEntriesCountAsyncWithRequestBuilder(tenantId: tenantId, packingSlipId: packingSlipId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemPackingSlipEntryDtoCollectionQueryParameters: itemPackingSlipEntryDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -390,15 +394,16 @@ open class ItemPackingSlipsAPI {
      - parameter packingSlipId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemPackingSlipEntryDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getItemPackingSlipEntriesCountAsyncWithRequestBuilder(tenantId: UUID, packingSlipId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getItemPackingSlipEntriesCountAsyncWithRequestBuilder(tenantId: UUID, packingSlipId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemPackingSlipEntryDtoCollectionQueryParameters: ItemPackingSlipEntryDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/LogisticsService/ItemPackingSlips/{packingSlipId}/Entries/Count"
         let packingSlipIdPreEscape = "\(APIHelper.mapValueToPathItem(packingSlipId))"
         let packingSlipIdPostEscape = packingSlipIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{packingSlipId}", with: packingSlipIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: itemPackingSlipEntryDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -407,6 +412,7 @@ open class ItemPackingSlipsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -485,12 +491,13 @@ open class ItemPackingSlipsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemPackingSlipDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getItemPackingSlipsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemPackingSlipDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getItemPackingSlipsAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getItemPackingSlipsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemPackingSlipDtoCollectionQueryParameters: ItemPackingSlipDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemPackingSlipDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getItemPackingSlipsAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemPackingSlipDtoCollectionQueryParameters: itemPackingSlipDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -507,12 +514,13 @@ open class ItemPackingSlipsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemPackingSlipDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<ItemPackingSlipDtoListEnvelope> 
      */
-    open class func getItemPackingSlipsAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemPackingSlipDtoListEnvelope> {
+    open class func getItemPackingSlipsAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemPackingSlipDtoCollectionQueryParameters: ItemPackingSlipDtoCollectionQueryParameters? = nil) -> RequestBuilder<ItemPackingSlipDtoListEnvelope> {
         let localVariablePath = "/api/v2/LogisticsService/ItemPackingSlips"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: itemPackingSlipDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -521,6 +529,7 @@ open class ItemPackingSlipsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -537,12 +546,13 @@ open class ItemPackingSlipsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemPackingSlipDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getItemPackingSlipsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getItemPackingSlipsCountAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getItemPackingSlipsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemPackingSlipDtoCollectionQueryParameters: ItemPackingSlipDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getItemPackingSlipsCountAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemPackingSlipDtoCollectionQueryParameters: itemPackingSlipDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -559,12 +569,13 @@ open class ItemPackingSlipsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemPackingSlipDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getItemPackingSlipsCountAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getItemPackingSlipsCountAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemPackingSlipDtoCollectionQueryParameters: ItemPackingSlipDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/LogisticsService/ItemPackingSlips/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: itemPackingSlipDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -573,6 +584,7 @@ open class ItemPackingSlipsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -590,13 +602,13 @@ open class ItemPackingSlipsAPI {
      - parameter packingSlipId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchItemPackingSlipAsync(tenantId: UUID, packingSlipId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchItemPackingSlipAsyncWithRequestBuilder(tenantId: tenantId, packingSlipId: packingSlipId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchItemPackingSlipAsync(tenantId: UUID, packingSlipId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchItemPackingSlipAsyncWithRequestBuilder(tenantId: tenantId, packingSlipId: packingSlipId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -614,16 +626,16 @@ open class ItemPackingSlipsAPI {
      - parameter packingSlipId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchItemPackingSlipAsyncWithRequestBuilder(tenantId: UUID, packingSlipId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchItemPackingSlipAsyncWithRequestBuilder(tenantId: UUID, packingSlipId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/LogisticsService/ItemPackingSlips/{packingSlipId}"
         let packingSlipIdPreEscape = "\(APIHelper.mapValueToPathItem(packingSlipId))"
         let packingSlipIdPostEscape = packingSlipIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{packingSlipId}", with: packingSlipIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -651,13 +663,13 @@ open class ItemPackingSlipsAPI {
      - parameter entryId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchItemPackingSlipEntryAsync(tenantId: UUID, packingSlipId: UUID, entryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchItemPackingSlipEntryAsyncWithRequestBuilder(tenantId: tenantId, packingSlipId: packingSlipId, entryId: entryId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchItemPackingSlipEntryAsync(tenantId: UUID, packingSlipId: UUID, entryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchItemPackingSlipEntryAsyncWithRequestBuilder(tenantId: tenantId, packingSlipId: packingSlipId, entryId: entryId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -676,10 +688,10 @@ open class ItemPackingSlipsAPI {
      - parameter entryId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchItemPackingSlipEntryAsyncWithRequestBuilder(tenantId: UUID, packingSlipId: UUID, entryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchItemPackingSlipEntryAsyncWithRequestBuilder(tenantId: UUID, packingSlipId: UUID, entryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/LogisticsService/ItemPackingSlips/{packingSlipId}/Entries/{entryId}"
         let packingSlipIdPreEscape = "\(APIHelper.mapValueToPathItem(packingSlipId))"
         let packingSlipIdPostEscape = packingSlipIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -688,7 +700,7 @@ open class ItemPackingSlipsAPI {
         let entryIdPostEscape = entryIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{entryId}", with: entryIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

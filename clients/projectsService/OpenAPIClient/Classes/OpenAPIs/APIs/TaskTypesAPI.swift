@@ -170,13 +170,13 @@ open class TaskTypesAPI {
      
      - parameter taskTypeId: (path)  
      - parameter tenantId: (query)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchTaskTypeAsync(taskTypeId: UUID, tenantId: UUID, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchTaskTypeAsyncWithRequestBuilder(taskTypeId: taskTypeId, tenantId: tenantId, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchTaskTypeAsync(taskTypeId: UUID, tenantId: UUID, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchTaskTypeAsyncWithRequestBuilder(taskTypeId: taskTypeId, tenantId: tenantId, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -192,16 +192,16 @@ open class TaskTypesAPI {
      - Partially updates the specified task type.
      - parameter taskTypeId: (path)  
      - parameter tenantId: (query)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchTaskTypeAsyncWithRequestBuilder(taskTypeId: UUID, tenantId: UUID, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchTaskTypeAsyncWithRequestBuilder(taskTypeId: UUID, tenantId: UUID, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/ProjectsService/TaskTypes/{taskTypeId}"
         let taskTypeIdPreEscape = "\(APIHelper.mapValueToPathItem(taskTypeId))"
         let taskTypeIdPostEscape = taskTypeIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{taskTypeId}", with: taskTypeIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

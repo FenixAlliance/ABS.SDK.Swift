@@ -12,6 +12,11 @@ import AnyCodable
 
 public struct PrivateMessageDto: Codable, JSONEncodable, Hashable {
 
+    public enum SocialProfileType: String, Codable, CaseIterable {
+        case user = "User"
+        case tenant = "Tenant"
+        case contact = "Contact"
+    }
     public var id: String?
     public var timestamp: Date?
     public var read: Bool?
@@ -23,8 +28,11 @@ public struct PrivateMessageDto: Codable, JSONEncodable, Hashable {
     public var sentTimestamp: Date?
     public var readTimestamp: Date?
     public var receivedTimestamp: Date?
+    public var socialProfileName: String?
+    public var socialProfileAvatarUrl: String?
+    public var socialProfileType: SocialProfileType?
 
-    public init(id: String? = nil, timestamp: Date? = nil, read: Bool? = nil, title: String? = nil, message: String? = nil, conversationId: String? = nil, senderSocialProfileId: String? = nil, receiverSocialProfileId: String? = nil, sentTimestamp: Date? = nil, readTimestamp: Date? = nil, receivedTimestamp: Date? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, read: Bool? = nil, title: String? = nil, message: String? = nil, conversationId: String? = nil, senderSocialProfileId: String? = nil, receiverSocialProfileId: String? = nil, sentTimestamp: Date? = nil, readTimestamp: Date? = nil, receivedTimestamp: Date? = nil, socialProfileName: String? = nil, socialProfileAvatarUrl: String? = nil, socialProfileType: SocialProfileType? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.read = read
@@ -36,6 +44,9 @@ public struct PrivateMessageDto: Codable, JSONEncodable, Hashable {
         self.sentTimestamp = sentTimestamp
         self.readTimestamp = readTimestamp
         self.receivedTimestamp = receivedTimestamp
+        self.socialProfileName = socialProfileName
+        self.socialProfileAvatarUrl = socialProfileAvatarUrl
+        self.socialProfileType = socialProfileType
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -50,6 +61,9 @@ public struct PrivateMessageDto: Codable, JSONEncodable, Hashable {
         case sentTimestamp
         case readTimestamp
         case receivedTimestamp
+        case socialProfileName
+        case socialProfileAvatarUrl
+        case socialProfileType
     }
 
     // Encodable protocol methods
@@ -67,6 +81,9 @@ public struct PrivateMessageDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(sentTimestamp, forKey: .sentTimestamp)
         try container.encodeIfPresent(readTimestamp, forKey: .readTimestamp)
         try container.encodeIfPresent(receivedTimestamp, forKey: .receivedTimestamp)
+        try container.encodeIfPresent(socialProfileName, forKey: .socialProfileName)
+        try container.encodeIfPresent(socialProfileAvatarUrl, forKey: .socialProfileAvatarUrl)
+        try container.encodeIfPresent(socialProfileType, forKey: .socialProfileType)
     }
 }
 

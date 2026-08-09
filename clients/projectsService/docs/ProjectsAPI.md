@@ -454,7 +454,7 @@ No authorization required
 
 # **getProjectTaskCategoriesAsync**
 ```swift
-    open class func getProjectTaskCategoriesAsync(projectId: UUID, tenantId: UUID, completion: @escaping (_ data: TaskCategoryDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getProjectTaskCategoriesAsync(projectId: UUID, tenantId: UUID, taskCategoryDtoCollectionQueryParameters: TaskCategoryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: TaskCategoryDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Retrieves project task categories
@@ -468,9 +468,10 @@ import OpenAPIClient
 
 let projectId = 987 // UUID | 
 let tenantId = 987 // UUID | 
+let taskCategoryDtoCollectionQueryParameters = TaskCategoryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // TaskCategoryDtoCollectionQueryParameters |  (optional)
 
 // Retrieves project task categories
-ProjectsAPI.getProjectTaskCategoriesAsync(projectId: projectId, tenantId: tenantId) { (response, error) in
+ProjectsAPI.getProjectTaskCategoriesAsync(projectId: projectId, tenantId: tenantId, taskCategoryDtoCollectionQueryParameters: taskCategoryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -488,6 +489,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectId** | **UUID** |  | 
  **tenantId** | **UUID** |  | 
+ **taskCategoryDtoCollectionQueryParameters** | [**TaskCategoryDtoCollectionQueryParameters**](TaskCategoryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -499,14 +501,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getProjectTaskCategoriesCountAsync**
 ```swift
-    open class func getProjectTaskCategoriesCountAsync(projectId: UUID, tenantId: UUID, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getProjectTaskCategoriesCountAsync(projectId: UUID, tenantId: UUID, taskCategoryDtoCollectionQueryParameters: TaskCategoryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Counts project task categories
@@ -520,9 +522,10 @@ import OpenAPIClient
 
 let projectId = 987 // UUID | 
 let tenantId = 987 // UUID | 
+let taskCategoryDtoCollectionQueryParameters = TaskCategoryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // TaskCategoryDtoCollectionQueryParameters |  (optional)
 
 // Counts project task categories
-ProjectsAPI.getProjectTaskCategoriesCountAsync(projectId: projectId, tenantId: tenantId) { (response, error) in
+ProjectsAPI.getProjectTaskCategoriesCountAsync(projectId: projectId, tenantId: tenantId, taskCategoryDtoCollectionQueryParameters: taskCategoryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -540,6 +543,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectId** | **UUID** |  | 
  **tenantId** | **UUID** |  | 
+ **taskCategoryDtoCollectionQueryParameters** | [**TaskCategoryDtoCollectionQueryParameters**](TaskCategoryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -551,14 +555,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getProjectTimeLogsCountAsync**
 ```swift
-    open class func getProjectTimeLogsCountAsync(projectId: UUID, tenantId: UUID, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getProjectTimeLogsCountAsync(projectId: UUID, tenantId: UUID, projectTimeLogDtoCollectionQueryParameters: ProjectTimeLogDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Counts project time logs
@@ -572,9 +576,10 @@ import OpenAPIClient
 
 let projectId = 987 // UUID | 
 let tenantId = 987 // UUID | 
+let projectTimeLogDtoCollectionQueryParameters = ProjectTimeLogDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ProjectTimeLogDtoCollectionQueryParameters |  (optional)
 
 // Counts project time logs
-ProjectsAPI.getProjectTimeLogsCountAsync(projectId: projectId, tenantId: tenantId) { (response, error) in
+ProjectsAPI.getProjectTimeLogsCountAsync(projectId: projectId, tenantId: tenantId, projectTimeLogDtoCollectionQueryParameters: projectTimeLogDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -592,6 +597,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectId** | **UUID** |  | 
  **tenantId** | **UUID** |  | 
+ **projectTimeLogDtoCollectionQueryParameters** | [**ProjectTimeLogDtoCollectionQueryParameters**](ProjectTimeLogDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -603,14 +609,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getProjectsByTenantIdAsync**
 ```swift
-    open class func getProjectsByTenantIdAsync(tenantId: UUID, completion: @escaping (_ data: ProjectDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getProjectsByTenantIdAsync(tenantId: UUID, projectDtoCollectionQueryParameters: ProjectDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ProjectDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Retrieves all projects
@@ -623,9 +629,10 @@ Gets all projects for the current tenant with OData support.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
+let projectDtoCollectionQueryParameters = ProjectDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ProjectDtoCollectionQueryParameters |  (optional)
 
 // Retrieves all projects
-ProjectsAPI.getProjectsByTenantIdAsync(tenantId: tenantId) { (response, error) in
+ProjectsAPI.getProjectsByTenantIdAsync(tenantId: tenantId, projectDtoCollectionQueryParameters: projectDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -642,6 +649,7 @@ ProjectsAPI.getProjectsByTenantIdAsync(tenantId: tenantId) { (response, error) i
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
+ **projectDtoCollectionQueryParameters** | [**ProjectDtoCollectionQueryParameters**](ProjectDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -653,14 +661,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getProjectsCountByTenantIdAsync**
 ```swift
-    open class func getProjectsCountByTenantIdAsync(tenantId: UUID, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getProjectsCountByTenantIdAsync(tenantId: UUID, projectDtoCollectionQueryParameters: ProjectDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Counts projects
@@ -673,9 +681,10 @@ Gets the count of projects for the current tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
+let projectDtoCollectionQueryParameters = ProjectDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ProjectDtoCollectionQueryParameters |  (optional)
 
 // Counts projects
-ProjectsAPI.getProjectsCountByTenantIdAsync(tenantId: tenantId) { (response, error) in
+ProjectsAPI.getProjectsCountByTenantIdAsync(tenantId: tenantId, projectDtoCollectionQueryParameters: projectDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -692,6 +701,7 @@ ProjectsAPI.getProjectsCountByTenantIdAsync(tenantId: tenantId) { (response, err
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
+ **projectDtoCollectionQueryParameters** | [**ProjectDtoCollectionQueryParameters**](ProjectDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -703,14 +713,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getTasksForProjectAsync**
 ```swift
-    open class func getTasksForProjectAsync(projectId: UUID, tenantId: UUID, completion: @escaping (_ data: ProjectTaskDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getTasksForProjectAsync(projectId: UUID, tenantId: UUID, projectTaskDtoCollectionQueryParameters: ProjectTaskDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ProjectTaskDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Retrieves project tasks
@@ -724,9 +734,10 @@ import OpenAPIClient
 
 let projectId = 987 // UUID | 
 let tenantId = 987 // UUID | 
+let projectTaskDtoCollectionQueryParameters = ProjectTaskDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ProjectTaskDtoCollectionQueryParameters |  (optional)
 
 // Retrieves project tasks
-ProjectsAPI.getTasksForProjectAsync(projectId: projectId, tenantId: tenantId) { (response, error) in
+ProjectsAPI.getTasksForProjectAsync(projectId: projectId, tenantId: tenantId, projectTaskDtoCollectionQueryParameters: projectTaskDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -744,6 +755,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectId** | **UUID** |  | 
  **tenantId** | **UUID** |  | 
+ **projectTaskDtoCollectionQueryParameters** | [**ProjectTaskDtoCollectionQueryParameters**](ProjectTaskDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -755,14 +767,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getTasksForProjectCountAsync**
 ```swift
-    open class func getTasksForProjectCountAsync(projectId: UUID, tenantId: UUID, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getTasksForProjectCountAsync(projectId: UUID, tenantId: UUID, projectTaskDtoCollectionQueryParameters: ProjectTaskDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Counts project tasks
@@ -776,9 +788,10 @@ import OpenAPIClient
 
 let projectId = 987 // UUID | 
 let tenantId = 987 // UUID | 
+let projectTaskDtoCollectionQueryParameters = ProjectTaskDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ProjectTaskDtoCollectionQueryParameters |  (optional)
 
 // Counts project tasks
-ProjectsAPI.getTasksForProjectCountAsync(projectId: projectId, tenantId: tenantId) { (response, error) in
+ProjectsAPI.getTasksForProjectCountAsync(projectId: projectId, tenantId: tenantId, projectTaskDtoCollectionQueryParameters: projectTaskDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -796,6 +809,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectId** | **UUID** |  | 
  **tenantId** | **UUID** |  | 
+ **projectTaskDtoCollectionQueryParameters** | [**ProjectTaskDtoCollectionQueryParameters**](ProjectTaskDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -807,14 +821,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getTimeLogsForProjectAsync**
 ```swift
-    open class func getTimeLogsForProjectAsync(projectId: UUID, tenantId: UUID, completion: @escaping (_ data: ProjectTimeLogDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getTimeLogsForProjectAsync(projectId: UUID, tenantId: UUID, projectTimeLogDtoCollectionQueryParameters: ProjectTimeLogDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ProjectTimeLogDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Retrieves project time logs
@@ -828,9 +842,10 @@ import OpenAPIClient
 
 let projectId = 987 // UUID | 
 let tenantId = 987 // UUID | 
+let projectTimeLogDtoCollectionQueryParameters = ProjectTimeLogDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ProjectTimeLogDtoCollectionQueryParameters |  (optional)
 
 // Retrieves project time logs
-ProjectsAPI.getTimeLogsForProjectAsync(projectId: projectId, tenantId: tenantId) { (response, error) in
+ProjectsAPI.getTimeLogsForProjectAsync(projectId: projectId, tenantId: tenantId, projectTimeLogDtoCollectionQueryParameters: projectTimeLogDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -848,6 +863,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectId** | **UUID** |  | 
  **tenantId** | **UUID** |  | 
+ **projectTimeLogDtoCollectionQueryParameters** | [**ProjectTimeLogDtoCollectionQueryParameters**](ProjectTimeLogDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -859,14 +875,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchProjectAsync**
 ```swift
-    open class func patchProjectAsync(projectId: UUID, tenantId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchProjectAsync(projectId: UUID, tenantId: UUID, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patches a project
@@ -880,10 +896,10 @@ import OpenAPIClient
 
 let projectId = 987 // UUID | 
 let tenantId = 987 // UUID | 
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patches a project
-ProjectsAPI.patchProjectAsync(projectId: projectId, tenantId: tenantId, operation: operation) { (response, error) in
+ProjectsAPI.patchProjectAsync(projectId: projectId, tenantId: tenantId, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -901,7 +917,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectId** | **UUID** |  | 
  **tenantId** | **UUID** |  | 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -920,7 +936,7 @@ No authorization required
 
 # **patchProjectPeriodAsync**
 ```swift
-    open class func patchProjectPeriodAsync(projectId: UUID, projectPeriodId: UUID, tenantId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchProjectPeriodAsync(projectId: UUID, projectPeriodId: UUID, tenantId: UUID, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patches a project period
@@ -935,10 +951,10 @@ import OpenAPIClient
 let projectId = 987 // UUID | 
 let projectPeriodId = 987 // UUID | 
 let tenantId = 987 // UUID | 
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patches a project period
-ProjectsAPI.patchProjectPeriodAsync(projectId: projectId, projectPeriodId: projectPeriodId, tenantId: tenantId, operation: operation) { (response, error) in
+ProjectsAPI.patchProjectPeriodAsync(projectId: projectId, projectPeriodId: projectPeriodId, tenantId: tenantId, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -957,7 +973,7 @@ Name | Type | Description  | Notes
  **projectId** | **UUID** |  | 
  **projectPeriodId** | **UUID** |  | 
  **tenantId** | **UUID** |  | 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -976,7 +992,7 @@ No authorization required
 
 # **patchTaskForProjectAsync**
 ```swift
-    open class func patchTaskForProjectAsync(projectId: UUID, projectTaskId: UUID, tenantId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchTaskForProjectAsync(projectId: UUID, projectTaskId: UUID, tenantId: UUID, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patches a project task
@@ -991,10 +1007,10 @@ import OpenAPIClient
 let projectId = 987 // UUID | 
 let projectTaskId = 987 // UUID | 
 let tenantId = 987 // UUID | 
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patches a project task
-ProjectsAPI.patchTaskForProjectAsync(projectId: projectId, projectTaskId: projectTaskId, tenantId: tenantId, operation: operation) { (response, error) in
+ProjectsAPI.patchTaskForProjectAsync(projectId: projectId, projectTaskId: projectTaskId, tenantId: tenantId, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1013,7 +1029,7 @@ Name | Type | Description  | Notes
  **projectId** | **UUID** |  | 
  **projectTaskId** | **UUID** |  | 
  **tenantId** | **UUID** |  | 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

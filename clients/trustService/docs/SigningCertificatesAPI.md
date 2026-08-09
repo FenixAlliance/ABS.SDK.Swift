@@ -184,7 +184,7 @@ No authorization required
 
 # **getSigningCertificatesAsync**
 ```swift
-    open class func getSigningCertificatesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: SigningCertificateDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getSigningCertificatesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, signingCertificateDtoCollectionQueryParameters: SigningCertificateDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: SigningCertificateDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all signing certificates
@@ -199,9 +199,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let signingCertificateDtoCollectionQueryParameters = SigningCertificateDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SigningCertificateDtoCollectionQueryParameters |  (optional)
 
 // Get all signing certificates
-SigningCertificatesAPI.getSigningCertificatesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SigningCertificatesAPI.getSigningCertificatesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, signingCertificateDtoCollectionQueryParameters: signingCertificateDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -220,6 +221,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **signingCertificateDtoCollectionQueryParameters** | [**SigningCertificateDtoCollectionQueryParameters**](SigningCertificateDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -231,14 +233,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getSigningCertificatesCountAsync**
 ```swift
-    open class func getSigningCertificatesCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getSigningCertificatesCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, signingCertificateDtoCollectionQueryParameters: SigningCertificateDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get signing certificates count
@@ -253,9 +255,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let signingCertificateDtoCollectionQueryParameters = SigningCertificateDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SigningCertificateDtoCollectionQueryParameters |  (optional)
 
 // Get signing certificates count
-SigningCertificatesAPI.getSigningCertificatesCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SigningCertificatesAPI.getSigningCertificatesCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, signingCertificateDtoCollectionQueryParameters: signingCertificateDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -274,6 +277,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **signingCertificateDtoCollectionQueryParameters** | [**SigningCertificateDtoCollectionQueryParameters**](SigningCertificateDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -285,7 +289,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -356,7 +360,7 @@ No authorization required
 
 # **patchSigningCertificateAsync**
 ```swift
-    open class func patchSigningCertificateAsync(tenantId: UUID, id: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchSigningCertificateAsync(tenantId: UUID, id: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a signing certificate
@@ -372,10 +376,10 @@ let tenantId = 987 // UUID |
 let id = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a signing certificate
-SigningCertificatesAPI.patchSigningCertificateAsync(tenantId: tenantId, id: id, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+SigningCertificatesAPI.patchSigningCertificateAsync(tenantId: tenantId, id: id, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -395,7 +399,7 @@ Name | Type | Description  | Notes
  **id** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

@@ -437,12 +437,13 @@ open class TaxPoliciesAPI {
      - parameter taxPolicyId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter appliedTaxPolicyRecordDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getAppliedTaxPolicyRecords(tenantId: UUID, taxPolicyId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AppliedTaxPolicyRecordDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getAppliedTaxPolicyRecordsWithRequestBuilder(tenantId: tenantId, taxPolicyId: taxPolicyId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getAppliedTaxPolicyRecords(tenantId: UUID, taxPolicyId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, appliedTaxPolicyRecordDtoCollectionQueryParameters: AppliedTaxPolicyRecordDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AppliedTaxPolicyRecordDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getAppliedTaxPolicyRecordsWithRequestBuilder(tenantId: tenantId, taxPolicyId: taxPolicyId, apiVersion: apiVersion, xApiVersion: xApiVersion, appliedTaxPolicyRecordDtoCollectionQueryParameters: appliedTaxPolicyRecordDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -460,15 +461,16 @@ open class TaxPoliciesAPI {
      - parameter taxPolicyId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter appliedTaxPolicyRecordDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<AppliedTaxPolicyRecordDtoListEnvelope> 
      */
-    open class func getAppliedTaxPolicyRecordsWithRequestBuilder(tenantId: UUID, taxPolicyId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<AppliedTaxPolicyRecordDtoListEnvelope> {
+    open class func getAppliedTaxPolicyRecordsWithRequestBuilder(tenantId: UUID, taxPolicyId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, appliedTaxPolicyRecordDtoCollectionQueryParameters: AppliedTaxPolicyRecordDtoCollectionQueryParameters? = nil) -> RequestBuilder<AppliedTaxPolicyRecordDtoListEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/TaxPolicies/{taxPolicyId}/AppliedTaxPolicyRecords"
         let taxPolicyIdPreEscape = "\(APIHelper.mapValueToPathItem(taxPolicyId))"
         let taxPolicyIdPostEscape = taxPolicyIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{taxPolicyId}", with: taxPolicyIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: appliedTaxPolicyRecordDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -477,6 +479,7 @@ open class TaxPoliciesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -494,12 +497,13 @@ open class TaxPoliciesAPI {
      - parameter taxPolicyId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter appliedTaxPolicyRecordDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getAppliedTaxPolicyRecordsCount(tenantId: UUID, taxPolicyId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getAppliedTaxPolicyRecordsCountWithRequestBuilder(tenantId: tenantId, taxPolicyId: taxPolicyId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getAppliedTaxPolicyRecordsCount(tenantId: UUID, taxPolicyId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, appliedTaxPolicyRecordDtoCollectionQueryParameters: AppliedTaxPolicyRecordDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getAppliedTaxPolicyRecordsCountWithRequestBuilder(tenantId: tenantId, taxPolicyId: taxPolicyId, apiVersion: apiVersion, xApiVersion: xApiVersion, appliedTaxPolicyRecordDtoCollectionQueryParameters: appliedTaxPolicyRecordDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -517,15 +521,16 @@ open class TaxPoliciesAPI {
      - parameter taxPolicyId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter appliedTaxPolicyRecordDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getAppliedTaxPolicyRecordsCountWithRequestBuilder(tenantId: UUID, taxPolicyId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getAppliedTaxPolicyRecordsCountWithRequestBuilder(tenantId: UUID, taxPolicyId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, appliedTaxPolicyRecordDtoCollectionQueryParameters: AppliedTaxPolicyRecordDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/AccountingService/TaxPolicies/{taxPolicyId}/AppliedTaxPolicyRecords/Count"
         let taxPolicyIdPreEscape = "\(APIHelper.mapValueToPathItem(taxPolicyId))"
         let taxPolicyIdPostEscape = taxPolicyIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{taxPolicyId}", with: taxPolicyIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: appliedTaxPolicyRecordDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -534,6 +539,7 @@ open class TaxPoliciesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -613,12 +619,13 @@ open class TaxPoliciesAPI {
      - parameter taxPolicyId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemTaxPolicyRecordDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getItemTaxPolicyRecords(tenantId: UUID, taxPolicyId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemTaxPolicyRecordDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getItemTaxPolicyRecordsWithRequestBuilder(tenantId: tenantId, taxPolicyId: taxPolicyId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getItemTaxPolicyRecords(tenantId: UUID, taxPolicyId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemTaxPolicyRecordDtoCollectionQueryParameters: ItemTaxPolicyRecordDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ItemTaxPolicyRecordDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getItemTaxPolicyRecordsWithRequestBuilder(tenantId: tenantId, taxPolicyId: taxPolicyId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemTaxPolicyRecordDtoCollectionQueryParameters: itemTaxPolicyRecordDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -636,15 +643,16 @@ open class TaxPoliciesAPI {
      - parameter taxPolicyId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter itemTaxPolicyRecordDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<ItemTaxPolicyRecordDtoListEnvelope> 
      */
-    open class func getItemTaxPolicyRecordsWithRequestBuilder(tenantId: UUID, taxPolicyId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ItemTaxPolicyRecordDtoListEnvelope> {
+    open class func getItemTaxPolicyRecordsWithRequestBuilder(tenantId: UUID, taxPolicyId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemTaxPolicyRecordDtoCollectionQueryParameters: ItemTaxPolicyRecordDtoCollectionQueryParameters? = nil) -> RequestBuilder<ItemTaxPolicyRecordDtoListEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/TaxPolicies/{taxPolicyId}/ItemTaxPolicyRecords"
         let taxPolicyIdPreEscape = "\(APIHelper.mapValueToPathItem(taxPolicyId))"
         let taxPolicyIdPostEscape = taxPolicyIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{taxPolicyId}", with: taxPolicyIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: itemTaxPolicyRecordDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -653,6 +661,7 @@ open class TaxPoliciesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -669,12 +678,13 @@ open class TaxPoliciesAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter taxPolicyDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getTaxPolicies(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TaxPolicyDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getTaxPoliciesWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getTaxPolicies(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, taxPolicyDtoCollectionQueryParameters: TaxPolicyDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TaxPolicyDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getTaxPoliciesWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, taxPolicyDtoCollectionQueryParameters: taxPolicyDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -691,12 +701,13 @@ open class TaxPoliciesAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter taxPolicyDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<TaxPolicyDtoListEnvelope> 
      */
-    open class func getTaxPoliciesWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<TaxPolicyDtoListEnvelope> {
+    open class func getTaxPoliciesWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, taxPolicyDtoCollectionQueryParameters: TaxPolicyDtoCollectionQueryParameters? = nil) -> RequestBuilder<TaxPolicyDtoListEnvelope> {
         let localVariablePath = "/api/v2/AccountingService/TaxPolicies"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: taxPolicyDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -705,6 +716,7 @@ open class TaxPoliciesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -722,12 +734,13 @@ open class TaxPoliciesAPI {
      - parameter authorityId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter taxPolicyDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getTaxPoliciesByAuthority(tenantId: UUID, authorityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TaxPolicyDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getTaxPoliciesByAuthorityWithRequestBuilder(tenantId: tenantId, authorityId: authorityId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getTaxPoliciesByAuthority(tenantId: UUID, authorityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, taxPolicyDtoCollectionQueryParameters: TaxPolicyDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TaxPolicyDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getTaxPoliciesByAuthorityWithRequestBuilder(tenantId: tenantId, authorityId: authorityId, apiVersion: apiVersion, xApiVersion: xApiVersion, taxPolicyDtoCollectionQueryParameters: taxPolicyDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -745,15 +758,16 @@ open class TaxPoliciesAPI {
      - parameter authorityId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter taxPolicyDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<TaxPolicyDtoListEnvelope> 
      */
-    open class func getTaxPoliciesByAuthorityWithRequestBuilder(tenantId: UUID, authorityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<TaxPolicyDtoListEnvelope> {
+    open class func getTaxPoliciesByAuthorityWithRequestBuilder(tenantId: UUID, authorityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, taxPolicyDtoCollectionQueryParameters: TaxPolicyDtoCollectionQueryParameters? = nil) -> RequestBuilder<TaxPolicyDtoListEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/TaxPolicies/ByAuthority/{authorityId}"
         let authorityIdPreEscape = "\(APIHelper.mapValueToPathItem(authorityId))"
         let authorityIdPostEscape = authorityIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{authorityId}", with: authorityIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: taxPolicyDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -762,6 +776,7 @@ open class TaxPoliciesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -778,12 +793,13 @@ open class TaxPoliciesAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter taxPolicyDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getTaxPoliciesCount(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getTaxPoliciesCountWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getTaxPoliciesCount(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, taxPolicyDtoCollectionQueryParameters: TaxPolicyDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getTaxPoliciesCountWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, taxPolicyDtoCollectionQueryParameters: taxPolicyDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -800,12 +816,13 @@ open class TaxPoliciesAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter taxPolicyDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getTaxPoliciesCountWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getTaxPoliciesCountWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, taxPolicyDtoCollectionQueryParameters: TaxPolicyDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/AccountingService/TaxPolicies/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: taxPolicyDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -814,6 +831,7 @@ open class TaxPoliciesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -889,13 +907,13 @@ open class TaxPoliciesAPI {
      - parameter appliedTaxPolicyRecordId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchAppliedTaxPolicyRecord(tenantId: UUID, taxPolicyId: UUID, appliedTaxPolicyRecordId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchAppliedTaxPolicyRecordWithRequestBuilder(tenantId: tenantId, taxPolicyId: taxPolicyId, appliedTaxPolicyRecordId: appliedTaxPolicyRecordId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchAppliedTaxPolicyRecord(tenantId: UUID, taxPolicyId: UUID, appliedTaxPolicyRecordId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchAppliedTaxPolicyRecordWithRequestBuilder(tenantId: tenantId, taxPolicyId: taxPolicyId, appliedTaxPolicyRecordId: appliedTaxPolicyRecordId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -914,10 +932,10 @@ open class TaxPoliciesAPI {
      - parameter appliedTaxPolicyRecordId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchAppliedTaxPolicyRecordWithRequestBuilder(tenantId: UUID, taxPolicyId: UUID, appliedTaxPolicyRecordId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchAppliedTaxPolicyRecordWithRequestBuilder(tenantId: UUID, taxPolicyId: UUID, appliedTaxPolicyRecordId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/TaxPolicies/{taxPolicyId}/AppliedTaxPolicyRecords/{appliedTaxPolicyRecordId}"
         let taxPolicyIdPreEscape = "\(APIHelper.mapValueToPathItem(taxPolicyId))"
         let taxPolicyIdPostEscape = taxPolicyIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -926,7 +944,7 @@ open class TaxPoliciesAPI {
         let appliedTaxPolicyRecordIdPostEscape = appliedTaxPolicyRecordIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{appliedTaxPolicyRecordId}", with: appliedTaxPolicyRecordIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -954,13 +972,13 @@ open class TaxPoliciesAPI {
      - parameter itemTaxPolicyRecordId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchItemTaxPolicyRecord(tenantId: UUID, taxPolicyId: UUID, itemTaxPolicyRecordId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchItemTaxPolicyRecordWithRequestBuilder(tenantId: tenantId, taxPolicyId: taxPolicyId, itemTaxPolicyRecordId: itemTaxPolicyRecordId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchItemTaxPolicyRecord(tenantId: UUID, taxPolicyId: UUID, itemTaxPolicyRecordId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchItemTaxPolicyRecordWithRequestBuilder(tenantId: tenantId, taxPolicyId: taxPolicyId, itemTaxPolicyRecordId: itemTaxPolicyRecordId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -979,10 +997,10 @@ open class TaxPoliciesAPI {
      - parameter itemTaxPolicyRecordId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchItemTaxPolicyRecordWithRequestBuilder(tenantId: UUID, taxPolicyId: UUID, itemTaxPolicyRecordId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchItemTaxPolicyRecordWithRequestBuilder(tenantId: UUID, taxPolicyId: UUID, itemTaxPolicyRecordId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/TaxPolicies/{taxPolicyId}/ItemTaxPolicyRecords/{itemTaxPolicyRecordId}"
         let taxPolicyIdPreEscape = "\(APIHelper.mapValueToPathItem(taxPolicyId))"
         let taxPolicyIdPostEscape = taxPolicyIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -991,7 +1009,7 @@ open class TaxPoliciesAPI {
         let itemTaxPolicyRecordIdPostEscape = itemTaxPolicyRecordIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{itemTaxPolicyRecordId}", with: itemTaxPolicyRecordIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1018,13 +1036,13 @@ open class TaxPoliciesAPI {
      - parameter id: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchTaxPolicy(tenantId: UUID, id: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchTaxPolicyWithRequestBuilder(tenantId: tenantId, id: id, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchTaxPolicy(tenantId: UUID, id: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchTaxPolicyWithRequestBuilder(tenantId: tenantId, id: id, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1042,16 +1060,16 @@ open class TaxPoliciesAPI {
      - parameter id: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchTaxPolicyWithRequestBuilder(tenantId: UUID, id: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchTaxPolicyWithRequestBuilder(tenantId: UUID, id: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/TaxPolicies/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

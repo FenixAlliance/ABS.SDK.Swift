@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 # **countBlogPostTagsAsync**
 ```swift
-    open class func countBlogPostTagsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countBlogPostTagsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, blogPostTagDtoCollectionQueryParameters: BlogPostTagDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count blog post tags
@@ -30,9 +30,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let blogPostTagDtoCollectionQueryParameters = BlogPostTagDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // BlogPostTagDtoCollectionQueryParameters |  (optional)
 
 // Count blog post tags
-BlogPostTagsAPI.countBlogPostTagsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+BlogPostTagsAPI.countBlogPostTagsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, blogPostTagDtoCollectionQueryParameters: blogPostTagDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -51,6 +52,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **blogPostTagDtoCollectionQueryParameters** | [**BlogPostTagDtoCollectionQueryParameters**](BlogPostTagDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -62,7 +64,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -237,7 +239,7 @@ No authorization required
 
 # **getBlogPostTagsAsync**
 ```swift
-    open class func getBlogPostTagsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: BlogPostTagDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getBlogPostTagsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, blogPostTagDtoCollectionQueryParameters: BlogPostTagDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: BlogPostTagDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get blog post tags
@@ -252,9 +254,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let blogPostTagDtoCollectionQueryParameters = BlogPostTagDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // BlogPostTagDtoCollectionQueryParameters |  (optional)
 
 // Get blog post tags
-BlogPostTagsAPI.getBlogPostTagsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+BlogPostTagsAPI.getBlogPostTagsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, blogPostTagDtoCollectionQueryParameters: blogPostTagDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -273,6 +276,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **blogPostTagDtoCollectionQueryParameters** | [**BlogPostTagDtoCollectionQueryParameters**](BlogPostTagDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -284,14 +288,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchBlogPostTagAsync**
 ```swift
-    open class func patchBlogPostTagAsync(tenantId: UUID, blogPostTagId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchBlogPostTagAsync(tenantId: UUID, blogPostTagId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a blog post tag
@@ -307,10 +311,10 @@ let tenantId = 987 // UUID |
 let blogPostTagId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a blog post tag
-BlogPostTagsAPI.patchBlogPostTagAsync(tenantId: tenantId, blogPostTagId: blogPostTagId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+BlogPostTagsAPI.patchBlogPostTagAsync(tenantId: tenantId, blogPostTagId: blogPostTagId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -330,7 +334,7 @@ Name | Type | Description  | Notes
  **blogPostTagId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

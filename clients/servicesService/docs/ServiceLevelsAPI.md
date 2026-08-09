@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 # **countAllServiceLevelsAsync**
 ```swift
-    open class func countAllServiceLevelsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countAllServiceLevelsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, serviceLevelDtoCollectionQueryParameters: ServiceLevelDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get all service levels count
@@ -32,9 +32,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let serviceLevelDtoCollectionQueryParameters = ServiceLevelDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ServiceLevelDtoCollectionQueryParameters |  (optional)
 
 // Get all service levels count
-ServiceLevelsAPI.countAllServiceLevelsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ServiceLevelsAPI.countAllServiceLevelsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, serviceLevelDtoCollectionQueryParameters: serviceLevelDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -53,6 +54,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **serviceLevelDtoCollectionQueryParameters** | [**ServiceLevelDtoCollectionQueryParameters**](ServiceLevelDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -64,7 +66,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -187,7 +189,7 @@ No authorization required
 
 # **getAllServiceLevelsAsync**
 ```swift
-    open class func getAllServiceLevelsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ServiceLevelDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
+    open class func getAllServiceLevelsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, serviceLevelDtoCollectionQueryParameters: ServiceLevelDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ServiceLevelDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all service levels
@@ -202,9 +204,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let serviceLevelDtoCollectionQueryParameters = ServiceLevelDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ServiceLevelDtoCollectionQueryParameters |  (optional)
 
 // Get all service levels
-ServiceLevelsAPI.getAllServiceLevelsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ServiceLevelsAPI.getAllServiceLevelsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, serviceLevelDtoCollectionQueryParameters: serviceLevelDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -223,6 +226,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **serviceLevelDtoCollectionQueryParameters** | [**ServiceLevelDtoCollectionQueryParameters**](ServiceLevelDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -234,7 +238,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -299,7 +303,7 @@ No authorization required
 
 # **getServiceLevelsAsync**
 ```swift
-    open class func getServiceLevelsAsync(tenantId: UUID, serviceId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ServiceLevelDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
+    open class func getServiceLevelsAsync(tenantId: UUID, serviceId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, serviceLevelDtoCollectionQueryParameters: ServiceLevelDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ServiceLevelDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all service levels
@@ -315,9 +319,10 @@ let tenantId = 987 // UUID |
 let serviceId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let serviceLevelDtoCollectionQueryParameters = ServiceLevelDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ServiceLevelDtoCollectionQueryParameters |  (optional)
 
 // Get all service levels
-ServiceLevelsAPI.getServiceLevelsAsync(tenantId: tenantId, serviceId: serviceId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ServiceLevelsAPI.getServiceLevelsAsync(tenantId: tenantId, serviceId: serviceId, apiVersion: apiVersion, xApiVersion: xApiVersion, serviceLevelDtoCollectionQueryParameters: serviceLevelDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -337,6 +342,7 @@ Name | Type | Description  | Notes
  **serviceId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **serviceLevelDtoCollectionQueryParameters** | [**ServiceLevelDtoCollectionQueryParameters**](ServiceLevelDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -348,14 +354,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getServiceLevelsCountAsync**
 ```swift
-    open class func getServiceLevelsCountAsync(tenantId: UUID, serviceId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getServiceLevelsCountAsync(tenantId: UUID, serviceId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, serviceLevelDtoCollectionQueryParameters: ServiceLevelDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get service levels count
@@ -371,9 +377,10 @@ let tenantId = 987 // UUID |
 let serviceId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let serviceLevelDtoCollectionQueryParameters = ServiceLevelDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ServiceLevelDtoCollectionQueryParameters |  (optional)
 
 // Get service levels count
-ServiceLevelsAPI.getServiceLevelsCountAsync(tenantId: tenantId, serviceId: serviceId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ServiceLevelsAPI.getServiceLevelsCountAsync(tenantId: tenantId, serviceId: serviceId, apiVersion: apiVersion, xApiVersion: xApiVersion, serviceLevelDtoCollectionQueryParameters: serviceLevelDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -393,6 +400,7 @@ Name | Type | Description  | Notes
  **serviceId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **serviceLevelDtoCollectionQueryParameters** | [**ServiceLevelDtoCollectionQueryParameters**](ServiceLevelDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -404,14 +412,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchServiceLevelAsync**
 ```swift
-    open class func patchServiceLevelAsync(tenantId: UUID, serviceId: UUID, serviceLevelId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: Envelope?, _ error: Error?) -> Void)
+    open class func patchServiceLevelAsync(tenantId: UUID, serviceId: UUID, serviceLevelId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: Envelope?, _ error: Error?) -> Void)
 ```
 
 Patch a service level
@@ -428,10 +436,10 @@ let serviceId = 987 // UUID |
 let serviceLevelId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a service level
-ServiceLevelsAPI.patchServiceLevelAsync(tenantId: tenantId, serviceId: serviceId, serviceLevelId: serviceLevelId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+ServiceLevelsAPI.patchServiceLevelAsync(tenantId: tenantId, serviceId: serviceId, serviceLevelId: serviceLevelId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -452,7 +460,7 @@ Name | Type | Description  | Notes
  **serviceLevelId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

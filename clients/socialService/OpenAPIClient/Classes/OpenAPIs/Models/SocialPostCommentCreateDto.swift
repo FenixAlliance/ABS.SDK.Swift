@@ -16,11 +16,10 @@ public struct SocialPostCommentCreateDto: Codable, JSONEncodable, Hashable {
         case plainText = "PlainText"
         case html = "Html"
     }
-    static let messageRule = StringRule(minLength: 1, maxLength: 280, pattern: "/^[\\w\\s\\.\\,\\!\\?\\-\\(\\)\\[\\]\\{\\}\\'\\\"\\:\\;]{1,280}$/")
     static let bodyHtmlRule = StringRule(minLength: nil, maxLength: 8000, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
-    public var message: String
+    public var message: String?
     public var bodyHtml: String?
     public var bodyFormat: BodyFormat?
     public var parentCommentId: String?
@@ -28,7 +27,7 @@ public struct SocialPostCommentCreateDto: Codable, JSONEncodable, Hashable {
     public var socialFeedPostId: String?
     public var socialPostId: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, message: String, bodyHtml: String? = nil, bodyFormat: BodyFormat? = nil, parentCommentId: String? = nil, socialProfileId: String? = nil, socialFeedPostId: String? = nil, socialPostId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, message: String? = nil, bodyHtml: String? = nil, bodyFormat: BodyFormat? = nil, parentCommentId: String? = nil, socialProfileId: String? = nil, socialFeedPostId: String? = nil, socialPostId: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.message = message
@@ -58,7 +57,7 @@ public struct SocialPostCommentCreateDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
-        try container.encode(message, forKey: .message)
+        try container.encodeIfPresent(message, forKey: .message)
         try container.encodeIfPresent(bodyHtml, forKey: .bodyHtml)
         try container.encodeIfPresent(bodyFormat, forKey: .bodyFormat)
         try container.encodeIfPresent(parentCommentId, forKey: .parentCommentId)

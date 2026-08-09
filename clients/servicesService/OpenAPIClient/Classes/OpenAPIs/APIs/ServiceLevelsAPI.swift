@@ -18,12 +18,13 @@ open class ServiceLevelsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter serviceLevelDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func countAllServiceLevelsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return countAllServiceLevelsAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func countAllServiceLevelsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, serviceLevelDtoCollectionQueryParameters: ServiceLevelDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return countAllServiceLevelsAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, serviceLevelDtoCollectionQueryParameters: serviceLevelDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -40,12 +41,13 @@ open class ServiceLevelsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter serviceLevelDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func countAllServiceLevelsAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func countAllServiceLevelsAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, serviceLevelDtoCollectionQueryParameters: ServiceLevelDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/ServicesService/ServiceLevels/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: serviceLevelDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -54,6 +56,7 @@ open class ServiceLevelsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -192,12 +195,13 @@ open class ServiceLevelsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter serviceLevelDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getAllServiceLevelsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ServiceLevelDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getAllServiceLevelsAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getAllServiceLevelsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, serviceLevelDtoCollectionQueryParameters: ServiceLevelDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ServiceLevelDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getAllServiceLevelsAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, serviceLevelDtoCollectionQueryParameters: serviceLevelDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -214,12 +218,13 @@ open class ServiceLevelsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter serviceLevelDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<ServiceLevelDtoIReadOnlyListEnvelope> 
      */
-    open class func getAllServiceLevelsAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ServiceLevelDtoIReadOnlyListEnvelope> {
+    open class func getAllServiceLevelsAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, serviceLevelDtoCollectionQueryParameters: ServiceLevelDtoCollectionQueryParameters? = nil) -> RequestBuilder<ServiceLevelDtoIReadOnlyListEnvelope> {
         let localVariablePath = "/api/v2/ServicesService/ServiceLevels"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: serviceLevelDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -228,6 +233,7 @@ open class ServiceLevelsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -307,12 +313,13 @@ open class ServiceLevelsAPI {
      - parameter serviceId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter serviceLevelDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getServiceLevelsAsync(tenantId: UUID, serviceId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ServiceLevelDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getServiceLevelsAsyncWithRequestBuilder(tenantId: tenantId, serviceId: serviceId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getServiceLevelsAsync(tenantId: UUID, serviceId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, serviceLevelDtoCollectionQueryParameters: ServiceLevelDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ServiceLevelDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getServiceLevelsAsyncWithRequestBuilder(tenantId: tenantId, serviceId: serviceId, apiVersion: apiVersion, xApiVersion: xApiVersion, serviceLevelDtoCollectionQueryParameters: serviceLevelDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -330,15 +337,16 @@ open class ServiceLevelsAPI {
      - parameter serviceId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter serviceLevelDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<ServiceLevelDtoIReadOnlyListEnvelope> 
      */
-    open class func getServiceLevelsAsyncWithRequestBuilder(tenantId: UUID, serviceId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ServiceLevelDtoIReadOnlyListEnvelope> {
+    open class func getServiceLevelsAsyncWithRequestBuilder(tenantId: UUID, serviceId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, serviceLevelDtoCollectionQueryParameters: ServiceLevelDtoCollectionQueryParameters? = nil) -> RequestBuilder<ServiceLevelDtoIReadOnlyListEnvelope> {
         var localVariablePath = "/api/v2/ServicesService/Services/{serviceId}/ServiceLevels"
         let serviceIdPreEscape = "\(APIHelper.mapValueToPathItem(serviceId))"
         let serviceIdPostEscape = serviceIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{serviceId}", with: serviceIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: serviceLevelDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -347,6 +355,7 @@ open class ServiceLevelsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -364,12 +373,13 @@ open class ServiceLevelsAPI {
      - parameter serviceId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter serviceLevelDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getServiceLevelsCountAsync(tenantId: UUID, serviceId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getServiceLevelsCountAsyncWithRequestBuilder(tenantId: tenantId, serviceId: serviceId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getServiceLevelsCountAsync(tenantId: UUID, serviceId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, serviceLevelDtoCollectionQueryParameters: ServiceLevelDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getServiceLevelsCountAsyncWithRequestBuilder(tenantId: tenantId, serviceId: serviceId, apiVersion: apiVersion, xApiVersion: xApiVersion, serviceLevelDtoCollectionQueryParameters: serviceLevelDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -387,15 +397,16 @@ open class ServiceLevelsAPI {
      - parameter serviceId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter serviceLevelDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getServiceLevelsCountAsyncWithRequestBuilder(tenantId: UUID, serviceId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getServiceLevelsCountAsyncWithRequestBuilder(tenantId: UUID, serviceId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, serviceLevelDtoCollectionQueryParameters: ServiceLevelDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/ServicesService/Services/{serviceId}/ServiceLevels/Count"
         let serviceIdPreEscape = "\(APIHelper.mapValueToPathItem(serviceId))"
         let serviceIdPostEscape = serviceIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{serviceId}", with: serviceIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: serviceLevelDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -404,6 +415,7 @@ open class ServiceLevelsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -422,13 +434,13 @@ open class ServiceLevelsAPI {
      - parameter serviceLevelId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchServiceLevelAsync(tenantId: UUID, serviceId: UUID, serviceLevelId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchServiceLevelAsyncWithRequestBuilder(tenantId: tenantId, serviceId: serviceId, serviceLevelId: serviceLevelId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchServiceLevelAsync(tenantId: UUID, serviceId: UUID, serviceLevelId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchServiceLevelAsyncWithRequestBuilder(tenantId: tenantId, serviceId: serviceId, serviceLevelId: serviceLevelId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -447,10 +459,10 @@ open class ServiceLevelsAPI {
      - parameter serviceLevelId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<Envelope> 
      */
-    open class func patchServiceLevelAsyncWithRequestBuilder(tenantId: UUID, serviceId: UUID, serviceLevelId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil) -> RequestBuilder<Envelope> {
+    open class func patchServiceLevelAsyncWithRequestBuilder(tenantId: UUID, serviceId: UUID, serviceLevelId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<Envelope> {
         var localVariablePath = "/api/v2/ServicesService/Services/{serviceId}/ServiceLevels/{serviceLevelId}"
         let serviceIdPreEscape = "\(APIHelper.mapValueToPathItem(serviceId))"
         let serviceIdPostEscape = serviceIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -459,7 +471,7 @@ open class ServiceLevelsAPI {
         let serviceLevelIdPostEscape = serviceLevelIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{serviceLevelId}", with: serviceLevelIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

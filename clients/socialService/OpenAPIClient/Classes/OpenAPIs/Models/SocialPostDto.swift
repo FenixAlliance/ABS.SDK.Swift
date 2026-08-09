@@ -12,6 +12,15 @@ import AnyCodable
 
 public struct SocialPostDto: Codable, JSONEncodable, Hashable {
 
+    public enum SocialProfileType: String, Codable, CaseIterable {
+        case user = "User"
+        case tenant = "Tenant"
+        case contact = "Contact"
+    }
+    public enum BodyFormat: String, Codable, CaseIterable {
+        case plainText = "PlainText"
+        case html = "Html"
+    }
     public var id: String?
     public var timestamp: Date?
     public var title: String?
@@ -21,8 +30,12 @@ public struct SocialPostDto: Codable, JSONEncodable, Hashable {
     public var socialProfileAvatarUrl: String?
     public var commentsCount: Int?
     public var reactionsCount: Int?
+    public var socialProfileType: SocialProfileType?
+    public var bodyHtml: String?
+    public var bodyFormat: BodyFormat?
+    public var backgroundStyle: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, message: String? = nil, socialProfileId: String? = nil, socialProfileName: String? = nil, socialProfileAvatarUrl: String? = nil, commentsCount: Int? = nil, reactionsCount: Int? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, title: String? = nil, message: String? = nil, socialProfileId: String? = nil, socialProfileName: String? = nil, socialProfileAvatarUrl: String? = nil, commentsCount: Int? = nil, reactionsCount: Int? = nil, socialProfileType: SocialProfileType? = nil, bodyHtml: String? = nil, bodyFormat: BodyFormat? = nil, backgroundStyle: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.title = title
@@ -32,6 +45,10 @@ public struct SocialPostDto: Codable, JSONEncodable, Hashable {
         self.socialProfileAvatarUrl = socialProfileAvatarUrl
         self.commentsCount = commentsCount
         self.reactionsCount = reactionsCount
+        self.socialProfileType = socialProfileType
+        self.bodyHtml = bodyHtml
+        self.bodyFormat = bodyFormat
+        self.backgroundStyle = backgroundStyle
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -44,6 +61,10 @@ public struct SocialPostDto: Codable, JSONEncodable, Hashable {
         case socialProfileAvatarUrl
         case commentsCount
         case reactionsCount
+        case socialProfileType
+        case bodyHtml
+        case bodyFormat
+        case backgroundStyle
     }
 
     // Encodable protocol methods
@@ -59,6 +80,10 @@ public struct SocialPostDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(socialProfileAvatarUrl, forKey: .socialProfileAvatarUrl)
         try container.encodeIfPresent(commentsCount, forKey: .commentsCount)
         try container.encodeIfPresent(reactionsCount, forKey: .reactionsCount)
+        try container.encodeIfPresent(socialProfileType, forKey: .socialProfileType)
+        try container.encodeIfPresent(bodyHtml, forKey: .bodyHtml)
+        try container.encodeIfPresent(bodyFormat, forKey: .bodyFormat)
+        try container.encodeIfPresent(backgroundStyle, forKey: .backgroundStyle)
     }
 }
 

@@ -182,7 +182,7 @@ No authorization required
 
 # **getDeliveryNotesAsync**
 ```swift
-    open class func getDeliveryNotesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: DeliveryNoteDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getDeliveryNotesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, deliveryNoteDtoCollectionQueryParameters: DeliveryNoteDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: DeliveryNoteDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all delivery notes
@@ -197,9 +197,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let deliveryNoteDtoCollectionQueryParameters = DeliveryNoteDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // DeliveryNoteDtoCollectionQueryParameters |  (optional)
 
 // Get all delivery notes
-DeliveryNotesAPI.getDeliveryNotesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+DeliveryNotesAPI.getDeliveryNotesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, deliveryNoteDtoCollectionQueryParameters: deliveryNoteDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -218,6 +219,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **deliveryNoteDtoCollectionQueryParameters** | [**DeliveryNoteDtoCollectionQueryParameters**](DeliveryNoteDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -229,14 +231,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getDeliveryNotesCountAsync**
 ```swift
-    open class func getDeliveryNotesCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getDeliveryNotesCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, deliveryNoteDtoCollectionQueryParameters: DeliveryNoteDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get delivery notes count
@@ -251,9 +253,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let deliveryNoteDtoCollectionQueryParameters = DeliveryNoteDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // DeliveryNoteDtoCollectionQueryParameters |  (optional)
 
 // Get delivery notes count
-DeliveryNotesAPI.getDeliveryNotesCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+DeliveryNotesAPI.getDeliveryNotesCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, deliveryNoteDtoCollectionQueryParameters: deliveryNoteDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -272,6 +275,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **deliveryNoteDtoCollectionQueryParameters** | [**DeliveryNoteDtoCollectionQueryParameters**](DeliveryNoteDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -283,7 +287,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

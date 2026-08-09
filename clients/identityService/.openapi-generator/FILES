@@ -20,6 +20,7 @@ OpenAPIClient/Classes/OpenAPIs/Models/AccessTokenResponse.swift
 OpenAPIClient/Classes/OpenAPIs/Models/AuthResult.swift
 OpenAPIClient/Classes/OpenAPIs/Models/AuthResultEnvelope.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ErrorEnvelope.swift
+OpenAPIClient/Classes/OpenAPIs/Models/ExecutionProvenance.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ForgotPasswordRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/HttpValidationProblemDetails.swift
 OpenAPIClient/Classes/OpenAPIs/Models/InfoRequest.swift
@@ -57,6 +58,7 @@ docs/AuthResult.md
 docs/AuthResultEnvelope.md
 docs/CheckerAPI.md
 docs/ErrorEnvelope.md
+docs/ExecutionProvenance.md
 docs/FenixAllianceABSWebAPI.md
 docs/ForgotPasswordRequest.md
 docs/HttpValidationProblemDetails.md

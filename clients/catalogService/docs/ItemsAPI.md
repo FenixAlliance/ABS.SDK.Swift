@@ -200,7 +200,7 @@ No authorization required
 
 # **countStockItemTagsByItemId**
 ```swift
-    open class func countStockItemTagsByItemId(tenantId: UUID, itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countStockItemTagsByItemId(tenantId: UUID, itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemTagDtoCollectionQueryParameters: ItemTagDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count tags for a stock item
@@ -216,9 +216,10 @@ let tenantId = 987 // UUID |
 let itemId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let itemTagDtoCollectionQueryParameters = ItemTagDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ItemTagDtoCollectionQueryParameters |  (optional)
 
 // Count tags for a stock item
-ItemsAPI.countStockItemTagsByItemId(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemsAPI.countStockItemTagsByItemId(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemTagDtoCollectionQueryParameters: itemTagDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -238,6 +239,7 @@ Name | Type | Description  | Notes
  **itemId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **itemTagDtoCollectionQueryParameters** | [**ItemTagDtoCollectionQueryParameters**](ItemTagDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -249,14 +251,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **countStockItemsByBusiness**
 ```swift
-    open class func countStockItemsByBusiness(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countStockItemsByBusiness(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, catalogItemDtoCollectionQueryParameters: CatalogItemDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count stock items by business
@@ -271,9 +273,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let catalogItemDtoCollectionQueryParameters = CatalogItemDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CatalogItemDtoCollectionQueryParameters |  (optional)
 
 // Count stock items by business
-ItemsAPI.countStockItemsByBusiness(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemsAPI.countStockItemsByBusiness(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, catalogItemDtoCollectionQueryParameters: catalogItemDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -292,6 +295,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **catalogItemDtoCollectionQueryParameters** | [**CatalogItemDtoCollectionQueryParameters**](CatalogItemDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -303,7 +307,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -586,7 +590,7 @@ No authorization required
 
 # **getStockItemAttachmentsByItemId**
 ```swift
-    open class func getStockItemAttachmentsByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemAttachmentDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getStockItemAttachmentsByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemAttachmentDtoCollectionQueryParameters: ItemAttachmentDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ItemAttachmentDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get attachments for a stock item
@@ -601,9 +605,10 @@ import OpenAPIClient
 let itemId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let itemAttachmentDtoCollectionQueryParameters = ItemAttachmentDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ItemAttachmentDtoCollectionQueryParameters |  (optional)
 
 // Get attachments for a stock item
-ItemsAPI.getStockItemAttachmentsByItemId(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemsAPI.getStockItemAttachmentsByItemId(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemAttachmentDtoCollectionQueryParameters: itemAttachmentDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -622,6 +627,7 @@ Name | Type | Description  | Notes
  **itemId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **itemAttachmentDtoCollectionQueryParameters** | [**ItemAttachmentDtoCollectionQueryParameters**](ItemAttachmentDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -633,7 +639,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -806,7 +812,7 @@ No authorization required
 
 # **getStockItemBrandsByItemId**
 ```swift
-    open class func getStockItemBrandsByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemBrandDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getStockItemBrandsByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemBrandDtoCollectionQueryParameters: ItemBrandDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ItemBrandDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get brands for a stock item
@@ -821,9 +827,10 @@ import OpenAPIClient
 let itemId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let itemBrandDtoCollectionQueryParameters = ItemBrandDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ItemBrandDtoCollectionQueryParameters |  (optional)
 
 // Get brands for a stock item
-ItemsAPI.getStockItemBrandsByItemId(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemsAPI.getStockItemBrandsByItemId(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemBrandDtoCollectionQueryParameters: itemBrandDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -842,6 +849,7 @@ Name | Type | Description  | Notes
  **itemId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **itemBrandDtoCollectionQueryParameters** | [**ItemBrandDtoCollectionQueryParameters**](ItemBrandDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -853,7 +861,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -914,7 +922,7 @@ No authorization required
 
 # **getStockItemCategoriesByItemId**
 ```swift
-    open class func getStockItemCategoriesByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemCategoryDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getStockItemCategoriesByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemCategoryDtoCollectionQueryParameters: ItemCategoryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ItemCategoryDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get categories for a stock item
@@ -929,9 +937,10 @@ import OpenAPIClient
 let itemId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let itemCategoryDtoCollectionQueryParameters = ItemCategoryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ItemCategoryDtoCollectionQueryParameters |  (optional)
 
 // Get categories for a stock item
-ItemsAPI.getStockItemCategoriesByItemId(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemsAPI.getStockItemCategoriesByItemId(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemCategoryDtoCollectionQueryParameters: itemCategoryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -950,6 +959,7 @@ Name | Type | Description  | Notes
  **itemId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **itemCategoryDtoCollectionQueryParameters** | [**ItemCategoryDtoCollectionQueryParameters**](ItemCategoryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -961,7 +971,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1024,7 +1034,7 @@ No authorization required
 
 # **getStockItemGoogleCategoriesByItemId**
 ```swift
-    open class func getStockItemGoogleCategoriesByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemGoogleCategoryDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getStockItemGoogleCategoriesByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemGoogleCategoryDtoCollectionQueryParameters: ItemGoogleCategoryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ItemGoogleCategoryDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get Google categories for a stock item
@@ -1039,9 +1049,10 @@ import OpenAPIClient
 let itemId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let itemGoogleCategoryDtoCollectionQueryParameters = ItemGoogleCategoryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ItemGoogleCategoryDtoCollectionQueryParameters |  (optional)
 
 // Get Google categories for a stock item
-ItemsAPI.getStockItemGoogleCategoriesByItemId(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemsAPI.getStockItemGoogleCategoriesByItemId(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemGoogleCategoryDtoCollectionQueryParameters: itemGoogleCategoryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1060,6 +1071,7 @@ Name | Type | Description  | Notes
  **itemId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **itemGoogleCategoryDtoCollectionQueryParameters** | [**ItemGoogleCategoryDtoCollectionQueryParameters**](ItemGoogleCategoryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1071,7 +1083,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1190,7 +1202,7 @@ No authorization required
 
 # **getStockItemImagesByItemId**
 ```swift
-    open class func getStockItemImagesByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemImageDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getStockItemImagesByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemImageDtoCollectionQueryParameters: ItemImageDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ItemImageDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get images for a stock item
@@ -1205,9 +1217,10 @@ import OpenAPIClient
 let itemId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let itemImageDtoCollectionQueryParameters = ItemImageDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ItemImageDtoCollectionQueryParameters |  (optional)
 
 // Get images for a stock item
-ItemsAPI.getStockItemImagesByItemId(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemsAPI.getStockItemImagesByItemId(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemImageDtoCollectionQueryParameters: itemImageDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1226,6 +1239,7 @@ Name | Type | Description  | Notes
  **itemId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **itemImageDtoCollectionQueryParameters** | [**ItemImageDtoCollectionQueryParameters**](ItemImageDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1237,7 +1251,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1410,7 +1424,7 @@ No authorization required
 
 # **getStockItemQuestionsByItemId**
 ```swift
-    open class func getStockItemQuestionsByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemQuestionDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getStockItemQuestionsByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemQuestionDtoCollectionQueryParameters: ItemQuestionDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ItemQuestionDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get questions for a stock item
@@ -1425,9 +1439,10 @@ import OpenAPIClient
 let itemId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let itemQuestionDtoCollectionQueryParameters = ItemQuestionDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ItemQuestionDtoCollectionQueryParameters |  (optional)
 
 // Get questions for a stock item
-ItemsAPI.getStockItemQuestionsByItemId(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemsAPI.getStockItemQuestionsByItemId(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemQuestionDtoCollectionQueryParameters: itemQuestionDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1446,6 +1461,7 @@ Name | Type | Description  | Notes
  **itemId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **itemQuestionDtoCollectionQueryParameters** | [**ItemQuestionDtoCollectionQueryParameters**](ItemQuestionDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1457,14 +1473,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getStockItemRefundPoliciesByItemId**
 ```swift
-    open class func getStockItemRefundPoliciesByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemRefundPolicyDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getStockItemRefundPoliciesByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemRefundPolicyDtoCollectionQueryParameters: ItemRefundPolicyDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ItemRefundPolicyDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get refund policies for a stock item
@@ -1479,9 +1495,10 @@ import OpenAPIClient
 let itemId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let itemRefundPolicyDtoCollectionQueryParameters = ItemRefundPolicyDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ItemRefundPolicyDtoCollectionQueryParameters |  (optional)
 
 // Get refund policies for a stock item
-ItemsAPI.getStockItemRefundPoliciesByItemId(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemsAPI.getStockItemRefundPoliciesByItemId(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemRefundPolicyDtoCollectionQueryParameters: itemRefundPolicyDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1500,6 +1517,7 @@ Name | Type | Description  | Notes
  **itemId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **itemRefundPolicyDtoCollectionQueryParameters** | [**ItemRefundPolicyDtoCollectionQueryParameters**](ItemRefundPolicyDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1511,7 +1529,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1574,7 +1592,7 @@ No authorization required
 
 # **getStockItemReturnPoliciesByItemId**
 ```swift
-    open class func getStockItemReturnPoliciesByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemReturnPolicyDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getStockItemReturnPoliciesByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemReturnPolicyDtoCollectionQueryParameters: ItemReturnPolicyDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ItemReturnPolicyDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get return policies for a stock item
@@ -1589,9 +1607,10 @@ import OpenAPIClient
 let itemId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let itemReturnPolicyDtoCollectionQueryParameters = ItemReturnPolicyDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ItemReturnPolicyDtoCollectionQueryParameters |  (optional)
 
 // Get return policies for a stock item
-ItemsAPI.getStockItemReturnPoliciesByItemId(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemsAPI.getStockItemReturnPoliciesByItemId(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemReturnPolicyDtoCollectionQueryParameters: itemReturnPolicyDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1610,6 +1629,7 @@ Name | Type | Description  | Notes
  **itemId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **itemReturnPolicyDtoCollectionQueryParameters** | [**ItemReturnPolicyDtoCollectionQueryParameters**](ItemReturnPolicyDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1621,7 +1641,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1740,7 +1760,7 @@ No authorization required
 
 # **getStockItemReviewsByItemId**
 ```swift
-    open class func getStockItemReviewsByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemReviewDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getStockItemReviewsByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemReviewDtoCollectionQueryParameters: ItemReviewDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ItemReviewDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get reviews for a stock item
@@ -1755,9 +1775,10 @@ import OpenAPIClient
 let itemId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let itemReviewDtoCollectionQueryParameters = ItemReviewDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ItemReviewDtoCollectionQueryParameters |  (optional)
 
 // Get reviews for a stock item
-ItemsAPI.getStockItemReviewsByItemId(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemsAPI.getStockItemReviewsByItemId(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemReviewDtoCollectionQueryParameters: itemReviewDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1776,6 +1797,7 @@ Name | Type | Description  | Notes
  **itemId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **itemReviewDtoCollectionQueryParameters** | [**ItemReviewDtoCollectionQueryParameters**](ItemReviewDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1787,14 +1809,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getStockItemShippingPoliciesByItemId**
 ```swift
-    open class func getStockItemShippingPoliciesByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemShippingPolicyDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getStockItemShippingPoliciesByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemShippingPolicyDtoCollectionQueryParameters: ItemShippingPolicyDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ItemShippingPolicyDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get shipping policies for a stock item
@@ -1809,9 +1831,10 @@ import OpenAPIClient
 let itemId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let itemShippingPolicyDtoCollectionQueryParameters = ItemShippingPolicyDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ItemShippingPolicyDtoCollectionQueryParameters |  (optional)
 
 // Get shipping policies for a stock item
-ItemsAPI.getStockItemShippingPoliciesByItemId(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemsAPI.getStockItemShippingPoliciesByItemId(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemShippingPolicyDtoCollectionQueryParameters: itemShippingPolicyDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1830,6 +1853,7 @@ Name | Type | Description  | Notes
  **itemId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **itemShippingPolicyDtoCollectionQueryParameters** | [**ItemShippingPolicyDtoCollectionQueryParameters**](ItemShippingPolicyDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1841,7 +1865,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1962,7 +1986,7 @@ No authorization required
 
 # **getStockItemTagsByItemId**
 ```swift
-    open class func getStockItemTagsByItemId(tenantId: UUID, itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemTagDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getStockItemTagsByItemId(tenantId: UUID, itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemTagDtoCollectionQueryParameters: ItemTagDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ItemTagDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get tags for a stock item
@@ -1978,9 +2002,10 @@ let tenantId = 987 // UUID |
 let itemId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let itemTagDtoCollectionQueryParameters = ItemTagDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ItemTagDtoCollectionQueryParameters |  (optional)
 
 // Get tags for a stock item
-ItemsAPI.getStockItemTagsByItemId(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemsAPI.getStockItemTagsByItemId(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemTagDtoCollectionQueryParameters: itemTagDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2000,6 +2025,7 @@ Name | Type | Description  | Notes
  **itemId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **itemTagDtoCollectionQueryParameters** | [**ItemTagDtoCollectionQueryParameters**](ItemTagDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -2011,14 +2037,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getStockItemTaxPoliciesByItemId**
 ```swift
-    open class func getStockItemTaxPoliciesByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemTaxPolicyDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getStockItemTaxPoliciesByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemTaxPolicyDtoCollectionQueryParameters: ItemTaxPolicyDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ItemTaxPolicyDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get tax policies for a stock item
@@ -2033,9 +2059,10 @@ import OpenAPIClient
 let itemId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let itemTaxPolicyDtoCollectionQueryParameters = ItemTaxPolicyDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ItemTaxPolicyDtoCollectionQueryParameters |  (optional)
 
 // Get tax policies for a stock item
-ItemsAPI.getStockItemTaxPoliciesByItemId(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemsAPI.getStockItemTaxPoliciesByItemId(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemTaxPolicyDtoCollectionQueryParameters: itemTaxPolicyDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2054,6 +2081,7 @@ Name | Type | Description  | Notes
  **itemId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **itemTaxPolicyDtoCollectionQueryParameters** | [**ItemTaxPolicyDtoCollectionQueryParameters**](ItemTaxPolicyDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -2065,7 +2093,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -2186,7 +2214,7 @@ No authorization required
 
 # **getStockItemTypesByItemId**
 ```swift
-    open class func getStockItemTypesByItemId(tenantId: UUID, itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemTypeDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getStockItemTypesByItemId(tenantId: UUID, itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemTypeDtoCollectionQueryParameters: ItemTypeDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ItemTypeDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get types for a stock item
@@ -2202,9 +2230,10 @@ let tenantId = 987 // UUID |
 let itemId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let itemTypeDtoCollectionQueryParameters = ItemTypeDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ItemTypeDtoCollectionQueryParameters |  (optional)
 
 // Get types for a stock item
-ItemsAPI.getStockItemTypesByItemId(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemsAPI.getStockItemTypesByItemId(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemTypeDtoCollectionQueryParameters: itemTypeDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2224,6 +2253,7 @@ Name | Type | Description  | Notes
  **itemId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **itemTypeDtoCollectionQueryParameters** | [**ItemTypeDtoCollectionQueryParameters**](ItemTypeDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -2235,14 +2265,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getStockItemWarrantyPoliciesByItemId**
 ```swift
-    open class func getStockItemWarrantyPoliciesByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemWarrantyPolicyDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getStockItemWarrantyPoliciesByItemId(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemWarrantyPolicyDtoCollectionQueryParameters: ItemWarrantyPolicyDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ItemWarrantyPolicyDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get warranty policies for a stock item
@@ -2257,9 +2287,10 @@ import OpenAPIClient
 let itemId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let itemWarrantyPolicyDtoCollectionQueryParameters = ItemWarrantyPolicyDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ItemWarrantyPolicyDtoCollectionQueryParameters |  (optional)
 
 // Get warranty policies for a stock item
-ItemsAPI.getStockItemWarrantyPoliciesByItemId(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemsAPI.getStockItemWarrantyPoliciesByItemId(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemWarrantyPolicyDtoCollectionQueryParameters: itemWarrantyPolicyDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2278,6 +2309,7 @@ Name | Type | Description  | Notes
  **itemId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **itemWarrantyPolicyDtoCollectionQueryParameters** | [**ItemWarrantyPolicyDtoCollectionQueryParameters**](ItemWarrantyPolicyDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -2289,7 +2321,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -2352,7 +2384,7 @@ No authorization required
 
 # **getStockItemsOdataMaxPrice**
 ```swift
-    open class func getStockItemsOdataMaxPrice(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: MoneyEnvelope?, _ error: Error?) -> Void)
+    open class func getStockItemsOdataMaxPrice(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, catalogItemDtoCollectionQueryParameters: CatalogItemDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: MoneyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get max price of stock items
@@ -2367,9 +2399,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let catalogItemDtoCollectionQueryParameters = CatalogItemDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CatalogItemDtoCollectionQueryParameters |  (optional)
 
 // Get max price of stock items
-ItemsAPI.getStockItemsOdataMaxPrice(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemsAPI.getStockItemsOdataMaxPrice(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, catalogItemDtoCollectionQueryParameters: catalogItemDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2388,6 +2421,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **catalogItemDtoCollectionQueryParameters** | [**CatalogItemDtoCollectionQueryParameters**](CatalogItemDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -2399,14 +2433,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getStockItemsOdataMinPrice**
 ```swift
-    open class func getStockItemsOdataMinPrice(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: MoneyEnvelope?, _ error: Error?) -> Void)
+    open class func getStockItemsOdataMinPrice(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, catalogItemDtoCollectionQueryParameters: CatalogItemDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: MoneyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get min price of stock items
@@ -2421,9 +2455,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let catalogItemDtoCollectionQueryParameters = CatalogItemDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CatalogItemDtoCollectionQueryParameters |  (optional)
 
 // Get min price of stock items
-ItemsAPI.getStockItemsOdataMinPrice(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemsAPI.getStockItemsOdataMinPrice(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, catalogItemDtoCollectionQueryParameters: catalogItemDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2442,6 +2477,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **catalogItemDtoCollectionQueryParameters** | [**CatalogItemDtoCollectionQueryParameters**](CatalogItemDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -2453,14 +2489,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getStockItemsQuery**
 ```swift
-    open class func getStockItemsQuery(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: CatalogItemDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getStockItemsQuery(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, catalogItemDtoCollectionQueryParameters: CatalogItemDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: CatalogItemDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all stock items
@@ -2475,9 +2511,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let catalogItemDtoCollectionQueryParameters = CatalogItemDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CatalogItemDtoCollectionQueryParameters |  (optional)
 
 // Get all stock items
-ItemsAPI.getStockItemsQuery(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemsAPI.getStockItemsQuery(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, catalogItemDtoCollectionQueryParameters: catalogItemDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2496,6 +2533,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **catalogItemDtoCollectionQueryParameters** | [**CatalogItemDtoCollectionQueryParameters**](CatalogItemDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -2507,14 +2545,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchStockItem**
 ```swift
-    open class func patchStockItem(tenantId: UUID, itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func patchStockItem(tenantId: UUID, itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
 Patch a stock item
@@ -2530,10 +2568,10 @@ let tenantId = 987 // UUID |
 let itemId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a stock item
-ItemsAPI.patchStockItem(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+ItemsAPI.patchStockItem(tenantId: tenantId, itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2553,7 +2591,7 @@ Name | Type | Description  | Notes
  **itemId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

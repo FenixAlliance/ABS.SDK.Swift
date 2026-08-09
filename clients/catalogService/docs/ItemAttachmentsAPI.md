@@ -182,7 +182,7 @@ No authorization required
 
 # **getItemAttachmentsAsync**
 ```swift
-    open class func getItemAttachmentsAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemAttachmentDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getItemAttachmentsAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, itemAttachmentDtoCollectionQueryParameters: ItemAttachmentDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ItemAttachmentDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all item attachments
@@ -197,9 +197,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let itemAttachmentDtoCollectionQueryParameters = ItemAttachmentDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ItemAttachmentDtoCollectionQueryParameters |  (optional)
 
 // Get all item attachments
-ItemAttachmentsAPI.getItemAttachmentsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemAttachmentsAPI.getItemAttachmentsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemAttachmentDtoCollectionQueryParameters: itemAttachmentDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -218,6 +219,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **itemAttachmentDtoCollectionQueryParameters** | [**ItemAttachmentDtoCollectionQueryParameters**](ItemAttachmentDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -229,14 +231,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchItemAttachmentAsync**
 ```swift
-    open class func patchItemAttachmentAsync(tenantId: UUID, itemAttachmentId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchItemAttachmentAsync(tenantId: UUID, itemAttachmentId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch an item attachment
@@ -252,10 +254,10 @@ let tenantId = 987 // UUID |
 let itemAttachmentId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch an item attachment
-ItemAttachmentsAPI.patchItemAttachmentAsync(tenantId: tenantId, itemAttachmentId: itemAttachmentId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+ItemAttachmentsAPI.patchItemAttachmentAsync(tenantId: tenantId, itemAttachmentId: itemAttachmentId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -275,7 +277,7 @@ Name | Type | Description  | Notes
  **itemAttachmentId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

@@ -18,12 +18,13 @@ open class SocialProfilesAPI {
      - parameter socialProfileId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter conversationDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func countConversationsAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return countConversationsAsyncWithRequestBuilder(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func countConversationsAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, conversationDtoCollectionQueryParameters: ConversationDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return countConversationsAsyncWithRequestBuilder(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, conversationDtoCollectionQueryParameters: conversationDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -40,15 +41,16 @@ open class SocialProfilesAPI {
      - parameter socialProfileId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter conversationDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func countConversationsAsyncWithRequestBuilder(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func countConversationsAsyncWithRequestBuilder(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, conversationDtoCollectionQueryParameters: ConversationDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/SocialService/SocialProfiles/{socialProfileId}/Conversations/Count"
         let socialProfileIdPreEscape = "\(APIHelper.mapValueToPathItem(socialProfileId))"
         let socialProfileIdPostEscape = socialProfileIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{socialProfileId}", with: socialProfileIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: conversationDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -56,6 +58,7 @@ open class SocialProfilesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -72,12 +75,13 @@ open class SocialProfilesAPI {
      - parameter socialProfileId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter socialProfileDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func countFollowedProfilesAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return countFollowedProfilesAsyncWithRequestBuilder(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func countFollowedProfilesAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialProfileDtoCollectionQueryParameters: SocialProfileDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return countFollowedProfilesAsyncWithRequestBuilder(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialProfileDtoCollectionQueryParameters: socialProfileDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -94,15 +98,16 @@ open class SocialProfilesAPI {
      - parameter socialProfileId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter socialProfileDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func countFollowedProfilesAsyncWithRequestBuilder(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func countFollowedProfilesAsyncWithRequestBuilder(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialProfileDtoCollectionQueryParameters: SocialProfileDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/SocialService/SocialProfiles/{socialProfileId}/Follows/Profiles/Count"
         let socialProfileIdPreEscape = "\(APIHelper.mapValueToPathItem(socialProfileId))"
         let socialProfileIdPostEscape = socialProfileIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{socialProfileId}", with: socialProfileIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: socialProfileDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -110,6 +115,7 @@ open class SocialProfilesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -126,12 +132,13 @@ open class SocialProfilesAPI {
      - parameter socialProfileId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter socialProfileDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func countFollowerProfilesAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return countFollowerProfilesAsyncWithRequestBuilder(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func countFollowerProfilesAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialProfileDtoCollectionQueryParameters: SocialProfileDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return countFollowerProfilesAsyncWithRequestBuilder(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialProfileDtoCollectionQueryParameters: socialProfileDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -148,15 +155,16 @@ open class SocialProfilesAPI {
      - parameter socialProfileId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter socialProfileDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func countFollowerProfilesAsyncWithRequestBuilder(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func countFollowerProfilesAsyncWithRequestBuilder(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialProfileDtoCollectionQueryParameters: SocialProfileDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/SocialService/SocialProfiles/{socialProfileId}/Followers/Profiles/Count"
         let socialProfileIdPreEscape = "\(APIHelper.mapValueToPathItem(socialProfileId))"
         let socialProfileIdPostEscape = socialProfileIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{socialProfileId}", with: socialProfileIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: socialProfileDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -164,6 +172,7 @@ open class SocialProfilesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -180,12 +189,13 @@ open class SocialProfilesAPI {
      - parameter socialProfileId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter followRecordDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func countFollowersAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return countFollowersAsyncWithRequestBuilder(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func countFollowersAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, followRecordDtoCollectionQueryParameters: FollowRecordDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return countFollowersAsyncWithRequestBuilder(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, followRecordDtoCollectionQueryParameters: followRecordDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -202,15 +212,16 @@ open class SocialProfilesAPI {
      - parameter socialProfileId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter followRecordDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func countFollowersAsyncWithRequestBuilder(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func countFollowersAsyncWithRequestBuilder(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, followRecordDtoCollectionQueryParameters: FollowRecordDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/SocialService/SocialProfiles/{socialProfileId}/Followers/Count"
         let socialProfileIdPreEscape = "\(APIHelper.mapValueToPathItem(socialProfileId))"
         let socialProfileIdPostEscape = socialProfileIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{socialProfileId}", with: socialProfileIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: followRecordDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -218,6 +229,7 @@ open class SocialProfilesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -234,12 +246,13 @@ open class SocialProfilesAPI {
      - parameter socialProfileId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter followRecordDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func countFollowsAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return countFollowsAsyncWithRequestBuilder(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func countFollowsAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, followRecordDtoCollectionQueryParameters: FollowRecordDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return countFollowsAsyncWithRequestBuilder(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, followRecordDtoCollectionQueryParameters: followRecordDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -256,15 +269,16 @@ open class SocialProfilesAPI {
      - parameter socialProfileId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter followRecordDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func countFollowsAsyncWithRequestBuilder(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func countFollowsAsyncWithRequestBuilder(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, followRecordDtoCollectionQueryParameters: FollowRecordDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/SocialService/SocialProfiles/{socialProfileId}/Follows/Count"
         let socialProfileIdPreEscape = "\(APIHelper.mapValueToPathItem(socialProfileId))"
         let socialProfileIdPostEscape = socialProfileIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{socialProfileId}", with: socialProfileIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: followRecordDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -272,6 +286,7 @@ open class SocialProfilesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -289,12 +304,13 @@ open class SocialProfilesAPI {
      - parameter conversationId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter privateMessageDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func countMessagesAsync(socialProfileId: UUID, conversationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return countMessagesAsyncWithRequestBuilder(socialProfileId: socialProfileId, conversationId: conversationId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func countMessagesAsync(socialProfileId: UUID, conversationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, privateMessageDtoCollectionQueryParameters: PrivateMessageDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return countMessagesAsyncWithRequestBuilder(socialProfileId: socialProfileId, conversationId: conversationId, apiVersion: apiVersion, xApiVersion: xApiVersion, privateMessageDtoCollectionQueryParameters: privateMessageDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -312,15 +328,16 @@ open class SocialProfilesAPI {
      - parameter conversationId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter privateMessageDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func countMessagesAsyncWithRequestBuilder(socialProfileId: UUID, conversationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func countMessagesAsyncWithRequestBuilder(socialProfileId: UUID, conversationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, privateMessageDtoCollectionQueryParameters: PrivateMessageDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/SocialService/SocialProfiles/{conversationId}/Messages/Count"
         let conversationIdPreEscape = "\(APIHelper.mapValueToPathItem(conversationId))"
         let conversationIdPostEscape = conversationIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{conversationId}", with: conversationIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: privateMessageDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -329,6 +346,7 @@ open class SocialProfilesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -345,12 +363,13 @@ open class SocialProfilesAPI {
      - parameter socialProfileId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter notificationDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func countNotificationsAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return countNotificationsAsyncWithRequestBuilder(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func countNotificationsAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, notificationDtoCollectionQueryParameters: NotificationDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return countNotificationsAsyncWithRequestBuilder(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, notificationDtoCollectionQueryParameters: notificationDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -367,15 +386,16 @@ open class SocialProfilesAPI {
      - parameter socialProfileId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter notificationDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func countNotificationsAsyncWithRequestBuilder(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func countNotificationsAsyncWithRequestBuilder(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, notificationDtoCollectionQueryParameters: NotificationDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/SocialService/SocialProfiles/{socialProfileId}/Notifications/Count"
         let socialProfileIdPreEscape = "\(APIHelper.mapValueToPathItem(socialProfileId))"
         let socialProfileIdPostEscape = socialProfileIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{socialProfileId}", with: socialProfileIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: notificationDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -383,6 +403,7 @@ open class SocialProfilesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -398,12 +419,13 @@ open class SocialProfilesAPI {
      
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter socialProfileDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func countSocialProfilesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return countSocialProfilesAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func countSocialProfilesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, socialProfileDtoCollectionQueryParameters: SocialProfileDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return countSocialProfilesAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion, socialProfileDtoCollectionQueryParameters: socialProfileDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -419,12 +441,13 @@ open class SocialProfilesAPI {
      - Count social profiles.
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter socialProfileDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func countSocialProfilesAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func countSocialProfilesAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil, socialProfileDtoCollectionQueryParameters: SocialProfileDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/SocialService/SocialProfiles/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: socialProfileDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -432,6 +455,7 @@ open class SocialProfilesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -745,12 +769,13 @@ open class SocialProfilesAPI {
      - parameter socialProfileId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter conversationDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getConversationsAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ConversationDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getConversationsAsyncWithRequestBuilder(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getConversationsAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, conversationDtoCollectionQueryParameters: ConversationDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ConversationDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getConversationsAsyncWithRequestBuilder(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, conversationDtoCollectionQueryParameters: conversationDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -767,15 +792,16 @@ open class SocialProfilesAPI {
      - parameter socialProfileId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter conversationDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<ConversationDtoListEnvelope> 
      */
-    open class func getConversationsAsyncWithRequestBuilder(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ConversationDtoListEnvelope> {
+    open class func getConversationsAsyncWithRequestBuilder(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, conversationDtoCollectionQueryParameters: ConversationDtoCollectionQueryParameters? = nil) -> RequestBuilder<ConversationDtoListEnvelope> {
         var localVariablePath = "/api/v2/SocialService/SocialProfiles/{socialProfileId}/Conversations"
         let socialProfileIdPreEscape = "\(APIHelper.mapValueToPathItem(socialProfileId))"
         let socialProfileIdPostEscape = socialProfileIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{socialProfileId}", with: socialProfileIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: conversationDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -783,6 +809,7 @@ open class SocialProfilesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -799,12 +826,13 @@ open class SocialProfilesAPI {
      - parameter socialProfileId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter socialProfileDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getFollowedProfilesAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SocialProfileDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getFollowedProfilesAsyncWithRequestBuilder(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getFollowedProfilesAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialProfileDtoCollectionQueryParameters: SocialProfileDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SocialProfileDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getFollowedProfilesAsyncWithRequestBuilder(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialProfileDtoCollectionQueryParameters: socialProfileDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -821,15 +849,16 @@ open class SocialProfilesAPI {
      - parameter socialProfileId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter socialProfileDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<SocialProfileDtoListEnvelope> 
      */
-    open class func getFollowedProfilesAsyncWithRequestBuilder(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SocialProfileDtoListEnvelope> {
+    open class func getFollowedProfilesAsyncWithRequestBuilder(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialProfileDtoCollectionQueryParameters: SocialProfileDtoCollectionQueryParameters? = nil) -> RequestBuilder<SocialProfileDtoListEnvelope> {
         var localVariablePath = "/api/v2/SocialService/SocialProfiles/{socialProfileId}/Follows/Profiles"
         let socialProfileIdPreEscape = "\(APIHelper.mapValueToPathItem(socialProfileId))"
         let socialProfileIdPostEscape = socialProfileIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{socialProfileId}", with: socialProfileIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: socialProfileDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -837,6 +866,7 @@ open class SocialProfilesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -853,12 +883,13 @@ open class SocialProfilesAPI {
      - parameter socialProfileId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter socialProfileDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getFollowerProfilesAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SocialProfileDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getFollowerProfilesAsyncWithRequestBuilder(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getFollowerProfilesAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialProfileDtoCollectionQueryParameters: SocialProfileDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SocialProfileDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getFollowerProfilesAsyncWithRequestBuilder(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialProfileDtoCollectionQueryParameters: socialProfileDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -875,15 +906,16 @@ open class SocialProfilesAPI {
      - parameter socialProfileId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter socialProfileDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<SocialProfileDtoListEnvelope> 
      */
-    open class func getFollowerProfilesAsyncWithRequestBuilder(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SocialProfileDtoListEnvelope> {
+    open class func getFollowerProfilesAsyncWithRequestBuilder(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialProfileDtoCollectionQueryParameters: SocialProfileDtoCollectionQueryParameters? = nil) -> RequestBuilder<SocialProfileDtoListEnvelope> {
         var localVariablePath = "/api/v2/SocialService/SocialProfiles/{socialProfileId}/Followers/Profiles"
         let socialProfileIdPreEscape = "\(APIHelper.mapValueToPathItem(socialProfileId))"
         let socialProfileIdPostEscape = socialProfileIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{socialProfileId}", with: socialProfileIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: socialProfileDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -891,6 +923,7 @@ open class SocialProfilesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -907,12 +940,13 @@ open class SocialProfilesAPI {
      - parameter socialProfileId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter followRecordDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getFollowersAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: FollowRecordDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getFollowersAsyncWithRequestBuilder(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getFollowersAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, followRecordDtoCollectionQueryParameters: FollowRecordDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: FollowRecordDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getFollowersAsyncWithRequestBuilder(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, followRecordDtoCollectionQueryParameters: followRecordDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -929,15 +963,16 @@ open class SocialProfilesAPI {
      - parameter socialProfileId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter followRecordDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<FollowRecordDtoListEnvelope> 
      */
-    open class func getFollowersAsyncWithRequestBuilder(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<FollowRecordDtoListEnvelope> {
+    open class func getFollowersAsyncWithRequestBuilder(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, followRecordDtoCollectionQueryParameters: FollowRecordDtoCollectionQueryParameters? = nil) -> RequestBuilder<FollowRecordDtoListEnvelope> {
         var localVariablePath = "/api/v2/SocialService/SocialProfiles/{socialProfileId}/Followers"
         let socialProfileIdPreEscape = "\(APIHelper.mapValueToPathItem(socialProfileId))"
         let socialProfileIdPostEscape = socialProfileIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{socialProfileId}", with: socialProfileIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: followRecordDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -945,6 +980,7 @@ open class SocialProfilesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -961,12 +997,13 @@ open class SocialProfilesAPI {
      - parameter socialProfileId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter followRecordDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getFollowsAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: FollowRecordDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getFollowsAsyncWithRequestBuilder(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getFollowsAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, followRecordDtoCollectionQueryParameters: FollowRecordDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: FollowRecordDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getFollowsAsyncWithRequestBuilder(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, followRecordDtoCollectionQueryParameters: followRecordDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -983,15 +1020,16 @@ open class SocialProfilesAPI {
      - parameter socialProfileId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter followRecordDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<FollowRecordDtoListEnvelope> 
      */
-    open class func getFollowsAsyncWithRequestBuilder(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<FollowRecordDtoListEnvelope> {
+    open class func getFollowsAsyncWithRequestBuilder(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, followRecordDtoCollectionQueryParameters: FollowRecordDtoCollectionQueryParameters? = nil) -> RequestBuilder<FollowRecordDtoListEnvelope> {
         var localVariablePath = "/api/v2/SocialService/SocialProfiles/{socialProfileId}/Follows"
         let socialProfileIdPreEscape = "\(APIHelper.mapValueToPathItem(socialProfileId))"
         let socialProfileIdPostEscape = socialProfileIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{socialProfileId}", with: socialProfileIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: followRecordDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -999,6 +1037,7 @@ open class SocialProfilesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1016,12 +1055,13 @@ open class SocialProfilesAPI {
      - parameter conversationId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter privateMessageDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getMessagesAsync(socialProfileId: UUID, conversationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: PrivateMessageDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getMessagesAsyncWithRequestBuilder(socialProfileId: socialProfileId, conversationId: conversationId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getMessagesAsync(socialProfileId: UUID, conversationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, privateMessageDtoCollectionQueryParameters: PrivateMessageDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: PrivateMessageDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getMessagesAsyncWithRequestBuilder(socialProfileId: socialProfileId, conversationId: conversationId, apiVersion: apiVersion, xApiVersion: xApiVersion, privateMessageDtoCollectionQueryParameters: privateMessageDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1039,15 +1079,16 @@ open class SocialProfilesAPI {
      - parameter conversationId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter privateMessageDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<PrivateMessageDtoListEnvelope> 
      */
-    open class func getMessagesAsyncWithRequestBuilder(socialProfileId: UUID, conversationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<PrivateMessageDtoListEnvelope> {
+    open class func getMessagesAsyncWithRequestBuilder(socialProfileId: UUID, conversationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, privateMessageDtoCollectionQueryParameters: PrivateMessageDtoCollectionQueryParameters? = nil) -> RequestBuilder<PrivateMessageDtoListEnvelope> {
         var localVariablePath = "/api/v2/SocialService/SocialProfiles/{conversationId}/Messages"
         let conversationIdPreEscape = "\(APIHelper.mapValueToPathItem(conversationId))"
         let conversationIdPostEscape = conversationIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{conversationId}", with: conversationIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: privateMessageDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1056,6 +1097,7 @@ open class SocialProfilesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1131,12 +1173,13 @@ open class SocialProfilesAPI {
      - parameter socialProfileId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter notificationDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getNotificationsAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: NotificationDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getNotificationsAsyncWithRequestBuilder(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getNotificationsAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, notificationDtoCollectionQueryParameters: NotificationDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: NotificationDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getNotificationsAsyncWithRequestBuilder(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, notificationDtoCollectionQueryParameters: notificationDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1153,15 +1196,16 @@ open class SocialProfilesAPI {
      - parameter socialProfileId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter notificationDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<NotificationDtoListEnvelope> 
      */
-    open class func getNotificationsAsyncWithRequestBuilder(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<NotificationDtoListEnvelope> {
+    open class func getNotificationsAsyncWithRequestBuilder(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, notificationDtoCollectionQueryParameters: NotificationDtoCollectionQueryParameters? = nil) -> RequestBuilder<NotificationDtoListEnvelope> {
         var localVariablePath = "/api/v2/SocialService/SocialProfiles/{socialProfileId}/Notifications"
         let socialProfileIdPreEscape = "\(APIHelper.mapValueToPathItem(socialProfileId))"
         let socialProfileIdPostEscape = socialProfileIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{socialProfileId}", with: socialProfileIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: notificationDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1169,6 +1213,7 @@ open class SocialProfilesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1177,6 +1222,63 @@ open class SocialProfilesAPI {
         let localVariableRequestBuilder: RequestBuilder<NotificationDtoListEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Get or Create Direct Conversation
+     
+     - parameter socialProfileId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter body: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getOrCreateDirectConversationAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, body: UUID? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ConversationDtoEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getOrCreateDirectConversationAsyncWithRequestBuilder(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, body: body).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get or Create Direct Conversation
+     - POST /api/v2/SocialService/SocialProfiles/{socialProfileId}/Conversations/Direct
+     - Get or create the direct two-party conversation between the acting profile and a counterparty.
+     - parameter socialProfileId: (path)  
+     - parameter apiVersion: (query)  (optional)
+     - parameter xApiVersion: (header)  (optional)
+     - parameter body: (body)  (optional)
+     - returns: RequestBuilder<ConversationDtoEnvelope> 
+     */
+    open class func getOrCreateDirectConversationAsyncWithRequestBuilder(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, body: UUID? = nil) -> RequestBuilder<ConversationDtoEnvelope> {
+        var localVariablePath = "/api/v2/SocialService/SocialProfiles/{socialProfileId}/Conversations/Direct"
+        let socialProfileIdPreEscape = "\(APIHelper.mapValueToPathItem(socialProfileId))"
+        let socialProfileIdPostEscape = socialProfileIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{socialProfileId}", with: socialProfileIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "api-version": (wrappedValue: apiVersion?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+            "x-api-version": xApiVersion?.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<ConversationDtoEnvelope>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -1238,12 +1340,13 @@ open class SocialProfilesAPI {
      
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter socialProfileDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getSocialProfilesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SocialProfileDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getSocialProfilesAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getSocialProfilesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, socialProfileDtoCollectionQueryParameters: SocialProfileDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SocialProfileDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getSocialProfilesAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion, socialProfileDtoCollectionQueryParameters: socialProfileDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1259,12 +1362,13 @@ open class SocialProfilesAPI {
      - Get a list of social profiles.
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter socialProfileDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<SocialProfileDtoListEnvelope> 
      */
-    open class func getSocialProfilesAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<SocialProfileDtoListEnvelope> {
+    open class func getSocialProfilesAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil, socialProfileDtoCollectionQueryParameters: SocialProfileDtoCollectionQueryParameters? = nil) -> RequestBuilder<SocialProfileDtoListEnvelope> {
         let localVariablePath = "/api/v2/SocialService/SocialProfiles"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: socialProfileDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1272,6 +1376,7 @@ open class SocialProfilesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 

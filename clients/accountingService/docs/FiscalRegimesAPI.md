@@ -185,7 +185,7 @@ No authorization required
 
 # **getFiscalRegimes**
 ```swift
-    open class func getFiscalRegimes(tenantId: UUID, fiscalAuthorityId: UUID, authorityId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: FiscalRegimeDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getFiscalRegimes(tenantId: UUID, fiscalAuthorityId: UUID, authorityId: String, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalRegimeDtoCollectionQueryParameters: FiscalRegimeDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: FiscalRegimeDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get fiscal regimes for an authority
@@ -202,9 +202,10 @@ let fiscalAuthorityId = 987 // UUID |
 let authorityId = "authorityId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let fiscalRegimeDtoCollectionQueryParameters = FiscalRegimeDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // FiscalRegimeDtoCollectionQueryParameters |  (optional)
 
 // Get fiscal regimes for an authority
-FiscalRegimesAPI.getFiscalRegimes(tenantId: tenantId, fiscalAuthorityId: fiscalAuthorityId, authorityId: authorityId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+FiscalRegimesAPI.getFiscalRegimes(tenantId: tenantId, fiscalAuthorityId: fiscalAuthorityId, authorityId: authorityId, apiVersion: apiVersion, xApiVersion: xApiVersion, fiscalRegimeDtoCollectionQueryParameters: fiscalRegimeDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -225,6 +226,7 @@ Name | Type | Description  | Notes
  **authorityId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **fiscalRegimeDtoCollectionQueryParameters** | [**FiscalRegimeDtoCollectionQueryParameters**](FiscalRegimeDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -236,14 +238,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getFiscalRegimesCount**
 ```swift
-    open class func getFiscalRegimesCount(tenantId: UUID, fiscalAuthorityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getFiscalRegimesCount(tenantId: UUID, fiscalAuthorityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalRegimeDtoCollectionQueryParameters: FiscalRegimeDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get fiscal regimes count
@@ -259,9 +261,10 @@ let tenantId = 987 // UUID |
 let fiscalAuthorityId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let fiscalRegimeDtoCollectionQueryParameters = FiscalRegimeDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // FiscalRegimeDtoCollectionQueryParameters |  (optional)
 
 // Get fiscal regimes count
-FiscalRegimesAPI.getFiscalRegimesCount(tenantId: tenantId, fiscalAuthorityId: fiscalAuthorityId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+FiscalRegimesAPI.getFiscalRegimesCount(tenantId: tenantId, fiscalAuthorityId: fiscalAuthorityId, apiVersion: apiVersion, xApiVersion: xApiVersion, fiscalRegimeDtoCollectionQueryParameters: fiscalRegimeDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -281,6 +284,7 @@ Name | Type | Description  | Notes
  **fiscalAuthorityId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **fiscalRegimeDtoCollectionQueryParameters** | [**FiscalRegimeDtoCollectionQueryParameters**](FiscalRegimeDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -292,14 +296,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchFiscalRegimeAsync**
 ```swift
-    open class func patchFiscalRegimeAsync(tenantId: UUID, regimeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchFiscalRegimeAsync(tenantId: UUID, regimeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a fiscal regime
@@ -315,10 +319,10 @@ let tenantId = 987 // UUID |
 let regimeId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a fiscal regime
-FiscalRegimesAPI.patchFiscalRegimeAsync(tenantId: tenantId, regimeId: regimeId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+FiscalRegimesAPI.patchFiscalRegimeAsync(tenantId: tenantId, regimeId: regimeId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -338,7 +342,7 @@ Name | Type | Description  | Notes
  **regimeId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

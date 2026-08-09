@@ -384,7 +384,7 @@ No authorization required
 
 # **apiV2LearningServiceStudentProfilesStudentProfileIdPatch**
 ```swift
-    open class func apiV2LearningServiceStudentProfilesStudentProfileIdPatch(tenantId: UUID, studentProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func apiV2LearningServiceStudentProfilesStudentProfileIdPatch(tenantId: UUID, studentProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 
@@ -398,9 +398,9 @@ let tenantId = 987 // UUID |
 let studentProfileId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
-StudentProfilesAPI.apiV2LearningServiceStudentProfilesStudentProfileIdPatch(tenantId: tenantId, studentProfileId: studentProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+StudentProfilesAPI.apiV2LearningServiceStudentProfilesStudentProfileIdPatch(tenantId: tenantId, studentProfileId: studentProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -420,7 +420,7 @@ Name | Type | Description  | Notes
  **studentProfileId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

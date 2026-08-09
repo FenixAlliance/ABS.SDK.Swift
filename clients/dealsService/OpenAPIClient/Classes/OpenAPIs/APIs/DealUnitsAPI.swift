@@ -391,12 +391,13 @@ open class DealUnitsAPI {
      - parameter tenantId: (query)  
      - parameter dealUnitId: (path)  
      - parameter itemId: (query)  (optional)
+     - parameter dealUnitLineDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getDealUnitLinesAsync(tenantId: UUID, dealUnitId: UUID, itemId: UUID? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: DealUnitLineDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getDealUnitLinesAsyncWithRequestBuilder(tenantId: tenantId, dealUnitId: dealUnitId, itemId: itemId).execute(apiResponseQueue) { result in
+    open class func getDealUnitLinesAsync(tenantId: UUID, dealUnitId: UUID, itemId: UUID? = nil, dealUnitLineDtoCollectionQueryParameters: DealUnitLineDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: DealUnitLineDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getDealUnitLinesAsyncWithRequestBuilder(tenantId: tenantId, dealUnitId: dealUnitId, itemId: itemId, dealUnitLineDtoCollectionQueryParameters: dealUnitLineDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -413,15 +414,16 @@ open class DealUnitsAPI {
      - parameter tenantId: (query)  
      - parameter dealUnitId: (path)  
      - parameter itemId: (query)  (optional)
+     - parameter dealUnitLineDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<DealUnitLineDtoListEnvelope> 
      */
-    open class func getDealUnitLinesAsyncWithRequestBuilder(tenantId: UUID, dealUnitId: UUID, itemId: UUID? = nil) -> RequestBuilder<DealUnitLineDtoListEnvelope> {
+    open class func getDealUnitLinesAsyncWithRequestBuilder(tenantId: UUID, dealUnitId: UUID, itemId: UUID? = nil, dealUnitLineDtoCollectionQueryParameters: DealUnitLineDtoCollectionQueryParameters? = nil) -> RequestBuilder<DealUnitLineDtoListEnvelope> {
         var localVariablePath = "/api/v2/DealsService/DealUnits/{dealUnitId}/Lines"
         let dealUnitIdPreEscape = "\(APIHelper.mapValueToPathItem(dealUnitId))"
         let dealUnitIdPostEscape = dealUnitIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{dealUnitId}", with: dealUnitIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: dealUnitLineDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -430,7 +432,7 @@ open class DealUnitsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -445,12 +447,13 @@ open class DealUnitsAPI {
      
      - parameter tenantId: (query)  
      - parameter dealUnitId: (path)  
+     - parameter dealUnitLineDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getDealUnitLinesCountAsync(tenantId: UUID, dealUnitId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getDealUnitLinesCountAsyncWithRequestBuilder(tenantId: tenantId, dealUnitId: dealUnitId).execute(apiResponseQueue) { result in
+    open class func getDealUnitLinesCountAsync(tenantId: UUID, dealUnitId: UUID, dealUnitLineDtoCollectionQueryParameters: DealUnitLineDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getDealUnitLinesCountAsyncWithRequestBuilder(tenantId: tenantId, dealUnitId: dealUnitId, dealUnitLineDtoCollectionQueryParameters: dealUnitLineDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -466,15 +469,16 @@ open class DealUnitsAPI {
      - Returns the total count of lines for a specific deal unit with OData filter support.
      - parameter tenantId: (query)  
      - parameter dealUnitId: (path)  
+     - parameter dealUnitLineDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getDealUnitLinesCountAsyncWithRequestBuilder(tenantId: UUID, dealUnitId: UUID) -> RequestBuilder<Int32Envelope> {
+    open class func getDealUnitLinesCountAsyncWithRequestBuilder(tenantId: UUID, dealUnitId: UUID, dealUnitLineDtoCollectionQueryParameters: DealUnitLineDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/DealsService/DealUnits/{dealUnitId}/Lines/Count"
         let dealUnitIdPreEscape = "\(APIHelper.mapValueToPathItem(dealUnitId))"
         let dealUnitIdPostEscape = dealUnitIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{dealUnitId}", with: dealUnitIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: dealUnitLineDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -482,7 +486,7 @@ open class DealUnitsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -553,12 +557,13 @@ open class DealUnitsAPI {
      Get deal units
      
      - parameter tenantId: (query)  
+     - parameter dealUnitDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getDealUnitsAsync(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: DealUnitDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getDealUnitsAsyncWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+    open class func getDealUnitsAsync(tenantId: UUID, dealUnitDtoCollectionQueryParameters: DealUnitDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: DealUnitDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getDealUnitsAsyncWithRequestBuilder(tenantId: tenantId, dealUnitDtoCollectionQueryParameters: dealUnitDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -573,12 +578,13 @@ open class DealUnitsAPI {
      - GET /api/v2/DealsService/DealUnits
      - Retrieves a list of deal units for the specified tenant with OData query support.
      - parameter tenantId: (query)  
+     - parameter dealUnitDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<DealUnitDtoListEnvelope> 
      */
-    open class func getDealUnitsAsyncWithRequestBuilder(tenantId: UUID) -> RequestBuilder<DealUnitDtoListEnvelope> {
+    open class func getDealUnitsAsyncWithRequestBuilder(tenantId: UUID, dealUnitDtoCollectionQueryParameters: DealUnitDtoCollectionQueryParameters? = nil) -> RequestBuilder<DealUnitDtoListEnvelope> {
         let localVariablePath = "/api/v2/DealsService/DealUnits"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: dealUnitDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -586,7 +592,7 @@ open class DealUnitsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -600,12 +606,13 @@ open class DealUnitsAPI {
      Get deal units count
      
      - parameter tenantId: (query)  
+     - parameter dealUnitDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getDealUnitsCountAsync(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getDealUnitsCountAsyncWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+    open class func getDealUnitsCountAsync(tenantId: UUID, dealUnitDtoCollectionQueryParameters: DealUnitDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getDealUnitsCountAsyncWithRequestBuilder(tenantId: tenantId, dealUnitDtoCollectionQueryParameters: dealUnitDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -620,12 +627,13 @@ open class DealUnitsAPI {
      - GET /api/v2/DealsService/DealUnits/Count
      - Returns the total count of deal units for the specified tenant with OData filter support.
      - parameter tenantId: (query)  
+     - parameter dealUnitDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getDealUnitsCountAsyncWithRequestBuilder(tenantId: UUID) -> RequestBuilder<Int32Envelope> {
+    open class func getDealUnitsCountAsyncWithRequestBuilder(tenantId: UUID, dealUnitDtoCollectionQueryParameters: DealUnitDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/DealsService/DealUnits/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: dealUnitDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -633,7 +641,7 @@ open class DealUnitsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -699,12 +707,13 @@ open class DealUnitsAPI {
      Get extended deal units
      
      - parameter tenantId: (query)  
+     - parameter extendedDealUnitDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getExtendedDealUnitsAsync(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ExtendedDealUnitDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getExtendedDealUnitsAsyncWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+    open class func getExtendedDealUnitsAsync(tenantId: UUID, extendedDealUnitDtoCollectionQueryParameters: ExtendedDealUnitDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ExtendedDealUnitDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getExtendedDealUnitsAsyncWithRequestBuilder(tenantId: tenantId, extendedDealUnitDtoCollectionQueryParameters: extendedDealUnitDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -719,12 +728,13 @@ open class DealUnitsAPI {
      - GET /api/v2/DealsService/DealUnits/Extended
      - Retrieves a list of deal units with extended details for the specified tenant with OData query support.
      - parameter tenantId: (query)  
+     - parameter extendedDealUnitDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<ExtendedDealUnitDtoListEnvelope> 
      */
-    open class func getExtendedDealUnitsAsyncWithRequestBuilder(tenantId: UUID) -> RequestBuilder<ExtendedDealUnitDtoListEnvelope> {
+    open class func getExtendedDealUnitsAsyncWithRequestBuilder(tenantId: UUID, extendedDealUnitDtoCollectionQueryParameters: ExtendedDealUnitDtoCollectionQueryParameters? = nil) -> RequestBuilder<ExtendedDealUnitDtoListEnvelope> {
         let localVariablePath = "/api/v2/DealsService/DealUnits/Extended"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: extendedDealUnitDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -732,7 +742,7 @@ open class DealUnitsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -747,13 +757,13 @@ open class DealUnitsAPI {
      
      - parameter tenantId: (query)  
      - parameter dealUnitId: (path)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchDealUnitAsync(tenantId: UUID, dealUnitId: UUID, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchDealUnitAsyncWithRequestBuilder(tenantId: tenantId, dealUnitId: dealUnitId, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchDealUnitAsync(tenantId: UUID, dealUnitId: UUID, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchDealUnitAsyncWithRequestBuilder(tenantId: tenantId, dealUnitId: dealUnitId, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -769,16 +779,16 @@ open class DealUnitsAPI {
      - Partially updates an existing deal unit by its unique identifier using a JSON Patch document.
      - parameter tenantId: (query)  
      - parameter dealUnitId: (path)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchDealUnitAsyncWithRequestBuilder(tenantId: UUID, dealUnitId: UUID, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchDealUnitAsyncWithRequestBuilder(tenantId: UUID, dealUnitId: UUID, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/DealsService/DealUnits/{dealUnitId}"
         let dealUnitIdPreEscape = "\(APIHelper.mapValueToPathItem(dealUnitId))"
         let dealUnitIdPostEscape = dealUnitIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{dealUnitId}", with: dealUnitIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -802,13 +812,13 @@ open class DealUnitsAPI {
      - parameter tenantId: (query)  
      - parameter dealUnitId: (path)  
      - parameter dealUnitLineId: (path)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchDealUnitLineAsync(tenantId: UUID, dealUnitId: UUID, dealUnitLineId: UUID, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchDealUnitLineAsyncWithRequestBuilder(tenantId: tenantId, dealUnitId: dealUnitId, dealUnitLineId: dealUnitLineId, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchDealUnitLineAsync(tenantId: UUID, dealUnitId: UUID, dealUnitLineId: UUID, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchDealUnitLineAsyncWithRequestBuilder(tenantId: tenantId, dealUnitId: dealUnitId, dealUnitLineId: dealUnitLineId, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -825,10 +835,10 @@ open class DealUnitsAPI {
      - parameter tenantId: (query)  
      - parameter dealUnitId: (path)  
      - parameter dealUnitLineId: (path)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchDealUnitLineAsyncWithRequestBuilder(tenantId: UUID, dealUnitId: UUID, dealUnitLineId: UUID, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchDealUnitLineAsyncWithRequestBuilder(tenantId: UUID, dealUnitId: UUID, dealUnitLineId: UUID, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/DealsService/DealUnits/{dealUnitId}/Lines/{dealUnitLineId}"
         let dealUnitIdPreEscape = "\(APIHelper.mapValueToPathItem(dealUnitId))"
         let dealUnitIdPostEscape = dealUnitIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -837,7 +847,7 @@ open class DealUnitsAPI {
         let dealUnitLineIdPostEscape = dealUnitLineIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{dealUnitLineId}", with: dealUnitLineIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

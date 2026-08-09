@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **UUID** |  | [optional] 
 **timestamp** | **Date** |  | [optional] 
-**message** | **String** |  | 
+**message** | **String** |  | [optional] 
 **bodyHtml** | **String** |  | [optional] 
 **bodyFormat** | **String** |  | [optional] 
 **parentCommentId** | **String** |  | [optional] 

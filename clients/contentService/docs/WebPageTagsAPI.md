@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 # **countWebPageTagsAsync**
 ```swift
-    open class func countWebPageTagsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countWebPageTagsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, webPageTagDtoCollectionQueryParameters: WebPageTagDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count web page tags
@@ -30,9 +30,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let webPageTagDtoCollectionQueryParameters = WebPageTagDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // WebPageTagDtoCollectionQueryParameters |  (optional)
 
 // Count web page tags
-WebPageTagsAPI.countWebPageTagsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+WebPageTagsAPI.countWebPageTagsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, webPageTagDtoCollectionQueryParameters: webPageTagDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -51,6 +52,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **webPageTagDtoCollectionQueryParameters** | [**WebPageTagDtoCollectionQueryParameters**](WebPageTagDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -62,7 +64,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -237,7 +239,7 @@ No authorization required
 
 # **getWebPageTagsAsync**
 ```swift
-    open class func getWebPageTagsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: WebPageTagDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getWebPageTagsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, webPageTagDtoCollectionQueryParameters: WebPageTagDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: WebPageTagDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get web page tags
@@ -252,9 +254,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let webPageTagDtoCollectionQueryParameters = WebPageTagDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // WebPageTagDtoCollectionQueryParameters |  (optional)
 
 // Get web page tags
-WebPageTagsAPI.getWebPageTagsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+WebPageTagsAPI.getWebPageTagsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, webPageTagDtoCollectionQueryParameters: webPageTagDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -273,6 +276,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **webPageTagDtoCollectionQueryParameters** | [**WebPageTagDtoCollectionQueryParameters**](WebPageTagDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -284,14 +288,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchWebPageTagAsync**
 ```swift
-    open class func patchWebPageTagAsync(tenantId: UUID, webPageTagId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchWebPageTagAsync(tenantId: UUID, webPageTagId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a web page tag
@@ -307,10 +311,10 @@ let tenantId = 987 // UUID |
 let webPageTagId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a web page tag
-WebPageTagsAPI.patchWebPageTagAsync(tenantId: tenantId, webPageTagId: webPageTagId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+WebPageTagsAPI.patchWebPageTagAsync(tenantId: tenantId, webPageTagId: webPageTagId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -330,7 +334,7 @@ Name | Type | Description  | Notes
  **webPageTagId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

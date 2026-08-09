@@ -125,12 +125,13 @@ open class BusinessDomainsAPI {
      
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter businessDomainDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getSystemBusinessDomains(apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BusinessDomainDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getSystemBusinessDomainsWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getSystemBusinessDomains(apiVersion: String? = nil, xApiVersion: String? = nil, businessDomainDtoCollectionQueryParameters: BusinessDomainDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BusinessDomainDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getSystemBusinessDomainsWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion, businessDomainDtoCollectionQueryParameters: businessDomainDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -146,12 +147,13 @@ open class BusinessDomainsAPI {
      - Retrieve all registered business domains across every tenant (global administrators only).
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter businessDomainDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<BusinessDomainDtoListEnvelope> 
      */
-    open class func getSystemBusinessDomainsWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<BusinessDomainDtoListEnvelope> {
+    open class func getSystemBusinessDomainsWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil, businessDomainDtoCollectionQueryParameters: BusinessDomainDtoCollectionQueryParameters? = nil) -> RequestBuilder<BusinessDomainDtoListEnvelope> {
         let localVariablePath = "/api/v2/SystemService/BusinessDomains"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: businessDomainDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -159,6 +161,7 @@ open class BusinessDomainsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -174,12 +177,13 @@ open class BusinessDomainsAPI {
      
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter businessDomainDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getSystemBusinessDomainsCount(apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getSystemBusinessDomainsCountWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getSystemBusinessDomainsCount(apiVersion: String? = nil, xApiVersion: String? = nil, businessDomainDtoCollectionQueryParameters: BusinessDomainDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getSystemBusinessDomainsCountWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion, businessDomainDtoCollectionQueryParameters: businessDomainDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -195,12 +199,13 @@ open class BusinessDomainsAPI {
      - Get the count of all registered business domains across every tenant.
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter businessDomainDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getSystemBusinessDomainsCountWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getSystemBusinessDomainsCountWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil, businessDomainDtoCollectionQueryParameters: BusinessDomainDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/SystemService/BusinessDomains/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: businessDomainDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -208,6 +213,7 @@ open class BusinessDomainsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 

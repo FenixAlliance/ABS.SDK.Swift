@@ -341,7 +341,7 @@ No authorization required
 
 # **getFilesAsync**
 ```swift
-    open class func getFilesAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: FileUploadDtoEnvelope?, _ error: Error?) -> Void)
+    open class func getFilesAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, top: Int? = nil, skip: Int? = nil, count: Bool? = nil, filter: String? = nil, orderBy: String? = nil, search: String? = nil, select: String? = nil, expand: String? = nil, isEmpty: Bool? = nil, completion: @escaping (_ data: FileUploadDtoEnvelope?, _ error: Error?) -> Void)
 ```
 
 
@@ -354,8 +354,17 @@ import OpenAPIClient
 let tenantId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let top = 987 // Int |  (optional)
+let skip = 987 // Int |  (optional)
+let count = true // Bool |  (optional)
+let filter = "filter_example" // String |  (optional)
+let orderBy = "orderBy_example" // String |  (optional)
+let search = "search_example" // String |  (optional)
+let select = "select_example" // String |  (optional)
+let expand = "expand_example" // String |  (optional)
+let isEmpty = true // Bool |  (optional)
 
-FilesAPI.getFilesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+FilesAPI.getFilesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, top: top, skip: skip, count: count, filter: filter, orderBy: orderBy, search: search, select: select, expand: expand, isEmpty: isEmpty) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -374,6 +383,15 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **top** | **Int** |  | [optional] 
+ **skip** | **Int** |  | [optional] 
+ **count** | **Bool** |  | [optional] 
+ **filter** | **String** |  | [optional] 
+ **orderBy** | **String** |  | [optional] 
+ **search** | **String** |  | [optional] 
+ **select** | **String** |  | [optional] 
+ **expand** | **String** |  | [optional] 
+ **isEmpty** | **Bool** |  | [optional] 
 
 ### Return type
 
@@ -385,14 +403,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: multipart/form-data
  - **Accept**: application/json, image/png
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getFilesCountAsync**
 ```swift
-    open class func getFilesCountAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int64?, _ error: Error?) -> Void)
+    open class func getFilesCountAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, top: Int? = nil, skip: Int? = nil, count: Bool? = nil, filter: String? = nil, orderBy: String? = nil, search: String? = nil, select: String? = nil, expand: String? = nil, isEmpty: Bool? = nil, completion: @escaping (_ data: Int64?, _ error: Error?) -> Void)
 ```
 
 
@@ -405,8 +423,17 @@ import OpenAPIClient
 let tenantId = 987 // UUID |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let top = 987 // Int |  (optional)
+let skip = 987 // Int |  (optional)
+let count = true // Bool |  (optional)
+let filter = "filter_example" // String |  (optional)
+let orderBy = "orderBy_example" // String |  (optional)
+let search = "search_example" // String |  (optional)
+let select = "select_example" // String |  (optional)
+let expand = "expand_example" // String |  (optional)
+let isEmpty = true // Bool |  (optional)
 
-FilesAPI.getFilesCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+FilesAPI.getFilesCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, top: top, skip: skip, count: count, filter: filter, orderBy: orderBy, search: search, select: select, expand: expand, isEmpty: isEmpty) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -425,6 +452,15 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **top** | **Int** |  | [optional] 
+ **skip** | **Int** |  | [optional] 
+ **count** | **Bool** |  | [optional] 
+ **filter** | **String** |  | [optional] 
+ **orderBy** | **String** |  | [optional] 
+ **search** | **String** |  | [optional] 
+ **select** | **String** |  | [optional] 
+ **expand** | **String** |  | [optional] 
+ **isEmpty** | **Bool** |  | [optional] 
 
 ### Return type
 
@@ -436,7 +472,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: multipart/form-data
  - **Accept**: application/json, image/png
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

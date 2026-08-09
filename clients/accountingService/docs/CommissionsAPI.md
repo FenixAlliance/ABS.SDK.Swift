@@ -302,7 +302,7 @@ No authorization required
 
 # **getCommissionsAsync**
 ```swift
-    open class func getCommissionsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: CommissionDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getCommissionsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, commissionDtoCollectionQueryParameters: CommissionDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: CommissionDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all commissions for a tenant
@@ -317,9 +317,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let commissionDtoCollectionQueryParameters = CommissionDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CommissionDtoCollectionQueryParameters |  (optional)
 
 // Get all commissions for a tenant
-CommissionsAPI.getCommissionsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CommissionsAPI.getCommissionsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, commissionDtoCollectionQueryParameters: commissionDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -338,6 +339,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **commissionDtoCollectionQueryParameters** | [**CommissionDtoCollectionQueryParameters**](CommissionDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -349,14 +351,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCommissionsCountAsync**
 ```swift
-    open class func getCommissionsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getCommissionsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, commissionDtoCollectionQueryParameters: CommissionDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get the count of commissions for a tenant
@@ -371,9 +373,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let commissionDtoCollectionQueryParameters = CommissionDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CommissionDtoCollectionQueryParameters |  (optional)
 
 // Get the count of commissions for a tenant
-CommissionsAPI.getCommissionsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CommissionsAPI.getCommissionsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, commissionDtoCollectionQueryParameters: commissionDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -392,6 +395,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **commissionDtoCollectionQueryParameters** | [**CommissionDtoCollectionQueryParameters**](CommissionDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -403,7 +407,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -466,7 +470,7 @@ No authorization required
 
 # **getPaymentCommissionsAsync**
 ```swift
-    open class func getPaymentCommissionsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: PaymentCommissionDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getPaymentCommissionsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, paymentCommissionDtoCollectionQueryParameters: PaymentCommissionDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: PaymentCommissionDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all payment commissions for a tenant
@@ -481,9 +485,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let paymentCommissionDtoCollectionQueryParameters = PaymentCommissionDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // PaymentCommissionDtoCollectionQueryParameters |  (optional)
 
 // Get all payment commissions for a tenant
-CommissionsAPI.getPaymentCommissionsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CommissionsAPI.getPaymentCommissionsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, paymentCommissionDtoCollectionQueryParameters: paymentCommissionDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -502,6 +507,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **paymentCommissionDtoCollectionQueryParameters** | [**PaymentCommissionDtoCollectionQueryParameters**](PaymentCommissionDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -513,14 +519,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getPaymentCommissionsCountAsync**
 ```swift
-    open class func getPaymentCommissionsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getPaymentCommissionsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, paymentCommissionDtoCollectionQueryParameters: PaymentCommissionDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get the count of payment commissions for a tenant
@@ -535,9 +541,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let paymentCommissionDtoCollectionQueryParameters = PaymentCommissionDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // PaymentCommissionDtoCollectionQueryParameters |  (optional)
 
 // Get the count of payment commissions for a tenant
-CommissionsAPI.getPaymentCommissionsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CommissionsAPI.getPaymentCommissionsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, paymentCommissionDtoCollectionQueryParameters: paymentCommissionDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -556,6 +563,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **paymentCommissionDtoCollectionQueryParameters** | [**PaymentCommissionDtoCollectionQueryParameters**](PaymentCommissionDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -567,14 +575,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchCommissionAsync**
 ```swift
-    open class func patchCommissionAsync(tenantId: UUID, commissionId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchCommissionAsync(tenantId: UUID, commissionId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a commission
@@ -590,10 +598,10 @@ let tenantId = 987 // UUID |
 let commissionId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a commission
-CommissionsAPI.patchCommissionAsync(tenantId: tenantId, commissionId: commissionId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+CommissionsAPI.patchCommissionAsync(tenantId: tenantId, commissionId: commissionId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -613,7 +621,7 @@ Name | Type | Description  | Notes
  **commissionId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -632,7 +640,7 @@ No authorization required
 
 # **patchPaymentCommissionAsync**
 ```swift
-    open class func patchPaymentCommissionAsync(tenantId: UUID, paymentCommissionId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchPaymentCommissionAsync(tenantId: UUID, paymentCommissionId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a payment commission
@@ -648,10 +656,10 @@ let tenantId = 987 // UUID |
 let paymentCommissionId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a payment commission
-CommissionsAPI.patchPaymentCommissionAsync(tenantId: tenantId, paymentCommissionId: paymentCommissionId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+CommissionsAPI.patchPaymentCommissionAsync(tenantId: tenantId, paymentCommissionId: paymentCommissionId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -671,7 +679,7 @@ Name | Type | Description  | Notes
  **paymentCommissionId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

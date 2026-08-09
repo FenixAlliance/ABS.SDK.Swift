@@ -223,7 +223,7 @@ No authorization required
 
 # **getPaymentsAsync**
 ```swift
-    open class func getPaymentsAsync(tenantId: UUID, completion: @escaping (_ data: PaymentDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getPaymentsAsync(tenantId: UUID, paymentDtoCollectionQueryParameters: PaymentDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: PaymentDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Retrieves all payments
@@ -236,9 +236,10 @@ Gets all payments for the current tenant with OData support.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
+let paymentDtoCollectionQueryParameters = PaymentDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // PaymentDtoCollectionQueryParameters |  (optional)
 
 // Retrieves all payments
-PaymentsAPI.getPaymentsAsync(tenantId: tenantId) { (response, error) in
+PaymentsAPI.getPaymentsAsync(tenantId: tenantId, paymentDtoCollectionQueryParameters: paymentDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -255,6 +256,7 @@ PaymentsAPI.getPaymentsAsync(tenantId: tenantId) { (response, error) in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
+ **paymentDtoCollectionQueryParameters** | [**PaymentDtoCollectionQueryParameters**](PaymentDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -266,14 +268,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchPaymentAsync**
 ```swift
-    open class func patchPaymentAsync(tenantId: UUID, paymentId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchPaymentAsync(tenantId: UUID, paymentId: UUID, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a payment
@@ -287,10 +289,10 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let paymentId = 987 // UUID | 
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a payment
-PaymentsAPI.patchPaymentAsync(tenantId: tenantId, paymentId: paymentId, operation: operation) { (response, error) in
+PaymentsAPI.patchPaymentAsync(tenantId: tenantId, paymentId: paymentId, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -308,7 +310,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **paymentId** | **UUID** |  | 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

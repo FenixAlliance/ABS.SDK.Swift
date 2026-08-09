@@ -33,7 +33,7 @@ Method | HTTP request | Description
 
 # **countCurrentUserFollowersAsync**
 ```swift
-    open class func countCurrentUserFollowersAsync(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countCurrentUserFollowersAsync(apiVersion: String? = nil, xApiVersion: String? = nil, followRecordDtoCollectionQueryParameters: FollowRecordDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count the social profiles that follow the current user
@@ -47,9 +47,10 @@ import OpenAPIClient
 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let followRecordDtoCollectionQueryParameters = FollowRecordDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // FollowRecordDtoCollectionQueryParameters |  (optional)
 
 // Count the social profiles that follow the current user
-UsersAPI.countCurrentUserFollowersAsync(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+UsersAPI.countCurrentUserFollowersAsync(apiVersion: apiVersion, xApiVersion: xApiVersion, followRecordDtoCollectionQueryParameters: followRecordDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -67,6 +68,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **followRecordDtoCollectionQueryParameters** | [**FollowRecordDtoCollectionQueryParameters**](FollowRecordDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -78,14 +80,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml, multipart/form-data
  - **Accept**: application/json, application/xml, multipart/form-data
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **countCurrentUserFollowsAsync**
 ```swift
-    open class func countCurrentUserFollowsAsync(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countCurrentUserFollowsAsync(apiVersion: String? = nil, xApiVersion: String? = nil, followRecordDtoCollectionQueryParameters: FollowRecordDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count the social profiles that the current user follows
@@ -99,9 +101,10 @@ import OpenAPIClient
 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let followRecordDtoCollectionQueryParameters = FollowRecordDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // FollowRecordDtoCollectionQueryParameters |  (optional)
 
 // Count the social profiles that the current user follows
-UsersAPI.countCurrentUserFollowsAsync(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+UsersAPI.countCurrentUserFollowsAsync(apiVersion: apiVersion, xApiVersion: xApiVersion, followRecordDtoCollectionQueryParameters: followRecordDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -119,6 +122,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **followRecordDtoCollectionQueryParameters** | [**FollowRecordDtoCollectionQueryParameters**](FollowRecordDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -130,14 +134,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml, multipart/form-data
  - **Accept**: application/json, application/xml, multipart/form-data
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **countCurrentUserNotificationsAsync**
 ```swift
-    open class func countCurrentUserNotificationsAsync(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countCurrentUserNotificationsAsync(apiVersion: String? = nil, xApiVersion: String? = nil, notificationDtoCollectionQueryParameters: NotificationDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count the notifications for the current user
@@ -151,9 +155,10 @@ import OpenAPIClient
 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let notificationDtoCollectionQueryParameters = NotificationDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // NotificationDtoCollectionQueryParameters |  (optional)
 
 // Count the notifications for the current user
-UsersAPI.countCurrentUserNotificationsAsync(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+UsersAPI.countCurrentUserNotificationsAsync(apiVersion: apiVersion, xApiVersion: xApiVersion, notificationDtoCollectionQueryParameters: notificationDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -171,6 +176,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **notificationDtoCollectionQueryParameters** | [**NotificationDtoCollectionQueryParameters**](NotificationDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -182,14 +188,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml, multipart/form-data
  - **Accept**: application/json, application/xml, multipart/form-data
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **countCurrentUserTenantsAsync**
 ```swift
-    open class func countCurrentUserTenantsAsync(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countCurrentUserTenantsAsync(apiVersion: String? = nil, xApiVersion: String? = nil, tenantDtoCollectionQueryParameters: TenantDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count the tenants that the current user is enrolled in
@@ -203,9 +209,10 @@ import OpenAPIClient
 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let tenantDtoCollectionQueryParameters = TenantDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // TenantDtoCollectionQueryParameters |  (optional)
 
 // Count the tenants that the current user is enrolled in
-UsersAPI.countCurrentUserTenantsAsync(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+UsersAPI.countCurrentUserTenantsAsync(apiVersion: apiVersion, xApiVersion: xApiVersion, tenantDtoCollectionQueryParameters: tenantDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -223,6 +230,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **tenantDtoCollectionQueryParameters** | [**TenantDtoCollectionQueryParameters**](TenantDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -234,14 +242,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml, multipart/form-data
  - **Accept**: application/json, application/xml, multipart/form-data
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCurrentUserAddressesAsync**
 ```swift
-    open class func getCurrentUserAddressesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: AddressDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getCurrentUserAddressesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, addressDtoCollectionQueryParameters: AddressDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: AddressDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get the list of addresses for the current user
@@ -255,9 +263,10 @@ import OpenAPIClient
 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let addressDtoCollectionQueryParameters = AddressDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // AddressDtoCollectionQueryParameters |  (optional)
 
 // Get the list of addresses for the current user
-UsersAPI.getCurrentUserAddressesAsync(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+UsersAPI.getCurrentUserAddressesAsync(apiVersion: apiVersion, xApiVersion: xApiVersion, addressDtoCollectionQueryParameters: addressDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -275,6 +284,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **addressDtoCollectionQueryParameters** | [**AddressDtoCollectionQueryParameters**](AddressDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -286,7 +296,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml, multipart/form-data
  - **Accept**: application/json, application/xml, multipart/form-data
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -553,7 +563,7 @@ No authorization required
 
 # **getCurrentUserFollowersAsync**
 ```swift
-    open class func getCurrentUserFollowersAsync(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: FollowRecordDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getCurrentUserFollowersAsync(apiVersion: String? = nil, xApiVersion: String? = nil, followRecordDtoCollectionQueryParameters: FollowRecordDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: FollowRecordDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get the social profiles that follow the current user
@@ -567,9 +577,10 @@ import OpenAPIClient
 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let followRecordDtoCollectionQueryParameters = FollowRecordDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // FollowRecordDtoCollectionQueryParameters |  (optional)
 
 // Get the social profiles that follow the current user
-UsersAPI.getCurrentUserFollowersAsync(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+UsersAPI.getCurrentUserFollowersAsync(apiVersion: apiVersion, xApiVersion: xApiVersion, followRecordDtoCollectionQueryParameters: followRecordDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -587,6 +598,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **followRecordDtoCollectionQueryParameters** | [**FollowRecordDtoCollectionQueryParameters**](FollowRecordDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -598,14 +610,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml, multipart/form-data
  - **Accept**: application/json, application/xml, multipart/form-data
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCurrentUserFollowsAsync**
 ```swift
-    open class func getCurrentUserFollowsAsync(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: FollowRecordDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getCurrentUserFollowsAsync(apiVersion: String? = nil, xApiVersion: String? = nil, followRecordDtoCollectionQueryParameters: FollowRecordDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: FollowRecordDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get the social profiles that the current user follows
@@ -619,9 +631,10 @@ import OpenAPIClient
 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let followRecordDtoCollectionQueryParameters = FollowRecordDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // FollowRecordDtoCollectionQueryParameters |  (optional)
 
 // Get the social profiles that the current user follows
-UsersAPI.getCurrentUserFollowsAsync(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+UsersAPI.getCurrentUserFollowsAsync(apiVersion: apiVersion, xApiVersion: xApiVersion, followRecordDtoCollectionQueryParameters: followRecordDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -639,6 +652,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **followRecordDtoCollectionQueryParameters** | [**FollowRecordDtoCollectionQueryParameters**](FollowRecordDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -650,7 +664,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml, multipart/form-data
  - **Accept**: application/json, application/xml, multipart/form-data
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -709,7 +723,7 @@ No authorization required
 
 # **getCurrentUserNotificationsAsync**
 ```swift
-    open class func getCurrentUserNotificationsAsync(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: NotificationDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getCurrentUserNotificationsAsync(apiVersion: String? = nil, xApiVersion: String? = nil, notificationDtoCollectionQueryParameters: NotificationDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: NotificationDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get the list of notifications for the current user
@@ -723,9 +737,10 @@ import OpenAPIClient
 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let notificationDtoCollectionQueryParameters = NotificationDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // NotificationDtoCollectionQueryParameters |  (optional)
 
 // Get the list of notifications for the current user
-UsersAPI.getCurrentUserNotificationsAsync(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+UsersAPI.getCurrentUserNotificationsAsync(apiVersion: apiVersion, xApiVersion: xApiVersion, notificationDtoCollectionQueryParameters: notificationDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -743,6 +758,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **notificationDtoCollectionQueryParameters** | [**NotificationDtoCollectionQueryParameters**](NotificationDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -754,7 +770,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml, multipart/form-data
  - **Accept**: application/json, application/xml, multipart/form-data
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -865,7 +881,7 @@ No authorization required
 
 # **getCurrentUserTenantsAsync**
 ```swift
-    open class func getCurrentUserTenantsAsync(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: TenantDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getCurrentUserTenantsAsync(apiVersion: String? = nil, xApiVersion: String? = nil, tenantDtoCollectionQueryParameters: TenantDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: TenantDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get the tenants that the current user is enrolled in
@@ -879,9 +895,10 @@ import OpenAPIClient
 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let tenantDtoCollectionQueryParameters = TenantDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // TenantDtoCollectionQueryParameters |  (optional)
 
 // Get the tenants that the current user is enrolled in
-UsersAPI.getCurrentUserTenantsAsync(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+UsersAPI.getCurrentUserTenantsAsync(apiVersion: apiVersion, xApiVersion: xApiVersion, tenantDtoCollectionQueryParameters: tenantDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -899,6 +916,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **tenantDtoCollectionQueryParameters** | [**TenantDtoCollectionQueryParameters**](TenantDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -910,7 +928,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml, multipart/form-data
  - **Accept**: application/json, application/xml, multipart/form-data
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1127,7 +1145,7 @@ No authorization required
 
 # **patchCurrentUserAsync**
 ```swift
-    open class func patchCurrentUserAsync(apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchCurrentUserAsync(apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Partially update the current user's profile
@@ -1141,10 +1159,10 @@ import OpenAPIClient
 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Partially update the current user's profile
-UsersAPI.patchCurrentUserAsync(apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+UsersAPI.patchCurrentUserAsync(apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1162,7 +1180,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

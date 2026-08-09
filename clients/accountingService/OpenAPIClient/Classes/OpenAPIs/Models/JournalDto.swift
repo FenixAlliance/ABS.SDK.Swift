@@ -22,8 +22,10 @@ public struct JournalDto: Codable, JSONEncodable, Hashable {
     public var fiscalYearId: String?
     public var journalTypeId: String?
     public var parentJournalId: String?
+    public var financialBookId: String?
+    public var code: String?
 
-    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, description: String? = nil, tenantId: String? = nil, ledgerId: String? = nil, enrollmentId: String? = nil, fiscalYearId: String? = nil, journalTypeId: String? = nil, parentJournalId: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, description: String? = nil, tenantId: String? = nil, ledgerId: String? = nil, enrollmentId: String? = nil, fiscalYearId: String? = nil, journalTypeId: String? = nil, parentJournalId: String? = nil, financialBookId: String? = nil, code: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
@@ -34,6 +36,8 @@ public struct JournalDto: Codable, JSONEncodable, Hashable {
         self.fiscalYearId = fiscalYearId
         self.journalTypeId = journalTypeId
         self.parentJournalId = parentJournalId
+        self.financialBookId = financialBookId
+        self.code = code
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -47,6 +51,8 @@ public struct JournalDto: Codable, JSONEncodable, Hashable {
         case fiscalYearId
         case journalTypeId
         case parentJournalId
+        case financialBookId
+        case code
     }
 
     // Encodable protocol methods
@@ -63,6 +69,8 @@ public struct JournalDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(fiscalYearId, forKey: .fiscalYearId)
         try container.encodeIfPresent(journalTypeId, forKey: .journalTypeId)
         try container.encodeIfPresent(parentJournalId, forKey: .parentJournalId)
+        try container.encodeIfPresent(financialBookId, forKey: .financialBookId)
+        try container.encodeIfPresent(code, forKey: .code)
     }
 }
 

@@ -169,12 +169,13 @@ open class ReceiptsAPI {
      Retrieves tenant receipts
      
      - parameter tenantId: (query)  
+     - parameter receiptDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getReceiptsAsync(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ReceiptDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getReceiptsAsyncWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+    open class func getReceiptsAsync(tenantId: UUID, receiptDtoCollectionQueryParameters: ReceiptDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ReceiptDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getReceiptsAsyncWithRequestBuilder(tenantId: tenantId, receiptDtoCollectionQueryParameters: receiptDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -189,12 +190,13 @@ open class ReceiptsAPI {
      - GET /api/v2/AccountingService/Receipts
      - Fetches all receipts for a given tenant with OData support.
      - parameter tenantId: (query)  
+     - parameter receiptDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<ReceiptDtoIReadOnlyListEnvelope> 
      */
-    open class func getReceiptsAsyncWithRequestBuilder(tenantId: UUID) -> RequestBuilder<ReceiptDtoIReadOnlyListEnvelope> {
+    open class func getReceiptsAsyncWithRequestBuilder(tenantId: UUID, receiptDtoCollectionQueryParameters: ReceiptDtoCollectionQueryParameters? = nil) -> RequestBuilder<ReceiptDtoIReadOnlyListEnvelope> {
         let localVariablePath = "/api/v2/AccountingService/Receipts"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: receiptDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -202,7 +204,7 @@ open class ReceiptsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -216,12 +218,13 @@ open class ReceiptsAPI {
      Gets count of tenant receipts
      
      - parameter tenantId: (query)  
+     - parameter receiptDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getReceiptsCountAsync(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getReceiptsCountAsyncWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+    open class func getReceiptsCountAsync(tenantId: UUID, receiptDtoCollectionQueryParameters: ReceiptDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getReceiptsCountAsyncWithRequestBuilder(tenantId: tenantId, receiptDtoCollectionQueryParameters: receiptDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -236,12 +239,13 @@ open class ReceiptsAPI {
      - GET /api/v2/AccountingService/Receipts/Count
      - Returns total number of receipts for the tenant with OData filter support.
      - parameter tenantId: (query)  
+     - parameter receiptDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getReceiptsCountAsyncWithRequestBuilder(tenantId: UUID) -> RequestBuilder<Int32Envelope> {
+    open class func getReceiptsCountAsyncWithRequestBuilder(tenantId: UUID, receiptDtoCollectionQueryParameters: ReceiptDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/AccountingService/Receipts/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: receiptDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -249,7 +253,7 @@ open class ReceiptsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -264,13 +268,13 @@ open class ReceiptsAPI {
      
      - parameter tenantId: (query)  
      - parameter receiptId: (path)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchReceiptAsync(tenantId: UUID, receiptId: UUID, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchReceiptAsyncWithRequestBuilder(tenantId: tenantId, receiptId: receiptId, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchReceiptAsync(tenantId: UUID, receiptId: UUID, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchReceiptAsyncWithRequestBuilder(tenantId: tenantId, receiptId: receiptId, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -286,16 +290,16 @@ open class ReceiptsAPI {
      - Partially updates the specified receipt using a JSON Patch document.
      - parameter tenantId: (query)  
      - parameter receiptId: (path)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchReceiptAsyncWithRequestBuilder(tenantId: UUID, receiptId: UUID, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchReceiptAsyncWithRequestBuilder(tenantId: UUID, receiptId: UUID, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/Receipts/{receiptId}"
         let receiptIdPreEscape = "\(APIHelper.mapValueToPathItem(receiptId))"
         let receiptIdPostEscape = receiptIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{receiptId}", with: receiptIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

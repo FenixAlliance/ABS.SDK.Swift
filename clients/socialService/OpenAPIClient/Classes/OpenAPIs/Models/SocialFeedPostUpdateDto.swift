@@ -12,17 +12,32 @@ import AnyCodable
 
 public struct SocialFeedPostUpdateDto: Codable, JSONEncodable, Hashable {
 
+    public enum BodyFormat: String, Codable, CaseIterable {
+        case plainText = "PlainText"
+        case html = "Html"
+    }
+    static let bodyHtmlRule = StringRule(minLength: nil, maxLength: 8000, pattern: nil)
+    static let backgroundStyleRule = StringRule(minLength: nil, maxLength: 64, pattern: nil)
     public var title: String?
     public var message: String?
+    public var bodyHtml: String?
+    public var bodyFormat: BodyFormat?
+    public var backgroundStyle: String?
 
-    public init(title: String? = nil, message: String? = nil) {
+    public init(title: String? = nil, message: String? = nil, bodyHtml: String? = nil, bodyFormat: BodyFormat? = nil, backgroundStyle: String? = nil) {
         self.title = title
         self.message = message
+        self.bodyHtml = bodyHtml
+        self.bodyFormat = bodyFormat
+        self.backgroundStyle = backgroundStyle
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case title
         case message
+        case bodyHtml
+        case bodyFormat
+        case backgroundStyle
     }
 
     // Encodable protocol methods
@@ -31,6 +46,9 @@ public struct SocialFeedPostUpdateDto: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(message, forKey: .message)
+        try container.encodeIfPresent(bodyHtml, forKey: .bodyHtml)
+        try container.encodeIfPresent(bodyFormat, forKey: .bodyFormat)
+        try container.encodeIfPresent(backgroundStyle, forKey: .backgroundStyle)
     }
 }
 

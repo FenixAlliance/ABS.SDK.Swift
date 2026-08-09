@@ -127,7 +127,7 @@ No authorization required
 
 # **getRoundingPoliciesAsync**
 ```swift
-    open class func getRoundingPoliciesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: RoundingPolicyDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getRoundingPoliciesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, roundingPolicyDtoCollectionQueryParameters: RoundingPolicyDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: RoundingPolicyDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Gets all rounding policies
@@ -142,9 +142,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let roundingPolicyDtoCollectionQueryParameters = RoundingPolicyDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // RoundingPolicyDtoCollectionQueryParameters |  (optional)
 
 // Gets all rounding policies
-RoundingPoliciesAPI.getRoundingPoliciesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+RoundingPoliciesAPI.getRoundingPoliciesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, roundingPolicyDtoCollectionQueryParameters: roundingPolicyDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -163,6 +164,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **roundingPolicyDtoCollectionQueryParameters** | [**RoundingPolicyDtoCollectionQueryParameters**](RoundingPolicyDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -174,14 +176,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getRoundingPoliciesCountAsync**
 ```swift
-    open class func getRoundingPoliciesCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getRoundingPoliciesCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, roundingPolicyDtoCollectionQueryParameters: RoundingPolicyDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Counts rounding policies
@@ -196,9 +198,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let roundingPolicyDtoCollectionQueryParameters = RoundingPolicyDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // RoundingPolicyDtoCollectionQueryParameters |  (optional)
 
 // Counts rounding policies
-RoundingPoliciesAPI.getRoundingPoliciesCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+RoundingPoliciesAPI.getRoundingPoliciesCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, roundingPolicyDtoCollectionQueryParameters: roundingPolicyDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -217,6 +220,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **roundingPolicyDtoCollectionQueryParameters** | [**RoundingPolicyDtoCollectionQueryParameters**](RoundingPolicyDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -228,7 +232,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -291,7 +295,7 @@ No authorization required
 
 # **patchRoundingPolicyAsync**
 ```swift
-    open class func patchRoundingPolicyAsync(tenantId: UUID, roundingPolicyId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchRoundingPolicyAsync(tenantId: UUID, roundingPolicyId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patches a rounding policy
@@ -307,10 +311,10 @@ let tenantId = 987 // UUID |
 let roundingPolicyId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patches a rounding policy
-RoundingPoliciesAPI.patchRoundingPolicyAsync(tenantId: tenantId, roundingPolicyId: roundingPolicyId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+RoundingPoliciesAPI.patchRoundingPolicyAsync(tenantId: tenantId, roundingPolicyId: roundingPolicyId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -330,7 +334,7 @@ Name | Type | Description  | Notes
  **roundingPolicyId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

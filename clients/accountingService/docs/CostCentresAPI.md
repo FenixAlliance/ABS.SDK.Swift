@@ -476,7 +476,7 @@ No authorization required
 
 # **getCostCentreBudgets**
 ```swift
-    open class func getCostCentreBudgets(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: CostCentreBudgetDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getCostCentreBudgets(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, costCentreBudgetDtoCollectionQueryParameters: CostCentreBudgetDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: CostCentreBudgetDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all cost centre budgets for a tenant
@@ -491,9 +491,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let costCentreBudgetDtoCollectionQueryParameters = CostCentreBudgetDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CostCentreBudgetDtoCollectionQueryParameters |  (optional)
 
 // Get all cost centre budgets for a tenant
-CostCentresAPI.getCostCentreBudgets(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CostCentresAPI.getCostCentreBudgets(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, costCentreBudgetDtoCollectionQueryParameters: costCentreBudgetDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -512,6 +513,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **costCentreBudgetDtoCollectionQueryParameters** | [**CostCentreBudgetDtoCollectionQueryParameters**](CostCentreBudgetDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -523,7 +525,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -586,7 +588,7 @@ No authorization required
 
 # **getCostCentreGroups**
 ```swift
-    open class func getCostCentreGroups(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: CostCentreGroupDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getCostCentreGroups(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, costCentreGroupDtoCollectionQueryParameters: CostCentreGroupDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: CostCentreGroupDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all cost centre groups for a tenant
@@ -601,9 +603,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let costCentreGroupDtoCollectionQueryParameters = CostCentreGroupDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CostCentreGroupDtoCollectionQueryParameters |  (optional)
 
 // Get all cost centre groups for a tenant
-CostCentresAPI.getCostCentreGroups(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CostCentresAPI.getCostCentreGroups(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, costCentreGroupDtoCollectionQueryParameters: costCentreGroupDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -622,6 +625,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **costCentreGroupDtoCollectionQueryParameters** | [**CostCentreGroupDtoCollectionQueryParameters**](CostCentreGroupDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -633,14 +637,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCostCentreGroupsCount**
 ```swift
-    open class func getCostCentreGroupsCount(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getCostCentreGroupsCount(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, costCentreGroupDtoCollectionQueryParameters: CostCentreGroupDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get the count of cost centre groups for a tenant
@@ -655,9 +659,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let costCentreGroupDtoCollectionQueryParameters = CostCentreGroupDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CostCentreGroupDtoCollectionQueryParameters |  (optional)
 
 // Get the count of cost centre groups for a tenant
-CostCentresAPI.getCostCentreGroupsCount(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CostCentresAPI.getCostCentreGroupsCount(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, costCentreGroupDtoCollectionQueryParameters: costCentreGroupDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -676,6 +681,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **costCentreGroupDtoCollectionQueryParameters** | [**CostCentreGroupDtoCollectionQueryParameters**](CostCentreGroupDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -687,14 +693,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCostCentres**
 ```swift
-    open class func getCostCentres(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: CostCentreDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getCostCentres(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, costCentreDtoCollectionQueryParameters: CostCentreDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: CostCentreDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all cost centres for a tenant
@@ -709,9 +715,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let costCentreDtoCollectionQueryParameters = CostCentreDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CostCentreDtoCollectionQueryParameters |  (optional)
 
 // Get all cost centres for a tenant
-CostCentresAPI.getCostCentres(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CostCentresAPI.getCostCentres(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, costCentreDtoCollectionQueryParameters: costCentreDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -730,6 +737,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **costCentreDtoCollectionQueryParameters** | [**CostCentreDtoCollectionQueryParameters**](CostCentreDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -741,14 +749,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCostCentresCount**
 ```swift
-    open class func getCostCentresCount(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getCostCentresCount(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, costCentreDtoCollectionQueryParameters: CostCentreDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get the count of cost centres for a tenant
@@ -763,9 +771,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let costCentreDtoCollectionQueryParameters = CostCentreDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CostCentreDtoCollectionQueryParameters |  (optional)
 
 // Get the count of cost centres for a tenant
-CostCentresAPI.getCostCentresCount(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CostCentresAPI.getCostCentresCount(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, costCentreDtoCollectionQueryParameters: costCentreDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -784,6 +793,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **costCentreDtoCollectionQueryParameters** | [**CostCentreDtoCollectionQueryParameters**](CostCentreDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -795,14 +805,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchCostCentre**
 ```swift
-    open class func patchCostCentre(tenantId: UUID, costCentreId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchCostCentre(tenantId: UUID, costCentreId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a cost centre
@@ -818,10 +828,10 @@ let tenantId = 987 // UUID |
 let costCentreId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a cost centre
-CostCentresAPI.patchCostCentre(tenantId: tenantId, costCentreId: costCentreId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+CostCentresAPI.patchCostCentre(tenantId: tenantId, costCentreId: costCentreId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -841,7 +851,7 @@ Name | Type | Description  | Notes
  **costCentreId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -860,7 +870,7 @@ No authorization required
 
 # **patchCostCentreBudget**
 ```swift
-    open class func patchCostCentreBudget(tenantId: UUID, budgetId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchCostCentreBudget(tenantId: UUID, budgetId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a cost centre budget
@@ -876,10 +886,10 @@ let tenantId = 987 // UUID |
 let budgetId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a cost centre budget
-CostCentresAPI.patchCostCentreBudget(tenantId: tenantId, budgetId: budgetId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+CostCentresAPI.patchCostCentreBudget(tenantId: tenantId, budgetId: budgetId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -899,7 +909,7 @@ Name | Type | Description  | Notes
  **budgetId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -918,7 +928,7 @@ No authorization required
 
 # **patchCostCentreGroup**
 ```swift
-    open class func patchCostCentreGroup(tenantId: UUID, groupId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchCostCentreGroup(tenantId: UUID, groupId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a cost centre group
@@ -934,10 +944,10 @@ let tenantId = 987 // UUID |
 let groupId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a cost centre group
-CostCentresAPI.patchCostCentreGroup(tenantId: tenantId, groupId: groupId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+CostCentresAPI.patchCostCentreGroup(tenantId: tenantId, groupId: groupId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -957,7 +967,7 @@ Name | Type | Description  | Notes
  **groupId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

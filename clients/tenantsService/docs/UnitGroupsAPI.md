@@ -364,7 +364,7 @@ No authorization required
 
 # **getUnitGroupsAsync**
 ```swift
-    open class func getUnitGroupsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: UnitGroupDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getUnitGroupsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, unitGroupDtoCollectionQueryParameters: UnitGroupDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: UnitGroupDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Retrieve a list of unit groups
@@ -379,9 +379,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let unitGroupDtoCollectionQueryParameters = UnitGroupDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // UnitGroupDtoCollectionQueryParameters |  (optional)
 
 // Retrieve a list of unit groups
-UnitGroupsAPI.getUnitGroupsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+UnitGroupsAPI.getUnitGroupsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, unitGroupDtoCollectionQueryParameters: unitGroupDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -400,6 +401,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **unitGroupDtoCollectionQueryParameters** | [**UnitGroupDtoCollectionQueryParameters**](UnitGroupDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -411,14 +413,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getUnitGroupsCountAsync**
 ```swift
-    open class func getUnitGroupsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getUnitGroupsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, unitGroupDtoCollectionQueryParameters: UnitGroupDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get the count of unit groups
@@ -433,9 +435,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let unitGroupDtoCollectionQueryParameters = UnitGroupDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // UnitGroupDtoCollectionQueryParameters |  (optional)
 
 // Get the count of unit groups
-UnitGroupsAPI.getUnitGroupsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+UnitGroupsAPI.getUnitGroupsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, unitGroupDtoCollectionQueryParameters: unitGroupDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -454,6 +457,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **unitGroupDtoCollectionQueryParameters** | [**UnitGroupDtoCollectionQueryParameters**](UnitGroupDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -465,14 +469,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getUnitsAsync**
 ```swift
-    open class func getUnitsAsync(tenantId: UUID, unitGroupId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: UnitDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getUnitsAsync(tenantId: UUID, unitGroupId: String, apiVersion: String? = nil, xApiVersion: String? = nil, unitDtoCollectionQueryParameters: UnitDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: UnitDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Retrieve units for a unit group
@@ -488,9 +492,10 @@ let tenantId = 987 // UUID |
 let unitGroupId = "unitGroupId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let unitDtoCollectionQueryParameters = UnitDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // UnitDtoCollectionQueryParameters |  (optional)
 
 // Retrieve units for a unit group
-UnitGroupsAPI.getUnitsAsync(tenantId: tenantId, unitGroupId: unitGroupId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+UnitGroupsAPI.getUnitsAsync(tenantId: tenantId, unitGroupId: unitGroupId, apiVersion: apiVersion, xApiVersion: xApiVersion, unitDtoCollectionQueryParameters: unitDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -510,6 +515,7 @@ Name | Type | Description  | Notes
  **unitGroupId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **unitDtoCollectionQueryParameters** | [**UnitDtoCollectionQueryParameters**](UnitDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -521,14 +527,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getUnitsCountAsync**
 ```swift
-    open class func getUnitsCountAsync(tenantId: UUID, unitGroupId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getUnitsCountAsync(tenantId: UUID, unitGroupId: String, apiVersion: String? = nil, xApiVersion: String? = nil, unitDtoCollectionQueryParameters: UnitDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get the count of units in a unit group
@@ -544,9 +550,10 @@ let tenantId = 987 // UUID |
 let unitGroupId = "unitGroupId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let unitDtoCollectionQueryParameters = UnitDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // UnitDtoCollectionQueryParameters |  (optional)
 
 // Get the count of units in a unit group
-UnitGroupsAPI.getUnitsCountAsync(tenantId: tenantId, unitGroupId: unitGroupId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+UnitGroupsAPI.getUnitsCountAsync(tenantId: tenantId, unitGroupId: unitGroupId, apiVersion: apiVersion, xApiVersion: xApiVersion, unitDtoCollectionQueryParameters: unitDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -566,6 +573,7 @@ Name | Type | Description  | Notes
  **unitGroupId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **unitDtoCollectionQueryParameters** | [**UnitDtoCollectionQueryParameters**](UnitDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -577,14 +585,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchUnitAsync**
 ```swift
-    open class func patchUnitAsync(tenantId: UUID, unitGroupId: String, unitId: String, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchUnitAsync(tenantId: UUID, unitGroupId: String, unitId: String, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a unit within a unit group
@@ -601,10 +609,10 @@ let unitGroupId = "unitGroupId_example" // String |
 let unitId = "unitId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a unit within a unit group
-UnitGroupsAPI.patchUnitAsync(tenantId: tenantId, unitGroupId: unitGroupId, unitId: unitId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+UnitGroupsAPI.patchUnitAsync(tenantId: tenantId, unitGroupId: unitGroupId, unitId: unitId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -625,7 +633,7 @@ Name | Type | Description  | Notes
  **unitId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -644,7 +652,7 @@ No authorization required
 
 # **patchUnitGroupAsync**
 ```swift
-    open class func patchUnitGroupAsync(tenantId: UUID, unitGroupId: String, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchUnitGroupAsync(tenantId: UUID, unitGroupId: String, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a unit group
@@ -660,10 +668,10 @@ let tenantId = 987 // UUID |
 let unitGroupId = "unitGroupId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a unit group
-UnitGroupsAPI.patchUnitGroupAsync(tenantId: tenantId, unitGroupId: unitGroupId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+UnitGroupsAPI.patchUnitGroupAsync(tenantId: tenantId, unitGroupId: unitGroupId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -683,7 +691,7 @@ Name | Type | Description  | Notes
  **unitGroupId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

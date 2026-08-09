@@ -26,7 +26,7 @@ Method | HTTP request | Description
 
 # **countActivityTypesAsync**
 ```swift
-    open class func countActivityTypesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countActivityTypesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, activityTypeDtoCollectionQueryParameters: ActivityTypeDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count Activity Types
@@ -41,9 +41,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let activityTypeDtoCollectionQueryParameters = ActivityTypeDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ActivityTypeDtoCollectionQueryParameters |  (optional)
 
 // Count Activity Types
-ActivityFeedsAPI.countActivityTypesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ActivityFeedsAPI.countActivityTypesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, activityTypeDtoCollectionQueryParameters: activityTypeDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -62,6 +63,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **activityTypeDtoCollectionQueryParameters** | [**ActivityTypeDtoCollectionQueryParameters**](ActivityTypeDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -73,7 +75,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -308,7 +310,7 @@ No authorization required
 
 # **getActivitiesAsync**
 ```swift
-    open class func getActivitiesAsync(tenantId: UUID, activityFeedId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ActivityRecordDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getActivitiesAsync(tenantId: UUID, activityFeedId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, activityRecordDtoCollectionQueryParameters: ActivityRecordDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ActivityRecordDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get activities
@@ -324,9 +326,10 @@ let tenantId = 987 // UUID |
 let activityFeedId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let activityRecordDtoCollectionQueryParameters = ActivityRecordDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ActivityRecordDtoCollectionQueryParameters |  (optional)
 
 // Get activities
-ActivityFeedsAPI.getActivitiesAsync(tenantId: tenantId, activityFeedId: activityFeedId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ActivityFeedsAPI.getActivitiesAsync(tenantId: tenantId, activityFeedId: activityFeedId, apiVersion: apiVersion, xApiVersion: xApiVersion, activityRecordDtoCollectionQueryParameters: activityRecordDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -346,6 +349,7 @@ Name | Type | Description  | Notes
  **activityFeedId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **activityRecordDtoCollectionQueryParameters** | [**ActivityRecordDtoCollectionQueryParameters**](ActivityRecordDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -357,14 +361,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getActivitiesCountAsync**
 ```swift
-    open class func getActivitiesCountAsync(tenantId: UUID, activityFeedId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getActivitiesCountAsync(tenantId: UUID, activityFeedId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, activityRecordDtoCollectionQueryParameters: ActivityRecordDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count activities
@@ -380,9 +384,10 @@ let tenantId = 987 // UUID |
 let activityFeedId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let activityRecordDtoCollectionQueryParameters = ActivityRecordDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ActivityRecordDtoCollectionQueryParameters |  (optional)
 
 // Count activities
-ActivityFeedsAPI.getActivitiesCountAsync(tenantId: tenantId, activityFeedId: activityFeedId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ActivityFeedsAPI.getActivitiesCountAsync(tenantId: tenantId, activityFeedId: activityFeedId, apiVersion: apiVersion, xApiVersion: xApiVersion, activityRecordDtoCollectionQueryParameters: activityRecordDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -402,6 +407,7 @@ Name | Type | Description  | Notes
  **activityFeedId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **activityRecordDtoCollectionQueryParameters** | [**ActivityRecordDtoCollectionQueryParameters**](ActivityRecordDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -413,7 +419,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -534,7 +540,7 @@ No authorization required
 
 # **getActivityFeedsAsync**
 ```swift
-    open class func getActivityFeedsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ActivityFeedDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getActivityFeedsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, activityFeedDtoCollectionQueryParameters: ActivityFeedDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ActivityFeedDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get activity feeds
@@ -549,9 +555,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let activityFeedDtoCollectionQueryParameters = ActivityFeedDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ActivityFeedDtoCollectionQueryParameters |  (optional)
 
 // Get activity feeds
-ActivityFeedsAPI.getActivityFeedsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ActivityFeedsAPI.getActivityFeedsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, activityFeedDtoCollectionQueryParameters: activityFeedDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -570,6 +577,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **activityFeedDtoCollectionQueryParameters** | [**ActivityFeedDtoCollectionQueryParameters**](ActivityFeedDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -581,14 +589,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getActivityFeedsCountAsync**
 ```swift
-    open class func getActivityFeedsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getActivityFeedsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, activityFeedDtoCollectionQueryParameters: ActivityFeedDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count activity feeds
@@ -603,9 +611,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let activityFeedDtoCollectionQueryParameters = ActivityFeedDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ActivityFeedDtoCollectionQueryParameters |  (optional)
 
 // Count activity feeds
-ActivityFeedsAPI.getActivityFeedsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ActivityFeedsAPI.getActivityFeedsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, activityFeedDtoCollectionQueryParameters: activityFeedDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -624,6 +633,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **activityFeedDtoCollectionQueryParameters** | [**ActivityFeedDtoCollectionQueryParameters**](ActivityFeedDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -635,14 +645,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getActivityRecordsCountAsync**
 ```swift
-    open class func getActivityRecordsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getActivityRecordsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, activityRecordDtoCollectionQueryParameters: ActivityRecordDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count activity records
@@ -657,9 +667,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let activityRecordDtoCollectionQueryParameters = ActivityRecordDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ActivityRecordDtoCollectionQueryParameters |  (optional)
 
 // Count activity records
-ActivityFeedsAPI.getActivityRecordsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ActivityFeedsAPI.getActivityRecordsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, activityRecordDtoCollectionQueryParameters: activityRecordDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -678,6 +689,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **activityRecordDtoCollectionQueryParameters** | [**ActivityRecordDtoCollectionQueryParameters**](ActivityRecordDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -689,7 +701,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -752,7 +764,7 @@ No authorization required
 
 # **getActivityTypesAsync**
 ```swift
-    open class func getActivityTypesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ActivityTypeDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getActivityTypesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, activityTypeDtoCollectionQueryParameters: ActivityTypeDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ActivityTypeDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get Activity Types
@@ -767,9 +779,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let activityTypeDtoCollectionQueryParameters = ActivityTypeDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ActivityTypeDtoCollectionQueryParameters |  (optional)
 
 // Get Activity Types
-ActivityFeedsAPI.getActivityTypesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ActivityFeedsAPI.getActivityTypesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, activityTypeDtoCollectionQueryParameters: activityTypeDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -788,6 +801,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **activityTypeDtoCollectionQueryParameters** | [**ActivityTypeDtoCollectionQueryParameters**](ActivityTypeDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -799,14 +813,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchActivityAsync**
 ```swift
-    open class func patchActivityAsync(tenantId: UUID, activityFeedId: UUID, activityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchActivityAsync(tenantId: UUID, activityFeedId: UUID, activityId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch an activity
@@ -823,10 +837,10 @@ let activityFeedId = 987 // UUID |
 let activityId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch an activity
-ActivityFeedsAPI.patchActivityAsync(tenantId: tenantId, activityFeedId: activityFeedId, activityId: activityId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+ActivityFeedsAPI.patchActivityAsync(tenantId: tenantId, activityFeedId: activityFeedId, activityId: activityId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -847,7 +861,7 @@ Name | Type | Description  | Notes
  **activityId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -866,7 +880,7 @@ No authorization required
 
 # **patchActivityTypeAsync**
 ```swift
-    open class func patchActivityTypeAsync(tenantId: UUID, activityTypeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchActivityTypeAsync(tenantId: UUID, activityTypeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch Activity Type
@@ -882,10 +896,10 @@ let tenantId = 987 // UUID |
 let activityTypeId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch Activity Type
-ActivityFeedsAPI.patchActivityTypeAsync(tenantId: tenantId, activityTypeId: activityTypeId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+ActivityFeedsAPI.patchActivityTypeAsync(tenantId: tenantId, activityTypeId: activityTypeId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -905,7 +919,7 @@ Name | Type | Description  | Notes
  **activityTypeId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

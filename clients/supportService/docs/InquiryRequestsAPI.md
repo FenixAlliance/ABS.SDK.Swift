@@ -177,7 +177,7 @@ No authorization required
 
 # **getInquiryRequestsAsync**
 ```swift
-    open class func getInquiryRequestsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: InquiryRequestDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getInquiryRequestsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, inquiryRequestDtoCollectionQueryParameters: InquiryRequestDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: InquiryRequestDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Retrieve inquiry requests
@@ -190,9 +190,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let inquiryRequestDtoCollectionQueryParameters = InquiryRequestDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // InquiryRequestDtoCollectionQueryParameters |  (optional)
 
 // Retrieve inquiry requests
-InquiryRequestsAPI.getInquiryRequestsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+InquiryRequestsAPI.getInquiryRequestsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, inquiryRequestDtoCollectionQueryParameters: inquiryRequestDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -211,6 +212,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **inquiryRequestDtoCollectionQueryParameters** | [**InquiryRequestDtoCollectionQueryParameters**](InquiryRequestDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -222,14 +224,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getInquiryRequestsCountAsync**
 ```swift
-    open class func getInquiryRequestsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getInquiryRequestsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, inquiryRequestDtoCollectionQueryParameters: InquiryRequestDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get inquiry requests count
@@ -242,9 +244,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let inquiryRequestDtoCollectionQueryParameters = InquiryRequestDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // InquiryRequestDtoCollectionQueryParameters |  (optional)
 
 // Get inquiry requests count
-InquiryRequestsAPI.getInquiryRequestsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+InquiryRequestsAPI.getInquiryRequestsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, inquiryRequestDtoCollectionQueryParameters: inquiryRequestDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -263,6 +266,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **inquiryRequestDtoCollectionQueryParameters** | [**InquiryRequestDtoCollectionQueryParameters**](InquiryRequestDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -274,14 +278,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchInquiryRequestAsync**
 ```swift
-    open class func patchInquiryRequestAsync(tenantId: UUID, inquiryRequestId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchInquiryRequestAsync(tenantId: UUID, inquiryRequestId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch an inquiry request
@@ -297,10 +301,10 @@ let tenantId = 987 // UUID |
 let inquiryRequestId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch an inquiry request
-InquiryRequestsAPI.patchInquiryRequestAsync(tenantId: tenantId, inquiryRequestId: inquiryRequestId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+InquiryRequestsAPI.patchInquiryRequestAsync(tenantId: tenantId, inquiryRequestId: inquiryRequestId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -320,7 +324,7 @@ Name | Type | Description  | Notes
  **inquiryRequestId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

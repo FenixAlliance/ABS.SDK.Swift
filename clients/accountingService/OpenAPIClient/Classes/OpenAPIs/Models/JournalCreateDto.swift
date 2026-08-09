@@ -17,6 +17,8 @@ public struct JournalCreateDto: Codable, JSONEncodable, Hashable {
     static let parentJournalIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let journalTypeIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
     static let ledgerIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
+    static let financialBookIdRule = StringRule(minLength: 0, maxLength: 36, pattern: nil)
+    static let codeRule = StringRule(minLength: 1, maxLength: 64, pattern: nil)
     public var id: UUID?
     public var timestamp: Date?
     public var name: String
@@ -25,8 +27,10 @@ public struct JournalCreateDto: Codable, JSONEncodable, Hashable {
     public var parentJournalId: String?
     public var journalTypeId: String?
     public var ledgerId: String?
+    public var financialBookId: String?
+    public var code: String?
 
-    public init(id: UUID? = nil, timestamp: Date? = nil, name: String, description: String? = nil, dateTime: Date? = nil, parentJournalId: String? = nil, journalTypeId: String? = nil, ledgerId: String? = nil) {
+    public init(id: UUID? = nil, timestamp: Date? = nil, name: String, description: String? = nil, dateTime: Date? = nil, parentJournalId: String? = nil, journalTypeId: String? = nil, ledgerId: String? = nil, financialBookId: String? = nil, code: String? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
@@ -35,6 +39,8 @@ public struct JournalCreateDto: Codable, JSONEncodable, Hashable {
         self.parentJournalId = parentJournalId
         self.journalTypeId = journalTypeId
         self.ledgerId = ledgerId
+        self.financialBookId = financialBookId
+        self.code = code
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -46,6 +52,8 @@ public struct JournalCreateDto: Codable, JSONEncodable, Hashable {
         case parentJournalId
         case journalTypeId
         case ledgerId
+        case financialBookId
+        case code
     }
 
     // Encodable protocol methods
@@ -60,6 +68,8 @@ public struct JournalCreateDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(parentJournalId, forKey: .parentJournalId)
         try container.encodeIfPresent(journalTypeId, forKey: .journalTypeId)
         try container.encodeIfPresent(ledgerId, forKey: .ledgerId)
+        try container.encodeIfPresent(financialBookId, forKey: .financialBookId)
+        try container.encodeIfPresent(code, forKey: .code)
     }
 }
 

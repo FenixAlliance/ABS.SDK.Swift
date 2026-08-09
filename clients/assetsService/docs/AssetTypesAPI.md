@@ -171,7 +171,7 @@ No authorization required
 
 # **getAssetTypes**
 ```swift
-    open class func getAssetTypes(tenantId: UUID, completion: @escaping (_ data: AssetTypeDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getAssetTypes(tenantId: UUID, assetTypeDtoCollectionQueryParameters: AssetTypeDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: AssetTypeDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Gets all asset types for the current tenant
@@ -184,9 +184,10 @@ Retrieves all asset types for the authenticated tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
+let assetTypeDtoCollectionQueryParameters = AssetTypeDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // AssetTypeDtoCollectionQueryParameters |  (optional)
 
 // Gets all asset types for the current tenant
-AssetTypesAPI.getAssetTypes(tenantId: tenantId) { (response, error) in
+AssetTypesAPI.getAssetTypes(tenantId: tenantId, assetTypeDtoCollectionQueryParameters: assetTypeDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -203,6 +204,7 @@ AssetTypesAPI.getAssetTypes(tenantId: tenantId) { (response, error) in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
+ **assetTypeDtoCollectionQueryParameters** | [**AssetTypeDtoCollectionQueryParameters**](AssetTypeDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -214,14 +216,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getAssetTypesCount**
 ```swift
-    open class func getAssetTypesCount(tenantId: UUID, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getAssetTypesCount(tenantId: UUID, assetTypeDtoCollectionQueryParameters: AssetTypeDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Gets the count of asset types
@@ -234,9 +236,10 @@ Returns the total number of asset types for the authenticated tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
+let assetTypeDtoCollectionQueryParameters = AssetTypeDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // AssetTypeDtoCollectionQueryParameters |  (optional)
 
 // Gets the count of asset types
-AssetTypesAPI.getAssetTypesCount(tenantId: tenantId) { (response, error) in
+AssetTypesAPI.getAssetTypesCount(tenantId: tenantId, assetTypeDtoCollectionQueryParameters: assetTypeDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -253,6 +256,7 @@ AssetTypesAPI.getAssetTypesCount(tenantId: tenantId) { (response, error) in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
+ **assetTypeDtoCollectionQueryParameters** | [**AssetTypeDtoCollectionQueryParameters**](AssetTypeDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -264,14 +268,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchAssetType**
 ```swift
-    open class func patchAssetType(tenantId: UUID, typeId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchAssetType(tenantId: UUID, typeId: UUID, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Partially updates an existing asset type
@@ -285,10 +289,10 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let typeId = 987 // UUID | 
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Partially updates an existing asset type
-AssetTypesAPI.patchAssetType(tenantId: tenantId, typeId: typeId, operation: operation) { (response, error) in
+AssetTypesAPI.patchAssetType(tenantId: tenantId, typeId: typeId, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -306,7 +310,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **typeId** | **UUID** |  | 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

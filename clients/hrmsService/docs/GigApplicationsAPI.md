@@ -240,7 +240,7 @@ No authorization required
 
 # **getGigApplicationsAsync**
 ```swift
-    open class func getGigApplicationsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: GigApplicationDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getGigApplicationsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, gigApplicationDtoCollectionQueryParameters: GigApplicationDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: GigApplicationDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get gig applications
@@ -255,9 +255,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let gigApplicationDtoCollectionQueryParameters = GigApplicationDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // GigApplicationDtoCollectionQueryParameters |  (optional)
 
 // Get gig applications
-GigApplicationsAPI.getGigApplicationsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+GigApplicationsAPI.getGigApplicationsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, gigApplicationDtoCollectionQueryParameters: gigApplicationDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -276,6 +277,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **gigApplicationDtoCollectionQueryParameters** | [**GigApplicationDtoCollectionQueryParameters**](GigApplicationDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -287,14 +289,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getGigApplicationsCountAsync**
 ```swift
-    open class func getGigApplicationsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getGigApplicationsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, gigApplicationDtoCollectionQueryParameters: GigApplicationDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count gig applications
@@ -309,9 +311,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let gigApplicationDtoCollectionQueryParameters = GigApplicationDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // GigApplicationDtoCollectionQueryParameters |  (optional)
 
 // Count gig applications
-GigApplicationsAPI.getGigApplicationsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+GigApplicationsAPI.getGigApplicationsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, gigApplicationDtoCollectionQueryParameters: gigApplicationDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -330,6 +333,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **gigApplicationDtoCollectionQueryParameters** | [**GigApplicationDtoCollectionQueryParameters**](GigApplicationDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -341,14 +345,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchGigApplicationAsync**
 ```swift
-    open class func patchGigApplicationAsync(tenantId: UUID, gigApplicationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchGigApplicationAsync(tenantId: UUID, gigApplicationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a gig application
@@ -364,10 +368,10 @@ let tenantId = 987 // UUID |
 let gigApplicationId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a gig application
-GigApplicationsAPI.patchGigApplicationAsync(tenantId: tenantId, gigApplicationId: gigApplicationId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+GigApplicationsAPI.patchGigApplicationAsync(tenantId: tenantId, gigApplicationId: gigApplicationId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -387,7 +391,7 @@ Name | Type | Description  | Notes
  **gigApplicationId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

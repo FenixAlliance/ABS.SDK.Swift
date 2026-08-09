@@ -121,7 +121,7 @@ No authorization required
 
 # **getSystemBusinessDomains**
 ```swift
-    open class func getSystemBusinessDomains(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: BusinessDomainDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getSystemBusinessDomains(apiVersion: String? = nil, xApiVersion: String? = nil, businessDomainDtoCollectionQueryParameters: BusinessDomainDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: BusinessDomainDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Retrieve all business domains in the system
@@ -135,9 +135,10 @@ import OpenAPIClient
 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let businessDomainDtoCollectionQueryParameters = BusinessDomainDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // BusinessDomainDtoCollectionQueryParameters |  (optional)
 
 // Retrieve all business domains in the system
-BusinessDomainsAPI.getSystemBusinessDomains(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+BusinessDomainsAPI.getSystemBusinessDomains(apiVersion: apiVersion, xApiVersion: xApiVersion, businessDomainDtoCollectionQueryParameters: businessDomainDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -155,6 +156,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **businessDomainDtoCollectionQueryParameters** | [**BusinessDomainDtoCollectionQueryParameters**](BusinessDomainDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -166,14 +168,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getSystemBusinessDomainsCount**
 ```swift
-    open class func getSystemBusinessDomainsCount(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getSystemBusinessDomainsCount(apiVersion: String? = nil, xApiVersion: String? = nil, businessDomainDtoCollectionQueryParameters: BusinessDomainDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get the count of all business domains in the system
@@ -187,9 +189,10 @@ import OpenAPIClient
 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let businessDomainDtoCollectionQueryParameters = BusinessDomainDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // BusinessDomainDtoCollectionQueryParameters |  (optional)
 
 // Get the count of all business domains in the system
-BusinessDomainsAPI.getSystemBusinessDomainsCount(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+BusinessDomainsAPI.getSystemBusinessDomainsCount(apiVersion: apiVersion, xApiVersion: xApiVersion, businessDomainDtoCollectionQueryParameters: businessDomainDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -207,6 +210,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **businessDomainDtoCollectionQueryParameters** | [**BusinessDomainDtoCollectionQueryParameters**](BusinessDomainDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -218,7 +222,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

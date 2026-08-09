@@ -18,12 +18,13 @@ open class BlogPostAuthorsAPI {
      - parameter authorId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter blogPostDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func countBlogPostsByAuthorAsync(authorId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return countBlogPostsByAuthorAsyncWithRequestBuilder(authorId: authorId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func countBlogPostsByAuthorAsync(authorId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, blogPostDtoCollectionQueryParameters: BlogPostDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return countBlogPostsByAuthorAsyncWithRequestBuilder(authorId: authorId, apiVersion: apiVersion, xApiVersion: xApiVersion, blogPostDtoCollectionQueryParameters: blogPostDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -40,15 +41,16 @@ open class BlogPostAuthorsAPI {
      - parameter authorId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter blogPostDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func countBlogPostsByAuthorAsyncWithRequestBuilder(authorId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func countBlogPostsByAuthorAsyncWithRequestBuilder(authorId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, blogPostDtoCollectionQueryParameters: BlogPostDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/ContentService/BlogPostAuthors/{authorId}/BlogPosts/Count"
         let authorIdPreEscape = "\(APIHelper.mapValueToPathItem(authorId))"
         let authorIdPostEscape = authorIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{authorId}", with: authorIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: blogPostDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -56,6 +58,7 @@ open class BlogPostAuthorsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -126,12 +129,13 @@ open class BlogPostAuthorsAPI {
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter blogAuthorDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getBlogAuthorsAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BlogAuthorDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getBlogAuthorsAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getBlogAuthorsAsync(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, blogAuthorDtoCollectionQueryParameters: BlogAuthorDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BlogAuthorDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getBlogAuthorsAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, blogAuthorDtoCollectionQueryParameters: blogAuthorDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -148,12 +152,13 @@ open class BlogPostAuthorsAPI {
      - parameter tenantId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter blogAuthorDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<BlogAuthorDtoListEnvelope> 
      */
-    open class func getBlogAuthorsAsyncWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<BlogAuthorDtoListEnvelope> {
+    open class func getBlogAuthorsAsyncWithRequestBuilder(tenantId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, blogAuthorDtoCollectionQueryParameters: BlogAuthorDtoCollectionQueryParameters? = nil) -> RequestBuilder<BlogAuthorDtoListEnvelope> {
         let localVariablePath = "/api/v2/ContentService/BlogPostAuthors"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: blogAuthorDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -162,6 +167,7 @@ open class BlogPostAuthorsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -178,12 +184,13 @@ open class BlogPostAuthorsAPI {
      - parameter authorId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter blogPostDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getBlogPostsByAuthorAsync(authorId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BlogPostDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getBlogPostsByAuthorAsyncWithRequestBuilder(authorId: authorId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getBlogPostsByAuthorAsync(authorId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, blogPostDtoCollectionQueryParameters: BlogPostDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BlogPostDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getBlogPostsByAuthorAsyncWithRequestBuilder(authorId: authorId, apiVersion: apiVersion, xApiVersion: xApiVersion, blogPostDtoCollectionQueryParameters: blogPostDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -200,15 +207,16 @@ open class BlogPostAuthorsAPI {
      - parameter authorId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter blogPostDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<BlogPostDtoListEnvelope> 
      */
-    open class func getBlogPostsByAuthorAsyncWithRequestBuilder(authorId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<BlogPostDtoListEnvelope> {
+    open class func getBlogPostsByAuthorAsyncWithRequestBuilder(authorId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, blogPostDtoCollectionQueryParameters: BlogPostDtoCollectionQueryParameters? = nil) -> RequestBuilder<BlogPostDtoListEnvelope> {
         var localVariablePath = "/api/v2/ContentService/BlogPostAuthors/{authorId}/BlogPosts"
         let authorIdPreEscape = "\(APIHelper.mapValueToPathItem(authorId))"
         let authorIdPostEscape = authorIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{authorId}", with: authorIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: blogPostDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -216,6 +224,7 @@ open class BlogPostAuthorsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 

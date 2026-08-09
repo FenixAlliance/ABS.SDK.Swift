@@ -200,12 +200,13 @@ open class ContactOptionsAPI {
      - parameter portalId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter optionDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getSystemContactOptions(contactId: UUID, portalId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: OptionDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getSystemContactOptionsWithRequestBuilder(contactId: contactId, portalId: portalId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getSystemContactOptions(contactId: UUID, portalId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, optionDtoCollectionQueryParameters: OptionDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: OptionDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getSystemContactOptionsWithRequestBuilder(contactId: contactId, portalId: portalId, apiVersion: apiVersion, xApiVersion: xApiVersion, optionDtoCollectionQueryParameters: optionDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -223,15 +224,16 @@ open class ContactOptionsAPI {
      - parameter portalId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter optionDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<OptionDtoListEnvelope> 
      */
-    open class func getSystemContactOptionsWithRequestBuilder(contactId: UUID, portalId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<OptionDtoListEnvelope> {
+    open class func getSystemContactOptionsWithRequestBuilder(contactId: UUID, portalId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, optionDtoCollectionQueryParameters: OptionDtoCollectionQueryParameters? = nil) -> RequestBuilder<OptionDtoListEnvelope> {
         var localVariablePath = "/api/v2/SystemService/Contacts/{contactId}/Options"
         let contactIdPreEscape = "\(APIHelper.mapValueToPathItem(contactId))"
         let contactIdPostEscape = contactIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{contactId}", with: contactIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: optionDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -240,6 +242,7 @@ open class ContactOptionsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -257,12 +260,13 @@ open class ContactOptionsAPI {
      - parameter portalId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter optionDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getSystemContactOptionsCount(contactId: UUID, portalId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getSystemContactOptionsCountWithRequestBuilder(contactId: contactId, portalId: portalId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getSystemContactOptionsCount(contactId: UUID, portalId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, optionDtoCollectionQueryParameters: OptionDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getSystemContactOptionsCountWithRequestBuilder(contactId: contactId, portalId: portalId, apiVersion: apiVersion, xApiVersion: xApiVersion, optionDtoCollectionQueryParameters: optionDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -280,15 +284,16 @@ open class ContactOptionsAPI {
      - parameter portalId: (query)  (optional)
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter optionDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getSystemContactOptionsCountWithRequestBuilder(contactId: UUID, portalId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getSystemContactOptionsCountWithRequestBuilder(contactId: UUID, portalId: UUID? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, optionDtoCollectionQueryParameters: OptionDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/SystemService/Contacts/{contactId}/Options/Count"
         let contactIdPreEscape = "\(APIHelper.mapValueToPathItem(contactId))"
         let contactIdPostEscape = contactIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{contactId}", with: contactIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: optionDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -297,6 +302,7 @@ open class ContactOptionsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -314,13 +320,13 @@ open class ContactOptionsAPI {
      - parameter optionId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchSystemContactOption(contactId: UUID, optionId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchSystemContactOptionWithRequestBuilder(contactId: contactId, optionId: optionId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchSystemContactOption(contactId: UUID, optionId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchSystemContactOptionWithRequestBuilder(contactId: contactId, optionId: optionId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -338,10 +344,10 @@ open class ContactOptionsAPI {
      - parameter optionId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchSystemContactOptionWithRequestBuilder(contactId: UUID, optionId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchSystemContactOptionWithRequestBuilder(contactId: UUID, optionId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/SystemService/Contacts/{contactId}/Options/{optionId}"
         let contactIdPreEscape = "\(APIHelper.mapValueToPathItem(contactId))"
         let contactIdPostEscape = contactIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -350,7 +356,7 @@ open class ContactOptionsAPI {
         let optionIdPostEscape = optionIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{optionId}", with: optionIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

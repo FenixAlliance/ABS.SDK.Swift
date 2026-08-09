@@ -7,6 +7,9 @@ Name | Type | Description | Notes
 **errorMessage** | **String** |  | [optional] 
 **correlationId** | **String** |  | [optional] 
 **timestamp** | **Date** |  | [optional] [readonly] 
+**httpStatus** | **Int** |  | [optional] 
+**errorCode** | **String** |  | [optional] 
+**validationDetails** | [String: [String]] |  | [optional] 
 **activityId** | **String** |  | [optional] [readonly] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

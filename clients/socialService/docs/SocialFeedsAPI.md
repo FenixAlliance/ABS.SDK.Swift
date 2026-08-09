@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 # **createFeedPostAsync**
 ```swift
-    open class func createFeedPostAsync(socialProfileId: UUID, socialFeedId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialFeedPostCreateDto: SocialFeedPostCreateDto? = nil, completion: @escaping (_ data: SocialFeedPostDtoEnvelope?, _ error: Error?) -> Void)
+    open class func createFeedPostAsync(socialProfileId: UUID, socialFeedId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialFeedPostCreateDto: SocialFeedPostCreateDto? = nil, completion: @escaping (_ data: StringEnvelope?, _ error: Error?) -> Void)
 ```
 
 Create a social feed post
@@ -34,7 +34,7 @@ let socialProfileId = 987 // UUID |
 let socialFeedId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let socialFeedPostCreateDto = SocialFeedPostCreateDto(id: 123, timestamp: Date(), title: "title_example", message: "message_example", socialFeedId: "socialFeedId_example", socialProfileId: "socialProfileId_example") // SocialFeedPostCreateDto |  (optional)
+let socialFeedPostCreateDto = SocialFeedPostCreateDto(id: 123, timestamp: Date(), title: "title_example", message: "message_example", socialFeedId: "socialFeedId_example", socialProfileId: "socialProfileId_example", bodyHtml: "bodyHtml_example", bodyFormat: "bodyFormat_example", backgroundStyle: "backgroundStyle_example") // SocialFeedPostCreateDto |  (optional)
 
 // Create a social feed post
 SocialFeedsAPI.createFeedPostAsync(socialProfileId: socialProfileId, socialFeedId: socialFeedId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialFeedPostCreateDto: socialFeedPostCreateDto) { (response, error) in
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SocialFeedPostDtoEnvelope**](SocialFeedPostDtoEnvelope.md)
+[**StringEnvelope**](StringEnvelope.md)
 
 ### Authorization
 
@@ -134,7 +134,7 @@ No authorization required
 
 # **getFeedNotifications**
 ```swift
-    open class func getFeedNotifications(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: SocialFeedDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getFeedNotifications(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialFeedDtoCollectionQueryParameters: SocialFeedDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: SocialFeedDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get social feeds
@@ -149,9 +149,10 @@ import OpenAPIClient
 let socialProfileId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let socialFeedDtoCollectionQueryParameters = SocialFeedDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SocialFeedDtoCollectionQueryParameters |  (optional)
 
 // Get social feeds
-SocialFeedsAPI.getFeedNotifications(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SocialFeedsAPI.getFeedNotifications(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialFeedDtoCollectionQueryParameters: socialFeedDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -170,6 +171,7 @@ Name | Type | Description  | Notes
  **socialProfileId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **socialFeedDtoCollectionQueryParameters** | [**SocialFeedDtoCollectionQueryParameters**](SocialFeedDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -181,7 +183,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -246,7 +248,7 @@ No authorization required
 
 # **getFeedPostsAsync**
 ```swift
-    open class func getFeedPostsAsync(socialProfileId: UUID, socialFeedId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: SocialFeedPostDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getFeedPostsAsync(socialProfileId: UUID, socialFeedId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialFeedPostDtoCollectionQueryParameters: SocialFeedPostDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: SocialFeedPostDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get social feed posts
@@ -262,9 +264,10 @@ let socialProfileId = 987 // UUID |
 let socialFeedId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let socialFeedPostDtoCollectionQueryParameters = SocialFeedPostDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SocialFeedPostDtoCollectionQueryParameters |  (optional)
 
 // Get social feed posts
-SocialFeedsAPI.getFeedPostsAsync(socialProfileId: socialProfileId, socialFeedId: socialFeedId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SocialFeedsAPI.getFeedPostsAsync(socialProfileId: socialProfileId, socialFeedId: socialFeedId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialFeedPostDtoCollectionQueryParameters: socialFeedPostDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -284,6 +287,7 @@ Name | Type | Description  | Notes
  **socialFeedId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **socialFeedPostDtoCollectionQueryParameters** | [**SocialFeedPostDtoCollectionQueryParameters**](SocialFeedPostDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -295,14 +299,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getFeedPostsCountAsync**
 ```swift
-    open class func getFeedPostsCountAsync(socialProfileId: UUID, socialFeedId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getFeedPostsCountAsync(socialProfileId: UUID, socialFeedId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialFeedPostDtoCollectionQueryParameters: SocialFeedPostDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count social feed posts
@@ -318,9 +322,10 @@ let socialProfileId = 987 // UUID |
 let socialFeedId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let socialFeedPostDtoCollectionQueryParameters = SocialFeedPostDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SocialFeedPostDtoCollectionQueryParameters |  (optional)
 
 // Count social feed posts
-SocialFeedsAPI.getFeedPostsCountAsync(socialProfileId: socialProfileId, socialFeedId: socialFeedId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SocialFeedsAPI.getFeedPostsCountAsync(socialProfileId: socialProfileId, socialFeedId: socialFeedId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialFeedPostDtoCollectionQueryParameters: socialFeedPostDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -340,6 +345,7 @@ Name | Type | Description  | Notes
  **socialFeedId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **socialFeedPostDtoCollectionQueryParameters** | [**SocialFeedPostDtoCollectionQueryParameters**](SocialFeedPostDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -351,7 +357,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -414,7 +420,7 @@ No authorization required
 
 # **getNotificationsCountAsync**
 ```swift
-    open class func getNotificationsCountAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getNotificationsCountAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialFeedDtoCollectionQueryParameters: SocialFeedDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count social feeds
@@ -429,9 +435,10 @@ import OpenAPIClient
 let socialProfileId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let socialFeedDtoCollectionQueryParameters = SocialFeedDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SocialFeedDtoCollectionQueryParameters |  (optional)
 
 // Count social feeds
-SocialFeedsAPI.getNotificationsCountAsync(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SocialFeedsAPI.getNotificationsCountAsync(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialFeedDtoCollectionQueryParameters: socialFeedDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -450,6 +457,7 @@ Name | Type | Description  | Notes
  **socialProfileId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **socialFeedDtoCollectionQueryParameters** | [**SocialFeedDtoCollectionQueryParameters**](SocialFeedDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -461,14 +469,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchFeedPostAsync**
 ```swift
-    open class func patchFeedPostAsync(socialProfileId: UUID, socialFeedId: UUID, feedPostId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchFeedPostAsync(socialProfileId: UUID, socialFeedId: UUID, feedPostId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a social feed post
@@ -485,10 +493,10 @@ let socialFeedId = 987 // UUID |
 let feedPostId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a social feed post
-SocialFeedsAPI.patchFeedPostAsync(socialProfileId: socialProfileId, socialFeedId: socialFeedId, feedPostId: feedPostId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+SocialFeedsAPI.patchFeedPostAsync(socialProfileId: socialProfileId, socialFeedId: socialFeedId, feedPostId: feedPostId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -509,7 +517,7 @@ Name | Type | Description  | Notes
  **feedPostId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -545,7 +553,7 @@ let socialFeedId = 987 // UUID |
 let feedPostId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let socialFeedPostUpdateDto = SocialFeedPostUpdateDto(title: "title_example", message: "message_example") // SocialFeedPostUpdateDto |  (optional)
+let socialFeedPostUpdateDto = SocialFeedPostUpdateDto(title: "title_example", message: "message_example", bodyHtml: "bodyHtml_example", bodyFormat: "bodyFormat_example", backgroundStyle: "backgroundStyle_example") // SocialFeedPostUpdateDto |  (optional)
 
 // Update a social feed post
 SocialFeedsAPI.updateFeedPostAsync(socialProfileId: socialProfileId, socialFeedId: socialFeedId, feedPostId: feedPostId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialFeedPostUpdateDto: socialFeedPostUpdateDto) { (response, error) in

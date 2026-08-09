@@ -541,7 +541,7 @@ No authorization required
 
 # **getShareClasses**
 ```swift
-    open class func getShareClasses(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ShareClassDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getShareClasses(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, shareClassDtoCollectionQueryParameters: ShareClassDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ShareClassDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Gets the current tenant share classes
@@ -556,9 +556,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let shareClassDtoCollectionQueryParameters = ShareClassDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ShareClassDtoCollectionQueryParameters |  (optional)
 
 // Gets the current tenant share classes
-SharesAPI.getShareClasses(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SharesAPI.getShareClasses(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, shareClassDtoCollectionQueryParameters: shareClassDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -577,6 +578,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **shareClassDtoCollectionQueryParameters** | [**ShareClassDtoCollectionQueryParameters**](ShareClassDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -588,14 +590,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getShareClassesCount**
 ```swift
-    open class func getShareClassesCount(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getShareClassesCount(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, shareClassDtoCollectionQueryParameters: ShareClassDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Gets the current tenant share classes count
@@ -610,9 +612,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let shareClassDtoCollectionQueryParameters = ShareClassDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ShareClassDtoCollectionQueryParameters |  (optional)
 
 // Gets the current tenant share classes count
-SharesAPI.getShareClassesCount(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SharesAPI.getShareClassesCount(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, shareClassDtoCollectionQueryParameters: shareClassDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -631,6 +634,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **shareClassDtoCollectionQueryParameters** | [**ShareClassDtoCollectionQueryParameters**](ShareClassDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -642,7 +646,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -705,7 +709,7 @@ No authorization required
 
 # **getShareIssuances**
 ```swift
-    open class func getShareIssuances(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ShareIssuanceDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getShareIssuances(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, shareIssuanceDtoCollectionQueryParameters: ShareIssuanceDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ShareIssuanceDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Gets the current tenant share issuances
@@ -720,9 +724,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let shareIssuanceDtoCollectionQueryParameters = ShareIssuanceDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ShareIssuanceDtoCollectionQueryParameters |  (optional)
 
 // Gets the current tenant share issuances
-SharesAPI.getShareIssuances(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SharesAPI.getShareIssuances(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, shareIssuanceDtoCollectionQueryParameters: shareIssuanceDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -741,6 +746,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **shareIssuanceDtoCollectionQueryParameters** | [**ShareIssuanceDtoCollectionQueryParameters**](ShareIssuanceDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -752,14 +758,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getShareIssuancesCount**
 ```swift
-    open class func getShareIssuancesCount(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getShareIssuancesCount(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, shareIssuanceDtoCollectionQueryParameters: ShareIssuanceDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Gets the current tenant share issuances count
@@ -774,9 +780,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let shareIssuanceDtoCollectionQueryParameters = ShareIssuanceDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ShareIssuanceDtoCollectionQueryParameters |  (optional)
 
 // Gets the current tenant share issuances count
-SharesAPI.getShareIssuancesCount(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SharesAPI.getShareIssuancesCount(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, shareIssuanceDtoCollectionQueryParameters: shareIssuanceDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -795,6 +802,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **shareIssuanceDtoCollectionQueryParameters** | [**ShareIssuanceDtoCollectionQueryParameters**](ShareIssuanceDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -806,14 +814,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getShareIssuancesSum**
 ```swift
-    open class func getShareIssuancesSum(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: DecimalEnvelope?, _ error: Error?) -> Void)
+    open class func getShareIssuancesSum(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, shareIssuanceDtoCollectionQueryParameters: ShareIssuanceDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: DecimalEnvelope?, _ error: Error?) -> Void)
 ```
 
 Sum tenant share issuance quantities
@@ -828,9 +836,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let shareIssuanceDtoCollectionQueryParameters = ShareIssuanceDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ShareIssuanceDtoCollectionQueryParameters |  (optional)
 
 // Sum tenant share issuance quantities
-SharesAPI.getShareIssuancesSum(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SharesAPI.getShareIssuancesSum(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, shareIssuanceDtoCollectionQueryParameters: shareIssuanceDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -849,6 +858,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **shareIssuanceDtoCollectionQueryParameters** | [**ShareIssuanceDtoCollectionQueryParameters**](ShareIssuanceDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -860,7 +870,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -979,7 +989,7 @@ No authorization required
 
 # **getShareTransferReasons**
 ```swift
-    open class func getShareTransferReasons(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ShareTransferReasonDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getShareTransferReasons(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, shareTransferReasonDtoCollectionQueryParameters: ShareTransferReasonDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ShareTransferReasonDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Gets the current tenant share transfer reasons
@@ -994,9 +1004,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let shareTransferReasonDtoCollectionQueryParameters = ShareTransferReasonDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ShareTransferReasonDtoCollectionQueryParameters |  (optional)
 
 // Gets the current tenant share transfer reasons
-SharesAPI.getShareTransferReasons(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SharesAPI.getShareTransferReasons(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, shareTransferReasonDtoCollectionQueryParameters: shareTransferReasonDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1015,6 +1026,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **shareTransferReasonDtoCollectionQueryParameters** | [**ShareTransferReasonDtoCollectionQueryParameters**](ShareTransferReasonDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1026,14 +1038,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getShareTransferReasonsCount**
 ```swift
-    open class func getShareTransferReasonsCount(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getShareTransferReasonsCount(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, shareTransferReasonDtoCollectionQueryParameters: ShareTransferReasonDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Gets the current tenant share transfer reasons count
@@ -1048,9 +1060,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let shareTransferReasonDtoCollectionQueryParameters = ShareTransferReasonDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ShareTransferReasonDtoCollectionQueryParameters |  (optional)
 
 // Gets the current tenant share transfer reasons count
-SharesAPI.getShareTransferReasonsCount(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SharesAPI.getShareTransferReasonsCount(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, shareTransferReasonDtoCollectionQueryParameters: shareTransferReasonDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1069,6 +1082,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **shareTransferReasonDtoCollectionQueryParameters** | [**ShareTransferReasonDtoCollectionQueryParameters**](ShareTransferReasonDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1080,14 +1094,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getShareTransfers**
 ```swift
-    open class func getShareTransfers(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ShareTransferDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getShareTransfers(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, shareTransferDtoCollectionQueryParameters: ShareTransferDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ShareTransferDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Gets the current tenant share transfers
@@ -1102,9 +1116,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let shareTransferDtoCollectionQueryParameters = ShareTransferDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ShareTransferDtoCollectionQueryParameters |  (optional)
 
 // Gets the current tenant share transfers
-SharesAPI.getShareTransfers(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SharesAPI.getShareTransfers(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, shareTransferDtoCollectionQueryParameters: shareTransferDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1123,6 +1138,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **shareTransferDtoCollectionQueryParameters** | [**ShareTransferDtoCollectionQueryParameters**](ShareTransferDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1134,14 +1150,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getShareTransfersCount**
 ```swift
-    open class func getShareTransfersCount(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getShareTransfersCount(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, shareTransferDtoCollectionQueryParameters: ShareTransferDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Gets the current tenant share transfers count
@@ -1156,9 +1172,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let shareTransferDtoCollectionQueryParameters = ShareTransferDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ShareTransferDtoCollectionQueryParameters |  (optional)
 
 // Gets the current tenant share transfers count
-SharesAPI.getShareTransfersCount(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SharesAPI.getShareTransfersCount(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, shareTransferDtoCollectionQueryParameters: shareTransferDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1177,6 +1194,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **shareTransferDtoCollectionQueryParameters** | [**ShareTransferDtoCollectionQueryParameters**](ShareTransferDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1188,14 +1206,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchShareClass**
 ```swift
-    open class func patchShareClass(tenantId: UUID, shareClassId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchShareClass(tenantId: UUID, shareClassId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patches a share class
@@ -1211,10 +1229,10 @@ let tenantId = 987 // UUID |
 let shareClassId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patches a share class
-SharesAPI.patchShareClass(tenantId: tenantId, shareClassId: shareClassId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+SharesAPI.patchShareClass(tenantId: tenantId, shareClassId: shareClassId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1234,7 +1252,7 @@ Name | Type | Description  | Notes
  **shareClassId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -1253,7 +1271,7 @@ No authorization required
 
 # **patchShareIssuance**
 ```swift
-    open class func patchShareIssuance(tenantId: UUID, issuanceId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchShareIssuance(tenantId: UUID, issuanceId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patches a share issuance
@@ -1269,10 +1287,10 @@ let tenantId = 987 // UUID |
 let issuanceId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patches a share issuance
-SharesAPI.patchShareIssuance(tenantId: tenantId, issuanceId: issuanceId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+SharesAPI.patchShareIssuance(tenantId: tenantId, issuanceId: issuanceId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1292,7 +1310,7 @@ Name | Type | Description  | Notes
  **issuanceId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -1311,7 +1329,7 @@ No authorization required
 
 # **patchShareTransfer**
 ```swift
-    open class func patchShareTransfer(tenantId: UUID, transferId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchShareTransfer(tenantId: UUID, transferId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patches a share transfer
@@ -1327,10 +1345,10 @@ let tenantId = 987 // UUID |
 let transferId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patches a share transfer
-SharesAPI.patchShareTransfer(tenantId: tenantId, transferId: transferId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+SharesAPI.patchShareTransfer(tenantId: tenantId, transferId: transferId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1350,7 +1368,7 @@ Name | Type | Description  | Notes
  **transferId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -1369,7 +1387,7 @@ No authorization required
 
 # **patchShareTransferReason**
 ```swift
-    open class func patchShareTransferReason(tenantId: UUID, reasonId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchShareTransferReason(tenantId: UUID, reasonId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patches a share transfer reason
@@ -1385,10 +1403,10 @@ let tenantId = 987 // UUID |
 let reasonId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patches a share transfer reason
-SharesAPI.patchShareTransferReason(tenantId: tenantId, reasonId: reasonId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+SharesAPI.patchShareTransferReason(tenantId: tenantId, reasonId: reasonId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1408,7 +1426,7 @@ Name | Type | Description  | Notes
  **reasonId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

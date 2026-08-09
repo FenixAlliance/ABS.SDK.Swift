@@ -177,7 +177,7 @@ No authorization required
 
 # **getMarketingLeadsCountAsync**
 ```swift
-    open class func getMarketingLeadsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getMarketingLeadsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, marketingLeadDtoCollectionQueryParameters: MarketingLeadDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get marketing leads count
@@ -190,9 +190,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let marketingLeadDtoCollectionQueryParameters = MarketingLeadDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // MarketingLeadDtoCollectionQueryParameters |  (optional)
 
 // Get marketing leads count
-MarketingLeadsAPI.getMarketingLeadsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+MarketingLeadsAPI.getMarketingLeadsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, marketingLeadDtoCollectionQueryParameters: marketingLeadDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -211,6 +212,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **marketingLeadDtoCollectionQueryParameters** | [**MarketingLeadDtoCollectionQueryParameters**](MarketingLeadDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -222,14 +224,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getMarketingLeadsODataAsync**
 ```swift
-    open class func getMarketingLeadsODataAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: MarketingLeadDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getMarketingLeadsODataAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, marketingLeadDtoCollectionQueryParameters: MarketingLeadDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: MarketingLeadDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get marketing leads
@@ -244,9 +246,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let marketingLeadDtoCollectionQueryParameters = MarketingLeadDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // MarketingLeadDtoCollectionQueryParameters |  (optional)
 
 // Get marketing leads
-MarketingLeadsAPI.getMarketingLeadsODataAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+MarketingLeadsAPI.getMarketingLeadsODataAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, marketingLeadDtoCollectionQueryParameters: marketingLeadDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -265,6 +268,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **marketingLeadDtoCollectionQueryParameters** | [**MarketingLeadDtoCollectionQueryParameters**](MarketingLeadDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -276,14 +280,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchMarketingLeadAsync**
 ```swift
-    open class func patchMarketingLeadAsync(tenantId: UUID, marketingLeadId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchMarketingLeadAsync(tenantId: UUID, marketingLeadId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a marketing lead
@@ -299,10 +303,10 @@ let tenantId = 987 // UUID |
 let marketingLeadId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a marketing lead
-MarketingLeadsAPI.patchMarketingLeadAsync(tenantId: tenantId, marketingLeadId: marketingLeadId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+MarketingLeadsAPI.patchMarketingLeadAsync(tenantId: tenantId, marketingLeadId: marketingLeadId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -322,7 +326,7 @@ Name | Type | Description  | Notes
  **marketingLeadId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

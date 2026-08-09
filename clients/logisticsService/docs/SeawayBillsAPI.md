@@ -308,7 +308,7 @@ No authorization required
 
 # **getSeawayBillLinesAsync**
 ```swift
-    open class func getSeawayBillLinesAsync(tenantId: UUID, billId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: WaybillLineDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getSeawayBillLinesAsync(tenantId: UUID, billId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, waybillLineDtoCollectionQueryParameters: WaybillLineDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: WaybillLineDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get seaway bill lines
@@ -324,9 +324,10 @@ let tenantId = 987 // UUID |
 let billId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let waybillLineDtoCollectionQueryParameters = WaybillLineDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // WaybillLineDtoCollectionQueryParameters |  (optional)
 
 // Get seaway bill lines
-SeawayBillsAPI.getSeawayBillLinesAsync(tenantId: tenantId, billId: billId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SeawayBillsAPI.getSeawayBillLinesAsync(tenantId: tenantId, billId: billId, apiVersion: apiVersion, xApiVersion: xApiVersion, waybillLineDtoCollectionQueryParameters: waybillLineDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -346,6 +347,7 @@ Name | Type | Description  | Notes
  **billId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **waybillLineDtoCollectionQueryParameters** | [**WaybillLineDtoCollectionQueryParameters**](WaybillLineDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -357,14 +359,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getSeawayBillLinesCountAsync**
 ```swift
-    open class func getSeawayBillLinesCountAsync(tenantId: UUID, billId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getSeawayBillLinesCountAsync(tenantId: UUID, billId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, waybillLineDtoCollectionQueryParameters: WaybillLineDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get seaway bill lines count
@@ -380,9 +382,10 @@ let tenantId = 987 // UUID |
 let billId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let waybillLineDtoCollectionQueryParameters = WaybillLineDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // WaybillLineDtoCollectionQueryParameters |  (optional)
 
 // Get seaway bill lines count
-SeawayBillsAPI.getSeawayBillLinesCountAsync(tenantId: tenantId, billId: billId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SeawayBillsAPI.getSeawayBillLinesCountAsync(tenantId: tenantId, billId: billId, apiVersion: apiVersion, xApiVersion: xApiVersion, waybillLineDtoCollectionQueryParameters: waybillLineDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -402,6 +405,7 @@ Name | Type | Description  | Notes
  **billId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **waybillLineDtoCollectionQueryParameters** | [**WaybillLineDtoCollectionQueryParameters**](WaybillLineDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -413,14 +417,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getSeawayBillsAsync**
 ```swift
-    open class func getSeawayBillsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: SeawayBillDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getSeawayBillsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, seawayBillDtoCollectionQueryParameters: SeawayBillDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: SeawayBillDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all seaway bills
@@ -435,9 +439,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let seawayBillDtoCollectionQueryParameters = SeawayBillDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SeawayBillDtoCollectionQueryParameters |  (optional)
 
 // Get all seaway bills
-SeawayBillsAPI.getSeawayBillsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SeawayBillsAPI.getSeawayBillsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, seawayBillDtoCollectionQueryParameters: seawayBillDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -456,6 +461,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **seawayBillDtoCollectionQueryParameters** | [**SeawayBillDtoCollectionQueryParameters**](SeawayBillDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -467,14 +473,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getSeawayBillsCountAsync**
 ```swift
-    open class func getSeawayBillsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getSeawayBillsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, seawayBillDtoCollectionQueryParameters: SeawayBillDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get seaway bills count
@@ -489,9 +495,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let seawayBillDtoCollectionQueryParameters = SeawayBillDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SeawayBillDtoCollectionQueryParameters |  (optional)
 
 // Get seaway bills count
-SeawayBillsAPI.getSeawayBillsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SeawayBillsAPI.getSeawayBillsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, seawayBillDtoCollectionQueryParameters: seawayBillDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -510,6 +517,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **seawayBillDtoCollectionQueryParameters** | [**SeawayBillDtoCollectionQueryParameters**](SeawayBillDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -521,7 +529,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -696,7 +704,7 @@ No authorization required
 
 # **patchSeawayBillAsync**
 ```swift
-    open class func patchSeawayBillAsync(tenantId: UUID, billId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchSeawayBillAsync(tenantId: UUID, billId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a seaway bill
@@ -712,10 +720,10 @@ let tenantId = 987 // UUID |
 let billId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a seaway bill
-SeawayBillsAPI.patchSeawayBillAsync(tenantId: tenantId, billId: billId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+SeawayBillsAPI.patchSeawayBillAsync(tenantId: tenantId, billId: billId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -735,7 +743,7 @@ Name | Type | Description  | Notes
  **billId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -754,7 +762,7 @@ No authorization required
 
 # **patchSeawayBillLineAsync**
 ```swift
-    open class func patchSeawayBillLineAsync(tenantId: UUID, billId: UUID, lineId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchSeawayBillLineAsync(tenantId: UUID, billId: UUID, lineId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a seaway bill line
@@ -771,10 +779,10 @@ let billId = 987 // UUID |
 let lineId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a seaway bill line
-SeawayBillsAPI.patchSeawayBillLineAsync(tenantId: tenantId, billId: billId, lineId: lineId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+SeawayBillsAPI.patchSeawayBillLineAsync(tenantId: tenantId, billId: billId, lineId: lineId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -795,7 +803,7 @@ Name | Type | Description  | Notes
  **lineId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

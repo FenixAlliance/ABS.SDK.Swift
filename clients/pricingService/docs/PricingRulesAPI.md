@@ -183,7 +183,7 @@ No authorization required
 
 # **getPricingRules**
 ```swift
-    open class func getPricingRules(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: PricingRuleDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getPricingRules(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, pricingRuleDtoCollectionQueryParameters: PricingRuleDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: PricingRuleDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all pricing rules
@@ -198,9 +198,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let pricingRuleDtoCollectionQueryParameters = PricingRuleDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // PricingRuleDtoCollectionQueryParameters |  (optional)
 
 // Get all pricing rules
-PricingRulesAPI.getPricingRules(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+PricingRulesAPI.getPricingRules(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, pricingRuleDtoCollectionQueryParameters: pricingRuleDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -219,6 +220,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **pricingRuleDtoCollectionQueryParameters** | [**PricingRuleDtoCollectionQueryParameters**](PricingRuleDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -230,14 +232,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getPricingRulesCountAsync**
 ```swift
-    open class func getPricingRulesCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getPricingRulesCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, pricingRuleDtoCollectionQueryParameters: PricingRuleDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Counts pricing rules
@@ -252,9 +254,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let pricingRuleDtoCollectionQueryParameters = PricingRuleDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // PricingRuleDtoCollectionQueryParameters |  (optional)
 
 // Counts pricing rules
-PricingRulesAPI.getPricingRulesCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+PricingRulesAPI.getPricingRulesCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, pricingRuleDtoCollectionQueryParameters: pricingRuleDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -273,6 +276,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **pricingRuleDtoCollectionQueryParameters** | [**PricingRuleDtoCollectionQueryParameters**](PricingRuleDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -284,14 +288,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchPricingRule**
 ```swift
-    open class func patchPricingRule(tenantId: UUID, pricingRuleId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func patchPricingRule(tenantId: UUID, pricingRuleId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
 Patch a pricing rule
@@ -307,10 +311,10 @@ let tenantId = 987 // UUID |
 let pricingRuleId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a pricing rule
-PricingRulesAPI.patchPricingRule(tenantId: tenantId, pricingRuleId: pricingRuleId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+PricingRulesAPI.patchPricingRule(tenantId: tenantId, pricingRuleId: pricingRuleId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -330,7 +334,7 @@ Name | Type | Description  | Notes
  **pricingRuleId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

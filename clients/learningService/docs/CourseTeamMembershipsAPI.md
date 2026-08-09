@@ -181,7 +181,7 @@ No authorization required
 
 # **getCourseTeamMembershipsAsync**
 ```swift
-    open class func getCourseTeamMembershipsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: [CourseTeamMembershipDto]?, _ error: Error?) -> Void)
+    open class func getCourseTeamMembershipsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, courseTeamMembershipDtoCollectionQueryParameters: CourseTeamMembershipDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: [CourseTeamMembershipDto]?, _ error: Error?) -> Void)
 ```
 
 Get all course team memberships
@@ -196,9 +196,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseTeamMembershipDtoCollectionQueryParameters = CourseTeamMembershipDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseTeamMembershipDtoCollectionQueryParameters |  (optional)
 
 // Get all course team memberships
-CourseTeamMembershipsAPI.getCourseTeamMembershipsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CourseTeamMembershipsAPI.getCourseTeamMembershipsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseTeamMembershipDtoCollectionQueryParameters: courseTeamMembershipDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -217,6 +218,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseTeamMembershipDtoCollectionQueryParameters** | [**CourseTeamMembershipDtoCollectionQueryParameters**](CourseTeamMembershipDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -228,14 +230,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCourseTeamMembershipsCountAsync**
 ```swift
-    open class func getCourseTeamMembershipsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
+    open class func getCourseTeamMembershipsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, courseTeamMembershipDtoCollectionQueryParameters: CourseTeamMembershipDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
 ```
 
 Get course team memberships count
@@ -250,9 +252,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseTeamMembershipDtoCollectionQueryParameters = CourseTeamMembershipDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseTeamMembershipDtoCollectionQueryParameters |  (optional)
 
 // Get course team memberships count
-CourseTeamMembershipsAPI.getCourseTeamMembershipsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CourseTeamMembershipsAPI.getCourseTeamMembershipsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseTeamMembershipDtoCollectionQueryParameters: courseTeamMembershipDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -271,6 +274,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseTeamMembershipDtoCollectionQueryParameters** | [**CourseTeamMembershipDtoCollectionQueryParameters**](CourseTeamMembershipDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -282,14 +286,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchCourseTeamMembershipAsync**
 ```swift
-    open class func patchCourseTeamMembershipAsync(tenantId: UUID, membershipId: String, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchCourseTeamMembershipAsync(tenantId: UUID, membershipId: String, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a course team membership
@@ -305,10 +309,10 @@ let tenantId = 987 // UUID |
 let membershipId = "membershipId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a course team membership
-CourseTeamMembershipsAPI.patchCourseTeamMembershipAsync(tenantId: tenantId, membershipId: membershipId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+CourseTeamMembershipsAPI.patchCourseTeamMembershipAsync(tenantId: tenantId, membershipId: membershipId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -328,7 +332,7 @@ Name | Type | Description  | Notes
  **membershipId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

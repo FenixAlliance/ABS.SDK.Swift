@@ -183,7 +183,7 @@ No authorization required
 
 # **getTrainingProgramCoursesAsync**
 ```swift
-    open class func getTrainingProgramCoursesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: TrainingProgramCourseDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getTrainingProgramCoursesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, trainingProgramCourseDtoCollectionQueryParameters: TrainingProgramCourseDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: TrainingProgramCourseDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get training program courses
@@ -198,9 +198,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let trainingProgramCourseDtoCollectionQueryParameters = TrainingProgramCourseDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // TrainingProgramCourseDtoCollectionQueryParameters |  (optional)
 
 // Get training program courses
-TrainingProgramCoursesAPI.getTrainingProgramCoursesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+TrainingProgramCoursesAPI.getTrainingProgramCoursesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, trainingProgramCourseDtoCollectionQueryParameters: trainingProgramCourseDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -219,6 +220,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **trainingProgramCourseDtoCollectionQueryParameters** | [**TrainingProgramCourseDtoCollectionQueryParameters**](TrainingProgramCourseDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -230,14 +232,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getTrainingProgramCoursesCountAsync**
 ```swift
-    open class func getTrainingProgramCoursesCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getTrainingProgramCoursesCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, trainingProgramCourseDtoCollectionQueryParameters: TrainingProgramCourseDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count training program courses
@@ -252,9 +254,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let trainingProgramCourseDtoCollectionQueryParameters = TrainingProgramCourseDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // TrainingProgramCourseDtoCollectionQueryParameters |  (optional)
 
 // Count training program courses
-TrainingProgramCoursesAPI.getTrainingProgramCoursesCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+TrainingProgramCoursesAPI.getTrainingProgramCoursesCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, trainingProgramCourseDtoCollectionQueryParameters: trainingProgramCourseDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -273,6 +276,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **trainingProgramCourseDtoCollectionQueryParameters** | [**TrainingProgramCourseDtoCollectionQueryParameters**](TrainingProgramCourseDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -284,14 +288,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchTrainingProgramCourseAsync**
 ```swift
-    open class func patchTrainingProgramCourseAsync(tenantId: UUID, courseId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchTrainingProgramCourseAsync(tenantId: UUID, courseId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a training program course
@@ -307,10 +311,10 @@ let tenantId = 987 // UUID |
 let courseId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a training program course
-TrainingProgramCoursesAPI.patchTrainingProgramCourseAsync(tenantId: tenantId, courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+TrainingProgramCoursesAPI.patchTrainingProgramCourseAsync(tenantId: tenantId, courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -330,7 +334,7 @@ Name | Type | Description  | Notes
  **courseId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

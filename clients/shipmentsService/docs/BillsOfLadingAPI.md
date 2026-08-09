@@ -364,7 +364,7 @@ No authorization required
 
 # **getBillOfLadingLinesAsync**
 ```swift
-    open class func getBillOfLadingLinesAsync(tenantId: UUID, billOfLadingId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: BillOfLadingLineDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getBillOfLadingLinesAsync(tenantId: UUID, billOfLadingId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, billOfLadingLineDtoCollectionQueryParameters: BillOfLadingLineDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: BillOfLadingLineDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get bill of lading lines
@@ -380,9 +380,10 @@ let tenantId = 987 // UUID |
 let billOfLadingId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let billOfLadingLineDtoCollectionQueryParameters = BillOfLadingLineDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // BillOfLadingLineDtoCollectionQueryParameters |  (optional)
 
 // Get bill of lading lines
-BillsOfLadingAPI.getBillOfLadingLinesAsync(tenantId: tenantId, billOfLadingId: billOfLadingId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+BillsOfLadingAPI.getBillOfLadingLinesAsync(tenantId: tenantId, billOfLadingId: billOfLadingId, apiVersion: apiVersion, xApiVersion: xApiVersion, billOfLadingLineDtoCollectionQueryParameters: billOfLadingLineDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -402,6 +403,7 @@ Name | Type | Description  | Notes
  **billOfLadingId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **billOfLadingLineDtoCollectionQueryParameters** | [**BillOfLadingLineDtoCollectionQueryParameters**](BillOfLadingLineDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -413,14 +415,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getBillOfLadingLinesCountAsync**
 ```swift
-    open class func getBillOfLadingLinesCountAsync(tenantId: UUID, billOfLadingId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getBillOfLadingLinesCountAsync(tenantId: UUID, billOfLadingId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, billOfLadingLineDtoCollectionQueryParameters: BillOfLadingLineDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get bill of lading lines count
@@ -436,9 +438,10 @@ let tenantId = 987 // UUID |
 let billOfLadingId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let billOfLadingLineDtoCollectionQueryParameters = BillOfLadingLineDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // BillOfLadingLineDtoCollectionQueryParameters |  (optional)
 
 // Get bill of lading lines count
-BillsOfLadingAPI.getBillOfLadingLinesCountAsync(tenantId: tenantId, billOfLadingId: billOfLadingId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+BillsOfLadingAPI.getBillOfLadingLinesCountAsync(tenantId: tenantId, billOfLadingId: billOfLadingId, apiVersion: apiVersion, xApiVersion: xApiVersion, billOfLadingLineDtoCollectionQueryParameters: billOfLadingLineDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -458,6 +461,7 @@ Name | Type | Description  | Notes
  **billOfLadingId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **billOfLadingLineDtoCollectionQueryParameters** | [**BillOfLadingLineDtoCollectionQueryParameters**](BillOfLadingLineDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -469,14 +473,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getBillsOfLadingAsync**
 ```swift
-    open class func getBillsOfLadingAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: BillOfLadingDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getBillsOfLadingAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, billOfLadingDtoCollectionQueryParameters: BillOfLadingDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: BillOfLadingDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all bills of lading
@@ -491,9 +495,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let billOfLadingDtoCollectionQueryParameters = BillOfLadingDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // BillOfLadingDtoCollectionQueryParameters |  (optional)
 
 // Get all bills of lading
-BillsOfLadingAPI.getBillsOfLadingAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+BillsOfLadingAPI.getBillsOfLadingAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, billOfLadingDtoCollectionQueryParameters: billOfLadingDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -512,6 +517,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **billOfLadingDtoCollectionQueryParameters** | [**BillOfLadingDtoCollectionQueryParameters**](BillOfLadingDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -523,14 +529,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getBillsOfLadingCountAsync**
 ```swift
-    open class func getBillsOfLadingCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getBillsOfLadingCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, billOfLadingDtoCollectionQueryParameters: BillOfLadingDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get bills of lading count
@@ -545,9 +551,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let billOfLadingDtoCollectionQueryParameters = BillOfLadingDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // BillOfLadingDtoCollectionQueryParameters |  (optional)
 
 // Get bills of lading count
-BillsOfLadingAPI.getBillsOfLadingCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+BillsOfLadingAPI.getBillsOfLadingCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, billOfLadingDtoCollectionQueryParameters: billOfLadingDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -566,6 +573,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **billOfLadingDtoCollectionQueryParameters** | [**BillOfLadingDtoCollectionQueryParameters**](BillOfLadingDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -577,14 +585,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchBillOfLadingAsync**
 ```swift
-    open class func patchBillOfLadingAsync(tenantId: UUID, billOfLadingId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchBillOfLadingAsync(tenantId: UUID, billOfLadingId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a bill of lading
@@ -600,10 +608,10 @@ let tenantId = 987 // UUID |
 let billOfLadingId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a bill of lading
-BillsOfLadingAPI.patchBillOfLadingAsync(tenantId: tenantId, billOfLadingId: billOfLadingId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+BillsOfLadingAPI.patchBillOfLadingAsync(tenantId: tenantId, billOfLadingId: billOfLadingId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -623,7 +631,7 @@ Name | Type | Description  | Notes
  **billOfLadingId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -642,7 +650,7 @@ No authorization required
 
 # **patchBillOfLadingLineAsync**
 ```swift
-    open class func patchBillOfLadingLineAsync(tenantId: UUID, billOfLadingId: UUID, lineId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchBillOfLadingLineAsync(tenantId: UUID, billOfLadingId: UUID, lineId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a bill of lading line
@@ -659,10 +667,10 @@ let billOfLadingId = 987 // UUID |
 let lineId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a bill of lading line
-BillsOfLadingAPI.patchBillOfLadingLineAsync(tenantId: tenantId, billOfLadingId: billOfLadingId, lineId: lineId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+BillsOfLadingAPI.patchBillOfLadingLineAsync(tenantId: tenantId, billOfLadingId: billOfLadingId, lineId: lineId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -683,7 +691,7 @@ Name | Type | Description  | Notes
  **lineId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

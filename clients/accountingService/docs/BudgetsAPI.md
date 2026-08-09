@@ -249,7 +249,7 @@ No authorization required
 
 # **getBudgetAccountEntriesCollectionAsync**
 ```swift
-    open class func getBudgetAccountEntriesCollectionAsync(tenantId: UUID, budgetId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: BudgetAccountEntryDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
+    open class func getBudgetAccountEntriesCollectionAsync(tenantId: UUID, budgetId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, budgetAccountEntryDtoCollectionQueryParameters: BudgetAccountEntryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: BudgetAccountEntryDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Gets all budget account entries
@@ -265,9 +265,10 @@ let tenantId = 987 // UUID |
 let budgetId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let budgetAccountEntryDtoCollectionQueryParameters = BudgetAccountEntryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // BudgetAccountEntryDtoCollectionQueryParameters |  (optional)
 
 // Gets all budget account entries
-BudgetsAPI.getBudgetAccountEntriesCollectionAsync(tenantId: tenantId, budgetId: budgetId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+BudgetsAPI.getBudgetAccountEntriesCollectionAsync(tenantId: tenantId, budgetId: budgetId, apiVersion: apiVersion, xApiVersion: xApiVersion, budgetAccountEntryDtoCollectionQueryParameters: budgetAccountEntryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -287,6 +288,7 @@ Name | Type | Description  | Notes
  **budgetId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **budgetAccountEntryDtoCollectionQueryParameters** | [**BudgetAccountEntryDtoCollectionQueryParameters**](BudgetAccountEntryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -298,7 +300,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -419,7 +421,7 @@ No authorization required
 
 # **getBudgetsAsync**
 ```swift
-    open class func getBudgetsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: BudgetDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
+    open class func getBudgetsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, budgetDtoCollectionQueryParameters: BudgetDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: BudgetDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Gets all budgets
@@ -434,9 +436,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let budgetDtoCollectionQueryParameters = BudgetDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // BudgetDtoCollectionQueryParameters |  (optional)
 
 // Gets all budgets
-BudgetsAPI.getBudgetsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+BudgetsAPI.getBudgetsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, budgetDtoCollectionQueryParameters: budgetDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -455,6 +458,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **budgetDtoCollectionQueryParameters** | [**BudgetDtoCollectionQueryParameters**](BudgetDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -466,14 +470,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getBudgetsCountAsync**
 ```swift
-    open class func getBudgetsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getBudgetsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, budgetDtoCollectionQueryParameters: BudgetDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get the count of budgets
@@ -488,9 +492,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let budgetDtoCollectionQueryParameters = BudgetDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // BudgetDtoCollectionQueryParameters |  (optional)
 
 // Get the count of budgets
-BudgetsAPI.getBudgetsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+BudgetsAPI.getBudgetsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, budgetDtoCollectionQueryParameters: budgetDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -509,6 +514,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **budgetDtoCollectionQueryParameters** | [**BudgetDtoCollectionQueryParameters**](BudgetDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -520,14 +526,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchBudgetAccountEntryAsync**
 ```swift
-    open class func patchBudgetAccountEntryAsync(tenantId: UUID, budgetId: UUID, entryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchBudgetAccountEntryAsync(tenantId: UUID, budgetId: UUID, entryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patches a budget account entry
@@ -544,10 +550,10 @@ let budgetId = 987 // UUID |
 let entryId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patches a budget account entry
-BudgetsAPI.patchBudgetAccountEntryAsync(tenantId: tenantId, budgetId: budgetId, entryId: entryId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+BudgetsAPI.patchBudgetAccountEntryAsync(tenantId: tenantId, budgetId: budgetId, entryId: entryId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -568,7 +574,7 @@ Name | Type | Description  | Notes
  **entryId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -587,7 +593,7 @@ No authorization required
 
 # **patchBudgetAsync**
 ```swift
-    open class func patchBudgetAsync(tenantId: UUID, budgetId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchBudgetAsync(tenantId: UUID, budgetId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patches a budget
@@ -603,10 +609,10 @@ let tenantId = 987 // UUID |
 let budgetId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patches a budget
-BudgetsAPI.patchBudgetAsync(tenantId: tenantId, budgetId: budgetId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+BudgetsAPI.patchBudgetAsync(tenantId: tenantId, budgetId: budgetId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -626,7 +632,7 @@ Name | Type | Description  | Notes
  **budgetId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

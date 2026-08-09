@@ -372,12 +372,13 @@ open class BillsOfLadingAPI {
      - parameter billOfLadingId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter billOfLadingLineDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getBillOfLadingLinesAsync(tenantId: UUID, billOfLadingId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BillOfLadingLineDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getBillOfLadingLinesAsyncWithRequestBuilder(tenantId: tenantId, billOfLadingId: billOfLadingId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getBillOfLadingLinesAsync(tenantId: UUID, billOfLadingId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, billOfLadingLineDtoCollectionQueryParameters: BillOfLadingLineDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BillOfLadingLineDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getBillOfLadingLinesAsyncWithRequestBuilder(tenantId: tenantId, billOfLadingId: billOfLadingId, apiVersion: apiVersion, xApiVersion: xApiVersion, billOfLadingLineDtoCollectionQueryParameters: billOfLadingLineDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -395,15 +396,16 @@ open class BillsOfLadingAPI {
      - parameter billOfLadingId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter billOfLadingLineDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<BillOfLadingLineDtoListEnvelope> 
      */
-    open class func getBillOfLadingLinesAsyncWithRequestBuilder(tenantId: UUID, billOfLadingId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<BillOfLadingLineDtoListEnvelope> {
+    open class func getBillOfLadingLinesAsyncWithRequestBuilder(tenantId: UUID, billOfLadingId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, billOfLadingLineDtoCollectionQueryParameters: BillOfLadingLineDtoCollectionQueryParameters? = nil) -> RequestBuilder<BillOfLadingLineDtoListEnvelope> {
         var localVariablePath = "/api/v2/ShipmentsService/BillsOfLading/{billOfLadingId}/Lines"
         let billOfLadingIdPreEscape = "\(APIHelper.mapValueToPathItem(billOfLadingId))"
         let billOfLadingIdPostEscape = billOfLadingIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{billOfLadingId}", with: billOfLadingIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: billOfLadingLineDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -412,6 +414,7 @@ open class BillsOfLadingAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -429,12 +432,13 @@ open class BillsOfLadingAPI {
      - parameter billOfLadingId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter billOfLadingLineDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getBillOfLadingLinesCountAsync(tenantId: UUID, billOfLadingId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getBillOfLadingLinesCountAsyncWithRequestBuilder(tenantId: tenantId, billOfLadingId: billOfLadingId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getBillOfLadingLinesCountAsync(tenantId: UUID, billOfLadingId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, billOfLadingLineDtoCollectionQueryParameters: BillOfLadingLineDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getBillOfLadingLinesCountAsyncWithRequestBuilder(tenantId: tenantId, billOfLadingId: billOfLadingId, apiVersion: apiVersion, xApiVersion: xApiVersion, billOfLadingLineDtoCollectionQueryParameters: billOfLadingLineDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -452,15 +456,16 @@ open class BillsOfLadingAPI {
      - parameter billOfLadingId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter billOfLadingLineDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getBillOfLadingLinesCountAsyncWithRequestBuilder(tenantId: UUID, billOfLadingId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getBillOfLadingLinesCountAsyncWithRequestBuilder(tenantId: UUID, billOfLadingId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, billOfLadingLineDtoCollectionQueryParameters: BillOfLadingLineDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/ShipmentsService/BillsOfLading/{billOfLadingId}/Lines/Count"
         let billOfLadingIdPreEscape = "\(APIHelper.mapValueToPathItem(billOfLadingId))"
         let billOfLadingIdPostEscape = billOfLadingIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{billOfLadingId}", with: billOfLadingIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: billOfLadingLineDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -469,6 +474,7 @@ open class BillsOfLadingAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -485,12 +491,13 @@ open class BillsOfLadingAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter billOfLadingDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getBillsOfLadingAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BillOfLadingDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getBillsOfLadingAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getBillsOfLadingAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, billOfLadingDtoCollectionQueryParameters: BillOfLadingDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BillOfLadingDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getBillsOfLadingAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, billOfLadingDtoCollectionQueryParameters: billOfLadingDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -507,12 +514,13 @@ open class BillsOfLadingAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter billOfLadingDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<BillOfLadingDtoListEnvelope> 
      */
-    open class func getBillsOfLadingAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<BillOfLadingDtoListEnvelope> {
+    open class func getBillsOfLadingAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, billOfLadingDtoCollectionQueryParameters: BillOfLadingDtoCollectionQueryParameters? = nil) -> RequestBuilder<BillOfLadingDtoListEnvelope> {
         let localVariablePath = "/api/v2/ShipmentsService/BillsOfLading"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: billOfLadingDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -521,6 +529,7 @@ open class BillsOfLadingAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -537,12 +546,13 @@ open class BillsOfLadingAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter billOfLadingDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getBillsOfLadingCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getBillsOfLadingCountAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getBillsOfLadingCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, billOfLadingDtoCollectionQueryParameters: BillOfLadingDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getBillsOfLadingCountAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, billOfLadingDtoCollectionQueryParameters: billOfLadingDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -559,12 +569,13 @@ open class BillsOfLadingAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter billOfLadingDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getBillsOfLadingCountAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getBillsOfLadingCountAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, billOfLadingDtoCollectionQueryParameters: BillOfLadingDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/ShipmentsService/BillsOfLading/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: billOfLadingDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -573,6 +584,7 @@ open class BillsOfLadingAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -590,13 +602,13 @@ open class BillsOfLadingAPI {
      - parameter billOfLadingId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchBillOfLadingAsync(tenantId: UUID, billOfLadingId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchBillOfLadingAsyncWithRequestBuilder(tenantId: tenantId, billOfLadingId: billOfLadingId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchBillOfLadingAsync(tenantId: UUID, billOfLadingId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchBillOfLadingAsyncWithRequestBuilder(tenantId: tenantId, billOfLadingId: billOfLadingId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -614,16 +626,16 @@ open class BillsOfLadingAPI {
      - parameter billOfLadingId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchBillOfLadingAsyncWithRequestBuilder(tenantId: UUID, billOfLadingId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchBillOfLadingAsyncWithRequestBuilder(tenantId: UUID, billOfLadingId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/ShipmentsService/BillsOfLading/{billOfLadingId}"
         let billOfLadingIdPreEscape = "\(APIHelper.mapValueToPathItem(billOfLadingId))"
         let billOfLadingIdPostEscape = billOfLadingIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{billOfLadingId}", with: billOfLadingIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -651,13 +663,13 @@ open class BillsOfLadingAPI {
      - parameter lineId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchBillOfLadingLineAsync(tenantId: UUID, billOfLadingId: UUID, lineId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchBillOfLadingLineAsyncWithRequestBuilder(tenantId: tenantId, billOfLadingId: billOfLadingId, lineId: lineId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchBillOfLadingLineAsync(tenantId: UUID, billOfLadingId: UUID, lineId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchBillOfLadingLineAsyncWithRequestBuilder(tenantId: tenantId, billOfLadingId: billOfLadingId, lineId: lineId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -676,10 +688,10 @@ open class BillsOfLadingAPI {
      - parameter lineId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchBillOfLadingLineAsyncWithRequestBuilder(tenantId: UUID, billOfLadingId: UUID, lineId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchBillOfLadingLineAsyncWithRequestBuilder(tenantId: UUID, billOfLadingId: UUID, lineId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/ShipmentsService/BillsOfLading/{billOfLadingId}/Lines/{lineId}"
         let billOfLadingIdPreEscape = "\(APIHelper.mapValueToPathItem(billOfLadingId))"
         let billOfLadingIdPostEscape = billOfLadingIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -688,7 +700,7 @@ open class BillsOfLadingAPI {
         let lineIdPostEscape = lineIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{lineId}", with: lineIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

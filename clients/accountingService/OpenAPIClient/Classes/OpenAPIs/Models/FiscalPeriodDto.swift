@@ -12,6 +12,11 @@ import AnyCodable
 
 public struct FiscalPeriodDto: Codable, JSONEncodable, Hashable {
 
+    public enum Status: String, Codable, CaseIterable {
+        case _open = "Open"
+        case closed = "Closed"
+        case locked = "Locked"
+    }
     public var id: String?
     public var timestamp: Date?
     public var name: String?
@@ -20,8 +25,9 @@ public struct FiscalPeriodDto: Codable, JSONEncodable, Hashable {
     public var tenantId: String?
     public var enrollmentId: String?
     public var fiscalYearId: String?
+    public var status: Status?
 
-    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, fromDate: Date? = nil, toDate: Date? = nil, tenantId: String? = nil, enrollmentId: String? = nil, fiscalYearId: String? = nil) {
+    public init(id: String? = nil, timestamp: Date? = nil, name: String? = nil, fromDate: Date? = nil, toDate: Date? = nil, tenantId: String? = nil, enrollmentId: String? = nil, fiscalYearId: String? = nil, status: Status? = nil) {
         self.id = id
         self.timestamp = timestamp
         self.name = name
@@ -30,6 +36,7 @@ public struct FiscalPeriodDto: Codable, JSONEncodable, Hashable {
         self.tenantId = tenantId
         self.enrollmentId = enrollmentId
         self.fiscalYearId = fiscalYearId
+        self.status = status
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -41,6 +48,7 @@ public struct FiscalPeriodDto: Codable, JSONEncodable, Hashable {
         case tenantId
         case enrollmentId
         case fiscalYearId
+        case status
     }
 
     // Encodable protocol methods
@@ -55,6 +63,7 @@ public struct FiscalPeriodDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(tenantId, forKey: .tenantId)
         try container.encodeIfPresent(enrollmentId, forKey: .enrollmentId)
         try container.encodeIfPresent(fiscalYearId, forKey: .fiscalYearId)
+        try container.encodeIfPresent(status, forKey: .status)
     }
 }
 

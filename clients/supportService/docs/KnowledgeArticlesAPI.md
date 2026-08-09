@@ -177,7 +177,7 @@ No authorization required
 
 # **getKnowledgeArticlesAsync**
 ```swift
-    open class func getKnowledgeArticlesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: KnowledgeArticleDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getKnowledgeArticlesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, knowledgeArticleDtoCollectionQueryParameters: KnowledgeArticleDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: KnowledgeArticleDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Retrieve knowledge articles
@@ -190,9 +190,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let knowledgeArticleDtoCollectionQueryParameters = KnowledgeArticleDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // KnowledgeArticleDtoCollectionQueryParameters |  (optional)
 
 // Retrieve knowledge articles
-KnowledgeArticlesAPI.getKnowledgeArticlesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+KnowledgeArticlesAPI.getKnowledgeArticlesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, knowledgeArticleDtoCollectionQueryParameters: knowledgeArticleDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -211,6 +212,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **knowledgeArticleDtoCollectionQueryParameters** | [**KnowledgeArticleDtoCollectionQueryParameters**](KnowledgeArticleDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -222,14 +224,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getKnowledgeArticlesCountAsync**
 ```swift
-    open class func getKnowledgeArticlesCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getKnowledgeArticlesCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, knowledgeArticleDtoCollectionQueryParameters: KnowledgeArticleDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get knowledge articles count
@@ -242,9 +244,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let knowledgeArticleDtoCollectionQueryParameters = KnowledgeArticleDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // KnowledgeArticleDtoCollectionQueryParameters |  (optional)
 
 // Get knowledge articles count
-KnowledgeArticlesAPI.getKnowledgeArticlesCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+KnowledgeArticlesAPI.getKnowledgeArticlesCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, knowledgeArticleDtoCollectionQueryParameters: knowledgeArticleDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -263,6 +266,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **knowledgeArticleDtoCollectionQueryParameters** | [**KnowledgeArticleDtoCollectionQueryParameters**](KnowledgeArticleDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -274,14 +278,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchKnowledgeArticleAsync**
 ```swift
-    open class func patchKnowledgeArticleAsync(tenantId: UUID, knowledgeArticleId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchKnowledgeArticleAsync(tenantId: UUID, knowledgeArticleId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a knowledge article
@@ -297,10 +301,10 @@ let tenantId = 987 // UUID |
 let knowledgeArticleId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a knowledge article
-KnowledgeArticlesAPI.patchKnowledgeArticleAsync(tenantId: tenantId, knowledgeArticleId: knowledgeArticleId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+KnowledgeArticlesAPI.patchKnowledgeArticleAsync(tenantId: tenantId, knowledgeArticleId: knowledgeArticleId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -320,7 +324,7 @@ Name | Type | Description  | Notes
  **knowledgeArticleId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

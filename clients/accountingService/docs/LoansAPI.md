@@ -421,7 +421,7 @@ No authorization required
 
 # **getLoanApplicationsAsync**
 ```swift
-    open class func getLoanApplicationsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: LoanApplicationDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
+    open class func getLoanApplicationsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, loanApplicationDtoCollectionQueryParameters: LoanApplicationDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: LoanApplicationDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Gets all loan applications
@@ -436,9 +436,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let loanApplicationDtoCollectionQueryParameters = LoanApplicationDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // LoanApplicationDtoCollectionQueryParameters |  (optional)
 
 // Gets all loan applications
-LoansAPI.getLoanApplicationsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+LoansAPI.getLoanApplicationsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, loanApplicationDtoCollectionQueryParameters: loanApplicationDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -457,6 +458,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **loanApplicationDtoCollectionQueryParameters** | [**LoanApplicationDtoCollectionQueryParameters**](LoanApplicationDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -468,14 +470,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getLoanApplicationsCountAsync**
 ```swift
-    open class func getLoanApplicationsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getLoanApplicationsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, loanApplicationDtoCollectionQueryParameters: LoanApplicationDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Counts loan applications
@@ -490,9 +492,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let loanApplicationDtoCollectionQueryParameters = LoanApplicationDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // LoanApplicationDtoCollectionQueryParameters |  (optional)
 
 // Counts loan applications
-LoansAPI.getLoanApplicationsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+LoansAPI.getLoanApplicationsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, loanApplicationDtoCollectionQueryParameters: loanApplicationDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -511,6 +514,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **loanApplicationDtoCollectionQueryParameters** | [**LoanApplicationDtoCollectionQueryParameters**](LoanApplicationDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -522,7 +526,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -641,7 +645,7 @@ No authorization required
 
 # **getLoanTypesAsync**
 ```swift
-    open class func getLoanTypesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: LoanTypeDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
+    open class func getLoanTypesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, loanTypeDtoCollectionQueryParameters: LoanTypeDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: LoanTypeDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Gets all loan types
@@ -656,9 +660,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let loanTypeDtoCollectionQueryParameters = LoanTypeDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // LoanTypeDtoCollectionQueryParameters |  (optional)
 
 // Gets all loan types
-LoansAPI.getLoanTypesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+LoansAPI.getLoanTypesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, loanTypeDtoCollectionQueryParameters: loanTypeDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -677,6 +682,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **loanTypeDtoCollectionQueryParameters** | [**LoanTypeDtoCollectionQueryParameters**](LoanTypeDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -688,14 +694,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getLoanTypesCountAsync**
 ```swift
-    open class func getLoanTypesCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getLoanTypesCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, loanTypeDtoCollectionQueryParameters: LoanTypeDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Counts loan types
@@ -710,9 +716,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let loanTypeDtoCollectionQueryParameters = LoanTypeDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // LoanTypeDtoCollectionQueryParameters |  (optional)
 
 // Counts loan types
-LoansAPI.getLoanTypesCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+LoansAPI.getLoanTypesCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, loanTypeDtoCollectionQueryParameters: loanTypeDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -731,6 +738,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **loanTypeDtoCollectionQueryParameters** | [**LoanTypeDtoCollectionQueryParameters**](LoanTypeDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -742,14 +750,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getLoansAsync**
 ```swift
-    open class func getLoansAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: LoanDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
+    open class func getLoansAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, loanDtoCollectionQueryParameters: LoanDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: LoanDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Gets all loans
@@ -764,9 +772,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let loanDtoCollectionQueryParameters = LoanDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // LoanDtoCollectionQueryParameters |  (optional)
 
 // Gets all loans
-LoansAPI.getLoansAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+LoansAPI.getLoansAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, loanDtoCollectionQueryParameters: loanDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -785,6 +794,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **loanDtoCollectionQueryParameters** | [**LoanDtoCollectionQueryParameters**](LoanDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -796,14 +806,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getLoansCountAsync**
 ```swift
-    open class func getLoansCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getLoansCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, loanDtoCollectionQueryParameters: LoanDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Counts loans
@@ -818,9 +828,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let loanDtoCollectionQueryParameters = LoanDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // LoanDtoCollectionQueryParameters |  (optional)
 
 // Counts loans
-LoansAPI.getLoansCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+LoansAPI.getLoansCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, loanDtoCollectionQueryParameters: loanDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -839,6 +850,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **loanDtoCollectionQueryParameters** | [**LoanDtoCollectionQueryParameters**](LoanDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -850,14 +862,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchLoanApplicationAsync**
 ```swift
-    open class func patchLoanApplicationAsync(tenantId: UUID, applicationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchLoanApplicationAsync(tenantId: UUID, applicationId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patches a loan application
@@ -873,10 +885,10 @@ let tenantId = 987 // UUID |
 let applicationId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patches a loan application
-LoansAPI.patchLoanApplicationAsync(tenantId: tenantId, applicationId: applicationId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+LoansAPI.patchLoanApplicationAsync(tenantId: tenantId, applicationId: applicationId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -896,7 +908,7 @@ Name | Type | Description  | Notes
  **applicationId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -915,7 +927,7 @@ No authorization required
 
 # **patchLoanAsync**
 ```swift
-    open class func patchLoanAsync(tenantId: UUID, loanId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchLoanAsync(tenantId: UUID, loanId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patches a loan
@@ -931,10 +943,10 @@ let tenantId = 987 // UUID |
 let loanId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patches a loan
-LoansAPI.patchLoanAsync(tenantId: tenantId, loanId: loanId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+LoansAPI.patchLoanAsync(tenantId: tenantId, loanId: loanId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -954,7 +966,7 @@ Name | Type | Description  | Notes
  **loanId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -973,7 +985,7 @@ No authorization required
 
 # **patchLoanTypeAsync**
 ```swift
-    open class func patchLoanTypeAsync(tenantId: UUID, loanTypeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchLoanTypeAsync(tenantId: UUID, loanTypeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patches a loan type
@@ -989,10 +1001,10 @@ let tenantId = 987 // UUID |
 let loanTypeId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patches a loan type
-LoansAPI.patchLoanTypeAsync(tenantId: tenantId, loanTypeId: loanTypeId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+LoansAPI.patchLoanTypeAsync(tenantId: tenantId, loanTypeId: loanTypeId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1012,7 +1024,7 @@ Name | Type | Description  | Notes
  **loanTypeId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

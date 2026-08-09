@@ -73,7 +73,7 @@ No authorization required
 
 # **getMyCertificatesAsync**
 ```swift
-    open class func getMyCertificatesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: CourseCompletionCertificateDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
+    open class func getMyCertificatesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, courseCompletionCertificateDtoCollectionQueryParameters: CourseCompletionCertificateDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: CourseCompletionCertificateDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get current user's completion certificates
@@ -85,9 +85,10 @@ import OpenAPIClient
 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseCompletionCertificateDtoCollectionQueryParameters = CourseCompletionCertificateDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseCompletionCertificateDtoCollectionQueryParameters |  (optional)
 
 // Get current user's completion certificates
-MeAPI.getMyCertificatesAsync(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+MeAPI.getMyCertificatesAsync(apiVersion: apiVersion, xApiVersion: xApiVersion, courseCompletionCertificateDtoCollectionQueryParameters: courseCompletionCertificateDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -105,6 +106,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseCompletionCertificateDtoCollectionQueryParameters** | [**CourseCompletionCertificateDtoCollectionQueryParameters**](CourseCompletionCertificateDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -116,14 +118,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getMyCertificatesCountAsync**
 ```swift
-    open class func getMyCertificatesCountAsync(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
+    open class func getMyCertificatesCountAsync(apiVersion: String? = nil, xApiVersion: String? = nil, courseCompletionCertificateDtoCollectionQueryParameters: CourseCompletionCertificateDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
 ```
 
 Get current user's certificates count
@@ -135,9 +137,10 @@ import OpenAPIClient
 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseCompletionCertificateDtoCollectionQueryParameters = CourseCompletionCertificateDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseCompletionCertificateDtoCollectionQueryParameters |  (optional)
 
 // Get current user's certificates count
-MeAPI.getMyCertificatesCountAsync(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+MeAPI.getMyCertificatesCountAsync(apiVersion: apiVersion, xApiVersion: xApiVersion, courseCompletionCertificateDtoCollectionQueryParameters: courseCompletionCertificateDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -155,6 +158,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseCompletionCertificateDtoCollectionQueryParameters** | [**CourseCompletionCertificateDtoCollectionQueryParameters**](CourseCompletionCertificateDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -166,14 +170,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getMyEnrollmentsAsync**
 ```swift
-    open class func getMyEnrollmentsAsync(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: CourseEnrollmentDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
+    open class func getMyEnrollmentsAsync(apiVersion: String? = nil, xApiVersion: String? = nil, courseEnrollmentDtoCollectionQueryParameters: CourseEnrollmentDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: CourseEnrollmentDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get current user's course enrollments
@@ -185,9 +189,10 @@ import OpenAPIClient
 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseEnrollmentDtoCollectionQueryParameters = CourseEnrollmentDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseEnrollmentDtoCollectionQueryParameters |  (optional)
 
 // Get current user's course enrollments
-MeAPI.getMyEnrollmentsAsync(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+MeAPI.getMyEnrollmentsAsync(apiVersion: apiVersion, xApiVersion: xApiVersion, courseEnrollmentDtoCollectionQueryParameters: courseEnrollmentDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -205,6 +210,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseEnrollmentDtoCollectionQueryParameters** | [**CourseEnrollmentDtoCollectionQueryParameters**](CourseEnrollmentDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -216,14 +222,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getMyEnrollmentsCountAsync**
 ```swift
-    open class func getMyEnrollmentsCountAsync(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
+    open class func getMyEnrollmentsCountAsync(apiVersion: String? = nil, xApiVersion: String? = nil, courseEnrollmentDtoCollectionQueryParameters: CourseEnrollmentDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
 ```
 
 Get current user's enrollment count
@@ -235,9 +241,10 @@ import OpenAPIClient
 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseEnrollmentDtoCollectionQueryParameters = CourseEnrollmentDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseEnrollmentDtoCollectionQueryParameters |  (optional)
 
 // Get current user's enrollment count
-MeAPI.getMyEnrollmentsCountAsync(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+MeAPI.getMyEnrollmentsCountAsync(apiVersion: apiVersion, xApiVersion: xApiVersion, courseEnrollmentDtoCollectionQueryParameters: courseEnrollmentDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -255,6 +262,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseEnrollmentDtoCollectionQueryParameters** | [**CourseEnrollmentDtoCollectionQueryParameters**](CourseEnrollmentDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -266,7 +274,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -323,7 +331,7 @@ No authorization required
 
 # **getMyInstructorCoursesAsync**
 ```swift
-    open class func getMyInstructorCoursesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: CourseDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
+    open class func getMyInstructorCoursesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, courseDtoCollectionQueryParameters: CourseDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: CourseDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get current user's instructor courses
@@ -335,9 +343,10 @@ import OpenAPIClient
 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseDtoCollectionQueryParameters = CourseDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseDtoCollectionQueryParameters |  (optional)
 
 // Get current user's instructor courses
-MeAPI.getMyInstructorCoursesAsync(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+MeAPI.getMyInstructorCoursesAsync(apiVersion: apiVersion, xApiVersion: xApiVersion, courseDtoCollectionQueryParameters: courseDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -355,6 +364,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseDtoCollectionQueryParameters** | [**CourseDtoCollectionQueryParameters**](CourseDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -366,14 +376,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getMyInstructorCoursesCountAsync**
 ```swift
-    open class func getMyInstructorCoursesCountAsync(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
+    open class func getMyInstructorCoursesCountAsync(apiVersion: String? = nil, xApiVersion: String? = nil, courseDtoCollectionQueryParameters: CourseDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
 ```
 
 Get current user's instructor courses count
@@ -385,9 +395,10 @@ import OpenAPIClient
 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseDtoCollectionQueryParameters = CourseDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseDtoCollectionQueryParameters |  (optional)
 
 // Get current user's instructor courses count
-MeAPI.getMyInstructorCoursesCountAsync(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+MeAPI.getMyInstructorCoursesCountAsync(apiVersion: apiVersion, xApiVersion: xApiVersion, courseDtoCollectionQueryParameters: courseDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -405,6 +416,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseDtoCollectionQueryParameters** | [**CourseDtoCollectionQueryParameters**](CourseDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -416,14 +428,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getMyInstructorProfilesAsync**
 ```swift
-    open class func getMyInstructorProfilesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: InstructorProfileDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
+    open class func getMyInstructorProfilesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, instructorProfileDtoCollectionQueryParameters: InstructorProfileDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: InstructorProfileDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get current user's instructor profiles
@@ -435,9 +447,10 @@ import OpenAPIClient
 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let instructorProfileDtoCollectionQueryParameters = InstructorProfileDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // InstructorProfileDtoCollectionQueryParameters |  (optional)
 
 // Get current user's instructor profiles
-MeAPI.getMyInstructorProfilesAsync(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+MeAPI.getMyInstructorProfilesAsync(apiVersion: apiVersion, xApiVersion: xApiVersion, instructorProfileDtoCollectionQueryParameters: instructorProfileDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -455,6 +468,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **instructorProfileDtoCollectionQueryParameters** | [**InstructorProfileDtoCollectionQueryParameters**](InstructorProfileDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -466,14 +480,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getMyInstructorProfilesCountAsync**
 ```swift
-    open class func getMyInstructorProfilesCountAsync(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
+    open class func getMyInstructorProfilesCountAsync(apiVersion: String? = nil, xApiVersion: String? = nil, instructorProfileDtoCollectionQueryParameters: InstructorProfileDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
 ```
 
 Get current user's instructor profiles count
@@ -485,9 +499,10 @@ import OpenAPIClient
 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let instructorProfileDtoCollectionQueryParameters = InstructorProfileDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // InstructorProfileDtoCollectionQueryParameters |  (optional)
 
 // Get current user's instructor profiles count
-MeAPI.getMyInstructorProfilesCountAsync(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+MeAPI.getMyInstructorProfilesCountAsync(apiVersion: apiVersion, xApiVersion: xApiVersion, instructorProfileDtoCollectionQueryParameters: instructorProfileDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -505,6 +520,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **instructorProfileDtoCollectionQueryParameters** | [**InstructorProfileDtoCollectionQueryParameters**](InstructorProfileDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -516,7 +532,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -573,7 +589,7 @@ No authorization required
 
 # **getMyStudentCoursesAsync**
 ```swift
-    open class func getMyStudentCoursesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: CourseDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
+    open class func getMyStudentCoursesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, courseDtoCollectionQueryParameters: CourseDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: CourseDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get current user's enrolled courses
@@ -585,9 +601,10 @@ import OpenAPIClient
 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseDtoCollectionQueryParameters = CourseDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseDtoCollectionQueryParameters |  (optional)
 
 // Get current user's enrolled courses
-MeAPI.getMyStudentCoursesAsync(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+MeAPI.getMyStudentCoursesAsync(apiVersion: apiVersion, xApiVersion: xApiVersion, courseDtoCollectionQueryParameters: courseDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -605,6 +622,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseDtoCollectionQueryParameters** | [**CourseDtoCollectionQueryParameters**](CourseDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -616,14 +634,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getMyStudentCoursesCountAsync**
 ```swift
-    open class func getMyStudentCoursesCountAsync(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
+    open class func getMyStudentCoursesCountAsync(apiVersion: String? = nil, xApiVersion: String? = nil, courseDtoCollectionQueryParameters: CourseDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
 ```
 
 Get current user's enrolled courses count
@@ -635,9 +653,10 @@ import OpenAPIClient
 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseDtoCollectionQueryParameters = CourseDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseDtoCollectionQueryParameters |  (optional)
 
 // Get current user's enrolled courses count
-MeAPI.getMyStudentCoursesCountAsync(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+MeAPI.getMyStudentCoursesCountAsync(apiVersion: apiVersion, xApiVersion: xApiVersion, courseDtoCollectionQueryParameters: courseDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -655,6 +674,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseDtoCollectionQueryParameters** | [**CourseDtoCollectionQueryParameters**](CourseDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -666,14 +686,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getMyStudentProfilesAsync**
 ```swift
-    open class func getMyStudentProfilesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: StudentProfileDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
+    open class func getMyStudentProfilesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, studentProfileDtoCollectionQueryParameters: StudentProfileDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: StudentProfileDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get current user's student profiles
@@ -685,9 +705,10 @@ import OpenAPIClient
 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let studentProfileDtoCollectionQueryParameters = StudentProfileDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // StudentProfileDtoCollectionQueryParameters |  (optional)
 
 // Get current user's student profiles
-MeAPI.getMyStudentProfilesAsync(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+MeAPI.getMyStudentProfilesAsync(apiVersion: apiVersion, xApiVersion: xApiVersion, studentProfileDtoCollectionQueryParameters: studentProfileDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -705,6 +726,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **studentProfileDtoCollectionQueryParameters** | [**StudentProfileDtoCollectionQueryParameters**](StudentProfileDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -716,14 +738,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getMyStudentProfilesCountAsync**
 ```swift
-    open class func getMyStudentProfilesCountAsync(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
+    open class func getMyStudentProfilesCountAsync(apiVersion: String? = nil, xApiVersion: String? = nil, studentProfileDtoCollectionQueryParameters: StudentProfileDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
 ```
 
 Get current user's student profiles count
@@ -735,9 +757,10 @@ import OpenAPIClient
 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let studentProfileDtoCollectionQueryParameters = StudentProfileDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // StudentProfileDtoCollectionQueryParameters |  (optional)
 
 // Get current user's student profiles count
-MeAPI.getMyStudentProfilesCountAsync(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+MeAPI.getMyStudentProfilesCountAsync(apiVersion: apiVersion, xApiVersion: xApiVersion, studentProfileDtoCollectionQueryParameters: studentProfileDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -755,6 +778,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **studentProfileDtoCollectionQueryParameters** | [**StudentProfileDtoCollectionQueryParameters**](StudentProfileDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -766,7 +790,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

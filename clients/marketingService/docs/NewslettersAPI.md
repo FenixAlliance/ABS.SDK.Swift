@@ -183,7 +183,7 @@ No authorization required
 
 # **getNewsletterODataAsync**
 ```swift
-    open class func getNewsletterODataAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func getNewsletterODataAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, newsletterDtoCollectionQueryParameters: NewsletterDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
 Get newsletters
@@ -198,9 +198,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let newsletterDtoCollectionQueryParameters = NewsletterDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // NewsletterDtoCollectionQueryParameters |  (optional)
 
 // Get newsletters
-NewslettersAPI.getNewsletterODataAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+NewslettersAPI.getNewsletterODataAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, newsletterDtoCollectionQueryParameters: newsletterDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -219,6 +220,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **newsletterDtoCollectionQueryParameters** | [**NewsletterDtoCollectionQueryParameters**](NewsletterDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -230,14 +232,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getNewslettersCountAsync**
 ```swift
-    open class func getNewslettersCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getNewslettersCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, newsletterDtoCollectionQueryParameters: NewsletterDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get newsletters count
@@ -252,9 +254,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let newsletterDtoCollectionQueryParameters = NewsletterDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // NewsletterDtoCollectionQueryParameters |  (optional)
 
 // Get newsletters count
-NewslettersAPI.getNewslettersCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+NewslettersAPI.getNewslettersCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, newsletterDtoCollectionQueryParameters: newsletterDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -273,6 +276,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **newsletterDtoCollectionQueryParameters** | [**NewsletterDtoCollectionQueryParameters**](NewsletterDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -284,14 +288,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchNewsletterAsync**
 ```swift
-    open class func patchNewsletterAsync(tenantId: UUID, newsletterId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchNewsletterAsync(tenantId: UUID, newsletterId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a newsletter
@@ -307,10 +311,10 @@ let tenantId = 987 // UUID |
 let newsletterId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a newsletter
-NewslettersAPI.patchNewsletterAsync(tenantId: tenantId, newsletterId: newsletterId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+NewslettersAPI.patchNewsletterAsync(tenantId: tenantId, newsletterId: newsletterId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -330,7 +334,7 @@ Name | Type | Description  | Notes
  **newsletterId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

@@ -4,14 +4,19 @@ All URIs are relative to *https://absuite.net*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**createSocialCommentReactionAsync**](SocialPostsAPI.md#createsocialcommentreactionasync) | **POST** /api/v2/SocialService/SocialPosts/{socialPostId}/Comments/{commentId}/Reactions | Create a social comment reaction
 [**createSocialPostAsync**](SocialPostsAPI.md#createsocialpostasync) | **POST** /api/v2/SocialService/SocialPosts | Create a social post
 [**createSocialPostAttachmentAsync**](SocialPostsAPI.md#createsocialpostattachmentasync) | **POST** /api/v2/SocialService/SocialPosts/{socialPostId}/Attachments | Create a social post attachment
 [**createSocialPostCommentAsync**](SocialPostsAPI.md#createsocialpostcommentasync) | **POST** /api/v2/SocialService/SocialPosts/{socialPostId}/Comments | Create a social post comment
 [**createSocialPostReactionAsync**](SocialPostsAPI.md#createsocialpostreactionasync) | **POST** /api/v2/SocialService/SocialPosts/{socialPostId}/Reactions | Create a social post reaction
+[**deleteSocialCommentReactionAsync**](SocialPostsAPI.md#deletesocialcommentreactionasync) | **DELETE** /api/v2/SocialService/SocialPosts/{socialPostId}/Comments/{commentId}/Reactions/{reactionId} | Delete a social comment reaction
 [**deleteSocialPostAsync**](SocialPostsAPI.md#deletesocialpostasync) | **DELETE** /api/v2/SocialService/SocialPosts/{socialPostId} | Delete a social post
 [**deleteSocialPostAttachmentAsync**](SocialPostsAPI.md#deletesocialpostattachmentasync) | **DELETE** /api/v2/SocialService/SocialPosts/{socialPostId}/Attachments/{attachmentId} | Delete a social post attachment
 [**deleteSocialPostCommentAsync**](SocialPostsAPI.md#deletesocialpostcommentasync) | **DELETE** /api/v2/SocialService/SocialPosts/{socialPostId}/Comments/{commentId} | Delete a social post comment
 [**deleteSocialPostReactionAsync**](SocialPostsAPI.md#deletesocialpostreactionasync) | **DELETE** /api/v2/SocialService/SocialPosts/{socialPostId}/Reactions/{reactionId} | Delete a social post reaction
+[**getSocialCommentReactionAsync**](SocialPostsAPI.md#getsocialcommentreactionasync) | **GET** /api/v2/SocialService/SocialPosts/{socialPostId}/Comments/{commentId}/Reactions/{reactionId} | Get social comment reaction by ID
+[**getSocialCommentReactionsAsync**](SocialPostsAPI.md#getsocialcommentreactionsasync) | **GET** /api/v2/SocialService/SocialPosts/{socialPostId}/Comments/{commentId}/Reactions | Get social comment reactions
+[**getSocialCommentReactionsCountAsync**](SocialPostsAPI.md#getsocialcommentreactionscountasync) | **GET** /api/v2/SocialService/SocialPosts/{socialPostId}/Comments/{commentId}/Reactions/Count | Count social comment reactions
 [**getSocialPostAsync**](SocialPostsAPI.md#getsocialpostasync) | **GET** /api/v2/SocialService/SocialPosts/{socialPostId} | Get social post by ID
 [**getSocialPostAttachmentAsync**](SocialPostsAPI.md#getsocialpostattachmentasync) | **GET** /api/v2/SocialService/SocialPosts/{socialPostId}/Attachments/{attachmentId} | Get social post attachment by ID
 [**getSocialPostAttachmentsAsync**](SocialPostsAPI.md#getsocialpostattachmentsasync) | **GET** /api/v2/SocialService/SocialPosts/{socialPostId}/Attachments | Get social post attachments
@@ -25,11 +30,73 @@ Method | HTTP request | Description
 [**getSocialPostsAsync**](SocialPostsAPI.md#getsocialpostsasync) | **GET** /api/v2/SocialService/SocialPosts | Get social posts
 [**getSocialPostsCountAsync**](SocialPostsAPI.md#getsocialpostscountasync) | **GET** /api/v2/SocialService/SocialPosts/Count | Count social posts
 [**patchSocialPostAsync**](SocialPostsAPI.md#patchsocialpostasync) | **PATCH** /api/v2/SocialService/SocialPosts/{socialPostId} | Patch a social post
+[**updateSocialCommentReactionAsync**](SocialPostsAPI.md#updatesocialcommentreactionasync) | **PUT** /api/v2/SocialService/SocialPosts/{socialPostId}/Comments/{commentId}/Reactions/{reactionId} | Update a social comment reaction
 [**updateSocialPostAsync**](SocialPostsAPI.md#updatesocialpostasync) | **PUT** /api/v2/SocialService/SocialPosts/{socialPostId} | Update a social post
 [**updateSocialPostAttachmentAsync**](SocialPostsAPI.md#updatesocialpostattachmentasync) | **PUT** /api/v2/SocialService/SocialPosts/{socialPostId}/Attachments/{attachmentId} | Update a social post attachment
 [**updateSocialPostCommentAsync**](SocialPostsAPI.md#updatesocialpostcommentasync) | **PUT** /api/v2/SocialService/SocialPosts/{socialPostId}/Comments/{commentId} | Update a social post comment
 [**updateSocialPostReactionAsync**](SocialPostsAPI.md#updatesocialpostreactionasync) | **PUT** /api/v2/SocialService/SocialPosts/{socialPostId}/Reactions/{reactionId} | Update a social post reaction
+[**uploadSocialPostImageAttachmentAsync**](SocialPostsAPI.md#uploadsocialpostimageattachmentasync) | **POST** /api/v2/SocialService/SocialPosts/{socialPostId}/Attachments/Image | Upload a social post image attachment
 
+
+# **createSocialCommentReactionAsync**
+```swift
+    open class func createSocialCommentReactionAsync(socialPostId: UUID, commentId: UUID, socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialReactionCreateDto: SocialReactionCreateDto? = nil, completion: @escaping (_ data: SocialCommentReactionDtoEnvelope?, _ error: Error?) -> Void)
+```
+
+Create a social comment reaction
+
+Creates a new reaction on a specific social comment.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let socialPostId = 987 // UUID | 
+let commentId = 987 // UUID | 
+let socialProfileId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let socialReactionCreateDto = SocialReactionCreateDto(id: 123, timestamp: Date(), reaction: "reaction_example", reactionValue: "reactionValue_example", socialProfileId: "socialProfileId_example") // SocialReactionCreateDto |  (optional)
+
+// Create a social comment reaction
+SocialPostsAPI.createSocialCommentReactionAsync(socialPostId: socialPostId, commentId: commentId, socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialReactionCreateDto: socialReactionCreateDto) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **socialPostId** | **UUID** |  | 
+ **commentId** | **UUID** |  | 
+ **socialProfileId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **socialReactionCreateDto** | [**SocialReactionCreateDto**](SocialReactionCreateDto.md) |  | [optional] 
+
+### Return type
+
+[**SocialCommentReactionDtoEnvelope**](SocialCommentReactionDtoEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **createSocialPostAsync**
 ```swift
@@ -205,7 +272,7 @@ No authorization required
 
 # **createSocialPostReactionAsync**
 ```swift
-    open class func createSocialPostReactionAsync(socialPostId: UUID, socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialReactionCreateDto: SocialReactionCreateDto? = nil, completion: @escaping (_ data: SocialReactionDtoEnvelope?, _ error: Error?) -> Void)
+    open class func createSocialPostReactionAsync(socialPostId: UUID, socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialReactionCreateDto: SocialReactionCreateDto? = nil, completion: @escaping (_ data: SocialPostReactionDtoEnvelope?, _ error: Error?) -> Void)
 ```
 
 Create a social post reaction
@@ -248,7 +315,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SocialReactionDtoEnvelope**](SocialReactionDtoEnvelope.md)
+[**SocialPostReactionDtoEnvelope**](SocialPostReactionDtoEnvelope.md)
 
 ### Authorization
 
@@ -257,6 +324,66 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deleteSocialCommentReactionAsync**
+```swift
+    open class func deleteSocialCommentReactionAsync(socialPostId: UUID, commentId: UUID, reactionId: UUID, socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+```
+
+Delete a social comment reaction
+
+Deletes a reaction from a specific social comment.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let socialPostId = 987 // UUID | 
+let commentId = 987 // UUID | 
+let reactionId = 987 // UUID | 
+let socialProfileId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Delete a social comment reaction
+SocialPostsAPI.deleteSocialCommentReactionAsync(socialPostId: socialPostId, commentId: commentId, reactionId: reactionId, socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **socialPostId** | **UUID** |  | 
+ **commentId** | **UUID** |  | 
+ **reactionId** | **UUID** |  | 
+ **socialProfileId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -491,6 +618,184 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **getSocialCommentReactionAsync**
+```swift
+    open class func getSocialCommentReactionAsync(socialPostId: UUID, commentId: UUID, reactionId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: SocialCommentReactionDtoEnvelope?, _ error: Error?) -> Void)
+```
+
+Get social comment reaction by ID
+
+Retrieves a specific reaction from a social comment by its ID.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let socialPostId = 987 // UUID | 
+let commentId = 987 // UUID | 
+let reactionId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+
+// Get social comment reaction by ID
+SocialPostsAPI.getSocialCommentReactionAsync(socialPostId: socialPostId, commentId: commentId, reactionId: reactionId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **socialPostId** | **UUID** |  | 
+ **commentId** | **UUID** |  | 
+ **reactionId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+
+### Return type
+
+[**SocialCommentReactionDtoEnvelope**](SocialCommentReactionDtoEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getSocialCommentReactionsAsync**
+```swift
+    open class func getSocialCommentReactionsAsync(socialPostId: UUID, commentId: UUID, socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialCommentReactionDtoCollectionQueryParameters: SocialCommentReactionDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: SocialCommentReactionDtoListEnvelope?, _ error: Error?) -> Void)
+```
+
+Get social comment reactions
+
+Retrieves a list of reactions for a specific social comment.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let socialPostId = 987 // UUID | 
+let commentId = 987 // UUID | 
+let socialProfileId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let socialCommentReactionDtoCollectionQueryParameters = SocialCommentReactionDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SocialCommentReactionDtoCollectionQueryParameters |  (optional)
+
+// Get social comment reactions
+SocialPostsAPI.getSocialCommentReactionsAsync(socialPostId: socialPostId, commentId: commentId, socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialCommentReactionDtoCollectionQueryParameters: socialCommentReactionDtoCollectionQueryParameters) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **socialPostId** | **UUID** |  | 
+ **commentId** | **UUID** |  | 
+ **socialProfileId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **socialCommentReactionDtoCollectionQueryParameters** | [**SocialCommentReactionDtoCollectionQueryParameters**](SocialCommentReactionDtoCollectionQueryParameters.md) |  | [optional] 
+
+### Return type
+
+[**SocialCommentReactionDtoListEnvelope**](SocialCommentReactionDtoListEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getSocialCommentReactionsCountAsync**
+```swift
+    open class func getSocialCommentReactionsCountAsync(socialPostId: UUID, commentId: UUID, socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialCommentReactionDtoCollectionQueryParameters: SocialCommentReactionDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+```
+
+Count social comment reactions
+
+Returns the count of reactions for a specific social comment.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let socialPostId = 987 // UUID | 
+let commentId = 987 // UUID | 
+let socialProfileId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let socialCommentReactionDtoCollectionQueryParameters = SocialCommentReactionDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SocialCommentReactionDtoCollectionQueryParameters |  (optional)
+
+// Count social comment reactions
+SocialPostsAPI.getSocialCommentReactionsCountAsync(socialPostId: socialPostId, commentId: commentId, socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialCommentReactionDtoCollectionQueryParameters: socialCommentReactionDtoCollectionQueryParameters) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **socialPostId** | **UUID** |  | 
+ **commentId** | **UUID** |  | 
+ **socialProfileId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **socialCommentReactionDtoCollectionQueryParameters** | [**SocialCommentReactionDtoCollectionQueryParameters**](SocialCommentReactionDtoCollectionQueryParameters.md) |  | [optional] 
+
+### Return type
+
+[**Int32Envelope**](Int32Envelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **getSocialPostAsync**
 ```swift
     open class func getSocialPostAsync(socialProfileId: UUID, socialPostId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: SocialPostDtoEnvelope?, _ error: Error?) -> Void)
@@ -605,7 +910,7 @@ No authorization required
 
 # **getSocialPostAttachmentsAsync**
 ```swift
-    open class func getSocialPostAttachmentsAsync(socialPostId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: SocialPostAttachmentDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getSocialPostAttachmentsAsync(socialPostId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialPostAttachmentDtoCollectionQueryParameters: SocialPostAttachmentDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: SocialPostAttachmentDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get social post attachments
@@ -620,9 +925,10 @@ import OpenAPIClient
 let socialPostId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let socialPostAttachmentDtoCollectionQueryParameters = SocialPostAttachmentDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SocialPostAttachmentDtoCollectionQueryParameters |  (optional)
 
 // Get social post attachments
-SocialPostsAPI.getSocialPostAttachmentsAsync(socialPostId: socialPostId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SocialPostsAPI.getSocialPostAttachmentsAsync(socialPostId: socialPostId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialPostAttachmentDtoCollectionQueryParameters: socialPostAttachmentDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -641,6 +947,7 @@ Name | Type | Description  | Notes
  **socialPostId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **socialPostAttachmentDtoCollectionQueryParameters** | [**SocialPostAttachmentDtoCollectionQueryParameters**](SocialPostAttachmentDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -652,14 +959,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getSocialPostAttachmentsCountAsync**
 ```swift
-    open class func getSocialPostAttachmentsCountAsync(socialPostId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getSocialPostAttachmentsCountAsync(socialPostId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialPostAttachmentDtoCollectionQueryParameters: SocialPostAttachmentDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count social post attachments
@@ -674,9 +981,10 @@ import OpenAPIClient
 let socialPostId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let socialPostAttachmentDtoCollectionQueryParameters = SocialPostAttachmentDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SocialPostAttachmentDtoCollectionQueryParameters |  (optional)
 
 // Count social post attachments
-SocialPostsAPI.getSocialPostAttachmentsCountAsync(socialPostId: socialPostId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SocialPostsAPI.getSocialPostAttachmentsCountAsync(socialPostId: socialPostId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialPostAttachmentDtoCollectionQueryParameters: socialPostAttachmentDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -695,6 +1003,7 @@ Name | Type | Description  | Notes
  **socialPostId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **socialPostAttachmentDtoCollectionQueryParameters** | [**SocialPostAttachmentDtoCollectionQueryParameters**](SocialPostAttachmentDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -706,7 +1015,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -771,7 +1080,7 @@ No authorization required
 
 # **getSocialPostCommentsAsync**
 ```swift
-    open class func getSocialPostCommentsAsync(socialProfileId: UUID, socialPostId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: SocialPostCommentDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getSocialPostCommentsAsync(socialProfileId: UUID, socialPostId: UUID, parentCommentId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, socialPostCommentDtoCollectionQueryParameters: SocialPostCommentDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: SocialPostCommentDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get social post comments
@@ -785,11 +1094,13 @@ import OpenAPIClient
 
 let socialProfileId = 987 // UUID | 
 let socialPostId = 987 // UUID | 
+let parentCommentId = "parentCommentId_example" // String |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let socialPostCommentDtoCollectionQueryParameters = SocialPostCommentDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SocialPostCommentDtoCollectionQueryParameters |  (optional)
 
 // Get social post comments
-SocialPostsAPI.getSocialPostCommentsAsync(socialProfileId: socialProfileId, socialPostId: socialPostId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SocialPostsAPI.getSocialPostCommentsAsync(socialProfileId: socialProfileId, socialPostId: socialPostId, parentCommentId: parentCommentId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialPostCommentDtoCollectionQueryParameters: socialPostCommentDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -807,8 +1118,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **socialProfileId** | **UUID** |  | 
  **socialPostId** | **UUID** |  | 
+ **parentCommentId** | **String** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **socialPostCommentDtoCollectionQueryParameters** | [**SocialPostCommentDtoCollectionQueryParameters**](SocialPostCommentDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -820,14 +1133,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getSocialPostCommentsCountAsync**
 ```swift
-    open class func getSocialPostCommentsCountAsync(socialProfileId: UUID, socialPostId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getSocialPostCommentsCountAsync(socialProfileId: UUID, socialPostId: UUID, parentCommentId: String? = nil, apiVersion: String? = nil, xApiVersion: String? = nil, socialPostCommentDtoCollectionQueryParameters: SocialPostCommentDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count social post comments
@@ -841,11 +1154,13 @@ import OpenAPIClient
 
 let socialProfileId = 987 // UUID | 
 let socialPostId = 987 // UUID | 
+let parentCommentId = "parentCommentId_example" // String |  (optional)
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let socialPostCommentDtoCollectionQueryParameters = SocialPostCommentDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SocialPostCommentDtoCollectionQueryParameters |  (optional)
 
 // Count social post comments
-SocialPostsAPI.getSocialPostCommentsCountAsync(socialProfileId: socialProfileId, socialPostId: socialPostId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SocialPostsAPI.getSocialPostCommentsCountAsync(socialProfileId: socialProfileId, socialPostId: socialPostId, parentCommentId: parentCommentId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialPostCommentDtoCollectionQueryParameters: socialPostCommentDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -863,8 +1178,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **socialProfileId** | **UUID** |  | 
  **socialPostId** | **UUID** |  | 
+ **parentCommentId** | **String** |  | [optional] 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **socialPostCommentDtoCollectionQueryParameters** | [**SocialPostCommentDtoCollectionQueryParameters**](SocialPostCommentDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -876,7 +1193,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -939,7 +1256,7 @@ No authorization required
 
 # **getSocialPostReactionsAsync**
 ```swift
-    open class func getSocialPostReactionsAsync(socialPostId: UUID, socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: SocialReactionDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getSocialPostReactionsAsync(socialPostId: UUID, socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialPostReactionDtoCollectionQueryParameters: SocialPostReactionDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: SocialReactionDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get social post reactions
@@ -955,9 +1272,10 @@ let socialPostId = 987 // UUID |
 let socialProfileId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let socialPostReactionDtoCollectionQueryParameters = SocialPostReactionDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SocialPostReactionDtoCollectionQueryParameters |  (optional)
 
 // Get social post reactions
-SocialPostsAPI.getSocialPostReactionsAsync(socialPostId: socialPostId, socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SocialPostsAPI.getSocialPostReactionsAsync(socialPostId: socialPostId, socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialPostReactionDtoCollectionQueryParameters: socialPostReactionDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -977,6 +1295,7 @@ Name | Type | Description  | Notes
  **socialProfileId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **socialPostReactionDtoCollectionQueryParameters** | [**SocialPostReactionDtoCollectionQueryParameters**](SocialPostReactionDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -988,14 +1307,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getSocialPostReactionsCountAsync**
 ```swift
-    open class func getSocialPostReactionsCountAsync(socialPostId: UUID, socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getSocialPostReactionsCountAsync(socialPostId: UUID, socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialPostReactionDtoCollectionQueryParameters: SocialPostReactionDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count social post reactions
@@ -1011,9 +1330,10 @@ let socialPostId = 987 // UUID |
 let socialProfileId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let socialPostReactionDtoCollectionQueryParameters = SocialPostReactionDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SocialPostReactionDtoCollectionQueryParameters |  (optional)
 
 // Count social post reactions
-SocialPostsAPI.getSocialPostReactionsCountAsync(socialPostId: socialPostId, socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SocialPostsAPI.getSocialPostReactionsCountAsync(socialPostId: socialPostId, socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialPostReactionDtoCollectionQueryParameters: socialPostReactionDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1033,6 +1353,7 @@ Name | Type | Description  | Notes
  **socialProfileId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **socialPostReactionDtoCollectionQueryParameters** | [**SocialPostReactionDtoCollectionQueryParameters**](SocialPostReactionDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1044,14 +1365,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getSocialPostsAsync**
 ```swift
-    open class func getSocialPostsAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: SocialPostDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getSocialPostsAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialPostDtoCollectionQueryParameters: SocialPostDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: SocialPostDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get social posts
@@ -1066,9 +1387,10 @@ import OpenAPIClient
 let socialProfileId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let socialPostDtoCollectionQueryParameters = SocialPostDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SocialPostDtoCollectionQueryParameters |  (optional)
 
 // Get social posts
-SocialPostsAPI.getSocialPostsAsync(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SocialPostsAPI.getSocialPostsAsync(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialPostDtoCollectionQueryParameters: socialPostDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1087,6 +1409,7 @@ Name | Type | Description  | Notes
  **socialProfileId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **socialPostDtoCollectionQueryParameters** | [**SocialPostDtoCollectionQueryParameters**](SocialPostDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1098,14 +1421,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getSocialPostsCountAsync**
 ```swift
-    open class func getSocialPostsCountAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getSocialPostsCountAsync(socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialPostDtoCollectionQueryParameters: SocialPostDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count social posts
@@ -1120,9 +1443,10 @@ import OpenAPIClient
 let socialProfileId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let socialPostDtoCollectionQueryParameters = SocialPostDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SocialPostDtoCollectionQueryParameters |  (optional)
 
 // Count social posts
-SocialPostsAPI.getSocialPostsCountAsync(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+SocialPostsAPI.getSocialPostsCountAsync(socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialPostDtoCollectionQueryParameters: socialPostDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1141,6 +1465,7 @@ Name | Type | Description  | Notes
  **socialProfileId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **socialPostDtoCollectionQueryParameters** | [**SocialPostDtoCollectionQueryParameters**](SocialPostDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1152,14 +1477,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchSocialPostAsync**
 ```swift
-    open class func patchSocialPostAsync(socialProfileId: UUID, socialPostId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchSocialPostAsync(socialProfileId: UUID, socialPostId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a social post
@@ -1175,10 +1500,10 @@ let socialProfileId = 987 // UUID |
 let socialPostId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a social post
-SocialPostsAPI.patchSocialPostAsync(socialProfileId: socialProfileId, socialPostId: socialPostId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+SocialPostsAPI.patchSocialPostAsync(socialProfileId: socialProfileId, socialPostId: socialPostId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1198,11 +1523,73 @@ Name | Type | Description  | Notes
  **socialPostId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
 [**EmptyEnvelope**](EmptyEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **updateSocialCommentReactionAsync**
+```swift
+    open class func updateSocialCommentReactionAsync(socialPostId: UUID, commentId: UUID, reactionId: UUID, socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialReactionUpdateDto: SocialReactionUpdateDto? = nil, completion: @escaping (_ data: SocialCommentReactionDtoEnvelope?, _ error: Error?) -> Void)
+```
+
+Update a social comment reaction
+
+Updates an existing reaction on a specific social comment.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let socialPostId = 987 // UUID | 
+let commentId = 987 // UUID | 
+let reactionId = 987 // UUID | 
+let socialProfileId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let socialReactionUpdateDto = SocialReactionUpdateDto(id: "id_example", timestamp: Date(), reaction: "reaction_example", reactionValue: "reactionValue_example") // SocialReactionUpdateDto |  (optional)
+
+// Update a social comment reaction
+SocialPostsAPI.updateSocialCommentReactionAsync(socialPostId: socialPostId, commentId: commentId, reactionId: reactionId, socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, socialReactionUpdateDto: socialReactionUpdateDto) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **socialPostId** | **UUID** |  | 
+ **commentId** | **UUID** |  | 
+ **reactionId** | **UUID** |  | 
+ **socialProfileId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **socialReactionUpdateDto** | [**SocialReactionUpdateDto**](SocialReactionUpdateDto.md) |  | [optional] 
+
+### Return type
+
+[**SocialCommentReactionDtoEnvelope**](SocialCommentReactionDtoEnvelope.md)
 
 ### Authorization
 
@@ -1395,7 +1782,7 @@ No authorization required
 
 # **updateSocialPostReactionAsync**
 ```swift
-    open class func updateSocialPostReactionAsync(socialProfileId: UUID, socialPostId: UUID, reactionId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialReactionUpdateDto: SocialReactionUpdateDto? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func updateSocialPostReactionAsync(socialProfileId: UUID, socialPostId: UUID, reactionId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, socialReactionUpdateDto: SocialReactionUpdateDto? = nil, completion: @escaping (_ data: SocialPostReactionDtoEnvelope?, _ error: Error?) -> Void)
 ```
 
 Update a social post reaction
@@ -1440,7 +1827,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EmptyEnvelope**](EmptyEnvelope.md)
+[**SocialPostReactionDtoEnvelope**](SocialPostReactionDtoEnvelope.md)
 
 ### Authorization
 
@@ -1449,6 +1836,64 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **uploadSocialPostImageAttachmentAsync**
+```swift
+    open class func uploadSocialPostImageAttachmentAsync(socialPostId: UUID, socialProfileId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, file: URL? = nil, completion: @escaping (_ data: SocialPostAttachmentDtoEnvelope?, _ error: Error?) -> Void)
+```
+
+Upload a social post image attachment
+
+Uploads an image and attaches it to a social post, storing the bytes through the storage spine.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let socialPostId = 987 // UUID | 
+let socialProfileId = 987 // UUID | 
+let apiVersion = "apiVersion_example" // String |  (optional)
+let xApiVersion = "xApiVersion_example" // String |  (optional)
+let file = URL(string: "https://example.com")! // URL |  (optional)
+
+// Upload a social post image attachment
+SocialPostsAPI.uploadSocialPostImageAttachmentAsync(socialPostId: socialPostId, socialProfileId: socialProfileId, apiVersion: apiVersion, xApiVersion: xApiVersion, file: file) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **socialPostId** | **UUID** |  | 
+ **socialProfileId** | **UUID** |  | 
+ **apiVersion** | **String** |  | [optional] 
+ **xApiVersion** | **String** |  | [optional] 
+ **file** | **URL** |  | [optional] 
+
+### Return type
+
+[**SocialPostAttachmentDtoEnvelope**](SocialPostAttachmentDtoEnvelope.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data, application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 # **countWebTemplatesAsync**
 ```swift
-    open class func countWebTemplatesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countWebTemplatesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, webTemplateDtoCollectionQueryParameters: WebTemplateDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count web templates
@@ -30,9 +30,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let webTemplateDtoCollectionQueryParameters = WebTemplateDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // WebTemplateDtoCollectionQueryParameters |  (optional)
 
 // Count web templates
-WebTemplatesAPI.countWebTemplatesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+WebTemplatesAPI.countWebTemplatesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, webTemplateDtoCollectionQueryParameters: webTemplateDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -51,6 +52,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **webTemplateDtoCollectionQueryParameters** | [**WebTemplateDtoCollectionQueryParameters**](WebTemplateDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -62,7 +64,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -237,7 +239,7 @@ No authorization required
 
 # **getWebTemplatesAsync**
 ```swift
-    open class func getWebTemplatesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: WebTemplateDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getWebTemplatesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, webTemplateDtoCollectionQueryParameters: WebTemplateDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: WebTemplateDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get web templates
@@ -252,9 +254,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let webTemplateDtoCollectionQueryParameters = WebTemplateDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // WebTemplateDtoCollectionQueryParameters |  (optional)
 
 // Get web templates
-WebTemplatesAPI.getWebTemplatesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+WebTemplatesAPI.getWebTemplatesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, webTemplateDtoCollectionQueryParameters: webTemplateDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -273,6 +276,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **webTemplateDtoCollectionQueryParameters** | [**WebTemplateDtoCollectionQueryParameters**](WebTemplateDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -284,14 +288,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchWebTemplateAsync**
 ```swift
-    open class func patchWebTemplateAsync(tenantId: UUID, webTemplateId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func patchWebTemplateAsync(tenantId: UUID, webTemplateId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
 Patch a web template
@@ -307,10 +311,10 @@ let tenantId = 987 // UUID |
 let webTemplateId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a web template
-WebTemplatesAPI.patchWebTemplateAsync(tenantId: tenantId, webTemplateId: webTemplateId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+WebTemplatesAPI.patchWebTemplateAsync(tenantId: tenantId, webTemplateId: webTemplateId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -330,7 +334,7 @@ Name | Type | Description  | Notes
  **webTemplateId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

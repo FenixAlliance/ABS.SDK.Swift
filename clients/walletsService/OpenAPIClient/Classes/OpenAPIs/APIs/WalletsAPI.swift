@@ -480,12 +480,13 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter paymentDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getIncomingPaymentsAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: PaymentDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getIncomingPaymentsAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getIncomingPaymentsAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, paymentDtoCollectionQueryParameters: PaymentDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: PaymentDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getIncomingPaymentsAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, paymentDtoCollectionQueryParameters: paymentDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -502,15 +503,16 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter paymentDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<PaymentDtoListEnvelope> 
      */
-    open class func getIncomingPaymentsAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<PaymentDtoListEnvelope> {
+    open class func getIncomingPaymentsAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, paymentDtoCollectionQueryParameters: PaymentDtoCollectionQueryParameters? = nil) -> RequestBuilder<PaymentDtoListEnvelope> {
         var localVariablePath = "/api/v2/WalletsService/Wallets/{walletId}/Payments/Incoming"
         let walletIdPreEscape = "\(APIHelper.mapValueToPathItem(walletId))"
         let walletIdPostEscape = walletIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{walletId}", with: walletIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: paymentDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -518,6 +520,7 @@ open class WalletsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -534,12 +537,13 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter paymentDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getIncomingPaymentsCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getIncomingPaymentsCountAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getIncomingPaymentsCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, paymentDtoCollectionQueryParameters: PaymentDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getIncomingPaymentsCountAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, paymentDtoCollectionQueryParameters: paymentDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -556,15 +560,16 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter paymentDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getIncomingPaymentsCountAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getIncomingPaymentsCountAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, paymentDtoCollectionQueryParameters: PaymentDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/WalletsService/Wallets/{walletId}/Payments/Incoming/Count"
         let walletIdPreEscape = "\(APIHelper.mapValueToPathItem(walletId))"
         let walletIdPostEscape = walletIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{walletId}", with: walletIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: paymentDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -572,6 +577,7 @@ open class WalletsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -588,12 +594,13 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter invoiceDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getIncomingWalletInvoicesAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: InvoiceDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getIncomingWalletInvoicesAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getIncomingWalletInvoicesAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, invoiceDtoCollectionQueryParameters: InvoiceDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: InvoiceDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getIncomingWalletInvoicesAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, invoiceDtoCollectionQueryParameters: invoiceDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -610,15 +617,16 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter invoiceDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<InvoiceDtoListEnvelope> 
      */
-    open class func getIncomingWalletInvoicesAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<InvoiceDtoListEnvelope> {
+    open class func getIncomingWalletInvoicesAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, invoiceDtoCollectionQueryParameters: InvoiceDtoCollectionQueryParameters? = nil) -> RequestBuilder<InvoiceDtoListEnvelope> {
         var localVariablePath = "/api/v2/WalletsService/Wallets/{walletId}/Invoices/Incoming"
         let walletIdPreEscape = "\(APIHelper.mapValueToPathItem(walletId))"
         let walletIdPostEscape = walletIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{walletId}", with: walletIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: invoiceDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -626,6 +634,7 @@ open class WalletsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -642,12 +651,13 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter invoiceDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getIncomingWalletInvoicesCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getIncomingWalletInvoicesCountAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getIncomingWalletInvoicesCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, invoiceDtoCollectionQueryParameters: InvoiceDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getIncomingWalletInvoicesCountAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, invoiceDtoCollectionQueryParameters: invoiceDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -664,15 +674,16 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter invoiceDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getIncomingWalletInvoicesCountAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getIncomingWalletInvoicesCountAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, invoiceDtoCollectionQueryParameters: InvoiceDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/WalletsService/Wallets/{walletId}/Invoices/Incoming/Count"
         let walletIdPreEscape = "\(APIHelper.mapValueToPathItem(walletId))"
         let walletIdPostEscape = walletIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{walletId}", with: walletIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: invoiceDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -680,6 +691,7 @@ open class WalletsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -755,12 +767,13 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter locationDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getLocationsForWalletAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: LocationDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getLocationsForWalletAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getLocationsForWalletAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, locationDtoCollectionQueryParameters: LocationDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: LocationDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getLocationsForWalletAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, locationDtoCollectionQueryParameters: locationDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -777,15 +790,16 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter locationDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<LocationDtoListEnvelope> 
      */
-    open class func getLocationsForWalletAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<LocationDtoListEnvelope> {
+    open class func getLocationsForWalletAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, locationDtoCollectionQueryParameters: LocationDtoCollectionQueryParameters? = nil) -> RequestBuilder<LocationDtoListEnvelope> {
         var localVariablePath = "/api/v2/WalletsService/Wallets/{walletId}/Locations"
         let walletIdPreEscape = "\(APIHelper.mapValueToPathItem(walletId))"
         let walletIdPostEscape = walletIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{walletId}", with: walletIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: locationDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -793,6 +807,7 @@ open class WalletsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -809,12 +824,13 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter locationDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getLocationsForWalletCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getLocationsForWalletCountAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getLocationsForWalletCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, locationDtoCollectionQueryParameters: LocationDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getLocationsForWalletCountAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, locationDtoCollectionQueryParameters: locationDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -831,15 +847,16 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter locationDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getLocationsForWalletCountAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getLocationsForWalletCountAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, locationDtoCollectionQueryParameters: LocationDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/WalletsService/Wallets/{walletId}/Locations/Count"
         let walletIdPreEscape = "\(APIHelper.mapValueToPathItem(walletId))"
         let walletIdPostEscape = walletIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{walletId}", with: walletIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: locationDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -847,6 +864,7 @@ open class WalletsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -863,12 +881,13 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter paymentDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getOutgoingPaymentsAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: PaymentDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getOutgoingPaymentsAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getOutgoingPaymentsAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, paymentDtoCollectionQueryParameters: PaymentDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: PaymentDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getOutgoingPaymentsAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, paymentDtoCollectionQueryParameters: paymentDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -885,15 +904,16 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter paymentDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<PaymentDtoListEnvelope> 
      */
-    open class func getOutgoingPaymentsAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<PaymentDtoListEnvelope> {
+    open class func getOutgoingPaymentsAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, paymentDtoCollectionQueryParameters: PaymentDtoCollectionQueryParameters? = nil) -> RequestBuilder<PaymentDtoListEnvelope> {
         var localVariablePath = "/api/v2/WalletsService/Wallets/{walletId}/Payments/Outgoing"
         let walletIdPreEscape = "\(APIHelper.mapValueToPathItem(walletId))"
         let walletIdPostEscape = walletIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{walletId}", with: walletIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: paymentDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -901,6 +921,7 @@ open class WalletsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -917,12 +938,13 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter paymentDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getOutgoingPaymentsCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getOutgoingPaymentsCountAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getOutgoingPaymentsCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, paymentDtoCollectionQueryParameters: PaymentDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getOutgoingPaymentsCountAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, paymentDtoCollectionQueryParameters: paymentDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -939,15 +961,16 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter paymentDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getOutgoingPaymentsCountAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getOutgoingPaymentsCountAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, paymentDtoCollectionQueryParameters: PaymentDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/WalletsService/Wallets/{walletId}/Payments/Outgoing/Count"
         let walletIdPreEscape = "\(APIHelper.mapValueToPathItem(walletId))"
         let walletIdPostEscape = walletIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{walletId}", with: walletIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: paymentDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -955,6 +978,7 @@ open class WalletsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -971,12 +995,13 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter invoiceDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getOutgoingWalletInvoicesAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: InvoiceDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getOutgoingWalletInvoicesAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getOutgoingWalletInvoicesAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, invoiceDtoCollectionQueryParameters: InvoiceDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: InvoiceDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getOutgoingWalletInvoicesAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, invoiceDtoCollectionQueryParameters: invoiceDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -993,15 +1018,16 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter invoiceDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<InvoiceDtoListEnvelope> 
      */
-    open class func getOutgoingWalletInvoicesAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<InvoiceDtoListEnvelope> {
+    open class func getOutgoingWalletInvoicesAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, invoiceDtoCollectionQueryParameters: InvoiceDtoCollectionQueryParameters? = nil) -> RequestBuilder<InvoiceDtoListEnvelope> {
         var localVariablePath = "/api/v2/WalletsService/Wallets/{walletId}/Invoices/Outgoing"
         let walletIdPreEscape = "\(APIHelper.mapValueToPathItem(walletId))"
         let walletIdPostEscape = walletIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{walletId}", with: walletIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: invoiceDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1009,6 +1035,7 @@ open class WalletsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1025,12 +1052,13 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter invoiceDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getOutgoingWalletInvoicesCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getOutgoingWalletInvoicesCountAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getOutgoingWalletInvoicesCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, invoiceDtoCollectionQueryParameters: InvoiceDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getOutgoingWalletInvoicesCountAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, invoiceDtoCollectionQueryParameters: invoiceDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1047,15 +1075,16 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter invoiceDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getOutgoingWalletInvoicesCountAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getOutgoingWalletInvoicesCountAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, invoiceDtoCollectionQueryParameters: InvoiceDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/WalletsService/Wallets/{walletId}/Invoices/Outgoing/Count"
         let walletIdPreEscape = "\(APIHelper.mapValueToPathItem(walletId))"
         let walletIdPostEscape = walletIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{walletId}", with: walletIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: invoiceDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1063,6 +1092,7 @@ open class WalletsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1138,12 +1168,13 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter bankAccountDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getWalletBankAccountsAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BankAccountDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getWalletBankAccountsAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getWalletBankAccountsAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, bankAccountDtoCollectionQueryParameters: BankAccountDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BankAccountDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getWalletBankAccountsAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, bankAccountDtoCollectionQueryParameters: bankAccountDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1160,15 +1191,16 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter bankAccountDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<BankAccountDtoListEnvelope> 
      */
-    open class func getWalletBankAccountsAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<BankAccountDtoListEnvelope> {
+    open class func getWalletBankAccountsAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, bankAccountDtoCollectionQueryParameters: BankAccountDtoCollectionQueryParameters? = nil) -> RequestBuilder<BankAccountDtoListEnvelope> {
         var localVariablePath = "/api/v2/WalletsService/Wallets/{walletId}/BankAccounts"
         let walletIdPreEscape = "\(APIHelper.mapValueToPathItem(walletId))"
         let walletIdPostEscape = walletIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{walletId}", with: walletIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: bankAccountDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1176,6 +1208,7 @@ open class WalletsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1192,12 +1225,13 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter bankAccountDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getWalletBankAccountsCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getWalletBankAccountsCountAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getWalletBankAccountsCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, bankAccountDtoCollectionQueryParameters: BankAccountDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getWalletBankAccountsCountAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, bankAccountDtoCollectionQueryParameters: bankAccountDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1214,15 +1248,16 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter bankAccountDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getWalletBankAccountsCountAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getWalletBankAccountsCountAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, bankAccountDtoCollectionQueryParameters: BankAccountDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/WalletsService/Wallets/{walletId}/BankAccounts/Count"
         let walletIdPreEscape = "\(APIHelper.mapValueToPathItem(walletId))"
         let walletIdPostEscape = walletIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{walletId}", with: walletIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: bankAccountDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1230,6 +1265,7 @@ open class WalletsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1246,12 +1282,13 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter paymentChargebackDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getWalletChargebacksAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: PaymentChargebackDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getWalletChargebacksAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getWalletChargebacksAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, paymentChargebackDtoCollectionQueryParameters: PaymentChargebackDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: PaymentChargebackDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getWalletChargebacksAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, paymentChargebackDtoCollectionQueryParameters: paymentChargebackDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1268,15 +1305,16 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter paymentChargebackDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<PaymentChargebackDtoListEnvelope> 
      */
-    open class func getWalletChargebacksAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<PaymentChargebackDtoListEnvelope> {
+    open class func getWalletChargebacksAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, paymentChargebackDtoCollectionQueryParameters: PaymentChargebackDtoCollectionQueryParameters? = nil) -> RequestBuilder<PaymentChargebackDtoListEnvelope> {
         var localVariablePath = "/api/v2/WalletsService/Wallets/{walletId}/Chargebacks"
         let walletIdPreEscape = "\(APIHelper.mapValueToPathItem(walletId))"
         let walletIdPostEscape = walletIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{walletId}", with: walletIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: paymentChargebackDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1284,6 +1322,7 @@ open class WalletsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1300,12 +1339,13 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter paymentChargebackDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getWalletChargebacksCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getWalletChargebacksCountAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getWalletChargebacksCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, paymentChargebackDtoCollectionQueryParameters: PaymentChargebackDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getWalletChargebacksCountAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, paymentChargebackDtoCollectionQueryParameters: paymentChargebackDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1322,15 +1362,16 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter paymentChargebackDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getWalletChargebacksCountAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getWalletChargebacksCountAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, paymentChargebackDtoCollectionQueryParameters: PaymentChargebackDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/WalletsService/Wallets/{walletId}/Chargebacks/Count"
         let walletIdPreEscape = "\(APIHelper.mapValueToPathItem(walletId))"
         let walletIdPostEscape = walletIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{walletId}", with: walletIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: paymentChargebackDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1338,6 +1379,7 @@ open class WalletsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1408,12 +1450,13 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter extendedOrderDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getWalletExtendedOrdersAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ExtendedOrderDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getWalletExtendedOrdersAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getWalletExtendedOrdersAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, extendedOrderDtoCollectionQueryParameters: ExtendedOrderDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ExtendedOrderDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getWalletExtendedOrdersAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, extendedOrderDtoCollectionQueryParameters: extendedOrderDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1430,15 +1473,16 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter extendedOrderDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<ExtendedOrderDtoListEnvelope> 
      */
-    open class func getWalletExtendedOrdersAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<ExtendedOrderDtoListEnvelope> {
+    open class func getWalletExtendedOrdersAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, extendedOrderDtoCollectionQueryParameters: ExtendedOrderDtoCollectionQueryParameters? = nil) -> RequestBuilder<ExtendedOrderDtoListEnvelope> {
         var localVariablePath = "/api/v2/WalletsService/Wallets/{walletId}/Orders/Extended"
         let walletIdPreEscape = "\(APIHelper.mapValueToPathItem(walletId))"
         let walletIdPostEscape = walletIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{walletId}", with: walletIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: extendedOrderDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1446,6 +1490,7 @@ open class WalletsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1462,12 +1507,13 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter invoiceDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getWalletInvoicesAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: InvoiceDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getWalletInvoicesAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getWalletInvoicesAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, invoiceDtoCollectionQueryParameters: InvoiceDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: InvoiceDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getWalletInvoicesAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, invoiceDtoCollectionQueryParameters: invoiceDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1484,15 +1530,16 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter invoiceDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<InvoiceDtoListEnvelope> 
      */
-    open class func getWalletInvoicesAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<InvoiceDtoListEnvelope> {
+    open class func getWalletInvoicesAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, invoiceDtoCollectionQueryParameters: InvoiceDtoCollectionQueryParameters? = nil) -> RequestBuilder<InvoiceDtoListEnvelope> {
         var localVariablePath = "/api/v2/WalletsService/Wallets/{walletId}/Invoices"
         let walletIdPreEscape = "\(APIHelper.mapValueToPathItem(walletId))"
         let walletIdPostEscape = walletIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{walletId}", with: walletIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: invoiceDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1500,6 +1547,7 @@ open class WalletsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1516,12 +1564,13 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter invoiceDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getWalletInvoicesCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getWalletInvoicesCountAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getWalletInvoicesCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, invoiceDtoCollectionQueryParameters: InvoiceDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getWalletInvoicesCountAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, invoiceDtoCollectionQueryParameters: invoiceDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1538,15 +1587,16 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter invoiceDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getWalletInvoicesCountAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getWalletInvoicesCountAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, invoiceDtoCollectionQueryParameters: InvoiceDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/WalletsService/Wallets/{walletId}/Invoices/Count"
         let walletIdPreEscape = "\(APIHelper.mapValueToPathItem(walletId))"
         let walletIdPostEscape = walletIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{walletId}", with: walletIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: invoiceDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1554,6 +1604,7 @@ open class WalletsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1570,12 +1621,13 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter orderDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getWalletOrdersAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: OrderDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getWalletOrdersAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getWalletOrdersAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, orderDtoCollectionQueryParameters: OrderDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: OrderDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getWalletOrdersAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, orderDtoCollectionQueryParameters: orderDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1592,15 +1644,16 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter orderDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<OrderDtoListEnvelope> 
      */
-    open class func getWalletOrdersAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<OrderDtoListEnvelope> {
+    open class func getWalletOrdersAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, orderDtoCollectionQueryParameters: OrderDtoCollectionQueryParameters? = nil) -> RequestBuilder<OrderDtoListEnvelope> {
         var localVariablePath = "/api/v2/WalletsService/Wallets/{walletId}/Orders"
         let walletIdPreEscape = "\(APIHelper.mapValueToPathItem(walletId))"
         let walletIdPostEscape = walletIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{walletId}", with: walletIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: orderDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1608,6 +1661,7 @@ open class WalletsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1624,12 +1678,13 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter orderDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getWalletOrdersCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getWalletOrdersCountAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getWalletOrdersCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, orderDtoCollectionQueryParameters: OrderDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getWalletOrdersCountAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, orderDtoCollectionQueryParameters: orderDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1646,15 +1701,16 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter orderDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getWalletOrdersCountAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getWalletOrdersCountAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, orderDtoCollectionQueryParameters: OrderDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/WalletsService/Wallets/{walletId}/Orders/Count"
         let walletIdPreEscape = "\(APIHelper.mapValueToPathItem(walletId))"
         let walletIdPostEscape = walletIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{walletId}", with: walletIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: orderDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1662,6 +1718,7 @@ open class WalletsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1678,12 +1735,13 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter paymentDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getWalletPaymentsAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: PaymentDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getWalletPaymentsAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getWalletPaymentsAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, paymentDtoCollectionQueryParameters: PaymentDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: PaymentDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getWalletPaymentsAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, paymentDtoCollectionQueryParameters: paymentDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1700,15 +1758,16 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter paymentDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<PaymentDtoListEnvelope> 
      */
-    open class func getWalletPaymentsAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<PaymentDtoListEnvelope> {
+    open class func getWalletPaymentsAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, paymentDtoCollectionQueryParameters: PaymentDtoCollectionQueryParameters? = nil) -> RequestBuilder<PaymentDtoListEnvelope> {
         var localVariablePath = "/api/v2/WalletsService/Wallets/{walletId}/Payments"
         let walletIdPreEscape = "\(APIHelper.mapValueToPathItem(walletId))"
         let walletIdPostEscape = walletIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{walletId}", with: walletIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: paymentDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1716,6 +1775,7 @@ open class WalletsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1732,12 +1792,13 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter paymentDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getWalletPaymentsCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getWalletPaymentsCountAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getWalletPaymentsCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, paymentDtoCollectionQueryParameters: PaymentDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getWalletPaymentsCountAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, paymentDtoCollectionQueryParameters: paymentDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1754,15 +1815,16 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter paymentDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getWalletPaymentsCountAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getWalletPaymentsCountAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, paymentDtoCollectionQueryParameters: PaymentDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/WalletsService/Wallets/{walletId}/Payments/Count"
         let walletIdPreEscape = "\(APIHelper.mapValueToPathItem(walletId))"
         let walletIdPostEscape = walletIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{walletId}", with: walletIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: paymentDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1770,6 +1832,7 @@ open class WalletsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1786,12 +1849,13 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter quoteDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getWalletQuotesAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: QuoteDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getWalletQuotesAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getWalletQuotesAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, quoteDtoCollectionQueryParameters: QuoteDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: QuoteDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getWalletQuotesAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, quoteDtoCollectionQueryParameters: quoteDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1808,15 +1872,16 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter quoteDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<QuoteDtoListEnvelope> 
      */
-    open class func getWalletQuotesAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<QuoteDtoListEnvelope> {
+    open class func getWalletQuotesAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, quoteDtoCollectionQueryParameters: QuoteDtoCollectionQueryParameters? = nil) -> RequestBuilder<QuoteDtoListEnvelope> {
         var localVariablePath = "/api/v2/WalletsService/Wallets/{walletId}/Quotes"
         let walletIdPreEscape = "\(APIHelper.mapValueToPathItem(walletId))"
         let walletIdPostEscape = walletIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{walletId}", with: walletIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: quoteDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1824,6 +1889,7 @@ open class WalletsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1840,12 +1906,13 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter quoteDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getWalletQuotesCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getWalletQuotesCountAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getWalletQuotesCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, quoteDtoCollectionQueryParameters: QuoteDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getWalletQuotesCountAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, quoteDtoCollectionQueryParameters: quoteDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1862,15 +1929,16 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter quoteDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getWalletQuotesCountAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getWalletQuotesCountAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, quoteDtoCollectionQueryParameters: QuoteDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/WalletsService/Wallets/{walletId}/Quotes/Count"
         let walletIdPreEscape = "\(APIHelper.mapValueToPathItem(walletId))"
         let walletIdPostEscape = walletIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{walletId}", with: walletIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: quoteDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1878,6 +1946,7 @@ open class WalletsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1894,12 +1963,13 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter paymentRefundDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getWalletRefundsAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: PaymentRefundDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getWalletRefundsAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getWalletRefundsAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, paymentRefundDtoCollectionQueryParameters: PaymentRefundDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: PaymentRefundDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getWalletRefundsAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, paymentRefundDtoCollectionQueryParameters: paymentRefundDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1916,15 +1986,16 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter paymentRefundDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<PaymentRefundDtoListEnvelope> 
      */
-    open class func getWalletRefundsAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<PaymentRefundDtoListEnvelope> {
+    open class func getWalletRefundsAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, paymentRefundDtoCollectionQueryParameters: PaymentRefundDtoCollectionQueryParameters? = nil) -> RequestBuilder<PaymentRefundDtoListEnvelope> {
         var localVariablePath = "/api/v2/WalletsService/Wallets/{walletId}/Refunds"
         let walletIdPreEscape = "\(APIHelper.mapValueToPathItem(walletId))"
         let walletIdPostEscape = walletIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{walletId}", with: walletIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: paymentRefundDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1932,6 +2003,7 @@ open class WalletsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1948,12 +2020,13 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter paymentRefundDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getWalletRefundsCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getWalletRefundsCountAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getWalletRefundsCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, paymentRefundDtoCollectionQueryParameters: PaymentRefundDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getWalletRefundsCountAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, paymentRefundDtoCollectionQueryParameters: paymentRefundDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1970,15 +2043,16 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter paymentRefundDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getWalletRefundsCountAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getWalletRefundsCountAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, paymentRefundDtoCollectionQueryParameters: PaymentRefundDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/WalletsService/Wallets/{walletId}/Refunds/Count"
         let walletIdPreEscape = "\(APIHelper.mapValueToPathItem(walletId))"
         let walletIdPostEscape = walletIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{walletId}", with: walletIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: paymentRefundDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -1986,6 +2060,7 @@ open class WalletsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -2061,12 +2136,13 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter paymentTokenDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getWalletTokensAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: PaymentTokenDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getWalletTokensAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getWalletTokensAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, paymentTokenDtoCollectionQueryParameters: PaymentTokenDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: PaymentTokenDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getWalletTokensAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, paymentTokenDtoCollectionQueryParameters: paymentTokenDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -2083,15 +2159,16 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter paymentTokenDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<PaymentTokenDtoListEnvelope> 
      */
-    open class func getWalletTokensAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<PaymentTokenDtoListEnvelope> {
+    open class func getWalletTokensAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, paymentTokenDtoCollectionQueryParameters: PaymentTokenDtoCollectionQueryParameters? = nil) -> RequestBuilder<PaymentTokenDtoListEnvelope> {
         var localVariablePath = "/api/v2/WalletsService/Wallets/{walletId}/Tokens"
         let walletIdPreEscape = "\(APIHelper.mapValueToPathItem(walletId))"
         let walletIdPostEscape = walletIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{walletId}", with: walletIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: paymentTokenDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -2099,6 +2176,7 @@ open class WalletsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -2115,12 +2193,13 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter paymentTokenDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getWalletTokensCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getWalletTokensCountAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getWalletTokensCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, paymentTokenDtoCollectionQueryParameters: PaymentTokenDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getWalletTokensCountAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, paymentTokenDtoCollectionQueryParameters: paymentTokenDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -2137,15 +2216,16 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter paymentTokenDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getWalletTokensCountAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getWalletTokensCountAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, paymentTokenDtoCollectionQueryParameters: PaymentTokenDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/WalletsService/Wallets/{walletId}/Tokens/Count"
         let walletIdPreEscape = "\(APIHelper.mapValueToPathItem(walletId))"
         let walletIdPostEscape = walletIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{walletId}", with: walletIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: paymentTokenDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -2153,6 +2233,7 @@ open class WalletsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -2169,12 +2250,13 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter walletWithdrawRequestDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getWalletWithdrawRequestsAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: WalletWithdrawRequestDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getWalletWithdrawRequestsAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getWalletWithdrawRequestsAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, walletWithdrawRequestDtoCollectionQueryParameters: WalletWithdrawRequestDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: WalletWithdrawRequestDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getWalletWithdrawRequestsAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, walletWithdrawRequestDtoCollectionQueryParameters: walletWithdrawRequestDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -2191,15 +2273,16 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter walletWithdrawRequestDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<WalletWithdrawRequestDtoListEnvelope> 
      */
-    open class func getWalletWithdrawRequestsAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<WalletWithdrawRequestDtoListEnvelope> {
+    open class func getWalletWithdrawRequestsAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, walletWithdrawRequestDtoCollectionQueryParameters: WalletWithdrawRequestDtoCollectionQueryParameters? = nil) -> RequestBuilder<WalletWithdrawRequestDtoListEnvelope> {
         var localVariablePath = "/api/v2/WalletsService/Wallets/{walletId}/WithdrawRequests"
         let walletIdPreEscape = "\(APIHelper.mapValueToPathItem(walletId))"
         let walletIdPostEscape = walletIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{walletId}", with: walletIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: walletWithdrawRequestDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -2207,6 +2290,7 @@ open class WalletsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -2223,12 +2307,13 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter walletWithdrawRequestDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getWalletWithdrawRequestsCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getWalletWithdrawRequestsCountAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getWalletWithdrawRequestsCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, walletWithdrawRequestDtoCollectionQueryParameters: WalletWithdrawRequestDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getWalletWithdrawRequestsCountAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, walletWithdrawRequestDtoCollectionQueryParameters: walletWithdrawRequestDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -2245,15 +2330,16 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter walletWithdrawRequestDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getWalletWithdrawRequestsCountAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getWalletWithdrawRequestsCountAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, walletWithdrawRequestDtoCollectionQueryParameters: WalletWithdrawRequestDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/WalletsService/Wallets/{walletId}/WithdrawRequests/Count"
         let walletIdPreEscape = "\(APIHelper.mapValueToPathItem(walletId))"
         let walletIdPostEscape = walletIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{walletId}", with: walletIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: walletWithdrawRequestDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -2261,6 +2347,7 @@ open class WalletsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -2277,12 +2364,13 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter walletWithdrawDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getWalletWithdrawsAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: WalletWithdrawDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getWalletWithdrawsAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getWalletWithdrawsAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, walletWithdrawDtoCollectionQueryParameters: WalletWithdrawDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: WalletWithdrawDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getWalletWithdrawsAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, walletWithdrawDtoCollectionQueryParameters: walletWithdrawDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -2299,15 +2387,16 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter walletWithdrawDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<WalletWithdrawDtoListEnvelope> 
      */
-    open class func getWalletWithdrawsAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<WalletWithdrawDtoListEnvelope> {
+    open class func getWalletWithdrawsAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, walletWithdrawDtoCollectionQueryParameters: WalletWithdrawDtoCollectionQueryParameters? = nil) -> RequestBuilder<WalletWithdrawDtoListEnvelope> {
         var localVariablePath = "/api/v2/WalletsService/Wallets/{walletId}/Withdraws"
         let walletIdPreEscape = "\(APIHelper.mapValueToPathItem(walletId))"
         let walletIdPostEscape = walletIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{walletId}", with: walletIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: walletWithdrawDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -2315,6 +2404,7 @@ open class WalletsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -2331,12 +2421,13 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter walletWithdrawDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getWalletWithdrawsCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getWalletWithdrawsCountAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getWalletWithdrawsCountAsync(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, walletWithdrawDtoCollectionQueryParameters: WalletWithdrawDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getWalletWithdrawsCountAsyncWithRequestBuilder(walletId: walletId, apiVersion: apiVersion, xApiVersion: xApiVersion, walletWithdrawDtoCollectionQueryParameters: walletWithdrawDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -2353,15 +2444,16 @@ open class WalletsAPI {
      - parameter walletId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter walletWithdrawDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getWalletWithdrawsCountAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getWalletWithdrawsCountAsyncWithRequestBuilder(walletId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, walletWithdrawDtoCollectionQueryParameters: WalletWithdrawDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/WalletsService/Wallets/{walletId}/Withdraws/Count"
         let walletIdPreEscape = "\(APIHelper.mapValueToPathItem(walletId))"
         let walletIdPostEscape = walletIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{walletId}", with: walletIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: walletWithdrawDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -2369,6 +2461,7 @@ open class WalletsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -2386,13 +2479,13 @@ open class WalletsAPI {
      - parameter bankAccountId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchWalletBankAccountAsync(walletId: UUID, bankAccountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchWalletBankAccountAsyncWithRequestBuilder(walletId: walletId, bankAccountId: bankAccountId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchWalletBankAccountAsync(walletId: UUID, bankAccountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchWalletBankAccountAsyncWithRequestBuilder(walletId: walletId, bankAccountId: bankAccountId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -2410,10 +2503,10 @@ open class WalletsAPI {
      - parameter bankAccountId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchWalletBankAccountAsyncWithRequestBuilder(walletId: UUID, bankAccountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchWalletBankAccountAsyncWithRequestBuilder(walletId: UUID, bankAccountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/WalletsService/Wallets/{walletId}/BankAccounts/{bankAccountId}"
         let walletIdPreEscape = "\(APIHelper.mapValueToPathItem(walletId))"
         let walletIdPostEscape = walletIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -2422,7 +2515,7 @@ open class WalletsAPI {
         let bankAccountIdPostEscape = bankAccountIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{bankAccountId}", with: bankAccountIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -2448,13 +2541,13 @@ open class WalletsAPI {
      - parameter tokenId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchWalletTokenAsync(walletId: UUID, tokenId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchWalletTokenAsyncWithRequestBuilder(walletId: walletId, tokenId: tokenId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchWalletTokenAsync(walletId: UUID, tokenId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchWalletTokenAsyncWithRequestBuilder(walletId: walletId, tokenId: tokenId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -2472,10 +2565,10 @@ open class WalletsAPI {
      - parameter tokenId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchWalletTokenAsyncWithRequestBuilder(walletId: UUID, tokenId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchWalletTokenAsyncWithRequestBuilder(walletId: UUID, tokenId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/WalletsService/Wallets/{walletId}/Tokens/{tokenId}"
         let walletIdPreEscape = "\(APIHelper.mapValueToPathItem(walletId))"
         let walletIdPostEscape = walletIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -2484,7 +2577,7 @@ open class WalletsAPI {
         let tokenIdPostEscape = tokenIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{tokenId}", with: tokenIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

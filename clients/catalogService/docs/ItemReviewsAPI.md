@@ -182,7 +182,7 @@ No authorization required
 
 # **getItemReviewsAsync**
 ```swift
-    open class func getItemReviewsAsync(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: ItemReviewDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getItemReviewsAsync(itemId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, itemReviewDtoCollectionQueryParameters: ItemReviewDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ItemReviewDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all item reviews
@@ -197,9 +197,10 @@ import OpenAPIClient
 let itemId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let itemReviewDtoCollectionQueryParameters = ItemReviewDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ItemReviewDtoCollectionQueryParameters |  (optional)
 
 // Get all item reviews
-ItemReviewsAPI.getItemReviewsAsync(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+ItemReviewsAPI.getItemReviewsAsync(itemId: itemId, apiVersion: apiVersion, xApiVersion: xApiVersion, itemReviewDtoCollectionQueryParameters: itemReviewDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -218,6 +219,7 @@ Name | Type | Description  | Notes
  **itemId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **itemReviewDtoCollectionQueryParameters** | [**ItemReviewDtoCollectionQueryParameters**](ItemReviewDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -229,14 +231,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchItemReviewAsync**
 ```swift
-    open class func patchItemReviewAsync(tenantId: UUID, itemReviewId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func patchItemReviewAsync(tenantId: UUID, itemReviewId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
 Patch an item review
@@ -252,10 +254,10 @@ let tenantId = 987 // UUID |
 let itemReviewId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch an item review
-ItemReviewsAPI.patchItemReviewAsync(tenantId: tenantId, itemReviewId: itemReviewId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+ItemReviewsAPI.patchItemReviewAsync(tenantId: tenantId, itemReviewId: itemReviewId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -275,7 +277,7 @@ Name | Type | Description  | Notes
  **itemReviewId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

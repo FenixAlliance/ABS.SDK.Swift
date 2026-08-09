@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 # **countWebPageCategoriesAsync**
 ```swift
-    open class func countWebPageCategoriesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countWebPageCategoriesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, webPageCategoryDtoCollectionQueryParameters: WebPageCategoryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count web page categories
@@ -30,9 +30,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let webPageCategoryDtoCollectionQueryParameters = WebPageCategoryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // WebPageCategoryDtoCollectionQueryParameters |  (optional)
 
 // Count web page categories
-WebPageCategoriesAPI.countWebPageCategoriesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+WebPageCategoriesAPI.countWebPageCategoriesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, webPageCategoryDtoCollectionQueryParameters: webPageCategoryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -51,6 +52,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **webPageCategoryDtoCollectionQueryParameters** | [**WebPageCategoryDtoCollectionQueryParameters**](WebPageCategoryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -62,7 +64,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -181,7 +183,7 @@ No authorization required
 
 # **getWebPageCategoriesAsync**
 ```swift
-    open class func getWebPageCategoriesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: WebPageCategoryDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getWebPageCategoriesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, webPageCategoryDtoCollectionQueryParameters: WebPageCategoryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: WebPageCategoryDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get web page categories
@@ -196,9 +198,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let webPageCategoryDtoCollectionQueryParameters = WebPageCategoryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // WebPageCategoryDtoCollectionQueryParameters |  (optional)
 
 // Get web page categories
-WebPageCategoriesAPI.getWebPageCategoriesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+WebPageCategoriesAPI.getWebPageCategoriesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, webPageCategoryDtoCollectionQueryParameters: webPageCategoryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -217,6 +220,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **webPageCategoryDtoCollectionQueryParameters** | [**WebPageCategoryDtoCollectionQueryParameters**](WebPageCategoryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -228,7 +232,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -291,7 +295,7 @@ No authorization required
 
 # **patchWebPageCategoryAsync**
 ```swift
-    open class func patchWebPageCategoryAsync(tenantId: UUID, webPageCategoryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchWebPageCategoryAsync(tenantId: UUID, webPageCategoryId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a web page category
@@ -307,10 +311,10 @@ let tenantId = 987 // UUID |
 let webPageCategoryId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a web page category
-WebPageCategoriesAPI.patchWebPageCategoryAsync(tenantId: tenantId, webPageCategoryId: webPageCategoryId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+WebPageCategoriesAPI.patchWebPageCategoryAsync(tenantId: tenantId, webPageCategoryId: webPageCategoryId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -330,7 +334,7 @@ Name | Type | Description  | Notes
  **webPageCategoryId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

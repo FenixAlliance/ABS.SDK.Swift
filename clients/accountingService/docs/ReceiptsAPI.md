@@ -28,7 +28,7 @@ Adds a new receipt record under the specified tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
-let receiptCreateDto = ReceiptCreateDto(id: 123, timestamp: Date(), title: "title_example", priceListId: "priceListId_example", description: "description_example", individualId: "individualId_example", paymentTermId: "paymentTermId_example", organizationId: "organizationId_example", receiverTenantId: "receiverTenantId_example", firstName: "firstName_example", lastName: "lastName_example", companyName: "companyName_example", billingEmail: "billingEmail_example", addressLine1: "addressLine1_example", addressLine2: "addressLine2_example", postalCode: "postalCode_example", countryId: "countryId_example", stateId: "stateId_example", cityId: "cityId_example", currencyId: "currencyId_example", totalDetail: 123, totalDetailCurrencyId: "totalDetailCurrencyId_example", totalProfit: 123, totalProfitCurrencyId: "totalProfitCurrencyId_example", totalDiscounts: 123, totalDiscountsCurrencyId: "totalDiscountsCurrencyId_example", totalSurcharges: 123, totalSurchargesCurrencyId: "totalSurchargesCurrencyId_example", totalShippingCost: 123, totalShippingCostCurrencyId: "totalShippingCostCurrencyId_example", totalShippingTax: 123, totalShippingTaxCurrencyId: "totalShippingTaxCurrencyId_example", totalWithheldTax: 123, totalWithheldTaxCurrencyId: "totalWithheldTaxCurrencyId_example", totalTaxBase: 123, totalTaxBaseCurrencyId: "totalTaxBaseCurrencyId_example", totalTaxes: 123, totalTaxesCurrencyId: "totalTaxesCurrencyId_example", totalGlobalSurcharges: 123, totalGlobalSurchargesCurrencyId: "totalGlobalSurchargesCurrencyId_example", totalGlobalDiscounts: 123, totalGlobalDiscountsCurrencyId: "totalGlobalDiscountsCurrencyId_example", total: 123, totalCurrencyId: "totalCurrencyId_example", costCalculationMethod: "costCalculationMethod_example", taxCalculationMethod: "taxCalculationMethod_example", paymentId: "paymentId_example", forexRate: 123, totalAmount: 123, totalAmountInUSD: 123, closed: false, contactId: "contactId_example", receiptType: "receiptType_example", orderId: "orderId_example", invoiceId: "invoiceId_example") // ReceiptCreateDto | 
+let receiptCreateDto = ReceiptCreateDto(id: 123, timestamp: Date(), closed: false, title: "title_example", priceListId: "priceListId_example", description: "description_example", individualId: "individualId_example", paymentTermId: "paymentTermId_example", organizationId: "organizationId_example", receiverTenantId: "receiverTenantId_example", firstName: "firstName_example", lastName: "lastName_example", companyName: "companyName_example", billingEmail: "billingEmail_example", addressLine1: "addressLine1_example", addressLine2: "addressLine2_example", postalCode: "postalCode_example", countryId: "countryId_example", stateId: "stateId_example", cityId: "cityId_example", forexRate: 123, currencyId: "currencyId_example", totalDetail: 123, totalDetailCurrencyId: "totalDetailCurrencyId_example", totalProfit: 123, totalProfitCurrencyId: "totalProfitCurrencyId_example", totalDiscounts: 123, totalDiscountsCurrencyId: "totalDiscountsCurrencyId_example", totalSurcharges: 123, totalSurchargesCurrencyId: "totalSurchargesCurrencyId_example", totalShippingCost: 123, totalShippingCostCurrencyId: "totalShippingCostCurrencyId_example", totalShippingTax: 123, totalShippingTaxCurrencyId: "totalShippingTaxCurrencyId_example", totalWithheldTax: 123, totalWithheldTaxCurrencyId: "totalWithheldTaxCurrencyId_example", totalTaxBase: 123, totalTaxBaseCurrencyId: "totalTaxBaseCurrencyId_example", totalTaxes: 123, totalTaxesCurrencyId: "totalTaxesCurrencyId_example", totalGlobalSurcharges: 123, totalGlobalSurchargesCurrencyId: "totalGlobalSurchargesCurrencyId_example", totalGlobalDiscounts: 123, totalGlobalDiscountsCurrencyId: "totalGlobalDiscountsCurrencyId_example", total: 123, totalCurrencyId: "totalCurrencyId_example", costCalculationMethod: "costCalculationMethod_example", taxCalculationMethod: "taxCalculationMethod_example", paymentId: "paymentId_example", totalAmount: 123, totalAmountInUSD: 123, contactId: "contactId_example", receiptType: "receiptType_example", orderId: "orderId_example", invoiceId: "invoiceId_example") // ReceiptCreateDto | 
 
 // Creates a new receipt
 ReceiptsAPI.createReceiptAsync(tenantId: tenantId, receiptCreateDto: receiptCreateDto) { (response, error) in
@@ -171,7 +171,7 @@ No authorization required
 
 # **getReceiptsAsync**
 ```swift
-    open class func getReceiptsAsync(tenantId: UUID, completion: @escaping (_ data: ReceiptDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
+    open class func getReceiptsAsync(tenantId: UUID, receiptDtoCollectionQueryParameters: ReceiptDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: ReceiptDtoIReadOnlyListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Retrieves tenant receipts
@@ -184,9 +184,10 @@ Fetches all receipts for a given tenant with OData support.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
+let receiptDtoCollectionQueryParameters = ReceiptDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ReceiptDtoCollectionQueryParameters |  (optional)
 
 // Retrieves tenant receipts
-ReceiptsAPI.getReceiptsAsync(tenantId: tenantId) { (response, error) in
+ReceiptsAPI.getReceiptsAsync(tenantId: tenantId, receiptDtoCollectionQueryParameters: receiptDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -203,6 +204,7 @@ ReceiptsAPI.getReceiptsAsync(tenantId: tenantId) { (response, error) in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
+ **receiptDtoCollectionQueryParameters** | [**ReceiptDtoCollectionQueryParameters**](ReceiptDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -214,14 +216,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getReceiptsCountAsync**
 ```swift
-    open class func getReceiptsCountAsync(tenantId: UUID, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getReceiptsCountAsync(tenantId: UUID, receiptDtoCollectionQueryParameters: ReceiptDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Gets count of tenant receipts
@@ -234,9 +236,10 @@ Returns total number of receipts for the tenant with OData filter support.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
+let receiptDtoCollectionQueryParameters = ReceiptDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // ReceiptDtoCollectionQueryParameters |  (optional)
 
 // Gets count of tenant receipts
-ReceiptsAPI.getReceiptsCountAsync(tenantId: tenantId) { (response, error) in
+ReceiptsAPI.getReceiptsCountAsync(tenantId: tenantId, receiptDtoCollectionQueryParameters: receiptDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -253,6 +256,7 @@ ReceiptsAPI.getReceiptsCountAsync(tenantId: tenantId) { (response, error) in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
+ **receiptDtoCollectionQueryParameters** | [**ReceiptDtoCollectionQueryParameters**](ReceiptDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -264,14 +268,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchReceiptAsync**
 ```swift
-    open class func patchReceiptAsync(tenantId: UUID, receiptId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchReceiptAsync(tenantId: UUID, receiptId: UUID, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patches a receipt
@@ -285,10 +289,10 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let receiptId = 987 // UUID | 
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patches a receipt
-ReceiptsAPI.patchReceiptAsync(tenantId: tenantId, receiptId: receiptId, operation: operation) { (response, error) in
+ReceiptsAPI.patchReceiptAsync(tenantId: tenantId, receiptId: receiptId, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -306,7 +310,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **receiptId** | **UUID** |  | 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

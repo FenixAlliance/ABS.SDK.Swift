@@ -479,7 +479,7 @@ No authorization required
 
 # **getPermissionsAsync**
 ```swift
-    open class func getPermissionsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: SecurityPermissionDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getPermissionsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, securityPermissionDtoCollectionQueryParameters: SecurityPermissionDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: SecurityPermissionDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all permissions
@@ -494,9 +494,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let securityPermissionDtoCollectionQueryParameters = SecurityPermissionDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SecurityPermissionDtoCollectionQueryParameters |  (optional)
 
 // Get all permissions
-PermissionsAPI.getPermissionsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+PermissionsAPI.getPermissionsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, securityPermissionDtoCollectionQueryParameters: securityPermissionDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -515,6 +516,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **securityPermissionDtoCollectionQueryParameters** | [**SecurityPermissionDtoCollectionQueryParameters**](SecurityPermissionDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -526,7 +528,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -589,7 +591,7 @@ No authorization required
 
 # **getPermissionsCountAsync**
 ```swift
-    open class func getPermissionsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getPermissionsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, securityPermissionDtoCollectionQueryParameters: SecurityPermissionDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get permissions count
@@ -604,9 +606,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let securityPermissionDtoCollectionQueryParameters = SecurityPermissionDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // SecurityPermissionDtoCollectionQueryParameters |  (optional)
 
 // Get permissions count
-PermissionsAPI.getPermissionsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+PermissionsAPI.getPermissionsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, securityPermissionDtoCollectionQueryParameters: securityPermissionDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -625,6 +628,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **securityPermissionDtoCollectionQueryParameters** | [**SecurityPermissionDtoCollectionQueryParameters**](SecurityPermissionDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -636,7 +640,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -699,7 +703,7 @@ No authorization required
 
 # **patchPermissionAsync**
 ```swift
-    open class func patchPermissionAsync(tenantId: UUID, securityPermissionId: String, operation: [Operation], apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchPermissionAsync(tenantId: UUID, securityPermissionId: String, patchOperation: [PatchOperation], apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch an existing permission
@@ -713,12 +717,12 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let securityPermissionId = "securityPermissionId_example" // String | 
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] | 
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
 
 // Patch an existing permission
-PermissionsAPI.patchPermissionAsync(tenantId: tenantId, securityPermissionId: securityPermissionId, operation: operation, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+PermissionsAPI.patchPermissionAsync(tenantId: tenantId, securityPermissionId: securityPermissionId, patchOperation: patchOperation, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -736,7 +740,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **securityPermissionId** | **String** |  | 
- **operation** | [**[Operation]**](Operation.md) |  | 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
 

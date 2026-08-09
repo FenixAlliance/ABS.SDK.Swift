@@ -600,7 +600,7 @@ No authorization required
 
 # **getTruckTripsAsync**
 ```swift
-    open class func getTruckTripsAsync(tenantId: UUID, truckId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: TruckTripDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getTruckTripsAsync(tenantId: UUID, truckId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, truckTripDtoCollectionQueryParameters: TruckTripDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: TruckTripDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get truck trips
@@ -616,9 +616,10 @@ let tenantId = 987 // UUID |
 let truckId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let truckTripDtoCollectionQueryParameters = TruckTripDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // TruckTripDtoCollectionQueryParameters |  (optional)
 
 // Get truck trips
-TrucksAPI.getTruckTripsAsync(tenantId: tenantId, truckId: truckId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+TrucksAPI.getTruckTripsAsync(tenantId: tenantId, truckId: truckId, apiVersion: apiVersion, xApiVersion: xApiVersion, truckTripDtoCollectionQueryParameters: truckTripDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -638,6 +639,7 @@ Name | Type | Description  | Notes
  **truckId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **truckTripDtoCollectionQueryParameters** | [**TruckTripDtoCollectionQueryParameters**](TruckTripDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -649,14 +651,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getTruckTripsCountAsync**
 ```swift
-    open class func getTruckTripsCountAsync(tenantId: UUID, truckId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getTruckTripsCountAsync(tenantId: UUID, truckId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, truckTripDtoCollectionQueryParameters: TruckTripDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get truck trips count
@@ -672,9 +674,10 @@ let tenantId = 987 // UUID |
 let truckId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let truckTripDtoCollectionQueryParameters = TruckTripDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // TruckTripDtoCollectionQueryParameters |  (optional)
 
 // Get truck trips count
-TrucksAPI.getTruckTripsCountAsync(tenantId: tenantId, truckId: truckId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+TrucksAPI.getTruckTripsCountAsync(tenantId: tenantId, truckId: truckId, apiVersion: apiVersion, xApiVersion: xApiVersion, truckTripDtoCollectionQueryParameters: truckTripDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -694,6 +697,7 @@ Name | Type | Description  | Notes
  **truckId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **truckTripDtoCollectionQueryParameters** | [**TruckTripDtoCollectionQueryParameters**](TruckTripDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -705,14 +709,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getTrucksAsync**
 ```swift
-    open class func getTrucksAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: TruckDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getTrucksAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, truckDtoCollectionQueryParameters: TruckDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: TruckDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all trucks
@@ -727,9 +731,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let truckDtoCollectionQueryParameters = TruckDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // TruckDtoCollectionQueryParameters |  (optional)
 
 // Get all trucks
-TrucksAPI.getTrucksAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+TrucksAPI.getTrucksAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, truckDtoCollectionQueryParameters: truckDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -748,6 +753,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **truckDtoCollectionQueryParameters** | [**TruckDtoCollectionQueryParameters**](TruckDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -759,14 +765,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getTrucksCountAsync**
 ```swift
-    open class func getTrucksCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getTrucksCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, truckDtoCollectionQueryParameters: TruckDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Get trucks count
@@ -781,9 +787,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let truckDtoCollectionQueryParameters = TruckDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // TruckDtoCollectionQueryParameters |  (optional)
 
 // Get trucks count
-TrucksAPI.getTrucksCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+TrucksAPI.getTrucksCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, truckDtoCollectionQueryParameters: truckDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -802,6 +809,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **truckDtoCollectionQueryParameters** | [**TruckDtoCollectionQueryParameters**](TruckDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -813,14 +821,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchTruckAsync**
 ```swift
-    open class func patchTruckAsync(tenantId: UUID, truckId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchTruckAsync(tenantId: UUID, truckId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a truck
@@ -836,10 +844,10 @@ let tenantId = 987 // UUID |
 let truckId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a truck
-TrucksAPI.patchTruckAsync(tenantId: tenantId, truckId: truckId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+TrucksAPI.patchTruckAsync(tenantId: tenantId, truckId: truckId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -859,7 +867,7 @@ Name | Type | Description  | Notes
  **truckId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -878,7 +886,7 @@ No authorization required
 
 # **patchTruckTripAsync**
 ```swift
-    open class func patchTruckTripAsync(tenantId: UUID, truckId: UUID, tripId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchTruckTripAsync(tenantId: UUID, truckId: UUID, tripId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a truck trip
@@ -895,10 +903,10 @@ let truckId = 987 // UUID |
 let tripId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a truck trip
-TrucksAPI.patchTruckTripAsync(tenantId: tenantId, truckId: truckId, tripId: tripId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+TrucksAPI.patchTruckTripAsync(tenantId: tenantId, truckId: truckId, tripId: tripId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -919,7 +927,7 @@ Name | Type | Description  | Notes
  **tripId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

@@ -162,7 +162,7 @@ No authorization required
 
 # **getCourseArticlesByCourseWikiAsync**
 ```swift
-    open class func getCourseArticlesByCourseWikiAsync(courseId: String, wikiId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: [CourseArticleDto]?, _ error: Error?) -> Void)
+    open class func getCourseArticlesByCourseWikiAsync(courseId: String, wikiId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseArticleDtoCollectionQueryParameters: CourseArticleDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: [CourseArticleDto]?, _ error: Error?) -> Void)
 ```
 
 Get course articles by course wiki
@@ -178,9 +178,10 @@ let courseId = "courseId_example" // String |
 let wikiId = "wikiId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseArticleDtoCollectionQueryParameters = CourseArticleDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseArticleDtoCollectionQueryParameters |  (optional)
 
 // Get course articles by course wiki
-CoursesAPI.getCourseArticlesByCourseWikiAsync(courseId: courseId, wikiId: wikiId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CoursesAPI.getCourseArticlesByCourseWikiAsync(courseId: courseId, wikiId: wikiId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseArticleDtoCollectionQueryParameters: courseArticleDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -200,6 +201,7 @@ Name | Type | Description  | Notes
  **wikiId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseArticleDtoCollectionQueryParameters** | [**CourseArticleDtoCollectionQueryParameters**](CourseArticleDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -211,14 +213,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCourseArticlesByCourseWikiCountAsync**
 ```swift
-    open class func getCourseArticlesByCourseWikiCountAsync(courseId: String, wikiId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
+    open class func getCourseArticlesByCourseWikiCountAsync(courseId: String, wikiId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseArticleDtoCollectionQueryParameters: CourseArticleDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
 ```
 
 Get course articles by course wiki count
@@ -234,9 +236,10 @@ let courseId = "courseId_example" // String |
 let wikiId = "wikiId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseArticleDtoCollectionQueryParameters = CourseArticleDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseArticleDtoCollectionQueryParameters |  (optional)
 
 // Get course articles by course wiki count
-CoursesAPI.getCourseArticlesByCourseWikiCountAsync(courseId: courseId, wikiId: wikiId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CoursesAPI.getCourseArticlesByCourseWikiCountAsync(courseId: courseId, wikiId: wikiId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseArticleDtoCollectionQueryParameters: courseArticleDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -256,6 +259,7 @@ Name | Type | Description  | Notes
  **wikiId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseArticleDtoCollectionQueryParameters** | [**CourseArticleDtoCollectionQueryParameters**](CourseArticleDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -267,14 +271,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCourseAssignmentsByCourseAsync**
 ```swift
-    open class func getCourseAssignmentsByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: [CourseAssignmentDto]?, _ error: Error?) -> Void)
+    open class func getCourseAssignmentsByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseAssignmentDtoCollectionQueryParameters: CourseAssignmentDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: [CourseAssignmentDto]?, _ error: Error?) -> Void)
 ```
 
 Get course assignments by course
@@ -289,9 +293,10 @@ import OpenAPIClient
 let courseId = "courseId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseAssignmentDtoCollectionQueryParameters = CourseAssignmentDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseAssignmentDtoCollectionQueryParameters |  (optional)
 
 // Get course assignments by course
-CoursesAPI.getCourseAssignmentsByCourseAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CoursesAPI.getCourseAssignmentsByCourseAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseAssignmentDtoCollectionQueryParameters: courseAssignmentDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -310,6 +315,7 @@ Name | Type | Description  | Notes
  **courseId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseAssignmentDtoCollectionQueryParameters** | [**CourseAssignmentDtoCollectionQueryParameters**](CourseAssignmentDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -321,14 +327,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCourseAssignmentsByCourseCountAsync**
 ```swift
-    open class func getCourseAssignmentsByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
+    open class func getCourseAssignmentsByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseAssignmentDtoCollectionQueryParameters: CourseAssignmentDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
 ```
 
 Get course assignments by course count
@@ -343,9 +349,10 @@ import OpenAPIClient
 let courseId = "courseId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseAssignmentDtoCollectionQueryParameters = CourseAssignmentDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseAssignmentDtoCollectionQueryParameters |  (optional)
 
 // Get course assignments by course count
-CoursesAPI.getCourseAssignmentsByCourseCountAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CoursesAPI.getCourseAssignmentsByCourseCountAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseAssignmentDtoCollectionQueryParameters: courseAssignmentDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -364,6 +371,7 @@ Name | Type | Description  | Notes
  **courseId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseAssignmentDtoCollectionQueryParameters** | [**CourseAssignmentDtoCollectionQueryParameters**](CourseAssignmentDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -375,7 +383,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -438,7 +446,7 @@ No authorization required
 
 # **getCourseCategoriesByCourseAsync**
 ```swift
-    open class func getCourseCategoriesByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: [CourseCategoryDto]?, _ error: Error?) -> Void)
+    open class func getCourseCategoriesByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseCategoryDtoCollectionQueryParameters: CourseCategoryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: [CourseCategoryDto]?, _ error: Error?) -> Void)
 ```
 
 Get course categories by course
@@ -453,9 +461,10 @@ import OpenAPIClient
 let courseId = "courseId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseCategoryDtoCollectionQueryParameters = CourseCategoryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseCategoryDtoCollectionQueryParameters |  (optional)
 
 // Get course categories by course
-CoursesAPI.getCourseCategoriesByCourseAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CoursesAPI.getCourseCategoriesByCourseAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseCategoryDtoCollectionQueryParameters: courseCategoryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -474,6 +483,7 @@ Name | Type | Description  | Notes
  **courseId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseCategoryDtoCollectionQueryParameters** | [**CourseCategoryDtoCollectionQueryParameters**](CourseCategoryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -485,14 +495,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCourseCategoriesByCourseCountAsync**
 ```swift
-    open class func getCourseCategoriesByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
+    open class func getCourseCategoriesByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseCategoryDtoCollectionQueryParameters: CourseCategoryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
 ```
 
 Get course categories by course count
@@ -507,9 +517,10 @@ import OpenAPIClient
 let courseId = "courseId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseCategoryDtoCollectionQueryParameters = CourseCategoryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseCategoryDtoCollectionQueryParameters |  (optional)
 
 // Get course categories by course count
-CoursesAPI.getCourseCategoriesByCourseCountAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CoursesAPI.getCourseCategoriesByCourseCountAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseCategoryDtoCollectionQueryParameters: courseCategoryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -528,6 +539,7 @@ Name | Type | Description  | Notes
  **courseId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseCategoryDtoCollectionQueryParameters** | [**CourseCategoryDtoCollectionQueryParameters**](CourseCategoryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -539,14 +551,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCourseCohortsByCourseAsync**
 ```swift
-    open class func getCourseCohortsByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: [CourseCohortDto]?, _ error: Error?) -> Void)
+    open class func getCourseCohortsByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseCohortDtoCollectionQueryParameters: CourseCohortDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: [CourseCohortDto]?, _ error: Error?) -> Void)
 ```
 
 Get course cohorts by course
@@ -561,9 +573,10 @@ import OpenAPIClient
 let courseId = "courseId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseCohortDtoCollectionQueryParameters = CourseCohortDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseCohortDtoCollectionQueryParameters |  (optional)
 
 // Get course cohorts by course
-CoursesAPI.getCourseCohortsByCourseAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CoursesAPI.getCourseCohortsByCourseAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseCohortDtoCollectionQueryParameters: courseCohortDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -582,6 +595,7 @@ Name | Type | Description  | Notes
  **courseId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseCohortDtoCollectionQueryParameters** | [**CourseCohortDtoCollectionQueryParameters**](CourseCohortDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -593,14 +607,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCourseCohortsByCourseCountAsync**
 ```swift
-    open class func getCourseCohortsByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
+    open class func getCourseCohortsByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseCohortDtoCollectionQueryParameters: CourseCohortDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
 ```
 
 Get course cohorts by course count
@@ -615,9 +629,10 @@ import OpenAPIClient
 let courseId = "courseId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseCohortDtoCollectionQueryParameters = CourseCohortDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseCohortDtoCollectionQueryParameters |  (optional)
 
 // Get course cohorts by course count
-CoursesAPI.getCourseCohortsByCourseCountAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CoursesAPI.getCourseCohortsByCourseCountAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseCohortDtoCollectionQueryParameters: courseCohortDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -636,6 +651,7 @@ Name | Type | Description  | Notes
  **courseId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseCohortDtoCollectionQueryParameters** | [**CourseCohortDtoCollectionQueryParameters**](CourseCohortDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -647,14 +663,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCourseEnrollmentsByCourseAsync**
 ```swift
-    open class func getCourseEnrollmentsByCourseAsync(tenantId: UUID, courseId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: [CourseEnrollmentDto]?, _ error: Error?) -> Void)
+    open class func getCourseEnrollmentsByCourseAsync(tenantId: UUID, courseId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, courseEnrollmentDtoCollectionQueryParameters: CourseEnrollmentDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: [CourseEnrollmentDto]?, _ error: Error?) -> Void)
 ```
 
 Get enrollments by course
@@ -670,9 +686,10 @@ let tenantId = 987 // UUID |
 let courseId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseEnrollmentDtoCollectionQueryParameters = CourseEnrollmentDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseEnrollmentDtoCollectionQueryParameters |  (optional)
 
 // Get enrollments by course
-CoursesAPI.getCourseEnrollmentsByCourseAsync(tenantId: tenantId, courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CoursesAPI.getCourseEnrollmentsByCourseAsync(tenantId: tenantId, courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseEnrollmentDtoCollectionQueryParameters: courseEnrollmentDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -692,6 +709,7 @@ Name | Type | Description  | Notes
  **courseId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseEnrollmentDtoCollectionQueryParameters** | [**CourseEnrollmentDtoCollectionQueryParameters**](CourseEnrollmentDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -703,14 +721,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCourseFilesByCourseAsync**
 ```swift
-    open class func getCourseFilesByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: [CourseFileDto]?, _ error: Error?) -> Void)
+    open class func getCourseFilesByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseFileDtoCollectionQueryParameters: CourseFileDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: [CourseFileDto]?, _ error: Error?) -> Void)
 ```
 
 Get course files by course
@@ -725,9 +743,10 @@ import OpenAPIClient
 let courseId = "courseId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseFileDtoCollectionQueryParameters = CourseFileDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseFileDtoCollectionQueryParameters |  (optional)
 
 // Get course files by course
-CoursesAPI.getCourseFilesByCourseAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CoursesAPI.getCourseFilesByCourseAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseFileDtoCollectionQueryParameters: courseFileDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -746,6 +765,7 @@ Name | Type | Description  | Notes
  **courseId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseFileDtoCollectionQueryParameters** | [**CourseFileDtoCollectionQueryParameters**](CourseFileDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -757,14 +777,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCourseFilesByCourseCountAsync**
 ```swift
-    open class func getCourseFilesByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
+    open class func getCourseFilesByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseFileDtoCollectionQueryParameters: CourseFileDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
 ```
 
 Get course files by course count
@@ -779,9 +799,10 @@ import OpenAPIClient
 let courseId = "courseId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseFileDtoCollectionQueryParameters = CourseFileDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseFileDtoCollectionQueryParameters |  (optional)
 
 // Get course files by course count
-CoursesAPI.getCourseFilesByCourseCountAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CoursesAPI.getCourseFilesByCourseCountAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseFileDtoCollectionQueryParameters: courseFileDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -800,6 +821,7 @@ Name | Type | Description  | Notes
  **courseId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseFileDtoCollectionQueryParameters** | [**CourseFileDtoCollectionQueryParameters**](CourseFileDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -811,14 +833,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCourseForumsByCourseAsync**
 ```swift
-    open class func getCourseForumsByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: [CourseForumDto]?, _ error: Error?) -> Void)
+    open class func getCourseForumsByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseForumDtoCollectionQueryParameters: CourseForumDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: [CourseForumDto]?, _ error: Error?) -> Void)
 ```
 
 Get course forums by course
@@ -833,9 +855,10 @@ import OpenAPIClient
 let courseId = "courseId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseForumDtoCollectionQueryParameters = CourseForumDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseForumDtoCollectionQueryParameters |  (optional)
 
 // Get course forums by course
-CoursesAPI.getCourseForumsByCourseAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CoursesAPI.getCourseForumsByCourseAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseForumDtoCollectionQueryParameters: courseForumDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -854,6 +877,7 @@ Name | Type | Description  | Notes
  **courseId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseForumDtoCollectionQueryParameters** | [**CourseForumDtoCollectionQueryParameters**](CourseForumDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -865,14 +889,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCourseForumsByCourseCountAsync**
 ```swift
-    open class func getCourseForumsByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
+    open class func getCourseForumsByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseForumDtoCollectionQueryParameters: CourseForumDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
 ```
 
 Get course forums by course count
@@ -887,9 +911,10 @@ import OpenAPIClient
 let courseId = "courseId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseForumDtoCollectionQueryParameters = CourseForumDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseForumDtoCollectionQueryParameters |  (optional)
 
 // Get course forums by course count
-CoursesAPI.getCourseForumsByCourseCountAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CoursesAPI.getCourseForumsByCourseCountAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseForumDtoCollectionQueryParameters: courseForumDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -908,6 +933,7 @@ Name | Type | Description  | Notes
  **courseId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseForumDtoCollectionQueryParameters** | [**CourseForumDtoCollectionQueryParameters**](CourseForumDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -919,14 +945,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCourseHandoutsByCourseAsync**
 ```swift
-    open class func getCourseHandoutsByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: [CourseHandoutDto]?, _ error: Error?) -> Void)
+    open class func getCourseHandoutsByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseHandoutDtoCollectionQueryParameters: CourseHandoutDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: [CourseHandoutDto]?, _ error: Error?) -> Void)
 ```
 
 Get course handouts by course
@@ -941,9 +967,10 @@ import OpenAPIClient
 let courseId = "courseId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseHandoutDtoCollectionQueryParameters = CourseHandoutDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseHandoutDtoCollectionQueryParameters |  (optional)
 
 // Get course handouts by course
-CoursesAPI.getCourseHandoutsByCourseAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CoursesAPI.getCourseHandoutsByCourseAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseHandoutDtoCollectionQueryParameters: courseHandoutDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -962,6 +989,7 @@ Name | Type | Description  | Notes
  **courseId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseHandoutDtoCollectionQueryParameters** | [**CourseHandoutDtoCollectionQueryParameters**](CourseHandoutDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -973,14 +1001,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCourseHandoutsByCourseCountAsync**
 ```swift
-    open class func getCourseHandoutsByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
+    open class func getCourseHandoutsByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseHandoutDtoCollectionQueryParameters: CourseHandoutDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
 ```
 
 Get course handouts by course count
@@ -995,9 +1023,10 @@ import OpenAPIClient
 let courseId = "courseId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseHandoutDtoCollectionQueryParameters = CourseHandoutDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseHandoutDtoCollectionQueryParameters |  (optional)
 
 // Get course handouts by course count
-CoursesAPI.getCourseHandoutsByCourseCountAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CoursesAPI.getCourseHandoutsByCourseCountAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseHandoutDtoCollectionQueryParameters: courseHandoutDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1016,6 +1045,7 @@ Name | Type | Description  | Notes
  **courseId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseHandoutDtoCollectionQueryParameters** | [**CourseHandoutDtoCollectionQueryParameters**](CourseHandoutDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1027,14 +1057,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCourseLibrariesByCourseAsync**
 ```swift
-    open class func getCourseLibrariesByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: [CourseLibraryDto]?, _ error: Error?) -> Void)
+    open class func getCourseLibrariesByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseLibraryDtoCollectionQueryParameters: CourseLibraryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: [CourseLibraryDto]?, _ error: Error?) -> Void)
 ```
 
 Get course libraries by course
@@ -1049,9 +1079,10 @@ import OpenAPIClient
 let courseId = "courseId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseLibraryDtoCollectionQueryParameters = CourseLibraryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseLibraryDtoCollectionQueryParameters |  (optional)
 
 // Get course libraries by course
-CoursesAPI.getCourseLibrariesByCourseAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CoursesAPI.getCourseLibrariesByCourseAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseLibraryDtoCollectionQueryParameters: courseLibraryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1070,6 +1101,7 @@ Name | Type | Description  | Notes
  **courseId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseLibraryDtoCollectionQueryParameters** | [**CourseLibraryDtoCollectionQueryParameters**](CourseLibraryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1081,14 +1113,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCourseLibrariesByCourseCountAsync**
 ```swift
-    open class func getCourseLibrariesByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
+    open class func getCourseLibrariesByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseLibraryDtoCollectionQueryParameters: CourseLibraryDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
 ```
 
 Get course libraries by course count
@@ -1103,9 +1135,10 @@ import OpenAPIClient
 let courseId = "courseId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseLibraryDtoCollectionQueryParameters = CourseLibraryDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseLibraryDtoCollectionQueryParameters |  (optional)
 
 // Get course libraries by course count
-CoursesAPI.getCourseLibrariesByCourseCountAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CoursesAPI.getCourseLibrariesByCourseCountAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseLibraryDtoCollectionQueryParameters: courseLibraryDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1124,6 +1157,7 @@ Name | Type | Description  | Notes
  **courseId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseLibraryDtoCollectionQueryParameters** | [**CourseLibraryDtoCollectionQueryParameters**](CourseLibraryDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1135,14 +1169,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCoursePagesByCourseAsync**
 ```swift
-    open class func getCoursePagesByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: [CoursePageDto]?, _ error: Error?) -> Void)
+    open class func getCoursePagesByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, coursePageDtoCollectionQueryParameters: CoursePageDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: [CoursePageDto]?, _ error: Error?) -> Void)
 ```
 
 Get course pages by course
@@ -1157,9 +1191,10 @@ import OpenAPIClient
 let courseId = "courseId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let coursePageDtoCollectionQueryParameters = CoursePageDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CoursePageDtoCollectionQueryParameters |  (optional)
 
 // Get course pages by course
-CoursesAPI.getCoursePagesByCourseAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CoursesAPI.getCoursePagesByCourseAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, coursePageDtoCollectionQueryParameters: coursePageDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1178,6 +1213,7 @@ Name | Type | Description  | Notes
  **courseId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **coursePageDtoCollectionQueryParameters** | [**CoursePageDtoCollectionQueryParameters**](CoursePageDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1189,14 +1225,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCoursePagesByCourseCountAsync**
 ```swift
-    open class func getCoursePagesByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
+    open class func getCoursePagesByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, coursePageDtoCollectionQueryParameters: CoursePageDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
 ```
 
 Get course pages by course count
@@ -1211,9 +1247,10 @@ import OpenAPIClient
 let courseId = "courseId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let coursePageDtoCollectionQueryParameters = CoursePageDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CoursePageDtoCollectionQueryParameters |  (optional)
 
 // Get course pages by course count
-CoursesAPI.getCoursePagesByCourseCountAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CoursesAPI.getCoursePagesByCourseCountAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, coursePageDtoCollectionQueryParameters: coursePageDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1232,6 +1269,7 @@ Name | Type | Description  | Notes
  **courseId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **coursePageDtoCollectionQueryParameters** | [**CoursePageDtoCollectionQueryParameters**](CoursePageDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1243,14 +1281,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCourseProblemSetsByCourseAsync**
 ```swift
-    open class func getCourseProblemSetsByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: [CourseProblemSetDto]?, _ error: Error?) -> Void)
+    open class func getCourseProblemSetsByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseProblemSetDtoCollectionQueryParameters: CourseProblemSetDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: [CourseProblemSetDto]?, _ error: Error?) -> Void)
 ```
 
 Get course problem sets by course
@@ -1265,9 +1303,10 @@ import OpenAPIClient
 let courseId = "courseId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseProblemSetDtoCollectionQueryParameters = CourseProblemSetDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseProblemSetDtoCollectionQueryParameters |  (optional)
 
 // Get course problem sets by course
-CoursesAPI.getCourseProblemSetsByCourseAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CoursesAPI.getCourseProblemSetsByCourseAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseProblemSetDtoCollectionQueryParameters: courseProblemSetDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1286,6 +1325,7 @@ Name | Type | Description  | Notes
  **courseId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseProblemSetDtoCollectionQueryParameters** | [**CourseProblemSetDtoCollectionQueryParameters**](CourseProblemSetDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1297,14 +1337,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCourseProblemSetsByCourseCountAsync**
 ```swift
-    open class func getCourseProblemSetsByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
+    open class func getCourseProblemSetsByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseProblemSetDtoCollectionQueryParameters: CourseProblemSetDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
 ```
 
 Get course problem sets by course count
@@ -1319,9 +1359,10 @@ import OpenAPIClient
 let courseId = "courseId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseProblemSetDtoCollectionQueryParameters = CourseProblemSetDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseProblemSetDtoCollectionQueryParameters |  (optional)
 
 // Get course problem sets by course count
-CoursesAPI.getCourseProblemSetsByCourseCountAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CoursesAPI.getCourseProblemSetsByCourseCountAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseProblemSetDtoCollectionQueryParameters: courseProblemSetDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1340,6 +1381,7 @@ Name | Type | Description  | Notes
  **courseId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseProblemSetDtoCollectionQueryParameters** | [**CourseProblemSetDtoCollectionQueryParameters**](CourseProblemSetDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1351,14 +1393,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCourseSectionsByCourseAsync**
 ```swift
-    open class func getCourseSectionsByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: [CourseSectionDto]?, _ error: Error?) -> Void)
+    open class func getCourseSectionsByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseSectionDtoCollectionQueryParameters: CourseSectionDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: [CourseSectionDto]?, _ error: Error?) -> Void)
 ```
 
 Get course sections by course
@@ -1373,9 +1415,10 @@ import OpenAPIClient
 let courseId = "courseId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseSectionDtoCollectionQueryParameters = CourseSectionDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseSectionDtoCollectionQueryParameters |  (optional)
 
 // Get course sections by course
-CoursesAPI.getCourseSectionsByCourseAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CoursesAPI.getCourseSectionsByCourseAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseSectionDtoCollectionQueryParameters: courseSectionDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1394,6 +1437,7 @@ Name | Type | Description  | Notes
  **courseId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseSectionDtoCollectionQueryParameters** | [**CourseSectionDtoCollectionQueryParameters**](CourseSectionDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1405,14 +1449,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCourseSectionsByCourseCountAsync**
 ```swift
-    open class func getCourseSectionsByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
+    open class func getCourseSectionsByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseSectionDtoCollectionQueryParameters: CourseSectionDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
 ```
 
 Get course sections by course count
@@ -1427,9 +1471,10 @@ import OpenAPIClient
 let courseId = "courseId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseSectionDtoCollectionQueryParameters = CourseSectionDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseSectionDtoCollectionQueryParameters |  (optional)
 
 // Get course sections by course count
-CoursesAPI.getCourseSectionsByCourseCountAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CoursesAPI.getCourseSectionsByCourseCountAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseSectionDtoCollectionQueryParameters: courseSectionDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1448,6 +1493,7 @@ Name | Type | Description  | Notes
  **courseId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseSectionDtoCollectionQueryParameters** | [**CourseSectionDtoCollectionQueryParameters**](CourseSectionDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1459,14 +1505,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCourseUnitComponentsByCourseAsync**
 ```swift
-    open class func getCourseUnitComponentsByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: [CourseUnitComponentDto]?, _ error: Error?) -> Void)
+    open class func getCourseUnitComponentsByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseUnitComponentDtoCollectionQueryParameters: CourseUnitComponentDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: [CourseUnitComponentDto]?, _ error: Error?) -> Void)
 ```
 
 Get course unit components by course
@@ -1481,9 +1527,10 @@ import OpenAPIClient
 let courseId = "courseId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseUnitComponentDtoCollectionQueryParameters = CourseUnitComponentDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseUnitComponentDtoCollectionQueryParameters |  (optional)
 
 // Get course unit components by course
-CoursesAPI.getCourseUnitComponentsByCourseAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CoursesAPI.getCourseUnitComponentsByCourseAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseUnitComponentDtoCollectionQueryParameters: courseUnitComponentDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1502,6 +1549,7 @@ Name | Type | Description  | Notes
  **courseId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseUnitComponentDtoCollectionQueryParameters** | [**CourseUnitComponentDtoCollectionQueryParameters**](CourseUnitComponentDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1513,14 +1561,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCourseUnitComponentsByCourseCountAsync**
 ```swift
-    open class func getCourseUnitComponentsByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
+    open class func getCourseUnitComponentsByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseUnitComponentDtoCollectionQueryParameters: CourseUnitComponentDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
 ```
 
 Get course unit components by course count
@@ -1535,9 +1583,10 @@ import OpenAPIClient
 let courseId = "courseId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseUnitComponentDtoCollectionQueryParameters = CourseUnitComponentDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseUnitComponentDtoCollectionQueryParameters |  (optional)
 
 // Get course unit components by course count
-CoursesAPI.getCourseUnitComponentsByCourseCountAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CoursesAPI.getCourseUnitComponentsByCourseCountAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseUnitComponentDtoCollectionQueryParameters: courseUnitComponentDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1556,6 +1605,7 @@ Name | Type | Description  | Notes
  **courseId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseUnitComponentDtoCollectionQueryParameters** | [**CourseUnitComponentDtoCollectionQueryParameters**](CourseUnitComponentDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1567,14 +1617,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCourseUnitsBySectionAsync**
 ```swift
-    open class func getCourseUnitsBySectionAsync(courseId: String, sectionId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: [CourseUnitDto]?, _ error: Error?) -> Void)
+    open class func getCourseUnitsBySectionAsync(courseId: String, sectionId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseUnitDtoCollectionQueryParameters: CourseUnitDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: [CourseUnitDto]?, _ error: Error?) -> Void)
 ```
 
 Get course units by section
@@ -1590,9 +1640,10 @@ let courseId = "courseId_example" // String |
 let sectionId = "sectionId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseUnitDtoCollectionQueryParameters = CourseUnitDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseUnitDtoCollectionQueryParameters |  (optional)
 
 // Get course units by section
-CoursesAPI.getCourseUnitsBySectionAsync(courseId: courseId, sectionId: sectionId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CoursesAPI.getCourseUnitsBySectionAsync(courseId: courseId, sectionId: sectionId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseUnitDtoCollectionQueryParameters: courseUnitDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1612,6 +1663,7 @@ Name | Type | Description  | Notes
  **sectionId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseUnitDtoCollectionQueryParameters** | [**CourseUnitDtoCollectionQueryParameters**](CourseUnitDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1623,14 +1675,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCourseUnitsBySectionCountAsync**
 ```swift
-    open class func getCourseUnitsBySectionCountAsync(courseId: String, sectionId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
+    open class func getCourseUnitsBySectionCountAsync(courseId: String, sectionId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseUnitDtoCollectionQueryParameters: CourseUnitDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
 ```
 
 Get course units by section count
@@ -1646,9 +1698,10 @@ let courseId = "courseId_example" // String |
 let sectionId = "sectionId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseUnitDtoCollectionQueryParameters = CourseUnitDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseUnitDtoCollectionQueryParameters |  (optional)
 
 // Get course units by section count
-CoursesAPI.getCourseUnitsBySectionCountAsync(courseId: courseId, sectionId: sectionId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CoursesAPI.getCourseUnitsBySectionCountAsync(courseId: courseId, sectionId: sectionId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseUnitDtoCollectionQueryParameters: courseUnitDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1668,6 +1721,7 @@ Name | Type | Description  | Notes
  **sectionId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseUnitDtoCollectionQueryParameters** | [**CourseUnitDtoCollectionQueryParameters**](CourseUnitDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1679,14 +1733,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCourseUpdatesByCourseAsync**
 ```swift
-    open class func getCourseUpdatesByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: [CourseNewsDto]?, _ error: Error?) -> Void)
+    open class func getCourseUpdatesByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseNewsDtoCollectionQueryParameters: CourseNewsDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: [CourseNewsDto]?, _ error: Error?) -> Void)
 ```
 
 Get course updates by course
@@ -1701,9 +1755,10 @@ import OpenAPIClient
 let courseId = "courseId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseNewsDtoCollectionQueryParameters = CourseNewsDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseNewsDtoCollectionQueryParameters |  (optional)
 
 // Get course updates by course
-CoursesAPI.getCourseUpdatesByCourseAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CoursesAPI.getCourseUpdatesByCourseAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseNewsDtoCollectionQueryParameters: courseNewsDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1722,6 +1777,7 @@ Name | Type | Description  | Notes
  **courseId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseNewsDtoCollectionQueryParameters** | [**CourseNewsDtoCollectionQueryParameters**](CourseNewsDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1733,14 +1789,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCourseUpdatesByCourseCountAsync**
 ```swift
-    open class func getCourseUpdatesByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
+    open class func getCourseUpdatesByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseNewsDtoCollectionQueryParameters: CourseNewsDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
 ```
 
 Get course updates by course count
@@ -1755,9 +1811,10 @@ import OpenAPIClient
 let courseId = "courseId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseNewsDtoCollectionQueryParameters = CourseNewsDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseNewsDtoCollectionQueryParameters |  (optional)
 
 // Get course updates by course count
-CoursesAPI.getCourseUpdatesByCourseCountAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CoursesAPI.getCourseUpdatesByCourseCountAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseNewsDtoCollectionQueryParameters: courseNewsDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1776,6 +1833,7 @@ Name | Type | Description  | Notes
  **courseId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseNewsDtoCollectionQueryParameters** | [**CourseNewsDtoCollectionQueryParameters**](CourseNewsDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1787,14 +1845,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCourseWikisByCourseAsync**
 ```swift
-    open class func getCourseWikisByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: [CourseWikiDto]?, _ error: Error?) -> Void)
+    open class func getCourseWikisByCourseAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseWikiDtoCollectionQueryParameters: CourseWikiDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: [CourseWikiDto]?, _ error: Error?) -> Void)
 ```
 
 Get course wikis by course
@@ -1809,9 +1867,10 @@ import OpenAPIClient
 let courseId = "courseId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseWikiDtoCollectionQueryParameters = CourseWikiDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseWikiDtoCollectionQueryParameters |  (optional)
 
 // Get course wikis by course
-CoursesAPI.getCourseWikisByCourseAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CoursesAPI.getCourseWikisByCourseAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseWikiDtoCollectionQueryParameters: courseWikiDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1830,6 +1889,7 @@ Name | Type | Description  | Notes
  **courseId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseWikiDtoCollectionQueryParameters** | [**CourseWikiDtoCollectionQueryParameters**](CourseWikiDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1841,14 +1901,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCourseWikisByCourseCountAsync**
 ```swift
-    open class func getCourseWikisByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
+    open class func getCourseWikisByCourseCountAsync(courseId: String, apiVersion: String? = nil, xApiVersion: String? = nil, courseWikiDtoCollectionQueryParameters: CourseWikiDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
 ```
 
 Get course wikis by course count
@@ -1863,9 +1923,10 @@ import OpenAPIClient
 let courseId = "courseId_example" // String | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseWikiDtoCollectionQueryParameters = CourseWikiDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseWikiDtoCollectionQueryParameters |  (optional)
 
 // Get course wikis by course count
-CoursesAPI.getCourseWikisByCourseCountAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CoursesAPI.getCourseWikisByCourseCountAsync(courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseWikiDtoCollectionQueryParameters: courseWikiDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1884,6 +1945,7 @@ Name | Type | Description  | Notes
  **courseId** | **String** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseWikiDtoCollectionQueryParameters** | [**CourseWikiDtoCollectionQueryParameters**](CourseWikiDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1895,14 +1957,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCoursesAsync**
 ```swift
-    open class func getCoursesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: [CourseDto]?, _ error: Error?) -> Void)
+    open class func getCoursesAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, courseDtoCollectionQueryParameters: CourseDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: [CourseDto]?, _ error: Error?) -> Void)
 ```
 
 Get courses
@@ -1917,9 +1979,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseDtoCollectionQueryParameters = CourseDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseDtoCollectionQueryParameters |  (optional)
 
 // Get courses
-CoursesAPI.getCoursesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CoursesAPI.getCoursesAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseDtoCollectionQueryParameters: courseDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1938,6 +2001,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseDtoCollectionQueryParameters** | [**CourseDtoCollectionQueryParameters**](CourseDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1949,14 +2013,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCoursesCountAsync**
 ```swift
-    open class func getCoursesCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
+    open class func getCoursesCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, courseDtoCollectionQueryParameters: CourseDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
 ```
 
 Get courses count
@@ -1971,9 +2035,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let courseDtoCollectionQueryParameters = CourseDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CourseDtoCollectionQueryParameters |  (optional)
 
 // Get courses count
-CoursesAPI.getCoursesCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+CoursesAPI.getCoursesCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, courseDtoCollectionQueryParameters: courseDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1992,6 +2057,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **courseDtoCollectionQueryParameters** | [**CourseDtoCollectionQueryParameters**](CourseDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -2003,7 +2069,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -2226,7 +2292,7 @@ No authorization required
 
 # **patchCourseAsync**
 ```swift
-    open class func patchCourseAsync(tenantId: UUID, courseId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchCourseAsync(tenantId: UUID, courseId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patch a course
@@ -2242,10 +2308,10 @@ let tenantId = 987 // UUID |
 let courseId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patch a course
-CoursesAPI.patchCourseAsync(tenantId: tenantId, courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+CoursesAPI.patchCourseAsync(tenantId: tenantId, courseId: courseId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2265,7 +2331,7 @@ Name | Type | Description  | Notes
  **courseId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

@@ -17,12 +17,13 @@ open class UsersAPI {
      
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter followRecordDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func countCurrentUserFollowersAsync(apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return countCurrentUserFollowersAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func countCurrentUserFollowersAsync(apiVersion: String? = nil, xApiVersion: String? = nil, followRecordDtoCollectionQueryParameters: FollowRecordDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return countCurrentUserFollowersAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion, followRecordDtoCollectionQueryParameters: followRecordDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -38,12 +39,13 @@ open class UsersAPI {
      - Count the social profiles that follow the current user
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter followRecordDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func countCurrentUserFollowersAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func countCurrentUserFollowersAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil, followRecordDtoCollectionQueryParameters: FollowRecordDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/Me/Followers/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: followRecordDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -51,6 +53,7 @@ open class UsersAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -66,12 +69,13 @@ open class UsersAPI {
      
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter followRecordDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func countCurrentUserFollowsAsync(apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return countCurrentUserFollowsAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func countCurrentUserFollowsAsync(apiVersion: String? = nil, xApiVersion: String? = nil, followRecordDtoCollectionQueryParameters: FollowRecordDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return countCurrentUserFollowsAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion, followRecordDtoCollectionQueryParameters: followRecordDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -87,12 +91,13 @@ open class UsersAPI {
      - Count the social profiles that the current user follows
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter followRecordDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func countCurrentUserFollowsAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func countCurrentUserFollowsAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil, followRecordDtoCollectionQueryParameters: FollowRecordDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/Me/Follows/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: followRecordDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -100,6 +105,7 @@ open class UsersAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -115,12 +121,13 @@ open class UsersAPI {
      
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter notificationDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func countCurrentUserNotificationsAsync(apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return countCurrentUserNotificationsAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func countCurrentUserNotificationsAsync(apiVersion: String? = nil, xApiVersion: String? = nil, notificationDtoCollectionQueryParameters: NotificationDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return countCurrentUserNotificationsAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion, notificationDtoCollectionQueryParameters: notificationDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -136,12 +143,13 @@ open class UsersAPI {
      - Count the notifications for the current user
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter notificationDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func countCurrentUserNotificationsAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func countCurrentUserNotificationsAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil, notificationDtoCollectionQueryParameters: NotificationDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/Me/Notifications/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: notificationDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -149,6 +157,7 @@ open class UsersAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -164,12 +173,13 @@ open class UsersAPI {
      
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter tenantDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func countCurrentUserTenantsAsync(apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return countCurrentUserTenantsAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func countCurrentUserTenantsAsync(apiVersion: String? = nil, xApiVersion: String? = nil, tenantDtoCollectionQueryParameters: TenantDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return countCurrentUserTenantsAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion, tenantDtoCollectionQueryParameters: tenantDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -185,12 +195,13 @@ open class UsersAPI {
      - Count the tenants that the current user is enrolled in
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter tenantDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func countCurrentUserTenantsAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func countCurrentUserTenantsAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil, tenantDtoCollectionQueryParameters: TenantDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/Me/Tenants/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: tenantDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -198,6 +209,7 @@ open class UsersAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -213,12 +225,13 @@ open class UsersAPI {
      
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter addressDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCurrentUserAddressesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AddressDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCurrentUserAddressesAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCurrentUserAddressesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, addressDtoCollectionQueryParameters: AddressDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AddressDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCurrentUserAddressesAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion, addressDtoCollectionQueryParameters: addressDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -234,12 +247,13 @@ open class UsersAPI {
      - Get the list of addresses for the current user
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter addressDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<AddressDtoListEnvelope> 
      */
-    open class func getCurrentUserAddressesAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<AddressDtoListEnvelope> {
+    open class func getCurrentUserAddressesAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil, addressDtoCollectionQueryParameters: AddressDtoCollectionQueryParameters? = nil) -> RequestBuilder<AddressDtoListEnvelope> {
         let localVariablePath = "/api/v2/Me/Addresses"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: addressDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -247,6 +261,7 @@ open class UsersAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -507,12 +522,13 @@ open class UsersAPI {
      
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter followRecordDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCurrentUserFollowersAsync(apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: FollowRecordDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCurrentUserFollowersAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCurrentUserFollowersAsync(apiVersion: String? = nil, xApiVersion: String? = nil, followRecordDtoCollectionQueryParameters: FollowRecordDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: FollowRecordDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCurrentUserFollowersAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion, followRecordDtoCollectionQueryParameters: followRecordDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -528,12 +544,13 @@ open class UsersAPI {
      - Get the social profiles that follow the current user
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter followRecordDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<FollowRecordDtoListEnvelope> 
      */
-    open class func getCurrentUserFollowersAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<FollowRecordDtoListEnvelope> {
+    open class func getCurrentUserFollowersAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil, followRecordDtoCollectionQueryParameters: FollowRecordDtoCollectionQueryParameters? = nil) -> RequestBuilder<FollowRecordDtoListEnvelope> {
         let localVariablePath = "/api/v2/Me/Followers"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: followRecordDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -541,6 +558,7 @@ open class UsersAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -556,12 +574,13 @@ open class UsersAPI {
      
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter followRecordDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCurrentUserFollowsAsync(apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: FollowRecordDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCurrentUserFollowsAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCurrentUserFollowsAsync(apiVersion: String? = nil, xApiVersion: String? = nil, followRecordDtoCollectionQueryParameters: FollowRecordDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: FollowRecordDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCurrentUserFollowsAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion, followRecordDtoCollectionQueryParameters: followRecordDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -577,12 +596,13 @@ open class UsersAPI {
      - Get the social profiles that the current user follows
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter followRecordDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<FollowRecordDtoListEnvelope> 
      */
-    open class func getCurrentUserFollowsAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<FollowRecordDtoListEnvelope> {
+    open class func getCurrentUserFollowsAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil, followRecordDtoCollectionQueryParameters: FollowRecordDtoCollectionQueryParameters? = nil) -> RequestBuilder<FollowRecordDtoListEnvelope> {
         let localVariablePath = "/api/v2/Me/Follows"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: followRecordDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -590,6 +610,7 @@ open class UsersAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -654,12 +675,13 @@ open class UsersAPI {
      
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter notificationDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCurrentUserNotificationsAsync(apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: NotificationDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCurrentUserNotificationsAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCurrentUserNotificationsAsync(apiVersion: String? = nil, xApiVersion: String? = nil, notificationDtoCollectionQueryParameters: NotificationDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: NotificationDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCurrentUserNotificationsAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion, notificationDtoCollectionQueryParameters: notificationDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -675,12 +697,13 @@ open class UsersAPI {
      - Get the list of notifications for the current user
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter notificationDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<NotificationDtoListEnvelope> 
      */
-    open class func getCurrentUserNotificationsAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<NotificationDtoListEnvelope> {
+    open class func getCurrentUserNotificationsAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil, notificationDtoCollectionQueryParameters: NotificationDtoCollectionQueryParameters? = nil) -> RequestBuilder<NotificationDtoListEnvelope> {
         let localVariablePath = "/api/v2/Me/Notifications"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: notificationDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -688,6 +711,7 @@ open class UsersAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -801,12 +825,13 @@ open class UsersAPI {
      
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter tenantDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCurrentUserTenantsAsync(apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TenantDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getCurrentUserTenantsAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getCurrentUserTenantsAsync(apiVersion: String? = nil, xApiVersion: String? = nil, tenantDtoCollectionQueryParameters: TenantDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TenantDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCurrentUserTenantsAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion, tenantDtoCollectionQueryParameters: tenantDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -822,12 +847,13 @@ open class UsersAPI {
      - Get the tenants that the current user is enrolled in
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter tenantDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<TenantDtoListEnvelope> 
      */
-    open class func getCurrentUserTenantsAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<TenantDtoListEnvelope> {
+    open class func getCurrentUserTenantsAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil, tenantDtoCollectionQueryParameters: TenantDtoCollectionQueryParameters? = nil) -> RequestBuilder<TenantDtoListEnvelope> {
         let localVariablePath = "/api/v2/Me/Tenants"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: tenantDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -835,6 +861,7 @@ open class UsersAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -1051,13 +1078,13 @@ open class UsersAPI {
      
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchCurrentUserAsync(apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchCurrentUserAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchCurrentUserAsync(apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchCurrentUserAsyncWithRequestBuilder(apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1073,13 +1100,13 @@ open class UsersAPI {
      - Partially update the current user's profile
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchCurrentUserAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchCurrentUserAsyncWithRequestBuilder(apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         let localVariablePath = "/api/v2/Me"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

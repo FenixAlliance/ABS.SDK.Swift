@@ -257,12 +257,13 @@ open class FiscalPeriodsAPI {
      - parameter authorityId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter fiscalPeriodDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getFiscalPeriods(tenantId: UUID, fiscalAuthorityId: UUID, fiscalYearId: UUID, authorityId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: FiscalPeriodDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getFiscalPeriodsWithRequestBuilder(tenantId: tenantId, fiscalAuthorityId: fiscalAuthorityId, fiscalYearId: fiscalYearId, authorityId: authorityId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getFiscalPeriods(tenantId: UUID, fiscalAuthorityId: UUID, fiscalYearId: UUID, authorityId: String, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalPeriodDtoCollectionQueryParameters: FiscalPeriodDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: FiscalPeriodDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getFiscalPeriodsWithRequestBuilder(tenantId: tenantId, fiscalAuthorityId: fiscalAuthorityId, fiscalYearId: fiscalYearId, authorityId: authorityId, apiVersion: apiVersion, xApiVersion: xApiVersion, fiscalPeriodDtoCollectionQueryParameters: fiscalPeriodDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -282,9 +283,10 @@ open class FiscalPeriodsAPI {
      - parameter authorityId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter fiscalPeriodDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<FiscalPeriodDtoListEnvelope> 
      */
-    open class func getFiscalPeriodsWithRequestBuilder(tenantId: UUID, fiscalAuthorityId: UUID, fiscalYearId: UUID, authorityId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<FiscalPeriodDtoListEnvelope> {
+    open class func getFiscalPeriodsWithRequestBuilder(tenantId: UUID, fiscalAuthorityId: UUID, fiscalYearId: UUID, authorityId: String, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalPeriodDtoCollectionQueryParameters: FiscalPeriodDtoCollectionQueryParameters? = nil) -> RequestBuilder<FiscalPeriodDtoListEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/Fiscals/Authorities/{authorityId}/FiscalYears/{fiscalYearId}/FiscalPeriods"
         let fiscalYearIdPreEscape = "\(APIHelper.mapValueToPathItem(fiscalYearId))"
         let fiscalYearIdPostEscape = fiscalYearIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -293,7 +295,7 @@ open class FiscalPeriodsAPI {
         let authorityIdPostEscape = authorityIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{authorityId}", with: authorityIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: fiscalPeriodDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -303,6 +305,7 @@ open class FiscalPeriodsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -321,12 +324,13 @@ open class FiscalPeriodsAPI {
      - parameter fiscalYearId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter fiscalPeriodDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getFiscalPeriodsCount(tenantId: UUID, fiscalAuthorityId: UUID, fiscalYearId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getFiscalPeriodsCountWithRequestBuilder(tenantId: tenantId, fiscalAuthorityId: fiscalAuthorityId, fiscalYearId: fiscalYearId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getFiscalPeriodsCount(tenantId: UUID, fiscalAuthorityId: UUID, fiscalYearId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalPeriodDtoCollectionQueryParameters: FiscalPeriodDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getFiscalPeriodsCountWithRequestBuilder(tenantId: tenantId, fiscalAuthorityId: fiscalAuthorityId, fiscalYearId: fiscalYearId, apiVersion: apiVersion, xApiVersion: xApiVersion, fiscalPeriodDtoCollectionQueryParameters: fiscalPeriodDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -345,9 +349,10 @@ open class FiscalPeriodsAPI {
      - parameter fiscalYearId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter fiscalPeriodDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getFiscalPeriodsCountWithRequestBuilder(tenantId: UUID, fiscalAuthorityId: UUID, fiscalYearId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getFiscalPeriodsCountWithRequestBuilder(tenantId: UUID, fiscalAuthorityId: UUID, fiscalYearId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, fiscalPeriodDtoCollectionQueryParameters: FiscalPeriodDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/AccountingService/Fiscals/Authorities/{fiscalAuthorityId}/FiscalYears/{fiscalYearId}/FiscalPeriods/Count"
         let fiscalAuthorityIdPreEscape = "\(APIHelper.mapValueToPathItem(fiscalAuthorityId))"
         let fiscalAuthorityIdPostEscape = fiscalAuthorityIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -356,7 +361,7 @@ open class FiscalPeriodsAPI {
         let fiscalYearIdPostEscape = fiscalYearIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{fiscalYearId}", with: fiscalYearIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: fiscalPeriodDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -365,6 +370,7 @@ open class FiscalPeriodsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -439,13 +445,13 @@ open class FiscalPeriodsAPI {
      - parameter fiscalPeriodId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchFiscalPeriodAsync(tenantId: UUID, fiscalPeriodId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchFiscalPeriodAsyncWithRequestBuilder(tenantId: tenantId, fiscalPeriodId: fiscalPeriodId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchFiscalPeriodAsync(tenantId: UUID, fiscalPeriodId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchFiscalPeriodAsyncWithRequestBuilder(tenantId: tenantId, fiscalPeriodId: fiscalPeriodId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -463,16 +469,16 @@ open class FiscalPeriodsAPI {
      - parameter fiscalPeriodId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchFiscalPeriodAsyncWithRequestBuilder(tenantId: UUID, fiscalPeriodId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchFiscalPeriodAsyncWithRequestBuilder(tenantId: UUID, fiscalPeriodId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/AccountingService/Fiscals/Authorities/FiscalPeriods/{fiscalPeriodId}"
         let fiscalPeriodIdPreEscape = "\(APIHelper.mapValueToPathItem(fiscalPeriodId))"
         let fiscalPeriodIdPostEscape = fiscalPeriodIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{fiscalPeriodId}", with: fiscalPeriodIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

@@ -610,7 +610,7 @@ No authorization required
 
 # **getBankAccounts**
 ```swift
-    open class func getBankAccounts(tenantId: UUID, bankId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: BankAccountDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getBankAccounts(tenantId: UUID, bankId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, bankAccountDtoCollectionQueryParameters: BankAccountDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: BankAccountDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Gets the current tenant bank accounts
@@ -626,9 +626,10 @@ let tenantId = 987 // UUID |
 let bankId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let bankAccountDtoCollectionQueryParameters = BankAccountDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // BankAccountDtoCollectionQueryParameters |  (optional)
 
 // Gets the current tenant bank accounts
-BankingAPI.getBankAccounts(tenantId: tenantId, bankId: bankId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+BankingAPI.getBankAccounts(tenantId: tenantId, bankId: bankId, apiVersion: apiVersion, xApiVersion: xApiVersion, bankAccountDtoCollectionQueryParameters: bankAccountDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -648,6 +649,7 @@ Name | Type | Description  | Notes
  **bankId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **bankAccountDtoCollectionQueryParameters** | [**BankAccountDtoCollectionQueryParameters**](BankAccountDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -659,14 +661,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getBankAccountsCount**
 ```swift
-    open class func getBankAccountsCount(tenantId: UUID, bankId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getBankAccountsCount(tenantId: UUID, bankId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, bankAccountDtoCollectionQueryParameters: BankAccountDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Gets the current tenant bank accounts count
@@ -682,9 +684,10 @@ let tenantId = 987 // UUID |
 let bankId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let bankAccountDtoCollectionQueryParameters = BankAccountDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // BankAccountDtoCollectionQueryParameters |  (optional)
 
 // Gets the current tenant bank accounts count
-BankingAPI.getBankAccountsCount(tenantId: tenantId, bankId: bankId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+BankingAPI.getBankAccountsCount(tenantId: tenantId, bankId: bankId, apiVersion: apiVersion, xApiVersion: xApiVersion, bankAccountDtoCollectionQueryParameters: bankAccountDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -704,6 +707,7 @@ Name | Type | Description  | Notes
  **bankId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **bankAccountDtoCollectionQueryParameters** | [**BankAccountDtoCollectionQueryParameters**](BankAccountDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -715,7 +719,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -780,7 +784,7 @@ No authorization required
 
 # **getBankGuarantees**
 ```swift
-    open class func getBankGuarantees(tenantId: UUID, bankId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: BankGuaranteeDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getBankGuarantees(tenantId: UUID, bankId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, bankGuaranteeDtoCollectionQueryParameters: BankGuaranteeDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: BankGuaranteeDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Gets the current tenant bank guarantees
@@ -796,9 +800,10 @@ let tenantId = 987 // UUID |
 let bankId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let bankGuaranteeDtoCollectionQueryParameters = BankGuaranteeDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // BankGuaranteeDtoCollectionQueryParameters |  (optional)
 
 // Gets the current tenant bank guarantees
-BankingAPI.getBankGuarantees(tenantId: tenantId, bankId: bankId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+BankingAPI.getBankGuarantees(tenantId: tenantId, bankId: bankId, apiVersion: apiVersion, xApiVersion: xApiVersion, bankGuaranteeDtoCollectionQueryParameters: bankGuaranteeDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -818,6 +823,7 @@ Name | Type | Description  | Notes
  **bankId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **bankGuaranteeDtoCollectionQueryParameters** | [**BankGuaranteeDtoCollectionQueryParameters**](BankGuaranteeDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -829,14 +835,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getBankGuaranteesCount**
 ```swift
-    open class func getBankGuaranteesCount(tenantId: UUID, bankId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getBankGuaranteesCount(tenantId: UUID, bankId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, bankGuaranteeDtoCollectionQueryParameters: BankGuaranteeDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Gets the current tenant bank guarantees count
@@ -852,9 +858,10 @@ let tenantId = 987 // UUID |
 let bankId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let bankGuaranteeDtoCollectionQueryParameters = BankGuaranteeDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // BankGuaranteeDtoCollectionQueryParameters |  (optional)
 
 // Gets the current tenant bank guarantees count
-BankingAPI.getBankGuaranteesCount(tenantId: tenantId, bankId: bankId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+BankingAPI.getBankGuaranteesCount(tenantId: tenantId, bankId: bankId, apiVersion: apiVersion, xApiVersion: xApiVersion, bankGuaranteeDtoCollectionQueryParameters: bankGuaranteeDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -874,6 +881,7 @@ Name | Type | Description  | Notes
  **bankId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **bankGuaranteeDtoCollectionQueryParameters** | [**BankGuaranteeDtoCollectionQueryParameters**](BankGuaranteeDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -885,7 +893,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -950,7 +958,7 @@ No authorization required
 
 # **getBankTransactions**
 ```swift
-    open class func getBankTransactions(tenantId: UUID, bankId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: BankTransactionDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getBankTransactions(tenantId: UUID, bankId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, bankTransactionDtoCollectionQueryParameters: BankTransactionDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: BankTransactionDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Gets the current tenant bank transactions
@@ -966,9 +974,10 @@ let tenantId = 987 // UUID |
 let bankId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let bankTransactionDtoCollectionQueryParameters = BankTransactionDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // BankTransactionDtoCollectionQueryParameters |  (optional)
 
 // Gets the current tenant bank transactions
-BankingAPI.getBankTransactions(tenantId: tenantId, bankId: bankId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+BankingAPI.getBankTransactions(tenantId: tenantId, bankId: bankId, apiVersion: apiVersion, xApiVersion: xApiVersion, bankTransactionDtoCollectionQueryParameters: bankTransactionDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -988,6 +997,7 @@ Name | Type | Description  | Notes
  **bankId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **bankTransactionDtoCollectionQueryParameters** | [**BankTransactionDtoCollectionQueryParameters**](BankTransactionDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -999,14 +1009,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getBankTransactionsCount**
 ```swift
-    open class func getBankTransactionsCount(tenantId: UUID, bankId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getBankTransactionsCount(tenantId: UUID, bankId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, bankTransactionDtoCollectionQueryParameters: BankTransactionDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Gets the current tenant bank transactions count
@@ -1022,9 +1032,10 @@ let tenantId = 987 // UUID |
 let bankId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let bankTransactionDtoCollectionQueryParameters = BankTransactionDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // BankTransactionDtoCollectionQueryParameters |  (optional)
 
 // Gets the current tenant bank transactions count
-BankingAPI.getBankTransactionsCount(tenantId: tenantId, bankId: bankId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+BankingAPI.getBankTransactionsCount(tenantId: tenantId, bankId: bankId, apiVersion: apiVersion, xApiVersion: xApiVersion, bankTransactionDtoCollectionQueryParameters: bankTransactionDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1044,6 +1055,7 @@ Name | Type | Description  | Notes
  **bankId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **bankTransactionDtoCollectionQueryParameters** | [**BankTransactionDtoCollectionQueryParameters**](BankTransactionDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1055,14 +1067,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getBanks**
 ```swift
-    open class func getBanks(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: BankDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getBanks(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, bankDtoCollectionQueryParameters: BankDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: BankDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Gets the current tenant banks
@@ -1077,9 +1089,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let bankDtoCollectionQueryParameters = BankDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // BankDtoCollectionQueryParameters |  (optional)
 
 // Gets the current tenant banks
-BankingAPI.getBanks(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+BankingAPI.getBanks(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, bankDtoCollectionQueryParameters: bankDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1098,6 +1111,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **bankDtoCollectionQueryParameters** | [**BankDtoCollectionQueryParameters**](BankDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1109,14 +1123,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getBanksCount**
 ```swift
-    open class func getBanksCount(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getBanksCount(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, bankDtoCollectionQueryParameters: BankDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Gets the current tenant banks count
@@ -1131,9 +1145,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let bankDtoCollectionQueryParameters = BankDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // BankDtoCollectionQueryParameters |  (optional)
 
 // Gets the current tenant banks count
-BankingAPI.getBanksCount(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+BankingAPI.getBanksCount(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, bankDtoCollectionQueryParameters: bankDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1152,6 +1167,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **bankDtoCollectionQueryParameters** | [**BankDtoCollectionQueryParameters**](BankDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -1163,14 +1179,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchBank**
 ```swift
-    open class func patchBank(tenantId: UUID, bankId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchBank(tenantId: UUID, bankId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patches a bank
@@ -1186,10 +1202,10 @@ let tenantId = 987 // UUID |
 let bankId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patches a bank
-BankingAPI.patchBank(tenantId: tenantId, bankId: bankId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+BankingAPI.patchBank(tenantId: tenantId, bankId: bankId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1209,7 +1225,7 @@ Name | Type | Description  | Notes
  **bankId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -1228,7 +1244,7 @@ No authorization required
 
 # **patchBankAccount**
 ```swift
-    open class func patchBankAccount(tenantId: UUID, bankId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchBankAccount(tenantId: UUID, bankId: UUID, accountId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patches a bank account
@@ -1245,10 +1261,10 @@ let bankId = 987 // UUID |
 let accountId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patches a bank account
-BankingAPI.patchBankAccount(tenantId: tenantId, bankId: bankId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+BankingAPI.patchBankAccount(tenantId: tenantId, bankId: bankId, accountId: accountId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1269,7 +1285,7 @@ Name | Type | Description  | Notes
  **accountId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -1288,7 +1304,7 @@ No authorization required
 
 # **patchBankGuarantee**
 ```swift
-    open class func patchBankGuarantee(tenantId: UUID, bankId: UUID, guaranteeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchBankGuarantee(tenantId: UUID, bankId: UUID, guaranteeId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patches a bank guarantee
@@ -1305,10 +1321,10 @@ let bankId = 987 // UUID |
 let guaranteeId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patches a bank guarantee
-BankingAPI.patchBankGuarantee(tenantId: tenantId, bankId: bankId, guaranteeId: guaranteeId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+BankingAPI.patchBankGuarantee(tenantId: tenantId, bankId: bankId, guaranteeId: guaranteeId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1329,7 +1345,7 @@ Name | Type | Description  | Notes
  **guaranteeId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -1348,7 +1364,7 @@ No authorization required
 
 # **patchBankTransaction**
 ```swift
-    open class func patchBankTransaction(tenantId: UUID, bankId: UUID, transactionId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchBankTransaction(tenantId: UUID, bankId: UUID, transactionId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patches a bank transaction
@@ -1365,10 +1381,10 @@ let bankId = 987 // UUID |
 let transactionId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patches a bank transaction
-BankingAPI.patchBankTransaction(tenantId: tenantId, bankId: bankId, transactionId: transactionId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation) { (response, error) in
+BankingAPI.patchBankTransaction(tenantId: tenantId, bankId: bankId, transactionId: transactionId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1389,7 +1405,7 @@ Name | Type | Description  | Notes
  **transactionId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

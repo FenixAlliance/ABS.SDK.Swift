@@ -371,12 +371,13 @@ open class UnitGroupsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter unitGroupDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getUnitGroupsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: UnitGroupDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getUnitGroupsAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getUnitGroupsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, unitGroupDtoCollectionQueryParameters: UnitGroupDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: UnitGroupDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getUnitGroupsAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, unitGroupDtoCollectionQueryParameters: unitGroupDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -393,12 +394,13 @@ open class UnitGroupsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter unitGroupDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<UnitGroupDtoListEnvelope> 
      */
-    open class func getUnitGroupsAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<UnitGroupDtoListEnvelope> {
+    open class func getUnitGroupsAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, unitGroupDtoCollectionQueryParameters: UnitGroupDtoCollectionQueryParameters? = nil) -> RequestBuilder<UnitGroupDtoListEnvelope> {
         let localVariablePath = "/api/v2/TenantsService/UnitGroups"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: unitGroupDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -407,6 +409,7 @@ open class UnitGroupsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -423,12 +426,13 @@ open class UnitGroupsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter unitGroupDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getUnitGroupsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getUnitGroupsCountAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getUnitGroupsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, unitGroupDtoCollectionQueryParameters: UnitGroupDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getUnitGroupsCountAsyncWithRequestBuilder(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, unitGroupDtoCollectionQueryParameters: unitGroupDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -445,12 +449,13 @@ open class UnitGroupsAPI {
      - parameter tenantId: (query)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter unitGroupDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getUnitGroupsCountAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getUnitGroupsCountAsyncWithRequestBuilder(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, unitGroupDtoCollectionQueryParameters: UnitGroupDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/TenantsService/UnitGroups/Count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: unitGroupDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -459,6 +464,7 @@ open class UnitGroupsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -476,12 +482,13 @@ open class UnitGroupsAPI {
      - parameter unitGroupId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter unitDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getUnitsAsync(tenantId: UUID, unitGroupId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: UnitDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getUnitsAsyncWithRequestBuilder(tenantId: tenantId, unitGroupId: unitGroupId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getUnitsAsync(tenantId: UUID, unitGroupId: String, apiVersion: String? = nil, xApiVersion: String? = nil, unitDtoCollectionQueryParameters: UnitDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: UnitDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getUnitsAsyncWithRequestBuilder(tenantId: tenantId, unitGroupId: unitGroupId, apiVersion: apiVersion, xApiVersion: xApiVersion, unitDtoCollectionQueryParameters: unitDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -499,15 +506,16 @@ open class UnitGroupsAPI {
      - parameter unitGroupId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter unitDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<UnitDtoListEnvelope> 
      */
-    open class func getUnitsAsyncWithRequestBuilder(tenantId: UUID, unitGroupId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<UnitDtoListEnvelope> {
+    open class func getUnitsAsyncWithRequestBuilder(tenantId: UUID, unitGroupId: String, apiVersion: String? = nil, xApiVersion: String? = nil, unitDtoCollectionQueryParameters: UnitDtoCollectionQueryParameters? = nil) -> RequestBuilder<UnitDtoListEnvelope> {
         var localVariablePath = "/api/v2/TenantsService/UnitGroups/{unitGroupId}/Units"
         let unitGroupIdPreEscape = "\(APIHelper.mapValueToPathItem(unitGroupId))"
         let unitGroupIdPostEscape = unitGroupIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{unitGroupId}", with: unitGroupIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: unitDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -516,6 +524,7 @@ open class UnitGroupsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -533,12 +542,13 @@ open class UnitGroupsAPI {
      - parameter unitGroupId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter unitDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getUnitsCountAsync(tenantId: UUID, unitGroupId: String, apiVersion: String? = nil, xApiVersion: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getUnitsCountAsyncWithRequestBuilder(tenantId: tenantId, unitGroupId: unitGroupId, apiVersion: apiVersion, xApiVersion: xApiVersion).execute(apiResponseQueue) { result in
+    open class func getUnitsCountAsync(tenantId: UUID, unitGroupId: String, apiVersion: String? = nil, xApiVersion: String? = nil, unitDtoCollectionQueryParameters: UnitDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getUnitsCountAsyncWithRequestBuilder(tenantId: tenantId, unitGroupId: unitGroupId, apiVersion: apiVersion, xApiVersion: xApiVersion, unitDtoCollectionQueryParameters: unitDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -556,15 +566,16 @@ open class UnitGroupsAPI {
      - parameter unitGroupId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
+     - parameter unitDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getUnitsCountAsyncWithRequestBuilder(tenantId: UUID, unitGroupId: String, apiVersion: String? = nil, xApiVersion: String? = nil) -> RequestBuilder<Int32Envelope> {
+    open class func getUnitsCountAsyncWithRequestBuilder(tenantId: UUID, unitGroupId: String, apiVersion: String? = nil, xApiVersion: String? = nil, unitDtoCollectionQueryParameters: UnitDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         var localVariablePath = "/api/v2/TenantsService/UnitGroups/{unitGroupId}/Units/Count"
         let unitGroupIdPreEscape = "\(APIHelper.mapValueToPathItem(unitGroupId))"
         let unitGroupIdPostEscape = unitGroupIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{unitGroupId}", with: unitGroupIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: unitDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -573,6 +584,7 @@ open class UnitGroupsAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "x-api-version": xApiVersion?.encodeToJSON(),
         ]
 
@@ -591,13 +603,13 @@ open class UnitGroupsAPI {
      - parameter unitId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchUnitAsync(tenantId: UUID, unitGroupId: String, unitId: String, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchUnitAsyncWithRequestBuilder(tenantId: tenantId, unitGroupId: unitGroupId, unitId: unitId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchUnitAsync(tenantId: UUID, unitGroupId: String, unitId: String, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchUnitAsyncWithRequestBuilder(tenantId: tenantId, unitGroupId: unitGroupId, unitId: unitId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -616,10 +628,10 @@ open class UnitGroupsAPI {
      - parameter unitId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchUnitAsyncWithRequestBuilder(tenantId: UUID, unitGroupId: String, unitId: String, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchUnitAsyncWithRequestBuilder(tenantId: UUID, unitGroupId: String, unitId: String, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/TenantsService/UnitGroups/{unitGroupId}/Units/{unitId}"
         let unitGroupIdPreEscape = "\(APIHelper.mapValueToPathItem(unitGroupId))"
         let unitGroupIdPostEscape = unitGroupIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -628,7 +640,7 @@ open class UnitGroupsAPI {
         let unitIdPostEscape = unitIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{unitId}", with: unitIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -655,13 +667,13 @@ open class UnitGroupsAPI {
      - parameter unitGroupId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchUnitGroupAsync(tenantId: UUID, unitGroupId: String, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchUnitGroupAsyncWithRequestBuilder(tenantId: tenantId, unitGroupId: unitGroupId, apiVersion: apiVersion, xApiVersion: xApiVersion, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchUnitGroupAsync(tenantId: UUID, unitGroupId: String, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchUnitGroupAsyncWithRequestBuilder(tenantId: tenantId, unitGroupId: unitGroupId, apiVersion: apiVersion, xApiVersion: xApiVersion, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -679,16 +691,16 @@ open class UnitGroupsAPI {
      - parameter unitGroupId: (path)  
      - parameter apiVersion: (query)  (optional)
      - parameter xApiVersion: (header)  (optional)
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchUnitGroupAsyncWithRequestBuilder(tenantId: UUID, unitGroupId: String, apiVersion: String? = nil, xApiVersion: String? = nil, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchUnitGroupAsyncWithRequestBuilder(tenantId: UUID, unitGroupId: String, apiVersion: String? = nil, xApiVersion: String? = nil, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/TenantsService/UnitGroups/{unitGroupId}"
         let unitGroupIdPreEscape = "\(APIHelper.mapValueToPathItem(unitGroupId))"
         let unitGroupIdPostEscape = unitGroupIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{unitGroupId}", with: unitGroupIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

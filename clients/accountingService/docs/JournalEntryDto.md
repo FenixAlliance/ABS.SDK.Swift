@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | [optional] 
+**timestamp** | **Date** |  | [optional] 
 **tenantId** | **String** |  | [optional] 
 **enrollmentId** | **String** |  | [optional] 
 **journalId** | **String** |  | [optional] 
@@ -24,7 +25,6 @@ Name | Type | Description | Notes
 **postedBy** | **String** |  | [optional] 
 **forexRate** | **Double** |  | [optional] 
 **forexRatesSnapshot** | **String** |  | [optional] 
-**timestamp** | **Date** |  | [optional] 
 **debitInUsd** | **Double** |  | [optional] 
 **creditInUsd** | **Double** |  | [optional] 
 **accountingEntries** | [AccountingEntryDto] |  | [optional] 
@@ -32,6 +32,8 @@ Name | Type | Description | Notes
 **totalCredit** | **Double** |  | [optional] [readonly] 
 **totalDebitAmount** | [**Money**](Money.md) |  | [optional] 
 **totalCreditAmount** | [**Money**](Money.md) |  | [optional] 
+**debitInUsdAmount** | [**Money**](Money.md) |  | [optional] 
+**creditInUsdAmount** | [**Money**](Money.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

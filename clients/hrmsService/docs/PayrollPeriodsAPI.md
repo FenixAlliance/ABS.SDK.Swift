@@ -182,7 +182,7 @@ No authorization required
 
 # **getPayrollPeriodsAsync**
 ```swift
-    open class func getPayrollPeriodsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: PayrollPeriodDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getPayrollPeriodsAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, payrollPeriodDtoCollectionQueryParameters: PayrollPeriodDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: PayrollPeriodDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get payroll periods
@@ -197,9 +197,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let payrollPeriodDtoCollectionQueryParameters = PayrollPeriodDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // PayrollPeriodDtoCollectionQueryParameters |  (optional)
 
 // Get payroll periods
-PayrollPeriodsAPI.getPayrollPeriodsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+PayrollPeriodsAPI.getPayrollPeriodsAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, payrollPeriodDtoCollectionQueryParameters: payrollPeriodDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -218,6 +219,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **payrollPeriodDtoCollectionQueryParameters** | [**PayrollPeriodDtoCollectionQueryParameters**](PayrollPeriodDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -229,14 +231,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getPayrollPeriodsCountAsync**
 ```swift
-    open class func getPayrollPeriodsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getPayrollPeriodsCountAsync(tenantId: UUID, apiVersion: String? = nil, xApiVersion: String? = nil, payrollPeriodDtoCollectionQueryParameters: PayrollPeriodDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count payroll periods
@@ -251,9 +253,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let payrollPeriodDtoCollectionQueryParameters = PayrollPeriodDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // PayrollPeriodDtoCollectionQueryParameters |  (optional)
 
 // Count payroll periods
-PayrollPeriodsAPI.getPayrollPeriodsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+PayrollPeriodsAPI.getPayrollPeriodsCountAsync(tenantId: tenantId, apiVersion: apiVersion, xApiVersion: xApiVersion, payrollPeriodDtoCollectionQueryParameters: payrollPeriodDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -272,6 +275,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **payrollPeriodDtoCollectionQueryParameters** | [**PayrollPeriodDtoCollectionQueryParameters**](PayrollPeriodDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -283,7 +287,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

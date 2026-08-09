@@ -286,7 +286,7 @@ No authorization required
 
 # **getDiscountListEntries**
 ```swift
-    open class func getDiscountListEntries(tenantId: UUID, discountListId: UUID, completion: @escaping (_ data: DiscountDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getDiscountListEntries(tenantId: UUID, discountListId: UUID, discountDtoCollectionQueryParameters: DiscountDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: DiscountDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Retrieves discounts in a discount list
@@ -300,9 +300,10 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let discountListId = 987 // UUID | 
+let discountDtoCollectionQueryParameters = DiscountDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // DiscountDtoCollectionQueryParameters |  (optional)
 
 // Retrieves discounts in a discount list
-DiscountListsAPI.getDiscountListEntries(tenantId: tenantId, discountListId: discountListId) { (response, error) in
+DiscountListsAPI.getDiscountListEntries(tenantId: tenantId, discountListId: discountListId, discountDtoCollectionQueryParameters: discountDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -320,6 +321,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **discountListId** | **UUID** |  | 
+ **discountDtoCollectionQueryParameters** | [**DiscountDtoCollectionQueryParameters**](DiscountDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -331,14 +333,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getDiscountListEntriesCount**
 ```swift
-    open class func getDiscountListEntriesCount(tenantId: UUID, discountListId: UUID, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getDiscountListEntriesCount(tenantId: UUID, discountListId: UUID, discountDtoCollectionQueryParameters: DiscountDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Counts discounts in a discount list
@@ -352,9 +354,10 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let discountListId = 987 // UUID | 
+let discountDtoCollectionQueryParameters = DiscountDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // DiscountDtoCollectionQueryParameters |  (optional)
 
 // Counts discounts in a discount list
-DiscountListsAPI.getDiscountListEntriesCount(tenantId: tenantId, discountListId: discountListId) { (response, error) in
+DiscountListsAPI.getDiscountListEntriesCount(tenantId: tenantId, discountListId: discountListId, discountDtoCollectionQueryParameters: discountDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -372,6 +375,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **discountListId** | **UUID** |  | 
+ **discountDtoCollectionQueryParameters** | [**DiscountDtoCollectionQueryParameters**](DiscountDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -383,7 +387,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -444,7 +448,7 @@ No authorization required
 
 # **getDiscountLists**
 ```swift
-    open class func getDiscountLists(tenantId: UUID, completion: @escaping (_ data: DiscountListDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getDiscountLists(tenantId: UUID, discountListDtoCollectionQueryParameters: DiscountListDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: DiscountListDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Retrieves all discount lists
@@ -457,9 +461,10 @@ Gets all discount lists for the current tenant with OData support.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
+let discountListDtoCollectionQueryParameters = DiscountListDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // DiscountListDtoCollectionQueryParameters |  (optional)
 
 // Retrieves all discount lists
-DiscountListsAPI.getDiscountLists(tenantId: tenantId) { (response, error) in
+DiscountListsAPI.getDiscountLists(tenantId: tenantId, discountListDtoCollectionQueryParameters: discountListDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -476,6 +481,7 @@ DiscountListsAPI.getDiscountLists(tenantId: tenantId) { (response, error) in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
+ **discountListDtoCollectionQueryParameters** | [**DiscountListDtoCollectionQueryParameters**](DiscountListDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -487,14 +493,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getDiscountListsCount**
 ```swift
-    open class func getDiscountListsCount(tenantId: UUID, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func getDiscountListsCount(tenantId: UUID, discountListDtoCollectionQueryParameters: DiscountListDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Counts discount lists
@@ -507,9 +513,10 @@ Gets the count of discount lists for the current tenant.
 import OpenAPIClient
 
 let tenantId = 987 // UUID | 
+let discountListDtoCollectionQueryParameters = DiscountListDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // DiscountListDtoCollectionQueryParameters |  (optional)
 
 // Counts discount lists
-DiscountListsAPI.getDiscountListsCount(tenantId: tenantId) { (response, error) in
+DiscountListsAPI.getDiscountListsCount(tenantId: tenantId, discountListDtoCollectionQueryParameters: discountListDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -526,6 +533,7 @@ DiscountListsAPI.getDiscountListsCount(tenantId: tenantId) { (response, error) i
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
+ **discountListDtoCollectionQueryParameters** | [**DiscountListDtoCollectionQueryParameters**](DiscountListDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -537,14 +545,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchDiscountList**
 ```swift
-    open class func patchDiscountList(tenantId: UUID, discountListId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchDiscountList(tenantId: UUID, discountListId: UUID, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patches a discount list
@@ -558,10 +566,10 @@ import OpenAPIClient
 
 let tenantId = 987 // UUID | 
 let discountListId = 987 // UUID | 
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patches a discount list
-DiscountListsAPI.patchDiscountList(tenantId: tenantId, discountListId: discountListId, operation: operation) { (response, error) in
+DiscountListsAPI.patchDiscountList(tenantId: tenantId, discountListId: discountListId, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -579,7 +587,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **UUID** |  | 
  **discountListId** | **UUID** |  | 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 
@@ -598,7 +606,7 @@ No authorization required
 
 # **patchDiscountListEntry**
 ```swift
-    open class func patchDiscountListEntry(tenantId: UUID, discountListId: UUID, discountListEntryId: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
+    open class func patchDiscountListEntry(tenantId: UUID, discountListId: UUID, discountListEntryId: UUID, patchOperation: [PatchOperation]? = nil, completion: @escaping (_ data: EmptyEnvelope?, _ error: Error?) -> Void)
 ```
 
 Patches a discount list entry
@@ -613,10 +621,10 @@ import OpenAPIClient
 let tenantId = 987 // UUID | 
 let discountListId = 987 // UUID | 
 let discountListEntryId = 987 // UUID | 
-let operation = [Operation(operationType: "operationType_example", path: "path_example", op: "op_example", from: "from_example", value: 123)] // [Operation] |  (optional)
+let patchOperation = [PatchOperation(op: "op_example", path: "path_example", from: "from_example", value: 123)] // [PatchOperation] |  (optional)
 
 // Patches a discount list entry
-DiscountListsAPI.patchDiscountListEntry(tenantId: tenantId, discountListId: discountListId, discountListEntryId: discountListEntryId, operation: operation) { (response, error) in
+DiscountListsAPI.patchDiscountListEntry(tenantId: tenantId, discountListId: discountListId, discountListEntryId: discountListEntryId, patchOperation: patchOperation) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -635,7 +643,7 @@ Name | Type | Description  | Notes
  **tenantId** | **UUID** |  | 
  **discountListId** | **UUID** |  | 
  **discountListEntryId** | **UUID** |  | 
- **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+ **patchOperation** | [**[PatchOperation]**](PatchOperation.md) |  | [optional] 
 
 ### Return type
 

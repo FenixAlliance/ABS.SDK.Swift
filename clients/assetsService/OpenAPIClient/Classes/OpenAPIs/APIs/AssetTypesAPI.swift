@@ -169,12 +169,13 @@ open class AssetTypesAPI {
      Gets all asset types for the current tenant
      
      - parameter tenantId: (query)  
+     - parameter assetTypeDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getAssetTypes(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AssetTypeDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getAssetTypesWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+    open class func getAssetTypes(tenantId: UUID, assetTypeDtoCollectionQueryParameters: AssetTypeDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AssetTypeDtoListEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getAssetTypesWithRequestBuilder(tenantId: tenantId, assetTypeDtoCollectionQueryParameters: assetTypeDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -189,12 +190,13 @@ open class AssetTypesAPI {
      - GET /api/v2/AssetsService/AssetTypes
      - Retrieves all asset types for the authenticated tenant.
      - parameter tenantId: (query)  
+     - parameter assetTypeDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<AssetTypeDtoListEnvelope> 
      */
-    open class func getAssetTypesWithRequestBuilder(tenantId: UUID) -> RequestBuilder<AssetTypeDtoListEnvelope> {
+    open class func getAssetTypesWithRequestBuilder(tenantId: UUID, assetTypeDtoCollectionQueryParameters: AssetTypeDtoCollectionQueryParameters? = nil) -> RequestBuilder<AssetTypeDtoListEnvelope> {
         let localVariablePath = "/api/v2/AssetsService/AssetTypes"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: assetTypeDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -202,7 +204,7 @@ open class AssetTypesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -216,12 +218,13 @@ open class AssetTypesAPI {
      Gets the count of asset types
      
      - parameter tenantId: (query)  
+     - parameter assetTypeDtoCollectionQueryParameters: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getAssetTypesCount(tenantId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return getAssetTypesCountWithRequestBuilder(tenantId: tenantId).execute(apiResponseQueue) { result in
+    open class func getAssetTypesCount(tenantId: UUID, assetTypeDtoCollectionQueryParameters: AssetTypeDtoCollectionQueryParameters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int32Envelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return getAssetTypesCountWithRequestBuilder(tenantId: tenantId, assetTypeDtoCollectionQueryParameters: assetTypeDtoCollectionQueryParameters).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -236,12 +239,13 @@ open class AssetTypesAPI {
      - GET /api/v2/AssetsService/AssetTypes/count
      - Returns the total number of asset types for the authenticated tenant.
      - parameter tenantId: (query)  
+     - parameter assetTypeDtoCollectionQueryParameters: (body)  (optional)
      - returns: RequestBuilder<Int32Envelope> 
      */
-    open class func getAssetTypesCountWithRequestBuilder(tenantId: UUID) -> RequestBuilder<Int32Envelope> {
+    open class func getAssetTypesCountWithRequestBuilder(tenantId: UUID, assetTypeDtoCollectionQueryParameters: AssetTypeDtoCollectionQueryParameters? = nil) -> RequestBuilder<Int32Envelope> {
         let localVariablePath = "/api/v2/AssetsService/AssetTypes/count"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: assetTypeDtoCollectionQueryParameters)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -249,7 +253,7 @@ open class AssetTypesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -264,13 +268,13 @@ open class AssetTypesAPI {
      
      - parameter tenantId: (query)  
      - parameter typeId: (path)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchAssetType(tenantId: UUID, typeId: UUID, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
-        return patchAssetTypeWithRequestBuilder(tenantId: tenantId, typeId: typeId, operation: operation).execute(apiResponseQueue) { result in
+    open class func patchAssetType(tenantId: UUID, typeId: UUID, patchOperation: [PatchOperation]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EmptyEnvelope?, _ error: Error?) -> Void)) -> RequestTask {
+        return patchAssetTypeWithRequestBuilder(tenantId: tenantId, typeId: typeId, patchOperation: patchOperation).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -286,16 +290,16 @@ open class AssetTypesAPI {
      - Applies a JSON Patch document to an existing asset type for the authenticated tenant.
      - parameter tenantId: (query)  
      - parameter typeId: (path)  
-     - parameter operation: (body)  (optional)
+     - parameter patchOperation: (body)  (optional)
      - returns: RequestBuilder<EmptyEnvelope> 
      */
-    open class func patchAssetTypeWithRequestBuilder(tenantId: UUID, typeId: UUID, operation: [Operation]? = nil) -> RequestBuilder<EmptyEnvelope> {
+    open class func patchAssetTypeWithRequestBuilder(tenantId: UUID, typeId: UUID, patchOperation: [PatchOperation]? = nil) -> RequestBuilder<EmptyEnvelope> {
         var localVariablePath = "/api/v2/AssetsService/AssetTypes/{typeId}"
         let typeIdPreEscape = "\(APIHelper.mapValueToPathItem(typeId))"
         let typeIdPostEscape = typeIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{typeId}", with: typeIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: patchOperation)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([

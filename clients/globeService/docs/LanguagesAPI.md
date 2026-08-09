@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 # **countLanguagesAsync**
 ```swift
-    open class func countLanguagesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
+    open class func countLanguagesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, countryLanguageDtoCollectionQueryParameters: CountryLanguageDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: Int32Envelope?, _ error: Error?) -> Void)
 ```
 
 Count languages
@@ -25,9 +25,10 @@ import OpenAPIClient
 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let countryLanguageDtoCollectionQueryParameters = CountryLanguageDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CountryLanguageDtoCollectionQueryParameters |  (optional)
 
 // Count languages
-LanguagesAPI.countLanguagesAsync(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+LanguagesAPI.countLanguagesAsync(apiVersion: apiVersion, xApiVersion: xApiVersion, countryLanguageDtoCollectionQueryParameters: countryLanguageDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -45,6 +46,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **countryLanguageDtoCollectionQueryParameters** | [**CountryLanguageDtoCollectionQueryParameters**](CountryLanguageDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -56,7 +58,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -117,7 +119,7 @@ No authorization required
 
 # **getLanguagesAsync**
 ```swift
-    open class func getLanguagesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, completion: @escaping (_ data: CountryLanguageDtoListEnvelope?, _ error: Error?) -> Void)
+    open class func getLanguagesAsync(apiVersion: String? = nil, xApiVersion: String? = nil, countryLanguageDtoCollectionQueryParameters: CountryLanguageDtoCollectionQueryParameters? = nil, completion: @escaping (_ data: CountryLanguageDtoListEnvelope?, _ error: Error?) -> Void)
 ```
 
 Get all languages
@@ -131,9 +133,10 @@ import OpenAPIClient
 
 let apiVersion = "apiVersion_example" // String |  (optional)
 let xApiVersion = "xApiVersion_example" // String |  (optional)
+let countryLanguageDtoCollectionQueryParameters = CountryLanguageDtoCollectionQueryParameters(top: 123, skip: 123, count: false, filter: "filter_example", orderBy: "orderBy_example", search: "search_example", select: "select_example", expand: "expand_example", isEmpty: false) // CountryLanguageDtoCollectionQueryParameters |  (optional)
 
 // Get all languages
-LanguagesAPI.getLanguagesAsync(apiVersion: apiVersion, xApiVersion: xApiVersion) { (response, error) in
+LanguagesAPI.getLanguagesAsync(apiVersion: apiVersion, xApiVersion: xApiVersion, countryLanguageDtoCollectionQueryParameters: countryLanguageDtoCollectionQueryParameters) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -151,6 +154,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **apiVersion** | **String** |  | [optional] 
  **xApiVersion** | **String** |  | [optional] 
+ **countryLanguageDtoCollectionQueryParameters** | [**CountryLanguageDtoCollectionQueryParameters**](CountryLanguageDtoCollectionQueryParameters.md) |  | [optional] 
 
 ### Return type
 
@@ -162,7 +166,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
